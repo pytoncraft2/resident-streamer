@@ -58,13 +58,13 @@ export default class GameRooms extends Room {
           vaincu: false,
           inaccessible: false
         },
-        // 'manette': {
-        //   temps: 1_000,
-        //   x: 4800,
-        //   y: -900,
-        //   vaincu: false,
-        //   inaccessible: false
-        // },
+        'manette': {
+          temps: 1_000,
+          x: 4800,
+          y: -900,
+          vaincu: false,
+          inaccessible: false
+        },
         'troll':  {
           temps: 7_000,
           x: 1000,

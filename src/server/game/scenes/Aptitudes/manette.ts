@@ -126,6 +126,7 @@ export function __animationLancerManette(manette: TJoueur) {
  export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
    if (manette.scene)
    {
+     if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
      const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
      if (positionJoueurProche)
      {
@@ -188,7 +189,7 @@ export function __animationLancerManette(manette: TJoueur) {
              delay: 500,
              onStart: () => manette.play("manette_vole"),
              targets: manette,
-             x: 1960,
+             x: 4800,
              y: 0,
              duration: 1000,
              ease: 'Sine.inOut',
@@ -197,10 +198,10 @@ export function __animationLancerManette(manette: TJoueur) {
          }
        }
      } else {
-       if (manette.x != 427) {
+       if (manette.x != 4800) {
          manette.scene.tweens.add({
            targets: manette,
-           x: 427,
+           x: 4800,
            y: -249,
            onStart: () => manette.play("manette_vole"),
            onComplete: () => {
