@@ -161,6 +161,12 @@ import { DefautDirection } from "../Stats/Defaut"
    preUpdate(time: number, delta: number) {
      super.preUpdate(time, delta);
 
+     if (this.cible_courante == "enemies")
+     {
+      console.log(this.y);
+     }
+     
+
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, up, down, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()

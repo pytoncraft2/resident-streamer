@@ -841,7 +841,7 @@ export default class Jeu extends Phaser.Scene {
 			}
 			else
 			{
-				this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
+				if (list.projectiles[item].x) this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
 				if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
 				if (list.projectiles[item].scaleX) this.projectilesRef[item].setScale(list.projectiles[item].scaleX, list.projectiles[item].scaleY);
 				if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
@@ -1000,7 +1000,7 @@ export default class Jeu extends Phaser.Scene {
 
 
 			} else {
-				this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
+				if (list.presences[item].x) this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
 				if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 10.36), 0.1777486358833607)
 				this.playersRef[item].setFrame(list.presences[item].anim)
 				this.playersRef[item].flipX = list.presences[item].flipX
@@ -1020,7 +1020,7 @@ export default class Jeu extends Phaser.Scene {
 				if (list.presences[item].son) this.sound.play(list.presences[item].son);
 
 				if (this.session === this.playersRef[item].ClientId) {
-					this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
+					if (list.presences[item].vie) this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
 					if (list.presences[item].sprite_fusion) this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
 
 					if (list.presences[item].commandes) {
@@ -1145,11 +1145,6 @@ export default class Jeu extends Phaser.Scene {
 		}, undefined, this);
 
 		console.log("message received from server");
-	}
-
-	finAnimationBossKO(id: string) {
-		this.playersRef[id].setAlpha(0)
-		this.playersRef[id].ellipse_5_1.setAlpha(0)
 	}
 
 

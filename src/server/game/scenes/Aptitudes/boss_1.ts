@@ -61,7 +61,7 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, aptitudes: any) {
+export function __auto(boss_1: TJoueur | any, input: any, aptitudes: any) {
 
   if ((boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) return boss_1.scene.physics.world.removeCollider(boss_1.auto_colision);
   if (boss_1 && boss_1.body)
@@ -71,8 +71,29 @@ export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, a
       let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
       if (joueuProche)
       {
-        boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
-        boss_1.play('deplacement');
+        if (joueuProche.x < 5627 && joueuProche.x > 3802 && joueuProche.y > -249)
+        {
+          boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+          boss_1.play('deplacement');
+        }
+        else
+        {
+          // boss_1.setPosition(5010, 0)
+          if (boss_1.x != 5010) {
+            boss_1.scene.tweens.add({
+              targets: boss_1,
+              x: 5010,
+              y: 755,
+              // onComplete: () => {
+                // reactiveBoucle(boss_1, aptitudes)
+              // },
+              // alpha: 0.2,
+              duration: 500,
+            });
+
+            // boss_1.scene.physics.moveTo(boss_1, 5010, 755)
+          }
+        }
       }
     }
     reactiveBoucle(boss_1, aptitudes)
