@@ -90,6 +90,7 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
 
       var dist = Phaser.Math.Distance.BetweenPoints(troll, positionJoueurProche);
 
+     if (positionJoueurProche.x < 1789 && positionJoueurProche.y < -249) {
       if (positionJoueurProche.x < troll.x)
       {
         troll.setFlipX(true)
@@ -152,6 +153,23 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
           });
         }
       }
+    } else {
+       if (troll.x != 427) {
+         troll.scene.tweens.add({
+           targets: troll,
+           x: 427,
+           y: -249,
+           onStart: () => troll.play("troll_idle"),
+           onComplete: () => {
+             reactiveBoucle(troll, aptitudes)
+           },
+           // alpha: 0.2,
+           duration: 900,
+         });
+
+         // boss_1.scene.physics.moveTo(boss_1, 5010, 755)
+       } else reactiveBoucle(troll, aptitudes)
+     }
     }
   }
 }

@@ -55,7 +55,7 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
    {
      var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
 
-     if (positionJoueurProche.x < 1789) {
+     if (positionJoueurProche.x < 1789 && positionJoueurProche.y > -249) {
        if (positionJoueurProche.x < twitchman.x) {
          twitchman.setFlipX(true)
 
