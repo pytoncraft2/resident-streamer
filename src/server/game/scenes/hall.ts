@@ -156,7 +156,7 @@ export default class Hall extends Phaser.Scene {
       _boule.setData('degat', 0)
     }, null, this);
 
-    this.physics.world.setBoundsCollision(true, true, false, false)
+    this.physics.world.setBoundsCollision(true, true, false, true)
     this.CommencerCompteur()
   }
 
