@@ -32,7 +32,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     this.id = id
     this.setScale(1, 3)
 
-    this.setCollideWorldBounds(true);
+    // this.setCollideWorldBounds(true);
 
     new AnimationBombe(this.anims)
 
@@ -45,7 +45,9 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
     this.scene.physics.add.existing(this.zoneInteraction);
-    this.scene.physics.add.collider((this.scene as any).platforme, this,
+
+    //@ts-ignore
+    this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], [this],
     function (_boule: Phaser.Physics.Arcade.Sprite, _j2: any) {
       (_j2.body as any).setAllowGravity(false);
     }, null, this);

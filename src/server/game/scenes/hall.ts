@@ -85,7 +85,7 @@ export default class Hall extends Phaser.Scene {
     this.playersRef = {}
     this.enemiesRef = {}
 
-		const platforme = this.add.rectangle(1837, 939, 128, 128);
+		const platforme = this.add.rectangle(1837, 940, 128, 128);
     platforme.scaleX = 14.993211052385613;
     platforme.scaleY = -0.08853600509578045;
     platforme.setOrigin(0, 0.5);
