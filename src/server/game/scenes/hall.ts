@@ -20,6 +20,10 @@ export default class Hall extends Phaser.Scene {
   platforme: Phaser.GameObjects.Rectangle
   rect: any
   platforme_haut: Phaser.GameObjects.Rectangle
+  platforme_haut_gauche: Phaser.GameObjects.Rectangle
+  platforme_haut_droite: Phaser.GameObjects.Rectangle
+  platforme_gauche: Phaser.GameObjects.Rectangle
+  platforme_droite: Phaser.GameObjects.Rectangle
   compteur: Phaser.Time.TimerEvent
 
 
@@ -97,6 +101,7 @@ export default class Hall extends Phaser.Scene {
 		platforme_gauche.isFilled = true;
 		platforme_gauche.fillColor = 10563832;
     platforme_gauche.setData('piece', 'bas_gauche')
+    this.platforme_gauche = platforme_gauche
 
 		const platforme_droite = this.add.rectangle(3756, 940, 128, 128);
     platforme_droite.scaleX = 14.310196671161355;
@@ -105,6 +110,7 @@ export default class Hall extends Phaser.Scene {
     platforme_droite.isFilled = true;
     platforme_droite.fillColor = 10563832;
     platforme_droite.setData('piece', 'boss1')
+    this.platforme_droite = platforme_droite
 
 		const platforme_haut = this.add.rectangle(1833, -66, 128, 128);
 		platforme_haut.scaleX = 14.993211052385613;
@@ -123,6 +129,7 @@ export default class Hall extends Phaser.Scene {
 		platforme_haut_droite.isFilled = true;
 		platforme_haut_droite.fillColor = 10563832;
     platforme_droite.setData('piece', 'haut_droite')
+    this.platforme_haut_droite = platforme_haut_droite
 
 		// platforme_haut_gauche
 		const platforme_haut_gauche = this.add.rectangle(1, -66, 128, 128);
@@ -132,6 +139,8 @@ export default class Hall extends Phaser.Scene {
 		platforme_haut_gauche.isFilled = true;
 		platforme_haut_gauche.fillColor = 10563832;
     platforme_droite.setData('piece', 'bas_droite')
+    this.platforme_haut_gauche = platforme_haut_gauche
+
 
     this.physics.add.existing(platforme, true);
     this.physics.add.existing(platforme_gauche, true);

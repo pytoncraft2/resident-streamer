@@ -160,7 +160,7 @@ export function __animationLancerManette(manette: TJoueur) {
              onStart: () => manette.play("manette_vole"),
              targets: manette,
              x: 3970,
-             y: -750,
+             y: -950,
              duration: 1000,
              ease: 'Sine.inOut',
              onComplete: () => reactiveBoucle(manette, aptitudes)
@@ -192,7 +192,7 @@ export function __animationLancerManette(manette: TJoueur) {
              onStart: () => manette.play("manette_vole"),
              targets: manette,
              x: 5337,
-             y: -750,
+             y: -950,
              duration: 1000,
              ease: 'Sine.inOut',
              onComplete: () => reactiveBoucle(manette, aptitudes)
