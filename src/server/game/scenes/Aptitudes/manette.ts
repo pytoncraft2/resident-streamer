@@ -130,7 +130,9 @@ export function __animationLancerManette(manette: TJoueur) {
      const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
      if (positionJoueurProche)
      {
-     if (positionJoueurProche.x < 1789 && positionJoueurProche.x > -249) {
+
+        if (positionJoueurProche.x < 5627 && positionJoueurProche.x > 3802 && positionJoueurProche.y < -249) {
+
        var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
 
        if (positionJoueurProche.x < manette.x)
@@ -198,6 +200,8 @@ export function __animationLancerManette(manette: TJoueur) {
          }
        }
      } else {
+
+    console.log("AUTO");
        if (manette.x != 4800) {
          manette.scene.tweens.add({
            targets: manette,
