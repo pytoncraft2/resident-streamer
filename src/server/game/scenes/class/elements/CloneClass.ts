@@ -36,7 +36,9 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.ClientID = id
-    this.setCollideWorldBounds(true);
+    //@ts-ignore
+    this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], this)
+
     new AnimationJoueur(this.anims)
     //@ts-ignore
     __StatsSupplementaire(this)
