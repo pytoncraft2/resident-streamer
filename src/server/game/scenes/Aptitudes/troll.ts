@@ -83,9 +83,11 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
 export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
   if (troll.scene)
   {
+    if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
     const positionJoueurProche: any = troll.scene.physics.closest(troll, [...(troll.scene as any).players.getChildren()])
     if (positionJoueurProche)
     {
+
       var dist = Phaser.Math.Distance.BetweenPoints(troll, positionJoueurProche);
 
       if (positionJoueurProche.x < troll.x)
@@ -151,7 +153,6 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
         }
       }
     }
-
   }
 }
 

@@ -59,19 +59,19 @@ export default class GameRooms extends Room {
           inaccessible: false
         },
         // 'manette': {
-        //   temps: 4_000,
-        //   vaincu: false,
-          // x: 1000,
-          // y: -1000,
-        //   inaccessible: false
-        // },
-        // 'troll':  {
-        //   temps: 7_000,
+        //   temps: 1_000,
         //   x: 4800,
         //   y: -900,
         //   vaincu: false,
         //   inaccessible: false
-        // }
+        // },
+        'troll':  {
+          temps: 7_000,
+          x: 1000,
+          y: -1000,
+          vaincu: false,
+          inaccessible: false
+        }
       }
       Object.entries(this.boss).map(item => {
         const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`;
