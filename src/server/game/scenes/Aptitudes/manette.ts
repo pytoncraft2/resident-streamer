@@ -159,8 +159,8 @@ export function __animationLancerManette(manette: TJoueur) {
              delay: 500,
              onStart: () => manette.play("manette_vole"),
              targets: manette,
-             x: 0,
-             y: 0,
+             x: 3970,
+             y: -750,
              duration: 1000,
              ease: 'Sine.inOut',
              onComplete: () => reactiveBoucle(manette, aptitudes)
@@ -191,8 +191,8 @@ export function __animationLancerManette(manette: TJoueur) {
              delay: 500,
              onStart: () => manette.play("manette_vole"),
              targets: manette,
-             x: 4800,
-             y: 0,
+             x: 5337,
+             y: -750,
              duration: 1000,
              ease: 'Sine.inOut',
              onComplete: () => reactiveBoucle(manette, aptitudes)
@@ -201,7 +201,6 @@ export function __animationLancerManette(manette: TJoueur) {
        }
      } else {
 
-    console.log("AUTO");
        if (manette.x != 4800) {
          manette.scene.tweens.add({
            targets: manette,

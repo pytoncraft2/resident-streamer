@@ -163,7 +163,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
      if (this.cible_courante == "enemies")
      {
-      console.log(this.y);
+      console.log(this.x);
      }
      
 
