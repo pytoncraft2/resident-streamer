@@ -136,11 +136,11 @@ import { DefautDirection } from "../Stats/Defaut"
          if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
            if (_e.vie <= 0) {
              _e.vie = 10
+             if (_e.cible_courante == "enemies") _e.son = 'game-over';
            }
            else
            {
            _e.dommage(this.degat)
-           if (_e.cible_courante == "enemies") _e.son = 'game-over';
            }
          }
        }

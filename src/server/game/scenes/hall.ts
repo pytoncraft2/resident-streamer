@@ -49,13 +49,13 @@ export default class Hall extends Phaser.Scene {
     this.players = this.physics.add.group({
       runChildUpdate: true,
       // customBoundsRectangle: customBounds,
-      // collideWorldBounds: true
+      collideWorldBounds: true
     })
 
     // Phaser.Actions.RandomRectangle(this.players.getChildren(), customBounds);
     this.enemies = this.physics.add.group({
       runChildUpdate: true,
-      // collideWorldBounds: true
+      collideWorldBounds: true
     })
 
     this.playersAttackZone = this.physics.add.group({
@@ -147,6 +147,7 @@ export default class Hall extends Phaser.Scene {
       _boule.setData('degat', 0)
     }, null, this);
 
+    this.physics.world.setBoundsCollision(true, true, false, false)
     this.CommencerCompteur()
   }
 

@@ -44,13 +44,13 @@ export default class GameRooms extends Room {
         //   vaincu: false,
         //   inaccessible: false
         // },
-        // 'twitchman': {
-        //   temps: 10_000,
-        //   x: 1000,
-        //   y: -1000,
-        //   vaincu: false,
-        //   inaccessible: false
-        // },
+        'twitchman': {
+          temps: 1_000,
+          x: 1000,
+          y: -200,
+          vaincu: false,
+          inaccessible: false
+        },
         'boss_1': {
           temps: 2_000,
           x: 4800,
@@ -60,9 +60,9 @@ export default class GameRooms extends Room {
         },
         // 'manette': {
         //   temps: 4_000,
-        //   x: 1000,
-        //   y: -200,
         //   vaincu: false,
+          // x: 1000,
+          // y: -1000,
         //   inaccessible: false
         // },
         // 'troll':  {
