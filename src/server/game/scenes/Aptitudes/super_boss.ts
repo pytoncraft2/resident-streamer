@@ -6,6 +6,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   //   runChildUpdate: true,
   //   collideWorldBounds: true
   // })
+  personnage.setActive(false)
 
   personnage.trones = personnage.scene.physics.add.group({
     runChildUpdate: true,
@@ -36,12 +37,14 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
       if (personnage.trones.getLength() == 2) 
       {
         const dernier: any = personnage.trones.getChildren()[1];
+        personnage.setActive(true);
         personnage.play('super_boss_vole')
         personnage.setY(-750)
         personnage.body.setAllowGravity(false);
         personnage.scene.time.delayedCall(2000, () => {
           personnage.play('super_boss_contreattaque');
         }, null, this);
+
 
         // personnage.trones.remove(dernier, true);
         (personnage.scene as any).suppressionProjectileDelai(dernier, dernier._frame, 100);
