@@ -64,6 +64,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     }
 
     if (this.blesse) {
+      console.log(this.blesse)
       this.vie -= 1
       this.blesse = false
     }
