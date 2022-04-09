@@ -97,7 +97,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     })
     this.play('attaque')
     this.on('animationcomplete', () => {
-      // this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
+      this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
       this.anims.play('deplacement');
     });
     this.setFlipX(directionFinal)

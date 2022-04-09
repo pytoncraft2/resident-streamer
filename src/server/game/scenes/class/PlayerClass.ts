@@ -74,12 +74,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
            this.zoneAttaque.attaque = true
            this.attaque = true;
          }
-         // console.log(frame.frame.name)
-         // console.log("CROOOOS")
-         // this.setVelocityX(this.flipX ? -1400 : 1400)
-         // this.attaque = true
-         // console.log(frame.frame.name)
-         // this.anims.getFrameName() == 'straightlead0' && this.setVelocity((this.flipX ? -1400 : 1400), -70), this.attaque = true
        }
      })
 
@@ -88,14 +82,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.scene.physics.add.existing(this.zoneAttaque);
      this.zoneAttaque.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneAttaque);
-
-     // this.scene.physics.add.collider(this, this.zoneAttaque);
-
-
-
-     // this.scene.physics.add.overlap(this.zoneAttaque, (this.scene as any).enemies.getChildren()[0], () => {
-     //   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
-     // }, undefined, this)
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -111,52 +97,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        if (a) {
          this.cross();
          this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
-         // this.scene.physics.world.add(this.zoneAttaque.body)
-
-
-         // const startHit = (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) => {
-         //   console.log(frame.frame.name)
-         //   if (frame.frame.name == 'cross3')
-         //   {
-         //
-         //     this.off(Phaser.Animations.Events.ANIMATION_UPDATE, startHit)
-         //
-         //     this.zoneAttaque.x = this.flipX
-         //     ? this.x - this.width * 0.25
-         //     : this.x + this.width * 0.25
-         //
-         //     this.zoneAttaque.y = this.y + this.height * 0.2
-         //
-         //     this.zoneAttaque.body.enable = true
-         //     this.scene.physics.world.add(this.zoneAttaque.body)
-         //   }
-         // }
-         //
-         // this.on(Phaser.Animations.Events.ANIMATION_UPDATE, startHit)
-         //
-         // this.once(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + 'cross', () => {
-         //   // this.tateMachine.setState('idle')
-         //
-         //   // TODO: hide and remove the sword swing hitbox
-         //   this.zoneAttaque.body.enable = false
-         //   this.scene.physics.world.remove(this.zoneAttaque.body)
-         // })
-
-
-
-         // (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.x = this.zoneAttaque.x;
-         // (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.y = this.zoneAttaque.y;
-         // (this.scene as any).room.state.presences.set(this.ClientID, new ZoneAttaque(this.zoneAttaque.x, this.zoneAttaque.y));
-         // console.log((this.scene as any).room.state.zoneAttaque.)
-
-         // const map = (this.scene as any).room.state.zoneAttaque.x
-         // const item = map.get("x");
-         // console.log(map)
-
-
-         // this.zoneA.x = this.zoneAttaque.x
-         // this.zoneA.y = this.zoneAttaque.y
-
          input['a'] = false
        }
 

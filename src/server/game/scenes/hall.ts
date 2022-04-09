@@ -80,20 +80,6 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
 
       , undefined, this)
 
-
-    // this.physics.add.collider(
-    // this.players,
-    // this.enemies,
-    // function (_player, _ennemie)
-    // {
-    //   if (_player.attaque)
-    //   {
-    //     if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-    //     else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-    //   }
-    // });
-
-
     this.events.on('boss_KO', this.boss_KO, this);
   }
 
