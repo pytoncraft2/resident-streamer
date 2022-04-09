@@ -59,7 +59,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.on('animationcomplete_straightlead', function () {
        this.play('idle_attack')
 
-       this.zoneAttaque.attaque = false
        this.attaque = false
      });
      this.on('animationcomplete', function (anim, frame) {

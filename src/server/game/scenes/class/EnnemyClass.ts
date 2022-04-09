@@ -46,6 +46,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
+    // this.displayWidth += 40
+
     this.etatEnCours = 'initial'
 
     //attaque - deplacement
