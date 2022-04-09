@@ -46,10 +46,12 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        }
 
        if (anim.key == 'attack') {
-         if (frame.frame.name == 'positiona4') {
-           // this.zoneAttaque.attaque = true
+
+         if (frame.frame.name != 'positiona4') {
            // this.attaque = true;
+           return
          }
+         this.zoneAttaque.attaque = true
        }
      })
 
