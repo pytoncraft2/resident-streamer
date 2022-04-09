@@ -1,4 +1,4 @@
-import { Player } from "../../RoomState"
+import { Player, ZoneAttaque } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
 
@@ -23,6 +23,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
    indexCompte: number = 0
    directeA: boolean = false
    zoneAttaque: any
+   zoneA: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -60,6 +61,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        this.emit('animationcomplete_' + anim.key, anim, frame);
      }, this);
 
+
      this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.scene.physics.add.existing(this.zoneAttaque)
      this.zoneAttaque.body.enable = false
@@ -83,7 +85,19 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
 
        if (a) {
-         this.cross()
+         this.cross();
+         this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+         // (this.scene as any).room.state.zoneAttaque.set(this.ClientID, new ZoneAttaque({x: this.zoneAttaque.x, y:this.zoneAttaque.y}));
+         // console.log((this.scene as any).room.state.zoneAttaque.)
+
+         // const map = (this.scene as any).room.state.zoneAttaque.x
+         // const item = map.get("x");
+         // console.log(map)
+
+
+         // this.zoneA.x = this.zoneAttaque.x
+         // this.zoneA.y = this.zoneAttaque.y
+
          input['a'] = false
        }
 
@@ -132,7 +146,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
          input['saut'] = false
        }
 
-       this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y)
 
 
 
