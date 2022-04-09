@@ -101,16 +101,17 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     this.events.on('boss_KO', this.boss_KO, this);
   }
 
-  overlapAction(playerAttackZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
+  overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
 
-      if (playerAttackZone.attaque)
-      {
-        console.log("AATTTTAAAQUE")
-        ennemie.blesse = true
-        playerAttackZone.attaque = false
-        // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-        // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-      }
+    console.log(playerActionZone.action)
+      // if (playerActionZone.action)
+      // {
+      //   // console.log("AATTTTAAAQUE")
+      //   // ennemie.blesse = true
+      //   // playerAttackZone.attaque = false
+      //   // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
+      //   // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
+      // }
   }
 
   boss_KO(id: string) {
