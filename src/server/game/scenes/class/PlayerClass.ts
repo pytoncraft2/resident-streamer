@@ -59,6 +59,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.on('animationcomplete_straightlead', function () {
        this.play('idle_attack')
 
+       this.zoneAttaque.attaque = false
        this.attaque = false
      });
      this.on('animationcomplete', function (anim, frame) {
@@ -208,7 +209,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
 
        // if (this.body.velocity.x < 204 && this.body.velocity.x > 0 && this.body.touching.down || this.body.velocity.x > -204 && this.body.velocity.x < 0 && this.body.touching.down) {
-       //   setAnimation(this, 'idle_attack')
+       //   setanimation(this, 'idle_attack')
        // }
 
        // if(this.lastAnim !== animationName) {
