@@ -74,8 +74,10 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     {
       if (_player.attaque)
       {
-        if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-        else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
+        _ennemie.blesse = true
+        _player.attaque = false
+        // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
+        // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
       }
     });
 

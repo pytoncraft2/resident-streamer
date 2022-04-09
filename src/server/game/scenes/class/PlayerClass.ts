@@ -47,7 +47,11 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.puissanceA = 0
 
      new AnimationJoueur(this.anims)
-     // this.on('animationcomplete_attack', function () {console.log("ANIMATION ATTACK COMPLETED")});
+     this.on('animationcomplete_attack', function () {
+         // this.play('idle_attack')
+         this.zoneAttaque.attaque = false
+         this.attaque = false
+     });
      this.on('animationcomplete_cross', function () {
          this.play('idle_attack')
          // this.zoneAttaque.body.enable = false
@@ -68,11 +72,16 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
-         console.log("CROSS")
          if (frame.frame.name == 'cross4') {
-           console.log("CROSS 4------------------")
            this.zoneAttaque.attaque = true
            this.attaque = true;
+         }
+       }
+
+       if (anim.key == 'attack') {
+         if (frame.frame.name == 'positiona4') {
+           // this.zoneAttaque.attaque = true
+           // this.attaque = true;
          }
        }
      })
@@ -167,17 +176,17 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
    cross() {
      setAnimation(this,'cross')
-
+     this.setVelocityX(0);
    }
 
    straightlead() {
      setAnimation(this,'straightlead')
+     this.setVelocityX(0);
      this.scene.tweens.addCounter({
        from: 0,
        to: 1,
        duration: 300,
        onUpdate: () => (this.setVelocity((this.flipX ? -1700 : 1700), -70)),
-       onComplete: () => (this.setVelocity(0)),
        repeat: 0,            // -1: infinity
        yoyo: false,
      })
