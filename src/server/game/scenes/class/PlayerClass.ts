@@ -176,8 +176,8 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        from: 0,
        to: 1,
        duration: 300,
-       onUpdate: () => (this.anims.getFrameName() == 'straightlead0' && this.setVelocity((this.flipX ? -1700 : 1700), -70), this.attaque = true),
-       onComplete: () => (this.setVelocity(0), this.attaque = false),
+       onUpdate: () => (this.setVelocity((this.flipX ? -1700 : 1700), -70)),
+       onComplete: () => (this.setVelocity(0)),
        repeat: 0,            // -1: infinity
        yoyo: false,
      })
