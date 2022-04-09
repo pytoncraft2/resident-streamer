@@ -39,11 +39,11 @@ export default class Hall extends Phaser.Scene {
       collideWorldBounds: true
     })
 
-    this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-this.physics.add.existing(this.swordHitbox)
-this.swordHitbox.body.enable = false
-this.physics.world.remove(this.swordHitbox.body)
-console.log(this.swordHitbox.body)
+    // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+// this.physics.add.existing(this.swordHitbox)
+// this.swordHitbox.body.enable = false
+// this.physics.world.remove(this.swordHitbox.body)
+// console.log(this.swordHitbox.body)
 
 // this.physics.add.collider(this.players.getChildren()[0], this.box)
 
@@ -92,7 +92,8 @@ console.log(this.swordHitbox.body)
     if (this.players) {
     this.players.children.iterate((child) => {
       if (child.data.values.ClientId) {
-        response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
+        console.log(child.zoneAttaque.x)
+        response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie, zoneAttaque: {x: child.zoneAttaque.x, y: child.zoneAttaque.y}}
       }
     })
   }

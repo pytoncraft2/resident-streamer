@@ -69,7 +69,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     if (this.scene) {
       (this.scene as any).room.state.presences.set(
         this.EnnemyId,
-        new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie})
+        new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
       )
     }
   }

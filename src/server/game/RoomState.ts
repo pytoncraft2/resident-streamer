@@ -18,6 +18,11 @@ export class Ennemy extends Schema {
   @type("number") vie?: number
 }
 
+export class ZoneAttaque extends Schema {
+    @type("number") x: number = 0;
+    @type("number") y: number = 1;
+}
+
 export class Player extends Schema {
   @type("number") x?: number
   @type("number") y?: number
@@ -27,6 +32,12 @@ export class Player extends Schema {
   @type("number") vie?: number
   @type("number") tint?: number
 }
+
+
+
+// class MyState extends Schema {
+//     @type(ZoneAttaque) zoneAttaque: ZoneAttaque = new ZoneAttaque();
+// }
 
 export class Input extends Schema {
   @type("boolean") left: boolean = false
@@ -43,4 +54,5 @@ export class RoomState extends Schema {
   //@ts-ignore
   @type({ map: Player }) presences = new MapSchema<Player>()
   @type({ map: Input }) playerInputs = new MapSchema<Input>()
+  @type({ map: ZoneAttaque }) zoneAttaque = new MapSchema<ZoneAttaque>()
 }

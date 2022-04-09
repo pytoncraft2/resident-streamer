@@ -22,9 +22,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
    indexAnimA: string[] = ['cross', 'attack', 'straightlead']
    indexCompte: number = 0
    directeA: boolean = false
-   swordHitbox!: Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-
-
+   zoneAttaque: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -62,11 +60,16 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        this.emit('animationcomplete_' + anim.key, anim, frame);
      }, this);
 
-       this.swordHitbox = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-       this.scene.physics.add.overlap(this.swordHitbox, this, () => {
-  console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
-}, undefined, this)
+     this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+     this.scene.physics.add.existing(this.zoneAttaque)
+     this.zoneAttaque.body.enable = false
+     // this.scene.physics.add.collider(this, this.swordHitbox);
 
+
+
+     // this.scene.physics.add.overlap(this.swordHitbox, this, () => {
+       // console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
+     // }, undefined, this)
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -129,6 +132,9 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
          input['saut'] = false
        }
 
+       this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y)
+
+
 
        if (this.body.velocity.x < 204 && this.body.velocity.x > 0 && this.body.touching.down || this.body.velocity.x > -204 && this.body.velocity.x < 0 && this.body.touching.down) {
          setAnimation(this, 'idle_attack')
@@ -143,61 +149,13 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
-       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie})
+       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
      )
    }
 
    cross() {
-     // setAnimation(this,'cross')
-     // const swordHitbox = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     // this.scene.physics.add.existing(swordHitbox)
-     // swordHitbox.body.enable = false
-     // this.scene.physics.world.remove(swordHitbox.body)
-     // console.log(swordHitbox.body)
+     setAnimation(this,'cross')
 
-     // this.physics.add.collider(this, this.box)
-
-     this.play('cross')
-     this.setVelocityX(0)
-
-     const startHit = (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) => {
-       // if (frame.index < 5)
-       // {
-       //   return
-       // }
-
-       this.off(Phaser.Animations.Events.ANIMATION_UPDATE, startHit)
-this.scene.physics.add.existing(this.swordHitbox)
-this.swordHitbox.body.enable = true
-
-this.scene.physics.world.remove(this.swordHitbox.body)
-// console.log(this.swordHitbox.body)
-
-// console.log('AIA---------')
-
-
-       this.swordHitbox.x = this.flipX
-       ? this.x - this.width * 0.25
-       : this.x + this.width * 0.25
-
-       this.swordHitbox.y = this.y + this.height * 0.2
-
-       this.swordHitbox.body.enable = false
-       this.scene.physics.world.add(this.swordHitbox.body)
-     }
-
-     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, startHit)
-
-     this.once(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + 'attack', () => {
-       // this.knightStateMachine.setState('idle')
-
-       // TODO: hide and remove the sword swing hitbox
-       this.swordHitbox.body.enable = false
-       this.scene.physics.world.remove(this.swordHitbox.body)
-     })
-
-     // TODO: move sword swing hitbox into place
-     // does it need to start part way into the animation?
    }
 
    straightlead() {
