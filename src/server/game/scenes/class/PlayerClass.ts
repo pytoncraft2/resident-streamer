@@ -50,17 +50,34 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      // this.on('animationcomplete_attack', function () {console.log("ANIMATION ATTACK COMPLETED")});
      this.on('animationcomplete_cross', function () {
          this.play('idle_attack')
+         // this.zoneAttaque.body.enable = false
+         // this.scene.physics.world.remove(this.zoneAttaque.body)
          this.attaque = false
      });
 
      this.on('animationcomplete_straightlead', function () {
        this.play('idle_attack')
+
        this.attaque = false
      });
      this.on('animationcomplete', function (anim, frame) {
        this.emit('animationcomplete_' + anim.key, anim, frame);
      }, this);
 
+     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
+       if (anim.key == 'cross') {
+         if (frame.frame.name == 'cross4') {
+           this.zoneAttaque.body.enable = false
+           this.scene.physics.world.remove(this.zoneAttaque.body)
+         }
+         // console.log(frame.frame.name)
+         console.log("CROOOOS")
+         // this.setVelocityX(this.flipX ? -1400 : 1400)
+         // this.attaque = true
+         // console.log(frame.frame.name)
+         // this.anims.getFrameName() == 'straightlead0' && this.setVelocity((this.flipX ? -1400 : 1400), -70), this.attaque = true
+       }
+     })
 
      this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.scene.physics.add.existing(this.zoneAttaque);
@@ -89,6 +106,11 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        if (a) {
          this.cross();
          this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+         this.scene.physics.world.add(this.zoneAttaque.body)
+
+
+
+
          // (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.x = this.zoneAttaque.x;
          // (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.y = this.zoneAttaque.y;
          // (this.scene as any).room.state.presences.set(this.ClientID, new ZoneAttaque(this.zoneAttaque.x, this.zoneAttaque.y));
