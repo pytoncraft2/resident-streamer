@@ -94,9 +94,9 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      if (this.canMove) {
 
 
+         this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
          this.cross();
-         this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
          input['a'] = false
        }
 

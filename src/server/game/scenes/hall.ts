@@ -137,7 +137,7 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     const player = new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId })
     this.players.add(player)
     this.playersRef[ClientId] = player
-    player.setBounceX(2)
+    player.setBounceX(0.2)
     player.setDragX(300)
 
 
