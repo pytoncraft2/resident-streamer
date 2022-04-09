@@ -52,34 +52,39 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
          this.play('idle_attack')
          // this.zoneAttaque.body.enable = false
          // this.scene.physics.world.remove(this.zoneAttaque.body)
+         this.zoneAttaque.attaque = false
          this.attaque = false
      });
 
      this.on('animationcomplete_straightlead', function () {
        this.play('idle_attack')
 
+       this.zoneAttaque.attaque = false
        this.attaque = false
      });
      this.on('animationcomplete', function (anim, frame) {
        this.emit('animationcomplete_' + anim.key, anim, frame);
      }, this);
 
-     // this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
-     //   if (anim.key == 'cross') {
-     //     if (frame.frame.name == 'cross4') {
-     //       this.zoneAttaque.body.enable = false
-     //       this.scene.physics.world.remove(this.zoneAttaque.body)
-     //     }
-     //     // console.log(frame.frame.name)
-     //     // console.log("CROOOOS")
-     //     // this.setVelocityX(this.flipX ? -1400 : 1400)
-     //     // this.attaque = true
-     //     // console.log(frame.frame.name)
-     //     // this.anims.getFrameName() == 'straightlead0' && this.setVelocity((this.flipX ? -1400 : 1400), -70), this.attaque = true
-     //   }
-     // })
+     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
+       if (anim.key == 'cross') {
+         console.log("CROSS")
+         if (frame.frame.name == 'cross4') {
+           console.log("CROSS 4------------------")
+           this.zoneAttaque.attaque = true
+           this.attaque = true;
+         }
+         // console.log(frame.frame.name)
+         // console.log("CROOOOS")
+         // this.setVelocityX(this.flipX ? -1400 : 1400)
+         // this.attaque = true
+         // console.log(frame.frame.name)
+         // this.anims.getFrameName() == 'straightlead0' && this.setVelocity((this.flipX ? -1400 : 1400), -70), this.attaque = true
+       }
+     })
 
      this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+     this.zoneAttaque.attaque = false
      this.scene.physics.add.existing(this.zoneAttaque);
      this.zoneAttaque.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneAttaque);
