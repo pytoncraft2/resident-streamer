@@ -58,9 +58,14 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
     let animationName = this.anims.getFrameName()
     if (this.body.touching.right) {
-      // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+      this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
     } else if (this.body.touching.left) {
-      // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+      this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+    }
+
+    if (this.blesse) {
+      this.vie -= 1
+      this.blesse = false
     }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
@@ -78,7 +83,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   attaquePuisDeplacement(condition, couleur, directionFinal) {
     if (condition) {
       this.setTint(couleur)
-      this.vie -= 1
     }
     this.scene.tweens.addCounter({
       from: 0,
@@ -90,7 +94,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     })
     this.play('attaque')
     this.on('animationcomplete', () => {
-      this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
+      // this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
       this.anims.play('deplacement');
     });
     this.setFlipX(directionFinal)

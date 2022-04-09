@@ -67,27 +67,28 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     this.physics.add.collider(platforme, this.enemies);
     // this.physics.add.collider(this.players, this.enemies);
 
-    // this.physics.add.collider(
-    // this.players,
-    // this.enemies,
-    // function (_player, _ennemie)
-    // {
-    //   if (_player.attaque)
-    //   {
-    //     if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-    //     else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-    //   }
-    // });
+    this.physics.add.collider(
+    this.players,
+    this.enemies,
+    function (_player, _ennemie)
+    {
+      if (_player.attaque)
+      {
+        if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
+        else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
+      }
+    });
 
 
     this.events.on('boss_KO', this.boss_KO, this);
   }
 
-  overlapAction(playerAttackZone, enemie) {
+  overlapAction(playerAttackZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
 
       if (playerAttackZone.attaque)
       {
         console.log("AATTTTAAAQUE")
+        ennemie.blesse = true
         playerAttackZone.attaque = false
         // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
         // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true

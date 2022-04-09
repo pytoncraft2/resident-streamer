@@ -208,9 +208,9 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
 
 
-       if (this.body.velocity.x < 204 && this.body.velocity.x > 0 && this.body.touching.down || this.body.velocity.x > -204 && this.body.velocity.x < 0 && this.body.touching.down) {
-         setAnimation(this, 'idle_attack')
-       }
+       // if (this.body.velocity.x < 204 && this.body.velocity.x > 0 && this.body.touching.down || this.body.velocity.x > -204 && this.body.velocity.x < 0 && this.body.touching.down) {
+       //   setAnimation(this, 'idle_attack')
+       // }
 
        // if(this.lastAnim !== animationName) {
        //   this.lastAnim = animationName;
