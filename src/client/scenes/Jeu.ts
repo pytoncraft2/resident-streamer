@@ -324,7 +324,6 @@ export default class Jeu extends Phaser.Scene {
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
 				})
-        console.log(changes)
         // changes.zoneAttaque.forEach((value: any, key: any) => {
           // console.log(value)
         // })
@@ -368,10 +367,12 @@ export default class Jeu extends Phaser.Scene {
 					this.playersRef[item] = player
 				}
 			} else {
+        console.log(list.presences[item].zoneAttaque.x)
 				if (list.presences[item].sprite) {
 					this.playersRef[item].x = list.presences[item].x
 					this.playersRef[item].y = list.presences[item].y
           // if (list.presences[item].anim) {
+          console.log(list.presences[item])
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
