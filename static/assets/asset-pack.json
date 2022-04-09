@@ -1,0 +1,80 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/attackchaiseboss0.png",
+                "type": "image",
+                "key": "attackchaiseboss0"
+            },
+            {
+                "url": "assets/attackchaiseboss1.png",
+                "type": "image",
+                "key": "attackchaiseboss1"
+            },
+            {
+                "url": "assets/boss_1_atlas.png",
+                "type": "image",
+                "key": "boss_1"
+            },
+            {
+                "atlasURL": "assets/boss_1_atlas.json",
+                "textureURL": "assets/boss_1_atlas.png",
+                "type": "atlas",
+                "key": "boss_1_atlas"
+            },
+            {
+                "url": "assets/fakhear.png",
+                "type": "image",
+                "key": "fakhear"
+            },
+            {
+                "atlasURL": "assets/fakhear_atlas.json",
+                "textureURL": "assets/fakhear_atlas.png",
+                "type": "atlas",
+                "key": "fakhear_atlas"
+            },
+            {
+                "url": "assets/FufuSuperDino.png",
+                "type": "image",
+                "key": "FufuSuperDino"
+            },
+            {
+                "url": "assets/hall.jpg",
+                "type": "image",
+                "key": "hall"
+            },
+            {
+                "url": "assets/map_boss1.png",
+                "type": "image",
+                "key": "map_boss1"
+            },
+            {
+                "url": "assets/map_hall0.png",
+                "type": "image",
+                "key": "map_hall0"
+            },
+            {
+                "url": "assets/map_hall1.png",
+                "type": "image",
+                "key": "map_hall1"
+            },
+            {
+                "url": "assets/movechaiseboss0.png",
+                "type": "image",
+                "key": "movechaiseboss0"
+            },
+            {
+                "url": "assets/movechaiseboss1.png",
+                "type": "image",
+                "key": "movechaiseboss1"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
