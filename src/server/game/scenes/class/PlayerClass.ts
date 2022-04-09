@@ -87,6 +87,8 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        if (a) {
          this.cross();
          this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+         (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.x = this.zoneAttaque.x;
+         (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.y = this.zoneAttaque.y;
          // (this.scene as any).room.state.zoneAttaque.set(this.ClientID, new ZoneAttaque({x: this.zoneAttaque.x, y:this.zoneAttaque.y}));
          // console.log((this.scene as any).room.state.zoneAttaque.)
 

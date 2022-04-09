@@ -19,8 +19,8 @@ export class Ennemy extends Schema {
 }
 
 export class ZoneAttaque extends Schema {
-    @type("number") x?: number = 1;
-    @type("number") y?: number = 2;
+    @type("number") x: number = 1;
+    @type("number") y: number = 2;
 }
 
 export class Player extends Schema {
