@@ -10,20 +10,11 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
  export default class PlayerClass extends Phaser.Physics.Arcade.Sprite {
    ClientID: any
    sprite: string
-   compteurSaut: number = 0
-   lastAnim: any
    vel: number = 400
    vie: number = 100
    canMove: boolean = true
-   tweenA: any
-   finChargeA: boolean
-   puissanceA: any
    attaque: boolean = false
-   indexAnimA: string[] = ['cross', 'attack', 'straightlead']
-   indexCompte: number = 0
-   directeA: boolean = false
    zoneAttaque: any
-   zoneA: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -41,10 +32,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.scene.add.existing(this)
      this.ClientID = ClientID
      this.sprite = (scene as any).room.donnes[this.ClientID].sprite
-     this.lastAnim = null
-     this.tweenA = null;
-     this.finChargeA = false
-     this.puissanceA = 0
 
      new AnimationJoueur(this.anims)
      this.on('animationcomplete_attack', function () {
@@ -115,23 +102,9 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
        }
 
        if (e) {
-         this.straightlead()
+         // this.straightlead()
          input['e'] = false
        }
-
-       if (preparationA) {
-           if (this.tweenA == null) {
-             this.puissanceA = this.scene.tweens.addCounter({
-               from: 500,
-               to: 1900,
-               duration: 2000
-             })
-           }
-
-         input['preparationA'] = false
-       }
-
-
 
        if (left) {
          setAnimation(this, 'walk')
@@ -149,23 +122,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
          this.setDragX(1300)
        }
 
-       if (saut) {
-         this.saut()
-         input['saut'] = false
-       }
-
-
-
-
-       // if (this.body.velocity.x < 204 && this.body.velocity.x > 0 && this.body.touching.down || this.body.velocity.x > -204 && this.body.velocity.x < 0 && this.body.touching.down) {
-       //   setanimation(this, 'idle_attack')
-       // }
-
-       // if(this.lastAnim !== animationName) {
-       //   this.lastAnim = animationName;
-       // } else {
-       //   animationName = undefined
-       // }
      }
 
      (this.scene as any).room.state.presences.set(
@@ -197,22 +153,4 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.setVelocityX(0);
    }
 
-   saut() {
-     if (this.compteurSaut < 2 || this.body.touching.down) {
-       this.play('jump')
-       this.setVelocityY(-1000);
-       this.compteurSaut++
-       if (this.body.touching.down) {
-         this.compteurSaut = 0
-       }
-     }
-   }
-
-   mourir() {
-
-   }
-
-   reapparaitre() {
-
-   }
  }
