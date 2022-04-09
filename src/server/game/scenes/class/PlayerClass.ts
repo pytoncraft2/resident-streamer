@@ -89,7 +89,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
          this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
          (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.x = this.zoneAttaque.x;
          (this.scene as any).room.state.presences.get(this.ClientID).zoneAttaque.y = this.zoneAttaque.y;
-         // (this.scene as any).room.state.zoneAttaque.set(this.ClientID, new ZoneAttaque({x: this.zoneAttaque.x, y:this.zoneAttaque.y}));
+         (this.scene as any).room.state.presences.set(this.ClientID, new ZoneAttaque(this.zoneAttaque.x, this.zoneAttaque.y));
          // console.log((this.scene as any).room.state.zoneAttaque.)
 
          // const map = (this.scene as any).room.state.zoneAttaque.x
@@ -164,7 +164,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
-       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
+       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: new ZoneAttaque(this.zoneAttaque.x, this.zoneAttaque.y)})
      )
    }
 
