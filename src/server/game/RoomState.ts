@@ -31,7 +31,8 @@ export class Player extends Schema {
   @type("boolean") flipX?: boolean
   @type("number") vie?: number
   @type("number") tint?: number
-  @type({ map: ZoneAttaque }) zoneAttaque = new MapSchema<ZoneAttaque>()
+  @type("number") xa?: number
+  @type("number") ya?: number
 }
 
 

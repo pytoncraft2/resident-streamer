@@ -378,6 +378,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
             // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].x + (list.presences[item].flipX ? -100 : 100), list.presences[item].y)
+            this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
           // }
 				}
 			}
