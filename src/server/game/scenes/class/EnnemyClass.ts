@@ -58,20 +58,20 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
     let animationName = this.anims.getFrameName()
     if (this.body.touching.right) {
-      this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+      // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
     } else if (this.body.touching.left) {
-      this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+      // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
     }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
 
-    // if (this.scene) {
-    //   (this.scene as any).room.state.presences.set(
-    //     this.EnnemyId,
-    //     new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
-    //   )
-    // }
+    if (this.scene) {
+      (this.scene as any).room.state.presences.set(
+        this.EnnemyId,
+        new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
+      )
+    }
   }
 
 

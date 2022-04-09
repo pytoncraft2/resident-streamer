@@ -39,6 +39,10 @@ export default class Hall extends Phaser.Scene {
       collideWorldBounds: true
     })
 
+    this.playersAttackZone = this.physics.add.group({
+      allowGravity: false
+    })
+
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)
 // this.swordHitbox.body.enable = false
@@ -49,9 +53,9 @@ export default class Hall extends Phaser.Scene {
 
 // TODO: add physics overlap with dummy box; show box damaged on overlap
 // this.boxStateMachine.setState('damage')
-// this.physics.add.overlap(this.swordHitbox, this.enemies.getChildren()[0], () => {
-//   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
-// }, undefined, this)
+this.physics.add.overlap(this.playersAttackZone, this.enemies, () => {
+  console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
+}, undefined, this)
 
     this.playersRef = {}
     this.enemiesRef = {}
@@ -65,17 +69,17 @@ export default class Hall extends Phaser.Scene {
     this.physics.add.collider(platforme, this.enemies);
     // this.physics.add.collider(this.players, this.enemies);
 
-    this.physics.add.collider(
-    this.players,
-    this.enemies,
-    function (_player, _ennemie)
-    {
-      if (_player.attaque)
-      {
-        if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-        else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-      }
-    });
+    // this.physics.add.collider(
+    // this.players,
+    // this.enemies,
+    // function (_player, _ennemie)
+    // {
+    //   if (_player.attaque)
+    //   {
+    //     if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
+    //     else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
+    //   }
+    // });
 
 
     this.events.on('boss_KO', this.boss_KO, this);

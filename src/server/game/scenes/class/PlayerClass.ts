@@ -63,14 +63,16 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
 
      this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     this.scene.physics.add.existing(this.zoneAttaque)
-     this.zoneAttaque.body.enable = false
+     this.scene.physics.add.existing(this.zoneAttaque);
+     this.zoneAttaque.body.enable = false;
+     (this.scene as any).playersAttackZone.add(this.zoneAttaque);
+
      // this.scene.physics.add.collider(this, this.swordHitbox);
 
 
 
-     // this.scene.physics.add.overlap(this.swordHitbox, this, () => {
-       // console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
+     // this.scene.physics.add.overlap(this.zoneAttaque, (this.scene as any).enemies.getChildren()[0], () => {
+     //   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
      // }, undefined, this)
    }
    preUpdate(time, delta) {
