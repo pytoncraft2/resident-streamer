@@ -59,11 +59,11 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
     let animationName = this.anims.getFrameName()
-    if (this.body.touching.right) {
-      this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
-    } else if (this.body.touching.left) {
-      this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
-    }
+    // if (this.body.touching.right) {
+    //   this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+    // } else if (this.body.touching.left) {
+    //   this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+    // }
 
     if (this.blesse) {
       console.log(this.blesse)
@@ -86,7 +86,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   attaquePuisDeplacement(condition, couleur, directionFinal) {
     if (condition) {
       this.setTint(couleur)
-      this.blesse = true
+      // this.blesse = true
     }
     this.scene.tweens.addCounter({
       from: 0,
