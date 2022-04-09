@@ -111,7 +111,6 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
         // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
         // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
       }
-
   }
 
   boss_KO(id: string) {

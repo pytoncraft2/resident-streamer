@@ -38,20 +38,20 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
          if (frame.frame.name != 'cross4') {
+           this.zoneAttaque.attaque = false
            return
          }
-
          this.zoneAttaque.attaque = true
-         // this.attaque = true;
        }
 
        if (anim.key == 'attack') {
 
          if (frame.frame.name != 'positiona4') {
-           // this.attaque = true;
+           this.zoneAttaque.attaque = false
            return
+         } else {
+           this.zoneAttaque.attaque = true
          }
-         this.zoneAttaque.attaque = true
        }
      })
 
@@ -117,6 +117,11 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.setVelocityX(0);
    }
 
+   kick() {
+     setAnimation(this, 'attack')
+     this.setVelocityX(0);
+   }
+
    straightlead() {
      setAnimation(this,'straightlead')
      this.setVelocityX(0);
@@ -130,9 +135,5 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      })
    }
 
-   kick() {
-     setAnimation(this, 'attack')
-     this.setVelocityX(0);
-   }
 
  }
