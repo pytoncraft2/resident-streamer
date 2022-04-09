@@ -13,6 +13,10 @@ export default class Hall extends Phaser.Scene {
   players: Phaser.GameObjects.Group
   room: any
   swordHitbox!: Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+  overlapTriggered: boolean = false;
+  overlapCollider: any;
+
+
 
 
   constructor() {
@@ -43,6 +47,10 @@ export default class Hall extends Phaser.Scene {
       allowGravity: false
     })
 
+    // this.overlapCollider = this.physics.add.overlap(this.enemies,this.playersAttackZone, this.goal.bind(this));
+    this.restartColision()
+
+
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)
 // this.swordHitbox.body.enable = false
@@ -53,9 +61,9 @@ export default class Hall extends Phaser.Scene {
 
 // TODO: add physics overlap with dummy box; show box damaged on overlap
 // this.boxStateMachine.setState('damage')
-this.physics.add.overlap(this.playersAttackZone, this.enemies, () => {
-  console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
-}, undefined, this)
+// this.physics.add.overlap(this.playersAttackZone, this.enemies, () => {
+//   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOVELAP")
+// }, undefined, this)
 
     this.playersRef = {}
     this.enemiesRef = {}
@@ -90,6 +98,41 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, () => {
     this.room.state.presences.delete(`${id}`)
     console.log(`BOSS ${id} KO !`)
   }
+
+  // create(){
+  //
+  //   this.overlapCollider = this.physics.add.overlap(players, overlappingArea, goal.bind(this));
+  //
+  // };
+
+  goal(){
+    console.log("GGGGGGGGGOOOAL")
+
+    if(this.overlapTriggered){
+      this.physics.world.removeCollider(this.overlapCollider);
+      return;
+    };
+
+    console.log('overlap');
+    this.overlapTriggered=true;
+
+    var timer = this.time.addEvent({
+      delay: 500,                // ms
+      callback: () => this.restartColision(),
+      //args: [],
+      // callbackScope: thisArg,
+      loop: false
+    });
+    // setTimeout(() => {
+    //   // this.overlapTriggered=false;
+    //   this.restartColision()
+    // }, 4000);
+  };
+
+  restartColision() {
+    this.overlapCollider = this.physics.add.overlap(this.enemies,this.playersAttackZone, this.goal.bind(this));
+  }
+
 
   getPresence() {
     let response = {}

@@ -24,9 +24,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
    directeA: boolean = false
    zoneAttaque: any
    zoneA: any
-   overlapCollider: any;
-   overlapTriggered: boolean = false;
-
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -87,10 +84,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.zoneAttaque.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneAttaque);
 
-
-     this.overlapCollider = this.scene.physics.add.overlap(players, overlappingArea, goal.bind(this));
-
-
      // this.scene.physics.add.collider(this, this.zoneAttaque);
 
 
@@ -112,7 +105,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
        if (a) {
          this.cross();
-         // this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+         this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
          // this.scene.physics.world.add(this.zoneAttaque.body)
 
 
@@ -158,26 +151,6 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
          // this.zoneA.x = this.zoneAttaque.x
          // this.zoneA.y = this.zoneAttaque.y
-
-
-         /* ...... */
-
-         function create(){
-
-           this.overlapCollider = this.physics.add.overlap(players, overlappingArea, goal.bind(this));
-
-         };
-
-         function goal(){
-
-           if(overlapTriggered){
-             this.physics.world.removeCollider(overlapCollider);
-             return;
-           };
-
-           console.log('overlap');
-           overlapTriggered=true;
-         };
 
          input['a'] = false
        }

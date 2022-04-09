@@ -367,7 +367,6 @@ export default class Jeu extends Phaser.Scene {
 					this.playersRef[item] = player
 				}
 			} else {
-        console.log(list.presences[item].zoneAttaque)
 				if (list.presences[item].sprite) {
 					this.playersRef[item].x = list.presences[item].x
 					this.playersRef[item].y = list.presences[item].y
