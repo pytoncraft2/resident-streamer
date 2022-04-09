@@ -65,21 +65,25 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     this.physics.add.existing(platforme, true);
     this.physics.add.collider(platforme, this.players);
     this.physics.add.collider(platforme, this.enemies);
-    this.physics.add.collider(this.players, this.enemies);
+    // this.physics.add.collider(this.players, this.enemies);
 
-    this.physics.add.collider(
-    this.players,
-    this.enemies,
-    function (_player, _ennemie)
-    {
-      if (_player.attaque)
-      {
-        _ennemie.blesse = true
-        _player.attaque = false
-        // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-        // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-      }
-    });
+    // this.physics.add.collider(
+    // this.players,
+    // this.enemies,
+    // function (_player, _ennemie)
+    // {
+    //   // if (_player.attaque)
+    //   // {
+    //   //   _ennemie.blesse = true
+    //   //   _player.attaque = false
+    //   //   // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
+    //   //   // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
+    //   // }
+    //
+    //   if (_player.zoneAttaque) {
+    //     console.log("ZONE ATTAQUE")
+    //   }
+    // });
 
     // this.physics.add.overlap(this.players, this.enemies,
     //   function (_player, _ennemie)

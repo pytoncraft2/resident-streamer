@@ -34,35 +34,15 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.sprite = (scene as any).room.donnes[this.ClientID].sprite
 
      new AnimationJoueur(this.anims)
-     this.on('animationcomplete_attack', function () {
-         // this.play('idle_attack')
-         this.zoneAttaque.attaque = false
-         this.attaque = false
-     });
-     this.on('animationcomplete_cross', function () {
-         this.play('idle_attack')
-         // this.zoneAttaque.body.enable = false
-         // this.scene.physics.world.remove(this.zoneAttaque.body)
-         this.zoneAttaque.attaque = false
-         this.attaque = false
-     });
-
-     this.on('animationcomplete_straightlead', function () {
-       this.play('idle_attack')
-
-       this.zoneAttaque.attaque = false
-       this.attaque = false
-     });
-     this.on('animationcomplete', function (anim, frame) {
-       this.emit('animationcomplete_' + anim.key, anim, frame);
-     }, this);
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
-         if (frame.frame.name == 'cross4') {
-           this.zoneAttaque.attaque = true
-           this.attaque = true;
+         if (frame.frame.name != 'cross4') {
+           return
          }
+
+         this.zoneAttaque.attaque = true
+         // this.attaque = true;
        }
 
        if (anim.key == 'attack') {
