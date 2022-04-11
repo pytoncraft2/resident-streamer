@@ -44,6 +44,11 @@
                 "key": "hall"
             },
             {
+                "url": "assets/huzounet_jump0.png",
+                "type": "image",
+                "key": "huzounet_jump0"
+            },
+            {
                 "url": "assets/map_boss1.png",
                 "type": "image",
                 "key": "map_boss1"

@@ -209,6 +209,58 @@ export default class Jeu extends Phaser.Scene {
 		movechaiseboss1_1.scaleY = 0.08199632417946795;
 		indicationDroite.add(movechaiseboss1_1);
 
+		// huzounet_jump0
+		const huzounet_jump0 = this.add.image(379, 704, "huzounet_jump0");
+		huzounet_jump0.scaleX = 0.5441971978327523;
+		huzounet_jump0.scaleY = 0.5441971978327523;
+
+		// barre_etat_joueur
+		const barre_etat_joueur = this.add.container(395, 466);
+
+		// andurance_barre
+		const andurance_barre = this.add.container(-39, 29);
+		barre_etat_joueur.add(andurance_barre);
+
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(0, 0, 128, 128);
+		rectangle_3.scaleX = 0.693338328358069;
+		rectangle_3.scaleY = 0.09323519770725738;
+		rectangle_3.setOrigin(0, 0.5);
+		rectangle_3.isFilled = true;
+		rectangle_3.fillColor = 15910470;
+		andurance_barre.add(rectangle_3);
+
+		// andurance
+		const andurance = this.add.rectangle(0, 0, 128, 128);
+		andurance.scaleX = 0.24507807637744441;
+		andurance.scaleY = 0.08819856868449352;
+		andurance.setOrigin(0, 0.5);
+		andurance.isFilled = true;
+		andurance.fillColor = 11082938;
+		andurance_barre.add(andurance);
+
+		// vie_barrerectangle_2_1rectangle_2_1
+		const vie_barrerectangle_2_1rectangle_2_1 = this.add.container(-39, 21);
+		barre_etat_joueur.add(vie_barrerectangle_2_1rectangle_2_1);
+
+		// rectangle
+		const rectangle = this.add.rectangle(0, -8, 128, 128);
+		rectangle.scaleX = 0.6895608940109593;
+		rectangle.scaleY = 0.0881985701178345;
+		rectangle.setOrigin(0, 0.5);
+		rectangle.isFilled = true;
+		rectangle.fillColor = 10882574;
+		vie_barrerectangle_2_1rectangle_2_1.add(rectangle);
+
+		// vie
+		const vie = this.add.rectangle(0, -8, 128, 128);
+		vie.scaleX = 0.45913495288729583;
+		vie.scaleY = 0.08688205803643023;
+		vie.setOrigin(0, 0.5);
+		vie.isFilled = true;
+		vie.fillColor = 1882734;
+		vie_barrerectangle_2_1rectangle_2_1.add(vie);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -218,6 +270,11 @@ export default class Jeu extends Phaser.Scene {
 		this.vie_boss_1 = vie_boss_1;
 		this.indicationGauche = indicationGauche;
 		this.indicationDroite = indicationDroite;
+		this.barre_etat_joueur = barre_etat_joueur;
+		this.andurance_barre = andurance_barre;
+		this.andurance = andurance;
+		this.vie_barrerectangle_2_1rectangle_2_1 = vie_barrerectangle_2_1rectangle_2_1;
+		this.vie = vie;
 
 		this.events.emit("scene-awake");
 	}
@@ -231,6 +288,11 @@ export default class Jeu extends Phaser.Scene {
 	public vie_boss_1!: Phaser.GameObjects.Rectangle;
 	public indicationGauche!: Phaser.GameObjects.Container;
 	public indicationDroite!: Phaser.GameObjects.Container;
+	public barre_etat_joueur!: Phaser.GameObjects.Container;
+	public andurance_barre!: Phaser.GameObjects.Container;
+	public andurance!: Phaser.GameObjects.Rectangle;
+	public vie_barrerectangle_2_1rectangle_2_1!: Phaser.GameObjects.Container;
+	public vie!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
