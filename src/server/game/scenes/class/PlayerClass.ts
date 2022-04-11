@@ -64,7 +64,8 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.zoneInteraction.attaque = false
      this.zoneInteraction.action = (_e) => {
        // _e.vie = 2
-       console.log(_e.etats)
+       // console.log(_e.etats)
+       _e.setVelocityX(400)
 
        // console.log("VIE OVERLAP ZONE")
        // console.log(_vie_overlap_zone)
