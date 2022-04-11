@@ -15,6 +15,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private etats: any
   private etatEnCours: string
   private zoneInteraction: any
+  private fete: any
 
   constructor(
     scene: Phaser.Scene,
@@ -66,6 +67,21 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+
+     let t = null
+
+     this.fete = () => {
+       if (!t) {
+         t = this.scene.tweens.timeline({
+           tweens: [{
+             targets: this,
+             tintBottomLeft: 0x00a339,
+             duration: 5000
+           }],
+           onComplete: () => (this.setTint(0xffa500), t = null)
+         });
+       }
+     }
   }
 
   preUpdate(time: number, delta: number) {
