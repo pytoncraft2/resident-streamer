@@ -390,7 +390,6 @@ export default class Jeu extends Phaser.Scene {
 				const sprite = list.presences[item].sprite
 				if (list.presences[item].sprite) {
 
-          // console.log(sprite)
 					const player = this.add
 					.sprite(x, y, `${sprite}_atlas`)
 					.setData({ ClientId: list.presenceList[idx] });
@@ -399,7 +398,6 @@ export default class Jeu extends Phaser.Scene {
 
           const barre = this.add.container(-39, 21);
 
-          // rectangle
           const rectangle = this.add.rectangle(0, -8, 128, 128);
           rectangle.scaleX = 1;
           rectangle.scaleY = 0.0881985701178345;
@@ -413,7 +411,6 @@ export default class Jeu extends Phaser.Scene {
           vie.setOrigin(0, 0.5);
           vie.isFilled = true;
           vie.fillColor = 10882574;
-          // barre.add((player as any).barre_vie);
           barre.add(vie);
           barre.add(rectangle);
 
@@ -429,21 +426,13 @@ export default class Jeu extends Phaser.Scene {
 				if (list.presences[item].sprite) {
 					this.playersRef[item].x = list.presences[item].x
 					this.playersRef[item].y = list.presences[item].y
-          // if (list.presences[item].anim) {
-          // console.log(list.presences[item])
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
-            // this.playersRef[item].barre_vie.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
-            // console.log(this.playersRef[item].getTopCenter().x)
-            // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].x + (list.presences[item].flipX ? -100 : 100), list.presences[item].y)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
-            console.log(list.presences[item].vie)
-            // console.log(list.presences[item].vie)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
-          // }
 				}
 			}
 		})
