@@ -396,12 +396,27 @@ export default class Jeu extends Phaser.Scene {
 					.setData({ ClientId: list.presenceList[idx] });
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
+
+          const barre = this.add.container(-39, 21);
+
+          // rectangle
+          const rectangle = this.add.rectangle(0, -8, 128, 128);
+          rectangle.scaleX = 0.6895608940109593;
+          rectangle.scaleY = 0.0881985701178345;
+          rectangle.setOrigin(0, 0.5);
+          rectangle.isFilled = true;
+          rectangle.fillColor = 10247126;
+          rectangle.setDepth(1000);
+
           (player as any).barre_vie = this.add.rectangle(0, -8, 128, 128);
           (player as any).barre_vie.scaleX = 0.6895608940109593;
           (player as any).barre_vie.scaleY = 0.0881985701178345;
           (player as any).barre_vie.setOrigin(0, 0.5);
           (player as any).barre_vie.isFilled = true;
           (player as any).barre_vie.fillColor = 10882574;
+          // barre.add((player as any).barre_vie);
+          barre.add(rectangle);
+          console.log(barre)
 
           if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
@@ -418,7 +433,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
-            this.playersRef[item].barre_vie.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
+            // this.playersRef[item].barre_vie.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
             // console.log(this.playersRef[item].getTopCenter().x)
             // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].x + (list.presences[item].flipX ? -100 : 100), list.presences[item].y)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
