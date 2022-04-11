@@ -401,22 +401,23 @@ export default class Jeu extends Phaser.Scene {
 
           // rectangle
           const rectangle = this.add.rectangle(0, -8, 128, 128);
-          rectangle.scaleX = 0.6895608940109593;
+          rectangle.scaleX = 0.5102393847777904;
           rectangle.scaleY = 0.0881985701178345;
           rectangle.setOrigin(0, 0.5);
           rectangle.isFilled = true;
           rectangle.fillColor = 10247126;
-          rectangle.setDepth(1000);
 
-          (player as any).barre_vie = this.add.rectangle(0, -8, 128, 128);
-          (player as any).barre_vie.scaleX = 0.6895608940109593;
-          (player as any).barre_vie.scaleY = 0.0881985701178345;
-          (player as any).barre_vie.setOrigin(0, 0.5);
-          (player as any).barre_vie.isFilled = true;
-          (player as any).barre_vie.fillColor = 10882574;
+          const vie = this.add.rectangle(0, -8, 128, 128);
+          vie.scaleX = 0.6895608940109593;
+          vie.scaleY = 0.0881985701178345;
+          vie.setOrigin(0, 0.5);
+          vie.isFilled = true;
+          vie.fillColor = 10882574;
           // barre.add((player as any).barre_vie);
+          barre.add(vie);
           barre.add(rectangle);
-          console.log(barre)
+
+          (player as any).barre = barre
 
           if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
@@ -437,6 +438,7 @@ export default class Jeu extends Phaser.Scene {
             // console.log(this.playersRef[item].getTopCenter().x)
             // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].x + (list.presences[item].flipX ? -100 : 100), list.presences[item].y)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
+            this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
           // }
 				}
 			}
