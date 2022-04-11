@@ -14,6 +14,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private blesse: boolean = false
   private etats: any
   private etatEnCours: string
+  private zoneInteraction: any
+
   constructor(
     scene: Phaser.Scene,
     x: number,
@@ -54,10 +56,22 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     new AnimationEnnemie(this.anims)
      this.scene.events.once('changementEtat', this.changementEtat, this);
      this.scene.events.once('mourir', this.mourir, this);
+
+     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+     this.zoneInteraction.attaque = false
+     this.zoneInteraction.action = (vie_ennemie) => {
+       console.log("ACTION VIE ENNEMIE")
+       console.log(vie_ennemie)
+     };
+     this.scene.physics.add.existing(this.zoneInteraction);
+     this.zoneInteraction.body.enable = false;
+     (this.scene as any).playersAttackZone.add(this.zoneInteraction);
   }
 
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
+    this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+
     let animationName = this.anims.getFrameName()
     // if (this.body.touching.right) {
     //   this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)

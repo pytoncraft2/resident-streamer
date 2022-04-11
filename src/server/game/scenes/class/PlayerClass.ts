@@ -62,8 +62,10 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.zoneInteraction.attaque = false
-     this.zoneInteraction.action = () => {
-       console.log("AAAAAAAAAACTION REACTION -----------")
+     this.zoneInteraction.action = (vie_overlap_zone) => {
+       console.log("VIE OVERLAP ZONE")
+       console.log(vie_overlap_zone)
+       vie_overlap_zone -= 0.1
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
