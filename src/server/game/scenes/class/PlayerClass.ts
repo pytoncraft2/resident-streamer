@@ -11,7 +11,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
    ClientID: any
    sprite: string
    vel: number = 400
-   vie: number = 100
+   vie: number = 10
    canMove: boolean = true
    attaque: boolean = false
    action: any
@@ -91,6 +91,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
          this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
+         this.vie -=1
          this.cross();
          input['a'] = false
        }
