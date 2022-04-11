@@ -399,46 +399,8 @@
             "list": [
                 {
                     "type": "Container",
-                    "id": "c8bd128f-6076-4c0b-ac63-fc196ca745f9",
-                    "label": "andurance_barre",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": -39,
-                    "y": 29,
-                    "list": [
-                        {
-                            "type": "Rectangle",
-                            "id": "425e14c0-b202-4832-aa4e-6e0ef2f48299",
-                            "label": "rectangle_3",
-                            "components": [],
-                            "scaleX": 0.693338328358069,
-                            "scaleY": 0.09323519770725738,
-                            "originX": 0,
-                            "isFilled": true,
-                            "fillColor": "#f2c646",
-                            "width": 128,
-                            "height": 128
-                        },
-                        {
-                            "type": "Rectangle",
-                            "id": "17f8519f-b4d3-4c21-9f70-d8ef22698d20",
-                            "label": "andurance",
-                            "scope": "PUBLIC",
-                            "components": [],
-                            "scaleX": 0.24507807637744441,
-                            "scaleY": 0.08819856868449352,
-                            "originX": 0,
-                            "isFilled": true,
-                            "fillColor": "#a91cba",
-                            "width": 128,
-                            "height": 128
-                        }
-                    ]
-                },
-                {
-                    "type": "Container",
                     "id": "c26b63f4-9c09-4f38-bae4-8f370ea14491",
-                    "label": "vie_barrerectangle_2_1rectangle_2_1",
+                    "label": "barre_etat",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": -39,
@@ -460,16 +422,16 @@
                         },
                         {
                             "type": "Rectangle",
-                            "id": "cc845b9d-58b9-4b39-a496-733ebf482b3a",
+                            "id": "fdcc3a1f-137c-4f3d-88e0-ba88fd21b698",
                             "label": "vie",
                             "scope": "PUBLIC",
                             "components": [],
                             "y": -8,
-                            "scaleX": 0.45913495288729583,
-                            "scaleY": 0.08688205803643023,
+                            "scaleX": 0.5102393847777904,
+                            "scaleY": 0.0881985701178345,
                             "originX": 0,
                             "isFilled": true,
-                            "fillColor": "#1cba6e",
+                            "fillColor": "#9c5bd6",
                             "width": 128,
                             "height": 128
                         }

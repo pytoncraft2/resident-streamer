@@ -217,31 +217,9 @@ export default class Jeu extends Phaser.Scene {
 		// barre_etat_joueur
 		const barre_etat_joueur = this.add.container(395, 466);
 
-		// andurance_barre
-		const andurance_barre = this.add.container(-39, 29);
-		barre_etat_joueur.add(andurance_barre);
-
-		// rectangle_3
-		const rectangle_3 = this.add.rectangle(0, 0, 128, 128);
-		rectangle_3.scaleX = 0.693338328358069;
-		rectangle_3.scaleY = 0.09323519770725738;
-		rectangle_3.setOrigin(0, 0.5);
-		rectangle_3.isFilled = true;
-		rectangle_3.fillColor = 15910470;
-		andurance_barre.add(rectangle_3);
-
-		// andurance
-		const andurance = this.add.rectangle(0, 0, 128, 128);
-		andurance.scaleX = 0.24507807637744441;
-		andurance.scaleY = 0.08819856868449352;
-		andurance.setOrigin(0, 0.5);
-		andurance.isFilled = true;
-		andurance.fillColor = 11082938;
-		andurance_barre.add(andurance);
-
-		// vie_barrerectangle_2_1rectangle_2_1
-		const vie_barrerectangle_2_1rectangle_2_1 = this.add.container(-39, 21);
-		barre_etat_joueur.add(vie_barrerectangle_2_1rectangle_2_1);
+		// barre_etat
+		const barre_etat = this.add.container(-39, 21);
+		barre_etat_joueur.add(barre_etat);
 
 		// rectangle
 		const rectangle = this.add.rectangle(0, -8, 128, 128);
@@ -250,16 +228,16 @@ export default class Jeu extends Phaser.Scene {
 		rectangle.setOrigin(0, 0.5);
 		rectangle.isFilled = true;
 		rectangle.fillColor = 10882574;
-		vie_barrerectangle_2_1rectangle_2_1.add(rectangle);
+		barre_etat.add(rectangle);
 
 		// vie
 		const vie = this.add.rectangle(0, -8, 128, 128);
-		vie.scaleX = 0.45913495288729583;
-		vie.scaleY = 0.08688205803643023;
+		vie.scaleX = 0.5102393847777904;
+		vie.scaleY = 0.0881985701178345;
 		vie.setOrigin(0, 0.5);
 		vie.isFilled = true;
-		vie.fillColor = 1882734;
-		vie_barrerectangle_2_1rectangle_2_1.add(vie);
+		vie.fillColor = 10247126;
+		barre_etat.add(vie);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -271,9 +249,7 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationGauche = indicationGauche;
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
-		this.andurance_barre = andurance_barre;
-		this.andurance = andurance;
-		this.vie_barrerectangle_2_1rectangle_2_1 = vie_barrerectangle_2_1rectangle_2_1;
+		this.barre_etat = barre_etat;
 		this.vie = vie;
 
 		this.events.emit("scene-awake");
@@ -289,9 +265,7 @@ export default class Jeu extends Phaser.Scene {
 	public indicationGauche!: Phaser.GameObjects.Container;
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
-	public andurance_barre!: Phaser.GameObjects.Container;
-	public andurance!: Phaser.GameObjects.Rectangle;
-	public vie_barrerectangle_2_1rectangle_2_1!: Phaser.GameObjects.Container;
+	public barre_etat!: Phaser.GameObjects.Container;
 	public vie!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
@@ -422,6 +396,12 @@ export default class Jeu extends Phaser.Scene {
 					.setData({ ClientId: list.presenceList[idx] });
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
+          (player as any).barre_vie = this.add.rectangle(0, -8, 128, 128);
+          (player as any).barre_vie.scaleX = 0.6895608940109593;
+          (player as any).barre_vie.scaleY = 0.0881985701178345;
+          (player as any).barre_vie.setOrigin(0, 0.5);
+          (player as any).barre_vie.isFilled = true;
+          (player as any).barre_vie.fillColor = 10882574;
 
           if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
@@ -438,6 +418,8 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
+            this.playersRef[item].barre_vie.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
+            // console.log(this.playersRef[item].getTopCenter().x)
             // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].x + (list.presences[item].flipX ? -100 : 100), list.presences[item].y)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
           // }
