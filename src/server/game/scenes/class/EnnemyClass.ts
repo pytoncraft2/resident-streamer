@@ -11,7 +11,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private lastAnim: any;
   private attaque: any;
   private vie: number = 10;
-  private blesse: boolean = false
+  public blesse: boolean = false
   private etats: any
   private etatEnCours: string
   private zoneInteraction: any

@@ -104,7 +104,7 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
   overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
 
     // ennemie.vie -= 1
-    playerActionZone.action(ennemie.vie)
+    playerActionZone.action(ennemie)
       // if (playerActionZone.action)
       // {
       //   // console.log("AATTTTAAAQUE")
