@@ -103,7 +103,7 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
 
   overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
 
-    console.log(playerActionZone.action)
+    console.log(playerActionZone.action())
       // if (playerActionZone.action)
       // {
       //   // console.log("AATTTTAAAQUE")
@@ -125,8 +125,7 @@ this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapActio
     if (this.players) {
     this.players.children.iterate((child) => {
       if (child.data.values.ClientId) {
-        console.log(child.zoneAttaque.x)
-        response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie, zoneAttaque: {x: child.zoneAttaque.x, y: child.zoneAttaque.y}}
+        response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
       }
     })
   }

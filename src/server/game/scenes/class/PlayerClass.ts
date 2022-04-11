@@ -14,7 +14,8 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
    vie: number = 100
    canMove: boolean = true
    attaque: boolean = false
-   zoneAttaque: any
+   action: any
+   zoneInteraction: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -32,34 +33,41 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.scene.add.existing(this)
      this.ClientID = ClientID
      this.sprite = (scene as any).room.donnes[this.ClientID].sprite
+     this.action = () => {
+       console.log("AAAAAAAAAAACTIONNNN !!!!")
+     };
+
 
      new AnimationJoueur(this.anims)
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
          if (frame.frame.name != 'cross4') {
-           this.zoneAttaque.attaque = false
+           this.zoneInteraction.attaque = false
            return
          }
-         this.zoneAttaque.attaque = true
+         this.zoneInteraction.attaque = true
        }
 
        if (anim.key == 'attack') {
 
          if (frame.frame.name != 'positiona4') {
-           this.zoneAttaque.attaque = false
+           this.zoneInteraction.attaque = false
            return
          } else {
-           this.zoneAttaque.attaque = true
+           this.zoneInteraction.attaque = true
          }
        }
      })
 
-     this.zoneAttaque = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     this.zoneAttaque.attaque = false
-     this.scene.physics.add.existing(this.zoneAttaque);
-     this.zoneAttaque.body.enable = false;
-     (this.scene as any).playersAttackZone.add(this.zoneAttaque);
+     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+     this.zoneInteraction.attaque = false
+     this.zoneInteraction.action = () => {
+       console.log("AAAAAAAAAACTION REACTION -----------")
+     };
+     this.scene.physics.add.existing(this.zoneInteraction);
+     this.zoneInteraction.body.enable = false;
+     (this.scene as any).playersAttackZone.add(this.zoneInteraction);
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -72,7 +80,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      if (this.canMove) {
 
 
-         this.zoneAttaque.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+         this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
          this.cross();
          input['a'] = false
@@ -108,7 +116,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
-       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, xa: this.zoneAttaque.x, ya: this.zoneAttaque.y})
+       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, xa: this.zoneInteraction.x, ya: this.zoneInteraction.y})
      )
    }
 
