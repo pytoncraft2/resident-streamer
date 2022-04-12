@@ -50,8 +50,22 @@ export default class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		let salonURL = window.location.pathname.slice(1)
+
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+			get: (searchParams, prop) => searchParams.get(prop as any),
+		});
+// Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+console.log(params)
+// let value = params.some_key; // "some_value"
+		var parts = window.location.href.split('-');
+		console.log("PPPPPPPARTS")
+		console.log(parts)
+		var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
+
+console.log("LAST")
+console.log(lastSegment);
 		if (salonURL != '') {
-			this.scene.start('Lobby', {salon: `${salonURL}`})
+			this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${lastSegment}`})
 		} else {
 			// this.afficheAcceuil()
 			// console.log("RIEN A FAIRE")
