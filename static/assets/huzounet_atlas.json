@@ -14,7 +14,20 @@
             }
         },
         {
-            "filename": "shuriken4",
+          "filename": "positiona5",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 584,
+            "y": 448
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "positiona4",
             "frame": {
                 "w": 296,
                 "h": 377,
@@ -105,7 +118,7 @@
             }
         },
         {
-            "filename": "shuriken3",
+            "filename": "positiona3",
             "frame": {
                 "w": 233,
                 "h": 379,
@@ -118,7 +131,7 @@
             }
         },
         {
-            "filename": "shuriken2",
+            "filename": "positiona2",
             "frame": {
                 "w": 167,
                 "h": 379,
@@ -131,7 +144,7 @@
             }
         },
         {
-            "filename": "shuriken1",
+            "filename": "positiona1",
             "frame": {
                 "w": 184,
                 "h": 375,
@@ -144,7 +157,7 @@
             }
         },
         {
-            "filename": "shuriken0",
+            "filename": "positiona0",
             "frame": {
                 "w": 162,
                 "h": 379,
@@ -326,7 +339,7 @@
             }
         },
         {
-            "filename": "shuriken8",
+            "filename": "shuriken3",
             "frame": {
                 "w": 96,
                 "h": 57,
@@ -339,7 +352,7 @@
             }
         },
         {
-            "filename": "shuriken7",
+            "filename": "shuriken2",
             "frame": {
                 "w": 91,
                 "h": 57,
@@ -352,7 +365,7 @@
             }
         },
         {
-            "filename": "shuriken6",
+            "filename": "shuriken1",
             "frame": {
                 "w": 93,
                 "h": 56,
@@ -365,7 +378,7 @@
             }
         },
         {
-            "filename": "shuriken5",
+            "filename": "shuriken0",
             "frame": {
                 "w": 86,
                 "h": 55,
