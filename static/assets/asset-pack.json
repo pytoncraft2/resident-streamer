@@ -56,6 +56,12 @@
                 "key": "huzounet_atlas"
             },
             {
+                "atlasURL": "assets/manette_atlas.json",
+                "textureURL": "assets/manette_atlas.png",
+                "type": "atlas",
+                "key": "manette_atlas"
+            },
+            {
                 "url": "assets/map_boss1.png",
                 "type": "image",
                 "key": "map_boss1"

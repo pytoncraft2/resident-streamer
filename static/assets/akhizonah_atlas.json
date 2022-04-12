@@ -1,7 +1,7 @@
 {
     "frames": [
         {
-            "filename": "positionface0",
+            "filename": "face0",
             "frame": {
                 "w": 131,
                 "h": 379,
@@ -14,7 +14,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche8",
+            "filename": "marche8",
             "frame": {
                 "w": 96,
                 "h": 379,
@@ -27,7 +27,7 @@
             }
         },
         {
-            "filename": "akhizonahjump1",
+            "filename": "jump1",
             "frame": {
                 "w": 156,
                 "h": 379,
@@ -40,7 +40,7 @@
             }
         },
         {
-            "filename": "akhizonahjump0",
+            "filename": "jump0",
             "frame": {
                 "w": 96,
                 "h": 379,
@@ -53,7 +53,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche7",
+            "filename": "marche7",
             "frame": {
                 "w": 99,
                 "h": 379,
@@ -66,7 +66,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche6",
+            "filename": "marche6",
             "frame": {
                 "w": 167,
                 "h": 379,
@@ -79,7 +79,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche5",
+            "filename": "marche5",
             "frame": {
                 "w": 99,
                 "h": 379,
@@ -92,7 +92,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche4",
+            "filename": "marche4",
             "frame": {
                 "w": 167,
                 "h": 379,
@@ -105,7 +105,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche3",
+            "filename": "marche3",
             "frame": {
                 "w": 99,
                 "h": 379,
@@ -118,7 +118,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche2",
+            "filename": "marche2",
             "frame": {
                 "w": 167,
                 "h": 379,
@@ -131,7 +131,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche1",
+            "filename": "marche1",
             "frame": {
                 "w": 99,
                 "h": 379,
@@ -144,7 +144,7 @@
             }
         },
         {
-            "filename": "akhizonah_marche0",
+            "filename": "marche0",
             "frame": {
                 "w": 96,
                 "h": 379,
@@ -157,7 +157,7 @@
             }
         },
         {
-            "filename": "akhizonah_knife2",
+            "filename": "knife2",
             "frame": {
                 "w": 229,
                 "h": 371,
@@ -170,7 +170,7 @@
             }
         },
         {
-            "filename": "akhizonah_knife1",
+            "filename": "knife1",
             "frame": {
                 "w": 173,
                 "h": 371,
@@ -183,7 +183,7 @@
             }
         },
         {
-            "filename": "akhizonah_knife0",
+            "filename": "knife0",
             "frame": {
                 "w": 174,
                 "h": 379,
@@ -196,7 +196,7 @@
             }
         },
         {
-            "filename": "akhizonahjump6",
+            "filename": "jump6",
             "frame": {
                 "w": 96,
                 "h": 379,
@@ -209,7 +209,7 @@
             }
         },
         {
-            "filename": "akhizonahjump5",
+            "filename": "jump5",
             "frame": {
                 "w": 156,
                 "h": 379,
@@ -222,7 +222,7 @@
             }
         },
         {
-            "filename": "akhizonahjump4",
+            "filename": "jump4",
             "frame": {
                 "w": 146,
                 "h": 421,
@@ -235,7 +235,7 @@
             }
         },
         {
-            "filename": "akhizonahjump3",
+            "filename": "jump3",
             "frame": {
                 "w": 155,
                 "h": 448,
@@ -248,7 +248,7 @@
             }
         },
         {
-            "filename": "akhizonahjump2",
+            "filename": "jump2",
             "frame": {
                 "w": 144,
                 "h": 416,
