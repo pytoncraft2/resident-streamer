@@ -46,7 +46,7 @@ export default class Lobby extends Phaser.Scene {
 	container!: Phaser.GameObjects.Container
 	panelGauche: any
 	listeJoueur!: Object
-	personnageChoisie: string = "fakhear"
+	personnageChoisie: string = "huzounet"
 	boutonActivable: boolean = false
 	bouton: any
 	pret: boolean = false

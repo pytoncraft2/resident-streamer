@@ -44,6 +44,17 @@
                 "key": "hall"
             },
             {
+                "url": "assets/huzounet_altas.png",
+                "type": "image",
+                "key": "huzounet_altas"
+            },
+            {
+                "atlasURL": "assets/huzounet_atlas.json",
+                "textureURL": "assets/huzounet_atlas.png",
+                "type": "atlas",
+                "key": "huzounet_atlas"
+            },
+            {
                 "url": "assets/huzounet_jump0.png",
                 "type": "image",
                 "key": "huzounet_jump0"
