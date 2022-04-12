@@ -1,10 +1,10 @@
 {
     "frames": [
         {
-            "filename": "huzounet_shuriken4",
+            "filename": "face0",
             "frame": {
-                "w": 296,
-                "h": 377,
+                "w": 131,
+                "h": 379,
                 "x": 0,
                 "y": 0
             },
@@ -14,11 +14,11 @@
             }
         },
         {
-            "filename": "huzounet_face0",
+            "filename": "shuriken4",
             "frame": {
-                "w": 131,
-                "h": 379,
-                "x": 296,
+                "w": 296,
+                "h": 377,
+                "x": 131,
                 "y": 0
             },
             "anchor": {
@@ -27,9 +27,9 @@
             }
         },
         {
-            "filename": "huzounet_shuriken3",
+            "filename": "jump5",
             "frame": {
-                "w": 233,
+                "w": 156,
                 "h": 379,
                 "x": 427,
                 "y": 0
@@ -40,220 +40,12 @@
             }
         },
         {
-            "filename": "huzounet_shuriken2",
-            "frame": {
-                "w": 167,
-                "h": 379,
-                "x": 660,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_shuriken1",
-            "frame": {
-                "w": 184,
-                "h": 375,
-                "x": 827,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_shuriken0",
-            "frame": {
-                "w": 162,
-                "h": 379,
-                "x": 1011,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil8",
-            "frame": {
-                "w": 96,
-                "h": 379,
-                "x": 1173,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil7",
-            "frame": {
-                "w": 108,
-                "h": 379,
-                "x": 1269,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil6",
-            "frame": {
-                "w": 167,
-                "h": 379,
-                "x": 0,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil5",
-            "frame": {
-                "w": 99,
-                "h": 379,
-                "x": 167,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil4",
-            "frame": {
-                "w": 168,
-                "h": 379,
-                "x": 266,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil3",
-            "frame": {
-                "w": 108,
-                "h": 379,
-                "x": 434,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil2",
-            "frame": {
-                "w": 167,
-                "h": 379,
-                "x": 542,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil1",
-            "frame": {
-                "w": 99,
-                "h": 379,
-                "x": 709,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_profil0",
-            "frame": {
-                "w": 96,
-                "h": 379,
-                "x": 808,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_kunai1",
-            "frame": {
-                "w": 227,
-                "h": 376,
-                "x": 904,
-                "y": 379
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_kunai0",
-            "frame": {
-                "w": 162,
-                "h": 379,
-                "x": 0,
-                "y": 758
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_jump6",
-            "frame": {
-                "w": 96,
-                "h": 379,
-                "x": 162,
-                "y": 758
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_jump5",
-            "frame": {
-                "w": 156,
-                "h": 379,
-                "x": 258,
-                "y": 758
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "huzounet_jump4",
+            "filename": "jump4",
             "frame": {
                 "w": 146,
                 "h": 421,
-                "x": 414,
-                "y": 758
+                "x": 583,
+                "y": 0
             },
             "anchor": {
                 "x": 0.5,
@@ -261,12 +53,12 @@
             }
         },
         {
-            "filename": "huzounet_jump3",
+            "filename": "jump3",
             "frame": {
                 "w": 155,
                 "h": 448,
-                "x": 560,
-                "y": 758
+                "x": 729,
+                "y": 0
             },
             "anchor": {
                 "x": 0.5,
@@ -274,12 +66,12 @@
             }
         },
         {
-            "filename": "huzounet_jump2",
+            "filename": "jump2",
             "frame": {
                 "w": 144,
                 "h": 416,
-                "x": 715,
-                "y": 758
+                "x": 884,
+                "y": 0
             },
             "anchor": {
                 "x": 0.5,
@@ -287,12 +79,12 @@
             }
         },
         {
-            "filename": "huzounet_jump1",
+            "filename": "jump1",
             "frame": {
                 "w": 156,
                 "h": 379,
-                "x": 859,
-                "y": 758
+                "x": 1028,
+                "y": 0
             },
             "anchor": {
                 "x": 0.5,
@@ -300,12 +92,220 @@
             }
         },
         {
-            "filename": "huzounet_jump0",
+            "filename": "jump0",
             "frame": {
                 "w": 96,
                 "h": 379,
-                "x": 1015,
-                "y": 758
+                "x": 1184,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "shuriken3",
+            "frame": {
+                "w": 233,
+                "h": 379,
+                "x": 0,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "shuriken2",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 233,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "shuriken1",
+            "frame": {
+                "w": 184,
+                "h": 375,
+                "x": 400,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "shuriken0",
+            "frame": {
+                "w": 162,
+                "h": 379,
+                "x": 584,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche8",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 746,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche7",
+            "frame": {
+                "w": 108,
+                "h": 379,
+                "x": 842,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche6",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 950,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche5",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 1117,
+                "y": 448
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche4",
+            "frame": {
+                "w": 168,
+                "h": 379,
+                "x": 0,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche3",
+            "frame": {
+                "w": 108,
+                "h": 379,
+                "x": 168,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche2",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 276,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche1",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 443,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche0",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 542,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "kunai1",
+            "frame": {
+                "w": 227,
+                "h": 376,
+                "x": 638,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "kunai0",
+            "frame": {
+                "w": 162,
+                "h": 379,
+                "x": 865,
+                "y": 827
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump6",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 1027,
+                "y": 827
             },
             "anchor": {
                 "x": 0.5,
@@ -326,7 +326,7 @@
             }
         },
         {
-            "filename": "huzounet_shuriken8",
+            "filename": "shuriken8",
             "frame": {
                 "w": 96,
                 "h": 57,
@@ -339,7 +339,7 @@
             }
         },
         {
-            "filename": "huzounet_shuriken7",
+            "filename": "shuriken7",
             "frame": {
                 "w": 91,
                 "h": 57,
@@ -352,7 +352,7 @@
             }
         },
         {
-            "filename": "huzounet_shuriken6",
+            "filename": "shuriken6",
             "frame": {
                 "w": 93,
                 "h": 56,
@@ -365,7 +365,7 @@
             }
         },
         {
-            "filename": "huzounet_shuriken5",
+            "filename": "shuriken5",
             "frame": {
                 "w": 86,
                 "h": 55,
