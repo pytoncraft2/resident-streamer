@@ -2,6 +2,12 @@
     "section1": {
         "files": [
             {
+                "atlasURL": "assets/akhizonah_atlas.json",
+                "textureURL": "assets/akhizonah_atlas.png",
+                "type": "atlas",
+                "key": "akhizonah_atlas"
+            },
+            {
                 "url": "assets/attackchaiseboss0.png",
                 "type": "image",
                 "key": "attackchaiseboss0"
