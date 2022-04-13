@@ -1,5 +1,6 @@
 import { Player, ZoneAttaque } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
+import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/index"
 
 
@@ -40,6 +41,7 @@ import { Aptitudes } from "../Aptitudes/index"
 
 
      new AnimationJoueur(this.anims)
+     new AnimationEnnemie(this.anims)
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
@@ -93,15 +95,12 @@ import { Aptitudes } from "../Aptitudes/index"
 
          this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
-
-         this.sprite in Aptitudes() && Aptitudes()[this.sprite].toucheA(this)
-         // this.vie -=1
-         // this.cross();
+         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheA === "function" && Aptitudes()[this.sprite].toucheA(this)
          input['a'] = false
        }
 
        if (z) {
-         this.kick()
+         this.sprite in Aptitudes() && Aptitudes()[this.sprite].toucheZ(this)
          input['z'] = false
        }
 
