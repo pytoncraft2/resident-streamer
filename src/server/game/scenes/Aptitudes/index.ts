@@ -1,14 +1,10 @@
 import {cross, kick, dash, interaction} from './fakhear'
 import {pique} from './boss_1'
 
-
-
 /**
- * saut - Aptitude générale disponible pour tout le monde
+ * -- LISTE DES PARAMETRES DE L'ACTION DES TOUCHES DES JOUEURS --
+ * Aptitude générale disponible pour tout le monde
  */
-function saut() {
-
-}
 
 const parametres:any = {};
 
@@ -21,22 +17,11 @@ parametres['fakhear'] = {
     puissanceDeBase: 10,
     attaqueFrame: "positiona3"
   },
-  toucheA: (fakhear) => {
+  toucheA: (fakhear: Phaser.Physics.Arcade.Sprite) => {
     cross(fakhear)
   },
-  toucheZ: (fakhear) => {
+  toucheZ: (fakhear: Phaser.Physics.Arcade.Sprite) => {
     kick(fakhear)
-  },
-  toucheE: (scene, player) => {
-    dash()
-  },
-  toucheR: (scene, player) => {
-    interaction()
-  },
-  toucheEspace: (charge, scene, player) => {
-    saut()
-  },
-  gestionRecevoirDegat: (scene, player) => {
   }
 }
 
@@ -49,22 +34,8 @@ parametres['boss_1'] = {
     puissanceDeBase: 10,
     attaqueFrame: "positiona3"
   },
-  toucheA: (boss_1) => {
+  toucheA: (boss_1: Phaser.Physics.Arcade.Sprite) => {
     pique(boss_1)
-  },
-  toucheZ: (fakhear) => {
-    kick(fakhear)
-  },
-  toucheE: (scene, player) => {
-    dash()
-  },
-  toucheR: (scene, player) => {
-    interaction()
-  },
-  toucheEspace: (charge, scene, player) => {
-    saut()
-  },
-  gestionRecevoirDegat: (scene, player) => {
   }
 }
 

@@ -100,7 +100,7 @@ import { Aptitudes } from "../Aptitudes/index"
        }
 
        if (z) {
-         this.sprite in Aptitudes() && Aptitudes()[this.sprite].toucheZ(this)
+         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheZ === "function" && Aptitudes()[this.sprite].toucheZ(this)
          input['z'] = false
        }
 
