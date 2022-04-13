@@ -9,7 +9,7 @@ function saut() {
 
 }
 
-const parametres = {};
+const parametres:any = {};
 
 parametres['fakhear'] = {
   etatInitial: {
@@ -20,22 +20,23 @@ parametres['fakhear'] = {
     puissanceDeBase: 10,
     attaqueFrame: "positiona3"
   },
-  toucheA: (charge, scene, player) => {
-    cross(charge, scene, player)
+  toucheA: (fakhear) => {
+    cross(fakhear)
   },
   toucheZ: (scene, player) => {
-    kick(scene, player)
+    kick()
   },
   toucheE: (scene, player) => {
-    dash(scene, player)
+    dash()
   },
   toucheR: (scene, player) => {
-    interaction(scene, player)
+    interaction()
   },
   toucheEspace: (charge, scene, player) => {
-    saut(charge, scene, player)
+    saut()
   },
   gestionRecevoirDegat: (scene, player) => {
-    recevoirDegat(scene, player)
   }
 }
+
+export const Aptitudes = () => parametres;

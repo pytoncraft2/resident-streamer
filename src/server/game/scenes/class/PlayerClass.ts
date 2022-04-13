@@ -1,5 +1,6 @@
 import { Player, ZoneAttaque } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
+import { Aptitudes } from "../Aptitudes/index"
 
 
 
@@ -77,6 +78,7 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+     console.log(Aptitudes()['fakhear'])
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -91,8 +93,10 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 
          this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
-         this.vie -=1
-         this.cross();
+
+         this.sprite in Aptitudes() && Aptitudes()[this.sprite].toucheA(this)
+         // this.vie -=1
+         // this.cross();
          input['a'] = false
        }
 
