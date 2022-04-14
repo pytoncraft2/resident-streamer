@@ -105,7 +105,7 @@ import { Aptitudes } from "../Aptitudes/index"
        }
 
        if (e) {
-         // this.straightlead()
+         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheE === "function" && Aptitudes()[this.sprite].toucheE(this)
          input['e'] = false
        }
 

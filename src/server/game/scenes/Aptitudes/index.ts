@@ -26,6 +26,9 @@ parametres['fakhear'] = {
   },
   toucheZ: (fakhear: Pick<P,'P'>) => {
     kick(fakhear)
+  },
+  toucheE: (fakhear: Pick<P,'P'>) => {
+    dash(fakhear)
   }
 }
 
