@@ -1,5 +1,5 @@
 import {cross, kick, dash, interaction} from './fakhear'
-import {pique} from './boss_1'
+import {pique, suivre} from './boss_1'
 
 
 interface P {
@@ -43,6 +43,9 @@ parametres['boss_1'] = {
   },
   toucheA: (boss_1: Pick<P, 'P'>) => {
     pique(boss_1)
+  },
+  toucheZ: (boss_1: Pick<P, 'P'>) => {
+    suivre(boss_1)
   }
 }
 

@@ -18,6 +18,8 @@ import { Aptitudes } from "../Aptitudes/index"
    attaque: boolean = false
    action: any
    zoneInteraction: any
+   etats: any
+   etatEnCours: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -38,6 +40,23 @@ import { Aptitudes } from "../Aptitudes/index"
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
+
+     this.etats = {
+       'initial': {
+         couleur: 16777215,
+         vitesse: 600
+       },
+       'secondaire':
+       {
+         couleur: 0x000000,
+         vitesse: 1400
+       }
+     }
+
+     // this.displayWidth += 40
+
+     this.etatEnCours = 'initial'
+
 
 
      new AnimationJoueur(this.anims)
