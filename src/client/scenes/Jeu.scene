@@ -405,37 +405,7 @@
                     "components": [],
                     "x": -39,
                     "y": 21,
-                    "list": [
-                        {
-                            "type": "Rectangle",
-                            "id": "2d314af2-8a6d-49be-8f59-65b6bf0dd909",
-                            "label": "rectangle",
-                            "components": [],
-                            "y": -8,
-                            "scaleX": 0.6895608940109593,
-                            "scaleY": 0.0881985701178345,
-                            "originX": 0,
-                            "isFilled": true,
-                            "fillColor": "#A60E0E",
-                            "width": 128,
-                            "height": 128
-                        },
-                        {
-                            "type": "Rectangle",
-                            "id": "fdcc3a1f-137c-4f3d-88e0-ba88fd21b698",
-                            "label": "vie",
-                            "scope": "PUBLIC",
-                            "components": [],
-                            "y": -8,
-                            "scaleX": 0.5102393847777904,
-                            "scaleY": 0.0881985701178345,
-                            "originX": 0,
-                            "isFilled": true,
-                            "fillColor": "#9c5bd6",
-                            "width": 128,
-                            "height": 128
-                        }
-                    ]
+                    "list": []
                 }
             ]
         }

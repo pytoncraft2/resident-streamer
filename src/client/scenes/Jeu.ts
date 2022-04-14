@@ -221,24 +221,6 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
-		// rectangle
-		const rectangle = this.add.rectangle(0, -8, 128, 128);
-		rectangle.scaleX = 0.6895608940109593;
-		rectangle.scaleY = 0.0881985701178345;
-		rectangle.setOrigin(0, 0.5);
-		rectangle.isFilled = true;
-		rectangle.fillColor = 10882574;
-		barre_etat.add(rectangle);
-
-		// vie
-		const vie = this.add.rectangle(0, -8, 128, 128);
-		vie.scaleX = 0.5102393847777904;
-		vie.scaleY = 0.0881985701178345;
-		vie.setOrigin(0, 0.5);
-		vie.isFilled = true;
-		vie.fillColor = 10247126;
-		barre_etat.add(vie);
-
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -250,7 +232,6 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
-		this.vie = vie;
 
 		this.events.emit("scene-awake");
 	}
@@ -266,7 +247,6 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
-	public vie!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -432,7 +412,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].setTint(list.presences[item].tint)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
-            this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 35, this.playersRef[item].getTopCenter().y - 25)
+            this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
 				}
 			}
 		})
