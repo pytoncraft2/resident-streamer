@@ -1,5 +1,6 @@
 import {cross, kick, dash, interaction} from './fakhear'
 import {pique, suivre} from './boss_1'
+import {kunai} from './huzounet'
 
 
 interface P {
@@ -46,6 +47,23 @@ parametres['boss_1'] = {
   },
   toucheZ: (boss_1: Pick<P, 'P'>) => {
     suivre(boss_1)
+  }
+}
+
+parametres['huzounet'] = {
+  etatInitial: {
+    vie: 5,
+    displayWidth: 104,
+    displayHeight: 302,
+    masse: 30,
+    puissanceDeBase: 10,
+    attaqueFrame: "positiona3"
+  },
+  toucheA: (huzounet: Pick<P, 'P'>) => {
+    kunai(huzounet)
+  },
+  toucheZ: (boss_1: Pick<P, 'P'>) => {
+    // suivre(boss_1)
   }
 }
 

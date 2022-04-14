@@ -1,6 +1,7 @@
 export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.setVelocityX(0)
   fakhear.play('cross')
+  fakhear.vie -= 1
 }
 
 export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any) {
