@@ -74,15 +74,13 @@ interface Deplacement {
          }
        }
 
-       // if (anim.key == 'attack') {
-       //
-       //   if (frame.frame.name != 'positiona4') {
-       //     this.zoneInteraction.attaque = false
-       //     return
-       //   } else {
-       //     this.zoneInteraction.attaque = true
-       //   }
-       // }
+       if (anim.key == 'attack') {
+         this.blesse_opposant = false
+         if (frame.frame.name == 'positiona4') {
+           this.blesse_opposant = true
+           console.log("OUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+         }
+       }
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody

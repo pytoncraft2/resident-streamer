@@ -2,13 +2,13 @@ export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.setVelocityX(0)
   fakhear.play('cross')
   fakhear.vie -= 1
-  fakhear.blesse_opposant = true
+  // fakhear.blesse_opposant = true
 }
 
 export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.play('attack')
   fakhear.setVelocityX(0);
-  fakhear.blesse_opposant = true
+  // fakhear.blesse_opposant = true
 }
 
 export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
