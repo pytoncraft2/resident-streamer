@@ -94,8 +94,8 @@ interface Deplacement {
      this.zoneInteraction.action = (_e) => {
 
        if (this.blesse_opposant) {
-         _e.blesse_ennemie()
          this.blesse_opposant = false
+         _e.blesse_ennemie()
        }
 
      };
