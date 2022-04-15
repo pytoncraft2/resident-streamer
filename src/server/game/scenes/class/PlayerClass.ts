@@ -132,23 +132,6 @@ interface Direction {
          input['e'] = false
        }
 
-
-       // if (right) {
-       //   if (right.stop) {
-       //     setAnimation(this, 'idle_walk')
-       //     console.log('stop')
-       //     right.stop = false
-       //     right.marche = false
-       //     this.setVelocityX(0);
-       //   }
-       //   if (right.marche) {
-       //     setAnimation(this, 'walk')
-       //     this.setVelocityX(this.vel);
-       //     this.setFlipX(false);
-       //     this.setDragX(0)
-       //   }
-       // }
-
        if (left) {
          this.deplacement({direction: 'left', left: left})
        }
@@ -156,23 +139,6 @@ interface Direction {
        if (right) {
          this.deplacement({direction: 'right', right: right})
        }
-
-
-       // if (left) {
-       //   setAnimation(this, 'walk')
-       //   this.setVelocityX(-this.vel);
-       //   this.setFlipX(true);
-       //   // this.setDragX(0)
-       //   // input['left'] = false
-       // } else if (right) {
-       //   setAnimation(this, 'walk')
-       //   this.setVelocityX(this.vel);
-       //   this.setFlipX(false);
-       //   // this.setDragX(0)
-       //   // input['right'] = false
-       // }
-       // console.log("LEFFTTT ?")
-       // console.log(left)
 
      }
 
