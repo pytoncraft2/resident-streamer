@@ -466,8 +466,6 @@ export default class Jeu extends Phaser.Scene {
 
       const inputs = {
         up: up.isDown ? true : false,
-        // right: right.isDown ? true : false,
-        // left: left.isDown ? true : false,
         down: down.isDown ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false

@@ -131,16 +131,18 @@ import { Aptitudes } from "../Aptitudes/index"
 
        if (right) {
          if (right.stop) {
+           setAnimation(this, 'idle_walk')
            console.log('stop')
            right.stop = false
+           right.marche = false
+           this.setVelocityX(0);
          }
          if (right.marche) {
-           console.log("MARRCHE")
-           right.marche = false
+           setAnimation(this, 'walk')
+           this.setVelocityX(this.vel);
+           this.setFlipX(false);
+           this.setDragX(0)
          }
-         // if (!right.stop) {
-         //   console.log('marche')
-         // }
        }
 
 
