@@ -221,6 +221,43 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
+		// container_1
+		const container_1 = this.add.container(1157, 625);
+
+		// ellipse_5
+		const ellipse_5 = this.add.ellipse(0, 1, 128, 128);
+		ellipse_5.scaleX = 1.4939270775425357;
+		ellipse_5.scaleY = 1.4939270775425357;
+		ellipse_5.isFilled = true;
+		ellipse_5.fillColor = 7473815;
+		ellipse_5.fillAlpha = 0.8;
+		ellipse_5.isStroked = true;
+		ellipse_5.lineWidth = 4;
+		container_1.add(ellipse_5);
+
+		// movechaiseboss0
+		const movechaiseboss0 = this.add.image(5, 0, "movechaiseboss0");
+		movechaiseboss0.scaleX = 0.2202189899724275;
+		movechaiseboss0.scaleY = 0.2202189899724275;
+		container_1.add(movechaiseboss0);
+
+		// ellipse_5_1
+		const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
+		ellipse_5_1.scaleX = 0.9012990507210408;
+		ellipse_5_1.scaleY = 0.21224071572889464;
+		ellipse_5_1.isFilled = true;
+		ellipse_5_1.fillColor = 7473815;
+		ellipse_5_1.fillAlpha = 0.8;
+		ellipse_5_1.isStroked = true;
+		ellipse_5_1.lineWidth = 4;
+		container_1.add(ellipse_5_1);
+
+		// movechaiseboss0_1
+		const movechaiseboss0_1 = this.add.image(283, 205, "movechaiseboss0");
+		movechaiseboss0_1.scaleX = 0.15956409567640198;
+		movechaiseboss0_1.scaleY = 0.15956409567640198;
+		container_1.add(movechaiseboss0_1);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
