@@ -60,7 +60,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.scene.events.once('mourir', this.mourir, this);
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     this.zoneInteraction.attaque = false
      this.zoneInteraction.action = (vie_ennemie) => {
        console.log("ACTION VIE ENNEMIE")
        console.log(vie_ennemie)

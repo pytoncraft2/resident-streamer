@@ -89,7 +89,6 @@ interface Deplacement {
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     this.zoneInteraction.attaque = false
      this.zoneInteraction.action = (_e) => {
 
        if (this.blesse_opposant) {
