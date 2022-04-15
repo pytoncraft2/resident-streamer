@@ -269,6 +269,7 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
+		this.ellipse_5_1 = ellipse_5_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -284,6 +285,7 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
+	public ellipse_5_1!: Phaser.GameObjects.Ellipse;
 
 	/* START-USER-CODE */
 
@@ -374,7 +376,16 @@ export default class Jeu extends Phaser.Scene {
 			self.session = room.sessionId
 
       room.onMessage("boss-KO", (id) => {
-        console.log(this.playersRef[id])
+        this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
+        const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
+        ellipse_5_1.scaleX = 0.9012990507210408;
+        ellipse_5_1.scaleY = 0.21224071572889464;
+        ellipse_5_1.isFilled = true;
+        ellipse_5_1.fillColor = 7473815;
+        ellipse_5_1.fillAlpha = 0.8;
+        ellipse_5_1.isStroked = true;
+        ellipse_5_1.lineWidth = 4;
+        ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y -10)
         console.log("message received from server");
       });
 			room.onStateChange((changes: any) => {

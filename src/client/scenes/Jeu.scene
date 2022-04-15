@@ -449,6 +449,7 @@
                     "type": "Ellipse",
                     "id": "3c32fb47-35de-4431-bb71-c427a9697d93",
                     "label": "ellipse_5_1",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": 280,
                     "y": 256,

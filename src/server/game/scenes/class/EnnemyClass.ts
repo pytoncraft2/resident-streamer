@@ -69,8 +69,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
      this.blesse_ennemie = () => {
        this.vie -= 1
-       this.setTint(0xff0000)
-       this.animationRecevoirDegats()
+       // this.setTint(0xff0000)
+       // this.animationRecevoirDegats()
 
        if (this.body.touching.right) {
          console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
@@ -101,7 +101,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
   attaquePuisDeplacement(condition, couleur, directionFinal) {
     if (condition) {
-      this.setTint(couleur)
+      // this.setTint(couleur)
       // this.blesse = true
     }
     this.scene.tweens.addCounter({
@@ -122,16 +122,17 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
   changementEtat() {
     this.etatEnCours = 'secondaire'
-    this.setTint(this.etats[this.etatEnCours]['couleur'])
+    // this.setTint(this.etats[this.etatEnCours]['couleur'])
   }
 
 
   mourir() {
+    // this.setTint(this.etats.initial.couleur)
     this.body.stop()
     this.body.enable = false
-    this.animationMourir(() => {
+    // this.animationMourir(() => {
       this.scene.events.emit('boss_KO', "ENNEMY_01");
-    })
+    // })
   }
 
   animationMourir(callback: CallableFunction) {
@@ -157,7 +158,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
       from: 0,
       to: 1,
       duration: 100,
-      onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
+      // onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
       repeat: 0,
       yoyo: false,
     })
