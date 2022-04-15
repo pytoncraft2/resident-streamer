@@ -66,11 +66,11 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
      this.blesse_ennemie = () => {
        this.vie -= 1
        // this.setTint(0xff0000)
        // this.animationRecevoirDegats()
+
 
        if (this.body.touching.right) {
          console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
@@ -89,6 +89,9 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
+    console.log("xxxxx")
+    console.log(this.y)
+    console.log(this.x)
 
     if (this.scene) {
       (this.scene as any).room.state.presences.set(
@@ -127,11 +130,15 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
 
   mourir() {
-    // this.setTint(this.etats.initial.couleur)
     this.body.stop()
     this.body.enable = false
+    this.setScale(0.15956409567640198, 0.15956409567640198)
+    // this.setPosition(879, 1000)
+    this.scene.events.emit('boss_KO', "ENNEMY_01");
+
+    // this.setTint(this.etats.initial.couleur)
+    // this.setPosition(this.body.x, 717)
     // this.animationMourir(() => {
-      this.scene.events.emit('boss_KO', "ENNEMY_01");
     // })
   }
 
