@@ -65,8 +65,8 @@ parametres['huzounet'] = {
   toucheA: (huzounet: Pick<P, 'P'>) => {
     kunai(huzounet)
   },
-  toucheZ: (boss_1: Pick<P, 'P'>) => {
-    // suivre(boss_1)
+  toucheZ: (huzounet: Pick<P, 'P'>) => {
+    
   }
 }
 
