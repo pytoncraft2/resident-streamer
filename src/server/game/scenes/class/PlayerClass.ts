@@ -17,6 +17,7 @@ interface Deplacement {
    sprite: string
    vel: number = 400
    vie: number = 10
+   compteurSaut: number = 0
    canMove: boolean = true
    attaque: boolean = false
    action: any
