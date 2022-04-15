@@ -118,8 +118,10 @@ this.physics.add.overlap(this.players, this.enemies);
   }
 
   boss_KO(id: string) {
-    this.removeEnnemy(`${id}`)
-    this.room.state.presences.delete(`${id}`)
+    // this.removeEnnemy(`${id}`)
+    // this.room.state.presences.delete(`${id}`)
+    this.room.broadcast("boss-KO", `${id}`);
+
     console.log(`BOSS ${id} KO !`)
   }
 

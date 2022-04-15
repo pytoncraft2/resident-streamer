@@ -372,6 +372,11 @@ export default class Jeu extends Phaser.Scene {
 		.then((room) => {
 			self.room = room
 			self.session = room.sessionId
+
+      room.onMessage("boss-KO", (id) => {
+        console.log(this.playersRef[id])
+        console.log("message received from server");
+      });
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
 				changes.presences.forEach((value: any, key: any) => {
