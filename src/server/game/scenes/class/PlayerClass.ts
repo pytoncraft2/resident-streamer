@@ -68,22 +68,20 @@ interface Deplacement {
      new AnimationEnnemie(this.anims)
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
+       this.blesse_opposant = false
        if (anim.key == 'cross') {
-         this.blesse_opposant = false
          if (frame.frame.name == 'cross4') {
            this.blesse_opposant = true
          }
        }
 
        if (anim.key == 'attack') {
-         this.blesse_opposant = false
          if (frame.frame.name == 'positiona4') {
            this.blesse_opposant = true
          }
        }
 
        if (anim.key == 'straightlead') {
-         this.blesse_opposant = false
          if (frame.frame.name == 'straightlead1') {
            this.blesse_opposant = true
          }
