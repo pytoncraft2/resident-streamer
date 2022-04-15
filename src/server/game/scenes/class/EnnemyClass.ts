@@ -71,7 +71,14 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
        this.vie -= 1
        this.setTint(0xff0000)
        this.animationRecevoirDegats()
+
+       console.log(this.body.touching)
+       if (this.body.touching.right) {
+         console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
+       } else if (this.body.touching.left) {
+         console.log("TOUCHE GAUCHE !!!!!!!!!!!!!!!!!")
        }
+     }
   }
 
   preUpdate(time: number, delta: number) {
@@ -79,11 +86,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
     let animationName = this.anims.getFrameName()
-    // if (this.body.touching.right) {
-    //   this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
-    // } else if (this.body.touching.left) {
-    //   this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
-    // }
+
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
