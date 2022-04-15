@@ -24,6 +24,7 @@ interface Deplacement {
    etats: any
    etatEnCours: any
    noel: boolean = false
+   blesse_opposant: boolean = false
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -92,9 +93,14 @@ interface Deplacement {
        // _e.vie = 2
        // console.log(_e.etats)
        // _e.setVelocityX(400)
-       if (this.noel) {
-         _e.fete()
-         this.noel = false
+       // if (this.noel) {
+       //   _e.fete()
+       //   this.noel = false
+       // }
+
+       if (this.blesse_opposant) {
+         _e.blesse_ennemie()
+         this.blesse_opposant = false
        }
 
        // console.log("VIE OVERLAP ZONE")
@@ -117,6 +123,7 @@ interface Deplacement {
 
 
      if (this.canMove) {
+       console.log(this.blesse_opposant)
 
 
          this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);

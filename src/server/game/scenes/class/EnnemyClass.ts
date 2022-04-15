@@ -16,6 +16,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private etatEnCours: string
   private zoneInteraction: any
   private fete: any
+  blesse_ennemie: VoidFunction
 
   constructor(
     scene: Phaser.Scene,
@@ -81,6 +82,10 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
            onComplete: () => (this.setTint(0xffa500), t = null)
          });
        }
+     }
+
+     this.blesse_ennemie = () => {
+       this.vie -= 1
      }
   }
 
