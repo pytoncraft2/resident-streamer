@@ -132,9 +132,10 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   mourir() {
     this.body.stop()
     this.body.enable = false
-    this.setScale(0.15956409567640198, 0.15956409567640198)
+    // this.setScale(0.15956409567640198, 0.15956409567640198)
     // this.setPosition(this.x, 779.2995484974318)
-    this.setPosition(this.x, 879)
+    this.setPosition(this.x, 779.2995484974318)
+    this.active = false
 
     this.scene.events.emit('boss_KO', "ENNEMY_01");
 
