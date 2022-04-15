@@ -69,8 +69,9 @@ interface Deplacement {
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
+         this.blesse_opposant = false
          if (frame.frame.name == 'cross4') {
-           this.blesse_opposant = false
+           this.blesse_opposant = true
          }
        }
 
@@ -78,7 +79,6 @@ interface Deplacement {
          this.blesse_opposant = false
          if (frame.frame.name == 'positiona4') {
            this.blesse_opposant = true
-           console.log("OUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
          }
        }
      })
