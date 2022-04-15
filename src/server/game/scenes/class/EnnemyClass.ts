@@ -70,15 +70,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.blesse_ennemie = () => {
        this.vie -= 1
        this.setTint(0xff0000)
-       this.scene.tweens.addCounter({
-         from: 0,
-         to: 1,
-         duration: 100,
-         onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
-         repeat: 0,
-         yoyo: false,
-       })
-     }
+       this.animationRecevoirDegats()
+       }
   }
 
   preUpdate(time: number, delta: number) {
@@ -155,6 +148,17 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
       }],
       onComplete: () => (callback())
     });
+  }
+
+  animationRecevoirDegats() {
+    this.scene.tweens.addCounter({
+      from: 0,
+      to: 1,
+      duration: 100,
+      onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
+      repeat: 0,
+      yoyo: false,
+    })
   }
 
 }
