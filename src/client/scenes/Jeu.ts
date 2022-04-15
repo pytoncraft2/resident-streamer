@@ -377,6 +377,7 @@ export default class Jeu extends Phaser.Scene {
 
       room.onMessage("boss-KO", (id) => {
         this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
+        this.playersRef[id].barre.setAlpha(0)
         const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
         ellipse_5_1.scaleX = 0.9012990507210408;
         ellipse_5_1.scaleY = 0.21224071572889464;
