@@ -15,7 +15,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private etats: any
   private etatEnCours: string
   private zoneInteraction: any
-  private fete: any
   blesse_ennemie: VoidFunction
 
   constructor(
@@ -68,23 +67,17 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
-     let t = null
-
-     this.fete = () => {
-       if (!t) {
-         t = this.scene.tweens.timeline({
-           tweens: [{
-             targets: this,
-             tintBottomLeft: 0x00a339,
-             duration: 5000
-           }],
-           onComplete: () => (this.setTint(0xffa500), t = null)
-         });
-       }
-     }
-
      this.blesse_ennemie = () => {
        this.vie -= 1
+       this.setTint(0xff0000)
+       this.scene.tweens.addCounter({
+         from: 0,
+         to: 1,
+         duration: 100,
+         onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
+         repeat: 0,
+         yoyo: false,
+       })
      }
   }
 
@@ -98,12 +91,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     // } else if (this.body.touching.left) {
     //   this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
     // }
-
-    if (this.blesse) {
-      console.log("JE SUIS BLESSE #ENNEMIE")
-      this.vie -= 1
-      this.blesse = false
-    }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');

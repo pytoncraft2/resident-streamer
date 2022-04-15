@@ -23,7 +23,6 @@ interface Deplacement {
    zoneInteraction: any
    etats: any
    etatEnCours: any
-   noel: boolean = false
    blesse_opposant: boolean = false
    constructor(
      scene: Phaser.Scene,
@@ -89,6 +88,8 @@ interface Deplacement {
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
+
+     //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
      this.zoneInteraction.action = (_e) => {
 
        if (this.blesse_opposant) {
