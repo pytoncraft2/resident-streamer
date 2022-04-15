@@ -60,8 +60,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.zoneInteraction.action = (vie_ennemie) => {
-       console.log("ACTION VIE ENNEMIE")
-       console.log(vie_ennemie)
+       // console.log("ACTION VIE ENNEMIE")
+       // console.log(vie_ennemie)
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
@@ -72,7 +72,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
        this.setTint(0xff0000)
        this.animationRecevoirDegats()
 
-       console.log(this.body.touching)
        if (this.body.touching.right) {
          console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
        } else if (this.body.touching.left) {

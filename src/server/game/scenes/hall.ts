@@ -67,7 +67,7 @@ this.physics.add.overlap(this.players, this.enemies);
     this.physics.add.existing(platforme, true);
     this.physics.add.collider(platforme, this.players);
     this.physics.add.collider(platforme, this.enemies);
-    // this.physics.add.collider(this.players, this.enemies);
+    this.physics.add.collider(this.players, this.enemies);
 
     // this.physics.add.collider(
     // this.players,
