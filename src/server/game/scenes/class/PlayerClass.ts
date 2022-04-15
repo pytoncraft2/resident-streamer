@@ -86,29 +86,16 @@ interface Deplacement {
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.zoneInteraction.attaque = false
      this.zoneInteraction.action = (_e) => {
-       // _e.vie = 2
-       // console.log(_e.etats)
-       // _e.setVelocityX(400)
-       // if (this.noel) {
-       //   _e.fete()
-       //   this.noel = false
-       // }
 
        if (this.blesse_opposant) {
          _e.blesse_ennemie()
          this.blesse_opposant = false
        }
 
-       // console.log("VIE OVERLAP ZONE")
-       // console.log(_vie_overlap_zone)
-       // console.log(_blesse)
-       // _blesse = true
-       // _vie_overlap_zone = 1
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     console.log(Aptitudes()['fakhear'])
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -119,9 +106,6 @@ interface Deplacement {
 
 
      if (this.canMove) {
-       console.log(this.blesse_opposant)
-
-
          this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
        if (a) {
          this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheA === "function" && Aptitudes()[this.sprite].toucheA(this)
@@ -158,7 +142,6 @@ interface Deplacement {
    deplacement(direction: 'left'|'right', objet: Deplacement) {
      if (objet.stop) {
        setAnimation(this, 'idle_walk')
-       console.log('stop')
        objet.stop = false
        objet.marche = false
        this.setVelocityX(0);
