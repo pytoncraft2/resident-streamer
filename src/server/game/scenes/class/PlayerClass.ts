@@ -70,7 +70,6 @@ interface Deplacement {
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
          if (frame.frame.name == 'cross4') {
-           this.blesse_opposant = true
            this.blesse_opposant = false
          }
        }

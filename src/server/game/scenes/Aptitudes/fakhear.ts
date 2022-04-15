@@ -8,6 +8,7 @@ export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.play('attack')
   fakhear.setVelocityX(0);
+  fakhear.blesse_opposant = true
 }
 
 export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
