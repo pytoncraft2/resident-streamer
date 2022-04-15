@@ -267,7 +267,7 @@ export default class Jeu extends Phaser.Scene {
   rooms: any
   personnage?: string
   compte: number = 0
-  prevInputs?: { up: boolean; right: boolean; left: boolean; down: boolean, z: boolean, e: boolean }
+  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean }
   attaqueDirecte: boolean = false
   directeA: boolean = false
 
@@ -466,8 +466,8 @@ export default class Jeu extends Phaser.Scene {
 
       const inputs = {
         up: up.isDown ? true : false,
-        right: right.isDown ? true : false,
-        left: left.isDown ? true : false,
+        // right: right.isDown ? true : false,
+        // left: left.isDown ? true : false,
         down: down.isDown ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false
@@ -480,6 +480,15 @@ export default class Jeu extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(space)) {
         this.room.send("inputs", { ...inputs, saut: true})
       }
+
+      if (Phaser.Input.Keyboard.JustDown(right)) {
+        this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
+      }
+
+      if (Phaser.Input.Keyboard.JustUp(right)) {
+        this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
+      }
+
 
 
       if (A.isDown) {

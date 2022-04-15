@@ -128,21 +128,37 @@ import { Aptitudes } from "../Aptitudes/index"
          input['e'] = false
        }
 
-       if (left) {
-         setAnimation(this, 'walk')
-         this.setVelocityX(-this.vel);
-         this.setFlipX(true);
-         this.setDragX(0)
-         // input['left'] = false
-       } else if (right) {
-         setAnimation(this, 'walk')
-         this.setVelocityX(this.vel);
-         this.setFlipX(false);
-         this.setDragX(0)
-         // input['right'] = false
-       } else {
-         this.setDragX(1300)
+
+       if (right) {
+         if (right.stop) {
+           console.log('stop')
+           right.stop = false
+         }
+         if (right.marche) {
+           console.log("MARRCHE")
+           right.marche = false
+         }
+         // if (!right.stop) {
+         //   console.log('marche')
+         // }
        }
+
+
+       // if (left) {
+       //   setAnimation(this, 'walk')
+       //   this.setVelocityX(-this.vel);
+       //   this.setFlipX(true);
+       //   // this.setDragX(0)
+       //   // input['left'] = false
+       // } else if (right) {
+       //   setAnimation(this, 'walk')
+       //   this.setVelocityX(this.vel);
+       //   this.setFlipX(false);
+       //   // this.setDragX(0)
+       //   // input['right'] = false
+       // }
+       // console.log("LEFFTTT ?")
+       // console.log(left)
 
      }
 

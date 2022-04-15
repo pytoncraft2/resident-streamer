@@ -48,7 +48,7 @@ export default class GameRooms extends Room {
     this.donnes[client.id] = {
       clavier: {
         up: false,
-        right: false,
+        right: {stop: true},
         down: false,
         left: false,
         a: false,
