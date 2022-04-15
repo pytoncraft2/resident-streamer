@@ -69,22 +69,21 @@ interface Deplacement {
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
        if (anim.key == 'cross') {
-         if (frame.frame.name != 'cross4') {
-           this.zoneInteraction.attaque = false
-           return
-         }
-         this.zoneInteraction.attaque = true
-       }
-
-       if (anim.key == 'attack') {
-
-         if (frame.frame.name != 'positiona4') {
-           this.zoneInteraction.attaque = false
-           return
-         } else {
-           this.zoneInteraction.attaque = true
+         if (frame.frame.name == 'cross4') {
+           this.blesse_opposant = true
+           this.blesse_opposant = false
          }
        }
+
+       // if (anim.key == 'attack') {
+       //
+       //   if (frame.frame.name != 'positiona4') {
+       //     this.zoneInteraction.attaque = false
+       //     return
+       //   } else {
+       //     this.zoneInteraction.attaque = true
+       //   }
+       // }
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
