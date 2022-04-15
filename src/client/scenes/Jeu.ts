@@ -471,21 +471,17 @@ export default class Jeu extends Phaser.Scene {
         e: E.isDown ? true : false
       }
 
-      if (Phaser.Input.Keyboard.JustDown(A)) {
-        this.room.send("inputs", { ...inputs, preparationA: true, directeA: this.directeA})
-      }
+      //ATTAQUE
+      if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, preparationA: true, directeA: this.directeA})
+      if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
 
-      if (Phaser.Input.Keyboard.JustDown(space)) {
-        this.room.send("inputs", { ...inputs, saut: true})
-      }
+      //DROITE
+      if (Phaser.Input.Keyboard.JustDown(right)) this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
+      if (Phaser.Input.Keyboard.JustUp(right)) this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
 
-      if (Phaser.Input.Keyboard.JustDown(right)) {
-        this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
-      }
-
-      if (Phaser.Input.Keyboard.JustUp(right)) {
-        this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
-      }
+      //GAUCHE
+      if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
+      if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
 
 
 

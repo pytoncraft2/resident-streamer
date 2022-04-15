@@ -3,7 +3,11 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/index"
 
-
+interface Direction {
+  direction: 'left'|'right',
+  left?: {marche: boolean, stop: boolean},
+  right?: {marche: boolean, stop: boolean},
+}
 
 /**
  * Joueur et interaction
@@ -129,20 +133,28 @@ import { Aptitudes } from "../Aptitudes/index"
        }
 
 
+       // if (right) {
+       //   if (right.stop) {
+       //     setAnimation(this, 'idle_walk')
+       //     console.log('stop')
+       //     right.stop = false
+       //     right.marche = false
+       //     this.setVelocityX(0);
+       //   }
+       //   if (right.marche) {
+       //     setAnimation(this, 'walk')
+       //     this.setVelocityX(this.vel);
+       //     this.setFlipX(false);
+       //     this.setDragX(0)
+       //   }
+       // }
+
+       if (left) {
+         this.deplacement({direction: 'left', left: left})
+       }
+
        if (right) {
-         if (right.stop) {
-           setAnimation(this, 'idle_walk')
-           console.log('stop')
-           right.stop = false
-           right.marche = false
-           this.setVelocityX(0);
-         }
-         if (right.marche) {
-           setAnimation(this, 'walk')
-           this.setVelocityX(this.vel);
-           this.setFlipX(false);
-           this.setDragX(0)
-         }
+         this.deplacement({direction: 'right', right: right})
        }
 
 
@@ -168,6 +180,23 @@ import { Aptitudes } from "../Aptitudes/index"
        this.ClientID,
        new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, xa: this.zoneInteraction.x, ya: this.zoneInteraction.y})
      )
+   }
+
+
+   deplacement(direction: Direction) {
+     if (direction[direction.direction].stop) {
+       setAnimation(this, 'idle_walk')
+       console.log('stop')
+       direction[direction.direction].stop = false
+       direction[direction.direction].marche = false
+       this.setVelocityX(0);
+     }
+     if (direction[direction.direction].marche) {
+       setAnimation(this, 'walk')
+       this.setVelocityX(direction.direction == 'right' ? this.vel : -this.vel);
+       this.setFlipX(direction.direction == 'right' ? false : true);
+       this.setDragX(0)
+     }
    }
 
    cross() {
