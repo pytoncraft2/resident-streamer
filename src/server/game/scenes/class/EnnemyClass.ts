@@ -90,8 +90,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
     console.log("xxxxx")
-    console.log(this.y)
-    console.log(this.x)
+    console.log(this.body.y)
+    console.log(this.body.x)
 
     if (this.scene) {
       (this.scene as any).room.state.presences.set(
@@ -133,7 +133,9 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     this.body.stop()
     this.body.enable = false
     this.setScale(0.15956409567640198, 0.15956409567640198)
-    // this.setPosition(879, 1000)
+    // this.setPosition(this.x, 779.2995484974318)
+    this.setPosition(this.x, 879)
+
     this.scene.events.emit('boss_KO', "ENNEMY_01");
 
     // this.setTint(this.etats.initial.couleur)
@@ -146,13 +148,13 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     this.scene.tweens.timeline({
       tweens: [{
         targets: this,
-        y: "-=300",
+        setVelocityX: 300,
         ease: 'Power1',
         duration: 600
       },
       {
         targets: this,
-        y: "+=1400",
+        setVelocityX: 1400,
         ease: 'Power1',
         duration: 900,
       }],
