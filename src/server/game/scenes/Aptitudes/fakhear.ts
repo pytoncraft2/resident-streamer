@@ -25,6 +25,11 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   })
 }
 
+export function saut(fakhear: Phaser.Physics.Arcade.Sprite|any) {
+  fakhear.setVelocityY(-1400)
+  fakhear.play('jump')
+}
+
 export function interaction() {
 
 }

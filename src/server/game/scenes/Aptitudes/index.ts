@@ -1,4 +1,4 @@
-import {cross, kick, dash, interaction} from './fakhear'
+import {cross, kick, dash, saut, interaction} from './fakhear'
 import {pique, suivre} from './boss_1'
 import {kunai} from './huzounet'
 
@@ -30,6 +30,9 @@ parametres['fakhear'] = {
   },
   toucheE: (fakhear: Pick<P,'P'>) => {
     dash(fakhear)
+  },
+  toucheEspace: (fakhear: Pick<P, 'P'>) => {
+    saut(fakhear)
   }
 }
 

@@ -127,6 +127,11 @@ interface Deplacement {
          input['e'] = false
        }
 
+       if (saut) {
+         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheEspace === "function" && Aptitudes()[this.sprite].toucheEspace(this)
+         input['saut'] = false
+       }
+
        if (left) {
          this.deplacement('left', left)
        }
