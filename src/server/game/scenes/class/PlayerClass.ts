@@ -3,10 +3,9 @@ import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/index"
 
-interface Direction {
-  direction: 'left'|'right',
-  left?: {marche: boolean, stop: boolean},
-  right?: {marche: boolean, stop: boolean},
+interface Deplacement {
+  marche: boolean,
+  stop: boolean
 }
 
 /**
@@ -24,6 +23,7 @@ interface Direction {
    zoneInteraction: any
    etats: any
    etatEnCours: any
+   noel: boolean = false
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -92,7 +92,10 @@ interface Direction {
        // _e.vie = 2
        // console.log(_e.etats)
        // _e.setVelocityX(400)
-       _e.fete()
+       if (this.noel) {
+         _e.fete()
+         this.noel = false
+       }
 
        // console.log("VIE OVERLAP ZONE")
        // console.log(_vie_overlap_zone)
@@ -133,11 +136,11 @@ interface Direction {
        }
 
        if (left) {
-         this.deplacement({direction: 'left', left: left})
+         this.deplacement('left', left)
        }
 
        if (right) {
-         this.deplacement({direction: 'right', right: right})
+         this.deplacement('right', right)
        }
 
      }
@@ -149,44 +152,20 @@ interface Direction {
    }
 
 
-   deplacement(direction: Direction) {
-     if (direction[direction.direction].stop) {
+   deplacement(direction: 'left'|'right', objet: Deplacement) {
+     if (objet.stop) {
        setAnimation(this, 'idle_walk')
        console.log('stop')
-       direction[direction.direction].stop = false
-       direction[direction.direction].marche = false
+       objet.stop = false
+       objet.marche = false
        this.setVelocityX(0);
      }
-     if (direction[direction.direction].marche) {
+     if (objet.marche) {
        setAnimation(this, 'walk')
-       this.setVelocityX(direction.direction == 'right' ? this.vel : -this.vel);
-       this.setFlipX(direction.direction == 'right' ? false : true);
+       this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
+       this.setFlipX(direction == 'right' ? false : true);
        this.setDragX(0)
      }
    }
-
-   cross() {
-     setAnimation(this,'cross')
-     this.setVelocityX(0);
-   }
-
-   kick() {
-     setAnimation(this, 'attack')
-     this.setVelocityX(0);
-   }
-
-   straightlead() {
-     setAnimation(this,'straightlead')
-     this.setVelocityX(0);
-     this.scene.tweens.addCounter({
-       from: 0,
-       to: 1,
-       duration: 300,
-       onUpdate: () => (this.setVelocity((this.flipX ? -1700 : 1700), -70)),
-       repeat: 0,            // -1: infinity
-       yoyo: false,
-     })
-   }
-
 
  }
