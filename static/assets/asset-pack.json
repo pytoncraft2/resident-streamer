@@ -40,6 +40,12 @@
                 "key": "fakhear_atlas"
             },
             {
+                "atlasURL": "assets/flares.json",
+                "textureURL": "assets/flares.png",
+                "type": "atlas",
+                "key": "flares"
+            },
+            {
                 "url": "assets/FufuSuperDino.png",
                 "type": "image",
                 "key": "FufuSuperDino"

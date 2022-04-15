@@ -386,6 +386,21 @@ export default class Jeu extends Phaser.Scene {
         ellipse_5_1.isStroked = true;
         ellipse_5_1.lineWidth = 4;
         ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y -10)
+
+        var particles = this.add.particles('flares');
+
+        particles.createEmitter({
+          frame: 'blue',
+          x: this.playersRef[id].getBottomCenter().x,
+          y: this.playersRef[id].getBottomCenter().y,
+          // y: { min: 100, max: 500 },
+          speedY: { min: -200, max: -400 },
+          lifespan: 2000,
+          // speed: { min: 400, max: 600 },
+          scale: { start: 0.4, end: 0 },
+          quantity: 2,
+          blendMode: 'ADD',
+        });
         console.log("message received from server");
       });
 			room.onStateChange((changes: any) => {
