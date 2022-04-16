@@ -341,17 +341,12 @@ export default class Jeu extends Phaser.Scene {
 			self.room = room
 			self.session = room.sessionId
 
-      room.onMessage("deplacement-boule", (donnes) => {
+      room.onMessage("spawn-boule", (donnes) => {
 
-        if (this.playersRef[donnes.id].groupeBullets.getLength() == 0) {
-          this.playersRef[donnes.id].groupeBullets.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-          this.playersRef[donnes.id].groupeBullets.playAnimation(`huzounet_shuriken`);
-        } else {
-          this.playersRef[donnes.id].groupeBullets.getChildren().forEach((element: any) => {
-            element.x = donnes.x
-          });
-
-        }
+        // if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
+          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+          this.playersRef[donnes.id].groupeBoules.playAnimation(`huzounet_shuriken`);
+        // }
 
       })
 
@@ -416,7 +411,16 @@ export default class Jeu extends Phaser.Scene {
           .setDepth(1);
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
-          (player as any).groupeBullets = this.add.group();
+          (player as any).groupeBoules = this.add.group();
+          // (player as any).groupeBoules.getChildren().forEach((element: any) => {
+            (player as any).groupeBoules.create(list.presences[item].bouleX, list.presences[item].bouleY, `huzounet_atlas`, 'shuriken0').setScale(2);
+            // this.playersRef[list.presenceList[idx]].groupeBoules.playAnimation(`huzounet_shuriken`);
+          // });
+
+          // if ((player as any).groupeBoules.getChildren()[0]) {
+          //   this.playersRef[list.presenceList[idx]].groupeBoules.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+          //   this.playersRef[list.presenceList[idx]].groupeBoules.playAnimation(`huzounet_shuriken`);
+          // }
 
 
 
@@ -445,6 +449,10 @@ export default class Jeu extends Phaser.Scene {
 					this.players.add(player)
 					this.playersRef[item] = player
 
+          if (this.playersRef[item].groupeBoules.getChildren()[0]) {
+            list.presences[item].bouleX
+          }
+
 				}
 			} else {
 				if (list.presences[item].sprite) {
@@ -457,7 +465,10 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
-
+            // if (this.playersRef[item].groupeBoules.getChildren()[0]) {
+              // this.playersRef[item].groupeBoules.getChildren()[0].x = this.playersRef[item].bouleX;
+              // this.playersRef[item].groupeBoules.getChildren()[0].y = this.playersRef[item].bouleY;
+            // }
 				}
 			}
 		})

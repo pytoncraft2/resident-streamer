@@ -14,6 +14,7 @@ export function shuriken(huzounet) {
 
 
 console.log(huzounet.scene.groupeBoules.getChildren())
+huzounet.scene.room.broadcast("spawn-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
 huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0')
 
 // huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);

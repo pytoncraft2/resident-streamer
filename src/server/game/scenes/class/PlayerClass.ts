@@ -27,6 +27,7 @@ interface Deplacement {
    blesse_opposant: boolean = false
    interaction_objet: boolean = false
    etatInitial: Object
+   groupeBoules: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -135,8 +136,14 @@ interface Deplacement {
        // const bouleY = Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren() ? Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst().y : undefined;
 
        // console.log(Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren())
-       const bouleY = undefined;
-       const bouleX = undefined;
+       // if (this.scene.groupeBoules.getChildren()) {
+
+       (this.scene as any).groupeBoules.getChildren().forEach(element => {
+
+       });
+       const bouleY = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].y : undefined;
+       const bouleX = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].x : undefined;
+       // }
 
        // console.log(Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren());
      // }
