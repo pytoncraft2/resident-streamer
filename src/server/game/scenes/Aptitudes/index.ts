@@ -91,10 +91,10 @@ export const Aptitudes = {
   },
   'huzounet': {
     toucheA: (huzounet: Pick<P, 'P'>) => {
-      kunai(huzounet)
+      shuriken(huzounet)
     },
     toucheZ: (huzounet: Pick<P, 'P'>) => {
-      shuriken(huzounet)
+      kunai(huzounet)
     },
     toucheEspace: (huzounet: Pick<P, 'P'>) => {
       saut(huzounet)

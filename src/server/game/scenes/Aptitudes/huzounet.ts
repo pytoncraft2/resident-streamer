@@ -1,10 +1,8 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 
 
-export function kunai(huzounet:Phaser.Physics.Arcade.Sprite|any) {
-}
-
-export function shuriken(huzounet: Phaser.Physics.Arcade.Sprite|any) {
+export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any) {
+  console.log("SHURIKEN ----------------")
   if (huzounet.scene.groupeBoules.getLength() == 0) {
     setAnimation(huzounet, 'attack')
     huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
@@ -21,4 +19,7 @@ export function shuriken(huzounet: Phaser.Physics.Arcade.Sprite|any) {
       })
     }
   }
+}
+
+export function kunai(huzounet: Phaser.Physics.Arcade.Sprite|any) {
 }
