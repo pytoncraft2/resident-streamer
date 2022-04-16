@@ -134,6 +134,7 @@ interface Deplacement {
 
        const bouleY = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].y : this.y - 170;
        const bouleX = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].x : this.x;
+       const bouleScale = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].scale : 1;
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
@@ -148,7 +149,8 @@ interface Deplacement {
          xa: this.zoneInteraction.x,
          ya: this.zoneInteraction.y,
          bouleX: bouleX,
-         bouleY: bouleY
+         bouleY: bouleY,
+         bouleScale: bouleScale
        })
      )
    }

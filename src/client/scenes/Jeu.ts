@@ -467,6 +467,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (this.playersRef[item].groupeBoules.getChildren()[0]) {
               this.playersRef[item].groupeBoules.getChildren()[0].setPosition(list.presences[item].bouleX, list.presences[item].bouleY);
+              this.playersRef[item].groupeBoules.getChildren()[0].setScale(list.presences[item].bouleScale);
             }
 				}
 			}
@@ -573,7 +574,7 @@ export default class Jeu extends Phaser.Scene {
       //ATTAQUE
       if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, a: { charge: true, envoie: false }})
       if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, a: { charge: false, envoie: true }})
-      
+
       if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
 
       //DROITE

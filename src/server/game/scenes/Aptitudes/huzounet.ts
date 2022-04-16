@@ -73,6 +73,9 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     if (input.a.charge) {
       console.log("CHAAAARGE")
       setAnimation(huzounet, 'huzounet_preparation_attaque')
+      huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
+      const boulePhysique = huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 170, `atlas`, 'shuriken0')
+
       input.a.charge = false
     }
     if (input.a.envoie) {
