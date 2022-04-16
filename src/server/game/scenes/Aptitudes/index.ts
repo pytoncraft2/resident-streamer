@@ -90,8 +90,8 @@ export const Aptitudes = {
     }
   },
   'huzounet': {
-    toucheA: (huzounet: Pick<P, 'P'>) => {
-      shuriken(huzounet)
+    toucheA: (huzounet: Pick<P, 'P'>, input?: Object) => {
+      shuriken(huzounet, input)
     },
     toucheZ: (huzounet: Pick<P, 'P'>) => {
       kunai(huzounet)

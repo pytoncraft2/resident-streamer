@@ -1,7 +1,8 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 
 
-export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any) {
+export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: Object) {
+  console.log(input)
   console.log("SHURIKEN ----------------")
   if (huzounet.scene.groupeBoules.getLength() == 0) {
     setAnimation(huzounet, 'attack')
