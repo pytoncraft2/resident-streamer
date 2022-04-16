@@ -46,16 +46,6 @@
                 "key": "flares"
             },
             {
-                "url": "assets/FufuSuperDino.png",
-                "type": "image",
-                "key": "FufuSuperDino"
-            },
-            {
-                "url": "assets/hall.jpg",
-                "type": "image",
-                "key": "hall"
-            },
-            {
                 "atlasURL": "assets/huzounet_atlas.json",
                 "textureURL": "assets/huzounet_atlas.png",
                 "type": "atlas",
