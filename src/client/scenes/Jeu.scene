@@ -376,19 +376,6 @@
             ]
         },
         {
-            "type": "Image",
-            "id": "d3ed3263-8469-4969-95c6-5af439d29308",
-            "label": "huzounet_jump0",
-            "components": [],
-            "texture": {
-                "key": "huzounet_jump0"
-            },
-            "x": 379,
-            "y": 704,
-            "scaleX": 0.5441971978327523,
-            "scaleY": 0.5441971978327523
-        },
-        {
             "type": "Container",
             "id": "7f78e61e-19e2-4297-8659-eff05524f24e",
             "label": "barre_etat_joueur",
@@ -406,75 +393,6 @@
                     "x": -39,
                     "y": 21,
                     "list": []
-                }
-            ]
-        },
-        {
-            "type": "Container",
-            "id": "11339572-04d5-4803-ac99-dcdde2851d80",
-            "label": "container_1",
-            "components": [],
-            "x": 1157,
-            "y": 625,
-            "list": [
-                {
-                    "type": "Ellipse",
-                    "id": "121e860a-a46d-4958-a38b-0b5a6fe41ece",
-                    "label": "ellipse_5",
-                    "components": [],
-                    "y": 1,
-                    "scaleX": 1.4939270775425357,
-                    "scaleY": 1.4939270775425357,
-                    "isFilled": true,
-                    "fillColor": "#720a97",
-                    "fillAlpha": 0.8,
-                    "lineWidth": 4,
-                    "isStroked": true,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Image",
-                    "id": "8359e507-7cfa-4fc7-9409-28565a3655d6",
-                    "label": "movechaiseboss0",
-                    "components": [],
-                    "texture": {
-                        "key": "movechaiseboss0"
-                    },
-                    "x": 5,
-                    "scaleX": 0.2202189899724275,
-                    "scaleY": 0.2202189899724275
-                },
-                {
-                    "type": "Ellipse",
-                    "id": "3c32fb47-35de-4431-bb71-c427a9697d93",
-                    "label": "ellipse_5_1",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 280,
-                    "y": 256,
-                    "scaleX": 0.9012990507210408,
-                    "scaleY": 0.21224071572889464,
-                    "isFilled": true,
-                    "fillColor": "#720a97",
-                    "fillAlpha": 0.8,
-                    "lineWidth": 4,
-                    "isStroked": true,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Image",
-                    "id": "0b523c3c-7dc2-4a4f-bd32-1f8411336461",
-                    "label": "movechaiseboss0_1",
-                    "components": [],
-                    "texture": {
-                        "key": "movechaiseboss0"
-                    },
-                    "x": 283,
-                    "y": 205,
-                    "scaleX": 0.15956409567640198,
-                    "scaleY": 0.15956409567640198
                 }
             ]
         }

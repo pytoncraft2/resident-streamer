@@ -209,54 +209,12 @@ export default class Jeu extends Phaser.Scene {
 		movechaiseboss1_1.scaleY = 0.08199632417946795;
 		indicationDroite.add(movechaiseboss1_1);
 
-		// huzounet_jump0
-		const huzounet_jump0 = this.add.image(379, 704, "huzounet_jump0");
-		huzounet_jump0.scaleX = 0.5441971978327523;
-		huzounet_jump0.scaleY = 0.5441971978327523;
-
 		// barre_etat_joueur
 		const barre_etat_joueur = this.add.container(395, 466);
 
 		// barre_etat
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
-
-		// container_1
-		const container_1 = this.add.container(1157, 625);
-
-		// ellipse_5
-		const ellipse_5 = this.add.ellipse(0, 1, 128, 128);
-		ellipse_5.scaleX = 1.4939270775425357;
-		ellipse_5.scaleY = 1.4939270775425357;
-		ellipse_5.isFilled = true;
-		ellipse_5.fillColor = 7473815;
-		ellipse_5.fillAlpha = 0.8;
-		ellipse_5.isStroked = true;
-		ellipse_5.lineWidth = 4;
-		container_1.add(ellipse_5);
-
-		// movechaiseboss0
-		const movechaiseboss0 = this.add.image(5, 0, "movechaiseboss0");
-		movechaiseboss0.scaleX = 0.2202189899724275;
-		movechaiseboss0.scaleY = 0.2202189899724275;
-		container_1.add(movechaiseboss0);
-
-		// ellipse_5_1
-		const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
-		ellipse_5_1.scaleX = 0.9012990507210408;
-		ellipse_5_1.scaleY = 0.21224071572889464;
-		ellipse_5_1.isFilled = true;
-		ellipse_5_1.fillColor = 7473815;
-		ellipse_5_1.fillAlpha = 0.8;
-		ellipse_5_1.isStroked = true;
-		ellipse_5_1.lineWidth = 4;
-		container_1.add(ellipse_5_1);
-
-		// movechaiseboss0_1
-		const movechaiseboss0_1 = this.add.image(283, 205, "movechaiseboss0");
-		movechaiseboss0_1.scaleX = 0.15956409567640198;
-		movechaiseboss0_1.scaleY = 0.15956409567640198;
-		container_1.add(movechaiseboss0_1);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -269,7 +227,6 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
-		this.ellipse_5_1 = ellipse_5_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -285,7 +242,6 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
-	public ellipse_5_1!: Phaser.GameObjects.Ellipse;
 
 	/* START-USER-CODE */
 
