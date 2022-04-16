@@ -15,26 +15,23 @@ export function shuriken(huzounet) {
 
 console.log(huzounet.scene.groupeBoules.getChildren())
 huzounet.scene.room.broadcast("spawn-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
-huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0')
+const boule = huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0')
 
 // huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);
 // console.log("SHURIKEN")
-// const bb = huzounet.scene.physics.add.existing(boule)
-// huzounet.scene.physics.world.enable(boule);
+const boulePhysique = huzounet.scene.physics.add.existing(boule)
+huzounet.scene.physics.world.enable(boulePhysique);
 //
-// bb.body.setVelocityX(1900)
+boulePhysique.body.setVelocityX(1900)
 // console.log(huzounet.etatInitial.groupeBoules)
 //
-// huzounet.scene.physics.add.collider(bb, huzounet.scene.enemies);
+huzounet.scene.physics.add.collider(boulePhysique, huzounet.scene.enemies);
 //
 //
 // huzounet.scene.tweens.add({
-//   targets: bb,
+//   targets: boulePhysique,
 //   velocityX: 400,
 //   duration: 5000,
-//   // onUpdate: () => {
-//   //   huzounet.scene.room.broadcast("deplacement-boule", {x: boule.x, y: boule.y, id: huzounet.ClientID})
-//   // },
 //   onComplete: () => (huzounet.setVelocityX(0)),
 //   repeat: 0,            // -1: infinity
 //   yoyo: false,
