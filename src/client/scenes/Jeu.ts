@@ -571,7 +571,9 @@ export default class Jeu extends Phaser.Scene {
       }
 
       //ATTAQUE
-      if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, preparationA: true, directeA: this.directeA})
+      if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, a: { charge: true, envoie: false }})
+      if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, a: { charge: false, envoie: true }})
+      
       if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
 
       //DROITE
@@ -581,33 +583,6 @@ export default class Jeu extends Phaser.Scene {
       //GAUCHE
       if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
       if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
-
-      if (Z.isDown) {
-        // (moi as any).groupeBullets.create(moi.x, moi.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-        // (moi as any).groupeBullets.playAnimation(`huzounet_shuriken`);
-      }
-
-
-
-      if (A.isDown) {
-        if (A.getDuration() < 177) {
-          this.attaqueDirecte = true
-        } else {
-          this.attaqueDirecte = false
-        }
-      }
-
-      if (Phaser.Input.Keyboard.JustUp(A)) {
-        if (this.attaqueDirecte) {
-          this.directeA = true
-          this.room.send("inputs", {...inputs, a: true, directeA: true})
-        } else {
-          this.directeA = false
-          this.room.send("inputs", { ...inputs, a: true, directeA: false })
-        }
-        this.attaqueDirecte = false
-      }
-
 
       if (!deepEqual(inputs, this.prevInputs)) {
         this.prevInputs = inputs
