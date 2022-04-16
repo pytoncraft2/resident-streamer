@@ -341,6 +341,11 @@ export default class Jeu extends Phaser.Scene {
 			self.room = room
 			self.session = room.sessionId
 
+      room.onMessage("deplacement-boule", (donnes) => {
+        this.playersRef[donnes.id].groupeBullets.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+        this.playersRef[donnes.id].groupeBullets.playAnimation(`huzounet_shuriken`);
+      })
+
       room.onMessage("boss-KO", (id) => {
 
         this.animationBossKO(id)
@@ -559,8 +564,8 @@ export default class Jeu extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
 
       if (Z.isDown) {
-        (moi as any).groupeBullets.create(moi.x, moi.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-        (moi as any).groupeBullets.playAnimation(`huzounet_shuriken`);
+        // (moi as any).groupeBullets.create(moi.x, moi.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+        // (moi as any).groupeBullets.playAnimation(`huzounet_shuriken`);
       }
 
 

@@ -3,7 +3,6 @@
 
 import EnnemyClass from "./class/EnnemyClass"
 import PlayerClass from "./class/PlayerClass"
-import { Aptitudes } from "./Aptitudes/index"
 
 
 /**
@@ -44,15 +43,6 @@ export default class Hall extends Phaser.Scene {
     this.playersAttackZone = this.physics.add.group({
       allowGravity: false
     })
-
-    this.physics.add.collider(Aptitudes(this).huzounet.etatInitial.groupeBoules, this.players);
-    this.physics.add.overlap(Aptitudes(this).huzounet.etatInitial.groupeBoules, this.enemies, () => {
-      console.log('COOOOOOOOOOOOOOOOOOOOOLISION APTITUDES')
-    }, undefined, this)
-
-    // this.physics.add.collider(this.enemies, Aptitudes(this).huzounet.etatInitial.groupeBoules, () => {
-    // }, null, this);
-
 
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)

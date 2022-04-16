@@ -10,6 +10,8 @@ export function shuriken(huzounet) {
 // // on crée la balle a coté du joueur
 // huzounet.scene.spawnBoule()
 huzounet.etatInitial.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0');
+huzounet.scene.room.broadcast("deplacement-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
+// this.room.broadcast("boss-KO", `${id}`);
 
 
 // huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);
