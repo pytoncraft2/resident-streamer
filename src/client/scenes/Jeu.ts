@@ -347,7 +347,10 @@ export default class Jeu extends Phaser.Scene {
           this.playersRef[donnes.id].groupeBullets.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
           this.playersRef[donnes.id].groupeBullets.playAnimation(`huzounet_shuriken`);
         } else {
-            
+          this.playersRef[donnes.id].groupeBullets.getChildren().forEach((element: any) => {
+            element.x = donnes.x
+          });
+
         }
 
       })

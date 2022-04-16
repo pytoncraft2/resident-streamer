@@ -1,9 +1,9 @@
 export function kunai(huzounet:Phaser.Physics.Arcade.Sprite|any) {
-  huzounet.play('attack')
 }
 
 export function shuriken(huzounet) {
   // huzounet.play('huzounet_shuriken')
+  huzounet.play('attack')
   var coefDir = -1;
   // console.log(huzounet.etatInitial.groupeBoules)
 // if (huzounet['direction'] == 'left') { coefDir = -1; } else { coefDir = 1 }
@@ -17,11 +17,29 @@ huzounet.scene.room.broadcast("deplacement-boule", {x: huzounet.x, y: huzounet.y
 // huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);
 console.log("SHURIKEN")
 console.log("IIIIIIIIIIIIIID")
-huzounet.scene.physics.add.existing(boule)
+const bb = huzounet.scene.physics.add.existing(boule)
+huzounet.scene.physics.world.enable(boule);
 
-console.log(boule.body)
-console.log(boule.id)
-console.log(boule.body.id)
+bb.body.setVelocityX(1900)
+
+huzounet.scene.tweens.add({
+  targets: bb,
+  velocityX: 400,
+  duration: 5000,
+  onUpdate: () => {
+    huzounet.scene.room.broadcast("deplacement-boule", {x: boule.x, y: boule.y, id: huzounet.ClientID})
+  },
+  onComplete: () => (huzounet.setVelocityX(0)),
+  repeat: 0,            // -1: infinity
+  yoyo: false,
+})
+
+
+// console.log(boule.body)
+// console.log(boule.id)
+// console.log(boule.body.id)
+// boule.setBounce(0.2).setCollideWorldBounds(true)
+// boule.setPushable(false)
 
 // var bullet = this.groupeBullets.create(huzounet.x + coefDir, huzounet.y - 4, 'bullet').setScale(0.2);
 // // parametres physiques de la balle.
