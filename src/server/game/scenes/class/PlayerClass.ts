@@ -129,8 +129,8 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-       const bouleY = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].y : undefined;
-       const bouleX = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].x : undefined;
+       const bouleY = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].y : this.y - 170;
+       const bouleX = (this.scene as any).groupeBoules.getChildren()[0] ? (this.scene as any).groupeBoules.getChildren()[0].x : this.x;
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
