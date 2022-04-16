@@ -342,8 +342,14 @@ export default class Jeu extends Phaser.Scene {
 			self.session = room.sessionId
 
       room.onMessage("deplacement-boule", (donnes) => {
-        this.playersRef[donnes.id].groupeBullets.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-        this.playersRef[donnes.id].groupeBullets.playAnimation(`huzounet_shuriken`);
+
+        if (this.playersRef[donnes.id].groupeBullets.getLength() == 0) {
+          this.playersRef[donnes.id].groupeBullets.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+          this.playersRef[donnes.id].groupeBullets.playAnimation(`huzounet_shuriken`);
+        } else {
+            
+        }
+
       })
 
       room.onMessage("boss-KO", (id) => {
