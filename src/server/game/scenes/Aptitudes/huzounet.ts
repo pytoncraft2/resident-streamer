@@ -13,7 +13,8 @@ export function shuriken(huzounet: Phaser.Physics.Arcade.Sprite|any) {
     if (boulePhysique.body) {
       huzounet.scene.tweens.addCounter({
         duration: 1000,
-        onUpdate: () => (huzounet.anims.getFrameName() == 'positiona4' && boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? -1900 : 1900)),
+        onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
+        onUpdate: () => (huzounet.anims.getFrameName() == 'positiona4' && boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)),
         onComplete: () => (huzounet.scene.groupeBoules.clear()),
         repeat: 0,
         yoyo: false,
