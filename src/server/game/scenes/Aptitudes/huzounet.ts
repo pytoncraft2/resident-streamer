@@ -22,11 +22,16 @@ const boule = huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 4, `at
 const boulePhysique = huzounet.scene.physics.add.existing(boule)
 huzounet.scene.physics.world.enable(boulePhysique);
 //
-boulePhysique.body.setVelocityX(1900)
+boulePhysique.body.setVelocityX(huzounet.flipX ? -1900 : 1900)
 // console.log(huzounet.etatInitial.groupeBoules)
 //
 huzounet.scene.physics.add.collider(boulePhysique, huzounet.scene.enemies);
-//
+huzounet.scene.tweens.add({
+  targets: huzounet,
+  repeat: 0,
+  duration: 5000,
+  onComplete: function() { console.log('FIN'); arguments[1][0].scene.groupeBoules.getChildren()[0].destroy(); },
+})
 //
 // huzounet.scene.tweens.add({
 //   targets: boulePhysique,
