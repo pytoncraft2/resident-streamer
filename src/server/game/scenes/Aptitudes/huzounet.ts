@@ -35,16 +35,36 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     // }
   // }
 
-      huzounet.scene.tweens.addCounter({
-        from: 0,
-        to: 10,
-        duration: 3000,
-        // onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
-        onUpdate: () => (console.log("UPDATE")),
-        onComplete: () => (console.log("FIN")),
-        repeat: 0,
-        yoyo: false,
-    })
+    //   huzounet.scene.tweens.addCounter({
+    //     from: 0,
+    //     to: 10,
+    //     duration: 3000,
+    //     // onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
+    //     onUpdate: () => (console.log("UPDATE")),
+    //     onComplete: () => (console.log("FIN")),
+    //     repeat: 0,
+    //     yoyo: false,
+    // })
+
+
+    if (input.a.charge) {
+      console.log("CHAAAARGE")
+    //   setAnimation(this, 'idle_walk')
+    //   objet.stop = false
+    //   objet.marche = false
+    //   this.setVelocityX(0);
+      input.a.charge = false
+    }
+    if (input.a.envoie) {
+      console.log("EENNNNVOIE")
+    //   setAnimation(this, 'walk')
+    //   this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
+    //   this.setFlipX(direction == 'right' ? false : true);
+    //   this.setDragX(0)
+    input.a.envoie = false
+
+    }
+
 
 }
 
