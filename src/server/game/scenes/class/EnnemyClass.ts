@@ -15,6 +15,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private etats: any
   private etatEnCours: string
   private zoneInteraction: any
+  private vivant: boolean = true
   blesse_ennemie: VoidFunction
   proprietaire_objet: (id: string, id_ennemie: string) => void
 
@@ -135,6 +136,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
 
   mourir() {
+    this.vivant = false
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.setPosition(this.x, 779.2995484974318)
     this.scene.events.emit('boss_KO', "ENNEMY_01");

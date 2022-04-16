@@ -38,4 +38,5 @@ export function saut(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 
 export function interaction(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.interaction_objet = true
+  // fakhear.interaction_objet = false
 }
