@@ -16,7 +16,6 @@ huzounet.scene.room.broadcast("deplacement-boule", {x: huzounet.x, y: huzounet.y
 
 // huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);
 console.log("SHURIKEN")
-console.log("IIIIIIIIIIIIIID")
 const bb = huzounet.scene.physics.add.existing(boule)
 huzounet.scene.physics.world.enable(boule);
 
