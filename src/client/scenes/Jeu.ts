@@ -413,7 +413,7 @@ export default class Jeu extends Phaser.Scene {
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
           (player as any).groupeBoules = this.add.group();
           // (player as any).groupeBoules.getChildren().forEach((element: any) => {
-            (player as any).groupeBoules.create(list.presences[item].bouleX, list.presences[item].bouleY, `huzounet_atlas`, 'shuriken0').setScale(2);
+            (player as any).groupeBoules.create(list.presences[item].bouleX, list.presences[item].bouleY, `huzounet_atlas`, 'shuriken0').setScale(2).setDepth(1.5);
             // this.playersRef[list.presenceList[idx]].groupeBoules.playAnimation(`huzounet_shuriken`);
           // });
 
