@@ -280,6 +280,14 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
+    this.anims.create({
+      key: "huzounet_shuriken",
+      frames: this.anims.generateFrameNames('huzounet_atlas', { prefix: 'shuriken', start: 0, end: 3 }),
+      frameRate: 23,
+      repeat: -1
+    })
+
+
     this.rooms = []
     this.listCurrentRoom = {
       hall: {
@@ -394,6 +402,11 @@ export default class Jeu extends Phaser.Scene {
           .setDepth(1);
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
+          (player as any).groupeBullets = this.add.group();
+          (player as any).groupeBullets.create(player.x, player.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+          (player as any).groupeBullets.playAnimation(`huzounet_shuriken`);
+
+
 
           const barre = this.add.container(-39, 21);
 
@@ -432,6 +445,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
+
 				}
 			}
 		})
