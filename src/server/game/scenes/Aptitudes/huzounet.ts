@@ -26,12 +26,13 @@ boulePhysique.body.setVelocityX(huzounet.flipX ? -1900 : 1900)
 // console.log(huzounet.etatInitial.groupeBoules)
 //
 huzounet.scene.physics.add.collider(boulePhysique, huzounet.scene.enemies);
-huzounet.scene.tweens.add({
-  targets: huzounet,
-  repeat: 0,
-  duration: 5000,
-  onComplete: function() { console.log('FIN'); arguments[1][0].scene.groupeBoules.getChildren()[0].destroy(); },
+huzounet.scene.tweens.addCounter({
+  duration: 1000,
+  onComplete: () => huzounet.scene.groupeBoules.getChildren()[0].destroy(),
+  repeat: 0,            // -1: infinity
+  yoyo: false,
 })
+//
 //
 // huzounet.scene.tweens.add({
 //   targets: boulePhysique,
