@@ -2,7 +2,9 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log(input.preparationA)
+  console.log("CHAAARGE")
+  console.log(input)
+  // console.log(input.preparationA)
   // console.log(input)
   // console.log("SHURIKEN ----------------")
   // if (huzounet.scene.groupeBoules.getLength() == 0) {
@@ -25,13 +27,23 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
   // if (input.directeA) {
 
-    if (input.directeA === true) {
-      huzounet.setTint(0x0e88bd)
-    }
-    if (input.directeA === false) {
-      huzounet.setTint(16777215)
-    }
+    // if (input.directeA === true) {
+    //   huzounet.setTint(0x0e88bd)
+    // }
+    // if (input.directeA === false) {
+    //   huzounet.setTint(16777215)
+    // }
   // }
+
+      huzounet.scene.tweens.addCounter({
+      duration: 3000,
+      // onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
+      onUpdate: () => (),
+      onComplete: () => (),
+      repeat: 0,
+      yoyo: false,
+    })
+
 }
 
 export function kunai(huzounet: Phaser.Physics.Arcade.Sprite|any) {
