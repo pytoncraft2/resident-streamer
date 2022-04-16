@@ -27,8 +27,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  * Aptitude générale disponible pour tout le monde
  */
 
- function parametres(scene: Phaser.Scene) {
-   return {
+ const parametres = {
      'fakhear': {
        etatInitial: {
          vie: 5,
@@ -77,8 +76,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          displayHeight: 302,
          masse: 30,
          puissanceDeBase: 10,
-         attaqueFrame: "positiona3",
-         groupeBoules: scene.physics.add.group()
+         attaqueFrame: "positiona3"
        },
        toucheA: (huzounet: Pick<P, 'P'>) => {
          kunai(huzounet)
@@ -89,8 +87,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        toucheEspace: (huzounet: Pick<P, 'P'>) => {
          saut(huzounet)
        }
-     }
    }
  };
 
-export const Aptitudes = (scene: Phaser.Scene) => parametres(scene);
+export const Aptitudes = () => parametres;
