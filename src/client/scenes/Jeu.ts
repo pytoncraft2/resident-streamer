@@ -343,6 +343,7 @@ export default class Jeu extends Phaser.Scene {
 
       room.onMessage("apparition-boule", (donnes) => {
 
+        console.log('APPARITION BOULE')
         // if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
         // this.playersRef[donnes.id].groupeBoules.clear()
         console.log(this.playersRef[donnes.id].groupeBoules.getLength())
