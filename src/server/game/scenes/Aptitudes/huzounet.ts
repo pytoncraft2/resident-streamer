@@ -3,18 +3,21 @@ export function kunai(huzounet:Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function shuriken(huzounet) {
-  huzounet.play('huzounet_shuriken')
+  // huzounet.play('huzounet_shuriken')
   var coefDir = -1;
-  // console.log(huzounet.groupeBoules)
+  // console.log(huzounet.etatInitial.groupeBoules)
 // if (huzounet['direction'] == 'left') { coefDir = -1; } else { coefDir = 1 }
 // // on crée la balle a coté du joueur
 // huzounet.scene.spawnBoule()
-// huzounet.groupeBullets.create(huzounet.x, huzounet.y - 4, `huzounet_atlas`, 'shuriken0');
-// huzounet.groupeBullets.playAnimation(`huzounet_shuriken`);
+huzounet.etatInitial.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0');
+
+
+// huzounet.etatInitial.groupeBoules.playAnimation(`huzounet_shuriken`);
+console.log("SHURIKEN")
 
 // var bullet = this.groupeBullets.create(huzounet.x + coefDir, huzounet.y - 4, 'bullet').setScale(0.2);
 // // parametres physiques de la balle.
-// bullet.setCollideWorldBounds(true);
-// bullet.body.allowGravity = false;
+// huzounet.etatInitial.groupeBoules.setCollideWorldBounds(true);
+// huzounet.etatInitial.groupeBoules.body.allowGravity = false;
 // bullet.setVelocity(1000 * coefDir, 0); // vitesse en x et en y
 }
