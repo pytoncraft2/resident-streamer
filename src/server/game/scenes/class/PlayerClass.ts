@@ -26,7 +26,6 @@ interface Deplacement {
    etatEnCours: any
    blesse_opposant: boolean = false
    interaction_objet: boolean = false
-   etatInitial: Object
    groupeBoules: any
    constructor(
      scene: Phaser.Scene,
@@ -109,7 +108,6 @@ interface Deplacement {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     this.etatInitial = Aptitudes.huzounet.etatInitial
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)

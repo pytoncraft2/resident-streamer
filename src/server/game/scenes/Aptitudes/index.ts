@@ -37,36 +37,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3"
-       },
-     }
-   }
-}
-
-
-export const Aptitudes = {
-     'fakhear': {
-       etatInitial: {
-         vie: 5,
-         displayWidth: 104,
-         displayHeight: 302,
-         masse: 30,
-         puissanceDeBase: 10,
-         attaqueFrame: "positiona3"
-       },
-       toucheA: (fakhear: Pick<P,'P'>) => {
-         cross(fakhear)
-       },
-       toucheZ: (fakhear: Pick<P,'P'>) => {
-         kick(fakhear)
-       },
-       toucheE: (fakhear: Pick<P,'P'>) => {
-         dash(fakhear)
-       },
-       toucheR: (fakhear: Pick<P,'P'>) => {
-         interaction(fakhear)
-       },
-       toucheEspace: (fakhear: Pick<P, 'P'>) => {
-         saut(fakhear)
        }
      },
      'boss_1': {
@@ -77,12 +47,6 @@ export const Aptitudes = {
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3"
-       },
-       toucheA: (boss_1: Pick<P, 'P'>) => {
-         pique(boss_1)
-       },
-       toucheZ: (boss_1: Pick<P, 'P'>) => {
-         suivre(boss_1)
        }
      },
      'huzounet': {
@@ -93,17 +57,49 @@ export const Aptitudes = {
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3"
-       },
-       toucheA: (huzounet: Pick<P, 'P'>) => {
-         kunai(huzounet)
-       },
-       toucheZ: (huzounet: Pick<P, 'P'>) => {
-         shuriken(huzounet)
-       },
-       toucheEspace: (huzounet: Pick<P, 'P'>) => {
-         saut(huzounet)
        }
+     }
    }
- };
+}
+
+
+export const Aptitudes = {
+  'fakhear': {
+    toucheA: (fakhear: Pick<P,'P'>) => {
+      cross(fakhear)
+    },
+    toucheZ: (fakhear: Pick<P,'P'>) => {
+      kick(fakhear)
+    },
+    toucheE: (fakhear: Pick<P,'P'>) => {
+      dash(fakhear)
+    },
+    toucheR: (fakhear: Pick<P,'P'>) => {
+      interaction(fakhear)
+    },
+    toucheEspace: (fakhear: Pick<P, 'P'>) => {
+      saut(fakhear)
+    }
+  },
+  'boss_1': {
+    toucheA: (boss_1: Pick<P, 'P'>) => {
+      pique(boss_1)
+    },
+    toucheZ: (boss_1: Pick<P, 'P'>) => {
+      suivre(boss_1)
+    }
+  },
+  'huzounet': {
+    toucheA: (huzounet: Pick<P, 'P'>) => {
+      kunai(huzounet)
+    },
+    toucheZ: (huzounet: Pick<P, 'P'>) => {
+      shuriken(huzounet)
+    },
+    toucheEspace: (huzounet: Pick<P, 'P'>) => {
+      saut(huzounet)
+    }
+  }
+};
 
 // export const Aptitudes = () => parametres;
