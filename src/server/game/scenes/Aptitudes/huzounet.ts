@@ -8,8 +8,8 @@ export function shuriken(huzounet: Phaser.Physics.Arcade.Sprite|any) {
   if (huzounet.scene.groupeBoules.getLength() == 0) {
     setAnimation(huzounet, 'attack')
     huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
-    const boule = huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0')
-    const boulePhysique = huzounet.scene.physics.add.existing(boule)
+    const boulePhysique = huzounet.scene.groupeBoules.create(huzounet.x, huzounet.y - 170, `atlas`, 'shuriken0')
+    // const boulePhysique = huzounet.scene.physics.add.existing(boule)
     if (boulePhysique.body) {
       huzounet.scene.tweens.addCounter({
         duration: 1000,

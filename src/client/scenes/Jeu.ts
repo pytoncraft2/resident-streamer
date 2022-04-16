@@ -344,7 +344,7 @@ export default class Jeu extends Phaser.Scene {
       room.onMessage("apparition-boule", (donnes) => {
 
         if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
-          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y - 190, `huzounet_atlas`, 'shuriken0').setScale(2);
           this.playersRef[donnes.id].groupeBoules.playAnimation(`huzounet_shuriken`);
         }
 
@@ -413,8 +413,10 @@ export default class Jeu extends Phaser.Scene {
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
           (player as any).groupeBoules = this.add.group();
           // (player as any).groupeBoules.getChildren().forEach((element: any) => {
+          if (sprite == "huzounet") {
             (player as any).groupeBoules.create(list.presences[item].bouleX, list.presences[item].bouleY, `huzounet_atlas`, 'shuriken0').setScale(2).setDepth(1.5);
-            // this.playersRef[list.presenceList[idx]].groupeBoules.playAnimation(`huzounet_shuriken`);
+            (player as any).groupeBoules.playAnimation(`huzounet_shuriken`);
+          }
           // });
 
           // if ((player as any).groupeBoules.getChildren()[0]) {
