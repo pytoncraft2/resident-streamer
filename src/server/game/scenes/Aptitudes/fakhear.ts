@@ -15,8 +15,6 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.body.checkCollision.none = true;
 
   fakhear.scene.tweens.addCounter({
-    from: 0,
-    to: 1,
     duration: 300,
     onUpdate: () => (fakhear.setVelocity((fakhear.flipX ? -1700 : 1700), -70)),
     onComplete: () => (fakhear.setVelocityX(0), fakhear.play('idle_attack'), fakhear.body.checkCollision.none = false),
@@ -38,5 +36,9 @@ export function saut(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 
 export function interaction(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.interaction_objet = true
+  fakhear.scene.tweens.addCounter({
+    duration: 1,
+    onComplete: () => (fakhear.interaction_objet = false)
+  })
   // fakhear.interaction_objet = false
 }
