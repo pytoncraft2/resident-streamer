@@ -27,7 +27,23 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  * Aptitude générale disponible pour tout le monde
  */
 
- const parametres = {
+ export const EtatsInitialStatic = (scene: Phaser.Scene) => {
+   return {
+     'fakhear': {
+       etatInitial: {
+         vie: 5,
+         displayWidth: 104,
+         displayHeight: 302,
+         masse: 30,
+         puissanceDeBase: 10,
+         attaqueFrame: "positiona3"
+       },
+     }
+   }
+}
+
+
+export const Aptitudes = {
      'fakhear': {
        etatInitial: {
          vie: 5,
@@ -90,4 +106,4 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
    }
  };
 
-export const Aptitudes = () => parametres;
+// export const Aptitudes = () => parametres;
