@@ -403,8 +403,6 @@ export default class Jeu extends Phaser.Scene {
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
           (player as any).groupeBullets = this.add.group();
-          (player as any).groupeBullets.create(player.x, player.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-          (player as any).groupeBullets.playAnimation(`huzounet_shuriken`);
 
 
 
@@ -559,6 +557,11 @@ export default class Jeu extends Phaser.Scene {
       //GAUCHE
       if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
       if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
+
+      if (Z.isDown) {
+        (moi as any).groupeBullets.create(moi.x, moi.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
+        (moi as any).groupeBullets.playAnimation(`huzounet_shuriken`);
+      }
 
 
 
