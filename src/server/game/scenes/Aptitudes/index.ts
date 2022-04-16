@@ -31,6 +31,9 @@ parametres['fakhear'] = {
   toucheE: (fakhear: Pick<P,'P'>) => {
     dash(fakhear)
   },
+  toucheR: (fakhear: Pick<P,'P'>) => {
+    interaction(fakhear)
+  },
   toucheEspace: (fakhear: Pick<P, 'P'>) => {
     saut(fakhear)
   }
@@ -66,7 +69,7 @@ parametres['huzounet'] = {
     kunai(huzounet)
   },
   toucheZ: (huzounet: Pick<P, 'P'>) => {
-    
+
   }
 }
 

@@ -25,6 +25,7 @@ interface Deplacement {
    etats: any
    etatEnCours: any
    blesse_opposant: boolean = false
+   interaction_objet: boolean = false
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -93,9 +94,14 @@ interface Deplacement {
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
      this.zoneInteraction.action = (_e) => {
 
+       console.log('INTERACTION possible')
        if (this.blesse_opposant) {
          this.blesse_opposant = false
          _e.blesse_ennemie()
+       }
+
+       if (this.interaction_objet) {
+         console.log("RECUPERATION ENNEMIE")
        }
 
      };
@@ -107,7 +113,7 @@ interface Deplacement {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { up, right, down, left, space, preparationA, a, directeA, z, e, saut, chargeSaut } = input
+     let { up, right, down, left, space, preparationA, a, directeA, z, e, r, saut, chargeSaut } = input
      let animationName = this.anims.getFrameName()
 
 
@@ -131,6 +137,11 @@ interface Deplacement {
        if (saut) {
          this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheEspace === "function" && Aptitudes()[this.sprite].toucheEspace(this)
          input['saut'] = false
+       }
+
+       if (r) {
+         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheR === "function" && Aptitudes()[this.sprite].toucheR(this)
+         input['r'] = false
        }
 
        if (left) {

@@ -306,7 +306,7 @@ export default class Jeu extends Phaser.Scene {
   rooms: any
   personnage?: string
   compte: number = 0
-  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean }
+  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean, r: boolean }
   attaqueDirecte: boolean = false
   directeA: boolean = false
 
@@ -359,7 +359,7 @@ export default class Jeu extends Phaser.Scene {
 		this.enemies= this.add.group()
 		this.playersRef = {}
 		this.ennemyRef = {}
-		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E")
+		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R")
 
     this.barreHautContainer.setScrollFactor(0)
 
@@ -544,13 +544,14 @@ export default class Jeu extends Phaser.Scene {
         } else if (map_boss2.x < moi.x && moi.x < map_boss2.x +10) {
         }
       }
-      const { up, right, left, down, space, A, Z, E } = this.keyboard
+      const { up, right, left, down, space, A, Z, E, R } = this.keyboard
 
       const inputs = {
         up: up.isDown ? true : false,
         down: down.isDown ? true : false,
         z: Z.isDown ? true : false,
-        e: E.isDown ? true : false
+        e: E.isDown ? true : false,
+        r: R.isDown ? true : false
       }
 
       //ATTAQUE
