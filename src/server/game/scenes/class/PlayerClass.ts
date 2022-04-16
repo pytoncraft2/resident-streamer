@@ -101,12 +101,13 @@ interface Deplacement {
 
        if (this.interaction_objet) {
          console.log("INTERACTION")
-         // this.interaction_objet = false
-         if (!_e.vivant) {
-         console.log("OKAY--------------------")
-         // console.log("RECUPERATION ENNEMIE")
-         // _e.proprietaire_objet(this.ClientID)
+         if (!_e.vivant && _e.active) {
+           console.log("OKAY--------------------")
+           // console.log("RECUPERATION ENNEMIE")
+           _e.proprietaire_objet(this.ClientID)
+           _e.active = false
          }
+         this.interaction_objet = false
        }
 
      };
