@@ -341,12 +341,12 @@ export default class Jeu extends Phaser.Scene {
 			self.room = room
 			self.session = room.sessionId
 
-      room.onMessage("apparition-boule", (donnes) => {
+      room.onMessage("spawn-boule", (donnes) => {
 
-        if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
+        // if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
           this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
           this.playersRef[donnes.id].groupeBoules.playAnimation(`huzounet_shuriken`);
-        }
+        // }
 
       })
 
