@@ -16,6 +16,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
   private etatEnCours: string
   private zoneInteraction: any
   blesse_ennemie: VoidFunction
+  proprietaire_objet: (id: string, id_ennemie: string) => void
 
   constructor(
     scene: Phaser.Scene,
@@ -78,6 +79,12 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
          console.log("TOUCHE GAUCHE !!!!!!!!!!!!!!!!!")
        }
      }
+
+     this.proprietaire_objet = (id_joueur, id_ennemie) => {
+       console.log("PROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPRIETAIRE")
+       this.scene.events.emit('boss_KO-proprietaire', {id_joueur, id_ennemie});
+       // this.setPosition(x, y)
+     }
   }
 
   preUpdate(time: number, delta: number) {
@@ -127,41 +134,9 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
 
   mourir() {
-    // this.body.stop()
-    // this.body.enable = false
-    // this.setScale(0.15956409567640198, 0.15956409567640198)
-    // this.setPosition(this.x, 779.2995484974318)
-    // this.body.checkCollision.none = false
-
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
-
     this.setPosition(this.x, 779.2995484974318)
-    // this.active = false
-
     this.scene.events.emit('boss_KO', "ENNEMY_01");
-
-    // this.setTint(this.etats.initial.couleur)
-    // this.setPosition(this.body.x, 717)
-    // this.animationMourir(() => {
-    // })
-  }
-
-  animationMourir(callback: CallableFunction) {
-    this.scene.tweens.timeline({
-      tweens: [{
-        targets: this,
-        setVelocityX: 300,
-        ease: 'Power1',
-        duration: 600
-      },
-      {
-        targets: this,
-        setVelocityX: 1400,
-        ease: 'Power1',
-        duration: 900,
-      }],
-      onComplete: () => (callback())
-    });
   }
 
   animationRecevoirDegats() {

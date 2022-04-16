@@ -104,6 +104,7 @@ this.physics.add.overlap(this.players, this.enemies);
     //   , undefined, this)
 
     this.events.on('boss_KO', this.boss_KO, this);
+    this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);
   }
 
   overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
@@ -126,6 +127,10 @@ this.physics.add.overlap(this.players, this.enemies);
     this.room.broadcast("boss-KO", `${id}`);
 
     console.log(`BOSS ${id} KO !`)
+  }
+
+  boss_KO_proprietaire(id_joueur: string, id_ennemie: string) {
+    this.room.broadcast("boss-KO-proprietaire", `${id_joueur}`, `${id_ennemie}`);
   }
 
   getPresence() {

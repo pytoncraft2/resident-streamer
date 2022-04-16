@@ -376,46 +376,20 @@ export default class Jeu extends Phaser.Scene {
 			self.session = room.sessionId
 
       room.onMessage("boss-KO", (id) => {
-        this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
-        const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
-        ellipse_5_1.scaleX = 0.9012990507210408;
-        ellipse_5_1.scaleY = 0.21224071572889464;
-        ellipse_5_1.isFilled = true;
-        ellipse_5_1.fillColor = 7473815;
-        ellipse_5_1.fillAlpha = 0.8;
-        ellipse_5_1.isStroked = true;
-        ellipse_5_1.lineWidth = 4;
-        ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
-        this.playersRef[id].barre.setAlpha(0)
-        this.tweens.add({
-          targets: this.playersRef[id],
-          y: "-=90",
-          alpha: 0.5,
-          ease: 'Sine.inOut',
-          yoyo: true,
-          duration: 1000,
-          repeat: -1
-        });
 
-        // this.playersRef[id].setPosition(this.playersRef[id].getBottomCenter().x, 10)
+        this.animationBossKO(id)
 
-
-        // this.setPosition(1000, 879)
-
-        var particles = this.add.particles('flares');
-
-        particles.createEmitter({
-          frame: 'blue',
-          x: this.playersRef[id].getBottomCenter().x,
-          y: 879,
-          speedY: { min: -200, max: -400 },
-          lifespan: 2000,
-          scale: { start: 0.4, end: 0 },
-          quantity: 2,
-          blendMode: 'ADD',
-        });
-        console.log("message received from server");
       });
+
+      room.onMessage("boss-KO-proprietaire", (id) => {
+
+        console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKOO")
+        console.log(id.id_joueur)
+        this.playersRef[id.id_ennemie].setPosition()
+        this.playersRef[id].x, this.playersRef[id].y
+
+      });
+
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
 				changes.presences.forEach((value: any, key: any) => {
@@ -526,6 +500,43 @@ export default class Jeu extends Phaser.Scene {
           }, this);
         }
       }, this);
+  }
+
+  animationBossKO(id: string) {
+    this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
+    const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
+    ellipse_5_1.scaleX = 0.9012990507210408;
+    ellipse_5_1.scaleY = 0.21224071572889464;
+    ellipse_5_1.isFilled = true;
+    ellipse_5_1.fillColor = 7473815;
+    ellipse_5_1.fillAlpha = 0.8;
+    ellipse_5_1.isStroked = true;
+    ellipse_5_1.lineWidth = 4;
+    ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
+    this.playersRef[id].barre.setAlpha(0)
+    this.tweens.add({
+      targets: this.playersRef[id],
+      y: "-=90",
+      alpha: 0.5,
+      ease: 'Sine.inOut',
+      yoyo: true,
+      duration: 1000,
+      repeat: -1
+    });
+
+    var particles = this.add.particles('flares');
+
+    particles.createEmitter({
+      frame: 'blue',
+      x: this.playersRef[id].getBottomCenter().x,
+      y: 879,
+      speedY: { min: -200, max: -400 },
+      lifespan: 2000,
+      scale: { start: 0.4, end: 0 },
+      quantity: 2,
+      blendMode: 'ADD',
+    });
+    console.log("message received from server");
   }
 
   update() {

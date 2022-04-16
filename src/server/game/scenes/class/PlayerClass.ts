@@ -94,7 +94,6 @@ interface Deplacement {
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
      this.zoneInteraction.action = (_e) => {
 
-       console.log('INTERACTION possible')
        if (this.blesse_opposant) {
          this.blesse_opposant = false
          _e.blesse_ennemie()
@@ -102,6 +101,8 @@ interface Deplacement {
 
        if (this.interaction_objet) {
          console.log("RECUPERATION ENNEMIE")
+         this.interaction_objet = false
+         _e.proprietaire_objet(this.ClientID, _e.ClientId)
        }
 
      };
