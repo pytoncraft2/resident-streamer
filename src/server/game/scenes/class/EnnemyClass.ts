@@ -51,8 +51,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    // this.displayWidth += 40
-
     this.etatEnCours = 'initial'
 
     //attaque - deplacement
@@ -62,17 +60,12 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.zoneInteraction.action = (vie_ennemie) => {
-       // console.log("ACTION VIE ENNEMIE")
-       // console.log(vie_ennemie)
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
      this.blesse_ennemie = () => {
        this.vie -= 1
-       // this.setTint(0xff0000)
-       // this.animationRecevoirDegats()
-
 
        if (this.body.touching.right) {
          console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
@@ -82,10 +75,7 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      }
 
      this.proprietaire_objet = (id_joueur, id_ennemie) => {
-       console.log("PROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPRIETAIRE")
-       // this.active = false
        this.scene.events.emit('boss_KO-proprietaire', {id_joueur: id_joueur, id_ennemie: this.EnnemyId});
-       // this.setPosition(x, y)
      }
   }
 
@@ -107,28 +97,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-
-  attaquePuisDeplacement(condition, couleur, directionFinal) {
-    if (condition) {
-      // this.setTint(couleur)
-      // this.blesse = true
-    }
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 200,
-      onComplete: () => (this.setTint(this.etats[this.etatEnCours]['couleur']), this.blesse = false),
-      repeat: 0,            // -1: infinity
-      yoyo: false,
-    })
-    this.play('attaque')
-    this.on('animationcomplete', () => {
-      // this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
-      this.anims.play('deplacement');
-    });
-    this.setFlipX(directionFinal)
-  }
-
   changementEtat() {
     this.etatEnCours = 'secondaire'
     // this.setTint(this.etats[this.etatEnCours]['couleur'])
@@ -140,17 +108,6 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.setPosition(this.x, 779.2995484974318)
     this.scene.events.emit('boss_KO', "ENNEMY_01");
-  }
-
-  animationRecevoirDegats() {
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 100,
-      // onComplete: () => this.setTint(this.etats[this.etatEnCours]['couleur']),
-      repeat: 0,
-      yoyo: false,
-    })
   }
 
 }

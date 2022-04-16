@@ -59,11 +59,7 @@ interface Deplacement {
        }
      }
 
-     // this.displayWidth += 40
-
      this.etatEnCours = 'initial'
-
-
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -100,10 +96,7 @@ interface Deplacement {
        }
 
        if (this.interaction_objet) {
-         console.log("INTERACTION")
          if (!_e.vivant && _e.active) {
-           console.log("OKAY--------------------")
-           // console.log("RECUPERATION ENNEMIE")
            _e.proprietaire_objet(this.ClientID)
            _e.active = false
          }
@@ -124,40 +117,15 @@ interface Deplacement {
 
 
      if (this.canMove) {
-         this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
-       if (a) {
-         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheA === "function" && Aptitudes()[this.sprite].toucheA(this)
-         input['a'] = false
-       }
+       this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-       if (z) {
-         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheZ === "function" && Aptitudes()[this.sprite].toucheZ(this)
-         input['z'] = false
-       }
-
-       if (e) {
-         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheE === "function" && Aptitudes()[this.sprite].toucheE(this)
-         input['e'] = false
-       }
-
-       if (saut) {
-         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheEspace === "function" && Aptitudes()[this.sprite].toucheEspace(this)
-         input['saut'] = false
-       }
-
-       if (r) {
-         this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheR === "function" && Aptitudes()[this.sprite].toucheR(this)
-         input['r'] = false
-       }
-
-       if (left) {
-         this.deplacement('left', left)
-       }
-
-       if (right) {
-         this.deplacement('right', right)
-       }
-
+       if (a) this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheA === "function" && Aptitudes()[this.sprite].toucheA(this); input['a'] = false
+       if (z) this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheZ === "function" && Aptitudes()[this.sprite].toucheZ(this); input['z'] = false
+       if (e) this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheE === "function" && Aptitudes()[this.sprite].toucheE(this); input['e'] = false
+       if (saut) this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheEspace === "function" && Aptitudes()[this.sprite].toucheEspace(this); input['saut'] = false
+       if (r) this.sprite in Aptitudes() && typeof Aptitudes()[this.sprite].toucheR === "function" && Aptitudes()[this.sprite].toucheR(this); input['r'] = false
+       if (left) this.deplacement('left', left)
+       if (right) this.deplacement('right', right)
      }
 
      (this.scene as any).room.state.presences.set(
@@ -165,7 +133,6 @@ interface Deplacement {
        new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, xa: this.zoneInteraction.x, ya: this.zoneInteraction.y})
      )
    }
-
 
    deplacement(direction: 'left'|'right', objet: Deplacement) {
      if (objet.stop) {
