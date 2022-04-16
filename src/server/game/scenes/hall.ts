@@ -14,6 +14,7 @@ export default class Hall extends Phaser.Scene {
   room: any
   swordHitbox!: Phaser.Types.Physics.Arcade.ImageWithDynamicBody
   colisionJoueurEnnemie?: any
+  groupeBoules: any
 
 
   constructor() {
@@ -43,6 +44,14 @@ export default class Hall extends Phaser.Scene {
     this.playersAttackZone = this.physics.add.group({
       allowGravity: false
     })
+
+
+    this.groupeBoules = this.physics.add.group({
+      allowGravity: false,
+      runChildUpdate: true,
+      collideWorldBounds: true
+    })
+
 
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)
