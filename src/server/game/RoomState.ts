@@ -33,6 +33,8 @@ export class Player extends Schema {
   @type("number") tint?: number
   @type("number") xa?: number
   @type("number") ya?: number
+  @type("number") bouleX?: number
+  @type("number") bouleY?: number
 }
 
 

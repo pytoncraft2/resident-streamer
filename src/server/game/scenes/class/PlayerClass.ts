@@ -130,9 +130,30 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
+     // if (Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst()) {
+       // const bouleX = Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren() ? Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst().x : undefined;
+       // const bouleY = Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren() ? Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst().y : undefined;
+
+       const bouleY = undefined;
+       const bouleX = undefined;
+
+       console.log(Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren());
+     // }
      (this.scene as any).room.state.presences.set(
        this.ClientID,
-       new Player({ x: this.x, y: this.y, sprite: this.sprite, anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, xa: this.zoneInteraction.x, ya: this.zoneInteraction.y})
+       new Player({
+         x: this.x,
+         y: this.y,
+         sprite: this.sprite,
+         anim: animationName,
+         flipX: this.flipX,
+         tint: this.tintBottomLeft,
+         vie: this.vie,
+         xa: this.zoneInteraction.x,
+         ya: this.zoneInteraction.y,
+         bouleX: bouleX,
+         bouleY: bouleY
+       })
      )
    }
 

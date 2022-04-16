@@ -10,7 +10,6 @@ export function shuriken(huzounet) {
 // // on crée la balle a coté du joueur
 // huzounet.scene.spawnBoule()
 const boule = huzounet.etatInitial.groupeBoules.create(huzounet.x, huzounet.y - 4, `atlas`, 'shuriken0');
-huzounet.scene.room.broadcast("deplacement-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
 // this.room.broadcast("boss-KO", `${id}`);
 
 
@@ -21,13 +20,16 @@ huzounet.scene.physics.world.enable(boule);
 
 bb.body.setVelocityX(1900)
 
+huzounet.scene.physics.add.collider(bb, huzounet.scene.enemies);
+
+
 huzounet.scene.tweens.add({
   targets: bb,
   velocityX: 400,
   duration: 5000,
-  onUpdate: () => {
-    huzounet.scene.room.broadcast("deplacement-boule", {x: boule.x, y: boule.y, id: huzounet.ClientID})
-  },
+  // onUpdate: () => {
+  //   huzounet.scene.room.broadcast("deplacement-boule", {x: boule.x, y: boule.y, id: huzounet.ClientID})
+  // },
   onComplete: () => (huzounet.setVelocityX(0)),
   repeat: 0,            // -1: infinity
   yoyo: false,
