@@ -309,6 +309,8 @@ export default class Jeu extends Phaser.Scene {
   prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean, r: boolean }
   attaqueDirecte: boolean = false
   directeA: boolean = false
+  emitter: any
+  animationBoosFigurine: any
 
 
 
@@ -386,26 +388,11 @@ export default class Jeu extends Phaser.Scene {
         console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKOO")
         console.log(id.id_joueur)
         console.log(id.id_ennemie)
-        this.playersRef[id.id_joueur].barre.addAt(this.playersRef[id.id_ennemie], 1)
-        // this.playersRef[id.id_joueur].barre.last.setTint(0xff0000)
-        console.log(this.playersRef[id.id_joueur].barre)
-        // this.playersRef[id.id_joueur].barre.last.setPosition(0, 0).setDepth(1000)
-        this.playersRef[id.id_joueur].barre.iterate((child: any) => {
-          if (child.ClientId == "ENNEMY_01") {
-
-            console.log("PL")
-            child.setPosition(0, 0)
-            child.setScale(2)
-            child.setDepth(1000)
-            // this.cameras.main.setZoom(0.1)
-            // child.x = -9000
-            // child.y = 0
-          }
-        });
-
-        console.log(this.playersRef[id.id_joueur].barre)
-        // console.log(this.playersRef[id.id_ennemie])
         // this.playersRef[id.id_joueur].barre.add(this.playersRef[id.id_ennemie])
+        this.finAnimationBossKO(id.id_ennemie)
+        this.animationBoosFigurine.stop()
+
+        this.emitter.startFollow(this.playersRef[id.id_joueur])
         // this.playersRef[id].x, this.playersRef[id].y
 
       });
@@ -487,7 +474,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
-            // this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
+            this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
 				}
 			}
@@ -534,19 +521,20 @@ export default class Jeu extends Phaser.Scene {
     ellipse_5_1.lineWidth = 4;
     ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
     this.playersRef[id].barre.setAlpha(0)
-    // this.tweens.add({
-    //   targets: this.playersRef[id],
-    //   y: "-=90",
-    //   alpha: 0.5,
-    //   ease: 'Sine.inOut',
-    //   yoyo: true,
-    //   duration: 1000,
-    //   repeat: -1
-    // });
+    this.playersRef[id].ellipse_5_1 = ellipse_5_1
+    this.animationBoosFigurine = this.tweens.add({
+      targets: this.playersRef[id],
+      y: "-=90",
+      alpha: 0.5,
+      ease: 'Sine.inOut',
+      yoyo: true,
+      duration: 1000,
+      repeat: -1
+    });
 
     var particles = this.add.particles('flares');
 
-    particles.createEmitter({
+    this.emitter = particles.createEmitter({
       frame: 'blue',
       x: this.playersRef[id].getBottomCenter().x,
       y: 879,
@@ -557,6 +545,11 @@ export default class Jeu extends Phaser.Scene {
       blendMode: 'ADD',
     });
     console.log("message received from server");
+  }
+
+  finAnimationBossKO(id: string) {
+    this.playersRef[id].setAlpha(0)
+    this.playersRef[id].ellipse_5_1.setAlpha(0)
   }
 
   update() {
