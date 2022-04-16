@@ -78,7 +78,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3",
-         groupeBoules: scene.add.group()
+         groupeBoules: scene.physics.add.group()
        },
        toucheA: (huzounet: Pick<P, 'P'>) => {
          kunai(huzounet)

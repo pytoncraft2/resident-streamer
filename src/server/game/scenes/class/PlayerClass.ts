@@ -134,6 +134,7 @@ interface Deplacement {
        // const bouleX = Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren() ? Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst().x : undefined;
        // const bouleY = Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren() ? Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getFirst().y : undefined;
 
+       console.log(Aptitudes(this.scene).huzounet.etatInitial.groupeBoules.getChildren())
        const bouleY = undefined;
        const bouleX = undefined;
 

@@ -19,6 +19,7 @@ const bb = huzounet.scene.physics.add.existing(boule)
 huzounet.scene.physics.world.enable(boule);
 
 bb.body.setVelocityX(1900)
+console.log(huzounet.etatInitial.groupeBoules)
 
 huzounet.scene.physics.add.collider(bb, huzounet.scene.enemies);
 
