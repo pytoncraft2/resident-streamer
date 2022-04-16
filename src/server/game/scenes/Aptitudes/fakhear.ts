@@ -23,17 +23,6 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   })
 }
 
-export function saut(fakhear: Phaser.Physics.Arcade.Sprite|any) {
-  if (fakhear.compteurSaut < 1 || fakhear.body.touching.down) {
-    fakhear.play('jump')
-    fakhear.setVelocityY(-1400);
-    fakhear.compteurSaut++
-    if (fakhear.body.touching.down) {
-      fakhear.compteurSaut = 0
-    }
-  }
-}
-
 export function interaction(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.interaction_objet = true
   fakhear.scene.tweens.addCounter({

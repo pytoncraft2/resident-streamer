@@ -766,8 +766,59 @@
                 "x": 0.5,
                 "y": 0.5
             }
+        },
+        {
+          "filename": "shuriken3",
+          "frame": {
+            "w": 96,
+            "h": 57,
+            "x": 185,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken2",
+          "frame": {
+            "w": 91,
+            "h": 57,
+            "x": 281,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken1",
+          "frame": {
+            "w": 93,
+            "h": 56,
+            "x": 372,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken0",
+          "frame": {
+            "w": 86,
+            "h": 55,
+            "x": 465,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
         }
-
     ],
     "meta": {
         "description": "Atlas generado con Atlas Packer Gamma V2",

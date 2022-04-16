@@ -73,6 +73,15 @@ export function AnimationJoueur(anim: any){
     repeat: 0
   })
 
+  anim.create({
+    key: "huzounet_shuriken",
+    frames: anim.generateFrameNames('atlas', { prefix: 'shuriken', start: 0, end: 3 }),
+    frameRate: 23,
+    repeat: -1
+  })
+
+
+
 }
 
 export const setAnimation = (sprite: Phaser.GameObjects.Sprite, animation: string = 'idle') => {

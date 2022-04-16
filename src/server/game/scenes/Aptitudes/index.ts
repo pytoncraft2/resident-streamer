@@ -1,10 +1,26 @@
-import {cross, kick, dash, saut, interaction} from './fakhear'
+import {cross, kick, dash, interaction} from './fakhear'
 import {pique, suivre} from './boss_1'
-import {kunai} from './huzounet'
+import {kunai, shuriken} from './huzounet'
 
 
 interface P {
   P: Phaser.Physics.Arcade.Sprite
+}
+
+
+/**
+PARAMETRES GENERALE
+**/
+
+function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
+  if (personnage.compteurSaut < 1 || personnage.body.touching.down) {
+    personnage.play('jump')
+    personnage.setVelocityY(-1400);
+    personnage.compteurSaut++
+    if (personnage.body.touching.down) {
+      personnage.compteurSaut = 0
+    }
+  }
 }
 /**
  * -- LISTE DES PARAMETRES DE L'ACTION DES TOUCHES DES JOUEURS --
@@ -69,7 +85,10 @@ parametres['huzounet'] = {
     kunai(huzounet)
   },
   toucheZ: (huzounet: Pick<P, 'P'>) => {
-
+    shuriken(huzounet)
+  },
+  toucheEspace: (huzounet: Pick<P, 'P'>) => {
+    saut(huzounet)
   }
 }
 
