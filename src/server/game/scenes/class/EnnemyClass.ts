@@ -82,7 +82,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
 
      this.proprietaire_objet = (id_joueur, id_ennemie) => {
        console.log("PROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPRIETAIRE")
-       this.scene.events.emit('boss_KO-proprietaire', {id_joueur, id_ennemie});
+       // this.active = false
+       this.scene.events.emit('boss_KO-proprietaire', {id_joueur: id_joueur, id_ennemie: this.EnnemyId});
        // this.setPosition(x, y)
      }
   }

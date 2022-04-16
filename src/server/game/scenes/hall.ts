@@ -129,8 +129,8 @@ this.physics.add.overlap(this.players, this.enemies);
     console.log(`BOSS ${id} KO !`)
   }
 
-  boss_KO_proprietaire(id_joueur: string, id_ennemie: string) {
-    this.room.broadcast("boss-KO-proprietaire", `${id_joueur}`, `${id_ennemie}`);
+  boss_KO_proprietaire(id) {
+    this.room.broadcast("boss-KO-proprietaire", id);
   }
 
   getPresence() {

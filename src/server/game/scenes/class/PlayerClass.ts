@@ -102,7 +102,7 @@ interface Deplacement {
        if (this.interaction_objet) {
          console.log("RECUPERATION ENNEMIE")
          this.interaction_objet = false
-         _e.proprietaire_objet(this.ClientID, _e.ClientId)
+         _e.proprietaire_objet(this.ClientID)
        }
 
      };
