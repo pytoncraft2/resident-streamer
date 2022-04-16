@@ -68,7 +68,7 @@ export function AnimationJoueur(anim: any){
 
   anim.create({
     key: "cross",
-    frames: anim.generateFrameNames('atlas', { prefix: 'cross', start: 0, end: 4 }),
+    frames: anim.generateFrameNames('atlas', { prefix: 'cross', start: 0, end: 5 }),
     frameRate: 23,
     repeat: 0
   })

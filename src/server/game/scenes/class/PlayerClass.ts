@@ -100,7 +100,7 @@ interface Deplacement {
        }
 
        if (this.interaction_objet) {
-         // this.interaction_objet = false
+         this.interaction_objet = false
          console.log("INTERACTION")
          // if (!_e.vivant) {
          // console.log("RECUPERATION ENNEMIE")
@@ -112,17 +112,6 @@ interface Deplacement {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
-     this.on("overlapstart", function() {
-       // this.body.debugBodyColor = 0xff3300;
-       console.log("overlapstart");
-       // console.time("overlap");
-     });
-     this.on("overlapend", function() {
-       // this.body.debugBodyColor = 0x00ff33;
-       console.log("overlapend");
-       // console.timeEnd("overlap");
-     });
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)
@@ -166,17 +155,6 @@ interface Deplacement {
        if (right) {
          this.deplacement('right', right)
        }
-
-
-
-       var touching = !this.body.touching.none;
-       var wasTouching = !this.body.wasTouching.none;
-
-       // If you want 'touching or embedded' then use:
-       // var touching = !block.body.touching.none || block.body.embedded;
-
-       if (touching && !wasTouching) this.emit("overlapstart");
-       else if (!touching && wasTouching) this.emit("overlapend");
 
      }
 
