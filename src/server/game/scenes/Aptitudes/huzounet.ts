@@ -2,8 +2,8 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log("CHAAARGE")
-  console.log(input)
+  // console.log("CHAAARGE")
+  // console.log(input)
   // console.log(input.preparationA)
   // console.log(input)
   // console.log("SHURIKEN ----------------")
@@ -36,12 +36,14 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   // }
 
       huzounet.scene.tweens.addCounter({
-      duration: 3000,
-      // onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
-      onUpdate: () => (),
-      onComplete: () => (),
-      repeat: 0,
-      yoyo: false,
+        from: 0,
+        to: 10,
+        duration: 3000,
+        // onStart: () => boulePhysique.body && boulePhysique.body.setVelocityX(huzounet.flipX ? 440 : -440),
+        onUpdate: () => (console.log("UPDATE")),
+        onComplete: () => (console.log("FIN")),
+        repeat: 0,
+        yoyo: false,
     })
 
 }
