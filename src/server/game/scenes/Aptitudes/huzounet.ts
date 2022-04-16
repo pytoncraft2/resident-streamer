@@ -2,8 +2,9 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log(input)
-  console.log("SHURIKEN ----------------")
+  console.log(input.preparationA)
+  // console.log(input)
+  // console.log("SHURIKEN ----------------")
   // if (huzounet.scene.groupeBoules.getLength() == 0) {
   //   setAnimation(huzounet, 'attack')
   //   huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.x, y: huzounet.y, id: huzounet.ClientID})
