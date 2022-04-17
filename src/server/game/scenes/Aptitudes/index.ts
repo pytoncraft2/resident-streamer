@@ -64,29 +64,12 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
          paused: true
        }),
-       const myObj = {
-         myMethod(params) {
-           // ...do something here
-         },
-         myOtherMethod(params) {
-           // ...do something here
-         },
-         nestedObj: {
-           myNestedMethod(params) {
-             // ...do something here
-           }
-         }
-       };
        boulePhysique: {
-         groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
-         creation: () => {
-           personnage.groupeBoules.create(personnage.x - 100, personnage.y - 170, `atlas`, 'shuriken0')
+         creation() {
+           groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true })
          },
-         retourPositionPrincipale: () => {
-           // this.boulePhysique.setPosition(this.flipX ? this.x + 100 : this.x - 100, this.y - 170, this.flipX ? this.y - 170 : this.y + 170)
-           // this.boulePhysique.setScale(0)
-           // this.boulePhysique.setAlpha(0.1)
-           // this.boulePhysique.setVelocity(0)
+         retourPositionPrincipale(param) {
+           console.log('retour position')
            personnage.colisionShurikenEnnemie.active = false
          }
        }
