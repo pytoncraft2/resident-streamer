@@ -138,6 +138,8 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
+     console.log((this.scene as any).groupeBoules.getLength());
+
      (this.scene as any).room.state.presences.set(
        this.ClientID,
        new Player({

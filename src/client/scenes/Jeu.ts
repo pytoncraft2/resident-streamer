@@ -410,19 +410,17 @@ export default class Jeu extends Phaser.Scene {
 		// create instance of all presence
 
 
-    console.log(list.boules)
-    // list.boulesListe.map((item: string, idx: number) => {
-    //   if (this.playersRef[item].groupeBoules === undefined) {
-    //     this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2);
-    //     // this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
-    //   } else {
-    //     console.log(this.playersRef[item].groupeBoules.getLength())
-    //     console.log()
-    //     // this.playersRef[item].groupeBoules.getChildren().forEach((boule: any) => {
-    //     //   boule.setPosition(list.boules[item].x, list.boules[item].y);
-    //     // });
-    //   }
-    // })
+    list.boulesListe.map((item: string, idx: number) => {
+      // if (this.playersRef[item].groupeBoules === undefined) {
+        this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2);
+        // this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
+      // } else {
+        console.log(this.playersRef[item].groupeBoules.getLength())
+        // this.playersRef[item].groupeBoules.getChildren().forEach((boule: any) => {
+        //   boule.setPosition(list.boules[item].x, list.boules[item].y);
+        // });
+      // }
+    })
 
 		list.presenceList.map((item: string, idx: number) => {
 			if (this.playersRef[item] === undefined) {
