@@ -28,6 +28,7 @@ interface Deplacement {
    interaction_objet: boolean = false
    groupeBoules: any
    parametresDeBase: any
+   boulePhysique: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -48,14 +49,19 @@ interface Deplacement {
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
+     if (this.sprite = "huzounet") {
+       this.boulePhysique = (this.scene as any).groupeBoules.create(this.x - 100, this.y - 170, `atlas`, 'shuriken0')
+       this.boulePhysique.retourPositionPrincipale = () => {
+         // this.boulePhysique.setPosition(this.flipX ? this.x + 100 : this.x - 100, this.y - 170, this.flipX ? this.y - 170 : this.y + 170)
+         // this.boulePhysique.setScale(0)
+         // this.boulePhysique.setAlpha(0.1)
+         // this.boulePhysique.setVelocity(0)
+         (this.scene as any).colisionShurikenEnnemie.active = false
+       }
+     }
+
 
      this.parametresDeBase = EtatsInitialStatique(this.scene, this)[this.sprite]
-     // const moi = this
-     // for EtatsInitialStatique(this.scene, this)[this.sprite]
-     // for (let i = 0; i < array.length; i++) {
-         // array[i];
-     // }
-     console.log(this.parametresDeBase)
 
      this.etats = {
        'initial': {
