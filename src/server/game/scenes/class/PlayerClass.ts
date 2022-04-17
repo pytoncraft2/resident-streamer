@@ -50,14 +50,7 @@ interface Deplacement {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
      if (this.sprite = "huzounet") {
-       this.boulePhysique = (this.scene as any).groupeBoules.create(this.x - 100, this.y - 170, `atlas`, 'shuriken0')
-       this.boulePhysique.retourPositionPrincipale = () => {
-         // this.boulePhysique.setPosition(this.flipX ? this.x + 100 : this.x - 100, this.y - 170, this.flipX ? this.y - 170 : this.y + 170)
-         // this.boulePhysique.setScale(0)
-         // this.boulePhysique.setAlpha(0.1)
-         // this.boulePhysique.setVelocity(0)
-         (this.scene as any).colisionShurikenEnnemie.active = false
-       }
+
      }
 
 
