@@ -72,11 +72,11 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
     if (input.a.charge) {
     if (huzounet.scene.groupeBoules.getLength() == 0) {
-      huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.x - 100, y: huzounet.y - 170, id: huzounet.ClientID})
+      huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100 , y:  huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170, id: huzounet.ClientID})
       huzounet.boulePhysique = huzounet.scene.groupeBoules.create(huzounet.x - 100, huzounet.y - 170, `atlas`, 'shuriken0')
     } else {
       huzounet.boulePhysique.setVelocity(0)
-      huzounet.boulePhysique.setPosition(huzounet.x - 100, huzounet.y - 170)
+      huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170)
       huzounet.boulePhysique.setScale(1)
     }
       setAnimation(huzounet, 'huzounet_preparation_attaque')
