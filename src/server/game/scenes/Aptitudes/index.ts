@@ -30,20 +30,20 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  export const EtatsInitialStatique = (scene?: Phaser.Scene, personnage?: any) => {
    return {
      'fakhear': {
-         vie: 5,
-         displayWidth: 104,
-         displayHeight: 302,
-         masse: 30,
-         puissanceDeBase: 10,
-         attaqueFrame: "positiona3"
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       puissanceDeBase: 10,
+       attaqueFrame: "positiona3"
      },
      'boss_1': {
-         vie: 5,
-         displayWidth: 104,
-         displayHeight: 302,
-         masse: 30,
-         puissanceDeBase: 10,
-         attaqueFrame: "positiona3"
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       puissanceDeBase: 10,
+       attaqueFrame: "positiona3"
      },
      'huzounet': {
        vie: 5,
@@ -65,8 +65,9 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          paused: true
        }),
        boulePhysique: {
-         creation() {
-           groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true })
+         groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
+         creation(p) {
+             this.groupeBoules.create(p.x - 100, p.y - 170, `atlas`, 'shuriken0')
          },
          retourPositionPrincipale(param) {
            console.log('retour position')
@@ -75,7 +76,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        }
      }
    }
-}
+ }
 
 
 export const Aptitudes = {
