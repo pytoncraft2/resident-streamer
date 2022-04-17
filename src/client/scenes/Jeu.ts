@@ -410,6 +410,7 @@ export default class Jeu extends Phaser.Scene {
         console.log("CREATION")
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
+        this.boulesRef[item].setScale(list.boules[item].scale);
       }
         // this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
       // } else {
