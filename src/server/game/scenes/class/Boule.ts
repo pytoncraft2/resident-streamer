@@ -1,4 +1,6 @@
-export default class PlayerClass extends Phaser.Physics.Arcade.Sprite {
+import { Boule } from "../../RoomState"
+
+export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   vel: number = 400
   constructor(
     scene: Phaser.Scene,

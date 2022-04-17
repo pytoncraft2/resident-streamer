@@ -18,6 +18,11 @@ export class Ennemy extends Schema {
   @type("number") vie?: number
 }
 
+export class Boule extends Schema {
+  @type("number") x: number;
+  @type("number") y: number;
+}
+
 export class ZoneAttaque extends Schema {
     @type("number") x: number = 1;
     @type("number") y: number = 2;
