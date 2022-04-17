@@ -69,9 +69,14 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          creation(p) {
              return this.groupeBoules.create(p.x - 100, p.y - 170, `atlas`, 'shuriken0')
          },
-         retourPositionPrincipale(param) {
-           console.log('retour position')
-           personnage.colisionShurikenEnnemie.active = false
+         retourPositionPrincipale(boule, p) {
+           // console.log('retour position')
+             // this.groupeBoules.getChildren()[0].setPosition(p.flipX ? p.x + 100 : p.x - 100, p.y - 170, p.flipX ? p.y - 170 : p.y + 170)
+             this.groupeBoules.getChildren()[0].setPosition(200, 200)
+             this.groupeBoules.getChildren()[0].setScale(1)
+             // this.groupeBoules.getChildren()[0].setAlpha(0.1)
+             this.groupeBoules.getChildren()[0].setVelocity(0)
+             // personnage.colisionShurikenEnnemie.active = false
          }
        }
      }
