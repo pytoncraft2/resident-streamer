@@ -103,8 +103,12 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
       huzounet.boulePhysique.setData({puissance: puissance})
       huzounet.boulePhysique.setDragX(2000)
+      huzounet.scene.tweens.addCounter({
+        duration: 1000,
+        onComplete: () => (huzounet.boulePhysique.retourPositionPrincipale()),
+      })
       input.a.envoie = false
-  }
+    }
 
 
 }

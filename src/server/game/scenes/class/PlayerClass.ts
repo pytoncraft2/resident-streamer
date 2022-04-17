@@ -171,20 +171,4 @@ interface Deplacement {
        this.setDragX(0)
      }
    }
-
-   // charge(direction: 'left'|'right', objet: Deplacement) {
-   //   if (objet.charge) {
-   //     setAnimation(this, 'idle_walk')
-   //     objet.stop = false
-   //     objet.marche = false
-   //     this.setVelocityX(0);
-   //   }
-   //   if (objet.envoie) {
-   //     setAnimation(this, 'walk')
-   //     this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
-   //     this.setFlipX(direction == 'right' ? false : true);
-   //     this.setDragX(0)
-   //   }
-   // }
-
  }
