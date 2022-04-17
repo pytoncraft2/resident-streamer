@@ -67,7 +67,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        boulePhysique: {
          groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
          creation(p) {
-             this.groupeBoules.create(p.x - 100, p.y - 170, `atlas`, 'shuriken0')
+             return this.groupeBoules.create(p.x - 100, p.y - 170, `atlas`, 'shuriken0')
          },
          retourPositionPrincipale(param) {
            console.log('retour position')
