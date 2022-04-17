@@ -377,12 +377,17 @@ export default class Jeu extends Phaser.Scene {
 
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
+				let boules : any = {}
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
 				})
+        changes.boules.forEach((value: any, key: any) => {
+          boules[key] = value
+        })
         // changes.zoneAttaque.forEach((value: any, key: any) => {
           // console.log(value)
         // })
+        console.log(boules)
 
 				self.patchPlayer({
 					presences: presences,
