@@ -403,26 +403,16 @@ export default class Jeu extends Phaser.Scene {
 
 
     list.boulesListe.map((item: string, idx: number) => {
-      // if (this.playersRef[item].groupeBoules === undefined) {
       if (this.boulesRef[item] === undefined) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
+        b.play(`huzounet_shuriken`);
+
         this.boulesRef[item] = b
         console.log("CREATION")
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
       }
-        // this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
-      // } else {
-        // console.log(this.playersRef[item].groupeBoules.getLength())
-        // console.log(list.boulesListe[idx])
-        // this.playersRef[item].groupeBoules.getChildren().forEach((boule: any, i: any) => {
-        //   console.log("___________")
-        //   console.log(boule.x)
-        //   console.log(boule.x)
-        //   // boule.setPosition(list.boules[item].x, list.boules[item].y);
-        // });
-      // }
     })
 
 		list.presenceList.map((item: string, idx: number) => {

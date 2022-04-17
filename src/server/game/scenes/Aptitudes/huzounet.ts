@@ -14,6 +14,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   }
 
   if (input.a.envoie) {
+    huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
     input.a.envoie = false
   }
 }
