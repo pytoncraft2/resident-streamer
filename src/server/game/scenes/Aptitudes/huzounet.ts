@@ -5,6 +5,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   // console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCHARFEG ?")
   // console.log(huzounet.animationEnvoie && huzounet.animationCharge.isPlaying())
   if (input.a.charge) {
+  console.log(huzounet.parametresDeBase)
     if (huzounet.scene.groupeBoules.getLength() == 0) {
       huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100 , y:  huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170, id: huzounet.ClientID})
       huzounet.boulePhysique = huzounet.scene.groupeBoules.create(huzounet.x - 100, huzounet.y - 170, `atlas`, 'shuriken0')

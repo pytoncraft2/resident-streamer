@@ -27,7 +27,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  * Aptitude générale disponible pour tout le monde
  */
 
- export const EtatsInitialStatique = (scene?: Phaser.Scene) => {
+ export const EtatsInitialStatique = (scene?: Phaser.Scene, personnage?: any) => {
    return {
      'fakhear': {
          vie: 5,
@@ -46,13 +46,20 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          attaqueFrame: "positiona3"
      },
      'huzounet': {
-         vie: 5,
-         displayWidth: 104,
-         displayHeight: 302,
-         masse: 30,
-         puissanceDeBase: 10,
-         attaqueFrame: "positiona3",
-         groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true })
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       puissanceDeBase: 10,
+       attaqueFrame: "positiona3",
+       groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
+       animationCharge: personnage.scene.tweens.add({
+         targets: personnage.boulePhysique,
+         scale: 2,
+         onUpdate: () => personnage.boulePhysique.setPosition(personnage.flipX ? personnage.x + 100 : personnage.x - 100, personnage.y - 170, personnage.flipX ? personnage.y - 170 : personnage.y + 170),
+         duration: 3000,
+         paused: true
+       })
      }
    }
 }
