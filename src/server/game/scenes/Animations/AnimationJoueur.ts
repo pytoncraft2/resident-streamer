@@ -18,6 +18,20 @@ export function AnimationJoueur(anim: any){
     repeat: 0
   });
   anim.create({
+    key: 'huzounet_kunai_attaque',
+    frames: anim.generateFrameNames('atlas', { prefix: 'positiona', start: 0, end: 4 }),
+    frameRate: 2,
+    repeat: 0
+  });
+
+  anim.create({
+    key: 'huzounet_kunai',
+    frames: anim.generateFrameNames('atlas', { prefix: 'kunai', start: 0, end: 2 }),
+    frameRate: 12,
+    repeat: 0
+  });
+
+  anim.create({
     key: "goback",
     frames: anim.generateFrameNames('atlas', { prefix: 'dos', start: 0, end: 6 }),
     frameRate: 7,
