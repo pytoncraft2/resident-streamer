@@ -28,7 +28,6 @@ interface Deplacement {
    interaction_objet: boolean = false
    groupeBoules: any
    parametresDeBase: any
-   boulePhysique: any
    constructor(
      scene: Phaser.Scene,
      x: number,
