@@ -139,11 +139,10 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-       const bouleY = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && (this.scene as any).groupeBoules.getChildren()[0].y ;
-       const bouleX = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && (this.scene as any).groupeBoules.getChildren()[0].x ;
-       const bouleScale = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && (this.scene as any).groupeBoules.getChildren()[0].scale;
-       const bouleAlpha = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && (this.scene as any).groupeBoules.getChildren()[0].alpha;
-       console.log(this.parametresDeBase.boulePhysique.groupeBoules.getLength());
+       const bouleY = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].y ;
+       const bouleX = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].x ;
+       const bouleScale = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].scale;
+       const bouleAlpha = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].alpha;
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
