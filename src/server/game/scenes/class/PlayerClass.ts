@@ -139,11 +139,6 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-       const bouleY = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].y ;
-       const bouleX = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].x ;
-       const bouleScale = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].scale;
-       const bouleAlpha = this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0] && this.parametresDeBase.boulePhysique.groupeBoules.getChildren()[0].alpha;
-
      (this.scene as any).room.state.presences.set(
        this.ClientID,
        new Player({
@@ -155,11 +150,7 @@ interface Deplacement {
          tint: this.tintBottomLeft,
          vie: this.vie,
          xa: this.zoneInteraction.x,
-         ya: this.zoneInteraction.y,
-         bouleX: bouleX,
-         bouleY: bouleY,
-         bouleScale: bouleScale,
-         bouleAlpha: bouleAlpha
+         ya: this.zoneInteraction.y
        })
      )
    }
