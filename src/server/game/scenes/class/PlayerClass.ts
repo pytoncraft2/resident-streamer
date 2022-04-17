@@ -119,9 +119,6 @@ interface Deplacement {
      let { up, right, down, left, space, preparationA, a, directeA, z, e, r, saut, chargeSaut } = input
      let animationName = this.anims.getFrameName()
 
-
-     console.log("LLLLLLLLLLLLLLLLLLLLLLARGEUR")
-     console.log((this.scene as any).groupeBoules.getLength())
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 

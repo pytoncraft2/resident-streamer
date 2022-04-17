@@ -74,8 +74,6 @@ this.physics.add.overlap(this.players, this.enemies);
     const platforme = this.add.rectangle(955, 1000, 128, 128);
     platforme.scaleX = 43.50112225681497;
     platforme.scaleY = 1.449878006775927;
-    console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
-    console.log(platforme.getBottomLeft().y)
     this.physics.world.setBounds(platforme.getBottomLeft().x, 0, platforme.displayWidth, 1000);
     this.physics.add.existing(platforme, true);
     this.physics.add.collider(platforme, this.players);
@@ -84,8 +82,10 @@ this.physics.add.overlap(this.players, this.enemies);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoules, this.enemies,
       function (_boule, _ennemie) {
+        console.log("DDDDDDDDDDDDDDATA")
+        // console.log(_boule.data.list.puissance)
         // _boule.destroy()
-      _ennemie.blesse_ennemie()
+      _ennemie.blesse_ennemie(_boule.data.list.puissance)
     });
     this.events.on('boss_KO', this.boss_KO, this);
     this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);
