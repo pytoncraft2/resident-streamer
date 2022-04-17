@@ -1,7 +1,7 @@
 import { Player, ZoneAttaque } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
-import { Aptitudes } from "../Aptitudes/index"
+import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/index"
 
 interface Deplacement {
   marche: boolean,
@@ -27,6 +27,7 @@ interface Deplacement {
    blesse_opposant: boolean = false
    interaction_objet: boolean = false
    groupeBoules: any
+   parametresDeBase: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -47,6 +48,8 @@ interface Deplacement {
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
+
+     this.parametresDeBase = EtatsInitialStatique(this.scene)[this.sprite]
 
      this.etats = {
        'initial': {

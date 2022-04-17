@@ -27,37 +27,32 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  * Aptitude générale disponible pour tout le monde
  */
 
- export const EtatsInitialStatic = (scene: Phaser.Scene) => {
+ export const EtatsInitialStatique = (scene?: Phaser.Scene) => {
    return {
      'fakhear': {
-       etatInitial: {
          vie: 5,
          displayWidth: 104,
          displayHeight: 302,
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3"
-       }
      },
      'boss_1': {
-       etatInitial: {
          vie: 5,
          displayWidth: 104,
          displayHeight: 302,
          masse: 30,
          puissanceDeBase: 10,
          attaqueFrame: "positiona3"
-       }
      },
      'huzounet': {
-       etatInitial: {
          vie: 5,
          displayWidth: 104,
          displayHeight: 302,
          masse: 30,
          puissanceDeBase: 10,
-         attaqueFrame: "positiona3"
-       }
+         attaqueFrame: "positiona3",
+         groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true })
      }
    }
 }
