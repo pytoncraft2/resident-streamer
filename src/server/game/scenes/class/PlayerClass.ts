@@ -140,7 +140,7 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-     console.log((this.scene as any).groupeBoules.getLength());
+     // console.log((this.scene as any).groupeBoules.getLength());
      // (this.scene as any).groupeBoules.getChildren().forEach((boule, idx) => {
      //   (this.scene as any).room.state.boules.set(
      //     idx,
