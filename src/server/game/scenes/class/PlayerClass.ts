@@ -50,10 +50,6 @@ interface Deplacement {
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
-     if (this.sprite = "huzounet") {
-
-     }
-
 
      this.parametresDeBase = EtatsInitialStatique(this.scene, this)[this.sprite]
 
@@ -117,6 +113,8 @@ interface Deplacement {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+     console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSPRITE")
+     console.log(this.sprite)
    }
    preUpdate(time, delta) {
      // console.log(this.anims.msPerFrame += 300)

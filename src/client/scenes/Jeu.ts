@@ -339,26 +339,13 @@ export default class Jeu extends Phaser.Scene {
 		console.log("HALL 01 CONNECTÉ");
 		const salon = this.salon;
 		const sprite = this.personnage;
+    console.log(sprite)
 
 		await client
 		.joinOrCreate("game_instance", { salon: salon, sprite: sprite })
 		.then((room) => {
 			self.room = room
 			self.session = room.sessionId
-
-      room.onMessage("apparition-boule", (donnes) => {
-
-        console.log('APPARITION BOULE')
-        // if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
-        // this.playersRef[donnes.id].groupeBoules.clear()
-        // console.log(this.playersRef[donnes.id].groupeBoules.getLength())
-        this.playersRef[donnes.id].groupeBoules.remove(this.playersRef[donnes.id].groupeBoules.getChildren()[0], true);
-
-          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y, `huzounet_atlas`, 'shuriken0').setDepth(2);
-          this.playersRef[donnes.id].groupeBoules.playAnimation(`huzounet_shuriken`);
-        // }
-
-      })
 
       room.onMessage("boss-KO", (id) => {
 
