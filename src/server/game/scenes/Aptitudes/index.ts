@@ -66,15 +66,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
              this.groupeBoules.getChildren()[0].setVelocity(0)
              // personnage.colisionShurikenEnnemie.active = false
          },
-         animationCharge(p) {
-           return p.scene.tweens.add({
-             targets: p.boulePhysique,
-             scale: 2,
-             onUpdate: () => p.boulePhysique.setPosition(p.flipX ? p.x + 100 : p.x - 100, p.y - 170, p.flipX ? p.y - 170 : p.y + 170),
-             duration: 3000,
-             paused: true
-           })
-         },
+         animationCharge: (p) => p.scene.tweens.add({ targets: p.boulePhysique, scale: 2, onUpdate: () => p.boulePhysique.setPosition(p.flipX ? p.x + 100 : p.x - 100, p.y - 170, p.flipX ? p.y - 170 : p.y + 170), duration: 3000, paused: true }),
 
          animationEnvoie(p) {
            return p.scene.tweens.addCounter({

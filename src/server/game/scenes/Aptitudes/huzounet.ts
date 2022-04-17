@@ -4,6 +4,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
   // console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCHARFEG ?")
   // console.log(huzounet.animationEnvoie && huzounet.animationCharge.isPlaying())
+  console.log(huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet).isPlaying())
   if (input.a.charge) {
   // if (!huzounet.parametresDeBase.animationCharge.isPlaying()) {
   //   huzounet.parametresDeBase.animationCharge.play()
@@ -44,7 +45,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet).stop()
     huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
     huzounet.boulePhysique.setData({puissance: puissance})
-    // console.log(puissance)
+    console.log(puissance)
     huzounet.parametresDeBase.boulePhysique.animationEnvoie(huzounet).play()
     input.a.envoie = false
   }
