@@ -256,6 +256,7 @@ export default class Jeu extends Phaser.Scene {
   currentRoom: string = 'hall'
   listCurrentRoom: any
   ennemyRef: any
+  boulesRef: any
   salon?: string
   keyboard!: any
   room?: Colyseus.Room<unknown>
@@ -325,6 +326,7 @@ export default class Jeu extends Phaser.Scene {
 		this.enemies= this.add.group()
 		this.playersRef = {}
 		this.ennemyRef = {}
+		this.boulesRef = {}
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R")
 
     this.barreHautContainer.setScrollFactor(0)
@@ -412,10 +414,14 @@ export default class Jeu extends Phaser.Scene {
 
     list.boulesListe.map((item: string, idx: number) => {
       // if (this.playersRef[item].groupeBoules === undefined) {
-        this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2);
+      if (this.boulesRef[item] === undefined) {
+        this.boulesRef[item] = this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
+        console.log("CREATION")
+      }
         // this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
       // } else {
-        console.log(this.playersRef[item].groupeBoules.getLength())
+        // console.log(this.playersRef[item].groupeBoules.getLength())
+        // console.log(list.boulesListe[idx])
         // this.playersRef[item].groupeBoules.getChildren().forEach((boule: any) => {
         //   boule.setPosition(list.boules[item].x, list.boules[item].y);
         // });
@@ -475,6 +481,13 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
+
+            if (this.playersRef[item].groupeBoules.getChildren()[0]) {
+              this.playersRef[item].groupeBoules.getChildren()[0].setPosition(list.presences[item].bouleX, list.presences[item].bouleY);
+              this.playersRef[item].groupeBoules.getChildren()[0].setScale(list.presences[item].bouleScale);
+              this.playersRef[item].groupeBoules.getChildren()[0].setAlpha(list.presences[item].bouleAlpha);
+            }
+
 				}
 			}
 		})
