@@ -15,13 +15,13 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     } else {
       huzounet.boulePhysique.setVelocity(0)
       huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170)
-      huzounet.boulePhysique.setScale(1)
+      huzounet.boulePhysique.setScale(0.5)
     }
     setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boulePhysique,
-      scale: '+=2',
+      scale: 2,
       onUpdate: () => huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170),
       duration: 3000
     });
@@ -35,7 +35,6 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     huzounet.animationCharge.remove()
     huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
     huzounet.boulePhysique.setData({puissance: puissance})
-    huzounet.boulePhysique.setDragX(2000)
     huzounet.scene.tweens.addCounter({
       duration: 1000,
       onComplete: () => (huzounet.boulePhysique.retourPositionPrincipale()),
