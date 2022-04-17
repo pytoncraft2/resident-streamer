@@ -31,7 +31,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     // huzounet.parametresDeBase.boulePhysique.animationCharge.play()
-    console.log(huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet))
+    huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet).play()
 
     input.a.charge = false
   }
@@ -39,13 +39,13 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     huzounet.scene.colisionShurikenEnnemie.active = true
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     // console.log(huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet))
-    console.log("EEEEEEEEEEEEEEEEEEEEEEEENVOIE")
-    // const puissance = huzounet.parametresDeBase.boulePhysique.animationCharge.progress
-    // huzounet.parametresDeBase.boulePhysique.animationCharge().stop()
-    // huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
-    // huzounet.boulePhysique.setData({puissance: puissance})
+    // console.log("EEEEEEEEEEEEEEEEEEEEEEEENVOIE")
+    const puissance = huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet).progress
+    huzounet.parametresDeBase.boulePhysique.animationCharge(huzounet).stop()
+    huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+    huzounet.boulePhysique.setData({puissance: puissance})
     // console.log(puissance)
-    // huzounet.parametresDeBase.animationEnvoie.play()
+    huzounet.parametresDeBase.boulePhysique.animationEnvoie(huzounet).play()
     input.a.envoie = false
   }
 }

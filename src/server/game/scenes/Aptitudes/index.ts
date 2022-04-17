@@ -77,7 +77,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          },
 
          animationEnvoie(p) {
-           p.scene.tweens.addCounter({
+           return p.scene.tweens.addCounter({
              duration: 1000,
              // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
              paused: true
