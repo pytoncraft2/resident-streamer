@@ -140,15 +140,16 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-     (this.scene as any).groupeBoules.getChildren().forEach((boule, idx) => {
-       (this.scene as any).room.state.boules.set(
-         idx,
-         new Boule({
-           x: boule.x,
-           y: boule.y,
-         })
-       )
-     });
+     console.log((this.scene as any).groupeBoules.getLength());
+     // (this.scene as any).groupeBoules.getChildren().forEach((boule, idx) => {
+     //   (this.scene as any).room.state.boules.set(
+     //     idx,
+     //     new Boule({
+     //       x: boule.x,
+     //       y: boule.y,
+     //     })
+     //   )
+     // });
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
