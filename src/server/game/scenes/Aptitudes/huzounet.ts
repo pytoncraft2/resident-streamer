@@ -90,6 +90,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       huzounet.animationCharge = huzounet.scene.tweens.add({
         targets: huzounet.boulePhysique,
         scale: '+=2',
+        onUpdate: () => huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170),
         duration: 3000
       });
 
