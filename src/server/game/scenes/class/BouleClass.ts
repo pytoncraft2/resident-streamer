@@ -18,6 +18,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   init(scene: Phaser.Scene, ClientID: string) {
     this.scene = scene
     this.scene.add.existing(this)
+    scene.physics.add.existing(this);
     this.ClientID = ClientID
   }
   preUpdate(time, delta) {

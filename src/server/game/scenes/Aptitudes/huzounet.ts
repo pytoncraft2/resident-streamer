@@ -4,9 +4,9 @@ import BouleClass from "../class/BouleClass"
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
   if (input.a.charge) {
     console.log('CHHHHHARRRGE')
-    const boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas", huzounet.ClientID).setData({ ClientId: huzounet.ClientID})
-    // this.players.add(player)
-    // this.playersRef[ClientId] = player
+    huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas", huzounet.ClientID).setData({ ClientId: huzounet.ClientID})
+    console.log(huzounet.boule)
+    // huzounet.boule.setVelocityX(huzounet.flipX ? -2400 : 2400)
     input.a.charge = false
   }
   if (input.a.envoie) {
