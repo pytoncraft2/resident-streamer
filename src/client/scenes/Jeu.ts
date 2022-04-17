@@ -346,7 +346,7 @@ export default class Jeu extends Phaser.Scene {
         console.log('APPARITION BOULE')
         // if (this.playersRef[donnes.id].groupeBoules.getLength() == 0) {
         // this.playersRef[donnes.id].groupeBoules.clear()
-        console.log(this.playersRef[donnes.id].groupeBoules.getLength())
+        // console.log(this.playersRef[donnes.id].groupeBoules.getLength())
         this.playersRef[donnes.id].groupeBoules.remove(this.playersRef[donnes.id].groupeBoules.getChildren()[0], true);
 
           this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y, `huzounet_atlas`, 'shuriken0').setDepth(2);
@@ -387,11 +387,13 @@ export default class Jeu extends Phaser.Scene {
         // changes.zoneAttaque.forEach((value: any, key: any) => {
           // console.log(value)
         // })
-        console.log(boules)
+        // console.log(boules)
 
 				self.patchPlayer({
 					presences: presences,
 					presenceList: Object.keys(presences),
+					boulesListe: Object.keys(boules),
+          boules: boules
 				})
 			})
 
@@ -406,6 +408,19 @@ export default class Jeu extends Phaser.Scene {
 
 	async patchPlayer(list: any) {
 		// create instance of all presence
+
+
+    // console.log(list.boules)
+    list.boulesListe.map((item: string) => {
+      if (this.playersRef[item].groupeBoules.getLength() == 0) {
+        this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2);
+        this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
+
+      } else {
+
+      }
+      console.log(item)
+    })
 
 		list.presenceList.map((item: string, idx: number) => {
 			if (this.playersRef[item] === undefined) {
@@ -422,21 +437,6 @@ export default class Jeu extends Phaser.Scene {
 
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
           (player as any).groupeBoules = this.add.group();
-          // (player as any).groupeBoules.getChildren().forEach((element: any) => {
-          if (sprite == "huzounet") {
-            console.log("BBBBBBBBBBBBBOUOUUULE")
-            console.log(list.presences[item].bouleX);
-            // (player as any).groupeBoules.create(list.presences[item].bouleX, list.presences[item].bouleY, `huzounet_atlas`, 'shuriken0').setScale(2).setDepth(1.5);
-            // (player as any).groupeBoules.playAnimation(`huzounet_shuriken`);
-          }
-          // });
-
-          // if ((player as any).groupeBoules.getChildren()[0]) {
-          //   this.playersRef[list.presenceList[idx]].groupeBoules.create(donnes.x, donnes.y - 4, `huzounet_atlas`, 'shuriken0').setScale(2);
-          //   this.playersRef[list.presenceList[idx]].groupeBoules.playAnimation(`huzounet_shuriken`);
-          // }
-
-
 
           const barre = this.add.container(-39, 21);
 
@@ -475,11 +475,6 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
-            if (this.playersRef[item].groupeBoules.getChildren()[0]) {
-              this.playersRef[item].groupeBoules.getChildren()[0].setPosition(list.presences[item].bouleX, list.presences[item].bouleY);
-              this.playersRef[item].groupeBoules.getChildren()[0].setScale(list.presences[item].bouleScale);
-              this.playersRef[item].groupeBoules.getChildren()[0].setAlpha(list.presences[item].bouleAlpha);
-            }
 				}
 			}
 		})
