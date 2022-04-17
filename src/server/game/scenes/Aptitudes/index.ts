@@ -64,6 +64,19 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
          paused: true
        }),
+       const myObj = {
+         myMethod(params) {
+           // ...do something here
+         },
+         myOtherMethod(params) {
+           // ...do something here
+         },
+         nestedObj: {
+           myNestedMethod(params) {
+             // ...do something here
+           }
+         }
+       };
        boulePhysique: {
          groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
          creation: () => {
