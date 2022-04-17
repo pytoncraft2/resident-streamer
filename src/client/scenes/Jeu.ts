@@ -415,11 +415,11 @@ export default class Jeu extends Phaser.Scene {
       if (this.playersRef[item].groupeBoules.getLength() == 0) {
         this.playersRef[item].groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2);
         this.playersRef[item].groupeBoules.playAnimation(`huzounet_shuriken`);
-
       } else {
-
+        this.playersRef[item].groupeBoules.getChildren().forEach((boule: any) => {
+          boule.setPosition(list.boules[item].x, list.boules[item].y);
+        });
       }
-      console.log(item)
     })
 
 		list.presenceList.map((item: string, idx: number) => {
