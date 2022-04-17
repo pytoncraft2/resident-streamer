@@ -349,7 +349,7 @@ export default class Jeu extends Phaser.Scene {
         console.log(this.playersRef[donnes.id].groupeBoules.getLength())
         this.playersRef[donnes.id].groupeBoules.remove(this.playersRef[donnes.id].groupeBoules.getChildren()[0], true);
 
-          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y, `huzounet_atlas`, 'shuriken0').setDepth(2).setAlpha(0.8);
+          this.playersRef[donnes.id].groupeBoules.create(donnes.x, donnes.y, `huzounet_atlas`, 'shuriken0').setDepth(2);
           this.playersRef[donnes.id].groupeBoules.playAnimation(`huzounet_shuriken`);
         // }
 
@@ -473,6 +473,7 @@ export default class Jeu extends Phaser.Scene {
             if (this.playersRef[item].groupeBoules.getChildren()[0]) {
               this.playersRef[item].groupeBoules.getChildren()[0].setPosition(list.presences[item].bouleX, list.presences[item].bouleY);
               this.playersRef[item].groupeBoules.getChildren()[0].setScale(list.presences[item].bouleScale);
+              this.playersRef[item].groupeBoules.getChildren()[0].setAlpha(list.presences[item].bouleAlpha);
             }
 				}
 			}
