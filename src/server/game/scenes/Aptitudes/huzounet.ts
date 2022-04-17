@@ -8,8 +8,16 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   // if (!huzounet.parametresDeBase.animationCharge.isPlaying()) {
   //   huzounet.parametresDeBase.animationCharge.play()
   // }
-    if (huzounet.scene.groupeBoules.getLength() == 0) {
+    if (huzounet.parametresDeBase.boulePhysique.groupeBoules.getLength() == 0) {
       huzounet.scene.room.broadcast("apparition-boule", {x: huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100 , y:  huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170, id: huzounet.ClientID})
+      huzounet.boulePhysique = huzounet.parametresDeBase.boulePhysique.creation()
+      // huzounet.boulePhysique.retourPositionPrincipale = () => {
+      //   huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170)
+      //   // huzounet.boulePhysique.setScale(0)
+      //   // huzounet.boulePhysique.setAlpha(0.1)
+      //   huzounet.boulePhysique.setVelocity(0)
+      //   huzounet.scene.colisionShurikenEnnemie.active = false
+      // }
     } else {
       huzounet.boulePhysique.setVelocity(0)
       huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170)

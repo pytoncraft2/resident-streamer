@@ -14,7 +14,7 @@ export default class Hall extends Phaser.Scene {
   room: any
   swordHitbox!: Phaser.Types.Physics.Arcade.ImageWithDynamicBody
   colisionJoueurEnnemie?: any
-  groupeBoules: any
+  // groupeBoules: any
   colisionShurikenEnnemie: any
 
 

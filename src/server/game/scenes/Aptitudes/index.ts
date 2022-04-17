@@ -52,7 +52,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        masse: 30,
        puissanceDeBase: 10,
        attaqueFrame: "positiona3",
-       groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
        animationCharge: personnage.scene.tweens.add({
          targets: personnage.boulePhysique,
          scale: 2,
@@ -66,6 +65,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          paused: true
        }),
        boulePhysique: {
+         groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
          creation: () => {
            personnage.groupeBoules.create(personnage.x - 100, personnage.y - 170, `atlas`, 'shuriken0')
          },
