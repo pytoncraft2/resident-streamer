@@ -59,7 +59,12 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
          onUpdate: () => personnage.boulePhysique.setPosition(personnage.flipX ? personnage.x + 100 : personnage.x - 100, personnage.y - 170, personnage.flipX ? personnage.y - 170 : personnage.y + 170),
          duration: 3000,
          paused: true
+       }),
+       animationEnvoie: personnage.scene.tweens.addCounter({
+         duration: 1000,
+         // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
        })
+
      }
    }
 }

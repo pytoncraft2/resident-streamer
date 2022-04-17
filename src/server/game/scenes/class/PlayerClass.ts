@@ -50,6 +50,12 @@ interface Deplacement {
      };
 
      this.parametresDeBase = EtatsInitialStatique(this.scene, this)[this.sprite]
+     // const moi = this
+     // for EtatsInitialStatique(this.scene, this)[this.sprite]
+     // for (let i = 0; i < array.length; i++) {
+         // array[i];
+     // }
+     console.log(this.parametresDeBase)
 
      this.etats = {
        'initial': {
