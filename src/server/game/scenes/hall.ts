@@ -84,7 +84,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoules, this.enemies,
       function (_boule, _ennemie) {
-        _boule.destroy()
+        // _boule.destroy()
       _ennemie.blesse_ennemie()
     });
     this.events.on('boss_KO', this.boss_KO, this);
