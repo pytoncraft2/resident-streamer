@@ -10,11 +10,17 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       scale: 2,
       duration: 3000
     });
+    setAnimation(huzounet, 'huzounet_preparation_attaque')
+
     input.a.charge = false
   }
 
   if (input.a.envoie) {
+    huzounet.animationCharge.stop()
+
+    setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+
     input.a.envoie = false
   }
 }
