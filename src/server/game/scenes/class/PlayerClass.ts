@@ -2,6 +2,8 @@ import { Player, ZoneAttaque } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/index"
+import { Boule } from "../../RoomState"
+
 
 interface Deplacement {
   marche: boolean,
@@ -138,7 +140,15 @@ interface Deplacement {
        if (right) this.deplacement('right', right)
      }
 
-     console.log((this.scene as any).groupeBoules.getLength());
+     (this.scene as any).groupeBoules.getChildren().forEach((boule, idx) => {
+       (this.scene as any).room.state.boules.set(
+         idx,
+         new Boule({
+           x: boule.x,
+           y: boule.y,
+         })
+       )
+     });
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,

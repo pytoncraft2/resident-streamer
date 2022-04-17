@@ -422,9 +422,12 @@ export default class Jeu extends Phaser.Scene {
       // } else {
         // console.log(this.playersRef[item].groupeBoules.getLength())
         // console.log(list.boulesListe[idx])
-        // this.playersRef[item].groupeBoules.getChildren().forEach((boule: any) => {
-        //   boule.setPosition(list.boules[item].x, list.boules[item].y);
-        // });
+        this.playersRef[item].groupeBoules.getChildren().forEach((boule: any, i: any) => {
+          console.log("___________")
+          console.log(boule.x)
+          console.log(i)
+          // boule.setPosition(list.boules[item].x, list.boules[item].y);
+        });
       // }
     })
 
