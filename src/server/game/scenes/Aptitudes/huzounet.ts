@@ -76,10 +76,9 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       huzounet.boulePhysique = huzounet.scene.groupeBoules.create(huzounet.x - 100, huzounet.y - 170, `atlas`, 'shuriken0')
       huzounet.boulePhysique.retourPositionPrincipale = () => {
       huzounet.boulePhysique.setPosition(huzounet.flipX ? huzounet.x + 100 : huzounet.x - 100, huzounet.y - 170, huzounet.flipX ? huzounet.y - 170 : huzounet.y + 170)
-      huzounet.boulePhysique.setScale(1)
+      huzounet.boulePhysique.setScale(0)
       huzounet.boulePhysique.setVelocity(0)
       huzounet.scene.colisionShurikenEnnemie.active = false
-      // huzounet.scene.physics.world.removeCollider(huzounet.scene.colisionShurikenEnnemie);
       }
     } else {
       huzounet.boulePhysique.setVelocity(0)
@@ -103,6 +102,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       huzounet.animationCharge.remove()
       huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
       huzounet.boulePhysique.setData({puissance: puissance})
+      huzounet.boulePhysique.setDragX(2000)
       input.a.envoie = false
   }
 

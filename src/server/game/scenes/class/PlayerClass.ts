@@ -96,7 +96,7 @@ interface Deplacement {
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         _e.blesse_ennemie()
+         _e.blesse_ennemie(1)
        }
 
        if (this.interaction_objet) {
