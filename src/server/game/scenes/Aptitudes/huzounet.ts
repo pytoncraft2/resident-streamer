@@ -90,6 +90,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       input.a.charge = false
     }
     if (input.a.envoie) {
+      console.log(huzounet.parametresDeBase)
       setAnimation(huzounet, 'huzounet_envoie_attaque')
       huzounet.animationCharge.remove()
       huzounet.boulePhysique.body && huzounet.boulePhysique.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
