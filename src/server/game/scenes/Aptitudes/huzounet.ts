@@ -6,6 +6,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     console.log('CHHHHHARRRGE')
     huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas", huzounet.ClientID).setData({ ClientId: huzounet.ClientID})
     huzounet.scene.groupeBoules.add(huzounet.boule)
+    // console.log(huzounet.scene.groupeBoules.getLength())
     // huzounet.boule.setVelocityX(huzounet.flipX ? -2400 : 2400)
     input.a.charge = false
   }
