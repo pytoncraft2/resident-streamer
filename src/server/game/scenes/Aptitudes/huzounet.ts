@@ -30,7 +30,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     }
     setAnimation(huzounet, 'huzounet_preparation_attaque')
 
-    huzounet.parametresDeBase.animationCharge.resume()
+    huzounet.parametresDeBase.animationCharge.play()
 
     input.a.charge = false
   }

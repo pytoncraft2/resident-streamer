@@ -52,18 +52,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        masse: 30,
        puissanceDeBase: 10,
        attaqueFrame: "positiona3",
-       animationCharge: personnage.scene.tweens.add({
-         targets: personnage.boulePhysique,
-         scale: 2,
-         onUpdate: () => personnage.boulePhysique.setPosition(personnage.flipX ? personnage.x + 100 : personnage.x - 100, personnage.y - 170, personnage.flipX ? personnage.y - 170 : personnage.y + 170),
-         duration: 3000,
-         paused: true
-       }),
-       animationEnvoie: personnage.scene.tweens.addCounter({
-         duration: 1000,
-         // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
-         paused: true
-       }),
        boulePhysique: {
          groupeBoules: scene.physics.add.group({ allowGravity: false, runChildUpdate: true, collideWorldBounds: true }),
          creation(p) {
@@ -77,6 +65,25 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
              // this.groupeBoules.getChildren()[0].setAlpha(0.1)
              this.groupeBoules.getChildren()[0].setVelocity(0)
              // personnage.colisionShurikenEnnemie.active = false
+         },
+         animationCharge(p) {
+           p.scene.tweens.add({
+             targets: p.boulePhysique,
+             scale: 2,
+             onUpdate: () => p.boulePhysique.setPosition(p.flipX ? p.x + 100 : p.x - 100, p.y - 170, p.flipX ? p.y - 170 : p.y + 170),
+             duration: 3000,
+             paused: true
+           })
+         },
+
+
+
+         animationEnvoie(p) {
+           p.scene.tweens.addCounter({
+             duration: 1000,
+             // onComplete: () => (personnage.boulePhysique.retourPositionPrincipale()),
+             paused: true
+           })
          }
        }
      }
