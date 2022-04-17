@@ -48,7 +48,6 @@ export default class Hall extends Phaser.Scene {
 
 
     this.groupeBoules = this.physics.add.group({
-      allowGravity: false,
       runChildUpdate: true,
       collideWorldBounds: true
     })
