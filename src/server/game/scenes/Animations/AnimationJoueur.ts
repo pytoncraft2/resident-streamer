@@ -8,7 +8,7 @@ export function AnimationJoueur(anim: any){
   anim.create({
     key: 'huzounet_preparation_attaque',
     frames: anim.generateFrameNames('atlas', { prefix: 'positiona', start: 0, end: 1 }),
-    frameRate: 12,
+    frameRate: 36,
     repeat: 0
   });
   anim.create({
