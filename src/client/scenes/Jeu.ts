@@ -320,8 +320,6 @@ export default class Jeu extends Phaser.Scene {
         repeat: 10
     });
 
-		console.log(`WELCOME TO JEU ${this.salon}`)
-
 		const self = this;
 		this.players = this.add.group()
 		this.enemies= this.add.group()
@@ -336,10 +334,8 @@ export default class Jeu extends Phaser.Scene {
 
 
 		const client = new Colyseus.Client("ws://localhost:3000")
-		console.log("HALL 01 CONNECTÉ");
 		const salon = this.salon;
 		const sprite = this.personnage;
-    console.log(sprite)
 
 		await client
 		.joinOrCreate("game_instance", { salon: salon, sprite: sprite })
@@ -355,15 +351,10 @@ export default class Jeu extends Phaser.Scene {
 
       room.onMessage("boss-KO-proprietaire", (id) => {
 
-        console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKOO")
-        console.log(id.id_joueur)
-        console.log(id.id_ennemie)
-        // this.playersRef[id.id_joueur].barre.add(this.playersRef[id.id_ennemie])
         this.finAnimationBossKO(id.id_ennemie)
         this.animationBoosFigurine.stop()
 
         this.emitter.startFollow(this.playersRef[id.id_joueur])
-        // this.playersRef[id].x, this.playersRef[id].y
 
       });
 
@@ -375,13 +366,7 @@ export default class Jeu extends Phaser.Scene {
 				})
         changes.boules.forEach((value: any, key: any) => {
           boules[key] = value
-          // console.log(boules[key])
         })
-        // changes.zoneAttaque.forEach((value: any, key: any) => {
-          // console.log(value)
-        // })
-        // console.log(boules)
-
 				self.patchPlayer({
 					presences: presences,
 					presenceList: Object.keys(presences),
@@ -400,38 +385,23 @@ export default class Jeu extends Phaser.Scene {
 
 
 	async patchPlayer(list: any) {
-		// create instance of all presence
-
-    console.log("colyseus")
-    console.log(Object.keys(list.boulesListe).length);
 
     list.boulesListe.map((item: string, idx: number) => {
-      if (this.boulesRef[item] === undefined) {
-        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0')
+      // console.log(list.boules[item].id)
+      // console.log(this.boulesRef[list.boules[item].id])
+      if (this.boulesRef[list.boules[item].id] === undefined) {
+        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
         b.play(`huzounet_shuriken`);
         b.bouleID = list.boules[item].id
 
-
-        // this.boulesRef[item].id = 'monID'
         this.boulesRef[item] = b
         console.log("CREATION")
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
-        // console.log(list.boules[item].alpha);
-        // if (list.boules[item].alpha < 1) console.log("DETRUEIT MOI !!");
-        // if (list.boules[item].alpha < 0.2) {
-        //   this.boulesRef[item].destroy(true);
-        // } else {
-          this.boulesRef[item].setAlpha(list.boules[item].alpha)
-        // }
+        this.boulesRef[item].setAlpha(list.boules[item].alpha)
       }
-      // console.log(list.boulesListe)
-      // console.log(list.boules)
     })
-      // console.log(this.groupeBoules.getLength())
-      // console.log(list.boules)
-      // console.log(this.boulesRef)
 
 		list.presenceList.map((item: string, idx: number) => {
 			if (this.playersRef[item] === undefined) {
@@ -485,18 +455,9 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
-
-            // if (this.playersRef[item].groupeBoules.getChildren()[0]) {
-            //   this.playersRef[item].groupeBoules.getChildren()[0].setPosition(list.presences[item].bouleX, list.presences[item].bouleY);
-            //   this.playersRef[item].groupeBoules.getChildren()[0].setScale(list.presences[item].bouleScale);
-            //   this.playersRef[item].groupeBoules.getChildren()[0].setAlpha(list.presences[item].bouleAlpha);
-            // }
-
 				}
 			}
 		})
-
-		// deleted non existance
 
 		this.players.children.iterate((child) => {
 			if (list.presences[child.data.values.ClientId] === undefined) {
@@ -511,25 +472,6 @@ export default class Jeu extends Phaser.Scene {
         delete this.boulesRef[(element as any).bouleID]
       }
     });
-
-    // this.groupeBoules.children.iterate((child) => {
-
-      // console.log("ITTERATION")
-      // console.log(child.data.list)
-      // console.log(Object.keys(list.boules))
-      // console.log(list.boules[`${Object.keys(list.boules)}`])
-      // if (list.boules[`${Object.keys(list.boules)}`] === undefined) {
-      // //   console.log(this.boulesRef[child.data.values.ClientId])
-      //   // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true)
-      //   // console.log(this.boulesRef[`${Object.keys(list.boules)}`])
-      //   // this.boulesRef[`${(child as any).bouleID}`].destroy(true);
-      //   console.log((child as any).bouleID)
-      //   // child.destroy(true)
-      //
-      //   delete this.boulesRef[`${(child as any).bouleID}`]
-      // }
-    // })
-
 	}
 
 
