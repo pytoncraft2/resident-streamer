@@ -505,18 +505,13 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 
-    console.log("groupe")
-    console.log(this.groupeBoules.getLength())
     this.groupeBoules.getChildren().forEach((element, idx) => {
-      // console.log((element as any).bouleID)
-      // console.log((element as any).bouleID)
-
-      // console.log(list.boulesListe[(element as any).bouleID])
       if (!list.boulesListe[idx]) {
-        console.log("PAS LA")
         this.boulesRef[(element as any).bouleID].destroy(true)
+        delete this.boulesRef[(element as any).bouleID]
       }
     });
+
     // this.groupeBoules.children.iterate((child) => {
 
       // console.log("ITTERATION")
