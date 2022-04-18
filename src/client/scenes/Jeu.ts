@@ -417,7 +417,7 @@ export default class Jeu extends Phaser.Scene {
         if (list.boules[item].alpha == 0) {
           this.boulesRef[item].destroy(true);
         } else {
-          // this.boulesRef[item].setAlpha(list.boules[item].alpha)
+          this.boulesRef[item].setAlpha(list.boules[item].alpha)
         }
       }
       // console.log(list.boulesListe)

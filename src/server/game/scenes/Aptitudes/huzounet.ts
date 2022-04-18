@@ -34,7 +34,8 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
         {
           targets: huzounet.boule,
           alpha: 0,
-          duration: 3000,
+          ease: 'Power1',
+          duration: 1000
         }
     ]
   })
