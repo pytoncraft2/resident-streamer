@@ -3,6 +3,9 @@ import { Boule } from "../../RoomState"
 export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
+  animationCharge: Phaser.Tweens.Tween
+  animationEnvoie: Phaser.Tweens.Tween
+
   constructor(
     scene: Phaser.Scene,
     x: number,
@@ -25,15 +28,31 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
 
-    this.scene.tweens.add({
+    this.animationCharge = this.scene.tweens.add({
+      targets: this,
+      scale: 2,
+      duration: 3000,
+      onComplete: function() {
+        if (arguments[1][0].scene){
+          arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+          arguments[1][0].destroy(true);
+        }
+      }
+    });
+
+    this.animationEnvoie = this.scene.tweens.add({
       targets: this,
       alpha: 0,
       duration: 3000,
       onComplete: function() {
-        arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-        arguments[1][0].destroy(true);
-      }
+        if (arguments[1][0].scene){
+          arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+          arguments[1][0].destroy(true);
+        }
+      },
+      paused: true
     });
+
 
   }
   preUpdate(time, delta) {
@@ -53,7 +72,8 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       )
   }
 
-  test() {
-    // console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSUPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPERTEST")
+  stopAnim() {
+    this.animationCharge.stop()
+    this.animationEnvoie.play()
   }
 }

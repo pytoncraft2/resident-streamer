@@ -7,18 +7,18 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
     huzounet.scene.groupeBoules.add(huzounet.boule)
 
-    if (!huzounet.animationCharge) {
-      huzounet.animationCharge = huzounet.scene.tweens.add({
-        targets: huzounet.boule,
-        scale: 2,
-        duration: 3000,
-        paused: true
-      });
-    }
-
-    if (huzounet.animationCharge.isPaused()) {
-      huzounet.animationCharge.play()
-    }
+    // if (!huzounet.animationCharge) {
+    //   huzounet.animationCharge = huzounet.scene.tweens.add({
+    //     targets: huzounet.boule,
+    //     scale: 2,
+    //     duration: 3000,
+    //     paused: true
+    //   });
+    // }
+    //
+    // if (huzounet.animationCharge.isPaused()) {
+    //   huzounet.animationCharge.play()
+    // }
     setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     input.a.charge = false
@@ -26,12 +26,17 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
   if (input.a.envoie) {
 
-    huzounet.animationCharge.stop()
+    huzounet.boule.stopAnim()
+    // huzounet.animationCharge.stop()
 
-    huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
+    // huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
 
-    setAnimation(huzounet, 'huzounet_envoie_attaque')
-    huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+    if (huzounet.boule.body) {
+      setAnimation(huzounet, 'huzounet_envoie_attaque')
+      huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+      
+    }
+
     input.a.envoie = false
   }
 
