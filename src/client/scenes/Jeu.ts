@@ -416,7 +416,8 @@ export default class Jeu extends Phaser.Scene {
         this.boulesRef[item].setScale(list.boules[item].scale);
         this.boulesRef[item].alpha == 0 ? this.boulesRef[item].destroy(true) :this.boulesRef[item].setAlpha(list.boules[item].alpha);
       }
-      console.log(this.boulesRef[item])
+      console.log(list.boulesListe)
+      console.log(this.groupeBoules.getLength())
     })
 
 		list.presenceList.map((item: string, idx: number) => {

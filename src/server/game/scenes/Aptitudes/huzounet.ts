@@ -25,13 +25,19 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
     huzounet.animation = huzounet.scene.tweens.add({
       targets: huzounet.boule,
-      alpha: 1,
+      // alpha: 1,
       duration: 3000,
+      completeDelay: 2000,
+      alpha: {
+      //      getActive: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+      //      getStart: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+           getEnd: function (target, key, value, targetIndex, totalTargets, tween) { return 0; }
+      },
       onComplete: function(tween, targets) {
+        console.log("COMPLETE-------------------")
         arguments[1][0].setAlpha(0);
-        // arguments[1][0].destroy(true);
-        // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-        console.log("OKAY");
+        huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+        arguments[1][0].destroy(true);
       }
     });
     //   const t = huzounet.scene.tweens.add({
@@ -48,6 +54,10 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
     input.a.envoie = false
   }
+
+  // function stopAnimation(huzounet) {
+  // huzounet.anima
+  // }
 }
 
 export function kunai(huzounet: Phaser.Physics.Arcade.Sprite|any) {
