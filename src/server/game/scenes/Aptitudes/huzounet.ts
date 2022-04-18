@@ -17,9 +17,15 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
   if (input.a.envoie) {
     huzounet.animationCharge.stop()
+    huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+
+    huzounet.scene.tweens.addCounter({
+      duration: 1000,
+      onComplete: () => (huzounet.boule.destroy(true), huzounet.scene.room.state.boules.delete(huzounet.boule.id)),
+    })
 
     input.a.envoie = false
   }

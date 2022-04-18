@@ -404,8 +404,10 @@ export default class Jeu extends Phaser.Scene {
 
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[item] === undefined) {
-        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
+        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setData({ ClientID: list.boulesListe[idx]}).setDepth(2)
         b.play(`huzounet_shuriken`);
+        b.ClientId = list.presenceList[idx];
+
 
         this.boulesRef[item] = b
         console.log("CREATION")
@@ -413,6 +415,7 @@ export default class Jeu extends Phaser.Scene {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
       }
+      console.log(list.boules[item].x)
     })
 
 		list.presenceList.map((item: string, idx: number) => {
@@ -486,6 +489,16 @@ export default class Jeu extends Phaser.Scene {
 				delete this.playersRef[child.data.values.ClientId]
 			}
 		})
+
+    this.groupeBoules.children.iterate((child) => {
+      console.log(child.data.list)
+      // if (list.boules[child.data.values.ClientId] === undefined) {
+      //   console.log(this.boulesRef[child.data.values.ClientId])
+      //   // this.boulesRef[child.data.values.ClientId].destroy(true)
+      //   // delete this.boulesRef[child.data.values.ClientId]
+      // }
+    })
+
 	}
 
 
