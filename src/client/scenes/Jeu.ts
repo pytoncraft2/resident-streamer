@@ -397,9 +397,17 @@ export default class Jeu extends Phaser.Scene {
         this.boulesRef[item] = b
         console.log("CREATION")
       } else {
+
+          if ((this.boulesRef[item] as Phaser.Physics.Arcade.Sprite).alpha < 1) {
+            this.boulesRef[list.boules[item].id].destroy(true)
+            delete this.boulesRef[list.boules[item].id]
+          } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
         this.boulesRef[item].setAlpha(list.boules[item].alpha)
+
+          }
+
       }
     })
 
@@ -466,13 +474,13 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 
-    this.groupeBoules.getChildren().forEach((element, idx) => {
-      // console.log(element)
-      if ((element as Phaser.Physics.Arcade.Sprite).alpha < 1) {
-        this.boulesRef[(element as any).bouleID].destroy(true)
-        delete this.boulesRef[(element as any).bouleID]
-      }
-    });
+    // this.groupeBoules.getChildren().forEach((element, idx) => {
+    //   // console.log(element)
+    //   if ((element as Phaser.Physics.Arcade.Sprite).alpha < 1) {
+    //     this.boulesRef[(element as any).bouleID].destroy(true)
+    //     delete this.boulesRef[(element as any).bouleID]
+    //   }
+    // });
 	}
 
 
