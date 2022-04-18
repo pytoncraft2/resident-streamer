@@ -2,7 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/BouleClass"
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log(huzounet.scene.groupeBoules.getLength())
+  // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
     huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `boule-${huzounet.scene.groupeBoules.getLength()}`).setData({ ClientId: huzounet.ClientID})
     huzounet.scene.groupeBoules.add(huzounet.boule)
@@ -23,23 +23,35 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
 
-    huzounet.animation = huzounet.scene.tweens.add({
-      targets: huzounet.boule,
-      // alpha: 1,
-      duration: 3000,
-      completeDelay: 2000,
-      alpha: {
-      //      getActive: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
-      //      getStart: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
-           getEnd: function (target, key, value, targetIndex, totalTargets, tween) { return 0; }
+    // huzounet.animation = huzounet.scene.tweens.add({
+    //   targets: huzounet.boule,
+    //   alpha: 1,
+    //   duration: 3000,
+    //   onComplete: function(tween, targets) {
+    //     console.log("COMPLETE-------------------")
+    //     // arguments[1][0].setAlpha(0);
+    //     // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+    //     // arguments[1][0].destroy(true);
+    //   },
+    //   loop: 1,
+    //   loopDelay: 1000,
+    //   onLoop: function () {console.log("BOUCLE")}
+    // });
+
+
+    huzounet.animation = huzounet.scene.tweens.timeline({
+      tweens: [{
+        targets: huzounet.boule,
+        alpha: 1,
+        ease: 'Power1',
+        duration: 3000
       },
-      onComplete: function(tween, targets) {
-        console.log("COMPLETE-------------------")
-        arguments[1][0].setAlpha(0);
-        huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-        arguments[1][0].destroy(true);
-      }
-    });
+      {
+        targets: huzounet.boule,
+        alpha: 0,
+        duration: 1000
+      }]
+    })
     //   const t = huzounet.scene.tweens.add({
     //   targets: huzounet.boule,
     //   duration: 6000,
