@@ -89,36 +89,10 @@ this.physics.add.overlap(this.players, this.enemies);
     this.events.on('boss_KO', this.boss_KO, this);
     this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);
 
-
-    // zone = this.add.zone(300, 200).setSize(200, 200);
-    // this.physics.world.enable(zone);
-    // zone.body.setAllowGravity(false);
-    // zone.body.moves = false;
-    //
-    // block = this.physics.add.image(400, 300, "block")
-    // .setBounce(1, 1)
-    // .setCollideWorldBounds(true)
-    // .setDebug(true, false)
-    // .setVelocity(200, 150);
-    //
-    //
-    //
-    // this.physics.add.overlap(block, zone);
-
   }
 
   overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
-
-    // ennemie.vie -= 1
     playerActionZone.action(ennemie)
-      // if (playerActionZone.action)
-      // {
-      //   // console.log("AATTTTAAAQUE")
-      //   // ennemie.blesse = true
-      //   // playerAttackZone.attaque = false
-      //   // if (_ennemie.body.touching.right && _ennemie.flipX == true) _ennemie.blesse = true
-      //   // else if (_ennemie.body.touching.left && _ennemie.flipX == false) _ennemie.blesse = true
-      // }
   }
 
   boss_KO(id: string) {

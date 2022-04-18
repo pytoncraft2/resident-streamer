@@ -414,8 +414,9 @@ export default class Jeu extends Phaser.Scene {
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
+        this.boulesRef[item].alpha == 0 ? this.boulesRef[item].destroy(true) :this.boulesRef[item].setAlpha(list.boules[item].alpha);
       }
-      console.log(list.boules[item].x)
+      console.log(this.boulesRef[item])
     })
 
 		list.presenceList.map((item: string, idx: number) => {
@@ -491,7 +492,7 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     this.groupeBoules.children.iterate((child) => {
-      console.log(child.data.list)
+      // console.log(child.data.list)
       // if (list.boules[child.data.values.ClientId] === undefined) {
       //   console.log(this.boulesRef[child.data.values.ClientId])
       //   // this.boulesRef[child.data.values.ClientId].destroy(true)

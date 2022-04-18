@@ -28,8 +28,9 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       alpha: 1,
       duration: 3000,
       onComplete: function(tween, targets) {
-        arguments[1][0].destroy(true);
-        huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+        arguments[1][0].setAlpha(0);
+        // arguments[1][0].destroy(true);
+        // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
         console.log("OKAY");
       }
     });
