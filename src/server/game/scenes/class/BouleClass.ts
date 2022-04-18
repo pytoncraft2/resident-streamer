@@ -35,7 +35,8 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           x: this.x,
           y: this.y,
           scale: this.scale,
-          alpha: this.alpha
+          alpha: this.alpha,
+          id: this.id
         })
       )
     } else {

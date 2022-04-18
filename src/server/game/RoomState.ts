@@ -23,6 +23,7 @@ export class Boule extends Schema {
   @type("number") y: number;
   @type("number") scale: number;
   @type("number") alpha: number;
+  @type("string") id: string;
 }
 
 export class ZoneAttaque extends Schema {

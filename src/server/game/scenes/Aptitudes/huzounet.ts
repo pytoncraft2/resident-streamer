@@ -6,7 +6,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   if (input.a.charge) {
     huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
     // console.log(huzounet.boule.test())
-    huzounet.scene.groupeBoules.add(huzounet.boule, 1)
+    huzounet.scene.groupeBoules.add(huzounet.boule)
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boule,
       scale: 2,

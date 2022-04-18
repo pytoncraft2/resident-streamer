@@ -409,7 +409,7 @@ export default class Jeu extends Phaser.Scene {
       if (this.boulesRef[item] === undefined) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0')
         b.play(`huzounet_shuriken`);
-        b.bouleID = list.boulesListe[idx]
+        b.bouleID = list.boules[item].id
 
 
         // this.boulesRef[item].id = 'monID'
@@ -507,6 +507,16 @@ export default class Jeu extends Phaser.Scene {
 
     console.log("groupe")
     console.log(this.groupeBoules.getLength())
+    this.groupeBoules.getChildren().forEach((element, idx) => {
+      // console.log((element as any).bouleID)
+      // console.log((element as any).bouleID)
+
+      // console.log(list.boulesListe[(element as any).bouleID])
+      if (!list.boulesListe[idx]) {
+        console.log("PAS LA")
+        this.boulesRef[(element as any).bouleID].destroy(true)
+      }
+    });
     // this.groupeBoules.children.iterate((child) => {
 
       // console.log("ITTERATION")
