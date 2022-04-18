@@ -6,7 +6,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   if (input.a.charge) {
     huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
     // console.log(huzounet.boule.test())
-    huzounet.scene.groupeBoules.add(huzounet.boule)
+    huzounet.scene.groupeBoules.add(huzounet.boule, 1)
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boule,
       scale: 2,
@@ -35,9 +35,23 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
           targets: huzounet.boule,
           alpha: 0,
           ease: 'Power1',
-          duration: 1000
-        }
-    ]
+          duration: 1000,
+        },
+        {
+          targets: huzounet.boule,
+          alpha: 0,
+          duration: 1000,
+          onComplete: function() {
+            huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+            // arguments[1][0].destroy(true);
+          }
+        },
+    ],
+      // onComplete: function() {
+      //   // arguments[1][0].destroy(true);
+      //   huzounet.scene.room.state.boules.get(huzounet.boule.id);
+      // }
+
   })
     input.a.envoie = false
   }
