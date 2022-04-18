@@ -2,10 +2,10 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/BouleClass"
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log(huzounet.scene.groupeBoules.getLength())
+  // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
     huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
-    console.log(huzounet.boule.test())
+    // console.log(huzounet.boule.test())
     huzounet.scene.groupeBoules.add(huzounet.boule)
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boule,
@@ -25,17 +25,17 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
 
     huzounet.animation = huzounet.scene.tweens.timeline({
-      tweens: [{
-        targets: huzounet.boule,
-        alpha: 1,
-        duration: 3000
-      },
-      {
-        targets: huzounet.boule,
-        ease: 'Power1',
-        alpha: 0,
-        duration: 1000
-      },
+      tweens: [
+        {
+          targets: huzounet.boule,
+          alpha: 1,
+          duration: 3000,
+        },
+        {
+          targets: huzounet.boule,
+          alpha: 0,
+          duration: 3000,
+        }
     ]
   })
     input.a.envoie = false
