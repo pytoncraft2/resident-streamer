@@ -375,7 +375,7 @@ export default class Jeu extends Phaser.Scene {
 				})
         changes.boules.forEach((value: any, key: any) => {
           boules[key] = value
-          console.log(boules[key])
+          // console.log(boules[key])
         })
         // changes.zoneAttaque.forEach((value: any, key: any) => {
           // console.log(value)
@@ -407,7 +407,6 @@ export default class Jeu extends Phaser.Scene {
       if (this.boulesRef[item] === undefined) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setData({ ClientID: list.boulesListe[idx]}).setDepth(2)
         b.play(`huzounet_shuriken`);
-        b.ClientId = list.presenceList[idx];
 
 
         this.boulesRef[item] = b
@@ -501,12 +500,20 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     this.groupeBoules.children.iterate((child) => {
+
+      // console.log("ITTERATION")
       // console.log(child.data.list)
-      // if (list.boules[child.data.values.ClientId] === undefined) {
+      // console.log(Object.keys(list.boules))
+      // console.log(list.boules[`${Object.keys(list.boules)}`])
+      if (list.boules[`${Object.keys(list.boules)}`] === undefined) {
       //   console.log(this.boulesRef[child.data.values.ClientId])
-      //   // this.boulesRef[child.data.values.ClientId].destroy(true)
-      //   // delete this.boulesRef[child.data.values.ClientId]
-      // }
+        // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true)
+        // console.log(this.boulesRef[`${Object.keys(list.boules)}`])
+        // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true);
+        child.destroy(true)
+
+        delete this.boulesRef[`${Object.keys(list.boules)}`]
+      }
     })
 
 	}
