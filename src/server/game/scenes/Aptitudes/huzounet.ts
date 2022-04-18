@@ -2,7 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/BouleClass"
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  // console.log(huzounet.scene.groupeBoules.getLength())
+  console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
     huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
     // console.log(huzounet.boule.test())
@@ -42,7 +42,10 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
           alpha: 0,
           duration: 1000,
           onComplete: function() {
+            console.log("SSSSSSSSSSSSSSSIZZZE-----------")
+            console.log(huzounet.scene.room.state.boules.size)
             huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+            console.log(huzounet.scene.room.state.boules.size)
             // arguments[1][0].destroy(true);
           }
         },
