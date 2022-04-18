@@ -65,8 +65,8 @@ export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
      this.blesse_ennemie = (puissance: number = 0) => {
-       console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPUISSACNCE DATTAQUE")
-       console.log(puissance)
+       // console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPUISSACNCE DATTAQUE")
+       // console.log(puissance)
        this.vie -= puissance
 
        if (this.body.touching.right) {
