@@ -23,12 +23,20 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
+    console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
+
+    this.scene.tweens.add({
+      targets: this,
+      alpha: 0,
+      ease: 'Elastic',
+      duration: 3000
+    });
+
   }
   preUpdate(time, delta) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
-    if ((this.scene as any)) {
       (this.scene as any).room.state.boules.set(
         this.id,
         new Boule({
@@ -39,9 +47,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           id: this.id
         })
       )
-    } else {
-      console.log("NOOOPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
-    }
   }
 
   test() {
