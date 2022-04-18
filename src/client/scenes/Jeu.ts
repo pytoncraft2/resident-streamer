@@ -467,7 +467,8 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     this.groupeBoules.getChildren().forEach((element, idx) => {
-      if (!list.boulesListe[idx]) {
+      // console.log(element)
+      if ((element as Phaser.Physics.Arcade.Sprite).alpha < 1) {
         this.boulesRef[(element as any).bouleID].destroy(true)
         delete this.boulesRef[(element as any).bouleID]
       }
