@@ -4,7 +4,7 @@ import BouleClass from "../class/BouleClass"
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
   // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
-    huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `boule-${huzounet.scene.groupeBoules.getLength()}`).setData({ ClientId: huzounet.ClientID})
+    huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})
     huzounet.scene.groupeBoules.add(huzounet.boule)
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boule,
@@ -43,28 +43,13 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       tweens: [{
         targets: huzounet.boule,
         alpha: 1,
-        duration: 3000
-      },
-      {
-        targets: huzounet.boule,
-        alpha: 1,
         ease: 'Power1',
-        duration: 10,
-        onComplete: function(tween, targets) {
-          console.log("COMPLETE-------------------111111111111111")
-          huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-          arguments[1][0].destroy(true);
-
-          // arguments[1][0].setAlpha(0);
-        }
+        duration: 3000
       },
       {
         targets: huzounet.boule,
         alpha: 0,
         duration: 1000,
-        onComplete: function(tween, targets) {
-          console.log("COMPLETE-------------------22222222222222")
-        }
       }]
     })
     //   const t = huzounet.scene.tweens.add({
