@@ -24,61 +24,20 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
 
-    // huzounet.animation = huzounet.scene.tweens.add({
-    //   targets: huzounet.boule,
-    //   alpha: 1,
-    //   duration: 3000,
-    //   onComplete: function(tween, targets) {
-    //     console.log("COMPLETE-------------------")
-    //     // arguments[1][0].setAlpha(0);
-    //     // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-    //     // arguments[1][0].destroy(true);
-    //   },
-    //   loop: 1,
-    //   loopDelay: 1000,
-    //   onLoop: function () {console.log("BOUCLE")}
-    // });
-
-
     huzounet.animation = huzounet.scene.tweens.timeline({
       tweens: [{
         targets: huzounet.boule,
         alpha: 1,
-        ease: 'Power1',
         duration: 3000
       },
       {
         targets: huzounet.boule,
+        ease: 'Power1',
         alpha: 0,
-        duration: 1000,
-        onComplete: function() {arguments[1][0].setAlpha(0);}
+        duration: 1000
       },
-      {
-        targets: huzounet.boule,
-        alpha: 1,
-        duration: 100,
-        onComplete: function() {/*huzounet.scene.room.state.boules.delete(arguments[1][0].id); */arguments[1][0].destroy(true);}
-      },
-      {
-        targets: huzounet.boule,
-        alpha: 1,
-        duration: 100,
-        onComplete: function() {huzounet.scene.room.state.boules.delete(arguments[1][0].id);}
-      }
-    ],
-    })
-    //   const t = huzounet.scene.tweens.add({
-    //   targets: huzounet.boule,
-    //   duration: 6000,
-    //   delay: 5000,
-    //   onComplete: function(tween, targets) {
-    //     // arguments[1][0].destroy(true);
-    //     console.log("IIIIIIIIIIIIIIIIIIIIIIIIIIID")
-    //     // console.log(arguments[1][0].id)
-    //     // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-    //   }
-    // })
-
+    ]
+  })
     input.a.envoie = false
   }
 

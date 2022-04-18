@@ -29,7 +29,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
 
-    console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
     (this.scene as any).room.state.boules.set(
       this.id,
       new Boule({
@@ -42,6 +41,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   test() {
-    console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSUPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPERTEST")
+    // console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSUPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPERTEST")
   }
 }
