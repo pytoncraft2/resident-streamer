@@ -4,7 +4,8 @@ import BouleClass from "../class/BouleClass"
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
   console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
-    huzounet.boule = new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})
+    huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
+    console.log(huzounet.boule.test())
     huzounet.scene.groupeBoules.add(huzounet.boule)
     huzounet.animationCharge = huzounet.scene.tweens.add({
       targets: huzounet.boule,
@@ -54,13 +55,13 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       },
       {
         targets: huzounet.boule,
-        alpha: 0,
+        alpha: 1,
         duration: 100,
         onComplete: function() {/*huzounet.scene.room.state.boules.delete(arguments[1][0].id); */arguments[1][0].destroy(true);}
       },
       {
         targets: huzounet.boule,
-        alpha: 0,
+        alpha: 1,
         duration: 100,
         onComplete: function() {huzounet.scene.room.state.boules.delete(arguments[1][0].id);}
       }
