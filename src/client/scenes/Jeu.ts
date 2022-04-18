@@ -386,13 +386,7 @@ export default class Jeu extends Phaser.Scene {
 
 	async patchPlayer(list: any) {
 
-// console.log(this.groupeBoules.getLength())
-console.log(this.boulesRef)
     list.boulesListe.map((item: string, idx: number) => {
-
-      // console.log(this.boulesRef[list.boules[item].id])
-      // console.log(list.boules[item].id)
-      // console.log(this.boulesRef[list.boules[item].id])
       if (this.boulesRef[list.boules[item].id] === undefined) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
         this.boulesRef[item] = b
@@ -401,38 +395,11 @@ console.log(this.boulesRef)
         this.boulesRef[item].setScale(list.boules[item].scale);
         this.boulesRef[item].setAlpha(list.boules[item].alpha)
         console.log(this.boulesRef[item].alpha)
-        if (this.boulesRef[item].alpha <= 0.22) {
+        if (this.boulesRef[item].alpha <= 0.01) {
             this.boulesRef[list.boules[item].id].destroy(true)
-          console.log("OUI")
           delete this.boulesRef[list.boules[item].id]
         }
       }
-
-      // console.log(list.boulesListe)
-// console.log(list.boules)
-// })
-// console.log(list.boules)
-// console.log(this.boulesRef)
-
-      //   const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
-      //   b.play(`huzounet_shuriken`);
-      //   b.bouleID = list.boules[item].id
-      //
-      //   this.boulesRef[item] = b
-      //   console.log("CREATION")
-      // } else {
-      //
-      //     if ((this.boulesRef[item] as Phaser.Physics.Arcade.Sprite).alpha < 1) {
-      //       this.boulesRef[list.boules[item].id].destroy(true)
-      //       delete this.boulesRef[list.boules[item].id]
-      //     } else {
-      //   this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
-      //   this.boulesRef[item].setScale(list.boules[item].scale);
-      //   this.boulesRef[item].setAlpha(list.boules[item].alpha)
-      //
-      //     }
-      //
-      // }
     })
 
 		list.presenceList.map((item: string, idx: number) => {
