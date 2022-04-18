@@ -1,7 +1,12 @@
-export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any) {
-  fakhear.setVelocityX(0)
-  fakhear.play('cross')
-  fakhear.vie -= 1
+import { setAnimation } from "../Animations/AnimationJoueur"
+
+export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input) {
+  if (input.a.charge) {
+    input.a.charge = false
+    fakhear.setVelocityX(0)
+    setAnimation(fakhear, 'cross')
+    fakhear.vie -= 1
+  }
 }
 
 export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any) {

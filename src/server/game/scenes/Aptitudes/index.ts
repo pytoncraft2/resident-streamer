@@ -59,8 +59,8 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
 
 export const Aptitudes = {
   'fakhear': {
-    toucheA: (fakhear: Pick<P,'P'>) => {
-      cross(fakhear)
+    toucheA: (fakhear: Pick<P,'P'>, input?: Object) => {
+      cross(fakhear, input)
     },
     toucheZ: (fakhear: Pick<P,'P'>) => {
       kick(fakhear)
