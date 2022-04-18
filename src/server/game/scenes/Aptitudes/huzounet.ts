@@ -26,33 +26,12 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
 
   if (input.a.envoie) {
 
-    // huzounet.animationCharge.stop()
+    huzounet.animationCharge.stop()
 
-    // huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
+    huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
-  //
-  //   huzounet.animation = huzounet.scene.tweens.timeline({
-  //     tweens: [
-  //       {
-  //         targets: huzounet.boule,
-  //         alpha: 0.8,
-  //         duration: 3000,
-  //         ease: 'Power1',
-  //       },
-  //       {
-  //         targets: huzounet.boule,
-  //         alpha: 0.01,
-  //         duration: 1000,
-  //         onComplete: function() {
-  //           arguments[1][0].destroy(true);
-  //           huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-  //         }
-  //       }
-  //   ],
-  //
-  // })
     input.a.envoie = false
   }
 
