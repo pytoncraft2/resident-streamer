@@ -49,7 +49,22 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       {
         targets: huzounet.boule,
         alpha: 0,
-        duration: 1000
+        ease: 'Power1',
+        duration: 10,
+        onComplete: function(tween, targets) {
+          console.log("COMPLETE-------------------111111111111111")
+          // arguments[1][0].setAlpha(0);
+        }
+      },
+      {
+        targets: huzounet.boule,
+        alpha: 0,
+        duration: 1000,
+        onComplete: function(tween, targets) {
+          console.log("COMPLETE-------------------22222222222222")
+          huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+          arguments[1][0].destroy(true);
+        }
       }]
     })
     //   const t = huzounet.scene.tweens.add({
