@@ -414,9 +414,14 @@ export default class Jeu extends Phaser.Scene {
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
-        this.boulesRef[item].alpha == 0 ? this.boulesRef[item].destroy(true) :this.boulesRef[item].setAlpha(list.boules[item].alpha);
+        if (list.boules[item].alpha == 0) {
+          this.boulesRef[item].destroy(true);
+        } else {
+          // this.boulesRef[item].setAlpha(list.boules[item].alpha)
+        }
       }
-      console.log(list.boulesListe)
+      // console.log(list.boulesListe)
+      console.log(list.boules)
       console.log(this.groupeBoules.getLength())
     })
 
