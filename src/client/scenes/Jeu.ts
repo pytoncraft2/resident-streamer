@@ -402,6 +402,8 @@ export default class Jeu extends Phaser.Scene {
 	async patchPlayer(list: any) {
 		// create instance of all presence
 
+    console.log("colyseus")
+    console.log(Object.keys(list.boulesListe).length);
 
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[item] === undefined) {
@@ -429,7 +431,7 @@ export default class Jeu extends Phaser.Scene {
     })
       // console.log(this.groupeBoules.getLength())
       // console.log(list.boules)
-      console.log(this.boulesRef)
+      // console.log(this.boulesRef)
 
 		list.presenceList.map((item: string, idx: number) => {
 			if (this.playersRef[item] === undefined) {
@@ -503,22 +505,25 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 
-    this.groupeBoules.children.iterate((child) => {
+    console.log("groupe")
+    console.log(this.groupeBoules.getLength())
+    // this.groupeBoules.children.iterate((child) => {
 
       // console.log("ITTERATION")
       // console.log(child.data.list)
       // console.log(Object.keys(list.boules))
       // console.log(list.boules[`${Object.keys(list.boules)}`])
-      if (list.boules[`${Object.keys(list.boules)}`] === undefined) {
-      //   console.log(this.boulesRef[child.data.values.ClientId])
-        // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true)
-        // console.log(this.boulesRef[`${Object.keys(list.boules)}`])
-        // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true);
-        child.destroy(true)
-
-        delete this.boulesRef[`${(child as any).bouleID}`]
-      }
-    })
+      // if (list.boules[`${Object.keys(list.boules)}`] === undefined) {
+      // //   console.log(this.boulesRef[child.data.values.ClientId])
+      //   // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true)
+      //   // console.log(this.boulesRef[`${Object.keys(list.boules)}`])
+      //   // this.boulesRef[`${(child as any).bouleID}`].destroy(true);
+      //   console.log((child as any).bouleID)
+      //   // child.destroy(true)
+      //
+      //   delete this.boulesRef[`${(child as any).bouleID}`]
+      // }
+    // })
 
 	}
 
