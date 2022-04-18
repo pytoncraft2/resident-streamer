@@ -110,16 +110,27 @@ this.physics.add.overlap(this.players, this.enemies);
   getPresence() {
     let response = {}
     if (this.players) {
-    this.players.children.iterate((child) => {
-      if (child.data.values.ClientId) {
-        response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
-      }
-    })
-  }
+      this.players.children.iterate((child) => {
+        if (child.data.values.ClientId) {
+          response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
+        }
+      })
+    }
+
+    if (this.groupeBoules) {
+      console.log("IIIIIIIIIIIIITERATE")
+      this.groupeBoules.children.iterate((child) => {
+        if (child.data.values.ClientId) {
+          response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
+        }
+      })
+    }
+
 
     return {
       presences: response,
       presenceList: Object.keys(response),
+      boulesListe: Object.keys(response),
       total: Object.keys(response).length,
     }
   }
