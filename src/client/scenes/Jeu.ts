@@ -414,7 +414,9 @@ export default class Jeu extends Phaser.Scene {
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
-        if (list.boules[item].alpha == 0) {
+        // console.log(list.boules[item].alpha);
+        // if (list.boules[item].alpha < 1) console.log("DETRUEIT MOI !!");
+        if (list.boules[item].alpha < 1) {
           this.boulesRef[item].destroy(true);
         } else {
           this.boulesRef[item].setAlpha(list.boules[item].alpha)
@@ -422,7 +424,7 @@ export default class Jeu extends Phaser.Scene {
       }
       // console.log(list.boulesListe)
       console.log(list.boules)
-      console.log(this.groupeBoules.getLength())
+      // console.log(this.groupeBoules.getLength())
     })
 
 		list.presenceList.map((item: string, idx: number) => {

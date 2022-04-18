@@ -34,8 +34,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
         {
           targets: huzounet.boule,
           alpha: 0,
-          ease: 'Power1',
-          duration: 1000,
+          duration: 1,
         },
         {
           targets: huzounet.boule,
@@ -44,7 +43,7 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
           onComplete: function() {
             console.log("SSSSSSSSSSSSSSSIZZZE-----------")
             console.log(huzounet.scene.room.state.boules.size)
-            huzounet.scene.room.state.boules.delete(arguments[1][0].id);
+            // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
             console.log(huzounet.scene.room.state.boules.size)
             // arguments[1][0].destroy(true);
           }
