@@ -405,10 +405,12 @@ export default class Jeu extends Phaser.Scene {
 
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[item] === undefined) {
-        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setData({ ClientID: list.boulesListe[idx]}).setDepth(2)
+        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0')
         b.play(`huzounet_shuriken`);
+        b.bouleID = list.boulesListe[idx]
 
 
+        // this.boulesRef[item].id = 'monID'
         this.boulesRef[item] = b
         console.log("CREATION")
       } else {
@@ -514,7 +516,7 @@ export default class Jeu extends Phaser.Scene {
         // this.boulesRef[`${Object.keys(list.boules)}`].destroy(true);
         child.destroy(true)
 
-        delete this.boulesRef[`${Object.keys(list.boules)}`]
+        delete this.boulesRef[`${(child as any).bouleID}`]
       }
     })
 
