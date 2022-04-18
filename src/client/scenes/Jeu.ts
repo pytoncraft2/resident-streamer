@@ -424,8 +424,10 @@ export default class Jeu extends Phaser.Scene {
       }
       // console.log(list.boulesListe)
       // console.log(list.boules)
-      // console.log(this.groupeBoules.getLength())
     })
+      // console.log(this.groupeBoules.getLength())
+      // console.log(list.boules)
+      console.log(this.boulesRef)
 
 		list.presenceList.map((item: string, idx: number) => {
 			if (this.playersRef[item] === undefined) {
