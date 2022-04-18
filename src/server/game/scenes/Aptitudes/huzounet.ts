@@ -18,7 +18,14 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
   }
 
   if (input.a.envoie) {
-    huzounet.animationCharge.stop()
+
+    if (huzounet.animationCharge.isPlaying()) {
+      console.log("EN TRAIN DE JOUER")
+      huzounet.animationCharge.stop()
+    } else {
+      console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPAS ENTRAIN DE JOUEUR")
+      return
+    }
     huzounet.boule.setData({puissance: huzounet.animationCharge.progress})
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
