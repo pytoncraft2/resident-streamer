@@ -375,6 +375,7 @@ export default class Jeu extends Phaser.Scene {
 				})
         changes.boules.forEach((value: any, key: any) => {
           boules[key] = value
+          console.log(boules[key])
         })
         // changes.zoneAttaque.forEach((value: any, key: any) => {
           // console.log(value)
@@ -416,14 +417,14 @@ export default class Jeu extends Phaser.Scene {
         this.boulesRef[item].setScale(list.boules[item].scale);
         // console.log(list.boules[item].alpha);
         // if (list.boules[item].alpha < 1) console.log("DETRUEIT MOI !!");
-        if (list.boules[item].alpha < 1) {
-          this.boulesRef[item].destroy(true);
-        } else {
+        // if (list.boules[item].alpha < 0.2) {
+        //   this.boulesRef[item].destroy(true);
+        // } else {
           this.boulesRef[item].setAlpha(list.boules[item].alpha)
-        }
+        // }
       }
       // console.log(list.boulesListe)
-      console.log(list.boules)
+      // console.log(list.boules)
       // console.log(this.groupeBoules.getLength())
     })
 

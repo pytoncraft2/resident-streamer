@@ -28,13 +28,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
-
-    if (this.alpha == 0)
-    {
-      (this.scene as any).room.state.boules.delete(this.id);
-      this.destroy(true);
-    }
-
     if ((this.scene as any)) {
       (this.scene as any).room.state.boules.set(
         this.id,

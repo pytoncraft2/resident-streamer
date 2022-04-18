@@ -28,31 +28,20 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
       tweens: [
         {
           targets: huzounet.boule,
-          alpha: 1,
+          alpha: 0.8,
           duration: 3000,
-        },
-        {
-          targets: huzounet.boule,
-          alpha: 0,
-          duration: 1,
+          ease: 'Power1',
         },
         {
           targets: huzounet.boule,
           alpha: 0,
           duration: 1000,
           onComplete: function() {
-            console.log("SSSSSSSSSSSSSSSIZZZE-----------")
-            console.log(huzounet.scene.room.state.boules.size)
-            // huzounet.scene.room.state.boules.delete(arguments[1][0].id);
-            console.log(huzounet.scene.room.state.boules.size)
-            // arguments[1][0].destroy(true);
+            arguments[1][0].destroy(true);
+            huzounet.scene.room.state.boules.delete(arguments[1][0].id);
           }
-        },
+        }
     ],
-      // onComplete: function() {
-      //   // arguments[1][0].destroy(true);
-      //   huzounet.scene.room.state.boules.get(huzounet.boule.id);
-      // }
 
   })
     input.a.envoie = false
