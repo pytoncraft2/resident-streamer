@@ -44,7 +44,6 @@ interface Deplacement {
 
    init(scene: Phaser.Scene, ClientID: string) {
      this.scene = scene
-     this.scene.add.existing(this)
      this.ClientID = ClientID
      this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.action = () => {

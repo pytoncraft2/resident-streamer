@@ -136,7 +136,7 @@ this.physics.add.overlap(this.players, this.enemies);
   }
 
   createPlayer(ClientId: any, sprite: string) {
-    const player = new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId })
+    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
     this.players.add(player)
     this.playersRef[ClientId] = player
     player.setBounceX(0.2)
@@ -148,9 +148,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
   createEnnemy(EnnemyId: any, sprite: string) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
-    const ennemy = new EnnemyClass(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId })
-
-    // this.add.existing(ennemy)
+    const ennemy = this.add.existing(new EnnemyClass(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
     // ennemy.setPushable(false)
     // ennemy.setDisplaySize(335, 540.4)
     // ennemy.setBounceX(40)
