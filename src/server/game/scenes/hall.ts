@@ -1,7 +1,6 @@
-//@ts-nocheck
 // import { Player } from "../RoomState"
 
-import EnnemyClass from "./class/EnnemyClass"
+import EnnemyClass from "./class/bosses/EnnemyClass"
 import PlayerClass from "./class/PlayerClass"
 
 
@@ -16,6 +15,11 @@ export default class Hall extends Phaser.Scene {
   colisionJoueurEnnemie?: any
   // groupeBoules: any
   colisionShurikenEnnemie: any
+  enemies: Phaser.GameObjects.Group
+  playersAttackZone: Phaser.GameObjects.Group
+  groupeBoules: Phaser.GameObjects.Group
+  playersRef: any
+  enemiesRef: any
 
 
   constructor() {
@@ -53,6 +57,24 @@ export default class Hall extends Phaser.Scene {
     })
 
 
+    Phaser.GameObjects.GameObjectFactory.register(
+      'player',
+      function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number) {
+        // same logic as JavaScript example
+        const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
+        // this.players.add(player)
+        // this.playersRef[ClientId] = player
+        player.setBounceX(0.2)
+        player.setDragX(300)
+
+  this.displayList.add(slime)
+  this.updateList.add(slime)
+
+  return slime
+      }
+    )
+
+
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)
 // this.swordHitbox.body.enable = false
@@ -80,7 +102,7 @@ this.physics.add.overlap(this.players, this.enemies);
     this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoules, this.enemies,
-      function (_boule, _ennemie) {
+      function (_boule, _ennemie: any) {
         // console.log("DDDDDDDDDDDDDDATA")
         // console.log(_boule.data.list.puissance)
       _ennemie.blesse_ennemie(_boule.data.list.puissance)

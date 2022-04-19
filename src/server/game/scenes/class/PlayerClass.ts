@@ -177,3 +177,12 @@ interface Deplacement {
      }
    }
  }
+
+ Phaser.GameObjects.GameObjectFactory.register('slime', function (x, y) {
+  const slime = new PlayerClass(this.scene, x, y, "4", "4")
+
+  this.displayList.add(slime)
+  this.updateList.add(slime)
+
+  return slime
+})
