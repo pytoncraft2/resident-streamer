@@ -1,7 +1,8 @@
 // import { Player } from "../RoomState"
 
 import EnnemyClass from "./class/bosses/EnnemyClass"
-import PlayerClass from "./class/PlayerClass"
+// import PlayerClass from "./class/PlayerClass"
+import RegisterPlayer from "./RegisterPlayer"
 
 
 /**
@@ -56,25 +57,6 @@ export default class Hall extends Phaser.Scene {
       collideWorldBounds: true
     })
 
-
-    Phaser.GameObjects.GameObjectFactory.register(
-      'player',
-      function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number) {
-        // same logic as JavaScript example
-        const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
-        // this.players.add(player)
-        // this.playersRef[ClientId] = player
-        player.setBounceX(0.2)
-        player.setDragX(300)
-
-  this.displayList.add(slime)
-  this.updateList.add(slime)
-
-  return slime
-      }
-    )
-
-
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)
 // this.swordHitbox.body.enable = false
@@ -113,7 +95,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
   }
 
-  overlapAction(playerActionZone: Phaser.Physics.Arcade.Sprite, ennemie: Phaser.Physics.Arcade.Sprite) {
+  overlapAction(playerActionZone: IPlayer, ennemie: Phaser.GameObjects.Sprite) {
     playerActionZone.action(ennemie)
   }
 
@@ -158,7 +140,8 @@ this.physics.add.overlap(this.players, this.enemies);
   }
 
   createPlayer(ClientId: any, sprite: string) {
-    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
+    // const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
+    const player = new RegisterPlayer(this, 100, 100, "atlas", ClientId)
     this.players.add(player)
     this.playersRef[ClientId] = player
     player.setBounceX(0.2)
