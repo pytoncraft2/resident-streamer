@@ -2,7 +2,6 @@
 
 import Boss1_Class from "./class/bosses/Boss1_Class"
 import PlayerClass from "./class/PlayerClass"
-import { RegisterPlayer } from "./types/RegisterPlayer"
 
 
 /**

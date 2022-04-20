@@ -1,4 +1,4 @@
-import { Boule } from "../../RoomState"
+import { Boule } from "../../../RoomState"
 
 export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   id: any
