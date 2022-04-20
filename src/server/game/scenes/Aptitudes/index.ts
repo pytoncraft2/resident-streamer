@@ -3,11 +3,6 @@ import {pique, suivre} from './boss_1'
 import {kunai, shuriken} from './huzounet'
 
 
-interface P {
-  P: Phaser.Physics.Arcade.Sprite
-}
-
-
 /**
 PARAMETRES GENERALE
 **/
@@ -27,7 +22,7 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
  * Aptitude générale disponible pour tout le monde
  */
 
- export const EtatsInitialStatique = (scene?: Phaser.Scene, personnage?: any) => {
+ export const EtatsInitialStatique = (personnage?: Phaser.Physics.Arcade.Sprite) => {
    return {
      'fakhear': {
        vie: 5,
@@ -63,38 +58,38 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
 
 export const Aptitudes = {
   'fakhear': {
-    toucheA: (fakhear: Pick<P,'P'>, input?: Object) => {
+    toucheA: (fakhear, input?: Object) => {
       cross(fakhear, input)
     },
-    toucheZ: (fakhear: Pick<P,'P'>) => {
+    toucheZ: (fakhear) => {
       kick(fakhear)
     },
-    toucheE: (fakhear: Pick<P,'P'>) => {
+    toucheE: (fakhear) => {
       dash(fakhear)
     },
-    toucheR: (fakhear: Pick<P,'P'>) => {
+    toucheR: (fakhear) => {
       interaction(fakhear)
     },
-    toucheEspace: (fakhear: Pick<P, 'P'>) => {
+    toucheEspace: (fakhear) => {
       saut(fakhear)
     }
   },
   'boss_1': {
-    toucheA: (boss_1: Pick<P, 'P'>) => {
+    toucheA: (boss_1) => {
       pique(boss_1)
     },
-    toucheZ: (boss_1: Pick<P, 'P'>) => {
+    toucheZ: (boss_1) => {
       suivre(boss_1)
     }
   },
   'huzounet': {
-    toucheA: (huzounet: TJoueur, input?: Object) => {
+    toucheA: (huzounet, input?: Object) => {
       shuriken(huzounet, input)
     },
-    toucheZ: (huzounet: Pick<P, 'P'>) => {
+    toucheZ: (huzounet) => {
       kunai(huzounet)
     },
-    toucheEspace: (huzounet: Pick<P, 'P'>) => {
+    toucheEspace: (huzounet) => {
       saut(huzounet)
     }
   }

@@ -49,7 +49,7 @@ interface Deplacement {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
 
-     this.parametresDeBase = EtatsInitialStatique(this.scene, this)[this.sprite]
+     this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
 
      this.etats = {
        'initial': {
