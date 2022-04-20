@@ -2,27 +2,8 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/objets/BouleClass"
 import TJoueur from "../types/Joueur";
 
-// interface BaseEquipement {
-//     boulesEnMain: Phaser.Physics.Arcade.Group;
-// }
-//
-// declare interface TJoueur extends Phaser.GameObjects.Sprite
-// {
-// 	next(): void
-// 	parametresDeBase: BaseEquipement
-// 	ClientID: string
-// 	vie: number,
-// 	displayWidth: number,
-// 	displayHeight: number,
-// 	masse: number,
-// 	puissanceDeBase: number,
-// 	boulesEnMain: Phaser.Physics.Arcade.Group
-// }
-
 export function shuriken(huzounet: TJoueur, input?: any) {
-  // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
-
     console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
     console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
