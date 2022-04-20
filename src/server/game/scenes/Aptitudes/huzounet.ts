@@ -30,7 +30,17 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
     if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
       (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
+      this.scene.tweens.add({
+        targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
+        alpha: 1,
+        scale: 1,
+        duration: 1000,
+        //@ts-ignore
+        onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
+      })
+
     }
+
 
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
 
