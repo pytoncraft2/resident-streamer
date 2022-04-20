@@ -5,7 +5,7 @@ import TJoueur from "../types/Joueur";
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   huzounet.parametresDeBase.boulesEnMain.getChildren().forEach((element: BouleClass) => {
-    // console.log(element.proprietaire)
+    console.log(element.proprietaire)
   });
   if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
     // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
@@ -28,7 +28,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     const l = huzounet.parametresDeBase.boulesEnMain.getLength();
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
-    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet.ClientID);
+    if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet.ClientID);
+    }
+
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
 
 
