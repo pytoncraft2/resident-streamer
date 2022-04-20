@@ -2,22 +2,33 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/BouleClass"
 
 export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
-  console.log(huzounet.scene.groupeBoules.getLength())
+  // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
-    huzounet.boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID}))
-    huzounet.scene.groupeBoules.add(huzounet.boule)
 
-    setAnimation(huzounet, 'huzounet_preparation_attaque')
+    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    // huzounet.scene.groupeBoules.add(huzounet.boule)
+
+    // setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     input.a.charge = false
   }
 
   if (input.a.envoie) {
 
+    // console.log(huzounet.boule[0])
+    // if (!huzounet.boule.body) {
+      // var tweens = huzounet.tweens.getTweensOf(huzounet.boule);
+      // console.log("RIEN -----------------------")
+      // console.log(tweens)
+    // }
+    /*
     huzounet.boule.stopAnim()
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+    */
 
     input.a.envoie = false
   }

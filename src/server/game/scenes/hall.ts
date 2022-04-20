@@ -1,35 +1,13 @@
 // import { Player } from "../RoomState"
 
 import Boss1_Class from "./class/bosses/Boss1_Class"
-// import PlayerClass from "./class/PlayerClass"
-// import { RegisterPlayer } from "./types/RegisterPlayer"
+import PlayerClass from "./class/PlayerClass"
+import { RegisterPlayer } from "./types/RegisterPlayer"
 
 
 /**
  * Serveur Phaser 3 Epreuve 1
  */
-
- Phaser.GameObjects.GameObjectFactory.register(
-   'slime',
-   function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number) {
-     // same logic as JavaScript example
-   }
- )
-
-export class Slime extends Phaser.GameObjects.Sprite
-{
-	constructor(scene, x, y)
-	{
-		super(scene, x, y, 'slime')
-	}
-
-	changeColor()
-	{
-		this.tint = 0xffee0d
-	}
-
-	// ... other methods and actions
-}
 
 export default class Hall extends Phaser.Scene {
   players: Phaser.GameObjects.Group
@@ -163,17 +141,11 @@ this.physics.add.overlap(this.players, this.enemies);
   }
 
   createPlayer(ClientId: any, sprite: string) {
-    // const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
-    const slime: ISlime = this.add.slime()
-    // slime.changeColor()
-     // console.log(new RegisterPlayer(this, 100, 100, "atlas", ClientId))
-
-    // const player = this.add.player
-    // this.players.add(player)
-    // this.playersRef[ClientId] = player
-    // player.setBounceX(0.2)
-    // player.setDragX(300)
-    console.log("GOO")
+    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
+    this.players.add(player)
+    this.playersRef[ClientId] = player
+    player.setBounceX(0.2)
+    player.setDragX(300)
 
 
     return this.getPresence()
