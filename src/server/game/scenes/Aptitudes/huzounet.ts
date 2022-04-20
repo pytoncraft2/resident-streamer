@@ -26,7 +26,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
     // console.log(huzounet.boule[0])
     // if (!huzounet.boule.body) {
-      // var tweens = huzounet.tweens.getTweensOf(huzounet.boule);
+      var tweens = huzounet.parametresDeBase.boulesEnMain.getChildren()[0];
+      // getTweensOf(tweens)
+      console.log(huzounet.scene.tweens.getTweensOf(tweens));
+
       // console.log("RIEN -----------------------")
       // console.log(tweens)
     // }
