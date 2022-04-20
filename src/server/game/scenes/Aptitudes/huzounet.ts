@@ -3,7 +3,7 @@ import BouleClass from "../class/objets/BouleClass"
 import TJoueur from "../types/Joueur";
 
 export function shuriken(huzounet: TJoueur, input?: any) {
-  if (input.a.charge) {
+  if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
     console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
     console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
@@ -14,21 +14,22 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     input.a.charge = false
   }
 
-  if (input.a.envoie) {
+  if (input.a.envoie && !input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.saut) {
+    console.log(input)
 
     // huzounet.boule.stopAnim()
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
-    console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
-    (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as Phaser.Physics.Arcade.Sprite).setAlpha(0.5)
-    // huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
+    const l = huzounet.parametresDeBase.boulesEnMain.getLength();
+    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
+    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400);
 
 
     // console.log(huzounet.boule[0])
     // if (!huzounet.boule.body) {
-      var tweens = huzounet.parametresDeBase.boulesEnMain.getChildren()[0];
+      // var tweens = huzounet.parametresDeBase.boulesEnMain.getChildren()[0];
       // getTweensOf(tweens)
-      console.log(huzounet.scene.tweens.getTweensOf(tweens));
+      // console.log(huzounet.scene.tweens.getTweensOf(tweens));
 
       // console.log("RIEN -----------------------")
       // console.log(tweens)
