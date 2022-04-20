@@ -5,6 +5,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   vel: number = 400
   animationCharge: Phaser.Tweens.Tween
   animationEnvoie: Phaser.Tweens.Tween
+  proprietaire: string[] = []
 
   constructor(
     scene: Phaser.Scene,
@@ -44,13 +45,18 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       targets: this,
       alpha: 0,
       duration: 1000,
-      onComplete: function() {
-        if (arguments[1][0].scene){
-          arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-          arguments[1][0].destroy(true);
-        }
-      },
-      paused: true
+      onComplete: function(tween, targets: any) {
+        // if (arguments[1][0].scene){
+        //   arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+        //   arguments[1][0].destroy(true);
+        // }
+        console.log("FINI")
+        console.log(arguments[1][0].proprietaire)
+        arguments[1][0].suppression(arguments[1][0].proprietaire)
+        console.log(arguments[1][0].proprietaire)
+
+        console.log("_________________________")
+      }
     });
 
 
@@ -72,8 +78,16 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       )
   }
 
-  lancer() {
-    this.animationEnvoie.play()
+  lancer(id) {
+    this.proprietaire.push(id)
+    // this.animationEnvoie.play()
+  }
+
+  suppression(id) {
+    var filtered = this.proprietaire.filter(function(value, index, arr){
+      return value == id;
+    });
+    this.proprietaire = filtered
   }
 
   // stopAnim() {

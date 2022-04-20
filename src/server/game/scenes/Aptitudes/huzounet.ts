@@ -3,10 +3,14 @@ import BouleClass from "../class/objets/BouleClass"
 import TJoueur from "../types/Joueur";
 
 export function shuriken(huzounet: TJoueur, input?: any) {
+
+  huzounet.parametresDeBase.boulesEnMain.getChildren().forEach((element: BouleClass) => {
+    console.log(element.proprietaire)
+  });
   if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
-    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
-    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     // huzounet.scene.groupeBoules.add(huzounet.boule)
 
     setAnimation(huzounet, 'huzounet_preparation_attaque')
@@ -14,16 +18,17 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     input.a.charge = false
   }
 
-  console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
+  // console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
   if (input.a.envoie && !input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.saut) {
-    console.log(input)
+    // console.log(input)
 
     // huzounet.boule.stopAnim()
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     const l = huzounet.parametresDeBase.boulesEnMain.getLength();
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
-    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer();
+    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
+    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet.ClientID);
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
 
 
