@@ -394,9 +394,11 @@ export default class Jeu extends Phaser.Scene {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
         this.boulesRef[item].setScale(list.boules[item].scale);
         this.boulesRef[item].setAlpha(list.boules[item].alpha)
-        console.log(this.boulesRef[item].alpha)
-        if (this.boulesRef[item].alpha <= 0.01) {
+        console.log(list.boules[item].actif)
+        if (!list.boules[item].actif) {
+            console.log("PASSS AAACTIF")
             this.boulesRef[list.boules[item].id].destroy(true)
+            console.log(this.boulesRef[list.boules[item].id])
           delete this.boulesRef[list.boules[item].id]
         }
       }
