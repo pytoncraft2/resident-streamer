@@ -1,13 +1,35 @@
 // import { Player } from "../RoomState"
 
-import EnnemyClass from "./class/bosses/EnnemyClass"
+import Boss1_Class from "./class/bosses/Boss1_Class"
 // import PlayerClass from "./class/PlayerClass"
-import RegisterPlayer from "./RegisterPlayer"
+// import { RegisterPlayer } from "./types/RegisterPlayer"
 
 
 /**
  * Serveur Phaser 3 Epreuve 1
  */
+
+ Phaser.GameObjects.GameObjectFactory.register(
+   'slime',
+   function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number) {
+     // same logic as JavaScript example
+   }
+ )
+
+export class Slime extends Phaser.GameObjects.Sprite
+{
+	constructor(scene, x, y)
+	{
+		super(scene, x, y, 'slime')
+	}
+
+	changeColor()
+	{
+		this.tint = 0xffee0d
+	}
+
+	// ... other methods and actions
+}
 
 export default class Hall extends Phaser.Scene {
   players: Phaser.GameObjects.Group
@@ -95,7 +117,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
   }
 
-  overlapAction(playerActionZone: IPlayer, ennemie: Phaser.GameObjects.Sprite) {
+  overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
     playerActionZone.action(ennemie)
   }
 
@@ -107,23 +129,24 @@ this.physics.add.overlap(this.players, this.enemies);
     console.log(`BOSS ${id} KO !`)
   }
 
-  boss_KO_proprietaire(id) {
+  boss_KO_proprietaire(id: string) {
     this.room.broadcast("boss-KO-proprietaire", id);
   }
 
   getPresence() {
     let response = {}
     if (this.players) {
-      this.players.children.iterate((child) => {
+      this.players.children.iterate((child: any) => {
         if (child.data.values.ClientId) {
-          response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
+          // response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
+          response[child.data.values.ClientId] = { x: child.x, y: child.y }
         }
       })
     }
 
     if (this.groupeBoules) {
       console.log("IIIIIIIIIIIIITERATE")
-      this.groupeBoules.children.iterate((child) => {
+      this.groupeBoules.children.iterate((child: any)=> {
         if (child.data.values.ClientId) {
           response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
         }
@@ -141,11 +164,16 @@ this.physics.add.overlap(this.players, this.enemies);
 
   createPlayer(ClientId: any, sprite: string) {
     // const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
-    const player = new RegisterPlayer(this, 100, 100, "atlas", ClientId)
-    this.players.add(player)
-    this.playersRef[ClientId] = player
-    player.setBounceX(0.2)
-    player.setDragX(300)
+    const slime: ISlime = this.add.slime()
+    // slime.changeColor()
+     // console.log(new RegisterPlayer(this, 100, 100, "atlas", ClientId))
+
+    // const player = this.add.player
+    // this.players.add(player)
+    // this.playersRef[ClientId] = player
+    // player.setBounceX(0.2)
+    // player.setDragX(300)
+    console.log("GOO")
 
 
     return this.getPresence()
@@ -153,7 +181,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
   createEnnemy(EnnemyId: any, sprite: string) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
-    const ennemy = this.add.existing(new EnnemyClass(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
+    const ennemy = this.add.existing(new Boss1_Class(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
     // ennemy.setPushable(false)
     // ennemy.setDisplaySize(335, 540.4)
     // ennemy.setBounceX(40)

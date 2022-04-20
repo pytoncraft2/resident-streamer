@@ -1,12 +1,12 @@
-import { Player } from "../../RoomState"
-import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
+import { Player } from "../../../RoomState"
+import { AnimationEnnemie } from "../../Animations/AnimationEnnemie"
 
 
 /**
  * Joueur et interaction
  */
 
-export default class EnnemyClass extends Phaser.Physics.Arcade.Sprite {
+export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   private EnnemyId: string;
   private lastAnim: any;
   private attaque: any;

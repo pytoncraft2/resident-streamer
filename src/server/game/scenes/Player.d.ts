@@ -1,12 +1,12 @@
-declare interface IPlayer extends Phaser.GameObjects.Sprite
+declare interface ISlime extends Phaser.GameObjects.Sprite
 {
-	action(objet_rencontré): void
+	changeColor(): void
 }
 
 declare namespace Phaser.GameObjects
 {
 	interface GameObjectFactory
 	{
-		player(): IPlayer
+		slime(): ISlime
 	}
 }
