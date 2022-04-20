@@ -2,6 +2,9 @@ import {cross, kick, dash, interaction} from './fakhear'
 import {pique, suivre} from './boss_1'
 import {kunai, shuriken} from './huzounet'
 
+import TJoueur from "../types/Joueur";
+
+
 
 /**
 PARAMETRES GENERALE
@@ -30,7 +33,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        displayHeight: 302,
        masse: 30,
        puissanceDeBase: 10,
-       attaqueFrame: "positiona3"
      },
      'boss_1': {
        vie: 5,
@@ -38,7 +40,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        displayHeight: 302,
        masse: 30,
        puissanceDeBase: 10,
-       attaqueFrame: "positiona3"
      },
      'huzounet': {
        vie: 5,
@@ -46,7 +47,6 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        displayHeight: 302,
        masse: 30,
        puissanceDeBase: 10,
-       attaqueFrame: "positiona3",
        boulesEnMain:   personnage.scene.physics.add.group({
          runChildUpdate: true,
          collideWorldBounds: true
@@ -83,13 +83,13 @@ export const Aptitudes = {
     }
   },
   'huzounet': {
-    toucheA: (huzounet, input?: Object) => {
+    toucheA: (huzounet: TJoueur, input?: Object) => {
       shuriken(huzounet, input)
     },
-    toucheZ: (huzounet) => {
+    toucheZ: (huzounet: TJoueur) => {
       kunai(huzounet)
     },
-    toucheEspace: (huzounet) => {
+    toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)
     }
   }
