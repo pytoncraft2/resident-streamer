@@ -14,6 +14,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     input.a.charge = false
   }
 
+  console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
   if (input.a.envoie && !input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.saut) {
     console.log(input)
 
