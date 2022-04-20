@@ -21,8 +21,9 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
-    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400);
+    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
+    (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer();
+    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
 
 
     // console.log(huzounet.boule[0])

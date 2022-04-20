@@ -40,18 +40,18 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     //   // }
     // });
 
-    // this.animationEnvoie = this.scene.tweens.add({
-    //   targets: this,
-    //   alpha: 0,
-    //   duration: 1000,
-    //   onComplete: function() {
-    //     if (arguments[1][0].scene){
-    //       arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //       arguments[1][0].destroy(true);
-    //     }
-    //   },
-    //   paused: true
-    // });
+    this.animationEnvoie = this.scene.tweens.add({
+      targets: this,
+      alpha: 0,
+      duration: 1000,
+      onComplete: function() {
+        if (arguments[1][0].scene){
+          arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+          arguments[1][0].destroy(true);
+        }
+      },
+      paused: true
+    });
 
 
   }
@@ -70,6 +70,10 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           id: this.id
         })
       )
+  }
+
+  lancer() {
+    this.animationEnvoie.play()
   }
 
   // stopAnim() {
