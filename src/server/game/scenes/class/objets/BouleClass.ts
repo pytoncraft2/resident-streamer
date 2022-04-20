@@ -25,6 +25,10 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
+    this.alpha = 0
+    this.scale = 0
+    //@ts-ignore
+    // this.body.allowGravity = false
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
@@ -42,24 +46,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     //   // }
     // });
 
-    this.animationEnvoie = this.scene.tweens.add({
-      targets: this,
-      alpha: 0,
-      duration: 1000,
-      onComplete: function() {
-        // if (arguments[1][0].scene){
-
-        // }
-        console.log("FINI")
-        arguments[1][0].actif = false
-        console.log(arguments[1][0].proprietaire)
-        arguments[1][0].suppression(arguments[1][0].proprietaire)
-        console.log(arguments[1][0].proprietaire)
-        arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-        arguments[1][0].destroy(true);
-        console.log("_________________________")
-      }
-    });
 
 
   }
@@ -81,14 +67,39 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       )
   }
 
-  lancer(id) {
-    this.proprietaire.push(id)
-    // this.animationEnvoie.play()
+  lancer(joueur) {
+    this.proprietaire.push(joueur.id)
+    this.commencerAnimation(joueur)
   }
 
   suppression(id) {
     this.proprietaire.shift()
   }
+
+  commencerAnimation(joueur) {
+    this.animationEnvoie = this.scene.tweens.add({
+      targets: joueur.parametresDeBase.boulesEnMain.getChildren()[0]
+        ,
+      alpha: 1,
+      scale: 1,
+      duration: 1000,
+      onComplete: function() {
+        // if (arguments[1][0].scene){
+
+        // }
+        console.log("FINI")
+        arguments[1][0].actif = false
+        console.log(arguments[1][0].proprietaire)
+        arguments[1][0].suppression(arguments[1][0].proprietaire)
+        console.log(arguments[1][0].proprietaire)
+        arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+        arguments[1][0].destroy(true);
+        console.log("_________________________")
+      }
+    });
+  }
+
+
 
   // stopAnim() {
   //   this.animationCharge.stop()

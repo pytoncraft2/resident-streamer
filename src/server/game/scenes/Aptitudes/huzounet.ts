@@ -29,7 +29,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
     if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
-      (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet.ClientID);
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
     }
 
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
