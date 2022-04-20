@@ -54,7 +54,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
         console.log(arguments[1][0].proprietaire)
         arguments[1][0].suppression(arguments[1][0].proprietaire)
         console.log(arguments[1][0].proprietaire)
-
         console.log("_________________________")
       }
     });
@@ -84,10 +83,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   suppression(id) {
-    var filtered = this.proprietaire.filter(function(value, index, arr){
-      return value == id;
-    });
-    this.proprietaire = filtered
+    this.proprietaire.shift()
   }
 
   // stopAnim() {

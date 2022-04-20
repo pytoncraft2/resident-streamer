@@ -5,7 +5,7 @@ import TJoueur from "../types/Joueur";
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   huzounet.parametresDeBase.boulesEnMain.getChildren().forEach((element: BouleClass) => {
-    console.log(element.proprietaire)
+    // console.log(element.proprietaire)
   });
   if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
     // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
