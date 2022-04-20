@@ -1,7 +1,7 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/objets/BouleClass"
 
-export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any) {
+export function shuriken(huzounet: TJoueur, input?: any) {
   // console.log(huzounet.scene.groupeBoules.getLength())
   if (input.a.charge) {
 
@@ -20,8 +20,8 @@ export function shuriken(huzounet:Phaser.Physics.Arcade.Sprite|any, input?: any)
     // huzounet.boule.stopAnim()
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
-    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
-    huzounet.parametresDeBase.boulesEnMain.getChildren()[0].setAlpha(0.5)
+    console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
+    (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as Phaser.Physics.Arcade.Sprite).setAlpha(0.5)
     // huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
 
 
