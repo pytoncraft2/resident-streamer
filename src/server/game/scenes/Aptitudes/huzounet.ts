@@ -27,8 +27,11 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
       boule.setActive(false)
       var timer = huzounet.scene.time.addEvent({
-        delay: 2000,                // ms
-        callback: () => (boule.destroy(true), huzounet.scene.room.state.boules.delete(boule.id)),
+        delay: 2000,
+        args: [boule, huzounet],
+        callback: function(b, h) {
+         (b.destroy(true), h.scene.room.state.boules.delete(b.id))
+        },
         loop: false
       });
 
