@@ -39,9 +39,9 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //@ts-ignore
     if (huzounet.animationCharge.isPlaying()) {
       //@ts-ignore
-      huzounet.animationCharge.stop() 
+      huzounet.animationCharge.stop()
 
-      huzounet.parametresDeBase.boulesEnMain.getFirst(true).setVelocityX(huzounet.flipX ? -2400 : 2400)
+      huzounet.parametresDeBase.boulesEnMain.getFirstAlive(true).setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente()
     }
     // const l = huzounet.parametresDeBase.boulesEnMain.getLength();
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);

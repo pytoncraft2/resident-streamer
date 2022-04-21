@@ -91,6 +91,29 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     this.proprietaire.shift()
   }
 
+  setDestructionIminente() {
+    var tween = this.scene.tweens.addCounter({
+      from: 0,
+      to: 1,
+      ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+      duration: 2000,
+      repeat: 0,            // -1: infinity
+      yoyo: false,
+      onComplete: () => { this.setActive(false); this.destructionColyseus(); }
+    });
+  }
+
+  destructionColyseus() {
+    // var tween = this.scene.tweens.addCounter({
+    //   from: 0,
+    //   to: 1,
+    //   duration: 1000,
+    //   onComplete: function() {
+    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+    //   }
+    // });
+  }
+
   // stopAnim() {
   //   this.animationCharge.stop()
   //   if (!this.animationCharge.isPlaying()) {
