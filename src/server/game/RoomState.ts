@@ -24,7 +24,7 @@ export class Boule extends Schema {
   @type("number") scale: number;
   @type("number") alpha: number;
   @type("string") id: string;
-  @type("boolean") actif: boolean;
+  @type("boolean") active: boolean;
 }
 
 export class ZoneAttaque extends Schema {

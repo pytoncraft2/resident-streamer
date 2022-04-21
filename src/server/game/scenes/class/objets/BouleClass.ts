@@ -78,7 +78,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           scale: this.scale,
           alpha: this.alpha,
           id: this.id,
-          actif: this.actif
+          active: this.active
         })
       )
   }
@@ -97,13 +97,23 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       from: 0,
       to: 1,
       ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
-      duration: 1000,
+      duration: 3000,
       repeat: 0,            // -1: infinity
       yoyo: false,
       onComplete: () => {
-        this.setActive(false);
-        destruction(this.id)
+        (this.scene as any).room.state.boules.set(
+          this.id,
+          new Boule({
+            x: this.x,
+            y: this.y,
+            scale: this.scale,
+            alpha: this.alpha,
+            id: this.id,
+            active: false
+          }))
+        // this.setActive(false);
         // this.destroy(true);
+        destruction(this.id)
         // this.scene.room.state.boules.delete(arguments[1][0].id);
         // this.destructionColyseus();
       }
