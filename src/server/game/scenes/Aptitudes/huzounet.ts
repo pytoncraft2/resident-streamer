@@ -23,6 +23,15 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       //   scale: 2,
       //   duration: 1000
       // })
+    } else {
+      var timer = huzounet.scene.time.addEvent({
+        delay: 3000,
+        args: [huzounet],
+        callback: function(h) {
+          (h.parametresDeBase.boulesEnMain.clear())
+        },
+        loop: false
+      });
     }
     input.a.charge = false
   }
