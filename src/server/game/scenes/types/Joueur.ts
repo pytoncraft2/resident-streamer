@@ -4,6 +4,7 @@ interface BaseEquipement {
 
 interface Scene extends Phaser.Scene {
   containerColision: Phaser.GameObjects.Container;
+  room: any
 }
 
 
@@ -18,6 +19,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   puissanceDeBase: number,
   boulesEnMain: Phaser.Physics.Arcade.Group
   containerColision: Phaser.GameObjects.Container
+  animationCharge: Phaser.Tweens.Tween
   scene: Scene
 }
 

@@ -388,7 +388,7 @@ export default class Jeu extends Phaser.Scene {
 
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[list.boules[item].id] === undefined) {
-        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
+        const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setData({ ClientId: list.boulesListe[idx] }).setDepth(2)
         this.boulesRef[item] = b
       } else {
         this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
@@ -468,13 +468,17 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 
-    // this.groupeBoules.getChildren().forEach((element, idx) => {
-    //   // console.log(element)
-    //   if ((element as Phaser.Physics.Arcade.Sprite).alpha < 1) {
-    //     this.boulesRef[(element as any).bouleID].destroy(true)
-    //     delete this.boulesRef[(element as any).bouleID]
-    //   }
-    // });
+    this.groupeBoules.children.iterate((child, idx) => {
+      // console.log(element)
+      // console.log(list.groupeBoules[child.data.list.ClientID])
+      console.log(child.data.list.ClientID)
+      // console.log(list.groupeBoules[child.data.list.ClientID])
+      // console.log(list.groupeBoules[child.data.values.ClientID])
+      // if ((element as Phaser.Physics.Arcade.Sprite).alpha < 1) {
+      //   this.boulesRef[(element as any).bouleID].destroy(true)
+      //   delete this.boulesRef[(element as any).bouleID]
+      // }
+    });
 	}
 
 
