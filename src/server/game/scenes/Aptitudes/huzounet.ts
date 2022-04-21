@@ -21,6 +21,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       huzounet.animationCharge = huzounet.scene.add.tween({
         targets: p,
         scale: 2,
+        alpha: 1,
         duration: 500
       })
     } else {
