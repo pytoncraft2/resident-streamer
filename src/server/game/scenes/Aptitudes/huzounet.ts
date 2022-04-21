@@ -23,6 +23,11 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //@ts-ignore
     huzounet.animationCharge.remove()
     huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -100 : 100).setDestructionIminente((id) => {
+
+      //@ts-ignore
+      this.destroy(true);
+      // this.scene.room.state.boules.delete(arguments[1][0].id);
+      // huzounet.scene.room.state.boules.delete(id);
       console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
       console.log(id)
     })

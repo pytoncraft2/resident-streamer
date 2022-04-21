@@ -112,8 +112,8 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
             active: false
           }))
         // this.setActive(false);
-        // this.destroy(true);
         destruction(this.id)
+        // this.destroy(true);
         // this.scene.room.state.boules.delete(arguments[1][0].id);
         // this.destructionColyseus();
       }
