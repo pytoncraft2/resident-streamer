@@ -18,11 +18,11 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
       (p.body as any).setAllowGravity(false);
       // huzounet.scene.containerColision
-      // huzounet.animationCharge = huzounet.scene.add.tween({
-      //   targets: p,
-      //   scale: 2,
-      //   duration: 1000
-      // })
+      huzounet.animationCharge = huzounet.scene.add.tween({
+        targets: p,
+        scale: 2,
+        duration: 2000
+      })
     } else {
       var timer = huzounet.scene.time.addEvent({
         delay: 3000,
@@ -40,10 +40,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
   {
     // if (!huzounet.scene.groupeBoulesHuzounet.isFull()) {
       setAnimation(huzounet, 'huzounet_envoie_attaque')
-      // huzounet.animationCharge.remove()
+      huzounet.animationCharge.stop()
       const l = huzounet.scene.groupeBoulesHuzounet.getLength();
       const p = huzounet.scene.groupeBoulesHuzounet.getChildren()[l - 1];
-      (p as any).setVelocityX(huzounet.flipX ? -1200 : 1200).setDestructionIminente((boule) => {
+      (p as any).setVelocityX(huzounet.flipX ? -1200 : 1200).setData({puissance: huzounet.animationCharge.progress}).setDestructionIminente((boule) => {
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
         huzounet.scene.room.state.boules.set(
           boule.id,

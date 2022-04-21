@@ -25,7 +25,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
-    // this.scale = 1
+    this.scale = 0.2
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
