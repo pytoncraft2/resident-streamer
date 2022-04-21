@@ -26,7 +26,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       setAnimation(huzounet, 'huzounet_envoie_attaque')
       //@ts-ignore
       huzounet.animationCharge.remove()
-      huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente()
+      huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente((id) => {
+        console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
+        console.log(id)
+      })
     }
 
     input.a.envoie = false
