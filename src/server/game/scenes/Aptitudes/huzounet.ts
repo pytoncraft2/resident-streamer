@@ -4,87 +4,30 @@ import TJoueur from "../types/Joueur";
 
 export function shuriken(huzounet: TJoueur, input?: any) {
 
-  console.log(huzounet.parametresDeBase.boulesEnMain.countActive())
-  console.log("<__________________________>")
-  console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
-  // huzounet.parametresDeBase.boulesEnMain.getChildren().forEach((element: BouleClass) => {
-  //   // console.log(element.proprietaire)
-  // });
-  if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
-    // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+  if (input.a.charge) {
     if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
-    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
-    // console.log("FIIIIRST")
-    const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive(true);
-    p.body.setAllowGravity(false);
-    //@ts-ignore
-    huzounet.animationCharge = huzounet.scene.add.tween({
-      targets: p,
-      scale: 2,
-      duration: 2000
-    })
-    // huzounet.parametresDeBase.boulesEnMain.getFirst().setPosition(huzounet.x, huzounet.y).setVelocity(0, 0)
-    // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
-    // huzounet.scene.groupeBoules.add(huzounet.boule)
-
-    setAnimation(huzounet, 'huzounet_preparation_attaque')
-  }
+      huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+      const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive(true);
+      p.body.setAllowGravity(false);
+      //@ts-ignore
+      huzounet.animationCharge = huzounet.scene.add.tween({
+        targets: p,
+        scale: 2,
+        duration: 2000
+      })
+      setAnimation(huzounet, 'huzounet_preparation_attaque')
+    }
 
     input.a.charge = false
   }
 
-  // console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
   if (input.a.envoie) {
-    // console.log(input)
-
-    // huzounet.boule.stopAnim()
     if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
-
-
-    setAnimation(huzounet, 'huzounet_envoie_attaque')
-    // console.log("JJJJJJJJJJJJOUEE ??????????????????")
-    //@ts-ignore
-    // if (huzounet.animationCharge.isPlaying()) {
+      setAnimation(huzounet, 'huzounet_envoie_attaque')
       //@ts-ignore
       huzounet.animationCharge.remove()
-
       huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente()
-    // }
-    // const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
-    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
-    // if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
-    //   (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
-    //   // huzounet.scene.tweens.add({
-    //   //   targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
-    //   //   alpha: 1,
-    //   //   scale: 1,
-    //   //   duration: 1000,
-    //   //   // onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
-    //   // })
-    //
-    // }
-
-
-    // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
-
-
-    // console.log(huzounet.boule[0])
-    // if (!huzounet.boule.body) {
-      // var tweens = huzounet.parametresDeBase.boulesEnMain.getChildren()[0];
-      // getTweensOf(tweens)
-      // console.log(huzounet.scene.tweens.getTweensOf(tweens));
-
-      // console.log("RIEN -----------------------")
-      // console.log(tweens)
-    // }
-    /*
-    huzounet.boule.stopAnim()
-
-    setAnimation(huzounet, 'huzounet_envoie_attaque')
-    huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
-    */
-  }
+    }
 
     input.a.envoie = false
   }
