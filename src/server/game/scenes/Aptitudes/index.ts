@@ -49,7 +49,8 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
        puissanceDeBase: 10,
        boulesEnMain:   personnage.scene.physics.add.group({
          runChildUpdate: true,
-         collideWorldBounds: true
+         collideWorldBounds: true,
+         maxSize: 4
        })
      }
    }

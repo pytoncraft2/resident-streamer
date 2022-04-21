@@ -12,6 +12,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
   // });
   if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
     // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
     huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
     // console.log("FIIIIRST")
     const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive(true);
@@ -27,6 +28,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     // huzounet.scene.groupeBoules.add(huzounet.boule)
 
     setAnimation(huzounet, 'huzounet_preparation_attaque')
+  }
 
     input.a.charge = false
   }
@@ -42,9 +44,9 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //@ts-ignore
     // if (huzounet.animationCharge.isPlaying()) {
       //@ts-ignore
-      // huzounet.animationCharge.stop()
+      huzounet.animationCharge.remove()
 
-      huzounet.parametresDeBase.boulesEnMain.getFirstAlive(true).setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente()
+      huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente()
     // }
     // const l = huzounet.parametresDeBase.boulesEnMain.getLength();
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
