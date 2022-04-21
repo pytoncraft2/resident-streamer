@@ -5,9 +5,18 @@ import TJoueur from "../types/Joueur";
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a.charge) {
-    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+
     const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive();
     p.body.setAllowGravity(false);
+    //@ts-ignore
+    huzounet.scene.containerColision.add(
+      huzounet.parametresDeBase.boulesEnMain.add(
+        huzounet.scene.add.existing(
+          new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`)
+          .setData({ ClientId: huzounet.ClientID})
+        )
+      )
+    ) 
     //@ts-ignore
     huzounet.animationCharge = huzounet.scene.add.tween({
       targets: p,
@@ -25,7 +34,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -100 : 100).setDestructionIminente((id) => {
 
       //@ts-ignore
-      this.destroy(true);
+      // this.destroy(true);
       // this.scene.room.state.boules.delete(arguments[1][0].id);
       // huzounet.scene.room.state.boules.delete(id);
       console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")

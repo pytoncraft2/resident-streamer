@@ -20,6 +20,7 @@ export default class Hall extends Phaser.Scene {
   groupeBoules: Phaser.GameObjects.Group
   playersRef: any
   enemiesRef: any
+  containerColision: Phaser.GameObjects.Container
 
 
   constructor() {
@@ -82,11 +83,14 @@ this.physics.add.overlap(this.players, this.enemies);
     this.physics.add.collider(platforme, this.enemies);
     this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
 
-    this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoules, this.enemies,
+    this.containerColision = this.add.container(0,0);
+
+
+    this.colisionShurikenEnnemie = this.physics.add.collider(this.containerColision, this.enemies,
       function (_boule, _ennemie: any) {
-        // console.log("DDDDDDDDDDDDDDATA")
+        console.log("ENNNNNNNNNNNNNNEMIE BLESSSSEE")
         // console.log(_boule.data.list.puissance)
-      _ennemie.blesse_ennemie(_boule.data.list.puissance)
+      // _ennemie.blesse_ennemie(_boule.data.list.puissance)
         // _boule.destroy(true)
     });
     this.events.on('boss_KO', this.boss_KO, this);
