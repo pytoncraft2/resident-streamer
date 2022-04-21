@@ -21,7 +21,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       huzounet.animationCharge = huzounet.scene.add.tween({
         targets: p,
         scale: 2,
-        duration: 2000
+        duration: 500
       })
     } else {
       var timer = huzounet.scene.time.addEvent({
@@ -43,7 +43,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       huzounet.animationCharge.stop()
       const l = huzounet.scene.groupeBoulesHuzounet.getLength();
       const p = huzounet.scene.groupeBoulesHuzounet.getChildren()[l - 1];
-      (p as any).setVelocityX(huzounet.flipX ? -1200 : 1200).setData({puissance: huzounet.animationCharge.progress}).setDestructionIminente((boule) => {
+      (p as any).setVelocityX(huzounet.flipX ? -2200 : 2200).setData({puissance: huzounet.animationCharge.progress}).setDestructionIminente((boule) => {
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
         huzounet.scene.room.state.boules.set(
           boule.id,
