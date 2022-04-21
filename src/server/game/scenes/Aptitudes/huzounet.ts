@@ -34,10 +34,12 @@ export function shuriken(huzounet: TJoueur, input?: any) {
   }
 
   // console.log(huzounet.parametresDeBase.boulesEnMain.getLength());
-  if (input.a.envoie && !input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.saut) {
+  if (input.a.envoie) {
     // console.log(input)
 
     // huzounet.boule.stopAnim()
+    if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
+
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     // console.log("JJJJJJJJJJJJOUEE ??????????????????")
@@ -82,6 +84,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     setAnimation(huzounet, 'huzounet_envoie_attaque')
     huzounet.boule.body.setVelocityX(huzounet.flipX ? -2400 : 2400)
     */
+  }
 
     input.a.envoie = false
   }
