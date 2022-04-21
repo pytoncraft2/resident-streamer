@@ -2,6 +2,10 @@ interface BaseEquipement {
   boulesEnMain: Phaser.Physics.Arcade.Group;
 }
 
+interface Scene extends Phaser.Scene {
+  containerColision: Phaser.GameObjects.Container;
+}
+
 
 interface TJoueur extends Phaser.GameObjects.Sprite
 {
@@ -13,6 +17,8 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   masse: number,
   puissanceDeBase: number,
   boulesEnMain: Phaser.Physics.Arcade.Group
+  containerColision: Phaser.GameObjects.Container
+  scene: Scene
 }
 
   export default TJoueur;
