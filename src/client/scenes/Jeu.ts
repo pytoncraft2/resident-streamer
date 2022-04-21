@@ -387,6 +387,7 @@ export default class Jeu extends Phaser.Scene {
 	async patchPlayer(list: any) {
 
     console.log(this.groupeBoules.getLength())
+    console.log(list.boulesListe)
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)

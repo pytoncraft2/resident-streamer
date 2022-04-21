@@ -96,21 +96,10 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     var tween = this.scene.tweens.addCounter({
       from: 0,
       to: 1,
-      ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
-      duration: 3000,
+      duration: 100,
       repeat: 0,            // -1: infinity
       yoyo: false,
       onComplete: () => {
-        (this.scene as any).room.state.boules.set(
-          this.id,
-          new Boule({
-            x: this.x,
-            y: this.y,
-            scale: this.scale,
-            alpha: this.alpha,
-            id: this.id,
-            active: false
-          }))
         // this.setActive(false);
         destruction(this)
         // this.destroy(true);
