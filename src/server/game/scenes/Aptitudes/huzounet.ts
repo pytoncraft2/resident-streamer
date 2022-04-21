@@ -13,7 +13,8 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     console.log("FIIIIRST")
     const p = huzounet.parametresDeBase.boulesEnMain.getFirst(true);
     p.body.setAllowGravity(false);
-    huzounet.scene.add.tween({
+    //@ts-ignore
+    huzounet.animationCharge = huzounet.scene.add.tween({
       targets: p,
       scale: 2,
       duration: 2000
@@ -34,20 +35,28 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     // huzounet.boule.stopAnim()
 
     setAnimation(huzounet, 'huzounet_envoie_attaque')
-    const l = huzounet.parametresDeBase.boulesEnMain.getLength();
+    console.log("JJJJJJJJJJJJOUEE ??????????????????")
+    //@ts-ignore
+    if (huzounet.animationCharge.isPlaying()) {
+      //@ts-ignore
+      huzounet.animationCharge.stop() 
+
+      huzounet.parametresDeBase.boulesEnMain.getFirst(true).setVelocityX(huzounet.flipX ? -2400 : 2400)
+    }
+    // const l = huzounet.parametresDeBase.boulesEnMain.getLength();
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setAlpha(0.5);
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
-    if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
-      (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
-      // huzounet.scene.tweens.add({
-      //   targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
-      //   alpha: 1,
-      //   scale: 1,
-      //   duration: 1000,
-      //   // onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
-      // })
-
-    }
+    // if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
+    //   (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
+    //   // huzounet.scene.tweens.add({
+    //   //   targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
+    //   //   alpha: 1,
+    //   //   scale: 1,
+    //   //   duration: 1000,
+    //   //   // onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
+    //   // })
+    //
+    // }
 
 
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).setVelocityX(huzounet.flipX ? -2400 : 2400).lancer();
