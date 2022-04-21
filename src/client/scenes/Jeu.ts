@@ -402,9 +402,16 @@ export default class Jeu extends Phaser.Scene {
 
       if (!list.boules[item].active) {
         // console.log("PASSS AAACTIF")
-        this.boulesRef[list.boules[item].id].destroy(true)
+        // console.log(this.groupeBoules.getFirstDead())
+
+        if (this.boulesRef[list.boules[item].id]) {
+          this.boulesRef[list.boules[item].id].destroy()
+          delete this.boulesRef[list.boules[item].id]
+        }
+        console.log(this.boulesRef[list.boules[item].id])
+        // console.log(list.boules[item].id)
+        // this.boulesRef[list.boules[item].id].destroy(true)
         // console.log(this.boulesRef[list.boules[item].id])
-        delete this.boulesRef[list.boules[item].id]
       }
     })
 
