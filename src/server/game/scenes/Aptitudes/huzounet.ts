@@ -8,13 +8,13 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a.charge)
   {
-    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+    console.log(huzounet.scene.groupeBoulesHuzounet.getLength())
       setAnimation(huzounet, 'huzounet_preparation_attaque')
-    if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
-      huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
-      // const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive();
-      const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-      const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
+    if (!huzounet.scene.groupeBoulesHuzounet.isFull()) {
+      huzounet.scene.groupeBoulesHuzounet.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+      // const p = huzounet.scene.groupeBoulesHuzounet.getFirstAlive();
+      const l = huzounet.scene.groupeBoulesHuzounet.getLength();
+      const p = huzounet.scene.groupeBoulesHuzounet.getChildren()[l - 1];
 
       (p.body as any).setAllowGravity(false);
       huzounet.scene.containerColision
@@ -28,7 +28,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
         delay: 3000,
         args: [huzounet],
         callback: function(h) {
-          (h.parametresDeBase.boulesEnMain.clear())
+          (h.scene.groupeBoulesHuzounet.clear())
         },
         loop: false
       });
@@ -38,11 +38,11 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a.envoie)
   {
-    // if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
+    // if (!huzounet.scene.groupeBoulesHuzounet.isFull()) {
       setAnimation(huzounet, 'huzounet_envoie_attaque')
       // huzounet.animationCharge.remove()
-      const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-      const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
+      const l = huzounet.scene.groupeBoulesHuzounet.getLength();
+      const p = huzounet.scene.groupeBoulesHuzounet.getChildren()[l - 1];
       (p as any).setVelocityX(huzounet.flipX ? -1200 : 1200).setDestructionIminente((boule) => {
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
         huzounet.scene.room.state.boules.set(

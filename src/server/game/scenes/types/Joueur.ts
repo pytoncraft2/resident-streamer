@@ -5,6 +5,7 @@ interface BaseEquipement {
 interface Scene extends Phaser.Scene {
   containerColision: Phaser.GameObjects.Container;
   room: any
+  groupeBoulesHuzounet: Phaser.Physics.Arcade.Group;
 }
 
 

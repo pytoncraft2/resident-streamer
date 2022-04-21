@@ -17,7 +17,7 @@ export default class Hall extends Phaser.Scene {
   colisionShurikenEnnemie: any
   enemies: Phaser.GameObjects.Group
   playersAttackZone: Phaser.GameObjects.Group
-  groupeBoules: Phaser.GameObjects.Group
+  groupeBoulesHuzounet: Phaser.GameObjects.Group
   playersRef: any
   enemiesRef: any
   containerColision: Phaser.GameObjects.Container
@@ -52,7 +52,7 @@ export default class Hall extends Phaser.Scene {
     })
 
 
-    this.groupeBoules = this.physics.add.group({
+    this.groupeBoulesHuzounet = this.physics.add.group({
       runChildUpdate: true,
       collideWorldBounds: true
     })
@@ -86,7 +86,7 @@ this.physics.add.overlap(this.players, this.enemies);
     this.containerColision = this.add.container(0,0);
 
 
-    this.colisionShurikenEnnemie = this.physics.add.collider(this.containerColision, this.enemies,
+    this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule, _ennemie: any) {
         console.log("ENNNNNNNNNNNNNNEMIE BLESSSSEE")
         // console.log(_boule.data.list.puissance)
@@ -125,9 +125,9 @@ this.physics.add.overlap(this.players, this.enemies);
       })
     }
 
-    if (this.groupeBoules) {
+    if (this.groupeBoulesHuzounet) {
       console.log("IIIIIIIIIIIIITERATE")
-      this.groupeBoules.children.iterate((child: any)=> {
+      this.groupeBoulesHuzounet.children.iterate((child: any)=> {
         if (child.data.values.ClientId) {
           response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
         }
