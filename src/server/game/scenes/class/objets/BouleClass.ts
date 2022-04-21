@@ -25,8 +25,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
-    this.alpha = 0
-    this.scale = 0
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
@@ -44,25 +42,25 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     //   // }
     // });
 
-    this.animationEnvoie = this.scene.tweens.add({
-      targets: this,
-      alpha: 1,
-      scale: 1,
-      duration: 1000,
-      onComplete: function() {
-        // if (arguments[1][0].scene){
-
-        // }
-        console.log("FINI")
-        arguments[1][0].actif = false
-        console.log(arguments[1][0].proprietaire)
-        arguments[1][0].suppression(arguments[1][0].proprietaire)
-        console.log(arguments[1][0].proprietaire)
-        arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-        arguments[1][0].destroy(true);
-        console.log("_________________________")
-      }
-    });
+    // this.animationEnvoie = this.scene.tweens.add({
+    //   targets: this,
+    //   alpha: 1,
+    //   scale: 1,
+    //   duration: 1000,
+    //   onComplete: function() {
+    //     // if (arguments[1][0].scene){
+    //
+    //     // }
+    //     console.log("FINI")
+    //     arguments[1][0].actif = false
+    //     console.log(arguments[1][0].proprietaire)
+    //     arguments[1][0].suppression(arguments[1][0].proprietaire)
+    //     console.log(arguments[1][0].proprietaire)
+    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+    //     arguments[1][0].destroy(true);
+    //     console.log("_________________________")
+    //   }
+    // });
 
 
   }

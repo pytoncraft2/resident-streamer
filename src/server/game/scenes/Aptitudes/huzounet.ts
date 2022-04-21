@@ -5,11 +5,20 @@ import TJoueur from "../types/Joueur";
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   huzounet.parametresDeBase.boulesEnMain.getChildren().forEach((element: BouleClass) => {
-    console.log(element.proprietaire)
+    // console.log(element.proprietaire)
   });
   if (input.a.charge && !input.up && !input.down && !input.z && !input.e && !input.r && !input.a.envoie && !input.saut) {
     // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
-    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x, huzounet.y, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+    console.log("FIIIIRST")
+    const p = huzounet.parametresDeBase.boulesEnMain.getFirst(true);
+    p.body.setAllowGravity(false);
+    huzounet.scene.add.tween({
+      targets: p,
+      scale: 2,
+      duration: 2000
+    })
+    // huzounet.parametresDeBase.boulesEnMain.getFirst().setPosition(huzounet.x, huzounet.y).setVelocity(0, 0)
     // console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     // huzounet.scene.groupeBoules.add(huzounet.boule)
 
@@ -30,14 +39,13 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     // (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(Cl);
     if (huzounet.parametresDeBase.boulesEnMain.contains((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass))) {
       (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass).lancer(huzounet);
-      this.scene.tweens.add({
-        targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
-        alpha: 1,
-        scale: 1,
-        duration: 1000,
-        //@ts-ignore
-        onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
-      })
+      // huzounet.scene.tweens.add({
+      //   targets: (huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass),
+      //   alpha: 1,
+      //   scale: 1,
+      //   duration: 1000,
+      //   // onUpdate:() => huzounet.physics.moveTo((huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1] as BouleClass), huzounet.x, huzounet.y,60)
+      // })
 
     }
 
