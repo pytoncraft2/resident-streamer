@@ -6,8 +6,9 @@ import TJoueur from "../types/Joueur";
 
 export function shuriken(huzounet: TJoueur, input?: any) {
 
-  if (input.a.charge)
+  if (input.a.charge && !input.right.marche)
   {
+    console.log(input.right)
     console.log(huzounet.scene.groupeBoulesHuzounet.getLength())
       setAnimation(huzounet, 'huzounet_preparation_attaque')
     if (!huzounet.scene.groupeBoulesHuzounet.isFull()) {
@@ -40,7 +41,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
   if (input.a.envoie)
   {
     // if (!huzounet.scene.groupeBoulesHuzounet.isFull()) {
+
       setAnimation(huzounet, 'huzounet_envoie_attaque')
+      if (huzounet.animationCharge) {
+      if (huzounet.animationCharge.isPlaying()) {
       huzounet.animationCharge.stop()
       const l = huzounet.scene.groupeBoulesHuzounet.getLength();
       const p = huzounet.scene.groupeBoulesHuzounet.getChildren()[l - 1];
@@ -67,6 +71,8 @@ export function shuriken(huzounet: TJoueur, input?: any) {
           });
         })
       // }
+    }
+    }
 
     input.a.envoie = false
   }

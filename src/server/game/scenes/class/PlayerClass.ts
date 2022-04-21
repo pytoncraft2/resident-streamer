@@ -126,10 +126,10 @@ interface Deplacement {
        // console.log(preparationA)
        if (a) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        // if (preparationA) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
-       if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this); input['z'] = false
-       if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this); input['e'] = false
-       if (saut) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this); input['saut'] = false
-       if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this); input['r'] = false
+       if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
+       if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
+       if (saut) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
+       if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
        if (left) this.deplacement('left', left)
        if (right) this.deplacement('right', right)
      }
