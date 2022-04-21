@@ -97,7 +97,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
       from: 0,
       to: 1,
       ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
-      duration: 2000,
+      duration: 1000,
       repeat: 0,            // -1: infinity
       yoyo: false,
       onComplete: () => {

@@ -13,7 +13,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       huzounet.animationCharge = huzounet.scene.add.tween({
         targets: p,
         scale: 2,
-        duration: 2000
+        duration: 1000
       })
       setAnimation(huzounet, 'huzounet_preparation_attaque')
     }
@@ -26,7 +26,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       setAnimation(huzounet, 'huzounet_envoie_attaque')
       //@ts-ignore
       huzounet.animationCharge.remove()
-      huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -2400 : 2400).setDestructionIminente((id) => {
+      huzounet.parametresDeBase.boulesEnMain.getFirstAlive().setVelocityX(huzounet.flipX ? -100 : 100).setDestructionIminente((id) => {
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
         console.log(id)
       })
