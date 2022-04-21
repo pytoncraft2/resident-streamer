@@ -90,8 +90,8 @@ this.physics.add.overlap(this.players, this.enemies);
       function (_boule, _ennemie: any) {
         console.log("ENNNNNNNNNNNNNNEMIE BLESSSSEE")
         // console.log(_boule.data.list.puissance)
-      // _ennemie.blesse_ennemie(_boule.data.list.puissance)
-        // _boule.destroy(true)
+      _ennemie.blesse_ennemie(_boule.data.list.puissance)
+        _boule.setActive(false).destroy(true)
     });
     this.events.on('boss_KO', this.boss_KO, this);
     this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);
