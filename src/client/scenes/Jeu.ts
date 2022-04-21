@@ -386,8 +386,8 @@ export default class Jeu extends Phaser.Scene {
 
 	async patchPlayer(list: any) {
 
-    console.log(this.groupeBoules.getLength())
-    console.log(list.boulesListe)
+    // console.log(this.groupeBoules.getLength())
+    // console.log(list.boulesListe)
     list.boulesListe.map((item: string, idx: number) => {
       if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
         const b = this.groupeBoules.create(0, 0, `huzounet_atlas`, 'shuriken0').setDepth(2)
@@ -409,7 +409,7 @@ export default class Jeu extends Phaser.Scene {
           this.boulesRef[list.boules[item].id].destroy()
           delete this.boulesRef[list.boules[item].id]
         }
-        console.log(this.boulesRef[list.boules[item].id])
+        // console.log(this.boulesRef[list.boules[item].id])
         // console.log(list.boules[item].id)
         // this.boulesRef[list.boules[item].id].destroy(true)
         // console.log(this.boulesRef[list.boules[item].id])

@@ -8,50 +8,55 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a.charge)
   {
-    huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
-    // const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive();
-    const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-    const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
+    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
+      setAnimation(huzounet, 'huzounet_preparation_attaque')
+    if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
+      huzounet.parametresDeBase.boulesEnMain.add(huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID})))
+      // const p = huzounet.parametresDeBase.boulesEnMain.getFirstAlive();
+      const l = huzounet.parametresDeBase.boulesEnMain.getLength();
+      const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
 
-    (p.body as any).setAllowGravity(false);
-    huzounet.scene.containerColision
-    huzounet.animationCharge = huzounet.scene.add.tween({
-      targets: p,
-      scale: 2,
-      duration: 1000
-    })
-    setAnimation(huzounet, 'huzounet_preparation_attaque')
+      (p.body as any).setAllowGravity(false);
+      huzounet.scene.containerColision
+      // huzounet.animationCharge = huzounet.scene.add.tween({
+      //   targets: p,
+      //   scale: 2,
+      //   duration: 1000
+      // })
+    }
     input.a.charge = false
   }
 
   if (input.a.envoie)
   {
-    setAnimation(huzounet, 'huzounet_envoie_attaque')
-    huzounet.animationCharge.remove()
-    const l = huzounet.parametresDeBase.boulesEnMain.getLength();
-    const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
-    (p as any).setVelocityX(huzounet.flipX ? -100 : 100).setDestructionIminente((boule) => {
-      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
-      huzounet.scene.room.state.boules.set(
-        boule.id,
-        new Boule({
-          x: boule.x,
-          y: boule.y,
-          scale: boule.scale,
-          alpha: boule.alpha,
-          id: boule.id,
-          active: false
-        }))
-        boule.setActive(false)
-        var timer = huzounet.scene.time.addEvent({
-          delay: 10,
-          args: [boule, huzounet],
-          callback: function(b, h) {
-            (b.destroy(true), h.scene.room.state.boules.delete(b.id))
-          },
-          loop: false
-        });
-    })
+    // if (!huzounet.parametresDeBase.boulesEnMain.isFull()) {
+      setAnimation(huzounet, 'huzounet_envoie_attaque')
+      // huzounet.animationCharge.remove()
+      const l = huzounet.parametresDeBase.boulesEnMain.getLength();
+      const p = huzounet.parametresDeBase.boulesEnMain.getChildren()[l - 1];
+      (p as any).setVelocityX(huzounet.flipX ? -1200 : 1200).setDestructionIminente((boule) => {
+        console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION DE L'ID")
+        huzounet.scene.room.state.boules.set(
+          boule.id,
+          new Boule({
+            x: boule.x,
+            y: boule.y,
+            scale: boule.scale,
+            alpha: boule.alpha,
+            id: boule.id,
+            active: false
+          }))
+          boule.setActive(false)
+          var timer = huzounet.scene.time.addEvent({
+            delay: 10,
+            args: [boule, huzounet],
+            callback: function(b, h) {
+              (b.destroy(true), h.scene.room.state.boules.delete(b.id))
+            },
+            loop: false
+          });
+        })
+      // }
 
     input.a.envoie = false
   }
