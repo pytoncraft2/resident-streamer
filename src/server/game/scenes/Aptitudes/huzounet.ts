@@ -8,13 +8,14 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a) {
 
-    //creation de la boule si non créer
+    //creation de la boule si non créer + animation début
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.parametresDeBase.boulesEnMain.add(boule);
-      // (boule.body as any).setAllowGravity(false);
+      (boule.body as any).setAllowGravity(false);
 
+      setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     //grossisement de la boule
     } else 
@@ -24,16 +25,18 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     }
   }
 
-  //envoie de la boule
+  //envoie de la boule + animation envoie
   if (input.a_fin)
   {
     if (huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       console.log("ENVOIE");
-      huzounet.scene.groupeBoulesHuzounet.add(huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).setVelocityX(1600);
-      // (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).setVelocityX(1000);
+
+      huzounet.scene.groupeBoulesHuzounet.add(huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).setVelocityX(2600);
       huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
+
+      setAnimation(huzounet, 'huzounet_envoie_attaque');
     }
   }
 
