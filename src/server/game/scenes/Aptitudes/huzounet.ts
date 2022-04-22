@@ -7,12 +7,13 @@ import TJoueur from "../types/Joueur";
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a) {
+    console.log(huzounet.parametresDeBase.boulesEnMain.getLength())
     //creation de la boule si non créer
-    if (!huzounet.scene.groupeBoulesHuzounet.getLength())
+    if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       console.log("CREATION BOULE")
       const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
-      huzounet.scene.groupeBoulesHuzounet.add(boule);
+      huzounet.parametresDeBase.boulesEnMain.add(boule);
       (boule.body as any).setAllowGravity(false);
 
 
@@ -20,19 +21,20 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     } else 
     {
       console.log("GROSSISEMENT");
-      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).scale += 0.01;
-      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).alpha += 0.01;
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).scale += 0.01;
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).alpha += 0.01;
     }
   }
 
   //envoie de la boule
   if (input.a_fin)
   {
-    if (huzounet.scene.groupeBoulesHuzounet.getLength())
+    if (huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       console.log("ENVOIE");
-      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).setVelocityX(100);
-      huzounet.scene.groupeBoulesHuzounet.clear();
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).vitesse = 42;
+      huzounet.scene.groupeBoulesHuzounet.add(huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass)
+      // huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
     }
   }
