@@ -7,7 +7,9 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string[] = []
   actif: boolean = true
+
   vitesse: number = 0
+  puissance: number = 0
 
   constructor(
     scene: Phaser.Scene,
@@ -83,6 +85,11 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           active: this.active
         })
       )
+  }
+
+  setVitesse(vitesse: number) {
+    console.log("VITESSE SET:", vitesse);
+    this.setVelocityX(vitesse);
   }
 
   lancer(id) {
