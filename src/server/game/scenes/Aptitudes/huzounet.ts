@@ -11,7 +11,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
   // huzounet.charge = true
 
   if (input.a) console.log("A")
-  if (input.a_fin) console.log("FIN A")
+  if (input.a_fin) (console.log("FIN A"), input.a_fin = false)
   // huzounet.x += 1
   // if (input.a.charge)
   // {
