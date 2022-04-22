@@ -20,9 +20,11 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       huzounet.puissanceChargeBoule = 0
-      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
-      huzounet.parametresDeBase.boulesEnMain.add(boule);
-      (boule.body as any).setAllowGravity(false);
+      // const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      huzounet.parametresDeBase.boulesEnMain.getFirst(true, true, huzounet.x -80, huzounet.y - 160, "atlas",  'shuriken0', ).setData({ ClientId: huzounet.ClientID, puissance: 2})
+
+      // huzounet.parametresDeBase.boulesEnMain.add(boule);
+      // (boule.body as any).setAllowGravity(false);
 
       setAnimation(huzounet, 'huzounet_preparation_attaque')
 
