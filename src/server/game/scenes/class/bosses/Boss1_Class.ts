@@ -92,7 +92,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     // this.setTint(this.etats[this.etatEnCours]['couleur'])
   }
 
-  blesse_ennemie(puissance) {
+  blesse_ennemie(puissance: number) {
     console.log("ENNEMIE BLESSÉ")
     if (puissance >= 0) {
       this.vie -= puissance
