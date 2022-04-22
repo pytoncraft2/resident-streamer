@@ -116,16 +116,17 @@ interface Deplacement {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { up, right, down, left, space, preparationA, a, directeA, z, e, r, saut, chargeSaut } = input
+     let { up, right, down, left, space, preparationA, a, directeA, z, e, r, saut, chargeSaut, a_fin } = input
      let animationName = this.anims.getFrameName()
 
+     // console.log(a_fin)
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
        // console.log(directeA)
        // console.log(preparationA)
        // console.log(a)
-       if (a) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
+       if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        // if (preparationA) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);

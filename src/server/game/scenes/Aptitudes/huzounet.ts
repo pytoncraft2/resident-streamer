@@ -6,7 +6,13 @@ import TJoueur from "../types/Joueur";
 
 export function shuriken(huzounet: TJoueur, input?: any) {
 
-  console.log("SHURIKEN")
+  // console.log("charge")
+  // @ts-ignore
+  // huzounet.charge = true
+
+  if (input.a) console.log("A")
+  if (input.a_fin) console.log("FIN A")
+  // huzounet.x += 1
   // if (input.a.charge)
   // {
   // }

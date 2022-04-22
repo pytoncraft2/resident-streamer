@@ -264,7 +264,7 @@ export default class Jeu extends Phaser.Scene {
   rooms: any
   personnage?: string
   compte: number = 0
-  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean, r: boolean, a: boolean}
+  prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean }
   attaqueDirecte: boolean = false
   directeA: boolean = false
   emitter: any
@@ -553,46 +553,35 @@ export default class Jeu extends Phaser.Scene {
 
   update() {
     if (this.room) {
-      const moi = this.players.getMatching('ClientId', this.session)[0] as Phaser.Physics.Arcade.Sprite;
-      const boss1 = this.map_boss1.getLeftCenter()
-      const hall = this.hall.getLeftCenter()
-      const map_boss2 = this.map_boss2.getLeftCenter()
-      if (moi) {
-        if (boss1.x < moi.x && moi.x < boss1.x +10) {
-          this.currentRoom = moi.flipX ? 'hall' : 'boss1'
-          this.fade(this.currentRoom)
-        } else if (hall.x < moi.x && moi.x < hall.x +10) {
-          this.currentRoom = moi.flipX ? 'boss2' : 'hall'
-          this.fade(this.currentRoom)
-        } else if (map_boss2.x < moi.x && moi.x < map_boss2.x +10) {
-        }
-      }
       const { up, right, left, down, space, A, Z, E, R } = this.keyboard
 
       const inputs = {
-        up: up.isDown ? true : false,
-        down: down.isDown ? true : false,
+        a: A.isDown ? true : false,
+        a_fin: A.isUp ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false,
         r: R.isDown ? true : false,
-        a: A.isDown ? true : false
+        space: space.isDown ? true : false,
+        right: right.isDown ? true : false,
+        left: left.isDown ? true : false
       }
 
       //ATTAQUE
-      // if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, { a: true, charge: true, envoie: false }})
-      // if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, { a: false, charge: false, envoie: true }})
+      // if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, charge: true, envoie: false })
+      // if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, charge: false, envoie: true })
 
-      if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
-
-      //DROITE
-      if (Phaser.Input.Keyboard.JustDown(right)) this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
-      if (Phaser.Input.Keyboard.JustUp(right)) this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
-
-      //GAUCHE
-      if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
-      if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
-
+      // if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
+      //
+      // //DROITE
+      // if (Phaser.Input.Keyboard.JustDown(right)) this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
+      // if (Phaser.Input.Keyboard.JustUp(right)) this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
+      //
+      // //GAUCHE
+      // if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
+      // if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
+      //
       if (!deepEqual(inputs, this.prevInputs)) {
+        console.log("ENVOIE")
         this.prevInputs = inputs
         this.room.send("inputs", inputs)
       }
