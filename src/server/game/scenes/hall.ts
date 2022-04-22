@@ -95,25 +95,25 @@ this.physics.add.overlap(this.players, this.enemies);
       _ennemie.blesse_ennemie(_boule.data.list.puissance)
         _boule.setDestructionIminente((boule) => {
         console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION PAR LENNEMI L'ID")
-        this.room.state.boules.set(
-          boule.id,
-          new Boule({
-            x: boule.x,
-            y: boule.y,
-            scale: boule.scale,
-            alpha: boule.alpha,
-            id: boule.id,
-            active: false
-          }))
-          boule.setActive(false)
-          var timer = this.time.addEvent({
-            delay: 10,
-            args: [boule, this],
-            callback: function(b, h) {
-              (b.destroy(true), h.room.state.boules.delete(b.id))
-            },
-            loop: false
-          });
+        // this.room.state.boules.set(
+        //   boule.id,
+        //   new Boule({
+        //     x: boule.x,
+        //     y: boule.y,
+        //     scale: boule.scale,
+        //     alpha: boule.alpha,
+        //     id: boule.id,
+        //     active: false
+        //   }))
+        //   boule.setActive(false)
+        //   var timer = this.time.addEvent({
+        //     delay: 10,
+        //     args: [boule, this],
+        //     callback: function(b, h) {
+        //       (b.destroy(true), h.room.state.boules.delete(b.id))
+        //     },
+        //     loop: false
+        //   });
         })
     }, null, this);
     this.events.on('boss_KO', this.boss_KO, this);

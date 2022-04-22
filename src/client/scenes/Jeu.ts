@@ -264,7 +264,7 @@ export default class Jeu extends Phaser.Scene {
   rooms: any
   personnage?: string
   compte: number = 0
-  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean, r: boolean }
+  prevInputs?: { up: boolean, down: boolean, z: boolean, e: boolean, r: boolean, a: boolean}
   attaqueDirecte: boolean = false
   directeA: boolean = false
   emitter: any
@@ -574,12 +574,13 @@ export default class Jeu extends Phaser.Scene {
         down: down.isDown ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false,
-        r: R.isDown ? true : false
+        r: R.isDown ? true : false,
+        a: A.isDown ? true : false
       }
 
       //ATTAQUE
-      if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, a: { charge: true, envoie: false }})
-      if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, a: { charge: false, envoie: true }})
+      // if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, { a: true, charge: true, envoie: false }})
+      // if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, { a: false, charge: false, envoie: true }})
 
       if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
 
