@@ -1,7 +1,7 @@
 import { Player } from "../../RoomState"
 import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
-import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/index"
+import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
 
 interface Deplacement {
