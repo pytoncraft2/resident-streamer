@@ -20,20 +20,22 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     } else 
     {
       console.log("GROSSISEMENT");
-      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as Phaser.Physics.Arcade.Sprite).scale += 0.01;
-      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as Phaser.Physics.Arcade.Sprite).alpha += 0.01;
+      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).scale += 0.01;
+      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).alpha += 0.01;
     }
-    // console.log("A")
   }
-  if (input.a_fin) (console.log("FIN A"), input.a_fin = false)
-  // huzounet.x += 1
-  // if (input.a.charge)
-  // {
-  // }
-  //
-  // if (input.a.envoie)
-  // {
-  // }
+
+  //envoie de la boule
+  if (input.a_fin)
+  {
+    if (huzounet.scene.groupeBoulesHuzounet.getLength())
+    {
+      console.log("ENVOIE");
+      (huzounet.scene.groupeBoulesHuzounet.getChildren()[0] as BouleClass).setVelocityX(100);
+      huzounet.scene.groupeBoulesHuzounet.clear();
+      input.a_fin = false
+    }
+  }
 
 }
 
