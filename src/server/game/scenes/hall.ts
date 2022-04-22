@@ -89,32 +89,11 @@ this.physics.add.overlap(this.players, this.enemies);
 
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
-      function (_boule: any, _ennemie: any) {
-        console.log("ENNNNNNNNNNNNNNEMIE BLESSSSEE")
-        // console.log(_boule.data.list.puissance)
-      _ennemie.blesse_ennemie(_boule.data.list.puissance)
-        _boule.setDestructionIminente((boule) => {
-        console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION PAR LENNEMI L'ID")
-        // this.room.state.boules.set(
-        //   boule.id,
-        //   new Boule({
-        //     x: boule.x,
-        //     y: boule.y,
-        //     scale: boule.scale,
-        //     alpha: boule.alpha,
-        //     id: boule.id,
-        //     active: false
-        //   }))
-        //   boule.setActive(false)
-        //   var timer = this.time.addEvent({
-        //     delay: 10,
-        //     args: [boule, this],
-        //     callback: function(b, h) {
-        //       (b.destroy(true), h.room.state.boules.delete(b.id))
-        //     },
-        //     loop: false
-        //   });
-        })
+      function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {
+
+        console.log(_boule.getData('degat'))
+      _ennemie.blesse_ennemie(_boule.getData('degat'))
+      _boule.setData('degat', 0)
     }, null, this);
     this.events.on('boss_KO', this.boss_KO, this);
     this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);

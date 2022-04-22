@@ -18,6 +18,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   displayHeight: number,
   masse: number,
   puissanceDeBase: number,
+  puissanceChargeBoule: number,
   boulesEnMain: Phaser.Physics.Arcade.Group
   containerColision: Phaser.GameObjects.Container
   animationCharge: Phaser.Tweens.Tween

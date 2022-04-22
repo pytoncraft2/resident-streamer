@@ -4,6 +4,14 @@ import { Boule } from "../../RoomState"
 
 import TJoueur from "../types/Joueur";
 
+
+
+/**
+ * shuriken - Logique de charge et d'envoie de la boule
+ *
+ * @param  {Object} huzounet: TJoueur Type
+ * @param  {Object} input?: any       touche appuié
+ */
 export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a) {
@@ -11,6 +19,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //creation de la boule si non créer + animation début
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
+      huzounet.puissanceChargeBoule = 0
       const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.parametresDeBase.boulesEnMain.add(boule);
       (boule.body as any).setAllowGravity(false);
@@ -20,8 +29,9 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //grossisement de la boule
     } else 
     {
-      (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).scale += 0.01;
+      (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).scale += 0.02;
       (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).alpha += 0.01;
+      huzounet.puissanceChargeBoule += 0.01
     }
   }
 
@@ -32,7 +42,8 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     {
       console.log("ENVOIE");
 
-      huzounet.scene.groupeBoulesHuzounet.add(huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass).setVelocityX(2600);
+      const boule = (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass);
+      huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule)).setVelocityX(2600);
       huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
 

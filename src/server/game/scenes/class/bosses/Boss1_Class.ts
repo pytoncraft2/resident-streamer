@@ -16,7 +16,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   private etatEnCours: string
   private zoneInteraction: any
   private vivant: boolean = true
-  blesse_ennemie: VoidFunction
   proprietaire_objet: (id: string, id_ennemie: string) => void
 
   constructor(
@@ -64,17 +63,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     this.blesse_ennemie = (puissance: number = 0) => {
-       // console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPUISSACNCE DATTAQUE")
-       // console.log(puissance)
-       this.vie -= puissance
-
-       if (this.body.touching.right) {
-         // console.log("TOUCHE DROITE !!!!!!!!!!!!!!!!!")
-       } else if (this.body.touching.left) {
-         // console.log("TOUCHE GAUCHE !!!!!!!!!!!!!!!!!")
-       }
-     }
 
      this.proprietaire_objet = (id_joueur, id_ennemie) => {
        this.scene.events.emit('boss_KO-proprietaire', {id_joueur: id_joueur, id_ennemie: this.EnnemyId});
@@ -102,6 +90,13 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   changementEtat() {
     this.etatEnCours = 'secondaire'
     // this.setTint(this.etats[this.etatEnCours]['couleur'])
+  }
+
+  blesse_ennemie(puissance) {
+    console.log("ENNEMIE BLESSÉ")
+    if (puissance >= 0) {
+      this.vie -= puissance
+    }
   }
 
 
