@@ -596,7 +596,7 @@ export default class Jeu extends Phaser.Scene {
 
   update() {
     if (this.room) {
-      const { up, right, left, down, space, A, Z, E, R } = this.keyboard
+      const { right, left, space, A, Z, E, R } = this.keyboard
 
       const inputs = {
         a: A.isDown ? true : false,
@@ -606,7 +606,9 @@ export default class Jeu extends Phaser.Scene {
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        left: left.isDown ? true : false
+        right_fin: right.isUp ? true : false,
+        left: left.isDown ? true : false,
+        left_fin: left.isUp ? true : false
       }
 
       //ATTAQUE

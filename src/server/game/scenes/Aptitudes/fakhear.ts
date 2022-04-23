@@ -3,7 +3,6 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input) {
   if (input.a) {
     input.a = false
-    console.log("ATTAQUE CROSS")
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
   }

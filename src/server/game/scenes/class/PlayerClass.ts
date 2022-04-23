@@ -5,8 +5,8 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
 
 interface Deplacement {
-  marche: boolean,
-  stop: boolean
+  right: boolean,
+  left: boolean
 }
 
 /**
@@ -116,7 +116,7 @@ interface Deplacement {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { up, right, down, left, space, preparationA, a, directeA, z, e, r, saut, chargeSaut, a_fin } = input
+     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin } = input
      let animationName = this.anims.getFrameName()
 
      // console.log(a_fin)
@@ -126,14 +126,27 @@ interface Deplacement {
        // console.log(directeA)
        // console.log(preparationA)
        // console.log(a)
+       // console.log(input.left_fin)
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        // if (preparationA) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
-       if (saut) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
+       if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       if (left) this.deplacement('left', left)
-       if (right) this.deplacement('right', right)
+       // if (left) this.setVelocityX(-this.vel)
+       // if (right) this.setVelocityX(this.vel)
+
+       // if (left || left_fin) {
+       //   // if (left) {
+       //   //   console.log("LEEEFT")
+       //   // }
+       //   console.log("GAUCHE")
+       //   if (left_fin) {
+       //     console.log("GAUCHE_ffiiiiin")
+       //     // left_fin = false
+       //   }
+       // }
+
      }
 
      (this.scene as any).room.state.presences.set(
@@ -152,11 +165,9 @@ interface Deplacement {
      )
    }
 
-   deplacement(direction: 'left'|'right', objet: Deplacement) {
-     if (objet.stop) {
+   deplacement(direction: 'left'|'right', deplacement: Deplacement) {
+     if (objet.right) {
        setAnimation(this, 'idle_walk')
-       objet.stop = false
-       objet.marche = false
        this.setVelocityX(0);
      }
      if (objet.marche) {
