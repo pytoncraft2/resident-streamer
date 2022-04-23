@@ -62,8 +62,13 @@ export function kunai(huzounet: TJoueur) {
 
     let kunai
     if (!huzounet.kunai) {
-      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3}))
       huzounet.scene.physics.add.existing(kunai);
+      huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
+        _ennemie.blesse_ennemie(_kunai.getData('degat'))
+        _kunai.setData('degat', 0)
+      }, undefined, huzounet)
+
       kunai.body.setAllowGravity(false);
       huzounet.kunai = kunai
       huzounet.scene.time.delayedCall(100, () => {
