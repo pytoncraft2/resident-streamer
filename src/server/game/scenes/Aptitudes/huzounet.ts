@@ -62,7 +62,7 @@ export function kunai(huzounet: TJoueur) {
 
     let kunai
     if (!huzounet.kunai) {
-      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.scene.physics.add.existing(kunai);
       kunai.body.setAllowGravity(false);
       huzounet.kunai = kunai
