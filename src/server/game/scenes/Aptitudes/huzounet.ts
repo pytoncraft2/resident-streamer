@@ -66,15 +66,11 @@ export function kunai(huzounet: TJoueur) {
       huzounet.scene.physics.add.existing(kunai);
       kunai.body.setAllowGravity(false);
       huzounet.kunai = kunai
-      // huzounet.dispo = false
-
       huzounet.scene.time.delayedCall(100, () => {
-          huzounet.kunai.setVelocityX(1900)
-          huzounet.kunai = undefined;
+          huzounet.kunai.setVelocityX(2300)
+          huzounet.scene.time.delayedCall(500, () => {
+            huzounet.kunai = undefined;
+          });
       }, null, huzounet);  // delay in ms
-      //
-      // huzounet.timer2 = huzounet.scene.time.delayedCall(2000, () => {
-      //   huzounet.dispo = true
-      // });
     }
 }
