@@ -60,7 +60,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 export function kunai(huzounet: TJoueur) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
-    let kunai
+    let kunai: any
     if (!huzounet.kunai) {
       kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3}))
       huzounet.scene.physics.add.existing(kunai);
@@ -73,9 +73,7 @@ export function kunai(huzounet: TJoueur) {
       huzounet.kunai = kunai
       huzounet.scene.time.delayedCall(100, () => {
           huzounet.kunai.setVelocityX(2300)
-          // huzounet.scene.time.delayedCall(500, () => {
             huzounet.kunai = undefined;
-          // });
-      }, null, huzounet);  // delay in ms
+      }, null, huzounet);
     }
 }
