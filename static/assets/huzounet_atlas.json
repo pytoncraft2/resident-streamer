@@ -339,6 +339,19 @@
             }
         },
         {
+            "filename": "kunai",
+            "frame": {
+                "w": 185,
+                "h": 50,
+                "x": 0,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
             "filename": "shuriken3",
             "frame": {
                 "w": 96,

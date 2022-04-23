@@ -432,10 +432,10 @@ export default class Jeu extends Phaser.Scene {
 
     list.kunaisListe.map((item: string, idx: number) => {
       if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
-        const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'shuriken0')
+        const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
         .setDepth(2)
         .setAlpha(list.kunais[item].alpha)
-        .play(`huzounet_shuriken`);
+        // .play(`huzounet_shuriken`);
         this.kunaisRef[item] = b
       } else if (list.kunais[item].active) {
         this.kunaisRef[item].setPosition(list.kunais[item].x, list.kunais[item].y);
