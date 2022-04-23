@@ -47,7 +47,6 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule));
       huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].body.setVelocityX(2600);
       huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].proprietaire = '';
-      // huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].setVelocityX(2600);
       huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
 

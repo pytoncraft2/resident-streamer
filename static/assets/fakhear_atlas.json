@@ -818,7 +818,47 @@
             "x": 0.5,
             "y": 0.5
           }
+        },
+        {
+          "filename": "attaque_kunai2",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 584,
+            "y": 448
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "attaque_kunai1",
+          "frame": {
+            "w": 227,
+            "h": 376,
+            "x": 638,
+            "y": 827
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "attaque_kunai0",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 865,
+            "y": 827
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
         }
+
     ],
     "meta": {
         "description": "Atlas generado con Atlas Packer Gamma V2",

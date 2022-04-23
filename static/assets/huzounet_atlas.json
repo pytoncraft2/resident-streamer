@@ -287,7 +287,7 @@
             }
         },
         {
-            "filename": "kunai1",
+            "filename": "attaque_kunai1",
             "frame": {
                 "w": 227,
                 "h": 376,
@@ -300,7 +300,7 @@
             }
         },
         {
-            "filename": "kunai0",
+            "filename": "attaque_kunai0",
             "frame": {
                 "w": 162,
                 "h": 379,
@@ -326,16 +326,16 @@
             }
         },
         {
-            "filename": "kunai2",
+            "filename": "attaque_kunai2",
             "frame": {
-                "w": 185,
-                "h": 50,
-                "x": 0,
-                "y": 1206
+              "w": 162,
+              "h": 379,
+              "x": 584,
+              "y": 448
             },
             "anchor": {
-                "x": 0.5,
-                "y": 0.5
+              "x": 0.5,
+              "y": 0.5
             }
         },
         {
