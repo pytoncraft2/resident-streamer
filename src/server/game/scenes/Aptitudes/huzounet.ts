@@ -60,8 +60,28 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 export function kunai(huzounet: Phaser.Physics.Arcade.Sprite|any) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
+    let kunai
     if (!huzounet.c) {
-      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      if (!huzounet.dispo) {
+        huzounet.c = true
+        kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+        huzounet.scene.physics.add.existing(kunai);
+        huzounet.dispo = true;
+        (kunai.body as any).setAllowGravity(false);
+      } else if (huzounet.dispo){
+        if (!huzounet.timeSet) {
+          var timer = huzounet.scene.time.delayedCall(100, () => {
+            kunai.setVelocityX(1900)
+            huzounet.dispo = true;
+            huzounet.timeSet = true;
+          }, null, huzounet);  // delay in ms
+        } else {
+          var timer = huzounet.scene.time.delayedCall(100, () => {
+            kunai.setVelocityX(1900)
+            huzounet.dispo = true;
+            huzounet.false = true;
+          }, null, huzounet);  // delay in ms
+        }
+      }
     }
-    // huzounet.setFrame('kunai0')
 }

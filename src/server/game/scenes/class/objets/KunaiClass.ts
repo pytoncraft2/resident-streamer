@@ -25,13 +25,13 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
 
   init(scene: Phaser.Scene, id: string) {
     this.scene = scene
-    // this.scene.add.existing(this)
+    this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
     this.scale = 0.2
     this.alpha = 0.3
 
-    this.setBounce(1, 1);
+    // this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
 
   }
