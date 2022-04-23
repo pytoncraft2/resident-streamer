@@ -73,5 +73,6 @@ export class RoomState extends Schema {
   //@ts-ignore
   @type({ map: Player }) presences = new MapSchema<Player>()
   @type({ map: Boule }) boules = new MapSchema<Boule>()
+  @type({ map: Kunai }) kunais = new MapSchema<Kunai>()
   @type({ map: Input }) playerInputs = new MapSchema<Input>()
 }

@@ -252,12 +252,14 @@ export default class Jeu extends Phaser.Scene {
   players!: Phaser.GameObjects.Group
   enemies!: Phaser.GameObjects.Group
   groupeBoules!: Phaser.GameObjects.Group
+  groupeKunais!: Phaser.GameObjects.Group
   session?: string
   playersRef: any
   currentRoom: string = 'hall'
   listCurrentRoom: any
   ennemyRef: any
   boulesRef: any
+  kunaisRef: any
   salon?: string
   keyboard!: any
   room?: Colyseus.Room<unknown>
@@ -324,10 +326,12 @@ export default class Jeu extends Phaser.Scene {
 		this.players = this.add.group()
 		this.enemies= this.add.group()
     this.groupeBoules = this.add.group();
+    this.groupeKunais = this.add.group();
 
 		this.playersRef = {}
 		this.ennemyRef = {}
 		this.boulesRef = {}
+		this.kunaisRef = {}
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R")
 
     this.barreHautContainer.setScrollFactor(0)
@@ -361,17 +365,23 @@ export default class Jeu extends Phaser.Scene {
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
 				let boules : any = {}
+				let kunais : any = {}
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
 				})
         changes.boules.forEach((value: any, key: any) => {
           boules[key] = value
         })
+        changes.kunais.forEach((value: any, key: any) => {
+          kunais[key] = value
+        })
 				self.patchPlayer({
 					presences: presences,
 					presenceList: Object.keys(presences),
 					boulesListe: Object.keys(boules),
-          boules: boules
+					kunaisListe: Object.keys(kunais),
+          boules: boules,
+          kunais: kunais
 				})
 			})
 
@@ -412,6 +422,35 @@ export default class Jeu extends Phaser.Scene {
         if (this.boulesRef[list.boules[item].id]) {
           this.boulesRef[list.boules[item].id].destroy()
           delete this.boulesRef[list.boules[item].id]
+        }
+        // console.log(this.boulesRef[list.boules[item].id])
+        // console.log(list.boules[item].id)
+        // this.boulesRef[list.boules[item].id].destroy(true)
+        // console.log(this.boulesRef[list.boules[item].id])
+      }
+    })
+
+    list.kunaisListe.map((item: string, idx: number) => {
+      if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
+        const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'shuriken0')
+        .setDepth(2)
+        .setAlpha(list.kunais[item].alpha)
+        .play(`huzounet_shuriken`);
+        this.kunaisRef[item] = b
+      } else if (list.kunais[item].active) {
+        this.kunaisRef[item].setPosition(list.kunais[item].x, list.kunais[item].y);
+        // console.log(list.boules[item].actif)
+        // console.log(list.boules[item].active)
+
+      }
+
+      if (!list.kunais[item].active) {
+        // console.log("PASSS AAACTIF")
+        // console.log(this.groupeBoules.getFirstDead())
+
+        if (this.kunaisRef[list.kunais[item].id]) {
+          this.kunaisRef[list.kunais[item].id].destroy()
+          delete this.kunaisRef[list.kunais[item].id]
         }
         // console.log(this.boulesRef[list.boules[item].id])
         // console.log(list.boules[item].id)

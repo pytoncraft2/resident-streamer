@@ -40,7 +40,7 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
 
-      (this.scene as any).room.state.kunai.set(
+      (this.scene as any).room.state.kunais.set(
         this.id,
         new Kunai({
           x: this.x,
