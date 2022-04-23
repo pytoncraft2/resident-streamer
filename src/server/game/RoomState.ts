@@ -27,6 +27,14 @@ export class Boule extends Schema {
   @type("boolean") active: boolean;
 }
 
+export class Kunai extends Schema {
+  @type("number") x: number;
+  @type("number") y: number;
+  @type("number") alpha: number;
+  @type("string") id: string;
+  @type("boolean") active: boolean;
+}
+
 export class ZoneAttaque extends Schema {
     @type("number") x: number = 1;
     @type("number") y: number = 2;

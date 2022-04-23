@@ -1,5 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/objets/BouleClass"
+import KunaiClass from "../class/objets/KunaiClass"
 import { Boule } from "../../RoomState"
 
 import TJoueur from "../types/Joueur";
@@ -57,6 +58,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 }
 
 export function kunai(huzounet: Phaser.Physics.Arcade.Sprite|any) {
-    setAnimation(huzounet, 'huzounet_kunai_attaque')
+    setAnimation(huzounet, 'huzounet_kunai_attaque');
+
+    if (!huzounet.c) {
+      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+    }
     // huzounet.setFrame('kunai0')
 }
