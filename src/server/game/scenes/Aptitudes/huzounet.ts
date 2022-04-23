@@ -20,11 +20,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       huzounet.puissanceChargeBoule = 0
-      // const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
-      huzounet.parametresDeBase.boulesEnMain.getFirst(true, true, huzounet.x -80, huzounet.y - 160, "atlas",  'shuriken0', ).setData({ ClientId: huzounet.ClientID, puissance: 2})
-
-      // huzounet.parametresDeBase.boulesEnMain.add(boule);
-      // (boule.body as any).setAllowGravity(false);
+      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      huzounet.parametresDeBase.boulesEnMain.add(boule);
+      boule.proprietaire = huzounet.ClientID;
+      (boule.body as any).setAllowGravity(false);
 
       setAnimation(huzounet, 'huzounet_preparation_attaque')
 
@@ -45,7 +44,10 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       console.log("ENVOIE");
 
       const boule = (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass);
-      huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule)).setVelocityX(2600);
+      huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule));
+      //@ts-ignore
+      huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].body.setVelocityX(2600).proprietaire = '';
+      // huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].setVelocityX(2600);
       huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
 

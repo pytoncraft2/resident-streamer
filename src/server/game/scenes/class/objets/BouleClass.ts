@@ -5,7 +5,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   vel: number = 400
   animationCharge: Phaser.Tweens.Tween
   animationEnvoie: Phaser.Tweens.Tween
-  proprietaire: string[] = []
+  proprietaire: string  = ''
   actif: boolean = true
 
   vitesse: number = 0
@@ -93,12 +93,12 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   lancer(id) {
-    this.proprietaire.push(id)
+    // this.proprietaire.push(id)
     // this.animationEnvoie.play()
   }
 
   suppression(id) {
-    this.proprietaire.shift()
+    // this.proprietaire.shift()
   }
 
   setDestructionIminente(destruction) {
