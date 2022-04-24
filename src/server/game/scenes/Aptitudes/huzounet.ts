@@ -21,7 +21,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       huzounet.puissanceChargeBoule = 0
-      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.x -80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.flipX ? huzounet.x + 80 : huzounet.x - 80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.parametresDeBase.boulesEnMain.add(boule);
       (boule.body as any).setAllowGravity(false);
 
@@ -46,7 +46,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
       const boule = (huzounet.parametresDeBase.boulesEnMain.getChildren()[0] as BouleClass);
       boule.proprietaire = huzounet.ClientID;
       huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule));
-      huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].body.setVelocityX(2600);
+      huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].body.setVelocityX(huzounet.flipX ? -2600 : 2600);
       huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].proprietaire = '';
       huzounet.parametresDeBase.boulesEnMain.clear();
       input.a_fin = false
@@ -62,7 +62,7 @@ export function kunai(huzounet: TJoueur) {
 
     let kunai: any
     if (!huzounet.kunai) {
-      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3}))
+      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
       huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
         _ennemie.blesse_ennemie(_kunai.getData('degat'))
@@ -72,7 +72,7 @@ export function kunai(huzounet: TJoueur) {
       kunai.body.setAllowGravity(false);
       huzounet.kunai = kunai
       huzounet.scene.time.delayedCall(100, () => {
-          huzounet.kunai.setVelocityX(2300)
+          huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
             huzounet.kunai = undefined;
       }, null, huzounet);
     }

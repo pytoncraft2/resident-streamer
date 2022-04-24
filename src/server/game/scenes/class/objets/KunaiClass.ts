@@ -46,7 +46,8 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
           x: this.x,
           y: this.y,
           id: this.id,
-          active: this.active
+          active: this.active,
+          flipX: this.flipX
         })
       )
   }

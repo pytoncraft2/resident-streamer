@@ -33,6 +33,7 @@ export class Kunai extends Schema {
   @type("number") alpha: number;
   @type("string") id: string;
   @type("boolean") active: boolean;
+  @type("boolean") flipX: boolean;
 }
 
 export class ZoneAttaque extends Schema {

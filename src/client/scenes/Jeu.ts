@@ -435,6 +435,7 @@ export default class Jeu extends Phaser.Scene {
         const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
         .setDepth(2)
         .setAlpha(list.kunais[item].alpha)
+        .setFlipX(list.kunais[item].flipX)
         // .play(`huzounet_shuriken`);
         this.kunaisRef[item] = b
       } else if (list.kunais[item].active) {
