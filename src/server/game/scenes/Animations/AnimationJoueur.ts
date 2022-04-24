@@ -121,8 +121,7 @@ export function AnimationBombe(anim: Phaser.Animations.AnimationState){
     key: 'akhizonah_bombe',
     frames: anim.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 7 }),
     frameRate: 8,
-    repeat: 0,
-    delay: 3000
+    repeat: 0
   });
 }
 

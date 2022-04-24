@@ -471,36 +471,14 @@ export default class Jeu extends Phaser.Scene {
     })
 
     list.bombesListe.map((item: string, idx: number) => {
-      if (this.bombesRef[list.bombes[item].id] === undefined && list.bombes[item].active) {
+      if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
-        .setDepth(2)
-        .setAlpha(list.bombes[item].alpha)
-        .setFlipX(list.bombes[item].flipX)
-        .setFrame('bombe0')
-        // .play(`huzounet_shuriken`);
-        this.bombesRef[item] = b
+        console.log("CREATION")
+        this.bombesRef[item] = b;
       } else if (list.bombes[item].active) {
-        this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
-        if (list.bombes[item].anim) {
-          this.bombesRef[item].setFrame(list.bombes[item].anim);
-        }
-        // console.log(list.boules[item].actif)
-        // console.log(list.boules[item].active)
-
-      }
-
-      if (!list.bombes[item].active) {
-        // console.log("PASSS AAACTIF")
-        // console.log(this.groupeBoules.getFirstDead())
-
-        if (this.bombesRef[list.bombes[item].id]) {
-          this.bombesRef[list.bombes[item].id].destroy()
-          delete this.bombesRef[list.bombes[item].id]
-        }
-        // console.log(this.boulesRef[list.boules[item].id])
-        // console.log(list.boules[item].id)
-        // this.boulesRef[list.boules[item].id].destroy(true)
-        // console.log(this.boulesRef[list.boules[item].id])
+        // console.log("UPDATE")
+        // this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+          // this.bombesRef[item].setFrame(list.bombes[item].anim);
       }
     })
 
