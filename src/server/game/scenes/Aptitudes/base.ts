@@ -1,6 +1,7 @@
 import {cross, kick, dash} from './fakhear'
 import {pique, suivre} from './boss_1'
 import {kunai, shuriken} from './huzounet'
+import {couteau, bombe} from './akhizonah'
 
 import TJoueur from "../types/Joueur";
 
@@ -105,7 +106,21 @@ export const Aptitudes = {
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)
     }
-  }
+  },
+  'akhizonah': {
+    toucheA: (akhizonah, input?: Object) => {
+      couteau(akhizonah, input)
+    },
+    toucheZ: (akhizonah) => {
+      bombe(akhizonah)
+    },
+    toucheE: (akhizonah) => {
+      interaction(akhizonah)
+    },
+    toucheEspace: (akhizonah) => {
+      saut(akhizonah)
+    }
+  },
 };
 
 // export const Aptitudes = () => parametres;

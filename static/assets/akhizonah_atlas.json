@@ -157,6 +157,19 @@
             }
         },
         {
+            "filename": "knife3",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
             "filename": "knife2",
             "frame": {
                 "w": 229,

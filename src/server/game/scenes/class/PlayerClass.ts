@@ -82,6 +82,13 @@ interface Deplacement {
          }
        }
 
+       if (anim.key == 'akhizonah_couteau') {
+         if (frame.frame.name == 'knife2') {
+           this.blesse_opposant = true
+         }
+       }
+
+
        if (anim.key == 'straightlead') {
          if (frame.frame.name == 'straightlead1') {
            this.blesse_opposant = true

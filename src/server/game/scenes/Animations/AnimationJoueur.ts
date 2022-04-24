@@ -23,6 +23,12 @@ export function AnimationJoueur(anim: any){
     frameRate: 5,
     repeat: 0
   });
+  anim.create({
+    key: 'akhizonah_couteau',
+    frames: anim.generateFrameNames('atlas', { prefix: 'knife', start: 0, end: 3 }),
+    frameRate: 8,
+    repeat: 0
+  });
 
   // anim.create({
   //   key: 'huzounet_kunai',

@@ -857,8 +857,59 @@
             "x": 0.5,
             "y": 0.5
           }
+        },
+        {
+            "filename": "knife3",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife2",
+            "frame": {
+                "w": 229,
+                "h": 371,
+                "x": 461,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife1",
+            "frame": {
+                "w": 173,
+                "h": 371,
+                "x": 690,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife0",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
         }
-
     ],
     "meta": {
         "description": "Atlas generado con Atlas Packer Gamma V2",
