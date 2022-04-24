@@ -130,7 +130,20 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
        // this.deplacements(left, left_fin, right, right_fin, input)
-       console.log(input)
+
+       if (left) this.deplacement('left')
+
+       if (right) this.deplacement('right')
+
+       if (input.left_fin || input.right_fin) {
+         this.fin_deplacement()
+         console.log("FIN LEFT")
+         input.left_fin = false;
+       } else if (input.right_fin) {
+         this.fin_deplacement()
+         console.log("RIGHT LEFT")
+         input.right_fin = false
+       }
        // if (left || left_fin) this.deplacement('left', left, left_fin)
        // if (right || right_fin) this.deplacement('right', right, right_fin)
 
@@ -152,18 +165,18 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      )
    }
 
-   deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
-     if (objet) {
+   deplacement(direction: 'left'|'right') {
+     // if (objet) {
        setAnimation(this, 'walk')
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
        this.setFlipX(direction == 'right' ? false : true);
        this.setDragX(1400)
-     }
-     if (fin) {
-         setAnimation(this, 'idle_walk')
-         this.setVelocityX(0);
-         console.log("FIN")
-     }
+     // }
+   }
+
+   fin_deplacement() {
+       setAnimation(this, 'idle_walk')
+       this.setVelocityX(0);
    }
 
    deplacements(left, left_fin, right, right_fin, input) {
