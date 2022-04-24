@@ -2,10 +2,6 @@ interface BaseEquipement {
   boulesEnMain: Phaser.Physics.Arcade.Group;
 }
 
-interface Kunai extends Phaser.Physics.Arcade.Sprite {
-  kunai: Phaser.Physics.Arcade.Group;
-}
-
 interface Scene extends Phaser.Scene {
   containerColision: Phaser.GameObjects.Container;
   room: any

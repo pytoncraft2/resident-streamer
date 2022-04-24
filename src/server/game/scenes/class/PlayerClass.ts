@@ -4,11 +4,6 @@ import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
 
-interface Deplacement {
-  stop: boolean,
-  marche: boolean
-}
-
 /**
  * Joueur et interaction
  */
@@ -68,7 +63,7 @@ interface Deplacement {
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
 
-     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim, frame, gameObject) {
+     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false
        if (anim.key == 'cross') {
          if (frame.frame.name == 'cross4') {
@@ -119,7 +114,7 @@ interface Deplacement {
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
    }
-   preUpdate(time, delta) {
+   preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
@@ -154,7 +149,7 @@ interface Deplacement {
      )
    }
 
-   deplacement(direction: 'left'|'right', objet: any, fin) {
+   deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
      if (objet) {
        setAnimation(this, 'walk')
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
