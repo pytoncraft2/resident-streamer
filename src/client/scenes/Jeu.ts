@@ -472,7 +472,7 @@ export default class Jeu extends Phaser.Scene {
 
     list.bombesListe.map((item: string, idx: number) => {
       if (this.bombesRef[list.bombes[item].id] === undefined && list.bombes[item].active) {
-        const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `huzounet_atlas`, 'kunai')
+        const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
         .setDepth(2)
         .setAlpha(list.bombes[item].alpha)
         .setFlipX(list.bombes[item].flipX)

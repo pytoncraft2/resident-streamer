@@ -29,8 +29,15 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     this.id = id
 
-    this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
+
+    this.anims.create({
+      key: 'akhizonah_bombe',
+      frames: this.anims.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 7 }),
+      frameRate: 8,
+      repeat: -1
+    });
+
 
   }
   preUpdate(time, delta) {
