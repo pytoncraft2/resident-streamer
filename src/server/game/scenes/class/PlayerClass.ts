@@ -82,6 +82,7 @@ interface Deplacement {
          }
        }
 
+       console.log(anim.key)
        if (anim.key == 'akhizonah_couteau') {
          if (frame.frame.name == 'knife2') {
            this.blesse_opposant = true

@@ -67,7 +67,7 @@ export function AnimationJoueur(anim: any){
     key: "idle_walk",
     frames: anim.generateFrameNames('atlas', { prefix: 'marche', start: 0, end: 0 }),
     frameRate: 1,
-    repeat: -1
+    repeat: 0
   });
 
   anim.create({
