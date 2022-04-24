@@ -216,6 +216,13 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
+		// ellipse_5
+		const ellipse_5 = this.add.ellipse(998, 809, 128, 128);
+		ellipse_5.scaleX = 1.7429041911996517;
+		ellipse_5.scaleY = 1.7429041911996517;
+		ellipse_5.isFilled = true;
+		ellipse_5.fillAlpha = 0.3;
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;

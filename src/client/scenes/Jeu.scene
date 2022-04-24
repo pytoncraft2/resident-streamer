@@ -395,6 +395,20 @@
                     "list": []
                 }
             ]
+        },
+        {
+            "type": "Ellipse",
+            "id": "d2cb1dbe-4c47-4e96-bcd6-811423a32bbc",
+            "label": "ellipse_5",
+            "components": [],
+            "x": 998,
+            "y": 809,
+            "scaleX": 1.7429041911996517,
+            "scaleY": 1.7429041911996517,
+            "isFilled": true,
+            "fillAlpha": 0.3,
+            "width": 128,
+            "height": 128
         }
     ],
     "plainObjects": [],
