@@ -11,16 +11,14 @@ export function couteau(akhizonah: TJoueur, input?: any) {
 
 export function bombe(akhizonah: TJoueur) {
 
-  //@ts-ignore
-  if (!akhizonah.o) {
+  if (!akhizonah.bombe) {
     const bombe = akhizonah.scene.add.existing(new BombeClass(akhizonah.scene, akhizonah.flipX ? akhizonah.x - 80 : akhizonah.x + 80, akhizonah.y - 60, "atlas", "bombe0").setData({ ClientId: akhizonah.ClientID, degat: 0.3}).setTexture('atlas', 'bombe0'));
     akhizonah.scene.physics.add.existing(bombe);
+    akhizonah.bombe = bombe
     bombe.scene.time.delayedCall(100, () => {
       bombe.play('akhizonah_bombe');
+      akhizonah.bombe = undefined
     }, null, bombe);
-
-    //@ts-ignore
-    akhizonah.o = true
   }
 
   console.log("BOMBE")

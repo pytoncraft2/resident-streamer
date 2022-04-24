@@ -26,9 +26,12 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   boulesEnMain: Phaser.Physics.Arcade.Group
   containerColision: Phaser.GameObjects.Container
   animationCharge: Phaser.Tweens.Tween
-  kunai: KunaiClass
+  kunai: Phaser.Physics.Arcade.Sprite|undefined
   scene: Scene
   interaction_objet: boolean
+
+  //akhizonah
+  bombe: Phaser.Physics.Arcade.Sprite|undefined
 }
 
   export default TJoueur;
