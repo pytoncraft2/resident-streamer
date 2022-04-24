@@ -13,9 +13,12 @@ export function bombe(akhizonah: TJoueur) {
 
   //@ts-ignore
   if (!akhizonah.o) {
-    const bombe = akhizonah.scene.add.existing(new BombeClass(akhizonah.scene, akhizonah.flipX ? akhizonah.x - 80 : akhizonah.x + 80, akhizonah.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: akhizonah.ClientID, degat: 0.3}));
+    const bombe = akhizonah.scene.add.existing(new BombeClass(akhizonah.scene, akhizonah.flipX ? akhizonah.x - 80 : akhizonah.x + 80, akhizonah.y - 60, "atlas", "bombe0").setData({ ClientId: akhizonah.ClientID, degat: 0.3}).setTexture('atlas', 'bombe0'));
     akhizonah.scene.physics.add.existing(bombe);
-    bombe.play('akhizonah_bombe');
+    bombe.scene.time.delayedCall(100, () => {
+      bombe.play('akhizonah_bombe');
+    }, null, bombe);
+
     //@ts-ignore
     akhizonah.o = true
   }
