@@ -473,12 +473,12 @@ export default class Jeu extends Phaser.Scene {
     list.bombesListe.map((item: string, idx: number) => {
       if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
-        console.log("CREATION")
         this.bombesRef[item] = b;
       } else if (list.bombes[item].active) {
-        // console.log("UPDATE")
-        // this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
-          // this.bombesRef[item].setFrame(list.bombes[item].anim);
+        this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+        if (list.bombes[item].anim) {
+          this.bombesRef[item].setFrame(list.bombes[item].anim);
+        }
       }
     })
 
