@@ -480,6 +480,7 @@ export default class Jeu extends Phaser.Scene {
         this.bombesRef[item] = b
       } else if (list.bombes[item].active) {
         this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+        this.bombesRef[item].setFrame(list.bombes[item].anim);
         // console.log(list.boules[item].actif)
         // console.log(list.boules[item].active)
 

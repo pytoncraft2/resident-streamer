@@ -45,7 +45,8 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
           y: this.y,
           alpha: this.alpha,
           id: this.id,
-          active: this.active
+          active: this.active,
+          anim: this.anims.getFrameName()
         })
       )
   }

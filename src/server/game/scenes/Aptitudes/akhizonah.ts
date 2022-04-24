@@ -1,4 +1,5 @@
 import TJoueur from "../types/Joueur";
+import BombeClass from "../class/objets/BombeClass";
 
 export function couteau(akhizonah: TJoueur, input?: any) {
   if (input.a) {
@@ -9,5 +10,8 @@ export function couteau(akhizonah: TJoueur, input?: any) {
 }
 
 export function bombe(akhizonah: TJoueur) {
+  const bombe = akhizonah.scene.add.existing(new BombeClass(akhizonah.scene, akhizonah.flipX ? akhizonah.x - 80 : akhizonah.x + 80, akhizonah.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: akhizonah.ClientID, degat: 0.3}))
+  akhizonah.scene.physics.add.existing(bombe);
+
   console.log("BOMBE")
 }
