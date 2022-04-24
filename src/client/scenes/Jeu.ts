@@ -216,13 +216,6 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
-		// ellipse_5
-		const ellipse_5 = this.add.ellipse(998, 809, 128, 128);
-		ellipse_5.scaleX = 1.7429041911996517;
-		ellipse_5.scaleY = 1.7429041911996517;
-		ellipse_5.isFilled = true;
-		ellipse_5.fillAlpha = 0.3;
-
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -481,6 +474,22 @@ export default class Jeu extends Phaser.Scene {
       if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
         this.bombesRef[item] = b;
+        const ellipse_5 = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
+        ellipse_5.setScale(0)
+        ellipse_5.isFilled = true;
+        ellipse_5.fillAlpha = 0.3;
+
+        this.tweens.add({
+          targets: ellipse_5,
+          scale: "+=4",
+          alpha: 0,
+          ease: 'Sine.inOut',
+          duration: 500,
+          delay: 1600,
+          repeat: 0
+        });
+
+
       } else if (list.bombes[item].active) {
         this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
         if (list.bombes[item].anim) {
