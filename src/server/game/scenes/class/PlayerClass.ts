@@ -5,8 +5,8 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
 
 interface Deplacement {
-  right: boolean,
-  left: boolean
+  stop: boolean,
+  marche: boolean
 }
 
 /**
@@ -16,7 +16,7 @@ interface Deplacement {
  export default class PlayerClass extends Phaser.Physics.Arcade.Sprite {
    ClientID: any
    sprite: string
-   vel: number = 400
+   vel: number = 600
    vie: number = 10
    compteurSaut: number = 0
    canMove: boolean = true
@@ -126,27 +126,15 @@ interface Deplacement {
        // console.log(directeA)
        // console.log(preparationA)
        // console.log(a)
-       // console.log(input.left_fin)
+       // console.log(input.left)
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        // if (preparationA) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       // if (left) this.setVelocityX(-this.vel)
-       // if (right) this.setVelocityX(this.vel)
-
-       // if (left || left_fin) {
-       //   // if (left) {
-       //   //   console.log("LEEEFT")
-       //   // }
-       //   console.log("GAUCHE")
-       //   if (left_fin) {
-       //     console.log("GAUCHE_ffiiiiin")
-       //     // left_fin = false
-       //   }
-       // }
-
+       if (left || left_fin) this.deplacement('left', left, left_fin)
+       if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
      (this.scene as any).room.state.presences.set(
@@ -165,16 +153,29 @@ interface Deplacement {
      )
    }
 
-   deplacement(direction: 'left'|'right', deplacement: Deplacement) {
-     if (objet.right) {
-       setAnimation(this, 'idle_walk')
-       this.setVelocityX(0);
-     }
-     if (objet.marche) {
+   deplacement(direction: 'left'|'right', objet: any, fin) {
+     // console.log("DEPALCEMENT")
+     if (objet) {
        setAnimation(this, 'walk')
+       // this.x += direction == 'right' ? 10 : -10
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
        this.setFlipX(direction == 'right' ? false : true);
-       this.setDragX(0)
+       this.setDragX(1400)
      }
+     if (fin) {
+         setAnimation(this, 'idle_walk')
+         this.setVelocityX(0);
+         console.log("FIN")
+     }
+     //   objet.stop = false
+     //   objet.marche = false
+     //   this.setVelocityX(0);
+     // }
+     // if (objet.marche) {
+     //   setAnimation(this, 'walk')
+     //   this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
+     //   this.setFlipX(direction == 'right' ? false : true);
+     //   this.setDragX(0)
+     // }
    }
  }
