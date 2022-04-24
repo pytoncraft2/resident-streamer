@@ -129,24 +129,8 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       // this.deplacements(left, left_fin, right, right_fin, input)
-
-       if (left) this.deplacement('left')
-
-       if (right) this.deplacement('right')
-
-       if (input.left_fin || input.right_fin) {
-         this.fin_deplacement()
-         console.log("FIN LEFT")
-         input.left_fin = false;
-       } else if (input.right_fin) {
-         this.fin_deplacement()
-         console.log("RIGHT LEFT")
-         input.right_fin = false
-       }
-       // if (left || left_fin) this.deplacement('left', left, left_fin)
-       // if (right || right_fin) this.deplacement('right', right, right_fin)
-
+       if (left || left_fin) this.deplacement('left', left, left_fin)
+       if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
      (this.scene as any).room.state.presences.set(
@@ -165,52 +149,17 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      )
    }
 
-   deplacement(direction: 'left'|'right') {
-     // if (objet) {
+   deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
+     if (objet) {
        setAnimation(this, 'walk')
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
        this.setFlipX(direction == 'right' ? false : true);
        this.setDragX(1400)
-     // }
-   }
-
-   fin_deplacement() {
-       setAnimation(this, 'idle_walk')
-       this.setVelocityX(0);
-   }
-
-   deplacements(left, left_fin, right, right_fin, input) {
-     if (left || left_fin && !input.a && !input.a_fin) {
-       if (left) {
-         setAnimation(this, 'walk')
-         this.setVelocityX(-this.vel);
-         this.setFlipX(true);
-         this.setDragX(1400)
-       }
-
-       if (left_fin && !input.a) {
-         input.left_fin = false
+     }
+     if (fin) {
          setAnimation(this, 'idle_walk')
          this.setVelocityX(0);
-         console.log("GAUCHE FIN")
-       }
+         console.log("FIN")
      }
-
-     if (right || right_fin) {
-       if (right) {
-         setAnimation(this, 'walk')
-         this.setVelocityX(this.vel);
-         this.setFlipX(false);
-         this.setDragX(1400)
-       }
-
-       if (right_fin && !input.a) {
-         input.right_fin = false;
-         setAnimation(this, 'idle_walk')
-         this.setVelocityX(0);
-         console.log("DROITE FIN")
-       }
-     }
-
    }
  }
