@@ -1,4 +1,6 @@
-export function couteau(akhizonah, input) {
+import TJoueur from "../types/Joueur";
+
+export function couteau(akhizonah: TJoueur, input?: any) {
   if (input.a) {
     input.a = false
     akhizonah.play('akhizonah_couteau')
@@ -6,6 +8,6 @@ export function couteau(akhizonah, input) {
   }
 }
 
-export function bombe(akhizonah) {
-
+export function bombe(akhizonah: TJoueur) {
+  console.log("BOMBE")
 }
