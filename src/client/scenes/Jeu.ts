@@ -474,13 +474,13 @@ export default class Jeu extends Phaser.Scene {
       if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
         this.bombesRef[item] = b;
-        const ellipse_5 = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
-        ellipse_5.setScale(0)
-        ellipse_5.isFilled = true;
-        ellipse_5.fillAlpha = 0.3;
+        const effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
+        effet_choc.setScale(0)
+        effet_choc.isFilled = true;
+        effet_choc.fillAlpha = 0.3;
 
         this.tweens.add({
-          targets: ellipse_5,
+          targets: effet_choc,
           scale: "+=4",
           alpha: 0,
           ease: 'Sine.inOut',
