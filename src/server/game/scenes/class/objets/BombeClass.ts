@@ -35,7 +35,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     new AnimationBombe(this.anims)
 
   }
-  preUpdate(time, delta) {
+  preUpdate(time: number, delta: number) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 

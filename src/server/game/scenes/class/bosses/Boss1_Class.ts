@@ -7,15 +7,15 @@ import { AnimationEnnemie } from "../../Animations/AnimationEnnemie"
  */
 
 export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
-  private EnnemyId: string;
-  private lastAnim: any;
-  private attaque: any;
-  private vie: number = 10;
-  public blesse: boolean = false
-  private etats: any
-  private etatEnCours: string
-  private zoneInteraction: any
-  private vivant: boolean = true
+  EnnemyId: string;
+  lastAnim: any;
+  attaque: any;
+  vie: number = 10;
+  blesse: boolean = false
+  etats: any
+  etatEnCours: string
+  zoneInteraction: any
+  vivant: boolean = true
   proprietaire_objet: (id: string, id_ennemie: string) => void
 
   constructor(

@@ -119,9 +119,10 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
 export function AnimationBombe(anim: Phaser.Animations.AnimationState){
   anim.create({
     key: 'akhizonah_bombe',
-    frames: anim.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 7 }),
+    frames: anim.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 8 }),
     frameRate: 8,
-    repeat: 0
+    repeat: 0,
+    delay: 1500
   });
 }
 
