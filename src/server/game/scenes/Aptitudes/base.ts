@@ -108,16 +108,16 @@ export const Aptitudes = {
     }
   },
   'akhizonah': {
-    toucheA: (akhizonah, input?: Object) => {
+    toucheA: (akhizonah: TJoueur, input?: Object) => {
       couteau(akhizonah, input)
     },
-    toucheZ: (akhizonah) => {
+    toucheZ: (akhizonah: TJoueur) => {
       bombe(akhizonah)
     },
-    toucheE: (akhizonah) => {
+    toucheE: (akhizonah: TJoueur) => {
       interaction(akhizonah)
     },
-    toucheEspace: (akhizonah) => {
+    toucheEspace: (akhizonah: TJoueur) => {
       saut(akhizonah)
     }
   },
