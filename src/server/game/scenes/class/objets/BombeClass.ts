@@ -8,6 +8,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
+  zoneInteraction: any
 
   vitesse: number = 0
   puissance: number = 0
@@ -34,10 +35,30 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     new AnimationBombe(this.anims)
 
+    this.zoneInteraction = {}
+    this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0)
+
+    //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
+    this.scene.physics.add.existing(this.zoneInteraction);
+    // this.zoneInteraction.body.enable = false;
+    (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+
+    //@ts-ignore
+    this.fin = false
+
+
+
   }
   preUpdate(time: number, delta: number) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
+
+    //@ts-ignore
+    if (this.anims.getFrameName() == "bombe4" && !this.fin) {
+      console.log("KABOUM -------------------------")
+    //@ts-ignore
+      this.fin = true
+    }
 
 
       (this.scene as any).room.state.bombes.set(
