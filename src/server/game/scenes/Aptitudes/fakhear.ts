@@ -26,12 +26,3 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
     yoyo: false,
   })
 }
-
-export function interaction(fakhear: Phaser.Physics.Arcade.Sprite|any) {
-  fakhear.interaction_objet = true
-  fakhear.scene.tweens.addCounter({
-    duration: 1,
-    onComplete: () => (fakhear.interaction_objet = false)
-  })
-  // fakhear.interaction_objet = false
-}

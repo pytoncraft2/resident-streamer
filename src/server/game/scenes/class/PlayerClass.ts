@@ -119,16 +119,10 @@ interface Deplacement {
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin } = input
      let animationName = this.anims.getFrameName()
 
-     // console.log(a_fin)
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-       // console.log(directeA)
-       // console.log(preparationA)
-       // console.log(a)
-       // console.log(input.left)
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
-       // if (preparationA) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
@@ -154,10 +148,8 @@ interface Deplacement {
    }
 
    deplacement(direction: 'left'|'right', objet: any, fin) {
-     // console.log("DEPALCEMENT")
      if (objet) {
        setAnimation(this, 'walk')
-       // this.x += direction == 'right' ? 10 : -10
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
        this.setFlipX(direction == 'right' ? false : true);
        this.setDragX(1400)
@@ -167,15 +159,5 @@ interface Deplacement {
          this.setVelocityX(0);
          console.log("FIN")
      }
-     //   objet.stop = false
-     //   objet.marche = false
-     //   this.setVelocityX(0);
-     // }
-     // if (objet.marche) {
-     //   setAnimation(this, 'walk')
-     //   this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
-     //   this.setFlipX(direction == 'right' ? false : true);
-     //   this.setDragX(0)
-     // }
    }
  }

@@ -1,4 +1,4 @@
-import {cross, kick, dash, interaction} from './fakhear'
+import {cross, kick, dash} from './fakhear'
 import {pique, suivre} from './boss_1'
 import {kunai, shuriken} from './huzounet'
 
@@ -19,6 +19,15 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
       personnage.compteurSaut = 0
     }
   }
+}
+
+function interaction(personnage: TJoueur) {
+  personnage.interaction_objet = true
+  personnage.scene.tweens.addCounter({
+    duration: 1,
+    onComplete: () => (personnage.interaction_objet = false)
+  })
+  // fakhear.interaction_objet = false
 }
 /**
  * -- LISTE DES PARAMETRES DE L'ACTION DES TOUCHES DES JOUEURS --
@@ -89,6 +98,9 @@ export const Aptitudes = {
     },
     toucheZ: (huzounet: TJoueur) => {
       kunai(huzounet)
+    },
+    toucheE: (huzounet: TJoueur) => {
+      interaction(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)

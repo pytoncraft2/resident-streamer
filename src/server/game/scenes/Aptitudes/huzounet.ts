@@ -1,7 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/objets/BouleClass"
 import KunaiClass from "../class/objets/KunaiClass"
-import { Boule } from "../../RoomState"
 
 import TJoueur from "../types/Joueur";
 
@@ -60,16 +59,15 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 export function kunai(huzounet: TJoueur) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
-    let kunai: any
     if (!huzounet.kunai) {
-      kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
       huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
         _ennemie.blesse_ennemie(_kunai.getData('degat'))
         _kunai.setData('degat', 0)
-      }, undefined, huzounet)
+      }, undefined, huzounet);
 
-      kunai.body.setAllowGravity(false);
+      (kunai.body as any).setAllowGravity(false);
       huzounet.kunai = kunai
       huzounet.scene.time.delayedCall(100, () => {
           huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
