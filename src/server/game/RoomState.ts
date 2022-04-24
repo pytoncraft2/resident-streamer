@@ -43,6 +43,7 @@ export class Bombe extends Schema {
   @type("string") id: string;
   @type("boolean") active: boolean;
   @type("string") anim?: string
+  @type("boolean") explosion: boolean;
 }
 
 export class ZoneAttaque extends Schema {

@@ -474,26 +474,37 @@ export default class Jeu extends Phaser.Scene {
       if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
         this.bombesRef[item] = b;
-        const effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
-        effet_choc.setScale(0)
-        effet_choc.isFilled = true;
-        effet_choc.fillAlpha = 0.3;
+
+        b.effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
+        b.effet_choc.setScale(0);
+        b.effet_choc.isFilled = true;
+        b.effet_choc.fillAlpha = 0.3;
 
         this.tweens.add({
-          targets: effet_choc,
-          scale: "+=4",
+          targets: b.effet_choc,
+          scale: "+=6",
           alpha: 0,
           ease: 'Sine.inOut',
-          duration: 500,
+          duration: 400,
           delay: 1600,
-          repeat: 0
+          repeat: 0,
+          onUpdate: () => {
+            b.effet_choc.setPosition(this.bombesRef[item].x, this.bombesRef[item].y)
+          },
+          onComplete: function() {
+            arguments[1][0].destroy(true)
+          }
         });
 
-
-      } else if (list.bombes[item].active) {
-        this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+      } else {
         if (list.bombes[item].anim) {
+          this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+
           this.bombesRef[item].setFrame(list.bombes[item].anim);
+
+          if (list.bombes[item].explosion) {
+            this.bombesRef[item].effet_choc.setPosition(list.bombes[item].x, list.bombes[item].y);
+          }
         }
       }
     })

@@ -9,6 +9,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   proprietaire: string  = ''
   actif: boolean = true
   zoneInteraction: any
+  explosion: boolean
 
   vitesse: number = 0
   puissance: number = 0
@@ -45,6 +46,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     //@ts-ignore
     this.fin = false
+    this.explosion = false
 
 
 
@@ -56,6 +58,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     //@ts-ignore
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
       console.log("KABOUM -------------------------")
+      this.explosion = true
     //@ts-ignore
       this.fin = true
     }
@@ -69,8 +72,12 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
           alpha: this.alpha,
           id: this.id,
           active: this.active,
-          anim: this.anims.getFrameName()
+          anim: this.anims.getFrameName(),
+          explosion: this.explosion
         })
       )
+
+      this.explosion = false
+
   }
 }
