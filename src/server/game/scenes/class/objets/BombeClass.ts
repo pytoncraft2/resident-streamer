@@ -1,4 +1,5 @@
 import { Bombe } from "../../../RoomState"
+import { AnimationBombe } from "../../Animations/AnimationJoueur"
 
 export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -31,13 +32,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     this.setCollideWorldBounds(true);
 
-    this.anims.create({
-      key: 'akhizonah_bombe',
-      frames: this.anims.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 7 }),
-      frameRate: 8,
-      repeat: -1
-    });
-
+    new AnimationBombe(this.anims)
 
   }
   preUpdate(time, delta) {

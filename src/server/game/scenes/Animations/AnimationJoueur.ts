@@ -1,4 +1,4 @@
-export function AnimationJoueur(anim: any){
+export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
   anim.create({
     key: 'attack',
     frames: anim.generateFrameNames('atlas', { prefix: 'positiona', start: 0, end: 5 }),
@@ -115,6 +115,16 @@ export function AnimationJoueur(anim: any){
 
 
 }
+
+export function AnimationBombe(anim: Phaser.Animations.AnimationState){
+  anim.create({
+    key: 'akhizonah_bombe',
+    frames: anim.generateFrameNames('atlas', { prefix: 'bombe', start: 0, end: 7 }),
+    frameRate: 8,
+    repeat: -1
+  });
+}
+
 
 export const setAnimation = (sprite: Phaser.GameObjects.Sprite, animation: string = 'idle') => {
   if (!sprite.anims.isPlaying) sprite.play(animation)
