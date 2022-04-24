@@ -37,17 +37,25 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     new AnimationBombe(this.anims)
 
     this.zoneInteraction = {}
-    this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0)
+    this.zoneInteraction = this.scene.add.ellipse(985, 812, 128, 128);
+    this.zoneInteraction.scaleX = 3.805782212727244;
+    this.zoneInteraction.scaleY = 3.805782212727244;
+    this.zoneInteraction.setData('degat', 3);
+
 
     //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
     this.scene.physics.add.existing(this.zoneInteraction);
-    // this.zoneInteraction.body.enable = false;
-    (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+    this.zoneInteraction.body.enable = false;
+    // (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
     //@ts-ignore
     this.fin = false
     this.explosion = false
 
+    this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function(_zone_bombe, _ennemie: any) {
+      _ennemie.blesse_ennemie(_zone_bombe.getData('degat'))
+      _zone_bombe.setData('degat', 0)
+    }, undefined, this);
 
 
   }
@@ -59,6 +67,8 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
       console.log("KABOUM -------------------------")
       this.explosion = true
+      this.zoneInteraction.body.enable = true;
+      this.zoneInteraction.setPosition(this.x, this.y)
     //@ts-ignore
       this.fin = true
     }
