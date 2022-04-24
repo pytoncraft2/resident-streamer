@@ -273,6 +273,8 @@ export default class Jeu extends Phaser.Scene {
   directeA: boolean = false
   emitter: any
   animationBoosFigurine: any
+  right_up: boolean = false
+  left_up: boolean = false
 
 
 
@@ -649,6 +651,13 @@ export default class Jeu extends Phaser.Scene {
     if (this.room) {
       const { right, left, space, A, Z, E, R } = this.keyboard
 
+      if (left.isUp) {
+        this.left_up = true
+      }
+      if (right.isUp) {
+        this.right_up = true
+      }
+
       const inputs = {
         a: A.isDown ? true : false,
         a_fin: A.isUp ? true : false,
@@ -657,10 +666,13 @@ export default class Jeu extends Phaser.Scene {
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        right_fin: Phaser.Input.Keyboard.JustUp(right),
+        right_fin: this.right_up,
         left: left.isDown ? true : false,
-        left_fin: Phaser.Input.Keyboard.JustUp(left)
+        left_fin: this.left_up
       }
+
+      this.right_up = false;
+      this.left_up = false;
 
       //ATTAQUE
       // if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, charge: true, envoie: false })
