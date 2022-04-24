@@ -657,9 +657,9 @@ export default class Jeu extends Phaser.Scene {
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        right_fin: Phaser.Input.Keyboard.JustUp(right) ? true : false,
+        right_fin: right.isUp,
         left: left.isDown ? true : false,
-        left_fin: Phaser.Input.Keyboard.JustUp(left) ? true : false
+        left_fin: left.isUp
       }
 
       //ATTAQUE
