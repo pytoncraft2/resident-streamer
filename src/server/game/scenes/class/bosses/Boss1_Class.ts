@@ -1,5 +1,7 @@
 import { Player } from "../../../RoomState"
 import { AnimationEnnemie } from "../../Animations/AnimationEnnemie"
+import { Aptitudes } from "../../Aptitudes/base"
+
 
 
 /**
@@ -102,6 +104,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
   mourir() {
     this.vivant = false
+    this.setTint(this.etats['initial']['couleur'])
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
     this.setPosition(this.x, 779.2995484974318)
