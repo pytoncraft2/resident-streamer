@@ -46,7 +46,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     this.etats = {
       'initial': {
         couleur: 16777215,
-        vitesse: 100
+        vitesse: 600
       },
       'secondaire':
       {
@@ -54,6 +54,14 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
         vitesse: 1400
       }
     }
+
+    var timer = scene.time.addEvent({
+      delay: 1000,                // ms
+      callback: this.deplacement,
+      //args: [],
+      callbackScope: this,
+      loop: true
+    });
 
     this.etatEnCours = 'initial'
 
@@ -83,8 +91,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
     if (this.body.touching.right || this.body.touching.left) {
       Aptitudes[this.sprite].toucheA(this)
-    } else {
-      Aptitudes[this.sprite].toucheZ(this)
     }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
@@ -108,6 +114,10 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     if (puissance >= 0) {
       this.vie -= puissance
     }
+  }
+
+  deplacement() {
+      Aptitudes[this.sprite].toucheZ(this)
   }
 
 
