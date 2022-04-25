@@ -19,6 +19,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     //creation de la boule si non créer + animation début
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
+      huzounet.vie -= 1
       huzounet.puissanceChargeBoule = 0
       const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.flipX ? huzounet.x + 80 : huzounet.x - 80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.parametresDeBase.boulesEnMain.add(boule);
