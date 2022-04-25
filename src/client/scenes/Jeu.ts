@@ -649,8 +649,6 @@ export default class Jeu extends Phaser.Scene {
     if (this.room) {
       const { right, left, space, A, Z, E, R } = this.keyboard
 
-      const r = Phaser.Input.Keyboard.JustUp(right);
-      const l = Phaser.Input.Keyboard.JustUp(left);
       const inputs = {
         a: A.isDown ? true : false,
         // a_fin: A.isUp ? true : false,
@@ -659,9 +657,9 @@ export default class Jeu extends Phaser.Scene {
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        // right_fin: r ? true : false,
+        // right_fin: Phaser.Input.Keyboard.JustUp(right),
         left: left.isDown ? true : false,
-        // left_fin: l ? true : false
+        // left_fin: Phaser.Input.Keyboard.JustUp(left)
       }
 
       //ATTAQUE
@@ -681,7 +679,12 @@ export default class Jeu extends Phaser.Scene {
       if (!deepEqual(inputs, this.prevInputs)) {
         console.log("ENVOIE")
         this.prevInputs = inputs
-        this.room.send("inputs", inputs)
+        this.room.send("inputs", {
+          ...inputs,
+          a_fin: A.isUp ? true : false,
+          right_fin: Phaser.Input.Keyboard.JustUp(right),
+          left_fin: Phaser.Input.Keyboard.JustUp(left)
+        })
       }
     }
   }
