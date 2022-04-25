@@ -20,6 +20,8 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   vivant: boolean = true
   proprietaire_objet: (id: string, id_ennemie: string) => void
 
+  sprite: string
+
   constructor(
     scene: Phaser.Scene,
     x: number,
@@ -38,6 +40,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     this.scene.add.existing(this)
     this.EnnemyId = EnnemyId
     this.lastAnim = null;
+    this.sprite = 'boss_1'
     this.attaque = false;
     this.blesse = false;
     this.etats = {
@@ -77,6 +80,12 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
     let animationName = this.anims.getFrameName()
 
+
+    if (this.body.touching.right || this.body.touching.left) {
+      Aptitudes[this.sprite].toucheA(this)
+    } else {
+      Aptitudes[this.sprite].toucheZ(this)
+    }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
