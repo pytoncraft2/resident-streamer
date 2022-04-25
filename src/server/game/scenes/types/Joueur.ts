@@ -25,6 +25,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   kunai: Phaser.Physics.Arcade.Sprite|undefined
   scene: Scene
   interaction_objet: boolean
+  compteurSaut: number;
+
+  body: Phaser.Physics.Arcade.Body
 
   //akhizonah
   bombe: Phaser.Physics.Arcade.Sprite|undefined

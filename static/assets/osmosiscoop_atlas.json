@@ -118,11 +118,11 @@
             }
         },
         {
-            "filename": "jump0",
+            "filename": "osmo_saut1",
             "frame": {
-                "w": 154,
-                "h": 180,
-                "x": 370,
+                "w": 156,
+                "h": 160,
+                "x": 524,
                 "y": 192
             },
             "anchor": {
@@ -131,11 +131,11 @@
             }
         },
         {
-            "filename": "jump1",
+            "filename": "osmo_saut2",
             "frame": {
-                "w": 156,
-                "h": 160,
-                "x": 524,
+                "w": 154,
+                "h": 180,
+                "x": 370,
                 "y": 192
             },
             "anchor": {

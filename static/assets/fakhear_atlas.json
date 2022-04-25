@@ -313,6 +313,32 @@
             }
         },
         {
+            "filename": "osmo_saut1",
+            "frame": {
+                "w": 156,
+                "h": 160,
+                "x": 524,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_saut2",
+            "frame": {
+                "w": 154,
+                "h": 180,
+                "x": 370,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
             "filename": "jumpface5",
             "frame": {
                 "w": 148,

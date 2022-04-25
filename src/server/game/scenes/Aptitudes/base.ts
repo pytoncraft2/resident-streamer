@@ -2,6 +2,7 @@ import {cross, kick, dash} from './fakhear'
 import {pique, suivre} from './boss_1'
 import {kunai, shuriken} from './huzounet'
 import {couteau, bombe} from './akhizonah'
+import {soin, blesse, osmo_saut} from './osmosiscoop'
 
 import TJoueur from "../types/Joueur";
 
@@ -121,6 +122,21 @@ export const Aptitudes = {
       saut(akhizonah)
     }
   },
+  'osmosiscoop': {
+    toucheA: (osmo: TJoueur, input?: Object) => {
+      soin(osmo, input)
+    },
+    toucheZ: (osmo: TJoueur) => {
+      blesse(osmo)
+    },
+    toucheE: (osmo: TJoueur) => {
+      interaction(osmo)
+    },
+    toucheEspace: (osmo: TJoueur) => {
+      osmo_saut(osmo)
+    }
+  }
+
 };
 
 // export const Aptitudes = () => parametres;
