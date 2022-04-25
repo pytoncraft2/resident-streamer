@@ -653,15 +653,15 @@ export default class Jeu extends Phaser.Scene {
       const l = Phaser.Input.Keyboard.JustUp(left);
       const inputs = {
         a: A.isDown ? true : false,
-        a_fin: A.isUp ? true : false,
+        // a_fin: A.isUp ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false,
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        right_fin: r,
+        // right_fin: r ? true : false,
         left: left.isDown ? true : false,
-        left_fin: l
+        // left_fin: l ? true : false
       }
 
       //ATTAQUE

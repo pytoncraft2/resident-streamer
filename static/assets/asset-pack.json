@@ -8,16 +8,6 @@
                 "key": "akhizonah_atlas"
             },
             {
-                "url": "assets/attackchaiseboss0.png",
-                "type": "image",
-                "key": "attackchaiseboss0"
-            },
-            {
-                "url": "assets/attackchaiseboss1.png",
-                "type": "image",
-                "key": "attackchaiseboss1"
-            },
-            {
                 "url": "assets/boss_1_atlas.png",
                 "type": "image",
                 "key": "boss_1"
@@ -71,16 +61,6 @@
                 "url": "assets/map_hall1.png",
                 "type": "image",
                 "key": "map_hall1"
-            },
-            {
-                "url": "assets/movechaiseboss0.png",
-                "type": "image",
-                "key": "movechaiseboss0"
-            },
-            {
-                "url": "assets/movechaiseboss1.png",
-                "type": "image",
-                "key": "movechaiseboss1"
             }
         ]
     },
