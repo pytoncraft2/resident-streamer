@@ -31,6 +31,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   //akhizonah
   bombe: Phaser.Physics.Arcade.Sprite|undefined
+
+  //osmosiscoop
+  soigne: boolean
 }
 
   export default TJoueur;

@@ -1,6 +1,6 @@
 import TJoueur from "../types/Joueur";
 
-export function soin(osmo, input) {
+export function soin(osmo: TJoueur, input: any) {
   if (input.a)
   {
     osmo.soigne = true;
@@ -13,11 +13,10 @@ export function soin(osmo, input) {
   }
 }
 
-export function blesse(osmo, input) {
+export function blesse(osmo: TJoueur, input: any) {
   if (input.z) {
     osmo.play('osmo_attaque', true)
     input.z = false;
-  console.log("--------------------------------------------------YES")
   }
 }
 
