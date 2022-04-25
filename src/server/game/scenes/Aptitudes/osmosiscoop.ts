@@ -4,14 +4,13 @@ export function soin(osmo, input) {
   if (input.a)
   {
     osmo.soigne = true;
-    osmo.play('osmo_soin')
+    osmo.play('osmo_soin', true)
   }
 
   if (input.a_fin)
   {
     osmo.soigne = false;
   }
-
 }
 
 export function blesse(osmo) {
