@@ -18,11 +18,15 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.setVelocityX(0);
   fakhear.body.checkCollision.none = true;
 
-  fakhear.scene.tweens.addCounter({
-    duration: 300,
-    onUpdate: () => (fakhear.setVelocity((fakhear.flipX ? -1700 : 1700), -70)),
-    onComplete: () => (fakhear.setVelocityX(0), fakhear.play('idle_attack'), fakhear.body.checkCollision.none = false),
-    repeat: 0,            // -1: infinity
-    yoyo: false,
-  })
+  if (!fakhear.animation_dash)  {
+    fakhear.animation_dash = fakhear.scene.tweens.addCounter({
+      duration: 300,
+      onUpdate: () => (fakhear.setVelocity((fakhear.flipX ? -1700 : 1700), -70)),
+      onComplete: () => (fakhear.setVelocityX(0), fakhear.play('idle_attack'), fakhear.body.checkCollision.none = false),
+      repeat: 0,            // -1: infinity
+      yoyo: false,
+    })
+  } else if (!fakhear.animation_dash.isPlaying()) {
+    fakhear.animation_dash.restart()
+  }
 }
