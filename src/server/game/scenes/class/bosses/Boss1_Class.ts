@@ -89,7 +89,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
   changementEtat() {
     this.etatEnCours = 'secondaire'
-    // this.setTint(this.etats[this.etatEnCours]['couleur'])
+    this.setTint(this.etats[this.etatEnCours]['couleur'])
   }
 
   blesse_ennemie(puissance: number) {
