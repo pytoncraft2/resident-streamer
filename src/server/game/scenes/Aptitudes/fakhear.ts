@@ -1,6 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 
-export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input) {
+export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     fakhear.setVelocityX(0)

@@ -2,7 +2,6 @@
 
 import Boss1_Class from "./class/bosses/Boss1_Class"
 import PlayerClass from "./class/PlayerClass"
-import { Boule } from "../RoomState"
 
 
 
@@ -145,7 +144,7 @@ this.physics.add.overlap(this.players, this.enemies);
     }
   }
 
-  createPlayer(ClientId: any, sprite: string) {
+  createPlayer(ClientId: any) {
     const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
     this.players.add(player)
     this.playersRef[ClientId] = player
@@ -156,7 +155,7 @@ this.physics.add.overlap(this.players, this.enemies);
     return this.getPresence()
   }
 
-  createEnnemy(EnnemyId: any, sprite: string) {
+  createEnnemy(EnnemyId: any) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
     const ennemy = this.add.existing(new Boss1_Class(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
     // ennemy.setPushable(false)
@@ -181,10 +180,5 @@ this.physics.add.overlap(this.players, this.enemies);
     this.enemiesRef[ClientId].destroy(true)
     delete this.enemiesRef[ClientId]
     return this.getPresence()
-  }
-
-  update(time, deltaTime) {
-
-
   }
 }

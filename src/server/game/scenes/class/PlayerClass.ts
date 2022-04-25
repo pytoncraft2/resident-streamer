@@ -173,8 +173,4 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
          this.setVelocityX(0);
      }
    }
-
-   soin(quantite: number) {
-     this.vie += 1
-   }
  }

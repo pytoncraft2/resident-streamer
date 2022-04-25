@@ -73,19 +73,19 @@ function interaction(personnage: TJoueur) {
 
 export const Aptitudes = {
   'fakhear': {
-    toucheA: (fakhear, input?: Object) => {
+    toucheA: (fakhear: TJoueur, input?: Object) => {
       cross(fakhear, input)
     },
-    toucheZ: (fakhear) => {
+    toucheZ: (fakhear: TJoueur) => {
       kick(fakhear)
     },
-    toucheE: (fakhear) => {
+    toucheE: (fakhear: TJoueur) => {
       dash(fakhear)
     },
-    toucheR: (fakhear) => {
+    toucheR: (fakhear: TJoueur) => {
       interaction(fakhear)
     },
-    toucheEspace: (fakhear) => {
+    toucheEspace: (fakhear: TJoueur) => {
       saut(fakhear)
     }
   },
@@ -129,7 +129,7 @@ export const Aptitudes = {
     toucheA: (osmo: TJoueur, input?: Object) => {
       soin(osmo, input)
     },
-    toucheZ: (osmo: TJoueur, input?: any) => {
+    toucheZ: (osmo: TJoueur, input?: Object) => {
       blesse(osmo, input)
     },
     toucheE: (osmo: TJoueur) => {
