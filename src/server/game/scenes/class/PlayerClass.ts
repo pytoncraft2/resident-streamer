@@ -110,7 +110,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
        if (this.interaction_objet) {
          if (!_e.vivant && _e.active) {
-           _e.proprietaire_objet(this.ClientID)
+           if (typeof _e.proprietaire_objet === "function") _e.proprietaire_objet(this.ClientID)
            _e.active = false
          }
          this.interaction_objet = false
