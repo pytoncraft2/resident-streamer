@@ -63,6 +63,9 @@ function interaction(personnage: TJoueur) {
          collideWorldBounds: true,
          maxSize: 4
        })
+     },
+     'osmosiscoop': {
+       o: (function(){console.log('------------------------Bonjour !------------------------')})()
      }
    }
  }

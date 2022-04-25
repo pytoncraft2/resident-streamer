@@ -69,7 +69,7 @@ export default class Hall extends Phaser.Scene {
 
 // TODO: add physics overlap with dummy box; show box damaged on overlap
 // this.boxStateMachine.setState('damage')
-this.physics.add.overlap(this.playersAttackZone, this.enemies, this.overlapAction, undefined, this)
+this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
 this.physics.add.overlap(this.players, this.enemies);
 
 

@@ -157,7 +157,20 @@
             }
         },
         {
-            "filename": "heal2",
+            "filename": "osmo_soin3",
+            "frame": {
+                "w": 186,
+                "h": 192,
+                "x": 0,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_soin2",
             "frame": {
                 "w": 180,
                 "h": 172,
@@ -170,7 +183,7 @@
             }
         },
         {
-            "filename": "heal1",
+            "filename": "osmo_soin1",
             "frame": {
                 "w": 182,
                 "h": 172,
@@ -183,7 +196,7 @@
             }
         },
         {
-            "filename": "heal0",
+            "filename": "osmo_soin0",
             "frame": {
                 "w": 160,
                 "h": 192,

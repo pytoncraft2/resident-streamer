@@ -24,6 +24,12 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
     repeat: 0
   });
   anim.create({
+    key: 'osmo_soin',
+    frames: anim.generateFrameNames('atlas', { prefix: 'osmo_soin', start: 0, end: 3 }),
+    frameRate: 10,
+    repeat: 0
+  });
+  anim.create({
     key: 'huzounet_kunai_attaque',
     frames: anim.generateFrameNames('atlas', { prefix: 'attaque_kunai', start: 0, end: 3 }),
     frameRate: 5,

@@ -1,7 +1,14 @@
 import TJoueur from "../types/Joueur";
 
 export function soin(osmo, input) {
-  if (input.a) osmo.vie -= 0.03;
+  if (input.a) {
+    osmo.soigne = true;
+    osmo.scene.time.delayedCall(500, () => {
+      osmo.soigne = false;
+    });
+
+    osmo.play('osmo_soin')
+  }
 }
 
 export function blesse(osmo) {

@@ -21,6 +21,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
    etats: any
    etatEnCours: any
    blesse_opposant: boolean = false
+   soigne: boolean = false
    interaction_objet: boolean = false
    groupeBoules: any
    parametresDeBase: any
@@ -109,6 +110,11 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
          this.interaction_objet = false
        }
 
+       if (this.soigne) {
+         console.log("SOIN")
+         _e.vie += 0.01
+       }
+
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
@@ -159,7 +165,10 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      if (fin) {
          setAnimation(this, 'idle_walk')
          this.setVelocityX(0);
-         console.log("FIN")
      }
+   }
+
+   soin(quantite: number) {
+     this.vie += 1
    }
  }
