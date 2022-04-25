@@ -13,8 +13,12 @@ export function soin(osmo, input) {
   }
 }
 
-export function blesse(osmo) {
-  // if (input.z) osmo.vie += 1;
+export function blesse(osmo, input) {
+  if (input.z) {
+    osmo.play('osmo_attaque', true)
+    input.z = false;
+  console.log("--------------------------------------------------YES")
+  }
 }
 
 export function osmo_saut(osmo: TJoueur) {

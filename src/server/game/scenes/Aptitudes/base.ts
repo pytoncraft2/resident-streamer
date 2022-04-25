@@ -129,8 +129,8 @@ export const Aptitudes = {
     toucheA: (osmo: TJoueur, input?: Object) => {
       soin(osmo, input)
     },
-    toucheZ: (osmo: TJoueur) => {
-      blesse(osmo)
+    toucheZ: (osmo: TJoueur, input?: any) => {
+      blesse(osmo, input)
     },
     toucheE: (osmo: TJoueur) => {
       interaction(osmo)

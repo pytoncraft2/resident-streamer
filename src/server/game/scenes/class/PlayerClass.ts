@@ -90,6 +90,12 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
            this.blesse_opposant = true
          }
        }
+
+       if (anim.key == 'osmo_attaque') {
+         if (frame.frame.name == 'osmo_attaque3') {
+           this.blesse_opposant = true
+         }
+       }
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
@@ -99,7 +105,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         _e.blesse_ennemie(1)
+         if (typeof _e.blesse_ennemie === "function") _e.blesse_ennemie(1)
        }
 
        if (this.interaction_objet) {
@@ -131,7 +137,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
-       if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this);
+       if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this, input);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);

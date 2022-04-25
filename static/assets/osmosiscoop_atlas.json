@@ -27,19 +27,6 @@
             }
         },
         {
-            "filename": "attack0",
-            "frame": {
-                "w": 160,
-                "h": 192,
-                "x": 184,
-                "y": 0
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
             "filename": "marche7",
             "frame": {
                 "w": 186,
@@ -209,7 +196,20 @@
             }
         },
         {
-            "filename": "attack2",
+            "filename": "osmo_attaque3",
+            "frame": {
+                "w": 186,
+                "h": 192,
+                "x": 0,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque2",
             "frame": {
                 "w": 146,
                 "h": 172,
@@ -222,12 +222,25 @@
             }
         },
         {
-            "filename": "attack1",
+            "filename": "osmo_attaque1",
             "frame": {
                 "w": 182,
                 "h": 172,
                 "x": 668,
                 "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque0",
+            "frame": {
+                "w": 160,
+                "h": 192,
+                "x": 184,
+                "y": 0
             },
             "anchor": {
                 "x": 0.5,
