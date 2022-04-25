@@ -19,6 +19,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   zoneInteraction: any
   vivant: boolean = true
   proprietaire_objet: (id: string, id_ennemie: string) => void
+  timer_boss_1: Phaser.Time.TimerEvent
 
   sprite: string
 
@@ -55,7 +56,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    var timer = scene.time.addEvent({
+    this.timer_boss_1 = scene.time.addEvent({
       delay: 1000,                // ms
       callback: this.deplacement,
       //args: [],
@@ -124,6 +125,8 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   mourir() {
     this.vivant = false
     this.setTint(this.etats['initial']['couleur'])
+    this.timer_boss_1.remove();
+    this.setVelocity(0)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
     this.setPosition(this.x, 779.2995484974318)
