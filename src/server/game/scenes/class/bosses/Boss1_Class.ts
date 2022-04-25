@@ -46,7 +46,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     this.etats = {
       'initial': {
         couleur: 16777215,
-        vitesse: 600
+        vitesse: 100
       },
       'secondaire':
       {
