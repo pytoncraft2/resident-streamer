@@ -98,13 +98,13 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     //   // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
     // }
 
-    if (this.body.touching.right) {
-      // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
-      this.setTint(0xff0000)
-    } else if (this.body.touching.left) {
-      this.setTint(0x000000)
-      // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
-    }
+    // if (this.body.touching.right) {
+    //   // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+    //   this.setTint(0xff0000)
+    // } else if (this.body.touching.left) {
+    //   this.setTint(0x000000)
+    //   // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+    // }
 
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
@@ -126,7 +126,11 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   blesse_ennemie(puissance: number) {
     //   this.play('attaque')
 //   this.setFlipX(directionFinal)
+this.setTint(0xff0000)
     console.log("ENNEMIE BLESSÉ")
+    this.scene.time.delayedCall(100, () => {
+      this.setTint(this.etats[this.etatEnCours]['couleur'])
+    }, null, this);
     if (puissance >= 0) {
       this.vie -= puissance
     }
