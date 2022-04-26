@@ -98,6 +98,15 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     //   // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
     // }
 
+    if (this.body.touching.right) {
+      // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+      this.setTint(0xff0000)
+    } else if (this.body.touching.left) {
+      this.setTint(0x000000)
+      // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
+    }
+
+
     if (this.vie < 5) this.scene.events.emit('changementEtat');
     if (this.vie <= 0) this.scene.events.emit('mourir');
 
@@ -115,6 +124,8 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   }
 
   blesse_ennemie(puissance: number) {
+    //   this.play('attaque')
+//   this.setFlipX(directionFinal)
     console.log("ENNEMIE BLESSÉ")
     if (puissance >= 0) {
       this.vie -= puissance
@@ -123,31 +134,26 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
   deplacement() {
 
-    if (this.body.touching.right) {
-      // this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
-    } else if (this.body.touching.left) {
-      // this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
-    }
       Aptitudes[this.sprite].toucheZ(this)
       Aptitudes[this.sprite].toucheA(this)
   }
 
-  attaquePuisDeplacement(condition, couleur, directionFinal) {
-    if (condition) {
-      // this.setTint(couleur)
-  //     // this.blesse = true
-    }
-  //   // this.scene.tweens.addCounter({
-  //   //   from: 0,
-  //   //   to: 1,
-  //   //   duration: 200,
-  //   //   onComplete: () => (this.setTint(this.etats[this.etatEnCours]['couleur']), this.blesse = false),
-  //   //   repeat: 0,            // -1: infinity
-  //   //   yoyo: false,
-  //   // })
-  //   this.play('attaque')
-  //   this.setFlipX(directionFinal)
-  }
+  // attaquePuisDeplacement(condition, couleur, directionFinal) {
+  //   if (condition) {
+  //     // this.setTint(couleur)
+  // //     // this.blesse = true
+  //   }
+  // //   // this.scene.tweens.addCounter({
+  // //   //   from: 0,
+  // //   //   to: 1,
+  // //   //   duration: 200,
+  // //   //   onComplete: () => (this.setTint(this.etats[this.etatEnCours]['couleur']), this.blesse = false),
+  // //   //   repeat: 0,            // -1: infinity
+  // //   //   yoyo: false,
+  // //   // })
+  // //   this.play('attaque')
+  // //   this.setFlipX(directionFinal)
+  // }
 
 
   mourir() {
