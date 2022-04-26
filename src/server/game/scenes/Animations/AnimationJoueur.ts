@@ -131,6 +131,14 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
   })
 
 
+//manette
+anim.create({
+  key: "manette_punch",
+  frames: anim.generateFrameNames('atlas', { prefix: 'manettepunch', start: 0, end: 1 }),
+  frameRate: 23,
+  repeat: 0
+})
+
 
 }
 
@@ -143,7 +151,6 @@ export function AnimationBombe(anim: Phaser.Animations.AnimationState){
     delay: 1500
   });
 }
-
 
 export const setAnimation = (sprite: Phaser.GameObjects.Sprite, animation: string = 'idle') => {
   if (!sprite.anims.isPlaying) sprite.play(animation)

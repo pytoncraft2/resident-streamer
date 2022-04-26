@@ -1,5 +1,6 @@
 import {cross, kick, dash} from './fakhear'
-import {pique, suivre} from './boss_1'
+import {pique, suivre} from './_Aptitudes_bosses/boss_1'
+import {punch} from './_Aptitudes_bosses/manette'
 import {kunai, shuriken} from './huzounet'
 import {couteau, bombe} from './akhizonah'
 import {soin, blesse, osmo_saut} from './osmosiscoop'
@@ -95,6 +96,14 @@ export const Aptitudes = {
     },
     toucheZ: (boss_1) => {
       suivre(boss_1)
+    }
+  },
+  'manette': {
+    toucheA: (manette: TJoueur, input?: Object) => {
+      punch(manette, input)
+    },
+    toucheZ: (manette: TJoueur, input: Object) => {
+      punch(manette, input)
     }
   },
   'huzounet': {
