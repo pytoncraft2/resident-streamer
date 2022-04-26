@@ -56,13 +56,13 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    this.timer_boss_1 = scene.time.addEvent({
-      delay: 1000,                // ms
-      callback: this.deplacement,
-      //args: [],
-      callbackScope: this,
-      loop: true
-    });
+    // this.timer_boss_1 = scene.time.addEvent({
+    //   delay: 1000,                // ms
+    //   callback: this.deplacement,
+    //   //args: [],
+    //   callbackScope: this,
+    //   loop: true
+    // });
 
     this.etatEnCours = 'initial'
 
@@ -81,6 +81,12 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
      this.proprietaire_objet = (id_joueur, id_ennemie) => {
        this.scene.events.emit('boss_KO-proprietaire', {id_joueur: id_joueur, id_ennemie: this.EnnemyId});
      }
+
+     this.on('animationcomplete-attaque',() => {
+       this.scene.physics.moveToObject(this, this.scene.physics.closest(this, [...(this.scene as any).players.getChildren()]), this.etats[this.etatEnCours]['vitesse']);
+       this.anims.play('deplacement');
+     });
+
   }
 
   preUpdate(time: number, delta: number) {
@@ -90,8 +96,14 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     let animationName = this.anims.getFrameName()
 
 
-    if (this.body.touching.right || this.body.touching.left) {
-      Aptitudes[this.sprite].toucheA(this)
+    // if (this.body.touching.right || this.body.touching.left) {
+    //   Aptitudes[this.sprite].toucheA(this)
+    // }
+
+    if (this.body.touching.right) {
+      this.attaquePuisDeplacement(this.flipX == true && this.blesse, 0xff0000, false)
+    } else if (this.body.touching.left) {
+      this.attaquePuisDeplacement(this.flipX == false && this.blesse, 0xff0000, true)
     }
 
     if (this.vie < 5) this.scene.events.emit('changementEtat');
@@ -111,10 +123,27 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   }
 
   blesse_ennemie(puissance: number) {
-    console.log("ENNEMIE BLESSÉ")
+      this.setTint(0xff0000)
     if (puissance >= 0) {
       this.vie -= puissance
     }
+  }
+
+  attaquePuisDeplacement(condition, couleur, directionFinal) {
+    if (condition) {
+      this.setTint(couleur)
+      // this.blesse = true
+    }
+    this.scene.tweens.addCounter({
+      from: 0,
+      to: 1,
+      duration: 200,
+      onComplete: () => (this.setTint(this.etats[this.etatEnCours]['couleur']), this.blesse = false),
+      repeat: 0,            // -1: infinity
+      yoyo: false,
+    })
+    this.play('attaque')
+    this.setFlipX(directionFinal)
   }
 
   deplacement() {
@@ -125,7 +154,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   mourir() {
     this.vivant = false
     this.setTint(this.etats['initial']['couleur'])
-    this.timer_boss_1.remove();
+    // this.timer_boss_1.remove();
     this.setVelocity(0)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
