@@ -56,6 +56,16 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
+    this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
+      this.attaque = false
+      if (anim.key == 'attaque') {
+        if (frame.frame.name == 'attaque1') {
+          this.attaque = true
+        }
+      }
+    })
+
+
     this.timer_boss_1 = scene.time.addEvent({
       delay: 1000,                // ms
       callback: this.deplacement,
@@ -66,13 +76,21 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
     this.etatEnCours = 'initial'
 
+
     //attaque - deplacement
     new AnimationEnnemie(this.anims)
      this.scene.events.once('changementEtat', this.changementEtat, this);
      this.scene.events.once('mourir', this.mourir, this);
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-     this.zoneInteraction.action = (vie_ennemie) => {
+     this.zoneInteraction.action = (personnage) => {
+       // personnage.s
+
+       if (this.attaque) {
+         personnage.vie -= 1;
+         this.attaque = false;
+       }
+       // console.log("ZONE ACTION ENNNEMIE ----------------------------")
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
@@ -127,7 +145,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     //   this.play('attaque')
 //   this.setFlipX(directionFinal)
 this.setTint(0xff0000)
-    console.log("ENNEMIE BLESSÉ")
     this.scene.time.delayedCall(100, () => {
       this.setTint(this.etats[this.etatEnCours]['couleur'])
     }, null, this);
@@ -138,6 +155,7 @@ this.setTint(0xff0000)
 
   deplacement() {
 
+    this.attaque = true;
       Aptitudes[this.sprite].toucheZ(this)
       Aptitudes[this.sprite].toucheA(this)
   }

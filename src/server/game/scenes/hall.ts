@@ -89,8 +89,6 @@ this.physics.add.overlap(this.players, this.enemies);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {
-
-        console.log(_boule.getData('degat'))
       _ennemie.blesse_ennemie(_boule.getData('degat'))
       _boule.setData('degat', 0)
     }, null, this);

@@ -9,7 +9,7 @@ export function AnimationEnnemie(anim: Phaser.Animations.AnimationState) {
   anim.create({
     key: "attaque",
     frames: anim.generateFrameNames('atlas', { prefix: 'attackchaiseboss', start: 0, end: 1 }),
-    frameRate: 5,
+    frameRate: 12,
     repeat: 0
   })
 

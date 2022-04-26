@@ -408,7 +408,7 @@ export default class Jeu extends Phaser.Scene {
 
     // console.log(this.groupeBoules.getLength())
     // console.log(list.boulesListe)
-    list.boulesListe.map((item: string, idx: number) => {
+    list.boulesListe.map((item: string) => {
       if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
         const b = this.groupeBoules.create(list.boules[item].x, list.boules[item].y, `huzounet_atlas`, 'shuriken0')
         .setDepth(2)
