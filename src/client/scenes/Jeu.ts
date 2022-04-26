@@ -440,7 +440,7 @@ export default class Jeu extends Phaser.Scene {
       }
     })
 
-    list.kunaisListe.map((item: string, idx: number) => {
+    list.kunaisListe.map((item: string) => {
       if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
         const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
         .setDepth(2)
@@ -470,7 +470,7 @@ export default class Jeu extends Phaser.Scene {
       }
     })
 
-    list.bombesListe.map((item: string, idx: number) => {
+    list.bombesListe.map((item: string) => {
       if (this.bombesRef[list.bombes[item].id] === undefined) {
         const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
         this.bombesRef[item] = b;
