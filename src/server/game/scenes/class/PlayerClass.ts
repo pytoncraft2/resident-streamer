@@ -24,6 +24,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
    soigne: boolean = false
    interaction_objet: boolean = false
    groupeBoules: any
+   degat: number = 1
    parametresDeBase: any
    constructor(
      scene: Phaser.Scene,

@@ -26,6 +26,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   scene: Scene
   interaction_objet: boolean
   compteurSaut: number;
+  degat: number
 
   body: Phaser.Physics.Arcade.Body
 
