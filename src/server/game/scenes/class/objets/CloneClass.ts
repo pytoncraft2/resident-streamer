@@ -136,18 +136,34 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     let animationName = this.anims.getFrameName();
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-    if (Phaser.Math.Distance.Between(this.createur.x, this.createur.y, this.x, this.y) > 600) {
-      // this.x += 10
-      // this.scene.physics.moveTo(this, this.x + 200, this.y);
-      // this.scene.physics.moveToObject(this, this.x + 200, this.y);
-      this.scene.events.emit('repositionnement');
 
-
-console.log((this.scene as any).room.donnes[this.createur.ClientID].clavier);
-      console.log("SUPP")
-    } else {
-      // if (this.body.velocity.x != 0) this.setVelocity(0)
+    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
+      kunai(this as any)
     }
+
+    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {
+        setAnimation(this, 'walk')
+        this.setFlipX(false)
+        this.setVelocityX(300)
+    }
+
+    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.left) {
+      setAnimation(this, 'walk')
+      this.setFlipX(true)
+      this.setVelocityX(-300)
+    }
+//     if (Phaser.Math.Distance.Between(this.createur.x, this.createur.y, this.x, this.y) > 600) {
+//       // this.x += 10
+//       // this.scene.physics.moveTo(this, this.x + 200, this.y);
+//       // this.scene.physics.moveToObject(this, this.x + 200, this.y);
+//       this.scene.events.emit('repositionnement');
+//
+//
+// console.log((this.scene as any).room.donnes[this.createur.ClientID].clavier);
+//       console.log("SUPP")
+//     } else {
+//       // if (this.body.velocity.x != 0) this.setVelocity(0)
+//     }
 
     (this.scene as any).room.state.presences.set(
       this.ClientID,
@@ -168,15 +184,15 @@ console.log((this.scene as any).room.donnes[this.createur.ClientID].clavier);
   auto() {
     // setAnimation(huzounet, 'huzounet_preparation_attaque')
 
-    var timer = this.scene.time.addEvent({
-      delay: Phaser.Math.Between(600, 1000),                // ms
-      callback: () => {
-        kunai(this as any)
-      },
-      //args: [],
-      callbackScope: this,
-      repeat: 4
-    });
+    // var timer = this.scene.time.addEvent({
+    //   delay: Phaser.Math.Between(600, 1000),                // ms
+    //   callback: () => {
+    //     kunai(this as any)
+    //   },
+    //   //args: [],
+    //   callbackScope: this,
+    //   repeat: 4
+    // });
   }
 
   setVitesse(vitesse: number) {
