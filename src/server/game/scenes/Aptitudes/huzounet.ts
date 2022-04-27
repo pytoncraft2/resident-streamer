@@ -80,10 +80,10 @@ export function kunai(huzounet: TJoueur) {
 export function multiclonage(huzounet) {
   if (!huzounet.ok) {
     huzounet.ok = true
-    const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID + '-bot', degat: 0.3})).setFlipX(huzounet.flipX)
-    const clone2 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID + '-bot', degat: 0.3})).setFlipX(huzounet.flipX)
-    const clone3 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID + '-bot', degat: 0.3})).setFlipX(huzounet.flipX)
-    const clone4 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID + '-bot', degat: 0.3})).setFlipX(huzounet.flipX)
+    const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+    const clone2 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+    const clone3 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+    const clone4 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
     huzounet.scene.physics.add.existing(clone1, clone2, clone3, clone4);
     clone1.auto()
     clone2.auto()

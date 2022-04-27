@@ -31,28 +31,35 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
   ClientID: string
 
+  createur: any
+
+  decalage: number
+
   constructor(
     scene: Phaser.Scene,
     x: number,
     y: number,
     sprite: string,
-    ClientID: string
+    ClientID: string,
+    createur: any
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, ClientID)
+    this.init(scene, ClientID, createur)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, createur) {
 
     this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
 
     this.scene = scene
+    this.createur = createur
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.ClientID = id
     this.setCollideWorldBounds(true);
     new AnimationJoueur(this.anims)
+    this.decalage = Phaser.Math.Between(-200, 200);
 
     // console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
 
@@ -126,6 +133,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     let animationName = this.anims.getFrameName();
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+
+    this.x = this.createur.x + this.decalage;
 
 
     (this.scene as any).room.state.presences.set(
