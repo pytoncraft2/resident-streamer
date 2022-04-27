@@ -44,6 +44,7 @@ function interaction(personnage: TJoueur) {
        displayWidth: 104,
        displayHeight: 302,
        masse: 30,
+       degat: 1,
        puissanceDeBase: 10,
      },
      'boss_1': {
@@ -51,12 +52,14 @@ function interaction(personnage: TJoueur) {
        displayWidth: 104,
        displayHeight: 302,
        masse: 30,
+       degat: 2,
        puissanceDeBase: 10,
      },
      'huzounet': {
        vie: 5,
        displayWidth: 104,
        displayHeight: 302,
+       degat: 1,
        masse: 30,
        puissanceDeBase: 10,
        boulesEnMain: personnage.scene.physics.add.group({

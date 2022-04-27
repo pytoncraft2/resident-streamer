@@ -48,6 +48,8 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
      this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
 
+     this.degat = this.parametresDeBase.degat
+
      this.etats = {
        'initial': {
          couleur: 16777215,
