@@ -56,23 +56,23 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
-      this.attaque = false
-      if (anim.key == 'attaque') {
-        if (frame.frame.name == 'attaque1') {
-          this.attaque = true
-        }
-      }
-    })
+    // this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
+    //   // this.attaque = false
+    //   // if (anim.key == 'attaque') {
+    //   //   if (frame.frame.name == 'attaque1') {
+    //   //     // this.attaque = true
+    //   //   }
+    //   // }
+    // })
 
 
-    this.timer_boss_1 = scene.time.addEvent({
-      delay: 1000,                // ms
-      callback: this.deplacement,
-      //args: [],
-      callbackScope: this,
-      loop: true
-    });
+    // this.timer_boss_1 = scene.time.addEvent({
+    //   delay: 1000,                // ms
+    //   callback: this.deplacement,
+    //   //args: [],
+    //   callbackScope: this,
+    //   loop: true
+    // });
 
     this.etatEnCours = 'initial'
 
@@ -155,7 +155,6 @@ this.setTint(0xff0000)
 
   deplacement() {
 
-    this.attaque = true;
       Aptitudes[this.sprite].toucheZ(this)
       Aptitudes[this.sprite].toucheA(this)
   }

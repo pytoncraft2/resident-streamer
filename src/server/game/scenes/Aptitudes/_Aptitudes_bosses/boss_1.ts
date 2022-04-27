@@ -1,6 +1,5 @@
 export function pique(boss_1: Phaser.Physics.Arcade.Sprite|any) {
   boss_1.play('attaque')
-  boss_1.attaque = true;
 }
 
 export function suivre(boss_1: Phaser.Physics.Arcade.Sprite|any) {
