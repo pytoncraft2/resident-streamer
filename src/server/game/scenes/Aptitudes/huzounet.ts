@@ -80,8 +80,8 @@ export function kunai(huzounet: TJoueur) {
 export function multiclonage(huzounet) {
   if (!huzounet.ok) {
     huzounet.ok = true
-    const clone = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+    const clone = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID + '-bot', degat: 0.3})).setFlipX(huzounet.flipX)
+    huzounet.scene.physics.add.existing(clone);
     clone.auto()
-    huzounet.scene.physics.add.existing(kunai);
   }
 }

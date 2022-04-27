@@ -1,5 +1,6 @@
 import { Player } from "../../../RoomState"
 import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
+import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 import { EtatsInitialStatique } from "../../Aptitudes/base"
 
 
@@ -52,6 +53,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.ClientID = id
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
+    new AnimationJoueur(this.anims)
+
     // console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
 
     // this.animationCharge = this.scene.tweens.add({
@@ -119,6 +122,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time, delta) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
+
+    this.vie -= 0.04
 
     let animationName = this.anims.getFrameName();
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
