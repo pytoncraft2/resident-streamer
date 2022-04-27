@@ -14,14 +14,14 @@ PARAMETRES GENERALE
 **/
 
 function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
-  if (personnage.compteurSaut < 1 || personnage.body.touching.down) {
+  // if (personnage.body.touching.down) {
     personnage.play('jump')
     personnage.setVelocityY(-1400);
-    personnage.compteurSaut++
-    if (personnage.body.touching.down) {
-      personnage.compteurSaut = 0
-    }
-  }
+    // personnage.compteurSaut++
+    // if (personnage.body.touching.down) {
+    //   personnage.compteurSaut = 0
+    // }
+  // }
 }
 
 function interaction(personnage: TJoueur) {
@@ -117,7 +117,7 @@ export const Aptitudes = {
       interaction(huzounet)
     },
     toucheR: (huzounet: TJoueur) => {
-     multiclonage(huzounet) 
+     multiclonage(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)

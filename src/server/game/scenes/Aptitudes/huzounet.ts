@@ -62,7 +62,7 @@ export function kunai(huzounet: TJoueur) {
 
     if (!huzounet.kunai) {
       const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`)
-      .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2}))
+      .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat}))
       .setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
       huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {

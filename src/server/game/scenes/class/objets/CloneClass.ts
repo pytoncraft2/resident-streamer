@@ -20,7 +20,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   actif: boolean = true
   sprite: string = 'huzounet'
   vie: number = 10
-  degat: number = 0
+  degat: number = 0.2
 
   zoneInteraction: any
 
@@ -54,7 +54,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     this.scene = scene
     this.createur = createur
-    this.degat = createur.degat/2
+    // this.degat = createur.degat/2
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.ClientID = id
