@@ -149,7 +149,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     // setAnimation(huzounet, 'huzounet_preparation_attaque')
 
 var timer = this.scene.time.addEvent({
-    delay: 1000,                // ms
+    delay: Phaser.Math.Between(600, 1000),                // ms
     callback: () => {
       kunai(this as any)
     },
