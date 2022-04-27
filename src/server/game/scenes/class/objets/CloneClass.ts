@@ -1,4 +1,12 @@
 import { Player } from "../../../RoomState"
+import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
+
+
+class MesVariables {
+  miaou: number = 400
+  ouaf: number = 100
+}
+
 
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -15,6 +23,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
   vitesse: number = 0
   puissance: number = 0
+  parametresDeBase: any
+
 
   ClientID: string
 
@@ -31,6 +41,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   init(scene: Phaser.Scene, id: string) {
+
+    MesVariables.call(this)
     this.scene = scene
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
@@ -123,6 +135,20 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
         ya: this.zoneInteraction.y
       })
     )
+  }
+
+  auto() {
+    // setAnimation(huzounet, 'huzounet_preparation_attaque')
+
+var timer = this.scene.time.addEvent({
+    delay: 1000,                // ms
+    callback: () => {
+      kunai(this as any)
+    },
+    //args: [],
+    callbackScope: this,
+    repeat: 4
+});
   }
 
   setVitesse(vitesse: number) {

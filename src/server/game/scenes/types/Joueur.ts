@@ -11,15 +11,15 @@ interface Scene extends Phaser.Scene {
 
 interface TJoueur extends Phaser.GameObjects.Sprite
 {
-  parametresDeBase: BaseEquipement
+  parametresDeBase?: BaseEquipement
   ClientID: string
   vie: number,
   displayWidth: number,
   displayHeight: number,
   masse: number,
   puissanceDeBase: number,
-  puissanceChargeBoule: number,
-  boulesEnMain: Phaser.Physics.Arcade.Group
+
+
   containerColision: Phaser.GameObjects.Container
   animationCharge: Phaser.Tweens.Tween
   kunai: Phaser.Physics.Arcade.Sprite|undefined
@@ -28,6 +28,10 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   compteurSaut: number;
 
   body: Phaser.Physics.Arcade.Body
+
+  //huzounet
+  puissanceChargeBoule: number,
+  boulesEnMain: Phaser.Physics.Arcade.Group
 
   //akhizonah
   bombe: Phaser.Physics.Arcade.Sprite|undefined
