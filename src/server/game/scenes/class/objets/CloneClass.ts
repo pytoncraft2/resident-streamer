@@ -32,8 +32,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   ClientID: string
 
   createur: any
-
-  decalage: number
+  randomVitesse: number
 
   constructor(
     scene: Phaser.Scene,
@@ -59,7 +58,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.ClientID = id
     this.setCollideWorldBounds(true);
     new AnimationJoueur(this.anims)
-    this.decalage = Phaser.Math.Between(-200, 200);
 
     // console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
 
@@ -94,6 +92,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     //     console.log("_________________________")
     //   }
     // });
+    this.setDrag(1900)
     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
     this.zoneInteraction.action = (_e) => {
 
@@ -123,6 +122,9 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.zoneInteraction.body.enable = false;
     (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
+    this.randomVitesse = Phaser.Math.Between(800, 1200)
+    this.scene.events.once('repositionnement', this.repositionnement, this);
+
 
   }
   preUpdate(time, delta) {
@@ -134,7 +136,17 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     let animationName = this.anims.getFrameName();
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-    this.x = this.createur.x + this.decalage;
+    if (Phaser.Math.Distance.Between(this.createur.x, this.createur.y, this.x, this.y) > 600) {
+      // this.x += 10
+      // this.scene.physics.moveTo(this, this.x + 200, this.y);
+      // this.scene.physics.moveToObject(this, this.x + 200, this.y);
+      this.scene.events.emit('repositionnement');
+
+
+      console.log("SUPP")
+    } else {
+      // if (this.body.velocity.x != 0) this.setVelocity(0)
+    }
 
 
     (this.scene as any).room.state.presences.set(
@@ -156,15 +168,15 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   auto() {
     // setAnimation(huzounet, 'huzounet_preparation_attaque')
 
-var timer = this.scene.time.addEvent({
-    delay: Phaser.Math.Between(600, 1000),                // ms
-    callback: () => {
-      kunai(this as any)
-    },
-    //args: [],
-    callbackScope: this,
-    repeat: 4
-});
+    var timer = this.scene.time.addEvent({
+      delay: Phaser.Math.Between(600, 1000),                // ms
+      callback: () => {
+        kunai(this as any)
+      },
+      //args: [],
+      callbackScope: this,
+      repeat: 4
+    });
   }
 
   setVitesse(vitesse: number) {
@@ -224,6 +236,10 @@ var timer = this.scene.time.addEvent({
     //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
     //   }
     // });
+  }
+
+  repositionnement() {
+    this.scene.physics.moveToObject(this, {x: this.x + 200, y: this.y}, this.randomVitesse);
   }
 
   // stopAnim() {
