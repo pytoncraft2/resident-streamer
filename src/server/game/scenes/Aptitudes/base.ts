@@ -1,7 +1,7 @@
 import {cross, kick, dash} from './fakhear'
 import {pique, suivre} from './_Aptitudes_bosses/boss_1'
 import {punch} from './_Aptitudes_bosses/manette'
-import {kunai, shuriken} from './huzounet'
+import {kunai, shuriken, multiclonage} from './huzounet'
 import {couteau, bombe} from './akhizonah'
 import {soin, blesse, osmo_saut} from './osmosiscoop'
 
@@ -115,6 +115,9 @@ export const Aptitudes = {
     },
     toucheE: (huzounet: TJoueur) => {
       interaction(huzounet)
+    },
+    toucheR: (huzounet: TJoueur) => {
+     multiclonage(huzounet) 
     },
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)

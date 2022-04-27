@@ -1,6 +1,7 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/objets/BouleClass"
 import KunaiClass from "../class/objets/KunaiClass"
+import CloneClass from "../class/objets/CloneClass"
 
 import TJoueur from "../types/Joueur";
 
@@ -74,4 +75,9 @@ export function kunai(huzounet: TJoueur) {
             huzounet.kunai = undefined;
       }, null, huzounet);
     }
+}
+
+export function multiclonage(huzounet) {
+  const clone = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, degat: 0.3})).setFlipX(huzounet.flipX)
+  huzounet.scene.physics.add.existing(kunai);
 }
