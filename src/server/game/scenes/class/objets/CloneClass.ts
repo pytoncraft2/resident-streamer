@@ -1,5 +1,7 @@
 import { Player } from "../../../RoomState"
 import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
+import { EtatsInitialStatique } from "../../Aptitudes/base"
+
 
 
 class MesVariables {
@@ -42,7 +44,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
   init(scene: Phaser.Scene, id: string) {
 
-    MesVariables.call(this)
+    this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
+
     this.scene = scene
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
