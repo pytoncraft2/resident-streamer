@@ -143,11 +143,11 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
       this.scene.events.emit('repositionnement');
 
 
+console.log((this.scene as any).room.donnes[this.createur.ClientID].clavier);
       console.log("SUPP")
     } else {
       // if (this.body.velocity.x != 0) this.setVelocity(0)
     }
-
 
     (this.scene as any).room.state.presences.set(
       this.ClientID,
