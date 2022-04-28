@@ -135,10 +135,10 @@ export const Aptitudes = {
       kunai(huzounet)
     },
     toucheE: (huzounet: TJoueur) => {
-      interaction(huzounet)
+      multiclonage(huzounet)
     },
     toucheR: (huzounet: TJoueur) => {
-     multiclonage(huzounet)
+      interaction(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)
