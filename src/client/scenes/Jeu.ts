@@ -425,7 +425,8 @@ export default class Jeu extends Phaser.Scene {
     list.projectilesListe.map((item: string) => {
         if (this.projectilesRef[list.projectiles[item].id] === undefined) {
           console.log("NNNNNNNNNNNNNNNNNNADA")
-          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `huzounet_atlas`, 'shuriken0')
+          console.log(list.projectiles[item].sprite)
+          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
           this.projectilesRef[item] = projectile
 
       }

@@ -11,6 +11,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   vitesse: number = 0
   puissance: number = 0
   sprite: string = 'objet_manette'
+  _frame: string = 'shuriken0'
 
   constructor(
     scene: Phaser.Scene,
@@ -50,7 +51,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
           id: this.id,
           active: this.active,
           flipX: this.flipX,
-          sprite: this.sprite
+          sprite: this.sprite,
+          _frame: this._frame
         })
       )
   }

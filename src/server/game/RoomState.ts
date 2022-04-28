@@ -57,6 +57,7 @@ export class Projectile extends Schema {
   @type("boolean") flipX?: boolean;
   @type("boolean") explosion?: boolean;
   @type("string") sprite?: string;
+  @type("string") _frame?: string;
 }
 
 export class ZoneAttaque extends Schema {
