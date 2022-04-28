@@ -1,7 +1,7 @@
 {
     "frames": [
         {
-            "filename": "manette0",
+            "filename": "marche0",
             "frame": {
                 "w": 251,
                 "h": 353,
@@ -19,6 +19,19 @@
                 "w": 332,
                 "h": 353,
                 "x": 251,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettepunch1",
+            "frame": {
+                "w": 251,
+                "h": 353,
+                "x": 0,
                 "y": 0
             },
             "anchor": {
@@ -92,7 +105,20 @@
             }
         },
         {
-            "filename": "manette6",
+            "filename": "marche7",
+            "frame": {
+                "w": 200,
+                "h": 334,
+                "x": 0,
+                "y": 1090
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche6",
             "frame": {
                 "w": 247,
                 "h": 334,
@@ -105,7 +131,7 @@
             }
         },
         {
-            "filename": "manette5",
+            "filename": "marche5",
             "frame": {
                 "w": 200,
                 "h": 334,
@@ -118,7 +144,7 @@
             }
         },
         {
-            "filename": "manette4",
+            "filename": "marche4",
             "frame": {
                 "w": 197,
                 "h": 363,
@@ -131,7 +157,7 @@
             }
         },
         {
-            "filename": "manette3",
+            "filename": "marche3",
             "frame": {
                 "w": 244,
                 "h": 343,
@@ -144,7 +170,7 @@
             }
         },
         {
-            "filename": "manette2",
+            "filename": "marche2",
             "frame": {
                 "w": 197,
                 "h": 343,
@@ -157,7 +183,7 @@
             }
         },
         {
-            "filename": "manette1",
+            "filename": "marche1",
             "frame": {
                 "w": 200,
                 "h": 334,

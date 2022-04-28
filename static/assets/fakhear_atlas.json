@@ -1,5 +1,97 @@
 {
     "frames": [
+
+          {
+              "filename": "manette6",
+              "frame": {
+                  "w": 247,
+                  "h": 334,
+                  "x": 884,
+                  "y": 353
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette5",
+              "frame": {
+                  "w": 200,
+                  "h": 334,
+                  "x": 0,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette4",
+              "frame": {
+                  "w": 197,
+                  "h": 363,
+                  "x": 200,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette3",
+              "frame": {
+                  "w": 244,
+                  "h": 343,
+                  "x": 397,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette2",
+              "frame": {
+                  "w": 197,
+                  "h": 343,
+                  "x": 641,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette1",
+              "frame": {
+                  "w": 200,
+                  "h": 334,
+                  "x": 0,
+                  "y": 1090
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+            "filename": "manette0",
+            "frame": {
+              "w": 251,
+              "h": 353,
+              "x": 0,
+              "y": 0
+            },
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            }
+          },
           {
             "filename": "manettevole0",
             "frame": {
