@@ -55,14 +55,7 @@ function interaction(personnage: TJoueur) {
        degat: 1,
        puissanceDeBase: 10,
      },
-     'boss_1': {
-       vie: 5,
-       displayWidth: 104,
-       displayHeight: 302,
-       masse: 30,
-       degat: 2,
-       puissanceDeBase: 10,
-     },
+
      'huzounet': {
        vie: 5,
        displayWidth: 104,
@@ -78,7 +71,24 @@ function interaction(personnage: TJoueur) {
      },
      'osmosiscoop': {
        o: (function(){console.log('------------------------Bonjour !------------------------')})()
-     }
+     },
+     //bosses
+     'boss_1': {
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       degat: 2,
+       puissanceDeBase: 10,
+     },
+     'manette': {
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       degat: 1,
+       masse: 30,
+       puissanceDeBase: 10
+     },
    }
  }
 
