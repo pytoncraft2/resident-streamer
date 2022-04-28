@@ -414,6 +414,30 @@ export default class Jeu extends Phaser.Scene {
 
 	async patchPlayer(list: any) {
 
+
+    // console.log(list.projectilesListe)
+    list.projectilesListe.map((item: string) => {
+      console.log(item)
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // console.log(this.groupeBoules.getLength())
     // console.log(list.boulesListe)
     // list.boulesListe.map((item: string) => {
