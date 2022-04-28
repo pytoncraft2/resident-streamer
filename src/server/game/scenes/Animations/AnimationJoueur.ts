@@ -139,6 +139,13 @@ anim.create({
   repeat: 0
 })
 
+// anim.create({
+//   key: "manette_vole",
+//   frames: anim.generateFrameNames('atlas', { prefix: 'manettefly', start: 0, end: 1 }),
+//   frameRate: 4,
+//   repeat: 0
+// })
+
 
 }
 

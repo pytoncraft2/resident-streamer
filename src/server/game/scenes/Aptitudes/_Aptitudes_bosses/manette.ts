@@ -3,3 +3,8 @@ export function punch(manette, input) {
     manette.play('manette_punch')
   }
 }
+
+export function vole(manette, input) {
+    manette.play('manette_punch')
+  manette.setVelocityY(-200)
+}
