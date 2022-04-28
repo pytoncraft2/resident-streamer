@@ -46,6 +46,19 @@ export class Bombe extends Schema {
   @type("boolean") explosion: boolean;
 }
 
+export class Projectile extends Schema {
+  @type("number") x: number;
+  @type("number") y: number;
+  @type("number") alpha?: number;
+  @type("string") id?: string;
+  @type("string") anim?: string
+  @type("number") scale?: number;
+  @type("boolean") active?: boolean;
+  @type("boolean") flipX?: boolean;
+  @type("boolean") explosion?: boolean;
+  @type("string") sprite?: string;
+}
+
 export class ZoneAttaque extends Schema {
     @type("number") x: number = 1;
     @type("number") y: number = 2;
@@ -86,5 +99,6 @@ export class RoomState extends Schema {
   @type({ map: Boule }) boules = new MapSchema<Boule>()
   @type({ map: Kunai }) kunais = new MapSchema<Kunai>()
   @type({ map: Bombe }) bombes = new MapSchema<Bombe>()
+  @type({ map: Projectile }) projectiles = new MapSchema<Projectile>()
   @type({ map: Input }) playerInputs = new MapSchema<Input>()
 }
