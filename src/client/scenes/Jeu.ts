@@ -254,6 +254,8 @@ export default class Jeu extends Phaser.Scene {
   groupeBoules!: Phaser.GameObjects.Group
   groupeKunais!: Phaser.GameObjects.Group
   groupeBombes!: Phaser.GameObjects.Group
+  groupeProjectiles!: Phaser.GameObjects.Group
+  projectilesRef: any
   session?: string
   playersRef: any
   bombesRef: any
@@ -331,11 +333,15 @@ export default class Jeu extends Phaser.Scene {
     this.groupeKunais = this.add.group();
     this.groupeBombes = this.add.group();
 
+    this.groupeProjectiles = this.add.group();
+    this.projectilesRef = {}
+
 		this.playersRef = {}
 		this.ennemyRef = {}
 		this.boulesRef = {}
 		this.kunaisRef = {}
     this.bombesRef = {}
+
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R")
 
     this.barreHautContainer.setScrollFactor(0)
@@ -417,7 +423,9 @@ export default class Jeu extends Phaser.Scene {
 
     // console.log(list.projectilesListe)
     list.projectilesListe.map((item: string) => {
-      console.log(item)
+        if (this.projectilesRef[list.projectiles[item].id] === undefined) {
+          console.log("NNNNNNNNNNNNNNNNNNADA")  
+      }
     })
 
 
