@@ -151,7 +151,7 @@ anim.create({
 anim.create({
   key: "manette_lance",
   frames: anim.generateFrameNames('atlas', { prefix: 'manettelance', start: 0, end: 3 }),
-  frameRate: 23,
+  frameRate: 10,
   repeat: 0
 })
 
