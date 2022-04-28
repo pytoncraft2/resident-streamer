@@ -371,6 +371,12 @@ export default class Jeu extends Phaser.Scene {
 				let boules : any = {}
 				let kunais : any = {}
 				let bombes : any = {}
+        let projectiles: any = {}
+
+        changes.projectiles.forEach((value: any, key: any) => {
+					projectiles[key] = value
+				})
+
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
 				})
