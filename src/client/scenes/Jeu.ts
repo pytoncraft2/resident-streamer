@@ -395,9 +395,11 @@ export default class Jeu extends Phaser.Scene {
 					boulesListe: Object.keys(boules),
 					kunaisListe: Object.keys(kunais),
 					bombesListe: Object.keys(bombes),
+          projectilesListe: Object.keys(projectiles),
           boules: boules,
           kunais: kunais,
-          bombes: bombes
+          bombes: bombes,
+          projectiles: projectiles,
 				})
 			})
 
@@ -414,106 +416,106 @@ export default class Jeu extends Phaser.Scene {
 
     // console.log(this.groupeBoules.getLength())
     // console.log(list.boulesListe)
-    list.boulesListe.map((item: string) => {
-      if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
-        const b = this.groupeBoules.create(list.boules[item].x, list.boules[item].y, `huzounet_atlas`, 'shuriken0')
-        .setDepth(2)
-        .setScale(list.boules[item].scale)
-        .setAlpha(list.boules[item].alpha)
-        .play(`huzounet_shuriken`);
-        this.boulesRef[item] = b
-      } else if (list.boules[item].active) {
-        this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
-        this.boulesRef[item].setScale(list.boules[item].scale);
-        this.boulesRef[item].setAlpha(list.boules[item].alpha)
-        // console.log(list.boules[item].actif)
-        // console.log(list.boules[item].active)
+    // list.boulesListe.map((item: string) => {
+    //   if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
+    //     const b = this.groupeBoules.create(list.boules[item].x, list.boules[item].y, `huzounet_atlas`, 'shuriken0')
+    //     .setDepth(2)
+    //     .setScale(list.boules[item].scale)
+    //     .setAlpha(list.boules[item].alpha)
+    //     .play(`huzounet_shuriken`);
+    //     this.boulesRef[item] = b
+    //   } else if (list.boules[item].active) {
+    //     this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
+    //     this.boulesRef[item].setScale(list.boules[item].scale);
+    //     this.boulesRef[item].setAlpha(list.boules[item].alpha)
+    //     // console.log(list.boules[item].actif)
+    //     // console.log(list.boules[item].active)
+    //
+    //   }
+    //
+    //   if (!list.boules[item].active) {
+    //     // console.log("PASSS AAACTIF")
+    //     // console.log(this.groupeBoules.getFirstDead())
+    //
+    //     if (this.boulesRef[list.boules[item].id]) {
+    //       this.boulesRef[list.boules[item].id].destroy()
+    //       delete this.boulesRef[list.boules[item].id]
+    //     }
+    //     // console.log(this.boulesRef[list.boules[item].id])
+    //     // console.log(list.boules[item].id)
+    //     // this.boulesRef[list.boules[item].id].destroy(true)
+    //     // console.log(this.boulesRef[list.boules[item].id])
+    //   }
+    // })
 
-      }
+    // list.kunaisListe.map((item: string) => {
+    //   if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
+    //     const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
+    //     .setDepth(2)
+    //     .setAlpha(list.kunais[item].alpha)
+    //     .setFlipX(list.kunais[item].flipX)
+    //     // .play(`huzounet_shuriken`);
+    //     this.kunaisRef[item] = b
+    //   } else if (list.kunais[item].active) {
+    //     this.kunaisRef[item].setPosition(list.kunais[item].x, list.kunais[item].y);
+    //     // console.log(list.boules[item].actif)
+    //     // console.log(list.boules[item].active)
+    //
+    //   }
+    //
+    //   if (!list.kunais[item].active) {
+    //     // console.log("PASSS AAACTIF")
+    //     // console.log(this.groupeBoules.getFirstDead())
+    //
+    //     if (this.kunaisRef[list.kunais[item].id]) {
+    //       this.kunaisRef[list.kunais[item].id].destroy()
+    //       delete this.kunaisRef[list.kunais[item].id]
+    //     }
+    //     // console.log(this.boulesRef[list.boules[item].id])
+    //     // console.log(list.boules[item].id)
+    //     // this.boulesRef[list.boules[item].id].destroy(true)
+    //     // console.log(this.boulesRef[list.boules[item].id])
+    //   }
+    // })
 
-      if (!list.boules[item].active) {
-        // console.log("PASSS AAACTIF")
-        // console.log(this.groupeBoules.getFirstDead())
-
-        if (this.boulesRef[list.boules[item].id]) {
-          this.boulesRef[list.boules[item].id].destroy()
-          delete this.boulesRef[list.boules[item].id]
-        }
-        // console.log(this.boulesRef[list.boules[item].id])
-        // console.log(list.boules[item].id)
-        // this.boulesRef[list.boules[item].id].destroy(true)
-        // console.log(this.boulesRef[list.boules[item].id])
-      }
-    })
-
-    list.kunaisListe.map((item: string) => {
-      if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
-        const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
-        .setDepth(2)
-        .setAlpha(list.kunais[item].alpha)
-        .setFlipX(list.kunais[item].flipX)
-        // .play(`huzounet_shuriken`);
-        this.kunaisRef[item] = b
-      } else if (list.kunais[item].active) {
-        this.kunaisRef[item].setPosition(list.kunais[item].x, list.kunais[item].y);
-        // console.log(list.boules[item].actif)
-        // console.log(list.boules[item].active)
-
-      }
-
-      if (!list.kunais[item].active) {
-        // console.log("PASSS AAACTIF")
-        // console.log(this.groupeBoules.getFirstDead())
-
-        if (this.kunaisRef[list.kunais[item].id]) {
-          this.kunaisRef[list.kunais[item].id].destroy()
-          delete this.kunaisRef[list.kunais[item].id]
-        }
-        // console.log(this.boulesRef[list.boules[item].id])
-        // console.log(list.boules[item].id)
-        // this.boulesRef[list.boules[item].id].destroy(true)
-        // console.log(this.boulesRef[list.boules[item].id])
-      }
-    })
-
-    list.bombesListe.map((item: string) => {
-      if (this.bombesRef[list.bombes[item].id] === undefined) {
-        const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
-        this.bombesRef[item] = b;
-
-        b.effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
-        b.effet_choc.setScale(0);
-        b.effet_choc.isFilled = true;
-        b.effet_choc.fillAlpha = 0.3;
-
-        this.tweens.add({
-          targets: b.effet_choc,
-          scale: "+=6",
-          alpha: 0,
-          ease: 'Sine.inOut',
-          duration: 400,
-          delay: 1600,
-          repeat: 0,
-          onUpdate: () => {
-            b.effet_choc.setPosition(this.bombesRef[item].x, this.bombesRef[item].y)
-          },
-          onComplete: function() {
-            arguments[1][0].destroy(true)
-          }
-        });
-
-      } else {
-        if (list.bombes[item].anim) {
-          this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
-
-          this.bombesRef[item].setFrame(list.bombes[item].anim);
-
-          if (list.bombes[item].explosion) {
-            this.bombesRef[item].effet_choc.setPosition(list.bombes[item].x, list.bombes[item].y);
-          }
-        }
-      }
-    })
+    // list.bombesListe.map((item: string) => {
+    //   if (this.bombesRef[list.bombes[item].id] === undefined) {
+    //     const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
+    //     this.bombesRef[item] = b;
+    //
+    //     b.effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
+    //     b.effet_choc.setScale(0);
+    //     b.effet_choc.isFilled = true;
+    //     b.effet_choc.fillAlpha = 0.3;
+    //
+    //     this.tweens.add({
+    //       targets: b.effet_choc,
+    //       scale: "+=6",
+    //       alpha: 0,
+    //       ease: 'Sine.inOut',
+    //       duration: 400,
+    //       delay: 1600,
+    //       repeat: 0,
+    //       onUpdate: () => {
+    //         b.effet_choc.setPosition(this.bombesRef[item].x, this.bombesRef[item].y)
+    //       },
+    //       onComplete: function() {
+    //         arguments[1][0].destroy(true)
+    //       }
+    //     });
+    //
+    //   } else {
+    //     if (list.bombes[item].anim) {
+    //       this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
+    //
+    //       this.bombesRef[item].setFrame(list.bombes[item].anim);
+    //
+    //       if (list.bombes[item].explosion) {
+    //         this.bombesRef[item].effet_choc.setPosition(list.bombes[item].x, list.bombes[item].y);
+    //       }
+    //     }
+    //   }
+    // })
 
 
 		list.presenceList.map((item: string, idx: number) => {
