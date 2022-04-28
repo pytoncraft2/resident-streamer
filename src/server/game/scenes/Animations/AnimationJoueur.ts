@@ -146,12 +146,14 @@ anim.create({
   repeat: 0
 })
 
-// anim.create({
-//   key: "manette_marche",
-//   frames: anim.generateFrameNames('atlas', { prefix: 'manette', start: 0, end: 6 }),
-//   frameRate: 23,
-//   repeat: 0
-// })
+
+
+anim.create({
+  key: "manette_lance",
+  frames: anim.generateFrameNames('atlas', { prefix: 'manettelance', start: 0, end: 3 }),
+  frameRate: 23,
+  repeat: 0
+})
 
 
 

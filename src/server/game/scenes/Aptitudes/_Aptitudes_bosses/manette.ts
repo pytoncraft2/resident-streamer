@@ -8,6 +8,7 @@ export function punch(manette, input) {
 export function lanceManette(manette, input) {
 
   if (!manette.kunai) {
+  manette.play('manette_lance')
     const kunai = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`)
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
