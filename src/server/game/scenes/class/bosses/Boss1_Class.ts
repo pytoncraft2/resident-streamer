@@ -178,8 +178,11 @@ this.setTint(0xff0000)
 
 
   mourir() {
+    console.log("MMMMMMMMMMMMMMMOURRRRI")
     this.vivant = false
-    this.setTint(this.etats['initial']['couleur'])
+    this.etatEnCours = 'initial'
+    this.clearTint()
+    // this.setTint(this.etats['initial']['couleur'])
     // this.timer_boss_1.remove();
     this.setVelocity(0)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
