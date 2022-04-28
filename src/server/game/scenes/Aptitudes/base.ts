@@ -47,6 +47,14 @@ function interaction(personnage: TJoueur) {
        degat: 1,
        puissanceDeBase: 10,
      },
+     'akhizonah': {
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       degat: 1,
+       puissanceDeBase: 10,
+     },
      'boss_1': {
        vie: 5,
        displayWidth: 104,
