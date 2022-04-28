@@ -10,6 +10,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
 
   vitesse: number = 0
   puissance: number = 0
+  sprite: string = 'objet_manette'
 
   constructor(
     scene: Phaser.Scene,
@@ -20,16 +21,17 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, ClientID)
+    this.init(scene, ClientID, sprite)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, sprite) {
     this.scene = scene
     this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
     this.scale = 0.2
     this.alpha = 0.3
+    this.sprite = sprite
 
     // this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
@@ -47,7 +49,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
           y: this.y,
           id: this.id,
           active: this.active,
-          flipX: this.flipX
+          flipX: this.flipX,
+          sprite: this.sprite
         })
       )
   }
