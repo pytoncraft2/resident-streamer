@@ -1,4 +1,4 @@
-import { Kunai } from "../../../RoomState"
+import { Projectile } from "../../../RoomState"
 
 export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -40,9 +40,9 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
 
-      (this.scene as any).room.state.kunais.set(
+      (this.scene as any).room.state.projectiles.set(
         this.id,
-        new Kunai({
+        new Projectile({
           x: this.x,
           y: this.y,
           id: this.id,
