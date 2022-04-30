@@ -34,3 +34,23 @@ manette.vole = true
     manette.play('manette_vole')
     manette.setVelocityY(-800)
 }
+
+export const Direction_manette = {
+  toucheDroite: (manette, input) => {
+    manette.setVelocityX(300)
+    if (input.space) {
+      manette.setVelocityY(-900)
+      manette.play('manette_vole')
+    }
+    if (manette.flipX) manette.setFlipX(false)
+  },
+  toucheGauche: (manette, input) => {
+    if (input.space) {
+      manette.setVelocityY(-900)
+      manette.play('manette_vole')
+    }
+    if (!manette.flipX) manette.setFlipX(true)
+    manette.setFlipX(true)
+    manette.setVelocityX(-300)
+  }
+}

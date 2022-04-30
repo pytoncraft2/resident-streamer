@@ -1,6 +1,6 @@
 import {cross, kick, dash} from './fakhear'
 import {pique, suivre} from './_Aptitudes_bosses/boss_1'
-import {punch, vole, lanceManette} from './_Aptitudes_bosses/manette'
+import {punch, vole, lanceManette, Direction_manette} from './_Aptitudes_bosses/manette'
 import {kunai, shuriken, multiclonage} from './huzounet'
 import {couteau, bombe} from './akhizonah'
 import {soin, blesse, osmo_saut} from './osmosiscoop'
@@ -168,7 +168,8 @@ export const Aptitudes = {
     },
     toucheEspace: (fakhear: TJoueur) => {
       // saut(fakhear)
-    }
+    },
+    ...Direction_defaut
   },
   'boss_1': {
     toucheA: (boss_1) => {
@@ -187,7 +188,8 @@ export const Aptitudes = {
     },
     toucheEspace: (manette, input) => {
       vole(manette, input)
-    }
+    },
+    ...Direction_manette
   },
   'huzounet': {
     toucheA: (huzounet: TJoueur, input?: Object) => {
