@@ -117,10 +117,15 @@ function interaction(personnage: TJoueur) {
 
 const Direction_defaut = {
   toucheDroite: (personnage, input) => {
-    deplacement(personnage, input, false)
+    // deplacement(personnage, input, false)
+    console.log("TOUCHE DROITE")
+    if (input.right_fin) console.log("FIN DROITE")
   },
   toucheGauche: (personnage, input) => {
-    deplacement(personnage, input, true)
+    console.log("TOUCHE GAUCHE")
+
+    if (input.left_fin) console.log("FIN GAUCHE")
+    // deplacement(personnage, input, true)
   }
 }
 

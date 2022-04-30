@@ -147,8 +147,11 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       if (left) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
-       if (right) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
+       if (left || left_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
+       if (right || right_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
+
+       if (left_fin) input.left_fin = false;
+       if (right_fin) input.right_fin = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
        // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
