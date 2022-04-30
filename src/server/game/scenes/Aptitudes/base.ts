@@ -219,7 +219,8 @@ export const Aptitudes = {
     },
     toucheEspace: (akhizonah: TJoueur) => {
       // saut(akhizonah)
-    }
+    },
+    ...Direction_defaut
   },
   'osmosiscoop': {
     toucheA: (osmo: TJoueur, input?: Object) => {
@@ -233,7 +234,8 @@ export const Aptitudes = {
     },
     toucheEspace: (osmo: TJoueur) => {
       // osmo_saut(osmo)
-    }
+    },
+    ...Direction_defaut
   }
 
 };
