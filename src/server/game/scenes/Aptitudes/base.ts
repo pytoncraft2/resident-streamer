@@ -105,6 +105,14 @@ function interaction(personnage: TJoueur) {
        degat: 2,
        puissanceDeBase: 10,
      },
+     'twitchman': {
+       vie: 5,
+       displayWidth: 104,
+       displayHeight: 302,
+       masse: 30,
+       degat: 2,
+       puissanceDeBase: 10,
+     },
      'manette': {
        vie: 5,
        displayWidth: 104,

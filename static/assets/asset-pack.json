@@ -67,6 +67,12 @@
                 "textureURL": "assets/osmosiscoop_atlas.png",
                 "type": "atlas",
                 "key": "osmosiscoop_atlas"
+            },
+            {
+                "atlasURL": "assets/twitchman_atlas.json",
+                "textureURL": "assets/twitchman_atlas.png",
+                "type": "atlas",
+                "key": "twitchman_atlas"
             }
         ]
     },
