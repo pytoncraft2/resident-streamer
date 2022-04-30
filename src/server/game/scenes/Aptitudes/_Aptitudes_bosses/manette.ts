@@ -29,28 +29,32 @@ export function lanceManette(manette, input) {
 
 export function vole(manette, input) {
 
-manette.vole = true
-  console.log("vole")
-    manette.play('manette_vole')
-    manette.setVelocityY(-800)
+// manette.vole = true
+//   console.log("vole")
+//     manette.play('manette_vole')
+//     manette.setVelocityY(-800)
 }
 
 export const Direction_manette = {
   toucheDroite: (manette, input) => {
-    manette.setVelocityX(300)
+    manette.setVelocityX(600)
     if (input.space) {
-      manette.setVelocityY(-900)
+      manette.body.setAllowGravity(false)
+      manette.setVelocityY(-500)
       manette.play('manette_vole')
     }
+    if (input.space_fin) manette.body.setVelocityY(200)
     if (manette.flipX) manette.setFlipX(false)
   },
   toucheGauche: (manette, input) => {
     if (input.space) {
-      manette.setVelocityY(-900)
+      manette.body.setAllowGravity(false)
+      manette.setVelocityY(-500)
       manette.play('manette_vole')
     }
+    if (input.space_fin) manette.body.setVelocityY(200)
     if (!manette.flipX) manette.setFlipX(true)
     manette.setFlipX(true)
-    manette.setVelocityX(-300)
+    manette.setVelocityX(-600)
   }
 }

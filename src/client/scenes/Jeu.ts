@@ -731,6 +731,7 @@ export default class Jeu extends Phaser.Scene {
         this.room.send("inputs", {
           ...inputs,
           a_fin: A.isUp ? true : false,
+          space_fin: space.isUp ? true : false,
           right_fin: Phaser.Input.Keyboard.JustUp(right),
           left_fin: Phaser.Input.Keyboard.JustUp(left)
         })

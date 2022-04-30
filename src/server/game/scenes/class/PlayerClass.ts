@@ -137,7 +137,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin } = input
+     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin } = input
      let animationName = this.anims.getFrameName()
 
      if (this.canMove) {
@@ -153,15 +153,16 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
        if (left_fin) input.left_fin = false;
        if (right_fin) input.right_fin = false;
+       if (space_fin) input.space_fin = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
        // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
-     if (this.body.touching.none) {
-       this.vole = true;
-     } else {
-       this.vole = false;
-     }
+     // if (this.body.touching.none) {
+     //   this.vole = true;
+     // } else {
+     //   this.vole = false;
+     // }
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,
