@@ -147,8 +147,10 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       if (left || left_fin) this.deplacement('left', left, left_fin)
-       if (right || right_fin) this.deplacement('right', right, right_fin)
+       if (left) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
+       if (right) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
+       // if (left || left_fin) this.deplacement('left', left, left_fin)
+       // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
      if (this.body.touching.none) {
@@ -173,17 +175,4 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      )
    }
 
-   deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
-
-     if (objet) {
-       if (!this.vole) setAnimation(this, 'walk')
-       this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
-       this.setFlipX(direction == 'right' ? false : true);
-       this.setDragX(1400)
-     }
-     if (fin) {
-       // setAnimation(this, 'idle_walk')
-       this.setVelocityX(0);
-     }
-   }
  }

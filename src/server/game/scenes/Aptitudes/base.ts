@@ -24,6 +24,29 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
   // }
 }
 
+function deplacement(personnage, input, direction) {
+  personnage.setVelocityX(direction ? -400 : 400)
+  personnage.setFlipX(direction);
+  personnage.setDragX(1400)
+
+  console.log(input)
+}
+
+// function deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
+//
+//   if (objet) {
+//     if (!this.vole) setAnimation(this, 'walk')
+//     this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
+//     this.setFlipX(direction == 'right' ? false : true);
+//     this.setDragX(1400)
+//   }
+//   if (fin) {
+//     // setAnimation(this, 'idle_walk')
+//     this.setVelocityX(0);
+//   }
+// }
+
+
 function interaction(personnage: TJoueur) {
   personnage.interaction_objet = true
   personnage.scene.tweens.addCounter({
@@ -92,6 +115,15 @@ function interaction(personnage: TJoueur) {
    }
  }
 
+const Direction_defaut = {
+  toucheDroite: (personnage, input) => {
+    deplacement(personnage, input, false)
+  },
+  toucheGauche: (personnage, input) => {
+    deplacement(personnage, input, true)
+  }
+}
+
 
 export const Aptitudes = {
   'fakhear': {
@@ -145,7 +177,8 @@ export const Aptitudes = {
     },
     toucheEspace: (huzounet: TJoueur) => {
       saut(huzounet)
-    }
+    },
+    ...Direction_defaut
   },
   'akhizonah': {
     toucheA: (akhizonah: TJoueur, input?: Object) => {
