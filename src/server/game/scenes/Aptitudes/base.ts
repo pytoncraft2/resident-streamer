@@ -117,15 +117,20 @@ function interaction(personnage: TJoueur) {
 
 const Direction_defaut = {
   toucheDroite: (personnage, input) => {
-    // deplacement(personnage, input, false)
-    console.log("TOUCHE DROITE")
-    if (input.right_fin) console.log("FIN DROITE")
+    personnage.setVelocityX(personnage.vel);
+    personnage.setDragX(1400)
+    if (input.right_fin && !input.space) {
+      personnage.play('idle_walk')
+      personnage.setDragX(8400)
+    }
   },
   toucheGauche: (personnage, input) => {
-    console.log("TOUCHE GAUCHE")
-
-    if (input.left_fin) console.log("FIN GAUCHE")
-    // deplacement(personnage, input, true)
+    personnage.setVelocityX(-personnage.vel);
+    personnage.setDragX(1400)
+    if (input.left_fin && !input.space) {
+      personnage.setDragX(8400)
+      personnage.play('idle_walk')
+    }
   }
 }
 
