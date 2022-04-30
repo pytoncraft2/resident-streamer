@@ -1,5 +1,5 @@
 import { Player } from "../../RoomState"
-import { AnimationJoueur, setAnimation } from "../Animations/AnimationJoueur"
+import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
@@ -105,7 +105,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
-     this.zoneInteraction.action = (_e) => {
+     this.zoneInteraction.action = (_e: any) => {
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false

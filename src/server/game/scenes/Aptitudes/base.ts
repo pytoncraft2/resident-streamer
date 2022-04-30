@@ -3,6 +3,7 @@ import {pique, suivre} from './_Aptitudes_bosses/boss_1'
 import {punch, vole, lanceManette, Direction_manette} from './_Aptitudes_bosses/manette'
 import {kunai, shuriken, multiclonage} from './huzounet'
 import {couteau, bombe} from './akhizonah'
+import {chargeVole} from './_Aptitudes_bosses/twitchman'
 import {soin, blesse, osmo_saut} from './osmosiscoop'
 
 import TJoueur from "../types/Joueur";
@@ -16,7 +17,7 @@ PARAMETRES GENERALE
 function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
   // if (personnage.body.touching.down) {
     personnage.play('jump')
-    personnage.setVelocityY(-1400);
+    // personnage.setVelocityY(-1400);
     // personnage.compteurSaut++
     // if (personnage.body.touching.down) {
     //   personnage.compteurSaut = 0
@@ -24,13 +25,13 @@ function saut(personnage: Phaser.Physics.Arcade.Sprite|any) {
   // }
 }
 
-function deplacement(personnage, input, direction) {
-  personnage.setVelocityX(direction ? -400 : 400)
-  personnage.setFlipX(direction);
-  personnage.setDragX(1400)
-
-  console.log(input)
-}
+// function deplacement(personnage, input, direction) {
+//   personnage.setVelocityX(direction ? -400 : 400)
+//   personnage.setFlipX(direction);
+//   personnage.setDragX(1400)
+//
+//   console.log(input)
+// }
 
 // function deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
 //
@@ -116,8 +117,8 @@ function interaction(personnage: TJoueur) {
  }
 
 const Direction_defaut = {
-  toucheDroite: (personnage, input) => {
-    personnage.setVelocityX(personnage.vel);
+  toucheDroite: (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+    personnage.setVelocityX((personnage as any).vel);
     personnage.setDragX(1400)
     if (personnage.flipX) personnage.setFlipX(false);
     if (input.space) {
@@ -133,8 +134,8 @@ const Direction_defaut = {
       personnage.setDragX(8400)
     }
   },
-  toucheGauche: (personnage, input) => {
-    personnage.setVelocityX(-personnage.vel);
+  toucheGauche: (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+    personnage.setVelocityX(-(personnage as any).vel);
     personnage.setDragX(1400)
     if (!personnage.flipX) personnage.setFlipX(true);
     if (input.space) {
@@ -153,6 +154,32 @@ const Direction_defaut = {
 
 
 export const Aptitudes = {
+  'boss_1': {
+    toucheA: (boss_1: TJoueur) => {
+      pique(boss_1)
+    },
+    toucheZ: (boss_1: TJoueur) => {
+      suivre(boss_1)
+    }
+  },
+  'manette': {
+    toucheA: (manette: TJoueur, input?: Object) => {
+      punch(manette, input)
+    },
+    toucheZ: (manette: TJoueur, input: Object) => {
+      lanceManette(manette, input)
+    },
+    toucheEspace: (manette: TJoueur, input: Object) => {
+      vole(manette, input)
+    },
+    ...Direction_manette
+  },
+  'twitchman': {
+    toucheA: (manette: TJoueur, _input?: Object) => {
+      chargeVole(manette)
+    },
+    ...Direction_defaut
+  },
   'fakhear': {
     toucheA: (fakhear: TJoueur, input?: Object) => {
       cross(fakhear, input)
@@ -167,29 +194,9 @@ export const Aptitudes = {
       interaction(fakhear)
     },
     toucheEspace: (fakhear: TJoueur) => {
-      // saut(fakhear)
+      saut(fakhear)
     },
     ...Direction_defaut
-  },
-  'boss_1': {
-    toucheA: (boss_1) => {
-      pique(boss_1)
-    },
-    toucheZ: (boss_1) => {
-      suivre(boss_1)
-    }
-  },
-  'manette': {
-    toucheA: (manette: TJoueur, input?: Object) => {
-      punch(manette, input)
-    },
-    toucheZ: (manette: TJoueur, input: Object) => {
-      lanceManette(manette, input)
-    },
-    toucheEspace: (manette, input) => {
-      vole(manette, input)
-    },
-    ...Direction_manette
   },
   'huzounet': {
     toucheA: (huzounet: TJoueur, input?: Object) => {
@@ -205,7 +212,7 @@ export const Aptitudes = {
       interaction(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
-      // saut(huzounet)
+      saut(huzounet)
     },
     ...Direction_defaut
   },
@@ -220,7 +227,7 @@ export const Aptitudes = {
       interaction(akhizonah)
     },
     toucheEspace: (akhizonah: TJoueur) => {
-      // saut(akhizonah)
+      saut(akhizonah)
     },
     ...Direction_defaut
   },
@@ -235,7 +242,7 @@ export const Aptitudes = {
       interaction(osmo)
     },
     toucheEspace: (osmo: TJoueur) => {
-      // osmo_saut(osmo)
+      osmo_saut(osmo)
     },
     ...Direction_defaut
   }
