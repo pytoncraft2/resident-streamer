@@ -25,6 +25,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
    interaction_objet: boolean = false
    groupeBoules: any
    degat: number = 1
+   vole: boolean = false;
    parametresDeBase: any
    constructor(
      scene: Phaser.Scene,
@@ -150,6 +151,12 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
+     if (this.body.touching.none) {
+       this.vole = true;
+     } else {
+       this.vole = false;
+     }
+
      (this.scene as any).room.state.presences.set(
        this.ClientID,
        new Player({
@@ -167,15 +174,16 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
    }
 
    deplacement(direction: 'left'|'right', objet: boolean, fin: boolean) {
+
      if (objet) {
-       setAnimation(this, 'walk')
+       if (!this.vole) setAnimation(this, 'walk')
        this.setVelocityX(direction == 'right' ? this.vel : -this.vel);
        this.setFlipX(direction == 'right' ? false : true);
        this.setDragX(1400)
      }
      if (fin) {
-         setAnimation(this, 'idle_walk')
-         this.setVelocityX(0);
+       // setAnimation(this, 'idle_walk')
+       this.setVelocityX(0);
      }
    }
  }

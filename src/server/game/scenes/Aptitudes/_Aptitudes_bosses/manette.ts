@@ -28,6 +28,9 @@ export function lanceManette(manette, input) {
 }
 
 export function vole(manette, input) {
+
+manette.vole = true
+  console.log("vole")
     manette.play('manette_vole')
     manette.setVelocityY(-800)
 }
