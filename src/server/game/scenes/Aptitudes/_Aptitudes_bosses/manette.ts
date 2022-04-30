@@ -1,6 +1,7 @@
 import ManetteClass from '../../class/objets/ManetteClass'
 export function punch(manette, input) {
   if (input.a) {
+    manette.setVelocityY(1000)
     manette.play('manette_punch')
   }
 }
@@ -9,6 +10,7 @@ export function lanceManette(manette, input) {
 
   if (!manette.obj_manette) {
     manette.play('manette_lance')
+      manette.setVelocityY(1000)
     const obj_manette = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
@@ -50,6 +52,7 @@ export const Direction_manette = {
     }
     if (input.space_fin) manette.body.setVelocityY(200)
     if (manette.flipX) manette.setFlipX(false)
+    manette.setDragX(2000)
   },
   toucheGauche: (manette, input) => {
     if (input.space) {
@@ -61,5 +64,6 @@ export const Direction_manette = {
     if (!manette.flipX) manette.setFlipX(true)
     manette.setFlipX(true)
     manette.setVelocityX(-800)
+    manette.setDragX(2000)
   }
 }
