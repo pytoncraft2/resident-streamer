@@ -119,7 +119,16 @@ const Direction_defaut = {
   toucheDroite: (personnage, input) => {
     personnage.setVelocityX(personnage.vel);
     personnage.setDragX(1400)
-    if (input.right_fin && !input.space) {
+    if (personnage.flipX) personnage.setFlipX(false);
+    if (input.space) {
+      personnage.play('jump', true)
+      personnage.setVelocityY(-1400);
+    } else {
+      personnage.play('walk', true)
+    }
+
+    if (input.right_fin && !input.space)
+    {
       personnage.play('idle_walk')
       personnage.setDragX(8400)
     }
@@ -127,7 +136,15 @@ const Direction_defaut = {
   toucheGauche: (personnage, input) => {
     personnage.setVelocityX(-personnage.vel);
     personnage.setDragX(1400)
-    if (input.left_fin && !input.space) {
+    if (!personnage.flipX) personnage.setFlipX(true);
+    if (input.space) {
+      personnage.play('jump', true)
+      personnage.setVelocityY(-1400);
+    } else {
+      personnage.play('walk', true)
+    }
+    if (input.left_fin && !input.space)
+    {
       personnage.setDragX(8400)
       personnage.play('idle_walk')
     }
@@ -150,7 +167,7 @@ export const Aptitudes = {
       interaction(fakhear)
     },
     toucheEspace: (fakhear: TJoueur) => {
-      saut(fakhear)
+      // saut(fakhear)
     }
   },
   'boss_1': {
@@ -186,7 +203,7 @@ export const Aptitudes = {
       interaction(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
-      saut(huzounet)
+      // saut(huzounet)
     },
     ...Direction_defaut
   },
@@ -201,7 +218,7 @@ export const Aptitudes = {
       interaction(akhizonah)
     },
     toucheEspace: (akhizonah: TJoueur) => {
-      saut(akhizonah)
+      // saut(akhizonah)
     }
   },
   'osmosiscoop': {
@@ -215,7 +232,7 @@ export const Aptitudes = {
       interaction(osmo)
     },
     toucheEspace: (osmo: TJoueur) => {
-      osmo_saut(osmo)
+      // osmo_saut(osmo)
     }
   }
 
