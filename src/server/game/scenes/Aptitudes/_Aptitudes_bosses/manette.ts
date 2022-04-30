@@ -22,9 +22,9 @@ export function lanceManette(manette, input) {
     manette.obj_manette = obj_manette
     manette.scene.time.delayedCall(100, () => {
       if (manette.anims.getName() == "manette_vole") {
-        manette.obj_manette.setVelocityY(2300).setFlipX(manette.flipX)
+        manette.obj_manette.setVelocityY(2300)
       } else {
-        manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300).setFlipX(manette.flipX)
+        manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
       }
 
       manette.obj_manette = undefined;
@@ -42,7 +42,7 @@ export function vole(manette, input) {
 
 export const Direction_manette = {
   toucheDroite: (manette, input) => {
-    manette.setVelocityX(600)
+    manette.setVelocityX(800)
     if (input.space) {
       manette.body.setAllowGravity(false)
       manette.setVelocityY(-500)
@@ -60,6 +60,6 @@ export const Direction_manette = {
     if (input.space_fin) manette.body.setVelocityY(200)
     if (!manette.flipX) manette.setFlipX(true)
     manette.setFlipX(true)
-    manette.setVelocityX(-600)
+    manette.setVelocityX(-800)
   }
 }
