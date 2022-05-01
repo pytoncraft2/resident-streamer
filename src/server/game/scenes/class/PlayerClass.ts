@@ -130,7 +130,7 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
-     (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+     if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
    }
    preUpdate(time: number, delta: number) {

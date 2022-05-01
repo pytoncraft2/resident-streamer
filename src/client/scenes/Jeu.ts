@@ -502,13 +502,19 @@ export default class Jeu extends Phaser.Scene {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
         const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
-        projectile.setScale(0.6)
+
+        if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
+        if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
         this.projectilesRef[item] = projectile
       }
       else
       {
         this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
-        this.projectilesRef[item].angle += 32;
+        if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
+        if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
+
+
+        // this.projectilesRef[item].angle += 32;
 
       }
     })
