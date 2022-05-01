@@ -19,6 +19,11 @@
                 "key": "boss_1_atlas"
             },
             {
+                "url": "assets/face0.png",
+                "type": "image",
+                "key": "face0"
+            },
+            {
                 "url": "assets/fakhear.png",
                 "type": "image",
                 "key": "fakhear"

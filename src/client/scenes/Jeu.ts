@@ -216,6 +216,44 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
+		// face0
+		this.add.image(488, 743, "face0");
+
+		// lazer
+		const lazer = this.add.container(0, 0);
+
+		// lazer_3
+		const lazer_3 = this.add.rectangle(551, 582, 128, 128);
+		lazer_3.scaleX = 8.29461186764485;
+		lazer_3.scaleY = 0.17317398705947581;
+		lazer_3.setOrigin(0, 0.5);
+		lazer_3.isFilled = true;
+		lazer_3.fillColor = 4332301;
+		lazer_3.fillAlpha = 0.5;
+		lazer_3.lineWidth = 0.1;
+		lazer.add(lazer_3);
+
+		// lazer_2
+		const lazer_2 = this.add.rectangle(551, 582, 128, 128);
+		lazer_2.scaleX = 8.29461186764485;
+		lazer_2.scaleY = 0.12225173083106433;
+		lazer_2.setOrigin(0, 0.5);
+		lazer_2.isFilled = true;
+		lazer_2.fillColor = 13777152;
+		lazer_2.lineWidth = 0.1;
+		lazer.add(lazer_2);
+
+		// lazer_1
+		const lazer_1 = this.add.rectangle(551, 582, 128, 128);
+		lazer_1.scaleX = 8.282790617973651;
+		lazer_1.scaleY = 0.029337173394387434;
+		lazer_1.setOrigin(0, 0.5);
+		lazer_1.isFilled = true;
+		lazer_1.fillColor = 16244042;
+		lazer_1.fillAlpha = 0.8;
+		lazer_1.lineWidth = 0.1;
+		lazer.add(lazer_1);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -227,6 +265,9 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
+		this.lazer = lazer;
+		this.lazer_2 = lazer_2;
+		this.lazer_1 = lazer_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -242,6 +283,9 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
+	public lazer!: Phaser.GameObjects.Container;
+	public lazer_2!: Phaser.GameObjects.Rectangle;
+	public lazer_1!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -413,6 +457,52 @@ export default class Jeu extends Phaser.Scene {
 		.catch((err) => {
 			console.error(err)
 		})
+
+    var timeline = this.tweens.createTimeline();
+
+    timeline.add({
+      targets: this.lazer.getAll(),
+      alpha: 0.1,
+      ease: 'Power1',
+      duration: 3000
+    });
+
+    timeline.add({
+      targets: this.lazer.getAll(),
+      scaleX: 0.25,
+      ease: 'Power1',
+      duration: 3000
+    });
+
+    timeline.add({
+      targets: this.lazer.getAll(),
+      scaleX: 0,
+      ease: 'Power1',
+      duration: 3000
+    });
+
+    timeline.play();
+
+
+
+    // this.tweens.add({
+    //
+    //     targets: this.lazer.getAll(),
+    //     // scaleX: 0.25,
+    //     scaleX: 0.25,
+    //     // width: 1000,
+    //     alpha: { from: 0, to: 1 },
+    //
+    //     yoyo: true,
+    //     repeat: -1,
+    //     // alpha: 0,
+    //     ease: 'Sine.easeInOut',
+    //     duration: 200
+    //
+    // });
+
+    // this.lazer.setAll('width', 10);
+    // this.lazer.setSize(10, 10);
 
 
 	}

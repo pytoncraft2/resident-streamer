@@ -395,6 +395,78 @@
                     "list": []
                 }
             ]
+        },
+        {
+            "type": "Image",
+            "id": "701dfca3-4caf-4d8d-b77e-7418c20f0a3f",
+            "label": "face0",
+            "components": [],
+            "texture": {
+                "key": "face0"
+            },
+            "x": 488,
+            "y": 743
+        },
+        {
+            "type": "Container",
+            "id": "37fa15db-f6ff-4a14-aa73-7c0197d89278",
+            "label": "lazer",
+            "scope": "PUBLIC",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "322551dd-01e0-42d1-8b82-adcf311b48eb",
+                    "label": "lazer_3",
+                    "components": [],
+                    "x": 551,
+                    "y": 582,
+                    "scaleX": 8.29461186764485,
+                    "scaleY": 0.17317398705947581,
+                    "originX": 0,
+                    "isFilled": true,
+                    "fillColor": "#421b0d",
+                    "fillAlpha": 0.5,
+                    "lineWidth": 0.1,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "0d380f1d-1fc1-486b-8fb6-030b617ddc61",
+                    "label": "lazer_2",
+                    "scope": "PUBLIC",
+                    "components": [],
+                    "x": 551,
+                    "y": 582,
+                    "scaleX": 8.29461186764485,
+                    "scaleY": 0.12225173083106433,
+                    "originX": 0,
+                    "isFilled": true,
+                    "fillColor": "#d23900",
+                    "lineWidth": 0.1,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "ebb34447-9de4-4857-a082-320ecbb1299c",
+                    "label": "lazer_1",
+                    "scope": "PUBLIC",
+                    "components": [],
+                    "x": 551,
+                    "y": 582,
+                    "scaleX": 8.282790617973651,
+                    "scaleY": 0.029337173394387434,
+                    "originX": 0,
+                    "isFilled": true,
+                    "fillColor": "#f7dd4a",
+                    "fillAlpha": 0.8,
+                    "lineWidth": 0.1,
+                    "width": 128,
+                    "height": 128
+                }
+            ]
         }
     ],
     "plainObjects": [],
