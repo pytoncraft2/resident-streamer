@@ -666,9 +666,7 @@ export default class Jeu extends Phaser.Scene {
 
 				}
 			} else {
-				if (list.presences[item].sprite) {
-					this.playersRef[item].x = list.presences[item].x
-					this.playersRef[item].y = list.presences[item].y
+          this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
@@ -676,14 +674,14 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
-				}
 			}
 		})
 
 		this.players.children.iterate((child) => {
 			if (list.presences[child.data.values.ClientId] === undefined) {
+        const id = child.data.values.ClientId;
 				this.playersRef[child.data.values.ClientId].destroy(true)
-				delete this.playersRef[child.data.values.ClientId]
+				delete this.playersRef[id]
 			}
 		})
 
