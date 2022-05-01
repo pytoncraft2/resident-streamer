@@ -21,7 +21,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
     if (!huzounet.parametresDeBase.boulesEnMain.getLength())
     {
       huzounet.puissanceChargeBoule = 0
-      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.flipX ? huzounet.x + 80 : huzounet.x - 80, huzounet.y - 160, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
+      const boule = huzounet.scene.add.existing(new BouleClass(huzounet.scene, huzounet.flipX ? huzounet.x + 80 : huzounet.x - 80, huzounet.y - 160, "huzounet",  `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: huzounet.ClientID, puissance: 2}))
       huzounet.parametresDeBase.boulesEnMain.add(boule);
       (boule.body as any).setAllowGravity(false);
 
@@ -61,7 +61,7 @@ export function kunai(huzounet: TJoueur) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
     if (!huzounet.kunai) {
-      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`)
+      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "huzounet",  `${(Math.random() + 1).toString(36).substring(7)}`)
       .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat}))
       .setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);

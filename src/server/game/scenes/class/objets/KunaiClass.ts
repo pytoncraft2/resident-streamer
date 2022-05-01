@@ -1,4 +1,5 @@
-import { Kunai } from "../../../RoomState"
+import { Projectile } from "../../../RoomState"
+
 
 export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -7,6 +8,9 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
+
+  sprite: string = 'huzounet'
+  _frame: string = 'kunai'
 
   vitesse: number = 0
   puissance: number = 0
@@ -40,14 +44,16 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
 
-      (this.scene as any).room.state.kunais.set(
+      (this.scene as any).room.state.projectiles.set(
         this.id,
-        new Kunai({
+        new Projectile({
           x: this.x,
           y: this.y,
           id: this.id,
           active: this.active,
-          flipX: this.flipX
+          flipX: this.flipX,
+          sprite: this.sprite,
+          _frame: this._frame
         })
       )
   }

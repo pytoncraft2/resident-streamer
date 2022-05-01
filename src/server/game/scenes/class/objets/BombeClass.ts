@@ -1,4 +1,4 @@
-import { Bombe } from "../../../RoomState"
+import { Projectile } from "../../../RoomState"
 import { AnimationBombe } from "../../Animations/AnimationJoueur"
 
 export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
@@ -10,6 +10,9 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   actif: boolean = true
   zoneInteraction: any
   explosion: boolean
+
+  sprite: string = 'akhizonah'
+  _frame: string = 'bombe0'
 
   vitesse: number = 0
   puissance: number = 0
@@ -75,16 +78,18 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-      (this.scene as any).room.state.bombes.set(
+      (this.scene as any).room.state.projectiles.set(
         this.id,
-        new Bombe({
+        new Projectile({
           x: this.x,
           y: this.y,
           alpha: this.alpha,
           id: this.id,
           active: this.active,
           anim: this.anims.getFrameName(),
-          explosion: this.explosion
+          explosion: this.explosion,
+          sprite: this.sprite,
+          _frame: this._frame
         })
       )
 

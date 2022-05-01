@@ -1,4 +1,5 @@
-import { Boule } from "../../../RoomState"
+import { Projectile } from "../../../RoomState"
+
 
 export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -7,6 +8,9 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
+
+  sprite: string = 'huzounet'
+  _frame: string = 'shuriken0'
 
   vitesse: number = 0
   puissance: number = 0
@@ -20,16 +24,18 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, ClientID)
+    this.init(scene, ClientID, sprite)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, sprite) {
     this.scene = scene
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
     this.scale = 0.2
     this.alpha = 0.3
+    this.sprite = sprite
+
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
@@ -74,15 +80,16 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
 
-      (this.scene as any).room.state.boules.set(
+      (this.scene as any).room.state.projectiles.set(
         this.id,
-        new Boule({
+        new Projectile({
           x: this.x,
           y: this.y,
           scale: this.scale,
           alpha: this.alpha,
           id: this.id,
-          active: this.active
+          sprite: this.sprite,
+          _frame: this._frame
         })
       )
   }
