@@ -8,6 +8,16 @@ import {soin, blesse, osmo_saut} from './osmosiscoop'
 
 import TJoueur from "../types/Joueur";
 
+import fs = require('fs');
+
+fs.readdir('./src/server/game/scenes/Aptitudes/_Aptitudes_bosses', (err, files) => {
+  console.log(files)
+ files.forEach(file => {
+  const module = import('./_Aptitudes_bosses/' + file).then(m => m.callSomeMethod() );
+  // or const module = await import('file')
+  });
+});
+
 
 
 /**
