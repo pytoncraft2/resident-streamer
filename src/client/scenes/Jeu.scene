@@ -444,6 +444,7 @@
                     "originX": 0,
                     "isFilled": true,
                     "fillColor": "#d23900",
+                    "fillAlpha": 0.1,
                     "lineWidth": 0.1,
                     "width": 128,
                     "height": 128
@@ -461,7 +462,7 @@
                     "originX": 0,
                     "isFilled": true,
                     "fillColor": "#f7dd4a",
-                    "fillAlpha": 0.8,
+                    "fillAlpha": 0.1,
                     "lineWidth": 0.1,
                     "width": 128,
                     "height": 128

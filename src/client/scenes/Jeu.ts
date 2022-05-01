@@ -231,6 +231,7 @@ export default class Jeu extends Phaser.Scene {
 		lazer_3.fillColor = 4332301;
 		lazer_3.fillAlpha = 0.5;
 		lazer_3.lineWidth = 0.1;
+    lazer_3.alpha = 0;
 		lazer.add(lazer_3);
 
 		// lazer_2
@@ -241,17 +242,19 @@ export default class Jeu extends Phaser.Scene {
 		lazer_2.isFilled = true;
 		lazer_2.fillColor = 13777152;
 		lazer_2.lineWidth = 0.1;
+    lazer_2.alpha = 0;
 		lazer.add(lazer_2);
 
 		// lazer_1
 		const lazer_1 = this.add.rectangle(551, 582, 128, 128);
-		lazer_1.scaleX = 8.282790617973651;
+		lazer_1.scaleX = 0;
 		lazer_1.scaleY = 0.029337173394387434;
 		lazer_1.setOrigin(0, 0.5);
 		lazer_1.isFilled = true;
 		lazer_1.fillColor = 16244042;
 		lazer_1.fillAlpha = 0.8;
 		lazer_1.lineWidth = 0.1;
+    lazer_1.alpha = 0;
 		lazer.add(lazer_1);
 
 		this.map_boss1 = map_boss1;
@@ -460,26 +463,59 @@ export default class Jeu extends Phaser.Scene {
 
     var timeline = this.tweens.createTimeline();
 
+    // (this.lazer as any).last.scaleX = 0
+    // this.lazer.each((e: any) => {
+    //   e.alpha = 0;
+    //   e.fillAlpha = 0;
+    // })
+
+    // timeline.add({
+    //   targets: this.lazer.getAll(),
+    //   alpha: 0.1,
+    //   ease: 'Power1',
+    //   duration: 10
+    // });
+    //
+    // timeline.add({
+    //   targets: this.lazer.last,
+    //   scaleX: 0,
+    //   ease: 'Power1',
+    //   duration: 10
+    // });
+
+
     timeline.add({
       targets: this.lazer.getAll(),
-      alpha: 0.1,
+      alpha: 0.2,
       ease: 'Power1',
-      duration: 3000
+      duration: 1000
+    });
+
+    timeline.add({
+      targets: this.lazer.last,
+      scaleX: 8.28,
+      alpha: 1,
+      scaleY: 0.029,
+      ease: 'Power1',
+      duration: 300
     });
 
     timeline.add({
       targets: this.lazer.getAll(),
-      scaleX: 0.25,
+      // scaleX: 4.25,
+      alpha: 1,
       ease: 'Power1',
-      duration: 3000
+      duration: 300
     });
 
     timeline.add({
       targets: this.lazer.getAll(),
-      scaleX: 0,
+      scaleY: 0,
+      alpha: 0,
       ease: 'Power1',
-      duration: 3000
+      duration: 100
     });
+
 
     timeline.play();
 
