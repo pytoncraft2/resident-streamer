@@ -60,11 +60,6 @@ export class Projectile extends Schema {
   @type("string") _frame?: string;
 }
 
-export class ZoneAttaque extends Schema {
-    @type("number") x: number = 1;
-    @type("number") y: number = 2;
-}
-
 export class Player extends Schema {
   @type("number") x?: number
   @type("number") y?: number
@@ -77,29 +72,8 @@ export class Player extends Schema {
   @type("number") ya?: number
 }
 
-
-
-// class MyState extends Schema {
-//     @type(ZoneAttaque) zoneAttaque: ZoneAttaque = new ZoneAttaque();
-// }
-
-// export class Input extends Schema {
-//   @type("boolean") left: boolean = false
-//   @type("boolean") right: boolean = false
-//   @type("boolean") up: boolean = false
-//   @type("boolean") down: boolean = false
-//   @type("boolean") space: boolean = false
-//   @type("boolean") a: boolean = false
-//   @type("boolean") z: boolean = false
-//   @type("boolean") e: boolean = false
-// }
-
 export class RoomState extends Schema {
   //@ts-ignore
   @type({ map: Player }) presences = new MapSchema<Player>()
-  // @type({ map: Boule }) boules = new MapSchema<Boule>()
-  // @type({ map: Kunai }) kunais = new MapSchema<Kunai>()
-  // @type({ map: Bombe }) bombes = new MapSchema<Bombe>()
   @type({ map: Projectile }) projectiles = new MapSchema<Projectile>()
-  // @type({ map: Input }) playerInputs = new MapSchema<Input>()
 }
