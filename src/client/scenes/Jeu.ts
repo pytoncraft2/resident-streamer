@@ -463,54 +463,15 @@ export default class Jeu extends Phaser.Scene {
 
     var timeline = this.tweens.createTimeline();
 
-    // (this.lazer as any).last.scaleX = 0
-    // this.lazer.each((e: any) => {
-    //   e.alpha = 0;
-    //   e.fillAlpha = 0;
-    // })
-
-    // timeline.add({
-    //   targets: this.lazer.getAll(),
-    //   alpha: 0.1,
-    //   ease: 'Power1',
-    //   duration: 10
-    // });
-    //
-    // timeline.add({
-    //   targets: this.lazer.last,
-    //   scaleX: 0,
-    //   ease: 'Power1',
-    //   duration: 10
-    // });
-
-
     timeline.add({
       targets: this.lazer.getAll(),
       alpha: 0.1,
       ease: 'Power1',
       duration: 500
     });
-    // timeline.add({
-    //   targets: this.lazer.first,
-    //   scaleX: 8.28,
-    //   duration: 300
-    // });
-
-
-    // timeline.add({
-    //   targets: this.lazer.last,
-    //   scaleX: 8.28,
-    //   alpha: 1,
-    //   scaleY: 0.029,
-    //   ease: 'Power1',
-    //   duration: 300
-    // });
-
-
 
     timeline.add({
       targets: this.lazer.getAll(),
-      // scaleX: 4.25,
       alpha: 1,
       ease: 'Power1',
       duration: 200
@@ -518,9 +479,6 @@ export default class Jeu extends Phaser.Scene {
     timeline.add({
       targets: this.lazer.last,
       scaleX: 8.28,
-      // alpha: 1,
-      // scaleY: 0.029,
-      // ease: 'Power1',
       duration: 200
     });
 
@@ -532,31 +490,7 @@ export default class Jeu extends Phaser.Scene {
       duration: 200
     });
 
-
     timeline.play();
-
-
-
-    // this.tweens.add({
-    //
-    //     targets: this.lazer.getAll(),
-    //     // scaleX: 0.25,
-    //     scaleX: 0.25,
-    //     // width: 1000,
-    //     alpha: { from: 0, to: 1 },
-    //
-    //     yoyo: true,
-    //     repeat: -1,
-    //     // alpha: 0,
-    //     ease: 'Sine.easeInOut',
-    //     duration: 200
-    //
-    // });
-
-    // this.lazer.setAll('width', 10);
-    // this.lazer.setSize(10, 10);
-
-
 	}
 
 
