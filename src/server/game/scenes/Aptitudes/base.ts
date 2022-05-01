@@ -1,23 +1,32 @@
-import {cross, kick, dash} from './fakhear'
-import {pique, suivre} from './_Aptitudes_bosses/boss_1'
-import {punch, vole, lanceManette, Direction_manette} from './_Aptitudes_bosses/manette'
-import {kunai, shuriken, multiclonage} from './huzounet'
-import {couteau, bombe} from './akhizonah'
-import {chargeVole} from './_Aptitudes_bosses/twitchman'
-import {soin, blesse, osmo_saut} from './osmosiscoop'
+// import {cross, kick, dash} from './fakhear'
+// import {pique, suivre} from './_boss_1'
+// import {punch, vole, lanceManette, Direction_manette} from './_manette'
+// import {kunai, shuriken, multiclonage} from './huzounet'
+// import {couteau, bombe} from './akhizonah'
+// import {chargeVole} from './_twitchman'
+// import {soin, blesse, osmo_saut} from './osmosiscoop'
 
 import TJoueur from "../types/Joueur";
 
 import fs = require('fs');
 
-fs.readdir('./src/server/game/scenes/Aptitudes/_Aptitudes_bosses', (err, files) => {
-  console.log(files)
- files.forEach(file => {
-  const module = import('./_Aptitudes_bosses/' + file);
-  // or const module = await import('file')
-  });
-});
+// fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
+//   console.log(files)
+//  files.forEach(file => {
+//    if (file != 'base.ts') {
+//      console.log(file)
+//      const files = import("./" + file);
+//
+//    }
+//   // or const module = await import('file')
+//   });
+// });
 
+// console.log(_manette)
+
+// console.log(jjj)
+//@ts-ignore
+// console.log(A)
 
 
 /**
@@ -174,42 +183,42 @@ const Direction_defaut = {
 export const Aptitudes = {
   'boss_1': {
     toucheA: (boss_1: TJoueur) => {
-      pique(boss_1)
+      // pique(boss_1)
     },
     toucheZ: (boss_1: TJoueur) => {
-      suivre(boss_1)
+      // suivre(boss_1)
     }
   },
   'manette': {
     toucheA: (manette: TJoueur, input?: Object) => {
-      punch(manette, input)
+      // punch(manette, input)
     },
     toucheZ: (manette: TJoueur, input: Object) => {
-      lanceManette(manette, input)
+      // lanceManette(manette, input)
     },
     toucheEspace: (manette: TJoueur, input: Object) => {
-      vole(manette, input)
+      // vole(manette, input)
     },
-    ...Direction_manette
+    // ...Direction_manette
   },
   'twitchman': {
     toucheA: (manette: TJoueur, _input?: Object) => {
-      chargeVole(manette)
+      // chargeVole(manette)
     },
     ...Direction_defaut
   },
   'fakhear': {
     toucheA: (fakhear: TJoueur, input?: Object) => {
-      cross(fakhear, input)
+      // cross(fakhear, input)
     },
     toucheZ: (fakhear: TJoueur) => {
-      kick(fakhear)
+      // kick(fakhear)
     },
     toucheE: (fakhear: TJoueur) => {
-      dash(fakhear)
+      // dash(fakhear)
     },
     toucheR: (fakhear: TJoueur) => {
-      interaction(fakhear)
+      // interaction(fakhear)
     },
     toucheEspace: (fakhear: TJoueur) => {
       saut(fakhear)
@@ -218,31 +227,31 @@ export const Aptitudes = {
   },
   'huzounet': {
     toucheA: (huzounet: TJoueur, input?: Object) => {
-      shuriken(huzounet, input)
+      // shuriken(huzounet, input)
     },
     toucheZ: (huzounet: TJoueur) => {
-      kunai(huzounet)
+      // kunai(huzounet)
     },
     toucheE: (huzounet: TJoueur) => {
-      multiclonage(huzounet)
+      // multiclonage(huzounet)
     },
     toucheR: (huzounet: TJoueur) => {
-      interaction(huzounet)
+      // interaction(huzounet)
     },
     toucheEspace: (huzounet: TJoueur) => {
-      saut(huzounet)
+      // saut(huzounet)
     },
     ...Direction_defaut
   },
   'akhizonah': {
     toucheA: (akhizonah: TJoueur, input?: Object) => {
-      couteau(akhizonah, input)
+      // couteau(akhizonah, input)
     },
     toucheZ: (akhizonah: TJoueur) => {
-      bombe(akhizonah)
+      // bombe(akhizonah)
     },
     toucheE: (akhizonah: TJoueur) => {
-      interaction(akhizonah)
+      // interaction(akhizonah)
     },
     toucheEspace: (akhizonah: TJoueur) => {
       saut(akhizonah)
@@ -251,16 +260,16 @@ export const Aptitudes = {
   },
   'osmosiscoop': {
     toucheA: (osmo: TJoueur, input?: Object) => {
-      soin(osmo, input)
+      // soin(osmo, input)
     },
     toucheZ: (osmo: TJoueur, input?: Object) => {
-      blesse(osmo, input)
+      // blesse(osmo, input)
     },
     toucheE: (osmo: TJoueur) => {
-      interaction(osmo)
+      // interaction(osmo)
     },
     toucheEspace: (osmo: TJoueur) => {
-      osmo_saut(osmo)
+      // osmo_saut(osmo)
     },
     ...Direction_defaut
   }
