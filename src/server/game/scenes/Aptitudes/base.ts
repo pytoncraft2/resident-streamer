@@ -6,22 +6,33 @@
 // import {chargeVole} from './_twitchman'
 // import {soin, blesse, osmo_saut} from './osmosiscoop'
 
+// import * as a from './_twitchman'
+import * as fs from 'fs';
+
+// const files = import("./" + );
+
+//@ts-ignore
+// a.survoler()
+
 import TJoueur from "../types/Joueur";
 
-import fs = require('fs');
+// import fs = require('fs');
 
-// fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
-//   console.log(files)
-//  files.forEach(file => {
-//    if (file != 'base.ts') {
-//      console.log(file)
-//      const files = import("./" + file);
-//
-//    }
-//   // or const module = await import('file')
-//   });
-// });
+fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
+  console.log(files)
+ files.forEach(file => {
+   if (file == '_twitchman.ts') {
+     console.log(file)
+     // import("./" + file).then();
+     const module = import('./' + file).then(m => m.survoler() );
 
+
+   }
+  // or const module = await import('file')
+  });
+});
+//@ts-ignore
+// survoler()
 // console.log(_manette)
 
 // console.log(jjj)
