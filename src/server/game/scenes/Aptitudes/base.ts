@@ -18,13 +18,24 @@ import TJoueur from "../types/Joueur";
 
 // import fs = require('fs');
 
+export const Aptitudes = {};
+
 fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
   console.log(files)
  files.forEach(file => {
    if (file == '_twitchman.ts') {
      console.log(file)
      // import("./" + file).then();
-     const module = import('./' + file).then(m => m.survoler() );
+     const module = import('./' + file).then((m) => {
+       Aptitudes['twitchman'] = {
+         // toucheA: function(manette: TJoueur, _input?: Object) {
+         //   // m.survoler()
+         //   console.log("OKAY")
+         //   // chargeVole(manette)
+         // }
+         ...Direction_defaut
+       }
+     });
 
 
    }
@@ -156,6 +167,7 @@ function interaction(personnage: TJoueur) {
 
 const Direction_defaut = {
   toucheDroite: (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+    console.log("DROITE")
     personnage.setVelocityX((personnage as any).vel);
     personnage.setDragX(1400)
     if (personnage.flipX) personnage.setFlipX(false);
@@ -191,100 +203,101 @@ const Direction_defaut = {
 }
 
 
-export const Aptitudes = {
-  'boss_1': {
-    toucheA: (boss_1: TJoueur) => {
-      // pique(boss_1)
-    },
-    toucheZ: (boss_1: TJoueur) => {
-      // suivre(boss_1)
-    }
-  },
-  'manette': {
-    toucheA: (manette: TJoueur, input?: Object) => {
-      // punch(manette, input)
-    },
-    toucheZ: (manette: TJoueur, input: Object) => {
-      // lanceManette(manette, input)
-    },
-    toucheEspace: (manette: TJoueur, input: Object) => {
-      // vole(manette, input)
-    },
-    // ...Direction_manette
-  },
-  'twitchman': {
-    toucheA: (manette: TJoueur, _input?: Object) => {
-      // chargeVole(manette)
-    },
-    ...Direction_defaut
-  },
-  'fakhear': {
-    toucheA: (fakhear: TJoueur, input?: Object) => {
-      // cross(fakhear, input)
-    },
-    toucheZ: (fakhear: TJoueur) => {
-      // kick(fakhear)
-    },
-    toucheE: (fakhear: TJoueur) => {
-      // dash(fakhear)
-    },
-    toucheR: (fakhear: TJoueur) => {
-      // interaction(fakhear)
-    },
-    toucheEspace: (fakhear: TJoueur) => {
-      saut(fakhear)
-    },
-    ...Direction_defaut
-  },
-  'huzounet': {
-    toucheA: (huzounet: TJoueur, input?: Object) => {
-      // shuriken(huzounet, input)
-    },
-    toucheZ: (huzounet: TJoueur) => {
-      // kunai(huzounet)
-    },
-    toucheE: (huzounet: TJoueur) => {
-      // multiclonage(huzounet)
-    },
-    toucheR: (huzounet: TJoueur) => {
-      // interaction(huzounet)
-    },
-    toucheEspace: (huzounet: TJoueur) => {
-      // saut(huzounet)
-    },
-    ...Direction_defaut
-  },
-  'akhizonah': {
-    toucheA: (akhizonah: TJoueur, input?: Object) => {
-      // couteau(akhizonah, input)
-    },
-    toucheZ: (akhizonah: TJoueur) => {
-      // bombe(akhizonah)
-    },
-    toucheE: (akhizonah: TJoueur) => {
-      // interaction(akhizonah)
-    },
-    toucheEspace: (akhizonah: TJoueur) => {
-      saut(akhizonah)
-    },
-    ...Direction_defaut
-  },
-  'osmosiscoop': {
-    toucheA: (osmo: TJoueur, input?: Object) => {
-      // soin(osmo, input)
-    },
-    toucheZ: (osmo: TJoueur, input?: Object) => {
-      // blesse(osmo, input)
-    },
-    toucheE: (osmo: TJoueur) => {
-      // interaction(osmo)
-    },
-    toucheEspace: (osmo: TJoueur) => {
-      // osmo_saut(osmo)
-    },
-    ...Direction_defaut
-  }
+// export const Aptitudes = {
+//   'boss_1': {
+//     toucheA: (boss_1: TJoueur) => {
+//       // pique(boss_1)
+//     },
+//     toucheZ: (boss_1: TJoueur) => {
+//       // suivre(boss_1)
+//     }
+//   },
+//   'manette': {
+//     toucheA: (manette: TJoueur, input?: Object) => {
+//       // punch(manette, input)
+//     },
+//     toucheZ: (manette: TJoueur, input: Object) => {
+//       // lanceManette(manette, input)
+//     },
+//     toucheEspace: (manette: TJoueur, input: Object) => {
+//       // vole(manette, input)
+//     },
+//     // ...Direction_manette
+//   },
+//   'twitchman': {
+//     toucheA: (manette: TJoueur, _input?: Object) => {
+//       // chargeVole(manette)
+//     },
+//     ...Direction_defaut
+//   },
+//   'fakhear': {
+//     toucheA: (fakhear: TJoueur, input?: Object) => {
+//       // cross(fakhear, input)
+//     },
+//     toucheZ: (fakhear: TJoueur) => {
+//       // kick(fakhear)
+//     },
+//     toucheE: (fakhear: TJoueur) => {
+//       // dash(fakhear)
+//     },
+//     toucheR: (fakhear: TJoueur) => {
+//       // interaction(fakhear)
+//     },
+//     toucheEspace: (fakhear: TJoueur) => {
+//       saut(fakhear)
+//     },
+//     ...Direction_defaut
+//   },
+//   'huzounet': {
+//     toucheA: (huzounet: TJoueur, input?: Object) => {
+//       // shuriken(huzounet, input)
+//     },
+//     toucheZ: (huzounet: TJoueur) => {
+//       // kunai(huzounet)
+//     },
+//     toucheE: (huzounet: TJoueur) => {
+//       // multiclonage(huzounet)
+//     },
+//     toucheR: (huzounet: TJoueur) => {
+//       // interaction(huzounet)
+//     },
+//     toucheEspace: (huzounet: TJoueur) => {
+//       // saut(huzounet)
+//     },
+//     ...Direction_defaut
+//   },
+//   'akhizonah': {
+//     toucheA: (akhizonah: TJoueur, input?: Object) => {
+//       // couteau(akhizonah, input)
+//     },
+//     toucheZ: (akhizonah: TJoueur) => {
+//       // bombe(akhizonah)
+//     },
+//     toucheE: (akhizonah: TJoueur) => {
+//       // interaction(akhizonah)
+//     },
+//     toucheEspace: (akhizonah: TJoueur) => {
+//       saut(akhizonah)
+//     },
+//     ...Direction_defaut
+//   },
+//   'osmosiscoop': {
+//     toucheA: (osmo: TJoueur, input?: Object) => {
+//       // soin(osmo, input)
+//     },
+//     toucheZ: (osmo: TJoueur, input?: Object) => {
+//       // blesse(osmo, input)
+//     },
+//     toucheE: (osmo: TJoueur) => {
+//       // interaction(osmo)
+//     },
+//     toucheEspace: (osmo: TJoueur) => {
+//       // osmo_saut(osmo)
+//     },
+//     ...Direction_defaut
+//   }
+//
+// };
 
-};
-
-// export const Aptitudes = () => parametres;
+// export const Aptitudes;
+// export default Aptitudes;
