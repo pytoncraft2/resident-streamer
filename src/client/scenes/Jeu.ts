@@ -486,26 +486,42 @@ export default class Jeu extends Phaser.Scene {
 
     timeline.add({
       targets: this.lazer.getAll(),
-      alpha: 0.2,
+      alpha: 0.1,
       ease: 'Power1',
-      duration: 1000
+      duration: 500
     });
+    // timeline.add({
+    //   targets: this.lazer.first,
+    //   scaleX: 8.28,
+    //   duration: 300
+    // });
 
-    timeline.add({
-      targets: this.lazer.last,
-      scaleX: 8.28,
-      alpha: 1,
-      scaleY: 0.029,
-      ease: 'Power1',
-      duration: 300
-    });
+
+    // timeline.add({
+    //   targets: this.lazer.last,
+    //   scaleX: 8.28,
+    //   alpha: 1,
+    //   scaleY: 0.029,
+    //   ease: 'Power1',
+    //   duration: 300
+    // });
+
+
 
     timeline.add({
       targets: this.lazer.getAll(),
       // scaleX: 4.25,
       alpha: 1,
       ease: 'Power1',
-      duration: 300
+      duration: 200
+    });
+    timeline.add({
+      targets: this.lazer.last,
+      scaleX: 8.28,
+      // alpha: 1,
+      // scaleY: 0.029,
+      // ease: 'Power1',
+      duration: 200
     });
 
     timeline.add({
@@ -513,7 +529,7 @@ export default class Jeu extends Phaser.Scene {
       scaleY: 0,
       alpha: 0,
       ease: 'Power1',
-      duration: 100
+      duration: 200
     });
 
 
