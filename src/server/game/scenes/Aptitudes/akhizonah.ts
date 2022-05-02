@@ -1,5 +1,5 @@
 import TJoueur from "../types/Joueur";
-import BombeClass from "../class/objets/BombeClass";
+import BombeClass from "../class/elements/BombeClass";
 
 export function couteau(akhizonah: TJoueur, input?: any) {
   if (input.a) {

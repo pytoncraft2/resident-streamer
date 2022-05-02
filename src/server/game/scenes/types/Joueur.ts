@@ -11,7 +11,6 @@ interface Scene extends Phaser.Scene {
 
 interface TJoueur extends Phaser.GameObjects.Sprite
 {
-  parametresDeBase?: BaseEquipement
   ClientID: string
   vie: number,
   displayWidth: number,

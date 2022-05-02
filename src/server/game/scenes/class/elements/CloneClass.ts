@@ -1,7 +1,6 @@
 import { Player } from "../../../RoomState"
 import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
-import { EtatsInitialStatique } from "../../Aptitudes/base"
 
 
 
@@ -24,11 +23,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
   zoneInteraction: any
 
-
   vitesse: number = 0
   puissance: number = 0
-  parametresDeBase: any
-
 
   ClientID: string
 
@@ -49,8 +45,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   init(scene: Phaser.Scene, id: string, createur) {
-
-    this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
 
     this.scene = scene
     this.createur = createur

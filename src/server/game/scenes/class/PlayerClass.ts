@@ -1,7 +1,8 @@
 import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
-import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
+import { Aptitudes } from "../Aptitudes/base"
+// import { ActivationStats } from "../Aptitudes/base"
 
 
 /**
@@ -26,7 +27,6 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
    groupeBoules: any
    degat: number = 1
    vole: boolean = false;
-   parametresDeBase: any
    constructor(
      scene: Phaser.Scene,
      x: number,
@@ -47,10 +47,6 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
 
-     this.parametresDeBase = EtatsInitialStatique(this)[this.sprite]
-
-     this.degat = this.parametresDeBase.degat
-
      this.etats = {
        'initial': {
          couleur: 16777215,
@@ -67,6 +63,12 @@ import { Aptitudes, EtatsInitialStatique } from "../Aptitudes/base"
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
+     const self = this;
+     setTimeout(() => {
+     Aptitudes[this.sprite].stats.call(self, self)
+}, 3000);
+     // Aptitudes[this.sprite].stats.ActivationStats(this)
+     // new Aptitudes[this.sprite].ActivationStats(this)
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false
