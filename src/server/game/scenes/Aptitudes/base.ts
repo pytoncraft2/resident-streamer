@@ -22,34 +22,120 @@ export const Aptitudes = {};
 
 fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
   console.log(files)
- files.forEach(file => {
-   // console.log(file)
-   if (file != 'base.ts') {
-     // console.log(file)
-     // import("./" + file).then();
-       console.log(file.substring(0, file.lastIndexOf('.')))
-     const module = import('./' + file).then((m) => {
-       // console.log(m)
-       // Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
-       //   // toucheA: function(manette: TJoueur, _input?: Object) {
-       //   //   // m.survoler()
-       //   //   console.log("OKAY")
-       //   //   // chargeVole(manette)
-       //   // }
-       //   ...Direction_defaut
-       // }
+//    // console.log(file)
+//    if (file != 'base.ts') {
+//      // console.log(file)
+//      // import("./" + file).then();
+//        console.log(file.substring(0, file.lastIndexOf('.')))
+//      const module = import('./' + file).then((m) => {
+//        // console.log(m)
+//        // Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
+//        //   // toucheA: function(manette: TJoueur, _input?: Object) {
+//        //   //   // m.survoler()
+//        //   //   console.log("OKAY")
+//        //   //   // chargeVole(manette)
+//        //   // }
+//        //   ...Direction_defaut
+//        // }
+//
+// //        const arr = [{id: 'a'}, {id: 'b'}, {id: 'c'}];
+// //
+// //        const values = arr.map(object => object.id)
+// // for (const [key, value] of Object.entries(m)) {
+// //   // console.log(`${key}: ${value}`);
+// //   console.log(`${key}`);
+// // }
+//      });
+//
+//
+//    }
+//   // or const module = await import('file')
 
 
-for (const [key, value] of Object.entries(m)) {
-  // console.log(`${key}: ${value}`);
-  console.log(`${key}`);
-}
-     });
 
 
-   }
-  // or const module = await import('file')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+files.forEach((file, index) => {
+  const module = import('./' + file).then((m) => {
+    if (file != 'base.ts')
+    {
+      // console.log(index)
+      // console.log(Object.entries(m).length)
+      // console.log(Object.entries(m))
+
+      Object.entries(m).map((x, i) => {
+
+      Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
+        toucheA: x[1],
+        toucheZ: x[1],
+        toucheE: x[1],
+        toucheR: x[1]
+      }
+      // if (x[1][0])
+      console.log(x[0])
+      // console.log(Object.entries(m)[i])
+      // console.log("_____________________")
+
+      });
+      // console.log(m)
+      // console.log(m.length)
+
+
+      //   toucheA: m.couteau,
+      //   toucheZ: m.couteau,
+      //   toucheE: m.couteau
+    }
   });
+});
+
+
+
+
+setTimeout(() => {
+//
+console.log(Aptitudes)
+}, 3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 //@ts-ignore
 // survoler()
