@@ -29,15 +29,21 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
      // import("./" + file).then();
        console.log(file.substring(0, file.lastIndexOf('.')))
      const module = import('./' + file).then((m) => {
-       console.log(m)
-       Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
-         // toucheA: function(manette: TJoueur, _input?: Object) {
-         //   // m.survoler()
-         //   console.log("OKAY")
-         //   // chargeVole(manette)
-         // }
-         ...Direction_defaut
-       }
+       // console.log(m)
+       // Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
+       //   // toucheA: function(manette: TJoueur, _input?: Object) {
+       //   //   // m.survoler()
+       //   //   console.log("OKAY")
+       //   //   // chargeVole(manette)
+       //   // }
+       //   ...Direction_defaut
+       // }
+
+
+for (const [key, value] of Object.entries(m)) {
+  // console.log(`${key}: ${value}`);
+  console.log(`${key}`);
+}
      });
 
 
