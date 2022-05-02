@@ -23,11 +23,14 @@ export const Aptitudes = {};
 fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
   console.log(files)
  files.forEach(file => {
-   if (file == '_twitchman.ts') {
-     console.log(file)
+   // console.log(file)
+   if (file != 'base.ts') {
+     // console.log(file)
      // import("./" + file).then();
+       console.log(file.substring(0, file.lastIndexOf('.')))
      const module = import('./' + file).then((m) => {
-       Aptitudes['twitchman'] = {
+       console.log(m)
+       Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
          // toucheA: function(manette: TJoueur, _input?: Object) {
          //   // m.survoler()
          //   console.log("OKAY")
