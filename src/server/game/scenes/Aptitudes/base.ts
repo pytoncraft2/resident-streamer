@@ -80,26 +80,47 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
 
 files.forEach((file, index) => {
   const module = import('./' + file).then((m) => {
-    if (file != 'base.ts')
+    if (file == 'twitchman.ts')
     {
       // console.log(index)
       // console.log(Object.entries(m).length)
       // console.log(Object.entries(m))
 
-      Object.entries(m).map((x, i) => {
+      // Object.entries(m).map((x, i) => {
+      // console.log(m)
 
-      Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
-        toucheA: x[1],
-        toucheZ: x[1],
-        toucheE: x[1],
-        toucheR: x[1]
-      }
+
+          // console.log(Object.values(m)[1])
+      // for (let i = 0; i < Object.entries(m).length; i++) {
+      //     // array[i];
+          Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
+            toucheA: Object.values(m)[0],
+            toucheZ: Object.values(m)[1],
+            toucheE: Object.values(m)[2],
+            toucheR: Object.values(m)[3]
+          }
+      //
+      //     console.log(Object.entries(m)[i])
+      // }
+      // console.log(Object.entries(m).length)
+      // for (const [key, value] of Object.entries(m)) {
+      //   console.log(value);
+      //   console.log(key);
+      // }
+
+
+      // Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
+      //   toucheA: x[1],
+      //   toucheZ: x,
+      //   toucheE: m,
+      //   toucheR: x[1]
+      // }
       // if (x[1][0])
-      console.log(x[0])
-      // console.log(Object.entries(m)[i])
+      // console.log(x)
+      // console.log(Object.entries(m)[2][1])
       // console.log("_____________________")
 
-      });
+      // });
       // console.log(m)
       // console.log(m.length)
 
