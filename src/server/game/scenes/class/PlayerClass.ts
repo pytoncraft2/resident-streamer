@@ -2,8 +2,7 @@ import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
-// import { ActivationStats } from "../Aptitudes/base"
-
+import { DefautStats } from "../Stats/DefautStats"
 
 /**
  * Joueur et interaction
@@ -64,11 +63,10 @@ import { Aptitudes } from "../Aptitudes/base"
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
      const self = this;
-     setTimeout(() => {
+     DefautStats(this)
      Aptitudes[this.sprite].stats.call(self, self)
-}, 3000);
-     // Aptitudes[this.sprite].stats.ActivationStats(this)
-     // new Aptitudes[this.sprite].ActivationStats(this)
+     // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
+     // new Aptitudes[this.sprite].StatsSupplementaire(this)
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false

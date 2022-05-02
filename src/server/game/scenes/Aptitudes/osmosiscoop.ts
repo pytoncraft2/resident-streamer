@@ -1,5 +1,7 @@
 import TJoueur from "../types/Joueur";
 
+export function StatsSupplementaire() {}
+
 export function soin(osmo: TJoueur, input: any) {
   if (input.a)
   {

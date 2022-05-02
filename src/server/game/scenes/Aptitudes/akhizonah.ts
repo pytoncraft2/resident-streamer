@@ -1,6 +1,8 @@
 import TJoueur from "../types/Joueur";
 import BombeClass from "../class/elements/BombeClass";
 
+export function StatsSupplementaire() {}
+
 export function couteau(akhizonah: TJoueur, input?: any) {
   if (input.a) {
     input.a = false

@@ -1,4 +1,7 @@
 import ManetteClass from '../class/elements/ManetteClass'
+
+export function StatsSupplementaire() {}
+
 export function punch(manette, input) {
   if (input.a) {
     manette.setVelocityY(1000)

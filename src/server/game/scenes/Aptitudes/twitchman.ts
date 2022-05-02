@@ -1,3 +1,5 @@
+export function StatsSupplementaire() {}
+
 export function charge(twitchman: any) {
 // console.log(twitchman.x)
 // twitchman.setTexture('atlas')

@@ -1,5 +1,7 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 
+export function StatsSupplementaire() {}
+
 export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false

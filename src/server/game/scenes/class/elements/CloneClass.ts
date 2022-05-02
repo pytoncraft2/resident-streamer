@@ -2,14 +2,6 @@ import { Player } from "../../../RoomState"
 import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 
-
-
-class MesVariables {
-  miaou: number = 400
-  ouaf: number = 100
-}
-
-
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400

@@ -2,65 +2,16 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/elements/BouleClass"
 import KunaiClass from "../class/elements/KunaiClass"
 import CloneClass from "../class/elements/CloneClass"
-import { DefautStats } from "../Stats/DefautStats"
 
 import TJoueur from "../types/Joueur";
 
-// export const ActivationStats = (huzounet: any) => {
-//   console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSTATE ACTIVER !!!!!!!!!!!!!!!!!!!!!")
-//   return {
-//     ...DefautStats,
-//     test: 'test1',
-//     test2: 'test2',
-//     test3: 'test3',
-//     test4: 'test4',
-//     boulesEnMain: huzounet.scene.physics.add.group({
-//       runChildUpdate: true,
-//       collideWorldBounds: true,
-//       maxSize: 4
-//     })
-//   }
-// }
-export function ActivationStats(huzounet, i) {
-// export const ActivationStats = (huzounet?: TJoueur) => {
-  console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSTATE ACTIVER !!!!!!!!!!!!!!!!!!!!!")
-  // console.log(huzounet)
-  huzounet.vie = 5
-  // console.log(d)
-      // huzounet.vie = 5;
-      // displayWidth: 104,
-      // displayHeight: 302,
-      huzounet.degat = 1;
-      // masse: 30,
-      // puissanceDeBase: 10,
-      huzounet.boulesEnMain = huzounet.scene.physics.add.group({
-        runChildUpdate: true,
-        collideWorldBounds: true,
-        maxSize: 4
-      })
+export function StatsSupplementaire(huzounet, i) {
+  huzounet.boulesEnMain = huzounet.scene.physics.add.group({
+    runChildUpdate: true,
+    collideWorldBounds: true,
+    maxSize: 4
+  })
 }
-// new ActivationStats({
-//   vie: 5
-// })
-//
-// console.log(ActivationStats)
-
-
-// export const ActivationStats = (huzounet?: TJoueur) => {
-//       // huzounet.vie = 5;
-//       // // displayWidth: 104,
-//       // // displayHeight: 302,
-//       // huzounet.degat = 1;
-//       // // masse: 30,
-//       // // puissanceDeBase: 10,
-//       // huzounet.boulesEnMain = huzounet.scene.physics.add.group({
-//       //   runChildUpdate: true,
-//       //   collideWorldBounds: true,
-//       //   maxSize: 4
-//       // })
-//       console.log("TEST----------------------")
-// }
-
 
 
 /**

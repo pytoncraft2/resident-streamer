@@ -3,7 +3,6 @@ import path from 'path'
 const nomFichierCourant = path.basename(__filename);
 export const Aptitudes = {};
 
-// export const ActivationStats = {}
 //import de toute les Aptitudes des personnages
 fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
   files.forEach((file) => {
@@ -26,4 +25,4 @@ setTimeout(() => {
 console.log(Aptitudes)
 }, 3000);
 
-// ActivationStats
+// StatsSupplementaire
