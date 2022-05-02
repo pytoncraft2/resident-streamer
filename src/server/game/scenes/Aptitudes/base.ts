@@ -80,7 +80,7 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (err, files) => {
 
 files.forEach((file, index) => {
   const module = import('./' + file).then((m) => {
-    if (file == 'twitchman.ts')
+    if (file != 'base.ts')
     {
       // console.log(index)
       // console.log(Object.entries(m).length)
