@@ -1,6 +1,70 @@
 {
     "frames": [
-
+        {
+            "filename": "twitchmanfly4",
+            "frame": {
+                "w": 328,
+                "h": 414,
+                "x": 783,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly3",
+            "frame": {
+                "w": 345,
+                "h": 414,
+                "x": 0,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly2",
+            "frame": {
+                "w": 334,
+                "h": 414,
+                "x": 345,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly1",
+            "frame": {
+                "w": 352,
+                "h": 414,
+                "x": 679,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly0",
+            "frame": {
+                "w": 320,
+                "h": 414,
+                "x": 1031,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
           {
               "filename": "manette6",
               "frame": {

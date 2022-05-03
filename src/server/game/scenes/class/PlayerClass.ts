@@ -2,7 +2,7 @@ import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
-import { DefautStats } from "../Stats/DefautStats"
+import { DefautStats, DefautDirection } from "../Stats/DefautStats"
 
 /**
  * Joueur et interaction
@@ -64,6 +64,7 @@ import { DefautStats } from "../Stats/DefautStats"
      new AnimationEnnemie(this.anims)
      const self = this;
      DefautStats(this)
+     DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].stats.call(self, self)
      // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
      // new Aptitudes[this.sprite].StatsSupplementaire(this)

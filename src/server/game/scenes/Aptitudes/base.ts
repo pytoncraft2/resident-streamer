@@ -16,6 +16,7 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
           toucheE: Object.values(m)[3],
           toucheR: Object.values(m)[4]
         }
+
       }
     });
   });

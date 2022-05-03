@@ -1,12 +1,17 @@
 export function StatsSupplementaire() {}
+import TJoueur from "../types/Joueur";
 
-export function charge(twitchman: any) {
-// console.log(twitchman.x)
-// twitchman.setTexture('atlas')
-console.log('chaaaaaaaaaaaaaaaaaaaaaaaaaaarge twitchman')
+export function survoler(twitchman, input) {
+  if (input.a)
+  {
+    twitchman.play('twitchman_vole', true)
+    twitchman.body.setVelocityY(-500)
+  }
+
+  if (input.a_fin)
+  {
+  }
 }
 
-export function survoler() {
-console.log('survoler twitchman')
-
+export function charge(twitchman: TJoueur, input) {
 }
