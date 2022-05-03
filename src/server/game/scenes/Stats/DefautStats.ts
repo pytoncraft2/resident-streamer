@@ -3,9 +3,8 @@ export const DefautStats = (personnage?: any) => {
       personnage.degat = 1;
 }
 
-export const DefautDirection = (aptitudes: any, personnage: any) => {
-  aptitudes[personnage.sprite].toucheDroite = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
-      console.log("DROITE")
+export const DefautDirection = (Aptitudes: any, personnage: any) => {
+  Aptitudes[personnage.sprite].toucheDroite = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
       personnage.setVelocityX((personnage as any).vel);
       personnage.setDragX(1400)
       if (personnage.flipX) personnage.setFlipX(false);
@@ -22,7 +21,7 @@ export const DefautDirection = (aptitudes: any, personnage: any) => {
         personnage.setDragX(8400)
       }
     }
-  aptitudes[personnage.sprite].toucheGauche = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+  Aptitudes[personnage.sprite].toucheGauche = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
       personnage.setVelocityX(-(personnage as any).vel);
       personnage.setDragX(1400)
       if (!personnage.flipX) personnage.setFlipX(true);
@@ -37,5 +36,8 @@ export const DefautDirection = (aptitudes: any, personnage: any) => {
         personnage.setDragX(8400)
         personnage.play('idle_walk')
       }
+    }
+    Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+      personnage.setVelocityY(-500);
     }
 }

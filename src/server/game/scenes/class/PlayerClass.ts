@@ -23,7 +23,7 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
    soigne: boolean = false
    interaction_objet: boolean = false
    groupeBoules: any
-   
+
    vie: number = 10
    degat: number = 1
    vole: boolean = false;
@@ -64,11 +64,8 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
      const self = this;
+     DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].stats.call(self, self, Aptitudes)
-     // DefautDirection(Aptitudes, this)
-     console.log("DEEEEEEEEEEEEEEEEEEEEEEEEFAUUUT apt")
-     console.log(Aptitudes)
-     console.log("FIN")
      // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
      // new Aptitudes[this.sprite].StatsSupplementaire(this)
 
