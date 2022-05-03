@@ -43,6 +43,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   //mannette
   obj_manette: Phaser.Physics.Arcade.Sprite
+
+  //twitchman
+  survole: boolean
 }
 
   export default TJoueur;

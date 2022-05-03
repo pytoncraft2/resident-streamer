@@ -4,22 +4,10 @@ export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
   Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
     _twitchman.body.setVelocityY(-500)
     _twitchman.play('twitchman_vole', true)
-  }
-  Aptitudes[twitchman.sprite].toucheDroite = function (_twitchman: TJoueur) {
-    // _twitchman.body.setVelocityY(-500)
-    _twitchman.body.setDragX(8400)
-
-    _twitchman.body.setVelocityX(500);
-    if (_twitchman.flipX) _twitchman.setFlipX(false);
-
-    // _twitchman.play('twitchman_vole', true)
-  }
-  Aptitudes[twitchman.sprite].toucheGauche = function (_twitchman: TJoueur) {
-    _twitchman.body.setVelocityX(-500);
-    _twitchman.body.setDragX(8400)
-    if (!_twitchman.flipX) _twitchman.setFlipX(true);
-    // _twitchman.body.setVelocityY(-500)
-    // _twitchman.play('twitchman_vole', true)
+    _twitchman.survole = true
+    _twitchman.scene.time.delayedCall(410, () => {
+      _twitchman.survole = false
+    })
   }
 }
 
@@ -27,7 +15,6 @@ export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
 export function punch(twitchman: TJoueur, input) {
   if (input.a)
   {
-  console.log("PUNCH ????????")
   twitchman.play('twitchman_punch')
   }
 }
@@ -35,7 +22,6 @@ export function punch(twitchman: TJoueur, input) {
 export function charge(twitchman, input) {
   if (input.z)
   {
-    console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
     twitchman.play('twitchman_charge')
   // twitchman.play('twitchman_punch')
     // twitchman.body.setVelocityX(twitchman.flipX ? -5000 : 5000)
@@ -50,6 +36,5 @@ export function charge(twitchman, input) {
   {
     twitchman.setVelocity(0)
     twitchman.play('twitchman_vole', true)
-    console.log("FFFFFFFFFFFFFFFFFFIN ZZZ")
   }
 }

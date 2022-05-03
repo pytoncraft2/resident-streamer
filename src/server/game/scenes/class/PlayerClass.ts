@@ -24,6 +24,8 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
    interaction_objet: boolean = false
    groupeBoules: any
 
+   survole: boolean = false
+
    vie: number = 10
    degat: number = 1
    vole: boolean = false;
@@ -154,7 +156,6 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
 
        if (left_fin) input.left_fin = false;
        if (z_fin) input.z_fin = false;
-       console.log(z_fin)
        if (right_fin) input.right_fin = false;
        if (space_fin) input.space_fin = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
