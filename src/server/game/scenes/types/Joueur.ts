@@ -32,12 +32,16 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   //huzounet
   puissanceChargeBoule: number,
   boulesEnMain: Phaser.Physics.Arcade.Group
+  clone: boolean
 
   //akhizonah
   bombe: Phaser.Physics.Arcade.Sprite|undefined
 
   //osmosiscoop
   soigne: boolean
+
+  //mannette
+  obj_manette: Phaser.Physics.Arcade.Sprite
 }
 
   export default TJoueur;

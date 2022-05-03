@@ -1,19 +1,22 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
+import TJoueur from "../types/Joueur";
+
+
 export function StatsSupplementaire() {}
 
-export function punch(manette, input) {
+export function punch(manette: TJoueur, input: any) {
   if (input.a) {
-    manette.setVelocityY(1000)
+    manette.body.setVelocityY(1000)
     manette.play('manette_punch')
   }
 }
 
-export function lanceManette(manette, input) {
+export function lanceManette(manette: TJoueur, input: any) {
 
   if (!manette.obj_manette) {
     manette.play('manette_lance')
-      manette.setVelocityY(1000)
+      manette.body.setVelocityY(1000)
     const obj_manette = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
@@ -37,7 +40,7 @@ export function lanceManette(manette, input) {
   }
 }
 
-export function vole(manette, input) {
+export function vole() {
 
 // manette.vole = true
 //   console.log("vole")

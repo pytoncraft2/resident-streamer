@@ -5,7 +5,7 @@ import CloneClass from "../class/elements/CloneClass"
 
 import TJoueur from "../types/Joueur";
 
-export function StatsSupplementaire(huzounet, i) {
+export function StatsSupplementaire(huzounet: TJoueur) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     collideWorldBounds: true,
@@ -86,20 +86,16 @@ export function kunai(huzounet: TJoueur) {
     }
 }
 
-export function multiclonage(huzounet) {
-  if (!huzounet.ok) {
-    huzounet.ok = true
+export function multiclonage(huzounet: TJoueur) {
+  if (!huzounet.clone) {
+    huzounet.clone = true
     const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
     const clone2 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
     const clone3 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 200, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
     const clone4 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x - 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
-    huzounet.scene.physics.add.existing(clone1, clone2, clone3, clone4);
-    // huzounet.scene.physics.add.existing(clone1);
-    // clone1.auto()
-    // clone2.auto()
-    // clone3.auto()
-    // clone4.auto()
-
-    // clone4.auto()
+    huzounet.scene.physics.add.existing(clone1);
+    huzounet.scene.physics.add.existing(clone2);
+    huzounet.scene.physics.add.existing(clone3);
+    huzounet.scene.physics.add.existing(clone4);
   }
 }
