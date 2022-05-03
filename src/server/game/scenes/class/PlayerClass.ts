@@ -138,14 +138,14 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin } = input
+     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin } = input
      let animationName = this.anims.getFrameName()
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
-       if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this, input);
+       if (z || z_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this, input);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
        if (left || left_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
@@ -153,6 +153,8 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
        if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
 
        if (left_fin) input.left_fin = false;
+       if (z_fin) input.z_fin = false;
+       console.log(z_fin)
        if (right_fin) input.right_fin = false;
        if (space_fin) input.space_fin = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
