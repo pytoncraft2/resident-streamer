@@ -1,4 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
+import TJoueur from "../types/Joueur";
+
 
 export function StatsSupplementaire() {}
 
@@ -31,4 +33,13 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   } else if (!fakhear.animation_dash.isPlaying()) {
     fakhear.animation_dash.restart()
   }
+}
+
+export function interaction(personnage: TJoueur) {
+  personnage.interaction_objet = true
+  personnage.scene.tweens.addCounter({
+    duration: 1,
+    onComplete: () => (personnage.interaction_objet = false)
+  })
+  // fakhear.interaction_objet = false
 }
