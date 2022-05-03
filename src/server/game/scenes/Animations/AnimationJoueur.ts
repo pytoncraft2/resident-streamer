@@ -169,6 +169,14 @@ anim.create({
   repeat: 0
 })
 
+anim.create({
+  key: "twitchman_charge",
+  frames: anim.generateFrameNames('atlas', { prefix: 'twitchmancharge', start: 0, end: 0 }),
+  frameRate: 1,
+  repeat: 0
+})
+
+
 
 
 

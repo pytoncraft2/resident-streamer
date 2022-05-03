@@ -41,5 +41,4 @@ export function interaction(personnage: TJoueur) {
     duration: 1,
     onComplete: () => (personnage.interaction_objet = false)
   })
-  // fakhear.interaction_objet = false
 }
