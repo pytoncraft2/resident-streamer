@@ -47,29 +47,3 @@ export function vole() {
 //     manette.play('manette_vole')
 //     manette.setVelocityY(-800)
 }
-
-export const Direction_manette = {
-  toucheDroite: (manette, input) => {
-    manette.setVelocityX(800)
-    if (input.space) {
-      manette.body.setAllowGravity(false)
-      manette.setVelocityY(-500)
-      manette.play('manette_vole')
-    }
-    if (input.space_fin) manette.body.setVelocityY(200)
-    if (manette.flipX) manette.setFlipX(false)
-    manette.setDragX(2000)
-  },
-  toucheGauche: (manette, input) => {
-    if (input.space) {
-      manette.body.setAllowGravity(false)
-      manette.setVelocityY(-500)
-      manette.play('manette_vole')
-    }
-    if (input.space_fin) manette.body.setVelocityY(200)
-    if (!manette.flipX) manette.setFlipX(true)
-    manette.setFlipX(true)
-    manette.setVelocityX(-800)
-    manette.setDragX(2000)
-  }
-}

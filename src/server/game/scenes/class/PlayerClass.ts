@@ -12,7 +12,6 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
    ClientID: any
    sprite: string
    vel: number = 600
-   vie: number = 10
    compteurSaut: number = 0
    canMove: boolean = true
    attaque: boolean = false
@@ -24,6 +23,8 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
    soigne: boolean = false
    interaction_objet: boolean = false
    groupeBoules: any
+   
+   vie: number = 10
    degat: number = 1
    vole: boolean = false;
    constructor(
@@ -63,9 +64,11 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
      const self = this;
-     DefautStats(this)
-     DefautDirection(Aptitudes, this)
-     Aptitudes[this.sprite].stats.call(self, self)
+     Aptitudes[this.sprite].stats.call(self, self, Aptitudes)
+     // DefautDirection(Aptitudes, this)
+     console.log("DEEEEEEEEEEEEEEEEEEEEEEEEFAUUUT apt")
+     console.log(Aptitudes)
+     console.log("FIN")
      // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
      // new Aptitudes[this.sprite].StatsSupplementaire(this)
 
@@ -147,10 +150,10 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
        if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
        if (z) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this, input);
        if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this);
-       // if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
        if (left || left_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
        if (right || right_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
+       if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
 
        if (left_fin) input.left_fin = false;
        if (right_fin) input.right_fin = false;

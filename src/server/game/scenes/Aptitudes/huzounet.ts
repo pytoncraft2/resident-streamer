@@ -5,12 +5,26 @@ import CloneClass from "../class/elements/CloneClass"
 
 import TJoueur from "../types/Joueur";
 
-export function StatsSupplementaire(huzounet: TJoueur) {
+export function StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     collideWorldBounds: true,
     maxSize: 4
   })
+console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+
+console.log(Aptitudes)
+console.log("_______________________")
+console.log(Aptitudes[huzounet.sprite])
+  Aptitudes[huzounet.sprite].toucheDroite = function (_huzounet: TJoueur) {
+    _huzounet.body.setVelocityX(9000)
+  }
+  Aptitudes[huzounet.sprite].toucheGauche = function (_huzounet: TJoueur) {
+    _huzounet.body.setVelocityX(-9000)
+  }
+  Aptitudes[huzounet.sprite].toucheEspace = function (_huzounet: TJoueur) {
+    _huzounet.body.setVelocityY(-9000)
+  }
 }
 
 

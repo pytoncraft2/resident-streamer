@@ -1,20 +1,33 @@
 {
     "frames": [
-      {
-        "filename": "face0",
-        "frame": {
-          "w": 251,
-          "h": 364,
-          "x": 0,
-          "y": 0
-        },
-        "anchor": {
-          "x": 0.5,
-          "y": 0.5
-        }
-      },
         {
-            "filename": "twitchmanpunch",
+          "filename": "face0",
+          "frame": {
+            "w": 251,
+            "h": 364,
+            "x": 0,
+            "y": 0
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "twitchmanpunch1",
+          "frame": {
+            "w": 251,
+            "h": 364,
+            "x": 0,
+            "y": 0
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "twitchmanpunch0",
             "frame": {
                 "w": 332,
                 "h": 357,

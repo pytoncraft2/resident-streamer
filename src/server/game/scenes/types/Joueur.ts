@@ -26,6 +26,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   interaction_objet: boolean
   compteurSaut: number;
   degat: number
+  sprite: string
 
   body: Phaser.Physics.Arcade.Body
 

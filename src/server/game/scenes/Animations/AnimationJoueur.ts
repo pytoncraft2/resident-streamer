@@ -146,8 +146,6 @@ anim.create({
   repeat: 0
 })
 
-
-
 anim.create({
   key: "manette_lance",
   frames: anim.generateFrameNames('atlas', { prefix: 'manettelance', start: 0, end: 3 }),
@@ -163,6 +161,14 @@ anim.create({
   frameRate: 10,
   repeat: 0
 })
+
+anim.create({
+  key: "twitchman_punch",
+  frames: anim.generateFrameNames('atlas', { prefix: 'twitchmanpunch', start: 0, end: 1 }),
+  frameRate: 23,
+  repeat: 0
+})
+
 
 
 
