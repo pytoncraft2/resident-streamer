@@ -1,4 +1,5 @@
 import TJoueur from "../types/Joueur";
+import LaserClass from "../class/elements/LaserClass";
 
 export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
   Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
@@ -23,13 +24,8 @@ export function charge(twitchman, input) {
   if (input.z)
   {
     twitchman.play('twitchman_charge')
-  // twitchman.play('twitchman_punch')
-    // twitchman.body.setVelocityX(twitchman.flipX ? -5000 : 5000)
     twitchman.body.setVelocityX(twitchman.flipX ? -5000 : 5000)
-
-    // twitchman.scene.physics.accelerateToObject(clown, block, 60, 300, 300);
     input.z = false
-
   }
 
   if (input.z_fin)
@@ -37,4 +33,20 @@ export function charge(twitchman, input) {
     twitchman.setVelocity(0)
     twitchman.play('twitchman_vole', true)
   }
+}
+
+export function lazer(twitchman, input) {
+  console.log("LAZER")
+
+  input.e = false
+
+  var laser = new LaserClass(twitchman.scene, twitchman.x, twitchman.y - 500, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`)
+  // lazer.scaleX = 8.29461186764485;
+  // lazer.scaleY = 0.12225173083106433;
+
+  // var rect = new Phaser.GameObjects.Rectangle(twitchman.scene, twitchman.x, twitchman.y, 1000, 400, 4332301, 1);
+  // twitchman.scene.add.existing(rect);
+  // twitchman.scene.physics.add.existing(rect);
+  // twitchman.scene.groupeBoulesHuzounet.add(rect)
+
 }

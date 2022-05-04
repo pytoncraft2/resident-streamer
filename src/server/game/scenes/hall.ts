@@ -55,7 +55,7 @@ export default class Hall extends Phaser.Scene {
 
     this.groupeBoulesHuzounet = this.physics.add.group({
       runChildUpdate: true,
-      // collideWorldBounds: true
+      collideWorldBounds: true
     })
 
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody

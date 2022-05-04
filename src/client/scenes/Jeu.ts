@@ -323,6 +323,8 @@ export default class Jeu extends Phaser.Scene {
   emitter: any
   animationBoosFigurine: any
 
+  timeline: any
+
 
 
 	init(info: Initialisation)  {
@@ -473,7 +475,8 @@ export default class Jeu extends Phaser.Scene {
       duration: 200
     });
 
-    timeline.play();
+    this.timeline = timeline
+    // timeline.play();
 	}
 
 
@@ -484,11 +487,18 @@ export default class Jeu extends Phaser.Scene {
     list.projectilesListe.map((item: string) => {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
-        const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
+        if (list.projectiles[item].laser)
+        {
+          this.timeline.play();
+        }
+        else
+        {
+          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
 
-        if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
-        if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
-        this.projectilesRef[item] = projectile
+          if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
+          if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
+          this.projectilesRef[item] = projectile
+        }
       }
       else
       {
