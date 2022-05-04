@@ -40,7 +40,7 @@ export function lazer(twitchman, input) {
 
   input.e = false
 
-  var laser = new LaserClass(twitchman.scene, twitchman.x, twitchman.y - 500, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`)
+  // var laser = new LaserClass(twitchman.scene, twitchman.x, twitchman.y - 500, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`)
   // lazer.scaleX = 8.29461186764485;
   // lazer.scaleY = 0.12225173083106433;
 

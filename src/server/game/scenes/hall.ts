@@ -126,11 +126,11 @@ this.physics.add.overlap(this.players, this.enemies);
 
     if (this.groupeBoulesHuzounet) {
       console.log("IIIIIIIIIIIIITERATE")
-      this.groupeBoulesHuzounet.children.iterate((child: any)=> {
-        if (child.data.values.ClientId) {
-          response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
-        }
-      })
+      // this.groupeBoulesHuzounet.children.iterate((child: any)=> {
+      //   if (child.data.values.ClientId) {
+      //     response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
+      //   }
+      // })
     }
 
 
