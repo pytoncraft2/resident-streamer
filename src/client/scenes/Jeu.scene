@@ -430,42 +430,6 @@
                     "lineWidth": 0.1,
                     "width": 128,
                     "height": 128
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "0d380f1d-1fc1-486b-8fb6-030b617ddc61",
-                    "label": "lazer_2",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 551,
-                    "y": 582,
-                    "scaleX": 8.29461186764485,
-                    "scaleY": 0.12225173083106433,
-                    "originX": 0,
-                    "isFilled": true,
-                    "fillColor": "#d23900",
-                    "fillAlpha": 0.1,
-                    "lineWidth": 0.1,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "ebb34447-9de4-4857-a082-320ecbb1299c",
-                    "label": "lazer_1",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 551,
-                    "y": 582,
-                    "scaleX": 8.282790617973651,
-                    "scaleY": 0.029337173394387434,
-                    "originX": 0,
-                    "isFilled": true,
-                    "fillColor": "#f7dd4a",
-                    "fillAlpha": 0.1,
-                    "lineWidth": 0.1,
-                    "width": 128,
-                    "height": 128
                 }
             ]
         }

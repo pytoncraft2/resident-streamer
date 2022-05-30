@@ -231,31 +231,7 @@ export default class Jeu extends Phaser.Scene {
 		lazer_3.fillColor = 4332301;
 		lazer_3.fillAlpha = 0.5;
 		lazer_3.lineWidth = 0.1;
-    lazer_3.alpha = 0;
 		lazer.add(lazer_3);
-
-		// lazer_2
-		const lazer_2 = this.add.rectangle(551, 582, 128, 128);
-		lazer_2.scaleX = 8.29461186764485;
-		lazer_2.scaleY = 0.12225173083106433;
-		lazer_2.setOrigin(0, 0.5);
-		lazer_2.isFilled = true;
-		lazer_2.fillColor = 13777152;
-		lazer_2.lineWidth = 0.1;
-    lazer_2.alpha = 0;
-		lazer.add(lazer_2);
-
-		// lazer_1
-		const lazer_1 = this.add.rectangle(551, 582, 128, 128);
-		lazer_1.scaleX = 0;
-		lazer_1.scaleY = 0.029337173394387434;
-		lazer_1.setOrigin(0, 0.5);
-		lazer_1.isFilled = true;
-		lazer_1.fillColor = 16244042;
-		lazer_1.fillAlpha = 0.8;
-		lazer_1.lineWidth = 0.1;
-    lazer_1.alpha = 0;
-		lazer.add(lazer_1);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -269,8 +245,6 @@ export default class Jeu extends Phaser.Scene {
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
 		this.lazer = lazer;
-		this.lazer_2 = lazer_2;
-		this.lazer_1 = lazer_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -287,8 +261,6 @@ export default class Jeu extends Phaser.Scene {
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
 	public lazer!: Phaser.GameObjects.Container;
-	public lazer_2!: Phaser.GameObjects.Rectangle;
-	public lazer_1!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -322,6 +294,7 @@ export default class Jeu extends Phaser.Scene {
   directeA: boolean = false
   emitter: any
   animationBoosFigurine: any
+  timeline: any
 
 
 
@@ -443,37 +416,39 @@ export default class Jeu extends Phaser.Scene {
 		.catch((err) => {
 			console.error(err)
 		})
+    //@ts-ignore
+// this.lazer.getAll().scaleX = 0
+    // this.timeline = this.tweens.createTimeline();
+    //
+    // this.timeline.add({
+    //   targets: this.lazer.getAll(),
+    //   alpha: 0.1,
+    //   ease: 'Power1',
+    //   duration: 500
+    // });
+    //
+    // this.timeline.add({
+    //   targets: this.lazer.getAll(),
+    //   alpha: 1,
+    //   ease: 'Power1',
+    //   duration: 200
+    // });
+    // this.timeline.add({
+    //   targets: this.lazer.last,
+    //   scaleX: 8.28,
+    //   duration: 200
+    // });
+    //
+    // this.timeline.add({
+    //   targets: this.lazer.getAll(),
+    //   scaleY: 0,
+    //   alpha: 0,
+    //   ease: 'Power1',
+    //   duration: 200
+    // });
 
-    var timeline = this.tweens.createTimeline();
-
-    timeline.add({
-      targets: this.lazer.getAll(),
-      alpha: 0.1,
-      ease: 'Power1',
-      duration: 500
-    });
-
-    timeline.add({
-      targets: this.lazer.getAll(),
-      alpha: 1,
-      ease: 'Power1',
-      duration: 200
-    });
-    timeline.add({
-      targets: this.lazer.last,
-      scaleX: 8.28,
-      duration: 200
-    });
-
-    timeline.add({
-      targets: this.lazer.getAll(),
-      scaleY: 0,
-      alpha: 0,
-      ease: 'Power1',
-      duration: 200
-    });
-
-    timeline.play();
+    // timeline.play();
+    // this.timeline = timeline
 	}
 
 
@@ -484,6 +459,77 @@ export default class Jeu extends Phaser.Scene {
     list.projectilesListe.map((item: string) => {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
+        // var r1 = this.add.rectangle(200, 200, 148, 148, 0x6666ff);
+
+
+        if (list.projectiles[item]._frame == "kunai") {
+          // this.timeline.play();
+
+          var timeline = this.tweens.timeline({
+
+            tweens: [
+              {
+                targets: this.lazer.first,
+                // scaleX: 15,
+                // scaleY: 0.12,
+                alpha: 0,
+                ease: 'Power1',
+                duration: 700
+              },
+              {
+                targets: this.lazer.first,
+                // scaleX: 15,
+                // scaleY: 0.12,
+                alpha: 1,
+                ease: 'Power1',
+                duration: 700
+              },
+              {
+                targets: this.lazer.first,
+                // scaleX: 15,
+                // scaleY: 0.12,
+                alpha: 0,
+                ease: 'Power1',
+                duration: 700
+              },
+              // {
+              //   targets: this.lazer.last,
+              //   scaleX: 0,
+              //   // scaleY: 0,
+              //   ease: 'Power1',
+              //   duration: 0
+              // },
+              // {
+              //   targets: this.lazer.last,
+              //   scaleX: 15,
+              //   // scaleY: 0.12,
+              //   ease: 'Power1',
+              //   duration: 9000
+              // },
+              // {
+              //   targets: this.lazer.getAll(),
+              //   alpha: 1,
+              //   scaleX: 15,
+              //   ease: 'Power1',
+              //   duration: 700
+              // },
+              // {
+              //   targets: this.lazer.getAll(),
+              //   alpha: 0,
+              //   ease: 'Power1',
+              //   duration: 500
+              // },
+              // {
+              //   targets: this.lazer.getAll(),
+              //   scaleX: 0,
+              //   ease: 'Power1',
+              //   duration: 100
+              // }
+            ]
+
+          });
+        }
+
         const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
 
         if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
