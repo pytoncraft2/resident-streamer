@@ -406,32 +406,6 @@
             },
             "x": 488,
             "y": 743
-        },
-        {
-            "type": "Container",
-            "id": "37fa15db-f6ff-4a14-aa73-7c0197d89278",
-            "label": "lazer",
-            "scope": "PUBLIC",
-            "components": [],
-            "list": [
-                {
-                    "type": "Rectangle",
-                    "id": "322551dd-01e0-42d1-8b82-adcf311b48eb",
-                    "label": "lazer_3",
-                    "components": [],
-                    "x": 551,
-                    "y": 582,
-                    "scaleX": 8.29461186764485,
-                    "scaleY": 0.17317398705947581,
-                    "originX": 0,
-                    "isFilled": true,
-                    "fillColor": "#421b0d",
-                    "fillAlpha": 0.5,
-                    "lineWidth": 0.1,
-                    "width": 128,
-                    "height": 128
-                }
-            ]
         }
     ],
     "plainObjects": [],
