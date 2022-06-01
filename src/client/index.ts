@@ -6,9 +6,6 @@ import Jeu from "./scenes/Jeu";
 
 export class Boot extends Phaser.Scene {
 
-    /**
-     * constructor - description
-     */
     constructor() {
         super("Boot");
     }
