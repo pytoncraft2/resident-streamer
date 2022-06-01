@@ -40,19 +40,3 @@ window.addEventListener('load', function () {
 	game.scene.start("Boot");
 
 });
-
-export class Java {
-  /**
-   * Returns the average of two numbers.
-   *
-   * @remarks
-   * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
-   *
-   * @returns The arithmetic mean of `x` and `y`
-   *
-   * @beta
-   */
-  public static getAverage(x: number, y: number): number {
-    return (x + y) / 2.0;
-  }
-}
