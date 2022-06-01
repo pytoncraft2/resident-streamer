@@ -51,7 +51,7 @@ export default class Level extends Phaser.Scene {
 	 * @remarks
 	 * Les methodes sont des test.
 	 * @returns  temporairement le salon
-	 */	 
+	 */
 	create() {
 
 		this.editorCreate();

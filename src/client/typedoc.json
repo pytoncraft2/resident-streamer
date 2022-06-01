@@ -1,4 +1,4 @@
 {
-    "entryPoints": ["src/client/index.ts"],
+    "entryPoints": ["src/client/index.ts", "scenes/*.ts"],
     "out": "docsssssssss"
 }

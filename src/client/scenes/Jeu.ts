@@ -1,6 +1,6 @@
 
 // You can write more code here
-interface Initialisation {
+export interface Initialisation {
     salon: string;
     personnage: string;
 };
