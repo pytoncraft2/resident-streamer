@@ -8,6 +8,8 @@
     "serve:server": "nodemon src/server/server.ts --ignore src/client/",
     "preview": "vite preview",
     "editor": "phasereditor2d-launcher -project . -port 1959",
+    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
+    "doc:client": "cd ./src/client/ && typedoc --out ../..//doc_client ./index.ts scenes/*.ts",
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959"
   },
   "devDependencies": {
