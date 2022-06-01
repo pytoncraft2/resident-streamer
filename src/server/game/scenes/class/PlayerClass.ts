@@ -2,7 +2,7 @@ import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
-import { DefautStats, DefautDirection } from "../Stats/DefautStats"
+import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
 /**
  * Joueur et interaction
@@ -152,7 +152,7 @@ import { DefautStats, DefautDirection } from "../Stats/DefautStats"
        if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
        if (left || left_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
        if (right || right_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
-       if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this);
+       if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this, input);
 
        if (left_fin) input.left_fin = false;
        if (z_fin) input.z_fin = false;
