@@ -11,6 +11,7 @@
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
     "doc:client": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts",
     "doc:server": "cd ./src/server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
+    "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959"
   },
   "devDependencies": {
