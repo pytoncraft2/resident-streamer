@@ -45,13 +45,6 @@ export default class Level extends Phaser.Scene {
 
 	// Write your code here
 
-	/**
-	 * create - description
-	 *
-	 * @remarks
-	 * Les methodes sont des test.
-	 * @returns  temporairement le salon
-	 */
 	create() {
 
 		this.editorCreate();
