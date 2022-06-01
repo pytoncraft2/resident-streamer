@@ -1,5 +1,5 @@
 {
-  "name": "my-phaser-game",
+  "name": "resident-streamer",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
