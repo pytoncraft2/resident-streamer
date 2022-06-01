@@ -11,16 +11,6 @@ export function StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
     collideWorldBounds: true,
     maxSize: 4
   })
-
-  Aptitudes[huzounet.sprite].toucheDroite = function (_huzounet: TJoueur) {
-    _huzounet.body.setVelocityX(9000)
-  }
-  Aptitudes[huzounet.sprite].toucheGauche = function (_huzounet: TJoueur) {
-    _huzounet.body.setVelocityX(-9000)
-  }
-  Aptitudes[huzounet.sprite].toucheEspace = function (_huzounet: TJoueur) {
-    _huzounet.body.setVelocityY(-9000)
-  }
 }
 
 
