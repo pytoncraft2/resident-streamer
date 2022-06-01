@@ -8,7 +8,7 @@ import { RoomState, Player } from "./RoomState"
 
 
 /**
- * Epreuve n°1 serveur
+ * Colyseus gestion des états de la room
  */
 
 export default class GameRooms extends Room {
