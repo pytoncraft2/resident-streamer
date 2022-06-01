@@ -2,7 +2,7 @@ interface BaseEquipement {
   boulesEnMain: Phaser.Physics.Arcade.Group;
 }
 
-interface Scene extends Phaser.Scene {
+export interface Scene extends Phaser.Scene {
   containerColision: Phaser.GameObjects.Container;
   room: any
   groupeBoulesHuzounet: Phaser.Physics.Arcade.Group;
