@@ -5,33 +5,19 @@ export const DefautStats = (personnage?: any) => {
 
 export const DefautDirection = (Aptitudes: any, personnage: any) => {
   Aptitudes[personnage.sprite].toucheDroite = (personnage: any, input: any) => {
-      // personnage.setVelocityX((personnage as any).vel);
-      // personnage.setDragX(1400)
-      // if (personnage.flipX) personnage.setFlipX(false);
-      // if (input.right && !personnage.survole) {
-      //   personnage.play('walk', true)
-      // }
-      // if (input.right_fin && !personnage.survole) {
-      //   personnage.play('idle_walk')
-      // }
-    }
+    direction(input.right_debut, input.right_fin, personnage, input, true)
+  }
   Aptitudes[personnage.sprite].toucheGauche = (personnage: any, input: any) => {
-      // personnage.setVelocityX(-(personnage as any).vel);
-      // personnage.setDragX(1400)
-      // if (!personnage.flipX) personnage.setFlipX(true);
-      // if (input.left && !personnage.survole) {
-      //   personnage.play('walk', true)
-      // }
-      // if (input.left_fin && !personnage.survole) {
-      //   personnage.play('idle_walk')
-      // }
-    }
+    direction(input.left_debut, input.left_fin, personnage, input, false)
+  }
     Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
-      // personnage.setVelocityY(-900);
-      // input.space = false
+      personnage.setVelocityY(-900);
+      input.space = false
     }
 }
 
-function direction() {
-    throw new Error("Not implemented yet");
+function direction(debut, fin, personnage: any, input: any, dir) {
+  if (debut) personnage.setFlipX(!dir)
+  else if (fin) personnage.setVelocityX(0)
+  else personnage.setVelocityX(dir ? (personnage as any).vel : -(personnage as any).vel)
 }

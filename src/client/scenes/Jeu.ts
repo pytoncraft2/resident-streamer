@@ -695,9 +695,7 @@ export default class Jeu extends Phaser.Scene {
         r: R.isDown ? true : false,
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
-        // right_fin: Phaser.Input.Keyboard.JustUp(right),
         left: left.isDown ? true : false,
-        // left_fin: Phaser.Input.Keyboard.JustUp(left)
       }
 
       //ATTAQUE
@@ -723,7 +721,9 @@ export default class Jeu extends Phaser.Scene {
           z_fin: Phaser.Input.Keyboard.JustUp(Z),
           space_fin: space.isUp ? true : false,
           right_fin: Phaser.Input.Keyboard.JustUp(right),
-          left_fin: Phaser.Input.Keyboard.JustUp(left)
+          left_fin: Phaser.Input.Keyboard.JustUp(left),
+          right_debut: Phaser.Input.Keyboard.JustDown(right),
+          left_debut: Phaser.Input.Keyboard.JustDown(left)
         })
       }
     }

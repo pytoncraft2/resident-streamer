@@ -140,7 +140,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin } = input
+     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut } = input
      let animationName = this.anims.getFrameName()
 
      if (this.canMove) {
@@ -158,6 +158,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (z_fin) input.z_fin = false;
        if (right_fin) input.right_fin = false;
        if (space_fin) input.space_fin = false;
+       if (right_debut) input.right_debut = false
+       if (left_debut) input.left_debut = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
        // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
