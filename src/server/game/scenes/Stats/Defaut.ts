@@ -17,7 +17,13 @@ export const DefautDirection = (Aptitudes: any, personnage: any) => {
 }
 
 function direction(debut, fin, personnage: any, input: any, dir) {
-  if (debut) personnage.setFlipX(!dir)
-  else if (fin) personnage.setVelocityX(0)
+  if (debut) {
+    personnage.setFlipX(!dir)
+    personnage.play('walk', true)
+  }
+  else if (fin) {
+    personnage.setVelocityX(0)
+    personnage.play('idle_walk', true)
+  }
   else personnage.setVelocityX(dir ? (personnage as any).vel : -(personnage as any).vel)
 }
