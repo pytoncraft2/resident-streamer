@@ -5,5 +5,8 @@ export function pique(boss_1: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function suivre(boss_1: Phaser.Physics.Arcade.Sprite|any) {
-  boss_1.scene.physics.moveToObject(boss_1, boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()]), boss_1.etats[boss_1.etatEnCours]['vitesse']);
+  if (boss_1.scene.players.getLength() > 1)
+  {
+    boss_1.scene.physics.moveToObject(boss_1, boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()]), boss_1.etats[boss_1.etatEnCours]['vitesse']);
+  }
 }
