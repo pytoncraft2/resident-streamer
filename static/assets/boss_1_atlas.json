@@ -1,7 +1,7 @@
 {
     "frames": [
         {
-            "filename": "movechaiseboss1",
+            "filename": "marche1",
             "frame": {
                 "w": 479,
                 "h": 772,
@@ -14,7 +14,7 @@
             }
         },
         {
-            "filename": "movechaiseboss0",
+            "filename": "marche0",
             "frame": {
                 "w": 479,
                 "h": 772,
