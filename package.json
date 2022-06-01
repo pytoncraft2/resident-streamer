@@ -11,22 +11,23 @@
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959"
   },
   "devDependencies": {
-    "phaser-asset-pack-hashing": "^1.0.5",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.9.1",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "eslint": "^6.8.0",
     "minimist": ">=1.2.2",
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/node": "^16.9.1",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.4.0",
-    "ts-node": "^10.2.1",
     "mocha": "^9.0.2",
+    "nodemon": "^2.0.12",
+    "phaser-asset-pack-hashing": "^1.0.5",
     "phasereditor2d-launcher": "^3.32.0",
-    "ts-loader": "^8.0.18"
+    "prettier": "^2.4.0",
+    "ts-loader": "^8.0.18",
+    "ts-node": "^10.2.1",
+    "typedoc": "^0.22.17",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
   },
   "dependencies": {
     "phaser": "^3.55.2",
