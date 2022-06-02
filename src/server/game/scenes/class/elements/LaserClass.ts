@@ -8,6 +8,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   _frame: string = 'kunai'
   id: any
   rect: any
+  proprietaire: any
 
   constructor(
     scene: Phaser.Scene,
@@ -17,17 +18,19 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     height: number,
     fillColor: any,
     fillAlpha: any,
-    ClientID: string
+    ClientID: string,
+    proprietaire: any
   ) {
     super(scene, x, y, width, height, fillColor, fillAlpha)
 
-    this.init(scene, ClientID)
+    this.init(scene, ClientID, proprietaire)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, proprietaire) {
     this.scene = scene
 
     this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
+    this.rect.setPosition(proprietaire.x, proprietaire.y)
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
 

@@ -19,6 +19,7 @@ export class Projectile extends Schema {
   @type("boolean") active?: boolean;
   @type("boolean") flipX?: boolean;
   @type("boolean") explosion?: boolean;
+  @type("boolean") laser?: boolean;
   @type("string") sprite?: string;
   @type("string") _frame?: string;
 }
