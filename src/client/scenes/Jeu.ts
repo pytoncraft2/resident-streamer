@@ -278,6 +278,7 @@ export default class Jeu extends Phaser.Scene {
   directeA: boolean = false
   emitter: any
   animationBoosFigurine: any
+  rect: any
 
 
 
@@ -400,6 +401,18 @@ export default class Jeu extends Phaser.Scene {
 			console.error(err)
 		})
 
+        this.rect = this.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
+            // var block = this.physics.add.sprite(700, 300, 'mushroom');
+            // blocks.push(block);
+
+            var tween = this.tweens.add({
+            targets: this.rect,
+            width: 900,
+            //displayOriginX: rect.displayOriginX,
+            duration: 7000,
+            repeat: -1,            // -1: infinity
+            yoyo: true
+        });
 	}
 
 
@@ -685,6 +698,21 @@ export default class Jeu extends Phaser.Scene {
 
   update() {
     if (this.room) {
+
+      // blocks.forEach(function (block) {
+    // block.setTint(0xffffff);
+// });
+//  We need the top-left of the rect
+var x = this.rect.x;
+var y = this.rect.y - (this.rect.height /2);
+
+var within = this.physics.overlapRect(x, y, this.rect.width - 150, this.rect.height);
+
+within.forEach(function (body) {
+  //@ts-ignore
+    body.gameObject.setTint(0xff0000);
+});
+
       const { right, left, space, A, Z, E, R } = this.keyboard
 
       const inputs = {
