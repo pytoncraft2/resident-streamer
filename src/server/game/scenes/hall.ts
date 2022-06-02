@@ -22,6 +22,7 @@ export default class Hall extends Phaser.Scene {
   playersRef: any
   enemiesRef: any
   containerColision: Phaser.GameObjects.Container
+  rect: any
 
 
   constructor() {
@@ -57,6 +58,9 @@ export default class Hall extends Phaser.Scene {
       runChildUpdate: true,
       collideWorldBounds: true
     })
+
+
+
 
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 // this.physics.add.existing(this.swordHitbox)

@@ -7,6 +7,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   sprite: string = 'huzounet'
   _frame: string = 'kunai'
   id: any
+  rect: any
 
   constructor(
     scene: Phaser.Scene,
@@ -25,6 +26,20 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   init(scene: Phaser.Scene, id: string) {
     this.scene = scene
+
+    this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
+    // var block = this.physics.add.sprite(700, 300, 'mushroom');
+    // blocks.push(block);
+
+    var tween = this.scene.tweens.add({
+      targets: this.rect,
+      width: 900,
+      //displayOriginX: rect.displayOriginX,
+      duration: 7000,
+      repeat: -1,            // -1: infinity
+      yoyo: true
+    });
+
     // this.scene.add.existing(this)
     // scene.physics.add.existing(this);
     this.id = id;
@@ -46,9 +61,15 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   }
   update(time, delta) {
-    // console.log(this.anims.msPerFrame += 300)
+    var x = this.rect.x;
+    var y = this.rect.y - (this.rect.height /2);
 
+    var within = this.scene.physics.overlapRect(x, y, this.rect.width - 150, this.rect.height);
 
+    within.forEach(function (body) {
+      body.gameObject.setTint(0xff0000);
+      console.log("DEDANS")
+    });
   }
 
 }
