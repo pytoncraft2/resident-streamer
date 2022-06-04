@@ -1,2 +1,6 @@
-dist
+**/dist
+**/types
+**/doc_client
+**/doc_server
+**/components
 **/server

@@ -31,21 +31,22 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.scene = scene
     console.log("PROPRIETAIRE ID:")
     this.proprietaireID = proprietaire.ClientID
-    this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
-    this.rect.setPosition(proprietaire.x, proprietaire.y)
+    this.proprietaire = proprietaire
+    // this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
+    // this.rect.setPosition(proprietaire.x, proprietaire.y)
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
 
-    var tween = this.scene.tweens.add({
-      targets: this.rect,
-      width: 900,
-      //displayOriginX: rect.displayOriginX,
-      duration: 7000,
-      repeat: -1,            // -1: infinity
-      yoyo: true
-    });
+    // var tween = this.scene.tweens.add({
+    //   targets: this.rect,
+    //   width: 900,
+    //   //displayOriginX: rect.displayOriginX,
+    //   duration: 7000,
+    //   repeat: -1,            // -1: infinity
+    //   yoyo: true
+    // });
 
     // this.scene.add.existing(this)
     // scene.physics.add.existing(this);
@@ -70,19 +71,19 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   preUpdate(time, delta) {
     // console.log("UPDATE!!!")
-    var x = this.rect.x;
-    var y = this.rect.y - (this.rect.height /2);
+    this.x = this.proprietaire.x
+    this.y = this.proprietaire.y
+    var x = this.x;
+    var y = this.y - (this.height /2);
 
-    var within = this.scene.physics.overlapRect(x, y, this.rect.width - 150, this.rect.height);
+    var within = this.scene.physics.overlapRect(x, y, this.width - 150, this.height);
 
     within.forEach(function (body) {
-      if (body.gameObject.type == "Sprite"){
-        console.log("___________ID____________")
-        console.log(body.gameObject.ClientID)
-        console.log("___________ID 222____________")
-        console.log(this.proprietaireID)
+      if (body.gameObject.type == "Sprite") {
+        if (body.gameObject.ClientID != this.proprietaireID) {
+          body.gameObject.setTint(0xff0000);
+        }
       }
-      // && this.proprietaireID != body.gameObject.ClientID) body.gameObject.setTint(0xff0000);
     }, this);
 
   }
