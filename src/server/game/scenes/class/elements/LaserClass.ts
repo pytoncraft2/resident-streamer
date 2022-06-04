@@ -9,6 +9,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   id: any
   rect: any
   proprietaire: any
+  proprietaireID: any
 
   constructor(
     scene: Phaser.Scene,
@@ -28,9 +29,12 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   init(scene: Phaser.Scene, id: string, proprietaire) {
     this.scene = scene
-
+    console.log("PROPRIETAIRE ID:")
+    this.proprietaireID = proprietaire.ClientID
     this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
     this.rect.setPosition(proprietaire.x, proprietaire.y)
+    this.scene.add.existing(this)
+    this.scene.physics.add.existing(this);
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
 
@@ -63,16 +67,28 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     )
 
   }
-  update(time, delta) {
+
+  preUpdate(time, delta) {
+    // console.log("UPDATE!!!")
     var x = this.rect.x;
     var y = this.rect.y - (this.rect.height /2);
 
     var within = this.scene.physics.overlapRect(x, y, this.rect.width - 150, this.rect.height);
 
     within.forEach(function (body) {
-      body.gameObject.setTint(0xff0000);
-      console.log("DEDANS")
-    });
+      if (body.gameObject.type == "Sprite"){
+        console.log("___________ID____________")
+        console.log(body.gameObject.ClientID)
+        console.log("___________ID 222____________")
+        console.log(this.proprietaireID)
+      }
+      // && this.proprietaireID != body.gameObject.ClientID) body.gameObject.setTint(0xff0000);
+    }, this);
+
   }
+
+  // update(time, delta) {
+  //
+  // }
 
 }
