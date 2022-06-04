@@ -219,6 +219,11 @@ export default class Jeu extends Phaser.Scene {
 		// face0
 		this.add.image(488, 743, "face0");
 
+		// laser01
+		const laser01 = this.add.image(548, 583, "laser01");
+		laser01.scaleX = 0.19265106053743225;
+		laser01.scaleY = 0.14474581179115986;
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -230,6 +235,7 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
+		this.laser01 = laser01;
 
 		this.events.emit("scene-awake");
 	}
@@ -245,6 +251,7 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
+	public laser01!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 

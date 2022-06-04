@@ -406,6 +406,20 @@
             },
             "x": 488,
             "y": 743
+        },
+        {
+            "type": "Image",
+            "id": "7299a1aa-e774-46b0-b6c8-9af0603ec068",
+            "label": "laser01",
+            "scope": "PUBLIC",
+            "components": [],
+            "texture": {
+                "key": "laser01"
+            },
+            "x": 548,
+            "y": 583,
+            "scaleX": 0.19265106053743225,
+            "scaleY": 0.14474581179115986
         }
     ],
     "plainObjects": [],

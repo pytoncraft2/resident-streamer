@@ -47,6 +47,11 @@
                 "key": "huzounet_atlas"
             },
             {
+                "url": "assets/laser01.png",
+                "type": "image",
+                "key": "laser01"
+            },
+            {
                 "atlasURL": "assets/manette_atlas.json",
                 "textureURL": "assets/manette_atlas.png",
                 "type": "atlas",
