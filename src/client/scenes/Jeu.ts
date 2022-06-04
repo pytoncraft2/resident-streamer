@@ -418,18 +418,21 @@ export default class Jeu extends Phaser.Scene {
     list.projectilesListe.map((item: string) => {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
-        if (list.projectiles[item].laser)
+        let projectile
+        if (!list.projectiles[item].sprite)
         {
-          this.rect = this.add.rectangle(list.projectiles[item].x, list.projectiles[item].y, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
-          this.groupeProjectiles.add(this.rect)
-          this.projectilesRef[item] = this.rect
-        } else
-        {
-          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
-          if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
-          if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
-          this.projectilesRef[item] = projectile
+          projectile = this.add.image(list.projectiles[item].x, list.projectiles[item].y, "laser01").setScale(0.19265106053743225, 0.14474581179115986);
+          this.groupeProjectiles.add(projectile)
         }
+        else
+        {
+          projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `laser01`, `${list.projectiles[item]._frame}`)
+        }
+
+        if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
+        if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
+        this.projectilesRef[item] = projectile
+
       }
       else
       {
