@@ -86,7 +86,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         y: this.y,
         id: this.id,
         laser: true,
-        scale: this.scale,
+        // scale: this.scale,
         depth: this.depth,
         sprite: this.sprite,
         alpha: this.alpha,

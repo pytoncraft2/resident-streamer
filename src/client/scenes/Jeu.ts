@@ -219,6 +219,14 @@ export default class Jeu extends Phaser.Scene {
 		// face0
 		this.add.image(488, 743, "face0");
 
+		// rectangle
+		const rectangle = this.add.rectangle(552, 584, 128, 128);
+		rectangle.scaleX = 4.6929101228048555;
+		rectangle.scaleY = 0.11649497828162556;
+		rectangle.setOrigin(0, 0.5);
+		rectangle.isFilled = true;
+		rectangle.fillColor = 16265264;
+
 		// laser01
 		const laser01 = this.add.image(548, 583, "laser01");
 		laser01.scaleX = 0.19265106053743225;

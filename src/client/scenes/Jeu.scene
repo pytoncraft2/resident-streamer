@@ -408,6 +408,21 @@
             "y": 743
         },
         {
+            "type": "Rectangle",
+            "id": "39e9e082-5907-4b5b-9df8-f634e4179e32",
+            "label": "rectangle",
+            "components": [],
+            "x": 552,
+            "y": 584,
+            "scaleX": 4.6929101228048555,
+            "scaleY": 0.11649497828162556,
+            "originX": 0,
+            "isFilled": true,
+            "fillColor": "#f83030",
+            "width": 128,
+            "height": 128
+        },
+        {
             "type": "Image",
             "id": "7299a1aa-e774-46b0-b6c8-9af0603ec068",
             "label": "laser01",
