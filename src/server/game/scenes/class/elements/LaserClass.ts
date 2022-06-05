@@ -4,7 +4,7 @@ import { Projectile } from "../../../RoomState"
 // var rect = new Phaser.GameObjects.Rectangle(scene, x, y, width, height, fillColor, fillAlpha);
 // scene.add.existing(rect);
 export default class LaserClass extends Phaser.GameObjects.Rectangle {
-  sprite: string = 'huzounet'
+  sprite: string = 'laser01'
   _frame: string = 'laser01'
   id: any
   rect: any
@@ -36,16 +36,17 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // this.rect.setPosition(proprietaire.x, proprietaire.y)
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
+    this.setScale(0.19265106053743225, 0.14474581179115986)
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
 
-    var tween = this.scene.tweens.add({
-      targets: this,
-      scale: 2,
-      //displayOriginX: rect.displayOriginX,
-      duration: 7000,
-      repeat: 1,            // -1: infinity
-    });
+    // var tween = this.scene.tweens.add({
+    //   targets: this,
+    //   scale: 2,
+    //   //displayOriginX: rect.displayOriginX,
+    //   duration: 7000,
+    //   repeat: 1,            // -1: infinity
+    // });
 
     // this.scene.add.existing(this)
     // scene.physics.add.existing(this);
@@ -62,7 +63,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         laser: true,
         scale: this.scale,
         // flipX: this.flipX,
-        // sprite: this.sprite,
+        sprite: this.sprite,
         _frame: this._frame
       })
     )

@@ -418,21 +418,10 @@ export default class Jeu extends Phaser.Scene {
     list.projectilesListe.map((item: string) => {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
-        let projectile
-        if (!list.projectiles[item].sprite)
-        {
-          projectile = this.add.image(list.projectiles[item].x, list.projectiles[item].y, "laser01").setScale(0.19265106053743225, 0.14474581179115986);
-          this.groupeProjectiles.add(projectile)
-        }
-        else
-        {
-          projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `laser01`, `${list.projectiles[item]._frame}`)
-        }
-
-        if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
-        if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
-        this.projectilesRef[item] = projectile
-
+          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
+          if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
+          if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
+          this.projectilesRef[item] = projectile
       }
       else
       {
