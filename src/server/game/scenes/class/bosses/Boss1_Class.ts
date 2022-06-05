@@ -158,10 +158,11 @@ this.setTint(0xff0000)
     }
   }
 
-  deplacement() {
+  deplacement(input) {
 
-      Aptitudes[this.sprite].toucheZ(this)
-      Aptitudes[this.sprite].toucheA(this)
+    console.log("DEPLACEMENT--")
+      Aptitudes[this.sprite].toucheZ(this, input)
+      Aptitudes[this.sprite].toucheA(this, input)
   }
 
   // attaquePuisDeplacement(condition, couleur, directionFinal) {

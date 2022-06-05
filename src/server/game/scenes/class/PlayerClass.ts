@@ -11,6 +11,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
  export default class PlayerClass extends Phaser.Physics.Arcade.Sprite {
    ClientID: any
    sprite: string
+   c: any
    vel: number = 600
    compteurSaut: number = 0
    canMove: boolean = true
@@ -126,6 +127,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (this.interaction_objet) {
 
          if (this.bossControlable.getLength() == 0) {
+           this.c = 1;
            this.bossControlable.add(_e)
            // console.log(this.bossControlable.getChildren()[0])
            console.log("AJOUT BOSS")
@@ -146,6 +148,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
+     this.c = 0
    }
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
@@ -154,8 +157,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut } = input
      let animationName = this.anims.getFrameName()
 
-     if (this.bossControlable.getLength() == 1) {
+     if (this.c == 1) {
        this.bossControlable.getChildren()[0].setVelocityX(100)
+       this.bossControlable.getChildren()[0].deplacement(input)
+       this.c = 0;
        // console.log()
      }
 
