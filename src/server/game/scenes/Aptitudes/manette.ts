@@ -35,20 +35,28 @@ export function lanceManette(manette: TJoueur, input: any) {
         // manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
         manette.scene.tweens.add({
           targets: manette.obj_manette,
-          // x: manette.flipX ? manette.x -1000 : manette.x + 1000,
-          props: {
-            x: { value: function () { return manette.flipX ? manette.x -1000 : manette.x + 1000; }, ease: 'Power1' },
-          },
+          x: manette.flipX ? manette.x -1000 : manette.x + 1000,
           duration: 900,
           ease: 'Power2',
-          onYoyoParams: [manette.x, manette.y],
-          yoyo: true,
-          repeat: 1,
-          onYoyo: (tw, target, x, y) => {
-            target.setData('degat', 1)
-            tw.updateTo('x', x, false);
-            tw.updateTo('y', y, false);
+          onCompleteParams: [manette],
+          onComplete: (tw, target: any, _manette) => {
+            // target[0].setPosition(_manette.x, _manette.y)
+            manette.scene.physics.moveToObject(target[0], manette, 900);
+              // tw.updateTo('x', x, true);
+              // tw.updateTo('y', y, true);
+
+            // target.gameObject.setPosition(_manette.x, _manette.y)
           }
+          // onYoyoParams: [manette],
+          // yoyo: false,
+          // onYoyo: function(tw, target, manette) {
+          //   target.setData('degat', 1)
+          //   manette.scene.physics.moveToObject(, 200);
+          //   this.physics.accelerateToObject(target, manette, 60, 300, 300);
+          //
+          //   // tw.updateTo('x', x, true);
+          //   // tw.updateTo('y', y, true);
+          // },
           // delay: 1000
         });
       }
