@@ -376,20 +376,7 @@ export default class Jeu extends Phaser.Scene {
 			self.room = room
 			self.session = room.sessionId
 
-      room.onMessage("boss-KO", (id) => {
-
-        this.animationBossKO(id)
-
-      });
-
-      room.onMessage("boss-KO-proprietaire", (id) => {
-
-        this.finAnimationBossKO(id.id_ennemie)
-        this.animationBoosFigurine.stop()
-
-        this.emitter.startFollow(this.playersRef[id.id_joueur])
-
-      });
+      //   this.emitter.startFollow(this.playersRef[id.id_joueur])
 
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
@@ -600,9 +587,9 @@ export default class Jeu extends Phaser.Scene {
           barre.add(vie);
           barre.add(rectangle);
 
-          (player as any).barre = barre
+          (player as any).barre = barre;
 
-          if (sprite == 'boss_1') player.setScale(0.6);
+          // if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
 					this.players.add(player)
 					this.playersRef[item] = player
@@ -617,6 +604,7 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
+            if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
 			}
 		})
 
@@ -655,49 +643,6 @@ export default class Jeu extends Phaser.Scene {
           }, this);
         }
       }, this);
-  }
-
-  animationBossKO(id: string) {
-    this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
-    const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
-    ellipse_5_1.scaleX = 0.9012990507210408;
-    ellipse_5_1.scaleY = 0.21224071572889464;
-    ellipse_5_1.isFilled = true;
-    ellipse_5_1.fillColor = 7473815;
-    ellipse_5_1.fillAlpha = 0.8;
-    ellipse_5_1.isStroked = true;
-    ellipse_5_1.lineWidth = 4;
-    ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
-    this.playersRef[id].barre.setAlpha(0)
-    this.playersRef[id].ellipse_5_1 = ellipse_5_1
-    this.animationBoosFigurine = this.tweens.add({
-      targets: this.playersRef[id],
-      y: "-=90",
-      alpha: 0.5,
-      ease: 'Sine.inOut',
-      yoyo: true,
-      duration: 1000,
-      repeat: -1
-    });
-
-    var particles = this.add.particles('flares');
-
-    this.emitter = particles.createEmitter({
-      frame: 'blue',
-      x: this.playersRef[id].getBottomCenter().x,
-      y: 879,
-      speedY: { min: -200, max: -400 },
-      lifespan: 2000,
-      scale: { start: 0.4, end: 0 },
-      quantity: 2,
-      blendMode: 'ADD',
-    });
-    console.log("message received from server");
-  }
-
-  finAnimationBossKO(id: string) {
-    this.playersRef[id].setAlpha(0)
-    this.playersRef[id].ellipse_5_1.setAlpha(0)
   }
 
   update() {

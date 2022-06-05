@@ -96,25 +96,10 @@ this.physics.add.overlap(this.players, this.enemies);
       _ennemie.blesse_ennemie(_boule.getData('degat'))
       _boule.setData('degat', 0)
     }, null, this);
-    this.events.on('boss_KO', this.boss_KO, this);
-    this.events.on('boss_KO-proprietaire', this.boss_KO_proprietaire, this);
-
   }
 
   overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
     playerActionZone.action(ennemie)
-  }
-
-  boss_KO(id: string) {
-    // this.removeEnnemy(`${id}`)
-    // this.room.state.presences.delete(`${id}`)
-    this.room.broadcast("boss-KO", `${id}`);
-
-    console.log(`BOSS ${id} KO !`)
-  }
-
-  boss_KO_proprietaire(id: string) {
-    this.room.broadcast("boss-KO-proprietaire", id);
   }
 
   getPresence() {

@@ -34,6 +34,7 @@ export class Player extends Schema {
   @type("boolean") flipX?: boolean
   @type("number") vie?: number
   @type("number") tint?: number
+  @type("number") scale?: number;
   @type("number") xa?: number
   @type("number") ya?: number
 }

@@ -131,7 +131,17 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     if (this.scene) {
       (this.scene as any).room.state.presences.set(
         this.EnnemyId,
-        new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: animationName, flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}})
+        new Player({
+          x: this.x,
+          y: this.y,
+          sprite: 'boss_1',
+          anim: animationName,
+          flipX: this.flipX,
+          tint: this.tintBottomLeft,
+          vie: this.vie,
+          zoneAttaque: {x: 100, y: 200},
+          scale: this.scale
+        })
       )
     }
   }
@@ -187,8 +197,12 @@ this.setTint(0xff0000)
     this.setVelocity(0)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
-    this.setPosition(this.x, 779.2995484974318)
-    this.scene.events.emit('boss_KO', "ENNEMY_01");
+    this.setPosition(this.x, 779.2995484974318);
+    this.setScale(0.2);
+    // (this.scene as any).room.state.presences.set(
+    //   this.EnnemyId,
+    //   new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: '', flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}, scale: this.scale})
+    // )
   }
 
 }
