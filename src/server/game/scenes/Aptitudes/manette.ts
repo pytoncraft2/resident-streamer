@@ -38,30 +38,15 @@ export function lanceManette(manette: TJoueur, input: any) {
           x: manette.flipX ? manette.x -1000 : manette.x + 1000,
           duration: 900,
           ease: 'Power2',
-          onCompleteParams: [manette],
-          onComplete: (tw, target: any, _manette) => {
-            // target[0].setPosition(_manette.x, _manette.y)
-            manette.scene.physics.moveToObject(target[0], manette, 900);
-              // tw.updateTo('x', x, true);
-              // tw.updateTo('y', y, true);
-
-            // target.gameObject.setPosition(_manette.x, _manette.y)
+          yoyo: true,
+          onYoyo: function(tw, target) {
+            target.setData('degat', 1)
           }
-          // onYoyoParams: [manette],
-          // yoyo: false,
-          // onYoyo: function(tw, target, manette) {
-          //   target.setData('degat', 1)
-          //   manette.scene.physics.moveToObject(, 200);
-          //   this.physics.accelerateToObject(target, manette, 60, 300, 300);
-          //
-          //   // tw.updateTo('x', x, true);
-          //   // tw.updateTo('y', y, true);
-          // },
           // delay: 1000
         });
       }
 
-      manette.obj_manette = undefined;
+      // manette.obj_manette = undefined;
     }, null, manette);
   }
 }
