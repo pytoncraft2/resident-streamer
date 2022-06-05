@@ -32,7 +32,15 @@ export function lanceManette(manette: TJoueur, input: any) {
       if (manette.anims.getName() == "manette_vole") {
         manette.obj_manette.setVelocityY(2300)
       } else {
-        manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
+        // manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
+        manette.scene.tweens.add({
+          targets: manette.obj_manette,
+          x: manette.flipX ? manette.x -1000 : manette.x + 1000,
+          duration: 900,
+          ease: 'Power2',
+          yoyo: true,
+          // delay: 1000
+        });
       }
 
       manette.obj_manette = undefined;
