@@ -159,7 +159,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
      if (this.c == 1) {
        this.bossControlable.getChildren()[0].setVelocityX(100)
-       this.bossControlable.getChildren()[0].deplacement(input)
+       console.log("LE BOSS APTITUDES")
+       console.log(this.bossControlable.getChildren()[0].Aptitudes)
+       console.log("MON JOUEUR")
+       console.log(this.bossControlable.getChildren()[0].Aptitudes)
        this.c = 0;
        // console.log()
      }

@@ -19,6 +19,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   zoneInteraction: any
   vivant: boolean = true
   timer_boss_1: Phaser.Time.TimerEvent
+  Aptitudes: any
 
   sprite: string
 
@@ -43,6 +44,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
     this.sprite = 'boss_1'
     this.attaque = false;
     this.blesse = false;
+    this.Aptitudes = Aptitudes
     this.etats = {
       'initial': {
         couleur: 16777215,
