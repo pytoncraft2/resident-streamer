@@ -428,6 +428,7 @@ export default class Jeu extends Phaser.Scene {
         this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
         if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
         if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
+        if (list.projectiles[item].angle) this.projectilesRef[item].angle = list.projectiles[item].angle;
 
 
         // this.projectilesRef[item].angle += 32;

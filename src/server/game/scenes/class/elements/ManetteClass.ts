@@ -41,6 +41,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
+    this.angle += 32;
 
       (this.scene as any).room.state.projectiles.set(
         this.id,
@@ -51,6 +52,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
           active: this.active,
           flipX: this.flipX,
           sprite: this.sprite,
+          angle: this.angle,
           _frame: this._frame
         })
       )
