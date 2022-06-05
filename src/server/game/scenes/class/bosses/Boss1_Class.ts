@@ -18,7 +18,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   etatEnCours: string
   zoneInteraction: any
   vivant: boolean = true
-  proprietaire_objet: (id: string, id_ennemie: string) => void
   timer_boss_1: Phaser.Time.TimerEvent
 
   sprite: string
@@ -95,10 +94,6 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
-     this.proprietaire_objet = (id_joueur, id_ennemie) => {
-       this.scene.events.emit('boss_KO-proprietaire', {id_joueur: id_joueur, id_ennemie: this.EnnemyId});
-     }
   }
 
   preUpdate(time: number, delta: number) {
@@ -189,12 +184,12 @@ this.setTint(0xff0000)
 
   mourir() {
     console.log("MMMMMMMMMMMMMMMOURRRRI")
-    this.vivant = false
     this.etatEnCours = 'initial'
     this.clearTint()
     // this.setTint(this.etats['initial']['couleur'])
     // this.timer_boss_1.remove();
-    this.setVelocity(0)
+    this.setVelocity(0);
+    (this.body as any).setAllowGravity(false)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
     this.setPosition(this.x, 779.2995484974318);

@@ -17,12 +17,13 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    attaque: boolean = false
    action: any
    zoneInteraction: any
+   interaction_objet: boolean
    etats: any
    etatEnCours: any
    blesse_opposant: boolean = false
    soigne: boolean = false
-   interaction_objet: boolean = false
    groupeBoules: any
+   bossControlable: any
 
    survole: boolean = false
 
@@ -62,6 +63,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      }
 
      this.etatEnCours = 'initial'
+
+     this.bossControlable = this.scene.add.group();
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -115,19 +118,27 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          if (typeof _e.blesse_ennemie === "function") _e.blesse_ennemie(1)
        }
 
-       if (this.interaction_objet) {
-         if (!_e.vivant && _e.active) {
-           if (typeof _e.proprietaire_objet === "function") {
-             _e.proprietaire_objet(this.ClientID)
-             _e.active = false
-           }
-         }
-         this.interaction_objet = false
-       }
-
        if (this.soigne) {
          console.log("SOIN")
          _e.vie += 0.01
+       }
+
+       if (this.interaction_objet) {
+
+         if (this.bossControlable.getLength() == 0) {
+           this.bossControlable.add(_e)
+           // console.log(this.bossControlable.getChildren()[0])
+           console.log("AJOUT BOSS")
+         }
+         // if (!_e.vivant && _e.active) {
+         //   if (typeof _e.proprietaire_objet === "function") {
+         //     _e.proprietaire_objet(this.ClientID)
+         //     _e.active = false
+         //   }
+         // }
+         // _e.setScale(4)
+         // console.log("INTERACTION OBJET -------------------------- go")
+         this.interaction_objet = false
        }
 
      };
@@ -142,6 +153,11 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut } = input
      let animationName = this.anims.getFrameName()
+
+     if (this.bossControlable.getLength() == 1) {
+       this.bossControlable.getChildren()[0].setVelocityX(100)
+       // console.log()
+     }
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
