@@ -40,6 +40,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
     this.setAlpha(0)
+    this.setDepth(2)
 
     var tween = this.scene.tweens.add({
       targets: this,
@@ -86,7 +87,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         id: this.id,
         laser: true,
         scale: this.scale,
-        // flipX: this.flipX,
+        depth: this.depth,
         sprite: this.sprite,
         alpha: this.alpha,
         _frame: this._frame

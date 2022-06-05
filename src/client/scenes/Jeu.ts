@@ -421,6 +421,7 @@ export default class Jeu extends Phaser.Scene {
           const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`).setAlpha(list.projectiles[item].alpha)
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
+          if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
           this.projectilesRef[item] = projectile
       }
       else
