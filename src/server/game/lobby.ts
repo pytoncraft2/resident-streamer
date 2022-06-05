@@ -16,7 +16,7 @@ export default class LobbyRooms extends Room {
     super()
     this.autoDispose = true
     this.setPatchRate(17)
-    this.maxClients = 4
+    this.maxClients = 20
   }
 
 

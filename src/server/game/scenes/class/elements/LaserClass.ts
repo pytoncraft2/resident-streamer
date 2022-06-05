@@ -39,14 +39,14 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.setScale(0.19265106053743225, 0.14474581179115986)
     // var block = this.physics.add.sprite(700, 300, 'mushroom');
     // blocks.push(block);
+    this.setAlpha(0)
 
-    // var tween = this.scene.tweens.add({
-    //   targets: this,
-    //   scale: 2,
-    //   //displayOriginX: rect.displayOriginX,
-    //   duration: 7000,
-    //   repeat: 1,            // -1: infinity
-    // });
+    var tween = this.scene.tweens.add({
+      targets: this,
+      alpha: 1,
+      //displayOriginX: rect.displayOriginX,
+      duration: 1000,
+    });
 
     // this.scene.add.existing(this)
     // scene.physics.add.existing(this);
@@ -54,26 +54,17 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // console.log("CCCCCCCCCCCCCCCCCREATION laser")
 
     // this.setBounce(1, 1);
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
-        x: this.x,
-        y: this.y,
-        id: this.id,
-        laser: true,
-        scale: this.scale,
-        // flipX: this.flipX,
-        sprite: this.sprite,
-        _frame: this._frame
-      })
-    )
+
 
   }
 
   preUpdate(time, delta) {
     // console.log("UPDATE!!!")
-    this.x = this.proprietaire.x
-    this.y = this.proprietaire.y
+    // this.setScale(0.1)
+
+    this.x = this.proprietaire.x + 80
+    this.y = this.proprietaire.y - 185
+
     var x = this.x;
     var y = this.y - (this.height /2);
 
@@ -87,10 +78,26 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       }
     }, this);
 
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        id: this.id,
+        laser: true,
+        scale: this.scale,
+        // flipX: this.flipX,
+        sprite: this.sprite,
+        alpha: this.alpha,
+        _frame: this._frame
+      })
+    )
+
   }
 
   // update(time, delta) {
-  //
+  //   this.setAlpha(0.5)
+  // //
   // }
 
 }
