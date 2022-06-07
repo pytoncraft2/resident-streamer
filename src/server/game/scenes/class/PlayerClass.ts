@@ -25,6 +25,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    soigne: boolean = false
    groupeBoules: any
    bossControlable: any
+   currentTarget: any
+   me: any
 
    survole: boolean = false
 
@@ -72,6 +74,9 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].stats.call(self, self, Aptitudes)
+
+     this.currentTarget = this
+     this.me = this
      // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
      // new Aptitudes[this.sprite].StatsSupplementaire(this)
 
@@ -163,6 +168,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        console.log(this.bossControlable.getChildren()[0].Aptitudes)
        console.log("MON JOUEUR")
        console.log(this.bossControlable.getChildren()[0].Aptitudes)
+       this.currentTarget = this.bossControlable.getChildren()[0]
+       this.scene.time.delayedCall(5000, () => {
+         this.currentTarget = this.me
+       }, null, this);
        this.c = 0;
        // console.log()
      }
@@ -170,13 +179,13 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-       if (a || a_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheA === "function" && Aptitudes[this.sprite].toucheA(this, input);
-       if (z || z_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheZ === "function" && Aptitudes[this.sprite].toucheZ(this, input);
-       if (e) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheE === "function" && Aptitudes[this.sprite].toucheE(this, input);
-       if (r) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheR === "function" && Aptitudes[this.sprite].toucheR(this);
-       if (left || left_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheGauche === "function" && Aptitudes[this.sprite].toucheGauche(this, input)
-       if (right || right_fin) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheDroite === "function" && Aptitudes[this.sprite].toucheDroite(this, input)
-       if (space) this.sprite in Aptitudes && typeof Aptitudes[this.sprite].toucheEspace === "function" && Aptitudes[this.sprite].toucheEspace(this, input);
+       if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheA === "function" && Aptitudes[this.currentTarget.sprite].toucheA(this.currentTarget, input);
+       if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheZ === "function" && Aptitudes[this.currentTarget.sprite].toucheZ(this.currentTarget, input);
+       if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheE === "function" && Aptitudes[this.currentTarget.sprite].toucheE(this.currentTarget, input);
+       if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);
+       if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
+       if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
+       if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
 
        if (left_fin) input.left_fin = false;
        if (z_fin) input.z_fin = false;
