@@ -42,12 +42,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.setAlpha(0)
     this.setDepth(2)
 
-    var tween = this.scene.tweens.add({
-      targets: this,
-      alpha: 1,
-      //displayOriginX: rect.displayOriginX,
-      duration: 1000,
-    });
+
 
     // this.scene.add.existing(this)
     // scene.physics.add.existing(this);
@@ -86,7 +81,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         y: this.y,
         id: this.id,
         laser: true,
-        // scale: this.scale,
+        scale: this.scale,
         depth: this.depth,
         sprite: this.sprite,
         alpha: this.alpha,
@@ -94,6 +89,17 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       })
     )
 
+  }
+
+  charge() {
+    var tween = this.scene.tweens.add({
+      targets: this,
+      alpha: 0.7,
+      //displayOriginX: rect.displayOriginX,
+      duration: 200,
+      yoyo: true,
+      repeat: 3
+    });
   }
 
   // update(time, delta) {

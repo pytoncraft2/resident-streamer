@@ -1,6 +1,8 @@
 import { Player } from "../../../RoomState"
 import { AnimationEnnemie } from "../../Animations/AnimationEnnemie"
 import { Aptitudes } from "../../Aptitudes/base"
+import { DefautStats, DefautDirection } from "../../Stats/Defaut"
+
 
 
 
@@ -21,7 +23,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   timer_boss_1: Phaser.Time.TimerEvent
   Aptitudes: any
 
-  sprite: string
+  sprite: string = 'boss_1'
 
   constructor(
     scene: Phaser.Scene,
@@ -38,6 +40,9 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   init(scene: Phaser.Scene, EnnemyId: string) {
 
     this.scene = scene
+    DefautDirection(Aptitudes, this)
+    Aptitudes[this.sprite].stats.call(this, this, Aptitudes)
+
     this.scene.add.existing(this)
     this.EnnemyId = EnnemyId
     this.lastAnim = null;

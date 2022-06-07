@@ -112,6 +112,12 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
            this.blesse_opposant = true
          }
        }
+
+       if (anim.key == 'twitchman_punch') {
+         if (frame.frame.name == 'twitchmanpunch1') {
+           this.blesse_opposant = true
+         }
+       }
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody

@@ -1,3 +1,6 @@
+import LaserClass from "../class/elements/LaserClass";
+
+
 interface BaseEquipement {
   boulesEnMain: Phaser.Physics.Arcade.Group;
 }
@@ -46,6 +49,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   //twitchman
   survole: boolean
+  laser: LaserClass
 }
 
   export default TJoueur;

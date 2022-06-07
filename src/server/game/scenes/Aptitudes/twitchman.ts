@@ -10,6 +10,8 @@ export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
       _twitchman.survole = false
     })
   }
+
+  twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
 }
 
 
@@ -17,6 +19,7 @@ export function punch(twitchman: TJoueur, input) {
   if (input.a)
   {
   twitchman.play('twitchman_punch')
+  input.a = false
   }
 }
 
@@ -35,12 +38,12 @@ export function charge(twitchman, input) {
   }
 }
 
-export function laser(twitchman, input) {
+export function laser(twitchman: TJoueur, input) {
   console.log("LAZER")
 
+  twitchman.laser.charge()
   input.e = false
 
-  var laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
   // lazer.scaleX = 8.29461186764485;
   // lazer.scaleY = 0.12225173083106433;
 
