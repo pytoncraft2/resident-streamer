@@ -142,8 +142,11 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (this.interaction_objet) {
 
          if (this.bossControlable.getLength() == 0) {
-           this.c = 1;
+           // this.c = 1;
            this.bossControlable.add(_e)
+           this.bossControlable.getChildren()[0]
+           .setScale(0.1)
+           .setPosition(this.getTopCenter().x, this.getTopCenter().y)
            // console.log(this.bossControlable.getChildren()[0])
            console.log("AJOUT BOSS")
          }
@@ -189,6 +192,13 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        this.setPosition(
          this.currentTarget.getTopCenter().x,
          this.currentTarget.getTopCenter().y - 80
+       )
+     }
+
+     if (this.bossControlable.getLength() == 1) {
+       this.bossControlable.getChildren()[0].setPosition(
+         this.getTopCenter().x,
+         this.getTopCenter().y - 80
        )
      }
 
