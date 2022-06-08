@@ -131,8 +131,8 @@ this.physics.add.overlap(this.players, this.enemies);
     }
   }
 
-  createPlayer(ClientId: any) {
-    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId).setData({ ClientId }))
+  createPlayer(ClientId: any, sprite: string) {
+    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId, sprite).setData({ ClientId }))
     this.players.add(player)
     this.playersRef[ClientId] = player
     player.setBounceX(0.2)

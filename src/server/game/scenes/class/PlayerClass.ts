@@ -37,18 +37,22 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      scene: Phaser.Scene,
      x: number,
      y: number,
-     sprite: string,
-     ClientID: string
+     atlas: string,
+     ClientID: string,
+     sprite: string
    ) {
-     super(scene, x, y, sprite)
+     super(scene, x, y, atlas, sprite)
+     console.log("LE SPRITE !!!!!!!!!!!!!!!!!!!!!!!!!!")
+     console.log(sprite)
 
-     this.init(scene, ClientID)
+     this.init(scene, ClientID, sprite)
    }
 
-   init(scene: Phaser.Scene, ClientID: string) {
+   init(scene: Phaser.Scene, ClientID: string, sprite: string) {
      this.scene = scene
      this.ClientID = ClientID
-     this.sprite = (scene as any).room.donnes[this.ClientID].sprite
+     // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
+     this.sprite = sprite
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
@@ -169,18 +173,26 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      let animationName = this.anims.getFrameName()
 
      if (this.c == 1) {
-       this.bossControlable.getChildren()[0].setVelocityX(100)
-       console.log("LE BOSS APTITUDES")
-       console.log(this.bossControlable.getChildren()[0].Aptitudes)
-       console.log("MON JOUEUR")
-       console.log(this.bossControlable.getChildren()[0].Aptitudes)
+       // this.bossControlable.getChildren()[0].setVelocityX(100)
+       this.bossControlable.getChildren()[0].setScale(1)
        this.currentTarget = this.bossControlable.getChildren()[0]
-       this.setScale(0.5)
+       //@ts-ignore
+       this.scene.createPlayer(12345, 'twitchman')
+       this.setScale(0.2)
+       //@ts-ignore
+       this.body.setAllowGravity(false)
        this.scene.time.delayedCall(20000, () => {
          this.currentTarget = this.me
        }, null, this);
        this.c = 0;
        // console.log()
+     }
+
+     if (this.currentTarget && this.currentTarget.sprite != this.sprite) {
+       this.setPosition(
+         this.currentTarget.getTopCenter().x,
+         this.currentTarget.getTopCenter().y
+       )
      }
 
      if (this.canMove) {

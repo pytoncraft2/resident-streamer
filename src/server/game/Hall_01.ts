@@ -45,6 +45,8 @@ export default class GameRooms extends Room {
 
   onJoin(client: Client, options: any) {
     console.log(`${client.id} has joined!`)
+    console.log("DEBUT SPRITE -------------------------")
+    console.log(options.sprite)
     this.donnes[client.id] = {
       clavier: {
         up: false,

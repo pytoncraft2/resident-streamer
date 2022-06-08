@@ -1,4 +1,11 @@
-export function StatsSupplementaire() {}
+export function StatsSupplementaire(boss_1: any, Aptitudes: any) {
+  Aptitudes[boss_1.sprite].toucheDroite = function (_boss_1: any) {
+    boss_1.setVelocityX(400)
+  }
+  Aptitudes[boss_1.sprite].toucheGauche = function (_boss_1: any) {
+    boss_1.setVelocityX(-400)
+  }
+}
 
 export function pique(boss_1: Phaser.Physics.Arcade.Sprite|any, input) {
   boss_1.play('attaque')
