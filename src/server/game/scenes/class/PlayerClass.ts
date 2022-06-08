@@ -14,6 +14,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    c: any
    vel: number = 600
    compteurSaut: number = 0
+   iconSuitJoueur: boolean = false
+   tweenIcon: Phaser.Tweens.Tween
    canMove: boolean = true
    attaque: boolean = false
    action: any
@@ -141,12 +143,23 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
        if (this.interaction_objet) {
 
-         if (this.bossControlable.getLength() == 0) {
+         if (this.bossControlable.getLength() == 0 && _e.sprite && _e.sprite != this.sprite) {
            // this.c = 1;
            this.bossControlable.add(_e)
-           this.bossControlable.getChildren()[0]
-           .setScale(0.1)
-           .setPosition(this.getTopCenter().x, this.getTopCenter().y)
+
+           this.tweenIcon = this.scene.tweens.add({
+             targets: _e,
+             x: this.getTopCenter().x,
+             y: this.getTopCenter().y,
+             scale: 0.1,
+             ease: 'Sine.easeIn',
+             duration: 3000,
+             onComplete: () => (this.iconSuitJoueur = true)
+             // paused: true
+           });
+           // this.bossControlable.getChildren()[0]
+           // .setScale(0.1)
+           // .setPosition(this.getTopCenter().x, this.getTopCenter().y)
            // console.log(this.bossControlable.getChildren()[0])
            console.log("AJOUT BOSS")
          }
@@ -165,8 +178,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
-     this.c = 0
    }
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
@@ -175,31 +186,19 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut } = input
      let animationName = this.anims.getFrameName()
 
-     if (this.c == 1) {
-       // this.bossControlable.getChildren()[0].setVelocityX(100)
-       this.bossControlable.getChildren()[0].setScale(1)
-       this.currentTarget = this.bossControlable.getChildren()[0]
-       this.setScale(0.2)
-       this.scene.time.delayedCall(20000, () => {
-         this.currentTarget = this.me
-         this.setScale(1)
-       }, null, this);
-       this.c = 0;
-       // console.log()
-     }
-
-     if (this.currentTarget && this.currentTarget.sprite != this.sprite) {
-       this.setPosition(
-         this.currentTarget.getTopCenter().x,
-         this.currentTarget.getTopCenter().y - 80
-       )
-     }
-
-     if (this.bossControlable.getLength() == 1) {
+     if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
        this.bossControlable.getChildren()[0].setPosition(
          this.getTopCenter().x,
          this.getTopCenter().y - 80
        )
+     }
+
+     if (this.tweenIcon && this.tweenIcon.isPlaying())
+     {
+      this.tweenIcon.updateTo('x', this.getTopCenter().x, true);
+      this.tweenIcon.updateTo('y', this.getTopCenter().y - 80, true);
+
+       // .setText('Progress: ' + this.tweenIcon.progress);
      }
 
      if (this.canMove) {

@@ -201,7 +201,7 @@ this.setTint(0xff0000)
     this.scene.physics.world.removeCollider((this.scene as any).colisionJoueurEnnemie);
     this.scene.physics.world.removeCollider((this.scene as any).colisionShurikenEnnemie);
     this.setPosition(this.x, 779.2995484974318);
-    this.setScale(0.1);
+    this.setScale(0.2);
     // (this.scene as any).room.state.presences.set(
     //   this.EnnemyId,
     //   new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: '', flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}, scale: this.scale})
