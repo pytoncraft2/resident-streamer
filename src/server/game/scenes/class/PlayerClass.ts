@@ -176,13 +176,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        // this.bossControlable.getChildren()[0].setVelocityX(100)
        this.bossControlable.getChildren()[0].setScale(1)
        this.currentTarget = this.bossControlable.getChildren()[0]
-       //@ts-ignore
-       this.scene.createPlayer(12345, 'twitchman')
        this.setScale(0.2)
-       //@ts-ignore
-       this.body.setAllowGravity(false)
        this.scene.time.delayedCall(20000, () => {
          this.currentTarget = this.me
+         this.setScale(1)
        }, null, this);
        this.c = 0;
        // console.log()
@@ -191,7 +188,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (this.currentTarget && this.currentTarget.sprite != this.sprite) {
        this.setPosition(
          this.currentTarget.getTopCenter().x,
-         this.currentTarget.getTopCenter().y
+         this.currentTarget.getTopCenter().y - 80
        )
      }
 
