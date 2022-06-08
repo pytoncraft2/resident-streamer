@@ -175,7 +175,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        console.log("MON JOUEUR")
        console.log(this.bossControlable.getChildren()[0].Aptitudes)
        this.currentTarget = this.bossControlable.getChildren()[0]
-       this.scene.time.delayedCall(5000, () => {
+       this.setScale(0.5)
+       this.scene.time.delayedCall(20000, () => {
          this.currentTarget = this.me
        }, null, this);
        this.c = 0;
@@ -215,6 +216,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          x: this.x,
          y: this.y,
          sprite: this.sprite,
+         scale: this.scale,
          anim: animationName,
          flipX: this.flipX,
          tint: this.tintBottomLeft,
