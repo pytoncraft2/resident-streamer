@@ -288,7 +288,7 @@ export default class Jeu extends Phaser.Scene {
   rooms: any
   personnage?: string
   compte: number = 0
-  prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean }
+  prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean, tab: boolean }
   attaqueDirecte: boolean = false
   directeA: boolean = false
   emitter: any
@@ -361,7 +361,7 @@ export default class Jeu extends Phaser.Scene {
 		this.kunaisRef = {}
     this.bombesRef = {}
 
-		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R")
+		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
 
     this.barreHautContainer.setScrollFactor(0)
 
@@ -418,6 +418,28 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
           this.projectilesRef[item] = projectile
+          var particles = this.add.particles('flares');
+          // var emitter = particles.createEmitter();
+
+          particles.createEmitter({
+            alpha: { start: 1, end: 0 },
+            scale: { start: 0.5, end: 2.5 },
+            //tint: { start: 0xff945e, end: 0xff945e },
+            speed: 20,
+            accelerationY: -300,
+            angle: { min: -85, max: -95 },
+            rotate: { min: -180, max: 180 },
+            lifespan: { min: 1000, max: 1100 },
+            blendMode: 'ADD',
+            frequency: 110,
+            maxParticles: 10,
+            x: list.projectiles[item].x,
+            y: list.projectiles[item].y + 120
+          });
+          particles.setDepth(2)
+          // emitter.setPosition(list.projectiles[item].x, list.projectiles[item].y);
+          // emitter.setSpeed(200).setScale(0.5);
+
       }
       else
       {
@@ -653,7 +675,7 @@ export default class Jeu extends Phaser.Scene {
 // });
 //  We need the top-left of the rect
 
-      const { right, left, space, A, Z, E, R } = this.keyboard
+      const { right, left, space, A, Z, E, R, TAB } = this.keyboard
 
       const inputs = {
         a: A.isDown ? true : false,
@@ -664,6 +686,7 @@ export default class Jeu extends Phaser.Scene {
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
         left: left.isDown ? true : false,
+        tab: TAB.isDown ? true : false
       }
 
       //ATTAQUE
@@ -691,7 +714,8 @@ export default class Jeu extends Phaser.Scene {
           right_fin: Phaser.Input.Keyboard.JustUp(right),
           left_fin: Phaser.Input.Keyboard.JustUp(left),
           right_debut: Phaser.Input.Keyboard.JustDown(right),
-          left_debut: Phaser.Input.Keyboard.JustDown(left)
+          left_debut: Phaser.Input.Keyboard.JustDown(left),
+          tab_fin: Phaser.Input.Keyboard.JustUp(TAB)
         })
       }
     }

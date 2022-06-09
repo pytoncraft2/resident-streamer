@@ -44,8 +44,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      sprite: string
    ) {
      super(scene, x, y, atlas, sprite)
-     console.log("LE SPRITE !!!!!!!!!!!!!!!!!!!!!!!!!!")
-     console.log(sprite)
 
      this.init(scene, ClientID, sprite)
    }
@@ -183,7 +181,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut } = input
+     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
 
      if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
@@ -208,6 +206,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheZ === "function" && Aptitudes[this.currentTarget.sprite].toucheZ(this.currentTarget, input);
        if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheE === "function" && Aptitudes[this.currentTarget.sprite].toucheE(this.currentTarget, input);
        if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);
+       // if (tab) this.setVelocityY(-400)
+       /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
        if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
        if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
        if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
@@ -218,6 +218,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (space_fin) input.space_fin = false;
        if (right_debut) input.right_debut = false
        if (left_debut) input.left_debut = false;
+       if (tab_fin) input.tab_fin = false;
        // if (left || left_fin) this.deplacement('left', left, left_fin)
        // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
