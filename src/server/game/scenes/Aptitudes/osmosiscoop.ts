@@ -1,8 +1,8 @@
 import TJoueur from "../types/Joueur";
 
-export function StatsSupplementaire() {}
+export function __StatsSupplementaire() {}
 
-export function soin(osmo: TJoueur, input: any) {
+export function soin__A(osmo: TJoueur, input: any) {
   if (input.a)
   {
     osmo.soigne = true;
@@ -15,14 +15,14 @@ export function soin(osmo: TJoueur, input: any) {
   }
 }
 
-export function blesse(osmo: TJoueur, input: any) {
+export function blesse__Z(osmo: TJoueur, input: any) {
   if (input.z) {
     osmo.play('osmo_attaque', true)
     input.z = false;
   }
 }
 
-export function osmo_saut(osmo: TJoueur) {
+export function osmo_saut__E(osmo: TJoueur) {
   if (osmo.body.touching.down) {
     osmo.play('osmo_saut')
     osmo.body.setVelocityY(-1400);

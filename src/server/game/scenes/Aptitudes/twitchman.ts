@@ -1,7 +1,7 @@
 import TJoueur from "../types/Joueur";
 import LaserClass from "../class/elements/LaserClass";
 
-export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
+export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
   Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
     _twitchman.body.setVelocityY(-500)
     _twitchman.play('twitchman_vole', true)
@@ -15,7 +15,7 @@ export function StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
 }
 
 
-export function punch(twitchman: TJoueur, input) {
+export function punch__A(twitchman: TJoueur, input) {
   if (input.a)
   {
   twitchman.play('twitchman_punch')
@@ -23,7 +23,7 @@ export function punch(twitchman: TJoueur, input) {
   }
 }
 
-export function charge(twitchman, input) {
+export function charge__Z(twitchman, input) {
   if (input.z)
   {
     twitchman.play('twitchman_charge')
@@ -38,7 +38,7 @@ export function charge(twitchman, input) {
   }
 }
 
-export function laser(twitchman: TJoueur, input) {
+export function laser__E(twitchman: TJoueur, input) {
   console.log("LAZER")
 
   twitchman.laser.charge()

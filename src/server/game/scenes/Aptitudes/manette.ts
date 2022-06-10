@@ -3,16 +3,16 @@ import ManetteClass from '../class/elements/ManetteClass'
 import TJoueur from "../types/Joueur";
 
 
-export function StatsSupplementaire() {}
+export function __StatsSupplementaire() {}
 
-export function punch(manette: TJoueur, input: any) {
+export function punch__A(manette: TJoueur, input: any) {
   if (input.a) {
     manette.body.setVelocityY(1000)
     manette.play('manette_punch')
   }
 }
 
-export function lanceManette(manette: TJoueur, input: any) {
+export function lanceManette__Z(manette: TJoueur, input: any) {
 
   if (!manette.obj_manette) {
     manette.play('manette_lance')
