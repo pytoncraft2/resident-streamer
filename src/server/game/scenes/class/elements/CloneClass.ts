@@ -1,5 +1,5 @@
 import { Player } from "../../../RoomState"
-import {kunai, shuriken, multiclonage} from '././../../Aptitudes/huzounet'
+import {kunai__Z, shuriken__A, multiclonage__E} from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
@@ -126,7 +126,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
 
     if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
-      kunai(this as any)
+      kunai__Z(this as any)
     }
 
     if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {

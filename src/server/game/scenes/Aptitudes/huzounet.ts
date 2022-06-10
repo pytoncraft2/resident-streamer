@@ -5,7 +5,7 @@ import CloneClass from "../class/elements/CloneClass"
 
 import TJoueur from "../types/Joueur";
 
-export function StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
+export function __StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     collideWorldBounds: true,
@@ -20,7 +20,7 @@ export function StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
  * @param  {Object} huzounet: TJoueur Type
  * @param  {Object} input?: any       touche appuié
  */
-export function shuriken(huzounet: TJoueur, input?: any) {
+export function shuriken__A(huzounet: TJoueur, input?: any) {
 
   if (input.a) {
 
@@ -64,7 +64,7 @@ export function shuriken(huzounet: TJoueur, input?: any) {
 
 }
 
-export function kunai(huzounet: TJoueur) {
+export function kunai__Z(huzounet: TJoueur) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
     if (!huzounet.kunai) {
@@ -86,7 +86,7 @@ export function kunai(huzounet: TJoueur) {
     }
 }
 
-export function multiclonage(huzounet: TJoueur) {
+export function multiclonage__E(huzounet: TJoueur) {
   if (!huzounet.clone) {
     huzounet.clone = true
     const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
