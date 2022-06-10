@@ -23,7 +23,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
   timer_boss_1: Phaser.Time.TimerEvent
   Aptitudes: any
 
-  sprite: string = 'boss_1'
+  sprite: string
 
   constructor(
     scene: Phaser.Scene,
@@ -39,14 +39,16 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
   init(scene: Phaser.Scene, EnnemyId: string) {
 
+    console.log("ID ENNEMY !!!!!!!!!!")
+    console.log(EnnemyId)
     this.scene = scene
-    DefautDirection(Aptitudes, this)
-    Aptitudes[this.sprite].StatsSupplementaire.call(this, this, Aptitudes)
+    // DefautDirection(Aptitudes, this)
+    // Aptitudes[this.sprite].StatsSupplementaire.call(this, this, Aptitudes)
 
     this.scene.add.existing(this)
     this.EnnemyId = EnnemyId
     this.lastAnim = null;
-    this.sprite = 'boss_1'
+    this.sprite = EnnemyId
     this.attaque = false;
     this.blesse = false;
     this.Aptitudes = Aptitudes
@@ -136,7 +138,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
         new Player({
           x: this.x,
           y: this.y,
-          sprite: 'boss_1',
+          sprite: this.sprite,
           anim: animationName,
           flipX: this.flipX,
           tint: this.tintBottomLeft,
