@@ -3,6 +3,7 @@ import path from 'path'
 const nomFichierCourant = path.basename(__filename);
 export const Aptitudes = {};
 const touche = {}
+const lesTouches = {}
 
 //import de toute les Aptitudes des personnages
 fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
@@ -21,8 +22,12 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
           let index = element.toString().split(' ')[1].indexOf("__")
           if (index != -1) {
             console.log("TROUVÉ")
+            let CLE = element.toString().split(' ')[1].substr(index+2).split('(')[0]
+            lesTouches[CLE] = element
+            console.log(CLE)
           }
           let underscoreRecherche = element.toString().split(' ')[1].substr(index+2)[0]
+
             // console.log("INDEX:", i)
             touche[`${underscoreRecherche}`] = Object.values(m)[i]
           // toString()[0]
@@ -42,7 +47,7 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
 });
 
 setTimeout(() => {
-console.log(touche)
-}, 3000);
+console.log(lesTouches)
+}, 4000);
 
 // StatsSupplementaire

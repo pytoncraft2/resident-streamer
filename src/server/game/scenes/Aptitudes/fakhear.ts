@@ -4,7 +4,7 @@ import TJoueur from "../types/Joueur";
 
 export function StatsSupplementaire() {}
 
-export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     fakhear.setVelocityX(0)
@@ -12,12 +12,12 @@ export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   }
 }
 
-export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any) {
+export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.play('attack')
   fakhear.setVelocityX(0);
 }
 
-export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
+export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.play('straightlead')
   fakhear.setVelocityX(0);
   fakhear.body.checkCollision.none = true;
@@ -35,10 +35,14 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function interaction(personnage: TJoueur) {
+export function interaction__R(personnage: TJoueur) {
   personnage.interaction_objet = true
   personnage.scene.tweens.addCounter({
     duration: 1,
     onComplete: () => (personnage.interaction_objet = false)
   })
+}
+
+export function fusion__TAB(personnage: TJoueur) {
+
 }
