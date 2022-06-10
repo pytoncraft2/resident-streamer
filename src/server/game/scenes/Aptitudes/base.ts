@@ -21,10 +21,9 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
 
           let index = element.toString().split(' ')[1].indexOf("__")
           if (index != -1) {
-            console.log("TROUVÉ")
             let CLE = element.toString().split(' ')[1].substr(index+2).split('(')[0]
-            lesTouches[CLE] = element
-            console.log(CLE)
+            lesTouches['test'][CLE] = element
+            console.log(file.substring(0, file.lastIndexOf('.')))
           }
           let underscoreRecherche = element.toString().split(' ')[1].substr(index+2)[0]
 
