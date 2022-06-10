@@ -1,8 +1,5 @@
 import { Projectile } from "../../../RoomState"
 
-
-// var rect = new Phaser.GameObjects.Rectangle(scene, x, y, width, height, fillColor, fillAlpha);
-// scene.add.existing(rect);
 export default class LaserClass extends Phaser.GameObjects.Rectangle {
   sprite: string = 'laser01'
   _frame: string = 'laser01'
