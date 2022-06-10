@@ -25,7 +25,7 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
             const personnage = file.substring(0, file.lastIndexOf('.'))
 
             if (lesTouches[personnage] === undefined) lesTouches[personnage] = {}
-            lesTouches[personnage][CLE] = element
+            lesTouches[personnage]['touche'+CLE] = element
             // lesTouches[personnage][CLE] = element
             // console.log(file.substring(0, file.lastIndexOf('.')))
           }
@@ -52,5 +52,9 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
 setTimeout(() => {
 console.log(lesTouches)
 }, 4000);
+
+setTimeout(() => {
+console.log(Aptitudes)
+}, 9000);
 
 // StatsSupplementaire
