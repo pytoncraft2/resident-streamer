@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import path from 'path'
 const nomFichierCourant = path.basename(__filename);
+
 export const Aptitudes = {};
 
 //import de toute les Aptitudes des personnages selon les touches disponibles
 //import toute les fonction du dossier "Aptitudes"
+
 fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
   files.forEach((file) => {
     import('./' + file).then((m) => {
