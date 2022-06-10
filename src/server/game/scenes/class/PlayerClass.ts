@@ -77,7 +77,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      new AnimationEnnemie(this.anims)
      const self = this;
      DefautDirection(Aptitudes, this)
-     Aptitudes[this.sprite].stats.call(self, self, Aptitudes)
+     Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
 
      this.currentTarget = this
      this.me = this

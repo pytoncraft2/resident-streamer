@@ -41,7 +41,7 @@ export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
 
     this.scene = scene
     DefautDirection(Aptitudes, this)
-    Aptitudes[this.sprite].stats.call(this, this, Aptitudes)
+    Aptitudes[this.sprite].StatsSupplementaire.call(this, this, Aptitudes)
 
     this.scene.add.existing(this)
     this.EnnemyId = EnnemyId
