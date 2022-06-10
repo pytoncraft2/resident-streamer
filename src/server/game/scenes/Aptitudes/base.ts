@@ -15,19 +15,20 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
         const personnage = file.substring(0, file.lastIndexOf('.'))
         Object.values(m).forEach((element, i) => {
           let index = element.toString().split(' ')[1].indexOf("__")
-          let indexStat = element.toString().split(' ')[1].indexOf("StatsSupplementaire")
+          // let indexStat = element.toString().split(' ')[1].indexOf("StatsSupplementaire")
           if (index != -1)
           {
             let CLE = element.toString().split(' ')[1].substr(index+2).split('(')[0]
             if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
-            Aptitudes[personnage]['touche'+CLE] = element
+            Aptitudes[personnage][CLE] = element
+            console.log(CLE)
           }
 
-          if (indexStat != -1) {
-            if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
-            Aptitudes[personnage]['stats'] = element
-            console.log("STAT SUPPLEMENTAIRE TROUVÉ!!")
-          }
+          // if (indexStat != -1) {
+          //   if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
+          //   Aptitudes[personnage]['stats'] = element
+          //   console.log("STAT SUPPLEMENTAIRE TROUVÉ!!")
+          // }
         })
         // Aptitudes[file.substring(0, file.lastIndexOf('.'))] = {
         //   stats: Object.values(m)[0],

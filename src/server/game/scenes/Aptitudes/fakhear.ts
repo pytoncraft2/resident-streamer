@@ -2,7 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 
 
-export function StatsSupplementaire() {}
+export function __stats() {}
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {

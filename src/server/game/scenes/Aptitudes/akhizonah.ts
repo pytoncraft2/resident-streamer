@@ -1,7 +1,7 @@
 import TJoueur from "../types/Joueur";
 import BombeClass from "../class/elements/BombeClass";
 
-export function StatsSupplementaire() {}
+export function __stats() {}
 
 export function couteau__A(akhizonah: TJoueur, input?: any) {
   if (input.a) {

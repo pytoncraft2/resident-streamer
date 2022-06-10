@@ -1,4 +1,4 @@
-export function StatsSupplementaire(boss_1: any, Aptitudes: any) {
+export function __stats(boss_1: any, Aptitudes: any) {
   Aptitudes[boss_1.sprite].toucheDroite = function (_boss_1: any) {
     boss_1.setVelocityX(400)
   }
