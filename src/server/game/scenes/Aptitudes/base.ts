@@ -14,7 +14,8 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
         //capture d'un tableau
         Object.values(m).forEach((element, i) => {
           let index = element.toString().split(' ')[1].indexOf("__")
-          if (index != -1) {
+          if (index != -1)
+          {
             let CLE = element.toString().split(' ')[1].substr(index+2).split('(')[0]
             const personnage = file.substring(0, file.lastIndexOf('.'))
             if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
