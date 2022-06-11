@@ -1,5 +1,6 @@
 import { Player } from "../../../RoomState"
 import { AnimationEnnemie } from "../../Animations/AnimationEnnemie"
+import { AnimationJoueur } from "../../Animations/AnimationJoueur"
 import { Aptitudes } from "../../Aptitudes/base"
 import { DefautStats, DefautDirection } from "../../Stats/Defaut"
 
@@ -39,10 +40,9 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
 
   init(scene: Phaser.Scene, EnnemyId: string) {
 
-    console.log("ID ENNEMY !!!!!!!!!!")
-    console.log(EnnemyId)
     this.scene = scene
     this.sprite = EnnemyId
+    new AnimationJoueur(this.anims)
     DefautDirection(Aptitudes, this)
     Aptitudes[EnnemyId].StatsSupplementaire.call(this, this, Aptitudes)
     this.scene.add.existing(this)
@@ -82,6 +82,18 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
     // });
 
     this.etatEnCours = 'initial'
+
+    var timer = this.scene.time.addEvent({
+      delay: 1000,                // ms
+      callback: () => Aptitudes[EnnemyId].A(this, {a: true}),
+      //args: [],
+      callbackScope: this,
+      loop: true
+    });
+
+    // this.scene.time.delayedCall(1000, () => {
+      // Aptitudes[EnnemyId].A(this, {a: true})
+    // }, null, this);
 
 
     //attaque - deplacement
