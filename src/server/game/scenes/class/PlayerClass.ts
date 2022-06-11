@@ -251,6 +251,9 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      console.log("BLESSE JOUEUR !!!!!!!!!!!!!!!!!")
      //   this.setFlipX(directionFinal)
      this.setTint(0xff0000)
+     this.scene.time.delayedCall(100, () => {
+       this.clearTint()
+     }, null, this);
      if (puissance >= 0) {
        this.vie -= puissance
      }
