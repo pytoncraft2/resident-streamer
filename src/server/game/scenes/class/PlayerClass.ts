@@ -246,4 +246,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      )
    }
 
+   blesse_ennemie(puissance: number) {
+     //   this.play('attaque')
+     //   this.setFlipX(directionFinal)
+     // this.setTint(0xff0000)
+     // if (puissance >= 0) {
+     //   this.vie -= puissance
+     // }
+   }
+
+
  }

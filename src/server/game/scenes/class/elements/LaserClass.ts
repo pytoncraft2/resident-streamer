@@ -66,7 +66,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     within.forEach(function (body) {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
-          body.gameObject.setTint(0xff0000);
+          // body.gameObject.setTint(0xff0000);
         }
       }
     }, this);

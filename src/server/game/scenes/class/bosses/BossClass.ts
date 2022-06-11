@@ -19,6 +19,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
   blesse: boolean = false
   etats: any
   etatEnCours: string
+  blesse_opposant: boolean = false
   zoneInteraction: any
   vivant: boolean = true
   timer_boss_1: Phaser.Time.TimerEvent
@@ -63,14 +64,14 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
       }
     }
 
-    // this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
-    //   // this.attaque = false
-    //   // if (anim.key == 'attaque') {
-    //   //   if (frame.frame.name == 'attaque1') {
-    //   //     // this.attaque = true
-    //   //   }
-    //   // }
-    // })
+    this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
+      this.blesse_opposant = false
+      if (anim.key == 'twitchman_punch') {
+        if (frame.frame.name == 'twitchmanpunch1') {
+          this.blesse_opposant = true
+        }
+      }
+    })
 
 
     // this.timer_boss_1 = scene.time.addEvent({
@@ -104,6 +105,12 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
      this.zoneInteraction.action = (personnage) => {
        // personnage.s
+
+       if (this.blesse_opposant) {
+         console.log("BLESSE ALLLIEÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉ")
+         this.blesse_opposant = false
+         if (typeof personnage.blesse_ennemie === "function") personnage.blesse_ennemie(1)
+       }
 
        if (this.attaque) {
          personnage.vie -= 1;
