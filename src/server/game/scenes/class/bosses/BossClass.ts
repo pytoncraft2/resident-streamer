@@ -10,7 +10,7 @@ import { DefautStats, DefautDirection } from "../../Stats/Defaut"
  * Joueur et interaction
  */
 
-export default class Boss1_Class extends Phaser.Physics.Arcade.Sprite {
+export default class BossClass extends Phaser.Physics.Arcade.Sprite {
   EnnemyId: string;
   lastAnim: any;
   attaque: any;

@@ -1,6 +1,6 @@
 // import { Player } from "../RoomState"
 
-import Boss1_Class from "./class/bosses/Boss1_Class"
+import BossClass from "./class/bosses/BossClass"
 import PlayerClass from "./class/PlayerClass"
 
 
@@ -144,7 +144,7 @@ this.physics.add.overlap(this.players, this.enemies);
 
   createEnnemy(EnnemyId: any) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
-    const ennemy = this.add.existing(new Boss1_Class(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
+    const ennemy = this.add.existing(new BossClass(this, 1000, 0, "atlas", EnnemyId).setData({ EnnemyId }))
     // ennemy.setPushable(false)
     // ennemy.setDisplaySize(335, 540.4)
     // ennemy.setBounceX(40)
