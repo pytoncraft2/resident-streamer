@@ -18,6 +18,7 @@ export default class Hall extends Phaser.Scene {
   colisionShurikenEnnemie: any
   enemies: Phaser.GameObjects.Group
   playersAttackZone: Phaser.GameObjects.Group
+  ennemieAttackZone: Phaser.GameObjects.Group
   groupeBoulesHuzounet: Phaser.GameObjects.Group
   playersRef: any
   enemiesRef: any
@@ -53,6 +54,9 @@ export default class Hall extends Phaser.Scene {
       allowGravity: false
     })
 
+    this.ennemieAttackZone = this.physics.add.group({
+      allowGravity: false
+    })
 
     this.groupeBoulesHuzounet = this.physics.add.group({
       runChildUpdate: true,
@@ -72,8 +76,9 @@ export default class Hall extends Phaser.Scene {
 
 // TODO: add physics overlap with dummy box; show box damaged on overlap
 // this.boxStateMachine.setState('damage')
-this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
-this.physics.add.overlap(this.players, this.enemies);
+// this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
+this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapActionEnnemie, undefined, this)
+// this.physics.add.overlap(this.players, this.enemies);
 
 
     this.playersRef = {}
@@ -100,6 +105,10 @@ this.physics.add.overlap(this.players, this.enemies);
 
   overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
     playerActionZone.action(ennemie)
+  }
+
+  overlapActionEnnemie(ennemieActionZone: any, joueur: Phaser.Physics.Arcade.Sprite) {
+    ennemieActionZone.action(joueur)
   }
 
   getPresence() {

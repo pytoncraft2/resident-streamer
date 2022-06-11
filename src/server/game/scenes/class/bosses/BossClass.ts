@@ -107,9 +107,16 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
        // personnage.s
 
        if (this.blesse_opposant) {
-         console.log("BLESSE ALLLIEÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉÉ")
-         this.blesse_opposant = false
-         if (typeof personnage.blesse_ennemie === "function") personnage.blesse_ennemie(1)
+
+         // if (this != personnage) {
+           this.blesse_opposant = false
+           // console.log("BLESSE L'AUTRE")
+           // if (personnage.sprite != this.sprite) {
+             // console.log(personnage.sprite)
+           // }
+           if (typeof personnage.blesse_joueur === "function") personnage.blesse_joueur(1)
+           // if (typeof personnage.blesse_joueur === "function") console.log("BLESSE JOUEUR XXXXXXXXXX")
+         // }
        }
 
        if (this.attaque) {
@@ -120,7 +127,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
-     (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+     (this.scene as any).ennemieAttackZone.add(this.zoneInteraction);
   }
 
   preUpdate(time: number, delta: number) {
