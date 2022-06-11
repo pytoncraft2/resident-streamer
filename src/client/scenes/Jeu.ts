@@ -417,7 +417,6 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
-          console.log(list.projectiles[item].particules)
           // emitter.setPosition(list.projectiles[item].x, list.projectiles[item].y);
           // emitter.setSpeed(200).setScale(0.5);
 
@@ -599,15 +598,16 @@ export default class Jeu extends Phaser.Scene {
 
 				}
 
-        if (list.presences[item].particules) this.creationParticules(list.presences[item].x, list.presences[item].y)
 
 			} else {
           this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
+        if (list.presences[item].particules) this.creationParticules(list.presences[item].x, list.presences[item].y)
+        if (list.presences[item].particules) console.log("PARTICULES")
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
-            this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
+            // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
@@ -636,18 +636,29 @@ export default class Jeu extends Phaser.Scene {
     var particles = this.add.particles('flares');
     // var emitter = particles.createEmitter();
 
+    const line = this.add.line(
+            0,
+            0,
+            (this.players as any).getChildren()[1].x,
+            (this.players as any).getChildren()[1].y,
+            x,
+            y,
+            0xff0000
+        ).setOrigin(0, 0)
+        // this.scene.graphics.strokeLineShape(line)
+
     particles.createEmitter({
       alpha: { start: 1, end: 0 },
-      scale: { start: 0.5, end: 2.5 },
+      scale: { start: 0.5, end: 5.5 },
       //tint: { start: 0xff945e, end: 0xff945e },
       speed: 20,
-      accelerationY: -300,
+      accelerationY: -100,
       angle: { min: -85, max: -95 },
       rotate: { min: -180, max: 180 },
       lifespan: { min: 1000, max: 1100 },
       blendMode: 'ADD',
-      frequency: 110,
-      maxParticles: 10,
+      frequency: 1,
+      maxParticles: 2,
       x: x,
       y: y + 120
     });
