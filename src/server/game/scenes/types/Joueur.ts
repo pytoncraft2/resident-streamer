@@ -30,6 +30,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   compteurSaut: number;
   degat: number
   sprite: string
+  particules: boolean
 
   body: Phaser.Physics.Arcade.Body
 

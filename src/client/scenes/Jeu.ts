@@ -417,26 +417,7 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
-          this.projectilesRef[item] = projectile
-          var particles = this.add.particles('flares');
-          // var emitter = particles.createEmitter();
-
-          particles.createEmitter({
-            alpha: { start: 1, end: 0 },
-            scale: { start: 0.5, end: 2.5 },
-            //tint: { start: 0xff945e, end: 0xff945e },
-            speed: 20,
-            accelerationY: -300,
-            angle: { min: -85, max: -95 },
-            rotate: { min: -180, max: 180 },
-            lifespan: { min: 1000, max: 1100 },
-            blendMode: 'ADD',
-            frequency: 110,
-            maxParticles: 10,
-            x: list.projectiles[item].x,
-            y: list.projectiles[item].y + 120
-          });
-          particles.setDepth(2)
+          console.log(list.projectiles[item].particules)
           // emitter.setPosition(list.projectiles[item].x, list.projectiles[item].y);
           // emitter.setSpeed(200).setScale(0.5);
 
@@ -617,6 +598,9 @@ export default class Jeu extends Phaser.Scene {
 					this.playersRef[item] = player
 
 				}
+
+        if (list.presences[item].particules) this.creationParticules(list.presences[item].x, list.presences[item].y)
+
 			} else {
           this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
@@ -647,6 +631,28 @@ export default class Jeu extends Phaser.Scene {
     //   }
     // });
 	}
+
+  creationParticules(x: number, y: number) {
+    var particles = this.add.particles('flares');
+    // var emitter = particles.createEmitter();
+
+    particles.createEmitter({
+      alpha: { start: 1, end: 0 },
+      scale: { start: 0.5, end: 2.5 },
+      //tint: { start: 0xff945e, end: 0xff945e },
+      speed: 20,
+      accelerationY: -300,
+      angle: { min: -85, max: -95 },
+      rotate: { min: -180, max: 180 },
+      lifespan: { min: 1000, max: 1100 },
+      blendMode: 'ADD',
+      frequency: 110,
+      maxParticles: 10,
+      x: x,
+      y: y + 120
+    });
+    particles.setDepth(2)
+  }
 
 
   fade(room: any) {

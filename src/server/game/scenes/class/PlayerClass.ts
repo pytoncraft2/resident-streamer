@@ -11,6 +11,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
  export default class PlayerClass extends Phaser.Physics.Arcade.Sprite {
    ClientID: any
    sprite: string
+   particules: boolean
    c: any
    vel: number = 600
    compteurSaut: number = 0
@@ -51,6 +52,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    init(scene: Phaser.Scene, ClientID: string, sprite: string) {
      this.scene = scene
      this.ClientID = ClientID
+     this.particules = false
      // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.sprite = sprite
      this.action = () => {
@@ -131,7 +133,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         if (typeof _e.dommage === "function") _e.dommage(1)
+         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) _e.dommage(1)
        }
 
        if (this.soigne) {
@@ -206,7 +208,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
        if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
        if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget);
-       // if (tab) this.setVelocityY(-400)
+       if (tab) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget);
        /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
        if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
        if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
@@ -240,6 +242,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          flipX: this.flipX,
          tint: this.tintBottomLeft,
          vie: this.vie,
+         particules: this.particules,
          xa: this.zoneInteraction.x,
          ya: this.zoneInteraction.y
        })

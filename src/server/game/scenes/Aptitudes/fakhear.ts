@@ -43,6 +43,12 @@ export function interaction__R(personnage: TJoueur) {
   })
 }
 
-export function fusion__TAB(personnage: TJoueur) {
+export function fusion__TAB(personnage: TJoueur, input: any) {
+console.log("FUUUUUUUUUUUUUUUUUUSION")
+personnage.particules = true
+  personnage.scene.tweens.addCounter({
+    duration: 2000,
+    onComplete: () => (personnage.particules = false)
+  })
 
 }

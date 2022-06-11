@@ -32,6 +32,7 @@ export class Player extends Schema {
   @type("string") sprite?: string
   @type("string") anim?: string
   @type("boolean") flipX?: boolean
+  @type("boolean") particules?: boolean;
   @type("number") vie?: number
   @type("number") tint?: number
   @type("number") scale?: number;
