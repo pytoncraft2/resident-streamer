@@ -131,7 +131,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         if (typeof _e.blesse_ennemie === "function") _e.blesse_ennemie(1)
+         if (typeof _e.dommage === "function") _e.dommage(1)
        }
 
        if (this.soigne) {
@@ -246,7 +246,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      )
    }
 
-   blesse_joueur(puissance: number) {
+   dommage(puissance: number) {
      //   this.play('attaque')
      console.log("BLESSE JOUEUR !!!!!!!!!!!!!!!!!")
      //   this.setFlipX(directionFinal)

@@ -114,8 +114,8 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
            // if (personnage.sprite != this.sprite) {
              // console.log(personnage.sprite)
            // }
-           if (typeof personnage.blesse_joueur === "function") personnage.blesse_joueur(1)
-           // if (typeof personnage.blesse_joueur === "function") console.log("BLESSE JOUEUR XXXXXXXXXX")
+           if (typeof personnage.dommage === "function") personnage.dommage(1)
+           // if (typeof personnage.dommage === "function") console.log("BLESSE JOUEUR XXXXXXXXXX")
          // }
        }
 
@@ -180,7 +180,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
     this.setTint(this.etats[this.etatEnCours]['couleur'])
   }
 
-  blesse_ennemie(puissance: number) {
+  dommage(puissance: number) {
     //   this.play('attaque')
 //   this.setFlipX(directionFinal)
 this.setTint(0xff0000)

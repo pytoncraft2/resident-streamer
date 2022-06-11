@@ -86,7 +86,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
       // if (this.blesse_opposant) {
       //   this.blesse_opposant = false
-      //   if (typeof _e.blesse_ennemie === "function") _e.blesse_ennemie(1)
+      //   if (typeof _e.dommage === "function") _e.dommage(1)
       // }
       //
       // if (this.interaction_objet) {

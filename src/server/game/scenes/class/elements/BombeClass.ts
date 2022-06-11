@@ -57,7 +57,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function(_zone_bombe: any, _ennemie: any) {
       const d = Phaser.Math.Distance.BetweenPoints({x: _ennemie.x, y: _ennemie.y}, {x: _zone_bombe.x, y: _zone_bombe.y}); // a, b: {x, y}
-      _ennemie.blesse_ennemie(_zone_bombe.getData('degat') - d / 100)
+      _ennemie.dommage(_zone_bombe.getData('degat') - d / 100)
       _zone_bombe.setData('degat', 0)
     }, undefined, this);
 

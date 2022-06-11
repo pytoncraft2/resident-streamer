@@ -22,7 +22,7 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
     .setFlipX(manette.flipX)
     manette.scene.physics.add.existing(obj_manette);
     manette.scene.physics.add.overlap(obj_manette, (manette.scene as any).enemies, function(_obj_manette, _ennemie: any) {
-      _ennemie.blesse_ennemie(_obj_manette.getData('degat'))
+      _ennemie.dommage(_obj_manette.getData('degat'))
       _obj_manette.setData('degat', 0)
     }, undefined, manette);
 
