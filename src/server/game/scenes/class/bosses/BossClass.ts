@@ -42,13 +42,12 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
     console.log("ID ENNEMY !!!!!!!!!!")
     console.log(EnnemyId)
     this.scene = scene
-    // DefautDirection(Aptitudes, this)
-    // Aptitudes[this.sprite].StatsSupplementaire.call(this, this, Aptitudes)
-
+    this.sprite = EnnemyId
+    DefautDirection(Aptitudes, this)
+    Aptitudes[EnnemyId].StatsSupplementaire.call(this, this, Aptitudes)
     this.scene.add.existing(this)
     this.EnnemyId = EnnemyId
     this.lastAnim = null;
-    this.sprite = EnnemyId
     this.attaque = false;
     this.blesse = false;
     this.Aptitudes = Aptitudes
