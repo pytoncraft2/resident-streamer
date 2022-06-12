@@ -225,7 +225,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle.scaleY = 0.11649497828162556;
 		rectangle.setOrigin(0, 0.5);
 		rectangle.isFilled = true;
-		rectangle.fillColor = 16265264;
+		rectangle.fillColor = 10563832;
 
 		// laser01
 		const laser01 = this.add.image(548, 583, "laser01");
@@ -408,8 +408,6 @@ export default class Jeu extends Phaser.Scene {
 
 	async patchPlayer(list: any) {
 
-
-    // console.log(list.projectilesListe)
     list.projectilesListe.map((item: string) => {
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
@@ -417,9 +415,7 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
-          // emitter.setPosition(list.projectiles[item].x, list.projectiles[item].y);
-          // emitter.setSpeed(200).setScale(0.5);
-
+          this.projectilesRef[item] = projectile
       }
       else
       {
@@ -427,10 +423,6 @@ export default class Jeu extends Phaser.Scene {
         if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
         if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
         if (list.projectiles[item].angle) this.projectilesRef[item].angle = list.projectiles[item].angle;
-
-
-        // this.projectilesRef[item].angle += 32;
-
       }
     })
 
@@ -601,8 +593,6 @@ export default class Jeu extends Phaser.Scene {
 
 			} else {
           this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
-        if (list.presences[item].particules) this.creationParticules(list.presences[item].x, list.presences[item].y)
-        if (list.presences[item].particules) console.log("PARTICULES")
             if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
@@ -631,40 +621,6 @@ export default class Jeu extends Phaser.Scene {
     //   }
     // });
 	}
-
-  creationParticules(x: number, y: number) {
-    var particles = this.add.particles('flares');
-    // var emitter = particles.createEmitter();
-
-    const line = this.add.line(
-            0,
-            0,
-            (this.players as any).getChildren()[1].x,
-            (this.players as any).getChildren()[1].y,
-            x,
-            y,
-            0xff0000
-        ).setOrigin(0, 0)
-        // this.scene.graphics.strokeLineShape(line)
-
-    particles.createEmitter({
-      alpha: { start: 1, end: 0 },
-      scale: { start: 0.5, end: 5.5 },
-      //tint: { start: 0xff945e, end: 0xff945e },
-      speed: 20,
-      accelerationY: -100,
-      angle: { min: -85, max: -95 },
-      rotate: { min: -180, max: 180 },
-      lifespan: { min: 1000, max: 1100 },
-      blendMode: 'ADD',
-      frequency: 1,
-      maxParticles: 2,
-      x: x,
-      y: y + 120
-    });
-    particles.setDepth(2)
-  }
-
 
   fade(room: any) {
     this.cameras.main.fadeOut(250, 0, 0, 0, (_camera: any, progress: any) => {
