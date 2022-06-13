@@ -49,19 +49,23 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
     closest(personnage, true)
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
+     // personnage.scene.time.delayedCall(10000, () => {
+       // closest(personnage, false)
+     // }, null, personnage);
+
      // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
-    personnage.particules = true
+    // personnage.particules = true
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
     closest(personnage, false)
-    personnage.particules = false
+    // personnage.particules = false
   }
 
 
 }
 
 function closest(personnage, etat) {
-  let closest: any = personnage.scene.physics.closest(personnage, [personnage.scene.enemies.getChildren()[0]]);
+  let closest: any = personnage.scene.physics.closest(personnage, [personnage.scene.players.getChildren()[1]]);
   closest.particules = etat
 }
