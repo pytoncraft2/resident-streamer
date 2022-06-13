@@ -44,11 +44,25 @@ export function interaction__R(personnage: TJoueur) {
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {
-console.log("FUUUUUUUUUUUUUUUUUUSION")
-personnage.particules = true
-  personnage.scene.tweens.addCounter({
-    duration: 1,
-    onComplete: () => (personnage.particules = false)
-  })
+  if (input.tab) {
+    console.log("TAB-------------------")
+    input.tab = false;
+    console.log(personnage.scene.enemies.getLength())
+    let closest: any = personnage.scene.physics.closest(personnage, [personnage.scene.enemies.getChildren()[0]]);
+
+    console.log(closest.x)
+    console.log(closest.y)
+
+     // personnage.gfx.clear()
+     // .lineStyle(2, 0xff3300)
+     // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
+    personnage.particules = true
+  }
+  // console.log(personnage.scene.players.getLength())
+  if (input.tab_fin) {
+    console.log("TAB-------------------")
+    personnage.particules = false
+  }
+
 
 }

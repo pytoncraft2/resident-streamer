@@ -1,4 +1,5 @@
 import LaserClass from "../class/elements/LaserClass";
+import Hall from "../hall";
 
 
 interface BaseEquipement {
@@ -18,6 +19,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   vie: number,
   displayWidth: number,
   displayHeight: number,
+  physics: Phaser.Physics.Arcade.ArcadePhysics
   masse: number,
   puissanceDeBase: number,
 
@@ -25,14 +27,15 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   containerColision: Phaser.GameObjects.Container
   animationCharge: Phaser.Tweens.Tween
   kunai: Phaser.Physics.Arcade.Sprite|undefined
-  scene: Scene
   interaction_objet: boolean
   compteurSaut: number;
   degat: number
   sprite: string
   particules: boolean
+  gfx: Phaser.GameObjects.Graphics
 
   body: Phaser.Physics.Arcade.Body
+  scene: Hall
 
   //huzounet
   puissanceChargeBoule: number,

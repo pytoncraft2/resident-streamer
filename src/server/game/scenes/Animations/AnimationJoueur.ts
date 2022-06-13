@@ -112,7 +112,7 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
   anim.create({
     key: "straightlead",
     frames: anim.generateFrameNames('atlas', { prefix: 'straightlead', start: 0, end: 3 }),
-    frameRate: 8,
+    frameRate: 15,
     repeat: 0
   })
 

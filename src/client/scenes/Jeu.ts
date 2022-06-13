@@ -549,6 +549,7 @@ export default class Jeu extends Phaser.Scene {
 
 
 		list.presenceList.map((item: string, idx: number) => {
+
 			if (this.playersRef[item] === undefined) {
 
 				const x = list.presences[item].x
@@ -585,6 +586,25 @@ export default class Jeu extends Phaser.Scene {
 
           // if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
+          // (player as any).particules = list.presenceList[idx];
+          const particules = this.add.particles('flares').setDepth(2);
+
+           (player as any).particules = particules.createEmitter({
+            x: 600,
+            y: 100,
+            // scale: 0.2,
+            speed: 400,
+            gravityY: 200,
+            lifespan: { min: 1000, max: 2000 },
+            blendMode: 'ADD'
+          });
+
+          (player as any).particules.setPosition(400, 300);
+          (player as any).particules.setSpeed(200);
+          (player as any).particules.startFollow(player);
+          (player as any).particules.setVisible(false);
+
+          // emitter.setBlendMode(Phaser.BlendModes.ADD);
 					this.players.add(player)
 					this.playersRef[item] = player
 
@@ -601,6 +621,8 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
+            this.playersRef[item].particules.setVisible(list.presences[item].particules)
+            // console.log(list.presences[item].particules)
 			}
 		})
 

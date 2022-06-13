@@ -12,6 +12,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
+   gfx: Phaser.GameObjects.Graphics
    c: any
    vel: number = 600
    compteurSaut: number = 0
@@ -178,10 +179,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+
+
    }
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
+
+
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
@@ -208,7 +213,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
        if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
        if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget);
-       if (tab) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget);
+       if (tab || tab_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget, input);
        /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
        if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
        if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
@@ -247,11 +252,11 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          ya: this.zoneInteraction.y
        })
      )
+
    }
 
    dommage(puissance: number) {
      //   this.play('attaque')
-     console.log("BLESSE JOUEUR !!!!!!!!!!!!!!!!!")
      //   this.setFlipX(directionFinal)
      this.setTint(0xff0000)
      this.scene.time.delayedCall(100, () => {
