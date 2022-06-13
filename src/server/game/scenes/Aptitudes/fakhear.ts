@@ -50,11 +50,12 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
      // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
-    // personnage.particules = true
+    personnage.particules = true
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
     closest(personnage, false)
+    personnage.particules = false
   }
 
 

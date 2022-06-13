@@ -594,13 +594,14 @@ export default class Jeu extends Phaser.Scene {
             y: 100,
             // scale: 0.2,
             speed: 400,
-            gravityY: 200,
-            lifespan: { min: 1000, max: 2000 },
+            gravityY: 30,
+            lifespan: { min: 100, max: 300 },
             blendMode: 'ADD'
           });
 
           (player as any).particules.setPosition(400, 300);
           (player as any).particules.setSpeed(200);
+          (player as any).particules.setScale(0.7);
           (player as any).particules.startFollow(player);
           (player as any).particules.setVisible(false);
 
