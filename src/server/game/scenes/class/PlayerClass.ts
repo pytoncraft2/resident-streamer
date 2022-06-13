@@ -255,6 +255,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
    }
 
+   test() {
+     console.log("TEST OK")
+   }
+
    dommage(puissance: number) {
      //   this.play('attaque')
      //   this.setFlipX(directionFinal)
