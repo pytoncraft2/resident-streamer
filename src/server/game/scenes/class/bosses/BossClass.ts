@@ -19,6 +19,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
   blesse: boolean = false
   etats: any
   etatEnCours: string
+  particules: boolean = false
   blesse_opposant: boolean = false
   zoneInteraction: any
   vivant: boolean = true
@@ -168,6 +169,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
           flipX: this.flipX,
           tint: this.tintBottomLeft,
           vie: this.vie,
+          particules: this.particules,
           zoneAttaque: {x: 100, y: 200},
           scale: this.scale
         })
