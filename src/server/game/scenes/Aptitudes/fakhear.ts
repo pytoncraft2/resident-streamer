@@ -36,40 +36,38 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function interaction__R(personnage: TJoueur) {
-  personnage.interaction_objet = true
-  personnage.scene.tweens.addCounter({
-    duration: 1,
-    onComplete: () => (personnage.interaction_objet = false)
-  })
+  // personnage.interaction_objet = true
+  // personnage.scene.tweens.addCounter({
+  //   duration: 1,
+  //   onComplete: () => (personnage.interaction_objet = false)
+  // })
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {
   if (input.tab) {
     input.tab = false;
-    closest(personnage, true)
+    console.log(personnage.data)
+    elementProche(personnage, true)
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
      // personnage.scene.time.delayedCall(10000, () => {
-       // closest(personnage, false)
+       // elementProche(personnage, false)
      // }, null, personnage);
 
-     // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
+     // .lineBetween(elementProche.x, elementProche.y, personnage.x, personnage.y)
     // personnage.particules = true
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
-    closest(personnage, false)
+    elementProche(personnage, false)
     // personnage.particules = false
   }
 
 
 }
 
-function closest(personnage, etat) {
-  // console.log(personnage.scene.players.getChildren().filter(p => p.ClientID != personnage.ClientID))
-  // let result = personnage.scene.players.getChildren().filter(p => p.ClientID != personnage.ClientID)
-  let result = personnage.scene.players.getChildren()
-
-  let closest: any = personnage.scene.physics.closest(personnage, result);
-  closest.particules = etat
+function elementProche(personnage: TJoueur, etat: boolean, type: string = 'players', activeElement: string = 'particules') {
+  let groupeCible = personnage.scene[type].getChildren();
+  let elementProche: any = personnage.scene.physics.closest(personnage, groupeCible);
+  if (elementProche) elementProche[activeElement] = etat;
 }
