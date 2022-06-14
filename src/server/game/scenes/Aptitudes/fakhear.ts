@@ -68,7 +68,8 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
 function closest(personnage, etat) {
   // console.log(personnage.scene.players.getChildren().filter(p => p.ClientID != personnage.ClientID))
   // let result = personnage.scene.players.getChildren().filter(p => p.ClientID != personnage.ClientID)
+  let result = personnage.scene.players.getChildren()
 
-  // let closest: any = personnage.scene.physics.closest(personnage, result);
-  // closest.particules = etat
+  let closest: any = personnage.scene.physics.closest(personnage, result);
+  closest.particules = etat
 }
