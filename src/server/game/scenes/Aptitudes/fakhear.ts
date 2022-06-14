@@ -75,7 +75,10 @@ export function interaction__R(personnage: TJoueur, input) {
 export function fusion__TAB(personnage: TJoueur, input: any) {
   if (input.tab) {
     input.tab = false;
-    closest(personnage, 'players')
+    let proche: any = closest(personnage, 'players')
+    if (proche) proche.particules = true;
+
+
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
      // personnage.scene.time.delayedCall(10000, () => {
@@ -87,7 +90,10 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
-    closest(personnage, 'players')
+
+    let proche: any = closest(personnage, 'players')
+    if (proche) proche.particules = false;
+    // closest(personnage, 'players')
     // personnage.particules = false
   }
 
