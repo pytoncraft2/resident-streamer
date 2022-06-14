@@ -36,7 +36,35 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function interaction__R(personnage: TJoueur, input) {
-  if (input.r) closest(personnage, true, 'enemies')
+  if (input.r)
+  {
+    if (personnage.bossControlable.getLength() == 0) {
+
+      let _e = closest(personnage, 'enemies')
+      personnage.bossControlable.add(_e as Phaser.Physics.Arcade.Sprite)
+
+      personnage.tweenIcon = personnage.scene.tweens.add({
+        targets: _e,
+        x: personnage.getTopCenter().x,
+        y: personnage.getTopCenter().y,
+        scale: 0.1,
+        ease: 'Sine.easeIn',
+        duration: 3000,
+        onComplete: () => (personnage.iconSuitJoueur = true)
+        // paused: true
+      });
+      // personnage.bossControlable.getChildren()[0]
+      // .setScale(0.1)
+      // .setPosition(personnage.getTopCenter().x, personnage.getTopCenter().y)
+      // console.log(personnage.bossControlable.getChildren()[0])
+      // console.log("AJOUT BOSS")
+    }
+
+    // closest(personnage, true, 'enemies')
+    input.r = false
+  }
+
+
   // personnage.interaction_objet = true
   // personnage.scene.tweens.addCounter({
   //   duration: 1,
@@ -47,7 +75,7 @@ export function interaction__R(personnage: TJoueur, input) {
 export function fusion__TAB(personnage: TJoueur, input: any) {
   if (input.tab) {
     input.tab = false;
-    closest(personnage, true, 'players')
+    closest(personnage, 'players')
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
      // personnage.scene.time.delayedCall(10000, () => {
@@ -59,7 +87,7 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
-    closest(personnage, false, 'players')
+    closest(personnage, 'players')
     // personnage.particules = false
   }
 
@@ -67,8 +95,7 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
 }
 
 
-function closest(personnage: TJoueur, etat: boolean, type: 'players' | 'enemies', parametre: string = 'particules') {
+function closest(personnage: TJoueur, type: 'players' | 'enemies') {
   let groueCible = personnage.scene[type].getChildren();
-  let closest: any = personnage.scene.physics.closest(personnage, groueCible);
-  if (closest) closest[parametre] = etat;
+  return personnage.scene.physics.closest(personnage, groueCible);
 }
