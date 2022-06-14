@@ -35,7 +35,8 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function interaction__R(personnage: TJoueur) {
+export function interaction__R(personnage: TJoueur, input) {
+  if (input.r) closest(personnage, true, 'enemies')
   // personnage.interaction_objet = true
   // personnage.scene.tweens.addCounter({
   //   duration: 1,
@@ -46,28 +47,28 @@ export function interaction__R(personnage: TJoueur) {
 export function fusion__TAB(personnage: TJoueur, input: any) {
   if (input.tab) {
     input.tab = false;
-    console.log(personnage.data)
-    elementProche(personnage, true)
+    closest(personnage, true, 'players')
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
      // personnage.scene.time.delayedCall(10000, () => {
-       // elementProche(personnage, false)
+       // closest(personnage, false)
      // }, null, personnage);
 
-     // .lineBetween(elementProche.x, elementProche.y, personnage.x, personnage.y)
+     // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
     // personnage.particules = true
   }
   // console.log(personnage.scene.players.getLength())
   if (input.tab_fin) {
-    elementProche(personnage, false)
+    closest(personnage, false, 'players')
     // personnage.particules = false
   }
 
 
 }
 
-function elementProche(personnage: TJoueur, etat: boolean, type: string = 'players', activeElement: string = 'particules') {
-  let groupeCible = personnage.scene[type].getChildren();
-  let elementProche: any = personnage.scene.physics.closest(personnage, groupeCible);
-  if (elementProche) elementProche[activeElement] = etat;
+
+function closest(personnage: TJoueur, etat: boolean, type: 'players' | 'enemies', parametre: string = 'particules') {
+  let groueCible = personnage.scene[type].getChildren();
+  let closest: any = personnage.scene.physics.closest(personnage, groueCible);
+  if (closest) closest[parametre] = etat;
 }
