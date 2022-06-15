@@ -445,13 +445,9 @@ export default class Jeu extends Phaser.Scene {
 
       if (this.lignesRef[item] === undefined)
       {
-        // const ligne = this.groupeLignes.create(list.lignes[item].x, list.lignes[item].y, 'fakhear_atlas', 'idle_attack')
-      const ligne = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
-      this.groupeLignes.add(ligne)
-      console.log("UNDEFINED ,????")
-        // if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
-        // if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
-        // if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
+        const l = list.lignes[item]
+        const ligne = this.add.line(l.x, l.y, l.x1, l.y1, l.x2, l.y2, l.strokeColor, l.alpha)
+        this.groupeLignes.add(ligne)
         this.lignesRef[item] = ligne
       }
       else
