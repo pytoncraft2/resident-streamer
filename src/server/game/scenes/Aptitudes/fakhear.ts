@@ -1,11 +1,13 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
+import Ligne from "../class/elements/Ligne";
 
 
 export function __StatsSupplementaire() {}
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
+    new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
     input.a = false
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
