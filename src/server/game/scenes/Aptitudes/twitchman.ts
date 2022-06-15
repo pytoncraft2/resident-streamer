@@ -1,5 +1,6 @@
 import TJoueur from "../types/Joueur";
 import LaserClass from "../class/elements/LaserClass";
+import Ligne from "../class/elements/Ligne";
 
 export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
   Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
