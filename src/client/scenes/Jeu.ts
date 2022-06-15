@@ -307,6 +307,9 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
+    // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
+    var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00).setScale(2);
+
     this.anims.create({
       key: "huzounet_shuriken",
       frames: this.anims.generateFrameNames('huzounet_atlas', { prefix: 'shuriken', start: 0, end: 3 }),
