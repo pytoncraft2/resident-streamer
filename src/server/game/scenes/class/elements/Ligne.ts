@@ -25,6 +25,8 @@ export default class LigneClass extends Phaser.GameObjects.Line {
     this.scene = scene
     this.scene.add.existing(this)
     this.id = id;
+    console.log("IIIIIIIIIIIIIIIIIIIIDDD:")
+    console.log(this.id)
   }
 
   preUpdate(time, delta) {
@@ -42,7 +44,5 @@ export default class LigneClass extends Phaser.GameObjects.Line {
         // scale: this.scale,
       })
     )
-
-    console.log("LIGNE !!!")
   }
 }

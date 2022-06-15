@@ -277,6 +277,8 @@ export default class Jeu extends Phaser.Scene {
   session?: string
   playersRef: any
   bombesRef: any
+  lignesRef: any
+  groupeLignes!: Phaser.GameObjects.Group
   currentRoom: string = 'hall'
   listCurrentRoom: any
   ennemyRef: any
@@ -308,7 +310,7 @@ export default class Jeu extends Phaser.Scene {
 		this.editorCreate();
 
     // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
-    var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
+    // var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
 
     this.anims.create({
       key: "huzounet_shuriken",
@@ -356,7 +358,9 @@ export default class Jeu extends Phaser.Scene {
     this.groupeBombes = this.add.group();
 
     this.groupeProjectiles = this.add.group();
+    this.groupeLignes = this.add.group();
     this.projectilesRef = {}
+    this.lignesRef = {}
 
 		this.playersRef = {}
 		this.ennemyRef = {}
@@ -384,10 +388,15 @@ export default class Jeu extends Phaser.Scene {
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
         let projectiles: any = {}
+        let lignes: any = {}
 
         changes.projectiles.forEach((value: any, key: any) => {
 					projectiles[key] = value
 				})
+
+        changes.lignes.forEach((value: any, key: any) => {
+          lignes[key] = value
+        })
 
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
@@ -398,6 +407,8 @@ export default class Jeu extends Phaser.Scene {
 					presenceList: Object.keys(presences),
           projectilesListe: Object.keys(projectiles),
           projectiles: projectiles,
+          lignesListe: Object.keys(lignes),
+          lignes: lignes,
 				})
 			})
 
@@ -426,6 +437,29 @@ export default class Jeu extends Phaser.Scene {
         if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
         if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
         if (list.projectiles[item].angle) this.projectilesRef[item].angle = list.projectiles[item].angle;
+      }
+    })
+
+
+    list.lignesListe.map((item: string) => {
+
+      if (this.lignesRef[item] === undefined)
+      {
+        // const ligne = this.groupeLignes.create(list.lignes[item].x, list.lignes[item].y, 'fakhear_atlas', 'idle_attack')
+      const ligne = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
+      this.groupeLignes.add(ligne)
+      console.log("UNDEFINED ,????")
+        // if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
+        // if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
+        // if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
+        this.lignesRef[item] = ligne
+      }
+      else
+      {
+        // this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
+        // if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
+        // if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
+        // if (list.projectiles[item].angle) this.projectilesRef[item].angle = list.projectiles[item].angle;
       }
     })
 
