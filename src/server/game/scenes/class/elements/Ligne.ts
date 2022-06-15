@@ -1,8 +1,12 @@
 import { Ligne } from "../../../RoomState"
 
 export default class LigneClass extends Phaser.GameObjects.Graphics {
-  sprite: string = 'laser01'
-  _frame: string = 'laser01'
+  closestX: number
+  closestY: number
+  personnageX: number
+  personnageY: number
+  lineColor: any
+  lineHeight: any
   id: any
 
   constructor(
@@ -29,18 +33,26 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
         alpha: 1
       }
     })
-    this.init(scene, id)
+    this.init(scene, id, closestX, closestY, personnageX, personnageY)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, closestX: number, closestY: number, personnageX: number, personnageY: number) {
     this.scene = scene
     this.scene.add.existing(this)
     this.id = id;
+    this.closestX = closestX;
+    this.closestY = closestY;
+    this.personnageX = personnageX
+    this.personnageY = personnageY
     console.log("IIIIIIIIIIIIIIIIIIIIDDD:")
     console.log(this.id)
   }
 
   preUpdate(time, delta) {
+    // this.clear()
+    // .lineStyle(5, 0xff3300)
+    // .lineBetween(100, 100, 2, 1);
+
     (this.scene as any).room.state.lignes.set(
       this.id,
       new Ligne({
