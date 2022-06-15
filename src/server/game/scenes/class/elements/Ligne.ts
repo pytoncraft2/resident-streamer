@@ -15,10 +15,10 @@ export default class LigneClass extends Phaser.GameObjects.Line {
     y2:number,
     strokeColor:number,
     strokeAlpha:number,
-    ClientID: string,
+    id: string,
   ) {
     super(scene, x, y, x1, y1, x2, y2, strokeColor, strokeAlpha)
-    this.init(scene, ClientID)
+    this.init(scene, id)
   }
 
   init(scene: Phaser.Scene, id: string) {
@@ -28,6 +28,21 @@ export default class LigneClass extends Phaser.GameObjects.Line {
   }
 
   preUpdate(time, delta) {
+    (this.scene as any).room.state.lignes.set(
+      this.id,
+      new Ligne({
+        x: 600,
+        y: 200,
+        x1: 0,
+        y1: 0,
+        x2: 140,
+        y2: 0,
+        strokeColor: this.strokeColor,
+        alpha: this.alpha
+        // scale: this.scale,
+      })
+    )
+
     console.log("LIGNE !!!")
   }
 }
