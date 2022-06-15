@@ -448,7 +448,7 @@ export default class Jeu extends Phaser.Scene {
       {
         const l = list.lignes[item]
         let ligne = this.add.graphics();
-        ligne.lineStyle(5, 0xff3300)
+        ligne.lineStyle(5, l.couleur)
         this.groupeLignes.add(ligne)
         this.lignesRef[item] = ligne
         console.log("NOUVEAU")
@@ -456,7 +456,7 @@ export default class Jeu extends Phaser.Scene {
       else
       {
         this.lignesRef[item].clear()
-        .lineStyle(5, 0xff3300)
+        .lineStyle(5, list.lignes[item].couleur)
         .lineBetween(100, 100, (this.players as any).getChildren()[0].x, (this.players as any).getChildren()[0].y)
       }
     })

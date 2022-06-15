@@ -25,11 +25,11 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
       y: 0,
       lineStyle: {
         width: 5,
-        color: 0xffffff,
+        color: 0xff3300,
         alpha: 1
       },
       fillStyle: {
-        color: 0xffffff,
+        color: 0xff3300,
         alpha: 1
       }
     })
@@ -44,14 +44,9 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     this.closestY = closestY;
     this.personnageX = personnageX
     this.personnageY = personnageY
-    console.log("IIIIIIIIIIIIIIIIIIIIDDD:")
-    console.log(this.id)
-    this.lineStyle(5, 0x8a2be2)
-    console.log(this)
   }
 
   preUpdate(time, delta) {
-    console.log(this.defaultFillColor);
 
     (this.scene as any).room.state.lignes.set(
       this.id,
@@ -62,6 +57,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
         y1: 0,
         x2: 140,
         y2: 0,
+        couleur: this.defaultFillColor
         // scale: this.scale,
       })
     )
