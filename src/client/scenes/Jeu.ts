@@ -455,7 +455,6 @@ export default class Jeu extends Phaser.Scene {
       }
       else
       {
-        console.log("UPUP")
         this.lignesRef[item].clear()
         .lineStyle(5, 0xff3300)
         .lineBetween(100, 100, (this.players as any).getChildren()[0].x, (this.players as any).getChildren()[0].y)

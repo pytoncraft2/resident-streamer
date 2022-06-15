@@ -46,12 +46,12 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     this.personnageY = personnageY
     console.log("IIIIIIIIIIIIIIIIIIIIDDD:")
     console.log(this.id)
+    this.lineStyle(5, 0x8a2be2)
+    console.log(this)
   }
 
   preUpdate(time, delta) {
-    // this.clear()
-    // .lineStyle(5, 0xff3300)
-    // .lineBetween(100, 100, 2, 1);
+    console.log(this.defaultFillColor);
 
     (this.scene as any).room.state.lignes.set(
       this.id,
