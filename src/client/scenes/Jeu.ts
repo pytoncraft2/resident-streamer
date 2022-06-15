@@ -457,7 +457,7 @@ export default class Jeu extends Phaser.Scene {
       {
         this.lignesRef[item].clear()
         .lineStyle(5, list.lignes[item].couleur)
-        .lineBetween(100, 100, (this.players as any).getChildren()[0].x, (this.players as any).getChildren()[0].y)
+        .lineBetween(list.lignes[item].x1, list.lignes[item].y1, list.lignes[item].x2, list.lignes[item].y2)
       }
     })
 

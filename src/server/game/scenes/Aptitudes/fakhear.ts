@@ -79,7 +79,7 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
     let proche: any = closest(personnage, 'players')
     if (proche) proche.particules = true;
 
-    if (proche) new Ligne(personnage.scene, proche.x, proche.y, personnage.x, personnage.y, '0x7fff00', 7, '12345')
+    if (proche) new Ligne(personnage.scene, proche, personnage, '0x7fff00', 7, '12345')
 
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)

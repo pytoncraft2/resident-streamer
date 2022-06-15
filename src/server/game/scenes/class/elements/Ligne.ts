@@ -1,20 +1,16 @@
 import { Ligne } from "../../../RoomState"
 
 export default class LigneClass extends Phaser.GameObjects.Graphics {
-  closestX: number
-  closestY: number
-  personnageX: number
-  personnageY: number
+  closest: any
+  personnage: any
   lineColor: any
   lineHeight: any
   id: any
 
   constructor(
     scene: Phaser.Scene,
-    closestX: number,
-    closestY: number,
-    personnageX: number,
-    personnageY:number,
+    closest: any,
+    personnage: any,
     lineColor: any,
     lineHeight: number,
     id: string,
@@ -33,17 +29,15 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
         alpha: 1
       }
     })
-    this.init(scene, id, closestX, closestY, personnageX, personnageY)
+    this.init(scene, id, closest, personnage)
   }
 
-  init(scene: Phaser.Scene, id: string, closestX: number, closestY: number, personnageX: number, personnageY: number) {
+  init(scene: Phaser.Scene, id: string, closest: any, personnage: any) {
     this.scene = scene
     this.scene.add.existing(this)
     this.id = id;
-    this.closestX = closestX;
-    this.closestY = closestY;
-    this.personnageX = personnageX
-    this.personnageY = personnageY
+    this.closest = closest;
+    this.personnage = personnage
   }
 
   preUpdate(time, delta) {
@@ -53,10 +47,10 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
       new Ligne({
         x: 600,
         y: 200,
-        x1: 0,
-        y1: 0,
-        x2: 140,
-        y2: 0,
+        x1: this.closest.x,
+        y1: this.closest.y,
+        x2: this.personnage.x,
+        y2: this.personnage.y,
         couleur: this.defaultFillColor
         // scale: this.scale,
       })
