@@ -7,7 +7,6 @@ export function __StatsSupplementaire() {}
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
-    new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x7fff00, 1, '12345')
     input.a = false
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
@@ -80,6 +79,7 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
     let proche: any = closest(personnage, 'players')
     if (proche) proche.particules = true;
 
+    new Ligne(personnage.scene, 600, 200, 0, 0, 140, 0, 0x7fff00, 1, '12345')
 
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)

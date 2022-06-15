@@ -296,6 +296,7 @@ export default class Jeu extends Phaser.Scene {
   emitter: any
   animationBoosFigurine: any
   rect: any
+  gfx!: Phaser.GameObjects.Graphics
 
 
 
@@ -371,6 +372,7 @@ export default class Jeu extends Phaser.Scene {
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
 
     this.barreHautContainer.setScrollFactor(0)
+    this.gfx = this.add.graphics();
 
 
 		const client = new Colyseus.Client("ws://localhost:3000")
@@ -446,12 +448,22 @@ export default class Jeu extends Phaser.Scene {
       if (this.lignesRef[item] === undefined)
       {
         const l = list.lignes[item]
-        const ligne = this.add.line(l.x, l.y, l.x1, l.y1, l.x2, l.y2, l.strokeColor, l.alpha)
+        // const ligne = this.add.line(l.x, l.y, l.x1, l.y1, l.x2, l.y2, l.strokeColor, l.alpha)
+        let ligne = this.add.graphics();
+
+        ligne.lineStyle(128, 0x00ff00, 1);
+        ligne.lineBetween(100, 100, 600, 500);
         this.groupeLignes.add(ligne)
         this.lignesRef[item] = ligne
       }
       else
       {
+
+        this.lignesRef[item].clear()
+        // this.gfx.clear()
+        .lineStyle(2, 0xff3300)
+        .lineBetween(100, 100, (this.players as any).getChildren()[0].x, (this.players as any).getChildren()[0].y)
+        // list.lignes[item].lineBetween(100, 100, (this.players as any).getChildren()[0].x, (this.players as any).getChildren()[0].y)
         // this.projectilesRef[item].setPosition(list.projectiles[item].x, list.projectiles[item].y);
         // if (list.projectiles[item].scale) this.projectilesRef[item].setScale(list.projectiles[item].scale);
         // if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
