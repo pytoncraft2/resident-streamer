@@ -36,8 +36,29 @@ export default class GameRooms extends Room {
 
     this.clock.setTimeout(() => {
       // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
-      this.scene.createEnnemy('twitchman', 'fakhear_atlas')
-      this.scene.createPlayer(123456789, 'twitchman')
+      // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
+
+
+      (this.scene as any).room.donnes['123456789'] = {
+        clavier: {
+          up: false,
+          right: false,
+          down: false,
+          left: false,
+          space: true,
+          a: false,
+          z: false,
+          e: false,
+          r: false
+        },
+        sprite: 'twitchman'
+      }
+
+      const presences = this.scene.createPlayer('123456789', 'twitchman')
+      for (const [key, value] of Object.entries(presences.presences)) {
+        this.state.presences.set(key, new Player(value))
+      }
+      // this.scene.createPlayer(123456789, 'twitchman')
     }, 2_000);
 
     // this.clock.setTimeout(() => {
@@ -57,12 +78,14 @@ export default class GameRooms extends Room {
     this.donnes[client.id] = {
       clavier: {
         up: false,
-        right: {stop: true},
+        right: false,
         down: false,
         left: false,
+        space: true,
         a: false,
         z: false,
-        e: false
+        e: false,
+        r: false
       },
       sprite: `${options.sprite}`
     }

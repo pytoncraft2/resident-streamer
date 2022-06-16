@@ -197,24 +197,18 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        console.log(this.ClientID)
        console.log(this.sprite)
      } else {
-       (this.scene as any).room.donnes[this.ClientID] = {
-         clavier: {
-           up: false,
-           right: {stop: true},
-           down: false,
-           left: false,
-           a: false,
-           z: false,
-           e: false
-         },
-         sprite: `${this.sprite}`
-       }
-
-       const presences = this.scene.createPlayer(client.id, options.sprite)
-       for (const [key, value] of Object.entries(presences.presences)) {
-         this.state.presences.set(key, new Player(value))
-       }
-
+       // (this.scene as any).room.donnes[this.ClientID] = {
+       //   clavier: {
+       //     up: false,
+       //     right: {stop: true},
+       //     down: false,
+       //     left: false,
+       //     a: false,
+       //     z: false,
+       //     e: false
+       //   },
+       //   sprite: `${options.sprite}`
+       // }
        console.log("PAS PRESENT ::::::")
        console.log(this.ClientID)
        console.log(this.sprite)
