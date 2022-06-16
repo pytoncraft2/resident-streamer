@@ -6,11 +6,11 @@ import TJoueur from "../types/Joueur";
 export interface Touches {
   [personnage:string]:{
     StatsSupplementaire?: (joueur: TJoueur, Aptitudes: Touches) => void,
-    A?: (joueur: TJoueur, input: any) => void;
-    Z?: (joueur: TJoueur, input: any) => void;
-    E?: (joueur: TJoueur, input: any) => void;
-    R?: (joueur: TJoueur, input: any) => void;
-    TAB?: (joueur: TJoueur, input: any) => void;
+    A?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
+    Z?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
+    E?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
+    R?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
+    TAB?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
     toucheGauche?: (joueur: TJoueur, input: any) => void;
     toucheDroite?: (joueur: TJoueur, input: any) => void;
     toucheEspace?: (joueur: TJoueur, input: any) => void;
