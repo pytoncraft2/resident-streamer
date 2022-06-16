@@ -24,10 +24,11 @@ export interface Touches {
 /**
  * Stockage des touches qui active les aptitudes du personnage
  *
- * __Utilisation__
- * ```typescript
- * Aptitudes['fakhear'].A()
- * //active la touche A des aptitudes de Fakhear
+ * @example
+ * Activer la fonction correspondant à la touche A du personnage fakhear:
+ * ```
+ * Aptitudes['fakhear'].A(Sprite, {a: true})
+ * //active la fonction correspondant à la touche A des aptitudes de Fakhear
  * ```
  */
 export const Aptitudes: Touches = {};
@@ -38,17 +39,26 @@ export const Aptitudes: Touches = {};
   * Import tout les fichier du dossier `./src/server/game/scenes/Aptitudes`, excepté le fichier lui-même
   *
   * @remarks
-  * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
+  * le nom du fichier devient la clé pour l'objet `Aptitudes`<br>
+  * le dossier `_utilitaire` contient les fonctions souvent utilisable pour tout les joueurs<br>
+  * Toute les fonctions comportant deux underscord sont ajouté à l'objet `Aptitudes`
+  * avec pour clé la valeur qu'il y a après l'undescord
   *
-  * @returns The arithmetic mean of something
-  *
-  * @beta
+  * @example
+  * Activer la fonction correspondant à la touche A du personnage fakhear:
+  * ```
+  * //Ici la valeur situé après les 2 undescord est "A"
+  * export function cross__A(sprite, input) {
+  *   if (input.a) setAnimation(fakhear, 'cross')
+  * }
+  * //Ce qui donnes au final un objet Aptidudes comme ci dessous:
+  * Aptitudes['fakhear']['A'] = fn
+  * ```
   */
-export const dirents = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
-.filter(dirent => dirent.isFile())
+export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
+.filter(autoImport => autoImport.isFile())
     .map(file => {
       import('./' + file.name).then((m) => {
-        //Excepté le fichier lui-meme
         if (file.name != nomFichierCourant)
         {
           //le nom du fichier devient la clé pour l'objet (Aptitudes)
