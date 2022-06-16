@@ -37,6 +37,7 @@ export default class GameRooms extends Room {
     this.clock.setTimeout(() => {
       // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
       this.scene.createEnnemy('twitchman', 'fakhear_atlas')
+      this.scene.createPlayer(123456789, 'twitchman')
     }, 2_000);
 
     // this.clock.setTimeout(() => {
