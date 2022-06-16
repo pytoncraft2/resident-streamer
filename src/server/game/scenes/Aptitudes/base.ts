@@ -62,7 +62,6 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
           //le nom du fichier devient la clé pour l'objet (Aptitudes)
           const personnage = file.name.substring(0, file.name.lastIndexOf('.'))
           Object.values(m).forEach((fn, _i) => {
-            console.log(m)
             //regarde si la fonction contien un undescord
             let index = fn.toString().split(' ')[1].indexOf("__")
             if (index != -1)
@@ -77,7 +76,3 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
         }
       });
     });
-
-setTimeout(() => {
-console.log(Aptitudes)
-}, 3000);

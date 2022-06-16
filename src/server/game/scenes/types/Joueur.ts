@@ -1,11 +1,6 @@
 import LaserClass from "../class/elements/LaserClass";
 import Hall from "../hall";
 
-
-interface BaseEquipement {
-  boulesEnMain: Phaser.Physics.Arcade.Group;
-}
-
 export interface Scene extends Phaser.Scene {
   containerColision: Phaser.GameObjects.Container;
   room: any
