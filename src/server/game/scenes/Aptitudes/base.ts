@@ -33,8 +33,6 @@ export interface Touches {
  */
 export const Aptitudes: Touches = {};
 
-//import de toute les Aptitudes des personnages selon les touches disponibles
-//import toute les fonction du dossier "Aptitudes"
  /**
   * Import tout les fichier du dossier `./src/server/game/scenes/Aptitudes`, excepté le fichier lui-même
   *
@@ -63,13 +61,13 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
         {
           //le nom du fichier devient la clé pour l'objet (Aptitudes)
           const personnage = file.name.substring(0, file.name.lastIndexOf('.'))
-          Object.values(m).forEach((fn, i) => {
+          Object.values(m).forEach((fn, _i) => {
             console.log(m)
             //regarde si la fonction contien un undescord
             let index = fn.toString().split(' ')[1].indexOf("__")
             if (index != -1)
             {
-              let CLE = fn.toString().split(' ')[1].substr(index+2).split('(')[0]
+              let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
               if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
               //la CLE correspond au mot après l'underscord (example: Aptitudes['fakhear']['A'])
               Aptitudes[personnage][CLE] = fn
