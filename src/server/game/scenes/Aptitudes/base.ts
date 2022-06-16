@@ -1,24 +1,23 @@
 import * as fs from 'fs';
 import path from 'path'
 const nomFichierCourant = path.basename(__filename);
-const exceptionDossier = ['_fonctions']
 
 export const Aptitudes = {};
 
 //import de toute les Aptitudes des personnages selon les touches disponibles
 //import toute les fonction du dossier "Aptitudes"
 
-fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
-  files.forEach((file) => {
-    //Exclusion des dossiers du tableau exceptionDossier
-    if (!exceptionDossier.includes(file)) {
-      import('./' + file).then((m) => {
+const dirents = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
+.filter(dirent => dirent.isFile())
+    .map(file => {
+      import('./' + file.name).then((m) => {
         //Excepté le fichier lui-meme
-        if (file != nomFichierCourant)
+        if (file.name != nomFichierCourant)
         {
           //le nom du fichier devient la clé pour l'objet (Aptitudes)
-          const personnage = file.substring(0, file.lastIndexOf('.'))
+          const personnage = file.name.substring(0, file.name.lastIndexOf('.'))
           Object.values(m).forEach((fn, i) => {
+            console.log(m)
             //regarde si la fonction contien un undescord
             let index = fn.toString().split(' ')[1].indexOf("__")
             if (index != -1)
@@ -32,6 +31,4 @@ fs.readdir('./src/server/game/scenes/Aptitudes', (_err, files) => {
           })
         }
       });
-    }
-  });
-});
+    });
