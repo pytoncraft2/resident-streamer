@@ -2,6 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import Ligne from "../class/elements/Ligne";
 
+export function test() {}
 
 export function __StatsSupplementaire() {}
 
