@@ -1,13 +1,45 @@
 import * as fs from 'fs';
 import path from 'path'
 const nomFichierCourant = path.basename(__filename);
+import TJoueur from "../types/Joueur";
 
-export const Aptitudes = {};
+export interface Touches {
+  [personnage:string]:{
+    StatsSupplementaire?: (joueur: TJoueur, Aptitudes: Touches) => void,
+    A?: (joueur: TJoueur, input: any) => void;
+    Z?: (joueur: TJoueur, input: any) => void;
+    E?: (joueur: TJoueur, input: any) => void;
+    R?: (joueur: TJoueur, input: any) => void;
+    TAB?: (joueur: TJoueur, input: any) => void;
+    toucheGauche?: (joueur: TJoueur, input: any) => void;
+    toucheDroite?: (joueur: TJoueur, input: any) => void;
+    toucheEspace?: (joueur: TJoueur, input: any) => void;
+  }
+}
+/**
+ * Stockage des touches qui active les aptitudes du personnage
+ *
+ * __Utilisation__
+ * ```typescript
+ * Aptitudes['fakhear'].A()
+ * //active la touche A des aptitudes de Fakhear
+ * ```
+ */
+export const Aptitudes: Touches = {};
 
 //import de toute les Aptitudes des personnages selon les touches disponibles
 //import toute les fonction du dossier "Aptitudes"
-
-const dirents = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
+ /**
+  * Import tout les fichier du dossier `./src/server/game/scenes/Aptitudes`, excepté le fichier lui-même
+  *
+  * @remarks
+  * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
+  *
+  * @returns The arithmetic mean of something
+  *
+  * @beta
+  */
+export const dirents = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
 .filter(dirent => dirent.isFile())
     .map(file => {
       import('./' + file.name).then((m) => {
@@ -32,3 +64,7 @@ const dirents = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileT
         }
       });
     });
+
+setTimeout(() => {
+console.log(Aptitudes)
+}, 3000);

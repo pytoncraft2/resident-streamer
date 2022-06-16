@@ -15,7 +15,7 @@ export interface Scene extends Phaser.Scene {
 
 interface TJoueur extends Phaser.GameObjects.Sprite
 {
-  ClientID: string
+  ClientID?: string
   vie: number,
   displayWidth: number,
   displayHeight: number,
@@ -37,7 +37,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   tweenIcon: Phaser.Tweens.Tween
   iconSuitJoueur: boolean
-  
+
   body: Phaser.Physics.Arcade.Body
   scene: Hall
 

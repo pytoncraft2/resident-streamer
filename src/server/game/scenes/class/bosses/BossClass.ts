@@ -12,7 +12,7 @@ import { DefautStats, DefautDirection } from "../../Stats/Defaut"
  */
 
 export default class BossClass extends Phaser.Physics.Arcade.Sprite {
-  EnnemyId: string;
+  id: string;
   lastAnim: any;
   attaque: any;
   vie: number = 10;
@@ -33,22 +33,22 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     sprite: string,
-    EnnemyId: string
+    id: string
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, EnnemyId)
+    this.init(scene, id)
   }
 
-  init(scene: Phaser.Scene, EnnemyId: string) {
+  init(scene: Phaser.Scene, id: string) {
 
     this.scene = scene
-    this.sprite = EnnemyId
+    this.sprite = id
     new AnimationJoueur(this.anims)
     DefautDirection(Aptitudes, this)
-    Aptitudes[EnnemyId].StatsSupplementaire.call(this, this, Aptitudes)
+    Aptitudes[id].StatsSupplementaire.call(this, this, Aptitudes)
     this.scene.add.existing(this)
-    this.EnnemyId = EnnemyId
+    this.id = id
     this.lastAnim = null;
     this.attaque = false;
     this.blesse = false;
@@ -87,14 +87,14 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
 
     var timer = this.scene.time.addEvent({
       delay: 1000,                // ms
-      callback: () => Aptitudes[EnnemyId].A(this, {a: true}),
+      callback: () => Aptitudes[id].A(this, {a: 4}),
       //args: [],
       callbackScope: this,
       loop: true
     });
 
     // this.scene.time.delayedCall(1000, () => {
-      // Aptitudes[EnnemyId].A(this, {a: true})
+      // Aptitudes[id].A(this, {a: true})
     // }, null, this);
 
 
@@ -160,7 +160,7 @@ export default class BossClass extends Phaser.Physics.Arcade.Sprite {
 
     if (this.scene) {
       (this.scene as any).room.state.presences.set(
-        this.EnnemyId,
+        this.id,
         new Player({
           x: this.x,
           y: this.y,
@@ -225,7 +225,7 @@ this.setTint(0xff0000)
     this.setPosition(this.x, 779.2995484974318);
     this.setScale(0.2);
     // (this.scene as any).room.state.presences.set(
-    //   this.EnnemyId,
+    //   this.id,
     //   new Player({ x: this.x, y: this.y, sprite: 'boss_1', anim: '', flipX: this.flipX, tint: this.tintBottomLeft, vie: this.vie, zoneAttaque: {x: 100, y: 200}, scale: this.scale})
     // )
   }
