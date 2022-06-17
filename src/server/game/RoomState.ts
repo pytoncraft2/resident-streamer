@@ -50,6 +50,7 @@ export class Ligne extends Schema {
   @type("number") strokeColor?: number
   @type("number") strokeAlpha?: number
   @type("number") couleur?: number
+  @type("number") lineHeight?: number
 }
 
 export class RoomState extends Schema {

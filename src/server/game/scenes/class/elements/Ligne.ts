@@ -4,9 +4,8 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
   closest: any
   personnage: any
   lineColor: any
-  lineHeight: any
+  lineHeight: Phaser.Tweens.Tween
   id: any
-  tweenDecalage: Phaser.Tweens.Tween
 
   constructor(
     scene: Phaser.Scene,
@@ -39,29 +38,55 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     this.id = id;
     this.closest = closest;
     this.personnage = personnage
-    this.tweenDecalage = scene.tweens.addCounter({
+    this.scene.time.delayedCall(10000, () => {
+      this.defaultFillColor = 0x03bb03
+    }, null, this);
+
+    // this.scene.tweens.add({
+    //   targets: this.lineHeight,
+    //   height: 9,
+    //   // alpha: '+=1',
+    //   // alpha: { from: 0, to: 1 },
+    //   // alpha: { start: 0, to: 1 },
+    //   // alpha: { start: value0, from: value1, to: value2 },
+    //   // alpha: function(target, key, value, targetIndex, totalTargets, tween)  { return newValue; },
+    //   // alpha: {
+    //   //      getActive: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+    //   //      getStart: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; },
+    //   //      getEnd: function (target, key, value, targetIndex, totalTargets, tween) { return newValue; }
+    //   // },
+    //   ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+    //   duration: 2000,
+    //   repeat: 0,            // -1: infinity
+    //   yoyo: false
+    // });
+
+    this.lineHeight = this.scene.tweens.addCounter({
       from: 0,
-      to: 900,
-      // ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
-      duration: 500,
+      to: 20,
+      ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+      duration: 150,
       repeat: -1,            // -1: infinity
       yoyo: true,
     });
+
+
   }
 
   preUpdate(time, delta) {
 
+    console.log(this.scale);
     (this.scene as any).room.state.lignes.set(
       this.id,
       new Ligne({
         x: 600,
         y: 200,
-        x1: this.personnage.flipX ? this.closest.x + this.tweenDecalage.getValue() : this.closest.x - this.tweenDecalage.getValue(),
+        x1: this.closest.x,
         y1: this.closest.y,
         x2: this.personnage.x,
         y2: this.personnage.y,
-        couleur: this.defaultFillColor
-        // scale: this.scale,
+        couleur: this.defaultFillColor,
+        lineHeight: this.lineHeight.getValue(),
       })
     )
   }
