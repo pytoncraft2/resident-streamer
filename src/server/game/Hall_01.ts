@@ -45,7 +45,7 @@ export default class GameRooms extends Room {
           right: false,
           down: false,
           left: false,
-          space: true,
+          space: false,
           a: false,
           z: false,
           e: false,
