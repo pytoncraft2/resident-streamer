@@ -76,17 +76,23 @@ export function interaction__R(personnage: TJoueur, input) {
 
 export function fusion__TAB(personnage: TJoueur, input: any) {
   if (input.tab) {
-    input.tab = false;
+    console.log("TABBB")
+    // input.tab = false;
     let proche: any = closest(personnage, 'players')
-    if (proche) proche.particules = true;
+    if (proche) {
+      proche.particules = true;
+      // console.log(personnage.particules)
+      // console.log("VS")
+      // console.log(proche.particules)
+    }
 
-    if (proche) new Ligne(personnage.scene, proche, personnage, '0x7fff00', 7, '12345')
+    if (proche) new Ligne(personnage.scene, proche, personnage, '0x7fff00', 7, `${(Math.random() + 1).toString(36).substring(7)}`)
 
      // personnage.gfx.clear()
      // .lineStyle(2, 0xff3300)
-     // personnage.scene.time.delayedCall(10000, () => {
-       // closest(personnage, false)
-     // }, null, personnage);
+     personnage.scene.time.delayedCall(5000, () => {
+       input.tab = false
+     }, null, personnage);
 
      // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
     // personnage.particules = true
