@@ -62,7 +62,8 @@ export function interaction__R(personnage: TJoueur, input) {
       // console.log("AJOUT BOSS")
     } else if (personnage.bossControlable.getLength() == 1) {
 
-      this.iconSuitJoueur = false
+      // this.iconSuitJoueur = false
+      personnage.tweenIcon.stop();
       personnage.bossControlable.clear();
 
       // let _e = closest(personnage, 'enemies')
