@@ -15,8 +15,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    compteurSaut: number = 0
-   iconSuitJoueur: boolean = false
-   tweenIcon: Phaser.Tweens.Tween
+   // iconSuitJoueur: boolean = false
+   // tweenIcon: Phaser.Tweens.Tween
    canMove: boolean = true
    attaque: boolean = false
    action: any
@@ -178,42 +178,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
-     // this.donnes[client.id] = {
-     //   clavier: {
-     //     up: false,
-     //     right: {stop: true},
-     //     down: false,
-     //     left: false,
-     //     a: false,
-     //     z: false,
-     //     e: false
-     //   },
-     //   sprite: `${options.sprite}`
-     // }
-
-     if ((this.scene as any).room.donnes[this.ClientID]) {
-       console.log("PRESENT !!!!!!!!!!!!!!!!!!!")
-       console.log(this.ClientID)
-       console.log(this.sprite)
-     } else {
-       // (this.scene as any).room.donnes[this.ClientID] = {
-       //   clavier: {
-       //     up: false,
-       //     right: {stop: true},
-       //     down: false,
-       //     left: false,
-       //     a: false,
-       //     z: false,
-       //     e: false
-       //   },
-       //   sprite: `${options.sprite}`
-       // }
-       console.log("PAS PRESENT ::::::")
-       console.log(this.ClientID)
-       console.log(this.sprite)
-     }
-
    }
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
@@ -223,21 +187,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
-
-     if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
-       this.bossControlable.getChildren()[0].setPosition(
-         this.getTopCenter().x,
-         this.getTopCenter().y - 80
-       )
-     }
-
-     if (this.tweenIcon && this.tweenIcon.isPlaying())
-     {
-      this.tweenIcon.updateTo('x', this.getTopCenter().x, true);
-      this.tweenIcon.updateTo('y', this.getTopCenter().y - 80, true);
-
-       // .setText('Progress: ' + this.tweenIcon.progress);
-     }
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
@@ -259,8 +208,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (right_debut) input.right_debut = false
        if (left_debut) input.left_debut = false;
        if (tab_fin) input.tab_fin = false;
-       // if (left || left_fin) this.deplacement('left', left, left_fin)
-       // if (right || right_fin) this.deplacement('right', right, right_fin)
      }
 
      // if (this.body.touching.none) {
