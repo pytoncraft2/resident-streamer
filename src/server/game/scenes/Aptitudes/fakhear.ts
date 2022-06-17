@@ -75,9 +75,9 @@ export function interaction__R(personnage: TJoueur, input) {
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {
-  if (input.tab) {
+  if (input.tab && personnage.bossControlable.getLength() == 1) {
     console.log("TABBB")
-    // input.tab = false;
+    input.tab = false;
     let proche: any = closest(personnage, 'players')
     if (proche) {
       proche.particules = true;
@@ -88,13 +88,6 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
 
     if (proche) new Ligne(personnage.scene, proche, personnage, '0x7fff00', 7, `${(Math.random() + 1).toString(36).substring(7)}`)
 
-     // personnage.gfx.clear()
-     // .lineStyle(2, 0xff3300)
-     personnage.scene.time.delayedCall(5000, () => {
-       input.tab = false
-     }, null, personnage);
-
-     // .lineBetween(closest.x, closest.y, personnage.x, personnage.y)
     // personnage.particules = true
   }
   // console.log(personnage.scene.players.getLength())
