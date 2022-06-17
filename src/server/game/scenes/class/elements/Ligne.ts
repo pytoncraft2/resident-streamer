@@ -6,6 +6,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
   lineColor: any
   lineHeight: any
   id: any
+  tweenDecalage: Phaser.Tweens.Tween
 
   constructor(
     scene: Phaser.Scene,
@@ -38,6 +39,14 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     this.id = id;
     this.closest = closest;
     this.personnage = personnage
+    this.tweenDecalage = scene.tweens.addCounter({
+      from: 0,
+      to: 900,
+      // ease: 'Linear',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+      duration: 500,
+      repeat: -1,            // -1: infinity
+      yoyo: true,
+    });
   }
 
   preUpdate(time, delta) {
@@ -47,7 +56,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
       new Ligne({
         x: 600,
         y: 200,
-        x1: this.closest.x,
+        x1: this.personnage.flipX ? this.closest.x + this.tweenDecalage.getValue() : this.closest.x - this.tweenDecalage.getValue(),
         y1: this.closest.y,
         x2: this.personnage.x,
         y2: this.personnage.y,
