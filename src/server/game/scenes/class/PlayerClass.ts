@@ -13,7 +13,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
-   pilotes: Phaser.GameObjects.Container
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    compteurSaut: number = 0
@@ -76,7 +75,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.etatEnCours = 'initial'
 
      this.bossControlable = this.scene.add.group();
-     this.pilotes = this.scene.add.container(0, 0);
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -132,7 +130,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
-     this.zoneInteraction.action = (_e: TJoueur) => {
+     this.zoneInteraction.action = (_e: any) => {
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
@@ -141,8 +139,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
              console.log("GGGGGGGG")
              _e.vie = 1
-             _e.pilotes.add(this)
              _e.body.setAllowGravity(false)
+             this.nouveauPilote(_e)
              this.tweenIcon = this.scene.tweens.add({
                targets: _e,
                x: this.getTopCenter().x,
@@ -219,6 +217,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
+       console.log(this.currentTarget.sprite)
        if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
          this.bossControlable.getChildren()[0].setPosition(
            this.getTopCenter().x,
@@ -299,8 +298,9 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
    }
 
-   ajoutePilote() {
-     
+   nouveauPilote(nouveauPilote: Phaser.Physics.Arcade.Sprite) {
+     console.log("NOUVEAU PILOTE !!!")
+     this.currentTarget = nouveauPilote
    }
 
 
