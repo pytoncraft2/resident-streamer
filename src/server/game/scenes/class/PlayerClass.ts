@@ -138,14 +138,12 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
            if (_e.vie <= 0) {
 
              console.log("GGGGGGGG")
-             _e.vie = 1
-             _e.body.setAllowGravity(false)
+             _e.vie = 10
              this.nouveauPilote(_e)
              this.tweenIcon = this.scene.tweens.add({
                targets: _e,
                x: this.getTopCenter().x,
                y: this.getTopCenter().y,
-               scale: 0.1,
                ease: 'Sine.easeIn',
                duration: 3000,
                onComplete: () => (this.iconSuitJoueur = true)
