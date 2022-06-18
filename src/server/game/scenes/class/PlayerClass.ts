@@ -23,7 +23,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    attaque: boolean = false
    action: any
    zoneInteraction: any
-   interaction_objet: boolean
    etats: any
    etatEnCours: any
    blesse_opposant: boolean = false
@@ -167,39 +166,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          console.log("SOIN")
          _e.vie += 0.01
        }
-
-       // if (this.interaction_objet) {
-       //
-       //   if (this.bossControlable.getLength() == 0 && _e.sprite && _e.sprite != this.sprite) {
-       //     // this.c = 1;
-       //     this.bossControlable.add(_e)
-       //
-       //     this.tweenIcon = this.scene.tweens.add({
-       //       targets: _e,
-       //       x: this.getTopCenter().x,
-       //       y: this.getTopCenter().y,
-       //       scale: 0.1,
-       //       ease: 'Sine.easeIn',
-       //       duration: 3000,
-       //       onComplete: () => (this.iconSuitJoueur = true)
-       //       // paused: true
-       //     });
-       //     // this.bossControlable.getChildren()[0]
-       //     // .setScale(0.1)
-       //     // .setPosition(this.getTopCenter().x, this.getTopCenter().y)
-       //     // console.log(this.bossControlable.getChildren()[0])
-       //     console.log("AJOUT BOSS")
-       //   }
-       //   // if (!_e.vivant && _e.active) {
-       //   //   if (typeof _e.proprietaire_objet === "function") {
-       //   //     _e.proprietaire_objet(this.ClientID)
-       //   //     _e.active = false
-       //   //   }
-       //   // }
-       //   // _e.setScale(4)
-       //   // console.log("INTERACTION OBJET -------------------------- go")
-       //   this.interaction_objet = false
-       // }
 
      };
      this.scene.physics.add.existing(this.zoneInteraction);

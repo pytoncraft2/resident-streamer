@@ -22,7 +22,6 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   containerColision: Phaser.GameObjects.Container
   animationCharge: Phaser.Tweens.Tween
   kunai: Phaser.Physics.Arcade.Sprite|undefined
-  interaction_objet: boolean
   compteurSaut: number;
   degat: number
   sprite: string

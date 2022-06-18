@@ -89,15 +89,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
       //   if (typeof _e.dommage === "function") _e.dommage(1)
       // }
       //
-      // if (this.interaction_objet) {
-      //   if (!_e.vivant && _e.active) {
-      //     if (typeof _e.proprietaire_objet === "function") {
-      //       _e.proprietaire_objet(this.ClientID)
-      //       _e.active = false
-      //     }
-      //   }
-      //   this.interaction_objet = false
-      // }
       //
       // if (this.soigne) {
       //   console.log("SOIN")

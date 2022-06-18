@@ -44,13 +44,6 @@ export function interaction__R(personnage: TJoueur, input) {
     // closest(personnage, true, 'enemies')
     input.r = false
   }
-
-
-  // personnage.interaction_objet = true
-  // personnage.scene.tweens.addCounter({
-  //   duration: 1,
-  //   onComplete: () => (personnage.interaction_objet = false)
-  // })
 }
 // export fusion()
 // export function fusion(personnage, input);
