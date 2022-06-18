@@ -629,16 +629,10 @@ export default class Jeu extends Phaser.Scene {
           vie.fillColor = 10882574;
 
           const pseudo = this.add.text(0, 0, "HELLO", {});
-          // pseudo.text = "__ Vous __";
-          // pseudo.setStyle({ "color": "white", "fontSize": "18px" }).setDepth(9);
 
           pseudo.text = `${sprite}`;
           pseudo.setOrigin(-0.3, 0)
           pseudo.setStyle({ "color": "#5dcefcff", "fontStyle": "italic", "fontSize": "18px", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":0.3,"shadow.stroke":false});
-          // #323b52ff
-          // 3deaf4ff
-          //3df43eff
-
 
           barre.add(pseudo);
           barre.add(vie);
