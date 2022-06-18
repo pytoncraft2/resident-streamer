@@ -214,7 +214,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
 
-     this.observeVie()
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
@@ -296,10 +295,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      }
    }
 
-   observeVie() {
-     // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
-   }
-
    nouveauPilote(nouveauPilote: TJoueur) {
      console.log("NOUVEAU PILOTE !!!")
      console.log("SPRITE PILOTE NOUVEAU:")
@@ -309,7 +304,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // this.pilotes[nouveauPilote.ClientID]
      this.currentTarget = nouveauPilote
 
-     this.scene.time.delayedCall(5000, () => {
+     this.scene.time.delayedCall(10000, () => {
        this.currentTarget = this
      }, null, this);
    }
