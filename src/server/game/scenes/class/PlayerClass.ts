@@ -2,6 +2,7 @@ import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
+import TJoueur from "../types/Joueur"
 import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
 /**
@@ -12,11 +13,12 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
+   pilotes: Phaser.GameObjects.Container
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    compteurSaut: number = 0
-   // iconSuitJoueur: boolean = false
-   // tweenIcon: Phaser.Tweens.Tween
+   iconSuitJoueur: boolean = false
+   tweenIcon: Phaser.Tweens.Tween
    canMove: boolean = true
    attaque: boolean = false
    action: any
@@ -74,6 +76,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.etatEnCours = 'initial'
 
      this.bossControlable = this.scene.add.group();
+     this.pilotes = this.scene.add.container(0, 0);
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -129,11 +132,34 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
-     this.zoneInteraction.action = (_e: any) => {
+     this.zoneInteraction.action = (_e: TJoueur) => {
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) _e.dommage(1)
+         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
+           if (_e.vie <= 0) {
+
+             console.log("GGGGGGGG")
+             _e.vie = 1
+             _e.pilotes.add(this)
+             _e.body.setAllowGravity(false)
+             this.tweenIcon = this.scene.tweens.add({
+               targets: _e,
+               x: this.getTopCenter().x,
+               y: this.getTopCenter().y,
+               scale: 0.1,
+               ease: 'Sine.easeIn',
+               duration: 3000,
+               onComplete: () => (this.iconSuitJoueur = true)
+               // paused: true
+             });
+
+
+             // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
+           }
+
+           _e.dommage(1)
+         }
        }
 
        if (this.soigne) {
@@ -188,8 +214,26 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
 
+     this.observeVie()
+
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+
+       if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
+         this.bossControlable.getChildren()[0].setPosition(
+           this.getTopCenter().x,
+           this.getTopCenter().y - 80
+         )
+       }
+
+       if (this.tweenIcon && this.tweenIcon.isPlaying())
+       {
+         this.tweenIcon.updateTo('x', this.getTopCenter().x, true);
+         this.tweenIcon.updateTo('y', this.getTopCenter().y - 80, true);
+
+         // .setText('Progress: ' + this.tweenIcon.progress);
+       }
+
 
        if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].A === "function" && Aptitudes[this.currentTarget.sprite].A(this.currentTarget, input);
        if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
@@ -249,6 +293,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (puissance >= 0) {
        this.vie -= puissance
      }
+   }
+
+   observeVie() {
+     // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
+   }
+
+   ajoutePilote() {
+     
    }
 
 

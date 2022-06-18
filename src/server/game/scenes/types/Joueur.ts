@@ -30,6 +30,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   gfx: Phaser.GameObjects.Graphics
   bossControlable: Phaser.Physics.Arcade.Group
 
+  //fusion
+  pilotes: Phaser.GameObjects.Container
+
   tweenIcon: Phaser.Tweens.Tween
   iconSuitJoueur: boolean
 
@@ -53,6 +56,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   //twitchman
   survole: boolean
   laser: LaserClass
+
+  //degat
+  dommage(puissance: number): void
 }
 
   export default TJoueur;
