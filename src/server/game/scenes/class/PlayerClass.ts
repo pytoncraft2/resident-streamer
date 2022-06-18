@@ -139,9 +139,9 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
              console.log("GGGGGGGG")
              _e.vie = 10
-             this.nouveauPilote(_e)
-             const container = this.scene.add.container()
-             container.add(this)
+             this.nouveauPilote(_e);
+             (this.scene as any).enemies.remove(_e);
+             // (this.scene as any).players.add(_e);
              _e.tweenIcon = this.scene.tweens.add({
                targets: this,
                x: _e.getTopCenter().x,
