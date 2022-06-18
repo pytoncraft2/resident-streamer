@@ -15,6 +15,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    particules: boolean
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
+   pilotes: any
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
    tweenIcon: Phaser.Tweens.Tween
@@ -56,6 +57,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.particules = false
      // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.sprite = sprite
+     this.pilotes = {}
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
@@ -300,10 +302,15 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
    }
 
-   nouveauPilote(nouveauPilote: Phaser.Physics.Arcade.Sprite) {
+   nouveauPilote(nouveauPilote: TJoueur) {
      console.log("NOUVEAU PILOTE !!!")
+     // this.pilotes.push(nouveauPilote)
+     // this.pilotes[nouveauPilote.ClientID]
      this.currentTarget = nouveauPilote
    }
 
+   suppresionPilote(suppresionJoueur: TJoueur) {
+     this.currentTarget = this.me
+   }
 
  }
