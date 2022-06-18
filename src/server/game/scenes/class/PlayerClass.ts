@@ -140,13 +140,16 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
              console.log("GGGGGGGG")
              _e.vie = 10
              this.nouveauPilote(_e)
-             this.tweenIcon = this.scene.tweens.add({
-               targets: _e,
-               x: this.getTopCenter().x,
-               y: this.getTopCenter().y,
+             const container = this.scene.add.container()
+             container.add(this)
+             _e.tweenIcon = this.scene.tweens.add({
+               targets: this,
+               x: _e.getTopCenter().x,
+               y: _e.getTopCenter().y,
                ease: 'Sine.easeIn',
+               scale: 0.1,
                duration: 3000,
-               onComplete: () => (this.iconSuitJoueur = true)
+               onComplete: () => (_e.iconSuitJoueur = true)
                // paused: true
              });
 
@@ -205,6 +208,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
 
+     console.log((this.scene as any).players.getLength())
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
@@ -215,14 +219,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-       console.log(this.currentTarget.sprite)
+       // console.log(this.currentTarget.sprite)
        if (this.bossControlable.getLength() == 1 && this.iconSuitJoueur) {
          this.bossControlable.getChildren()[0].setPosition(
            this.getTopCenter().x,
            this.getTopCenter().y - 80
          )
        }
-
+       //
        if (this.tweenIcon && this.tweenIcon.isPlaying())
        {
          this.tweenIcon.updateTo('x', this.getTopCenter().x, true);
