@@ -50,11 +50,10 @@ export default class GameRooms extends Room {
           z: false,
           e: false,
           r: false
-        },
-        sprite: 'twitchman'
+        }
       }
 
-      const presences = this.scene.createEnnemy('123456789', 'twitchman')
+      const presences = this.scene.createEnnemy('123456789', 'manette')
       for (const [key, value] of Object.entries(presences.presences)) {
         this.state.presences.set(key, new Player(value))
       }
