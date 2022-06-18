@@ -632,7 +632,8 @@ export default class Jeu extends Phaser.Scene {
           // pseudo.text = "__ Vous __";
           // pseudo.setStyle({ "color": "white", "fontSize": "18px" }).setDepth(9);
 
-          pseudo.text = `__ ${sprite} __`;
+          pseudo.text = `${sprite}`;
+          pseudo.setOrigin(-0.3, 0)
           pseudo.setStyle({ "color": "#3df43eff", "fontStyle": "italic", "fontSize": "18px", "shadow.stroke":true, "shadow.blur":4, "shadow.fill":true});
 
 
