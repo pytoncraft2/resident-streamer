@@ -225,7 +225,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle.scaleY = 0.10896442556651106;
 		rectangle.setOrigin(0, 0.5);
 		rectangle.isFilled = true;
-		rectangle.fillColor = 57682;
+		rectangle.fillColor = 10563832;
 
 		// laser01
 		const laser01 = this.add.image(548, 583, "laser01");
@@ -243,7 +243,7 @@ export default class Jeu extends Phaser.Scene {
 		// text_1
 		const text_1 = this.add.text(502, 543, "", {});
 		text_1.text = "Vous";
-		text_1.setStyle({ "color": "#eec700ff", "fontStyle": "italic", "stroke": "#000000ff", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":4,"shadow.stroke":true});
+		text_1.setStyle({ "backgroundColor": "#ffffffff", "color": "#5dcefcff", "fontStyle": "italic", "shadow.color": "#ffffffff", "shadow.blur":4,"shadow.stroke":true,"shadow.fill":true});
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -280,6 +280,7 @@ export default class Jeu extends Phaser.Scene {
 
 
 	client!: Colyseus.Client
+  ClientID: any
   players!: Phaser.GameObjects.Group
   enemies!: Phaser.GameObjects.Group
   groupeBoules!: Phaser.GameObjects.Group
@@ -610,6 +611,8 @@ export default class Jeu extends Phaser.Scene {
 					.setData({ ClientId: list.presenceList[idx] })
           .setDepth(1);
 
+
+
           (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
 
           const barre = this.add.container(-39, 21);
@@ -629,18 +632,29 @@ export default class Jeu extends Phaser.Scene {
           vie.fillColor = 10882574;
 
           const pseudo = this.add.text(0, 0, "HELLO", {});
+          const pseudoIndication = this.add.text(0, 0, "HELLO", {});
           // pseudo.text = "__ Vous __";
           // pseudo.setStyle({ "color": "white", "fontSize": "18px" }).setDepth(9);
 
           pseudo.text = `${sprite}`;
           pseudo.setOrigin(-0.3, 0)
           pseudo.setStyle({ "color": "#5dcefcff", "fontStyle": "italic", "fontSize": "18px", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":0.3,"shadow.stroke":false});
+
+          barre.add(pseudo);
+
+          if (!this.ClientID) {
+            this.ClientID = list.presenceList[idx];
+            pseudoIndication.text = "(Vous)";
+            pseudoIndication.setOrigin(-0.4, 2)
+            pseudoIndication.setStyle({ "color": "#5dcefcff", "fontStyle": "italic", "fontSize": "18px", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":0.3,"shadow.stroke":false});
+            barre.add(pseudoIndication);
+          }
+
           // #323b52ff
           // 3deaf4ff
           //3df43eff
 
 
-          barre.add(pseudo);
           barre.add(vie);
           barre.add(rectangle);
 
