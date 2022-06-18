@@ -418,7 +418,7 @@
             "scaleY": 0.10896442556651106,
             "originX": 0,
             "isFilled": true,
-            "fillColor": "#a130f8",
+            "fillColor": "#00e152",
             "width": 128,
             "height": 128
         },
@@ -460,9 +460,11 @@
             "y": 543,
             "text": "Vous",
             "fontStyle": "italic",
-            "color": "#3df43eff",
+            "color": "#eec700ff",
+            "stroke": "#000000ff",
+            "strokeThickness": 1,
             "shadow.stroke": true,
-            "shadow.fill": true,
+            "shadow.color": "#ffffffff",
             "shadow.blur": 4
         }
     ],

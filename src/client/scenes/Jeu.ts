@@ -225,7 +225,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle.scaleY = 0.10896442556651106;
 		rectangle.setOrigin(0, 0.5);
 		rectangle.isFilled = true;
-		rectangle.fillColor = 10563832;
+		rectangle.fillColor = 57682;
 
 		// laser01
 		const laser01 = this.add.image(548, 583, "laser01");
@@ -243,7 +243,7 @@ export default class Jeu extends Phaser.Scene {
 		// text_1
 		const text_1 = this.add.text(502, 543, "", {});
 		text_1.text = "Vous";
-		text_1.setStyle({ "color": "#3df43eff", "fontStyle": "italic", "shadow.blur":4,"shadow.stroke":true,"shadow.fill":true});
+		text_1.setStyle({ "color": "#eec700ff", "fontStyle": "italic", "stroke": "#000000ff", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":4,"shadow.stroke":true});
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -634,7 +634,10 @@ export default class Jeu extends Phaser.Scene {
 
           pseudo.text = `${sprite}`;
           pseudo.setOrigin(-0.3, 0)
-          pseudo.setStyle({ "color": "#3df43eff", "fontStyle": "italic", "fontSize": "18px", "shadow.stroke":true, "shadow.blur":4, "shadow.fill":true});
+          pseudo.setStyle({ "color": "#5dcefcff", "fontStyle": "italic", "fontSize": "18px", "strokeThickness":1,"shadow.color": "#ffffffff", "shadow.blur":0.3,"shadow.stroke":false});
+          // #323b52ff
+          // 3deaf4ff
+          //3df43eff
 
 
           barre.add(pseudo);
