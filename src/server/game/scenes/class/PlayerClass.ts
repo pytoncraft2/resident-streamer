@@ -304,9 +304,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      console.log("NOUVEAU PILOTE !!!")
      console.log("SPRITE PILOTE NOUVEAU:")
      console.log(nouveauPilote.sprite)
+     const moi = this
      // this.pilotes.push(nouveauPilote)
      // this.pilotes[nouveauPilote.ClientID]
      this.currentTarget = nouveauPilote
+
+     this.scene.time.delayedCall(5000, () => {
+       this.currentTarget = moi
+     }, null, this);
    }
 
    suppresionPilote(suppresionJoueur: TJoueur) {
