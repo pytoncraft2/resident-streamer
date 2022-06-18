@@ -149,7 +149,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
                x: _e.getTopCenter().x,
                y: _e.getTopCenter().y,
                ease: 'Sine.easeIn',
-               scale: 0.1,
+               // scale: 0.1,
                duration: 3000,
                onComplete: () => (_e.iconSuitJoueur = true)
                // paused: true
