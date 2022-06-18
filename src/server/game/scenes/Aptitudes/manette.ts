@@ -1,6 +1,7 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
 import TJoueur from "../types/Joueur";
+import { fusion } from "./_utilitaire/general";
 
 
 export function __StatsSupplementaire() {}
@@ -82,6 +83,11 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
     }, null, manette);
   }
 }
+
+export function fusion__TAB(personnage: TJoueur, input: any) {
+  fusion(personnage, input)
+}
+
 
 export function vole() {
 

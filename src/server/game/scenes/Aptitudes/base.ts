@@ -76,3 +76,7 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
         }
       });
     });
+
+setTimeout(() => {
+console.log(Aptitudes)  
+}, 4000);

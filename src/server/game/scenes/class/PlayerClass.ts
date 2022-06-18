@@ -210,8 +210,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
 
-     console.log((this.scene as any).players.getLength())
-
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
@@ -304,12 +302,18 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
    nouveauPilote(nouveauPilote: TJoueur) {
      console.log("NOUVEAU PILOTE !!!")
+     console.log("SPRITE PILOTE NOUVEAU:")
+     console.log(nouveauPilote.sprite)
      // this.pilotes.push(nouveauPilote)
      // this.pilotes[nouveauPilote.ClientID]
      this.currentTarget = nouveauPilote
    }
 
    suppresionPilote(suppresionJoueur: TJoueur) {
+     console.log("SUPPRESION PILOTE")
+     console.log(this.currentTarget.sprite)
+     console.log("VS")
+     console.log(this.me.sprite)
      this.currentTarget = this.me
    }
 

@@ -1,6 +1,7 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import Ligne from "../class/elements/Ligne";
+import { fusion } from "./_utilitaire/general";
 
 export function test() {}
 
@@ -51,37 +52,8 @@ export function interaction__R(personnage: TJoueur, input) {
   //   onComplete: () => (personnage.interaction_objet = false)
   // })
 }
-
+// export fusion()
+// export function fusion(personnage, input);
 export function fusion__TAB(personnage: TJoueur, input: any) {
-  if (input.tab && personnage.bossControlable.getLength() == 1) {
-    console.log("TABBB")
-    input.tab = false;
-    let proche: any = closest(personnage, 'players')
-    if (proche) {
-      proche.particules = true;
-      // console.log(personnage.particules)
-      // console.log("VS")
-      // console.log(proche.particules)
-    }
-
-    if (proche) new Ligne(personnage.scene, proche, personnage, '0x7fff00', 7, `${(Math.random() + 1).toString(36).substring(7)}`)
-
-    // personnage.particules = true
-  }
-  // console.log(personnage.scene.players.getLength())
-  if (input.tab_fin) {
-
-    let proche: any = closest(personnage, 'players')
-    if (proche) proche.particules = false;
-    // closest(personnage, 'players')
-    // personnage.particules = false
-  }
-
-
-}
-
-
-function closest(personnage: TJoueur, type: 'players' | 'enemies') {
-  let groueCible = personnage.scene[type].getChildren();
-  return personnage.scene.physics.closest(personnage, groueCible);
+  fusion(personnage, input)
 }
