@@ -47,6 +47,11 @@ export default class Preload extends Phaser.Scene {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
 
+
+		this.load.audio('epic_musique', [
+			'assets/epic_musique.mp3'
+		]);
+
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
 
 	}

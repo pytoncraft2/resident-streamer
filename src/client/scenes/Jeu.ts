@@ -323,6 +323,12 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
+    var epic_musique = this.sound.add('epic_musique');
+
+		epic_musique.play({
+			loop: true
+		});
+
     // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
     // var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
 
