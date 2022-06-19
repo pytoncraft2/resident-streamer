@@ -18,8 +18,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    pilotes: any
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
-   iconBarre: Phaser.GameObjects.Container
-  //  tweenIcon: Phaser.Tweens.Tween
+   tweenIcon: Phaser.Tweens.Tween
    canMove: boolean = true
    attaque: boolean = false
    action: any
@@ -77,11 +76,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.etatEnCours = 'initial'
 
      this.bossControlable = this.scene.add.group();
-    
-     this.iconBarre = this.scene.add.container(0, 0);
-     this.scene.add.existing(this.iconBarre);
-     this.scene.physics.add.existing(this.iconBarre);
-
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -144,28 +138,16 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
            if (_e.vie <= 0) {
 
-             console.log("GGGGGGGG")
              _e.vie = 10
-             _e.iconBarre.add(this)
              this.nouveauPilote(_e);
-            //  (this.scene as any).enemies.remove(_e);
+             (this.scene as any).enemies.remove(_e);
              // (this.scene as any).players.add(_e);
-            //  _e.tweenIcon = this.scene.tweens.add({
-            //    targets: this,
-            //    x: _e.getTopCenter().x,
-            //    y: _e.getTopCenter().y,
-            //    ease: 'Sine.easeIn',
-            //    // scale: 0.1,
-            //    duration: 3000,
-            //    onComplete: () => (_e.iconSuitJoueur = true)
-            //    // paused: true
-            //  });
-
-
-             // if (this.vie <= 0) console.log("JOUEUR OU BOT KO")
+           }
+           else
+           {
+           _e.dommage(1)
            }
 
-           _e.dommage(1)
          }
        }
 
@@ -190,7 +172,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
-       (this.iconBarre as any).setPosition(this.x, this.y + 200)
 
        // console.log(this.currentTarget.sprite)
 
