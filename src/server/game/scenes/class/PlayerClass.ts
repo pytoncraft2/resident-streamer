@@ -16,6 +16,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    pilotes: any
+   fusionner: boolean
    suivre: boolean
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
@@ -156,6 +157,11 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          _e.vie += 0.01
        }
 
+       if (this.fusionner && _e.sprite != this.sprite) {
+        this.fusionner = false;
+         this.nouveauPilote(_e);
+       }
+
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
@@ -250,7 +256,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.suivre = true
      this.setScale(0.2)
 
-     this.scene.time.delayedCall(10000, () => {
+     this.scene.time.delayedCall(40000, () => {
        this.suivre = false
        nouveauPilote.particules = false;
        this.currentTarget = this

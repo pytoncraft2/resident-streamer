@@ -4,9 +4,7 @@ export function test(parameter) {
 
 export function fusion(personnage: any, input: any) {
   if (input.tab/* && personnage.bossControlable.getLength() == 1*/) {
-    console.log("TABBB")
-    console.log(personnage.sprite)
-    personnage.suppresionPilote()
+    personnage.fusionner = true
     input.tab = false;
   }
   if (input.tab_fin) {
