@@ -43,7 +43,7 @@ export default class Level extends Phaser.Scene {
 		const params = new URLSearchParams(window.location.search)
 
 		if (salonURL != '') {
-			this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+			this.scene.start('Jeu', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
 		} else {
 			this.afficheAcceuil()
 			// console.log("RIEN A FAIRE")
