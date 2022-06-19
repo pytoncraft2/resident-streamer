@@ -58,7 +58,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.particules = false
      // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.sprite = sprite
-     this.pilotes = {}
+     this.pilotes = []
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
@@ -200,6 +200,15 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (right_debut) input.right_debut = false
        if (left_debut) input.left_debut = false;
        if (tab_fin) input.tab_fin = false;
+
+       if (this.pilotes[0]) {
+         if (a || a_fin) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].A === "function" && Aptitudes[this.pilotes[0].sprite].A(this.pilotes[0], input);
+         if (z || z_fin) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].Z === "function" && Aptitudes[this.pilotes[0].sprite].Z(this.pilotes[0], input);
+       }
+       if (this.pilotes[1]) {
+         if (a || a_fin) this.pilotes[1].sprite in Aptitudes && typeof Aptitudes[this.pilotes[1].sprite].A === "function" && Aptitudes[this.pilotes[1].sprite].A(this.pilotes[1], input);
+         if (z || z_fin) this.pilotes[1].sprite in Aptitudes && typeof Aptitudes[this.pilotes[1].sprite].Z === "function" && Aptitudes[this.pilotes[1].sprite].Z(this.pilotes[1], input);
+       }
      }
 
      if (this.suivre) {
