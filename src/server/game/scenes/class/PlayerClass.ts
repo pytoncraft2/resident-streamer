@@ -15,7 +15,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    particules: boolean
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
-   pilotes: any
    fusionner: boolean
    suivre: boolean
    compteurSaut: number = 0
@@ -58,7 +57,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.particules = false
      // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.sprite = sprite
-     this.pilotes = []
      this.action = () => {
        console.log("AAAAAAAAAAACTIONNNN !!!!")
      };
@@ -248,19 +246,15 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    }
 
    nouveauPilote(nouveauPilote: TJoueur) {
-    //  console.log("NOUVEAU PILOTE !!!")
-    //  nouveauPilote.particules = true;
-    //  (this.scene as any).enemies.remove(nouveauPilote);
-    
+     nouveauPilote.particules = true;
      this.currentTarget = nouveauPilote
      this.suivre = true
      this.setScale(0.2)
 
      this.scene.time.delayedCall(40000, () => {
 
-      // this.pilotes = []
        this.suivre = false
-      //  nouveauPilote.particules = false;
+       nouveauPilote.particules = false;
        this.currentTarget = this
        this.setScale(1)
      }, null, this);
