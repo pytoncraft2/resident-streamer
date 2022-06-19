@@ -42,12 +42,12 @@ export default class Level extends Phaser.Scene {
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
 
-		// if (salonURL != '') {
-			// this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
-		// } else {
+		if (salonURL != '') {
+			this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+		} else {
 			this.afficheAcceuil()
 			// console.log("RIEN A FAIRE")
-		// }
+		}
 	}
 
 	async afficheAcceuil() {
