@@ -16,6 +16,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    pilotes: any
+   suivre: boolean
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
    tweenIcon: Phaser.Tweens.Tween
@@ -140,6 +141,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
              _e.vie = 10
              this.nouveauPilote(_e);
+             _e.particules = true;
              (this.scene as any).enemies.remove(_e);
              // (this.scene as any).players.add(_e);
            }
@@ -194,6 +196,12 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (tab_fin) input.tab_fin = false;
      }
 
+     if (this.suivre) {
+      this.setPosition(this.currentTarget.x, this.currentTarget.y)
+      console.log("SUIVRE---------");
+      
+     }
+
      // if (this.body.touching.none) {
      //   this.vole = true;
      // } else {
@@ -237,24 +245,17 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
    nouveauPilote(nouveauPilote: TJoueur) {
      console.log("NOUVEAU PILOTE !!!")
-     console.log("SPRITE PILOTE NOUVEAU:")
-     console.log(nouveauPilote.sprite)
-     // const moi = this
-     // this.pilotes.push(nouveauPilote)
-     // this.pilotes[nouveauPilote.ClientID]
      this.currentTarget = nouveauPilote
+     this.suivre = true
 
      this.scene.time.delayedCall(10000, () => {
+       this.suivre = false
+       nouveauPilote.particules = false;
        this.currentTarget = this
      }, null, this);
    }
 
    suppresionPilote(suppresionJoueur: TJoueur) {
-     console.log("SUPPRESION PILOTE")
-     console.log(this.currentTarget.sprite)
-     console.log("VS")
-     console.log(this.me.sprite)
-     this.currentTarget = this.me
    }
 
  }
