@@ -91,12 +91,9 @@ export default class Level extends Phaser.Scene {
 	});
 
 	document.body.style.background = "radial-gradient(circle, rgba(101,9,121,1) 0%, rgba(114,1,151,1) 35%, rgba(52,2,89,1) 100%)"
-	// div.style.background = "radial-gradient(circle, rgba(101,9,121,1) 0%, rgba(114,1,151,1) 35%, rgba(52,2,89,1) 100%)"
-	// div!.style.background = "url(https://geeko-media.lesoir.be/wp-content/uploads/2018/08/Resident-Evil-2-remake-1068x580.png) no-repeat center/cover";
 	const self = this;
 	var element = this.add.dom(window.innerWidth / 2, window.innerHeight / 2).createFromCache('loginform');
 
-	console.log(element)
 	element.addListener('click');
 
 	element.on('click', async function (event: Phaser.Input.Mouse.MouseManager) {
