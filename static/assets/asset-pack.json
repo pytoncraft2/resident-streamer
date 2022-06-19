@@ -58,6 +58,11 @@
                 "key": "laser01_atlas"
             },
             {
+                "url": "assets/loginform.html",
+                "type": "html",
+                "key": "loginform"
+            },
+            {
                 "atlasURL": "assets/manette_atlas.json",
                 "textureURL": "assets/manette_atlas.png",
                 "type": "atlas",
