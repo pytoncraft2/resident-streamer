@@ -104,7 +104,7 @@ export default class Lobby extends Phaser.Scene {
 	    await this.connexion()
 
 	    this.personnages.forEach((element, idx) => {
-	      const img = self.add.image(0 + idx * 200, this.cameras.main.centerY, element)
+	      const img = self.add.image(0 + idx * 200, this.cameras.main.centerY, element + "_atlas")
 	      .setData('actif', false)
 	      .setAlpha(0.8)
 	      .setInteractive(({ useHandCursor: true }))
