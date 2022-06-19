@@ -183,34 +183,27 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
        // console.log(this.currentTarget.sprite)
 
-       if (!this.pilotes[0]) {
-         if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].A === "function" && Aptitudes[this.currentTarget.sprite].A(this.currentTarget, input);
-         if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
-         if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
-         if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget, input);
-         if (tab || tab_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget, input);
-         /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
-         if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
-         if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
-         if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
+       if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].A === "function" && Aptitudes[this.currentTarget.sprite].A(this.currentTarget, input);
+       if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
+       if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
+       if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget, input);
+       if (tab || tab_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget, input);
+       /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
+       if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
+       if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
+       if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
 
-         if (left_fin) input.left_fin = false;
-         if (z_fin) input.z_fin = false;
-         if (right_fin) input.right_fin = false;
-         if (space_fin) input.space_fin = false;
-         if (right_debut) input.right_debut = false
-         if (left_debut) input.left_debut = false;
-         if (tab_fin) input.tab_fin = false;
-       } else {
-         if (a || a_fin) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].A === "function" && Aptitudes[this.pilotes[0].sprite].A(this.pilotes[0], input);
-         if (z || z_fin) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].Z === "function" && Aptitudes[this.pilotes[0].sprite].Z(this.pilotes[0], input);
-         if (e) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].E === "function" && Aptitudes[this.pilotes[0].sprite].E(this.pilotes[0], input);
-         if (r) this.pilotes[0].sprite in Aptitudes && typeof Aptitudes[this.pilotes[0].sprite].R === "function" && Aptitudes[this.pilotes[0].sprite].R(this.pilotes[0], input);
-       }
+       if (left_fin) input.left_fin = false;
+       if (z_fin) input.z_fin = false;
+       if (right_fin) input.right_fin = false;
+       if (space_fin) input.space_fin = false;
+       if (right_debut) input.right_debut = false
+       if (left_debut) input.left_debut = false;
+       if (tab_fin) input.tab_fin = false;
      }
 
      if (this.suivre) {
-        this.setPosition(this.pilotes[0].getTopCenter().x, this.pilotes[0].getTopCenter().y - 70)
+        this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
      }
 
      // if (this.body.touching.none) {
@@ -258,18 +251,17 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
     //  console.log("NOUVEAU PILOTE !!!")
     //  nouveauPilote.particules = true;
     //  (this.scene as any).enemies.remove(nouveauPilote);
-
-      this.pilotes[0] = nouveauPilote
-    //  this.currentTarget = nouveauPilote
+    
+     this.currentTarget = nouveauPilote
      this.suivre = true
      this.setScale(0.2)
 
      this.scene.time.delayedCall(40000, () => {
 
-      this.pilotes = []
+      // this.pilotes = []
        this.suivre = false
       //  nouveauPilote.particules = false;
-      //  this.currentTarget = this
+       this.currentTarget = this
        this.setScale(1)
      }, null, this);
    }
