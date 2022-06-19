@@ -13,59 +13,11 @@
     },
     "displayList": [
         {
-            "type": "Text",
-            "id": "00914f27-d162-43da-9573-ea1aaa1f661a",
-            "label": "text",
-            "components": [],
-            "x": 332,
-            "y": 64,
-            "text": "RESIDENT STREAMER",
-            "fontFamily": "LeagueGothic-CondensedRegular"
-        },
-        {
             "type": "Layer",
             "id": "e2d1e9e3-4536-4511-96e2-a0c4cacc6985",
             "label": "layer",
             "components": [],
-            "list": [
-                {
-                    "type": "Rectangle",
-                    "id": "bc9f35db-ab05-4f9b-a4c2-68a2dd39c990",
-                    "label": "rectangle",
-                    "components": [],
-                    "y": 300,
-                    "scaleX": 1.4032183308683686,
-                    "scaleY": 4.670844628920915,
-                    "originX": 0,
-                    "isFilled": true,
-                    "fillColor": "#a60caf",
-                    "fillAlpha": 0.4,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "c0fdcbce-f24d-4452-a2fc-37fd90a846ef",
-                    "label": "rectangle_1",
-                    "components": [],
-                    "x": 510,
-                    "y": 229,
-                    "isFilled": true,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "b8215749-038a-4321-96b4-891ccc2f1bdb",
-                    "label": "rectangle_2",
-                    "components": [],
-                    "x": 726,
-                    "y": 336,
-                    "isFilled": true,
-                    "width": 128,
-                    "height": 128
-                }
-            ]
+            "list": []
         }
     ],
     "plainObjects": [],
