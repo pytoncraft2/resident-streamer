@@ -226,7 +226,7 @@ export default class Lobby extends Phaser.Scene {
 
 	  commencerJeu() {
 	    this.room.leave()
-	    this.scene.start('Jeu_01', {
+	    this.scene.start('Jeu', {
 	      salon: this.salon,
 	      personnage: this.personnageChoisie
 	    });
