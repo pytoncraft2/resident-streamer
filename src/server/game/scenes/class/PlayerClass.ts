@@ -258,18 +258,29 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    }
 
    nouveauPilote(nouveauPilote: TJoueur) {
-     console.log("NOUVEAU PILOTE !!!")
-     nouveauPilote.particules = true;
-     (this.scene as any).enemies.remove(nouveauPilote);
+    //  console.log("NOUVEAU PILOTE !!!")
+    //  nouveauPilote.particules = true;
+    //  (this.scene as any).enemies.remove(nouveauPilote);
 
-     this.currentTarget = nouveauPilote
-     this.suivre = true
+    console.log("LONGEUR");
+    
+    console.log(this.pilotes.length);
+    
+    if (this.pilotes.length === 0) {
+      this.pilotes[0] = nouveauPilote
+    } else if (this.pilotes.length === 1) {
+      this.pilotes[1] = nouveauPilote
+    }
+    //  this.currentTarget = nouveauPilote
+    //  this.suivre = true
      this.setScale(0.2)
 
      this.scene.time.delayedCall(40000, () => {
-       this.suivre = false
-       nouveauPilote.particules = false;
-       this.currentTarget = this
+
+      this.pilotes = []
+      //  this.suivre = false
+      //  nouveauPilote.particules = false;
+      //  this.currentTarget = this
        this.setScale(1)
      }, null, this);
    }
