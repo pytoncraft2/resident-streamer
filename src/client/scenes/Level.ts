@@ -94,7 +94,7 @@ export default class Level extends Phaser.Scene {
 	// div.style.background = "radial-gradient(circle, rgba(101,9,121,1) 0%, rgba(114,1,151,1) 35%, rgba(52,2,89,1) 100%)"
 	// div!.style.background = "url(https://geeko-media.lesoir.be/wp-content/uploads/2018/08/Resident-Evil-2-remake-1068x580.png) no-repeat center/cover";
 	const self = this;
-	var element = this.add.dom(window.innerWidth / 2, window.innerHeight / 2).createFromCache('assets/loginform.html');
+	var element = this.add.dom(window.innerWidth / 2, window.innerHeight / 2).createFromCache('loginform');
 
 	console.log(element)
 	element.addListener('click');
@@ -113,7 +113,10 @@ export default class Level extends Phaser.Scene {
 			//@ts-ignore
 				this.removeListener('click');
 
+				//@ts-ignore
 				this.scene.tweens.add({ targets: element.rotate3d, x: 1, w: 90, duration: 1000, ease: 'Power3' });
+
+				//@ts-ignore
 				this.scene.tweens.add({ targets: element, scaleX: 2, scaleY: 2, y: 700, duration: 1000, ease: 'Power3',
 				onComplete: async function ()
 				{

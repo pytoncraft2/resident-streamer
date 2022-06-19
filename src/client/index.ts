@@ -32,6 +32,9 @@ window.addEventListener('load', function () {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
 		},
+    dom: {
+      createContainer: true
+    },
 		scene: [Boot, Preload, Level, Lobby, Jeu]
 	});
 
