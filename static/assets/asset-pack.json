@@ -24,11 +24,6 @@
                 "key": "face0"
             },
             {
-                "url": "assets/fakhear.png",
-                "type": "image",
-                "key": "fakhear"
-            },
-            {
                 "atlasURL": "assets/fakhear_atlas.json",
                 "textureURL": "assets/fakhear_atlas.png",
                 "type": "atlas",
@@ -66,6 +61,11 @@
                 "url": "assets/LeagueGothic-Italic.otf",
                 "type": "binary",
                 "key": "LeagueGothic-Italic"
+            },
+            {
+                "url": "assets/LeagueGothic-Regular.otf",
+                "type": "binary",
+                "key": "LeagueGothic-Regular"
             },
             {
                 "url": "assets/loginform.html",
