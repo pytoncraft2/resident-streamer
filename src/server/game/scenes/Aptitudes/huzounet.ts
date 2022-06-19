@@ -2,6 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/elements/BouleClass"
 import KunaiClass from "../class/elements/KunaiClass"
 import CloneClass from "../class/elements/CloneClass"
+import { fusion } from "./_utilitaire/general";
 
 import TJoueur from "../types/Joueur";
 
@@ -98,4 +99,8 @@ export function multiclonage__E(huzounet: TJoueur) {
     huzounet.scene.physics.add.existing(clone3);
     huzounet.scene.physics.add.existing(clone4);
   }
+}
+
+export function fusion__TAB(personnage: TJoueur, input: any) {
+  fusion(personnage, input)
 }

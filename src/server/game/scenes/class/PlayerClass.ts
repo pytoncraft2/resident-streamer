@@ -158,6 +158,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        }
 
        if (this.fusionner && _e.sprite != this.sprite) {
+        console.log("FUSION !!!!!!!!!!!!!!");
+        
         this.fusionner = false;
          this.nouveauPilote(_e);
        }
@@ -202,7 +204,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
      if (this.suivre) {
       this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
-      console.log("SUIVRE---------");
       
      }
 
