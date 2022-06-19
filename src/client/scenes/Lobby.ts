@@ -87,7 +87,7 @@ console.log("LLLLOOOBY")
 			self.session = room.sessionId
 
 			setTimeout(() => {
-				self.demandeCommencerJeu()
+				// self.demandeCommencerJeu()
 			}, 2000);
 
 			room.onMessage("commencerJeu", _message => {

@@ -23,10 +23,11 @@ export class Boot extends Phaser.Scene {
 
 window.addEventListener('load', function () {
 
+  console.log(document.getElementById('app'))
+  var div = document.getElementById('app');
 	const game = new Phaser.Game({
 		width: 1920,
 		height: 945,
-		backgroundColor: "#2f2f2f",
 		scale: {
 			mode: Phaser.Scale.ScaleModes.FIT,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH
@@ -35,5 +36,7 @@ window.addEventListener('load', function () {
 	});
 
 	game.scene.start("Boot");
+  //@ts-ignore
+div.style.background = "red"
 
 });

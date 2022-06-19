@@ -58,6 +58,16 @@
                 "key": "laser01_atlas"
             },
             {
+                "url": "assets/LeagueGothic-CondensedRegular.otf",
+                "type": "binary",
+                "key": "LeagueGothic-CondensedRegular"
+            },
+            {
+                "url": "assets/LeagueGothic-Italic.otf",
+                "type": "binary",
+                "key": "LeagueGothic-Italic"
+            },
+            {
                 "url": "assets/loginform.html",
                 "type": "html",
                 "key": "loginform"

@@ -7,7 +7,30 @@
     <title>Vite App</title>
   </head>
   <body>
+
+    <style>
+@font-face {
+  font-family: CustomFontItalic;
+  src: url('./assets/LeagueGothic-Italic.otf');
+}
+
+@font-face {
+  font-family: CustomFontNormal;
+  src: url('./assets/LeagueGothic-Regular.otf');
+}
+html,
+body,
+canvas {
+  /* font-family: CustomFontItalic; */
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+</style>
+
     <div id="app"></div>
     <script type="module" src="/src/client/index.ts"></script>
+    <div style="font-family:CustomFontItalic; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:CustomFontNormal; position:absolute; left:-1000px; visibility:hidden;">.</div>
   </body>
 </html>

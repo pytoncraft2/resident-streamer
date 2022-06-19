@@ -4,7 +4,6 @@
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
-import PushOnClick from "../components/PushOnClick";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -20,26 +19,36 @@ export default class Level extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// fufuSuperDino
-		const fufuSuperDino = this.add.image(400, 235, "FufuSuperDino");
-
 		// text
-		const text = this.add.text(400, 436, "", {});
-		text.setOrigin(0.5, 0.5);
-		text.text = "Phaser 3 + Phaser Editor 2D\nWebpack + TypeScript";
-		text.setStyle({ "align": "center", "fontFamily": "Arial", "fontSize": "3em" });
+		const text = this.add.text(332, 64, "", {});
+		text.text = "RESIDENT STREAMER";
+		text.setStyle({ "fontFamily": "LeagueGothic-CondensedRegular" });
 
-		// fufuSuperDino (components)
-		new PushOnClick(fufuSuperDino);
+		// layer
+		const layer = this.add.layer();
 
-		this.fufuSuperDino = fufuSuperDino;
-		this.text = text;
+		// rectangle
+		const rectangle = this.add.rectangle(0, 300, 128, 128);
+		rectangle.scaleX = 1.4032183308683686;
+		rectangle.scaleY = 4.670844628920915;
+		rectangle.setOrigin(0, 0.5);
+		rectangle.isFilled = true;
+		rectangle.fillColor = 10882223;
+		rectangle.fillAlpha = 0.4;
+		layer.add(rectangle);
+
+		// rectangle_1
+		const rectangle_1 = this.add.rectangle(510, 229, 128, 128);
+		rectangle_1.isFilled = true;
+		layer.add(rectangle_1);
+
+		// rectangle_2
+		const rectangle_2 = this.add.rectangle(726, 336, 128, 128);
+		rectangle_2.isFilled = true;
+		layer.add(rectangle_2);
 
 		this.events.emit("scene-awake");
 	}
-
-	public fufuSuperDino!: Phaser.GameObjects.Image;
-	public text!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -52,12 +61,12 @@ export default class Level extends Phaser.Scene {
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
 
-		if (salonURL != '') {
-			this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
-		} else {
+		// if (salonURL != '') {
+			// this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+		// } else {
 			// this.afficheAcceuil()
 			// console.log("RIEN A FAIRE")
-		}
+		// }
 	}
 
 	/* END-USER-CODE */
