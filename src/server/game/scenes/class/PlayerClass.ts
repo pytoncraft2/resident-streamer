@@ -141,8 +141,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
              _e.vie = 10
              this.nouveauPilote(_e);
-             _e.particules = true;
-             (this.scene as any).enemies.remove(_e);
              // (this.scene as any).players.add(_e);
            }
            else
@@ -197,7 +195,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      }
 
      if (this.suivre) {
-      this.setPosition(this.currentTarget.x, this.currentTarget.y)
+      this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
       console.log("SUIVRE---------");
       
      }
@@ -245,13 +243,18 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
    nouveauPilote(nouveauPilote: TJoueur) {
      console.log("NOUVEAU PILOTE !!!")
+     nouveauPilote.particules = true;
+     (this.scene as any).enemies.remove(nouveauPilote);
+
      this.currentTarget = nouveauPilote
      this.suivre = true
+     this.setScale(0.2)
 
      this.scene.time.delayedCall(10000, () => {
        this.suivre = false
        nouveauPilote.particules = false;
        this.currentTarget = this
+       this.setScale(1)
      }, null, this);
    }
 
