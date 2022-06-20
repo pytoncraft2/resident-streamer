@@ -58,14 +58,10 @@ export class Ligne extends Schema {
 export class Rectangle extends Schema {
   @type("number") x?: number
   @type("number") y?: number
-  @type("number") x1?: string
-  @type("number") y1?: string
-  @type("number") x2?: boolean
-  @type("number") y2?: boolean;
-  @type("number") strokeColor?: number
-  @type("number") strokeAlpha?: number
-  @type("number") couleur?: number
-  @type("number") lineHeight?: number
+  @type("number") fillColor?: number;
+  @type("number") fillAlpha?: number;
+  @type("number") width?: number;
+  @type("number") height?: number;
 }
 
 

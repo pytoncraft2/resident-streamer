@@ -498,13 +498,20 @@ export default class Jeu extends Phaser.Scene {
     list.rectanglesListe.map((item: string) => {
       if (this.rectanglesRef[item] === undefined)
       {
+        const r = list.rectangles[item]
         console.log("NOUVEAU RECTANGLE")
-        const rectangle = this.add.rectangle(200, 200, 148, 148, 0x6666ff);
+        const rectangle = this.add.rectangle(r.x, r.y, r.width, r.height, r.fillColor, r.fillAlpha);
         this.groupeRectangles.add(rectangle)
         this.rectanglesRef[item] = rectangle
       }
       else
       {
+        this.rectanglesRef[item].setPosition(list.rectangles[item].x, list.rectangles[item].y)
+        if (list.rectangles[item].width) this.rectanglesRef[item].width = list.rectangles[item].width;
+        if (list.rectangles[item].height) this.rectanglesRef[item].height = list.rectangles[item].height;
+        // if (list.rectangles[item].alpha) this.rectanglesRef[item].setAlpha();
+        // if (list.rectangles[item].fillColor) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor);
+        // if (list.rectangles[item].fillAlpha) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor, list.rectangles[item].fillAlpha);
       }
     })
 
