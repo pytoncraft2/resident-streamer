@@ -170,7 +170,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // console.log("UPDATE!!!")
     // this.setScale(0.1)
 
-    if (this.agrandissement) this.width += 40
+    if (this.agrandissement) this.proprietaire.flipX ? (this.width -= 70) : (this.width += 70)
 
     this.x = this.proprietaire.x + 80;
     this.y = this.proprietaire.y - 185;
@@ -178,7 +178,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     var x = this.x;
     var y = this.y - (this.height /2);
 
-    var within = this.scene.physics.overlapRect(x, y, this.width - 150, this.height);
+    var within = this.scene.physics.overlapRect(x, y, this.proprietaire.flipX ? (this.width - 150) : (this.width + 150) , this.height);
     //
     within.forEach(function (body) {
       if (body.gameObject.type == "Sprite") {
@@ -206,6 +206,12 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   charge() {
     this.agrandissement = true;
+
+    this.scene.time.delayedCall(500, () => {
+      this.agrandissement = false;
+      this.setSize(1, this.height);
+    }, null, this);
+
     // this.timeline.play()
     // this.tweenLaser = this.scene.tweens.add({
       // targets: this,
