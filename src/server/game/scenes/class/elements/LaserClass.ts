@@ -170,7 +170,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // console.log("UPDATE!!!")
     // this.setScale(0.1)
 
-    if (this.agrandissement) this.width += 2
+    if (this.agrandissement) this.width += 40
 
     this.x = this.proprietaire.x + 80;
     this.y = this.proprietaire.y - 185;
@@ -183,6 +183,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     within.forEach(function (body) {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
+          this.agrandissement = false;
           body.gameObject.dommage(0.08);
         }
       }
