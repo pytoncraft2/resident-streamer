@@ -163,7 +163,6 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
 
 
-
   }
 
   preUpdate(time, delta) {
@@ -176,7 +175,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.y = this.proprietaire.y - 185;
 
     var x = this.x;
-    var y = this.y - (this.height /2);
+    var y = this.y;
 
     var within = this.scene.physics.overlapRect(x, y, this.width, this.height);
     //
@@ -184,7 +183,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
           this.agrandissement = false;
-          if (body.gameObject.dommage === "function") body.gameObject.dommage(0.08);
+          body.gameObject.dommage(0.08);
         }
       }
     }, this);
@@ -198,20 +197,21 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         width: this.width,
         height: this.height,
         fillColor: this.fillColor,
-        fillAlpha: this.fillColor,
+        fillAlpha: this.fillColor
       })
     )
 
   }
 
   charge() {
-    this.agrandissement = true;
-    this.setOrigin(0, 6)
-
-    this.scene.time.delayedCall(500, () => {
-      this.agrandissement = false;
-      this.setSize(1, this.height);
-    }, null, this);
+    if (!this.proprietaire.flipX) {
+      this.agrandissement = true;
+      this.setOrigin(0, 6)
+      this.scene.time.delayedCall(500, () => {
+        this.agrandissement = false;
+        this.setSize(1, this.height);
+      }, null, this);
+    }
 
     // this.timeline.play()
     // this.tweenLaser = this.scene.tweens.add({
