@@ -2,7 +2,7 @@ export default class Panel {
   private contenu: any;
   private titre: Phaser.GameObjects.Text;
 
-  constructor(titre = '', contenu: string[], scene: Phaser.Scene, callback: CallableFunction) {
+  constructor(titre = '', contenu: string[], scene: Phaser.Scene) {
     var graphics = scene.make.graphics(scene);
     graphics.fillStyle(0x000000);
     graphics.setAlpha(0.1)
