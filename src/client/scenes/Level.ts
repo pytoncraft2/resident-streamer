@@ -93,24 +93,20 @@ export default class Level extends Phaser.Scene {
 
 	element.addListener('click');
 
-	element.on('click', async function (event: Phaser.Input.Mouse.MouseManager) {
+	element.on('click', async function (this: any, event: Phaser.Input.Mouse.MouseManager) {
 
 		if (event.target.name === 'loginButton')
 		{
-			//@ts-ignore
 			var inputUsername = this.getChildByName('salon');
 
 			//  Have they entered anything?
 			if (inputUsername.value !== '')
 			{
 				//  Turn off the click events
-			//@ts-ignore
 				this.removeListener('click');
 
-				//@ts-ignore
 				this.scene.tweens.add({ targets: element.rotate3d, x: 1, w: 90, duration: 1000, ease: 'Power3' });
 
-				//@ts-ignore
 				this.scene.tweens.add({ targets: element, scaleX: 2, scaleY: 2, y: 700, duration: 1000, ease: 'Power3',
 				onComplete: async function ()
 				{
@@ -124,7 +120,6 @@ export default class Level extends Phaser.Scene {
 		else
 		{
 			//  Flash the prompt
-			//@ts-ignore
 			this.scene.tweens.timeline({
 				tweens: [{
 					targets: element,
@@ -137,7 +132,6 @@ export default class Level extends Phaser.Scene {
 			});
 		}
 	}
-
 });
 
 this.tweens.add({
