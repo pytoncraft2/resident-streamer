@@ -6,7 +6,7 @@ import { fusion } from "./_utilitaire/general";
 
 import TJoueur from "../types/Joueur";
 
-export function __StatsSupplementaire(huzounet: TJoueur, Aptitudes: any) {
+export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     collideWorldBounds: true,
