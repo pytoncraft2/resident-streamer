@@ -1,7 +1,7 @@
 export default class Titre {
   private titre: any;
   private miniTitre: any
-    constructor(x, y, label, scene, callback) {
+    constructor(x: number, y: number, label: string, scene: Phaser.Scene, callback: CallableFunction) {
       this.miniTitre = scene.add.text(x, y + 50,
         'Cliquez pour Copier et partager !', {
         fontFamily: 'CustomFontItalic',

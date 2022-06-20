@@ -22,9 +22,6 @@ export default class Level extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// layer
-		const layer = this.add.layer();
-
 		this.events.emit("scene-awake");
 	}
 
