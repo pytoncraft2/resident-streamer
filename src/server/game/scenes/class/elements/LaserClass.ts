@@ -84,6 +84,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   proprietaire: any
   proprietaireID: any
   tweenLaser: Phaser.Tweens.Tween
+  agrandissement: boolean
 
   constructor(
     scene: Phaser.Scene,
@@ -106,6 +107,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     console.log("PROPRIETAIRE ID:")
     this.proprietaireID = proprietaire.ClientID
     this.proprietaire = proprietaire
+    this.agrandissement = false;
     // this.rect = this.scene.add.rectangle(400, 300, 300, 20, 0x9966ff).setStrokeStyle(2, 0xffff00);
     // this.rect.setPosition(proprietaire.x, proprietaire.y)
     this.scene.add.existing(this)
@@ -168,6 +170,8 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // console.log("UPDATE!!!")
     // this.setScale(0.1)
 
+    if (this.agrandissement) this.width += 2
+
     this.x = this.proprietaire.x + 80;
     this.y = this.proprietaire.y - 185;
 
@@ -200,13 +204,14 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   }
 
   charge() {
+    this.agrandissement = true;
     // this.timeline.play()
-    this.tweenLaser = this.scene.tweens.add({
-      targets: this,
+    // this.tweenLaser = this.scene.tweens.add({
+      // targets: this,
       //displayOriginX: rect.displayOriginX,
-      duration: 300,
-      width: 1200
-    });
+      // duration: 300,
+      // width: 1200
+    // });
   }
 
   envoie() {
