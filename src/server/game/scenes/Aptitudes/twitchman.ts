@@ -12,7 +12,10 @@ export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
     })
   }
 
-  twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
+  // twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 128, 128, 4332301, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
+
+  twitchman.laser = new LaserClass(twitchman.scene, twitchman.flipX ? twitchman.x - 80 : twitchman.x + 80, twitchman.y - 60, "laser",  `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
+
 }
 
 
@@ -42,7 +45,7 @@ export function charge__Z(twitchman, input) {
 export function laser__E(twitchman: TJoueur, input) {
   console.log("LAZER")
 
-  twitchman.laser.charge()
+  twitchman.laser.envoie()
   input.e = false
 
   // lazer.scaleX = 8.29461186764485;

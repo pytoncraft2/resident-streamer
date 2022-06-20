@@ -16,6 +16,8 @@ export class Projectile extends Schema {
   @type("string") id?: string;
   @type("string") anim?: string
   @type("number") scale?: number;
+  @type("number") scaleX?: number;
+  @type("number") scaleY?: number;
   @type("boolean") active?: boolean;
   @type("boolean") flipX?: boolean;
   @type("boolean") explosion?: boolean;
