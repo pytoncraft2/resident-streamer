@@ -42,12 +42,10 @@ export default class Level extends Phaser.Scene {
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
 
-		if (salonURL != '') {
-			this.scene.start('Jeu', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
-		} else {
-			this.afficheAcceuil()
-			// console.log("RIEN A FAIRE")
-		}
+		if (salonURL != '')
+			if (params.get('p')) this.scene.start('Jeu', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+			else this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+		else this.afficheAcceuil()
 	}
 
 	async afficheAcceuil() {
@@ -90,7 +88,6 @@ export default class Level extends Phaser.Scene {
 		this.miseAjourListe(self, allRooms, text, intro)
 	});
 
-	document.body.style.background = "radial-gradient(circle, rgba(101,9,121,1) 0%, rgba(114,1,151,1) 35%, rgba(52,2,89,1) 100%)"
 	const self = this;
 	var element = this.add.dom(window.innerWidth / 2, window.innerHeight / 2).createFromCache('loginform');
 

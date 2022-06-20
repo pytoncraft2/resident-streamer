@@ -47,6 +47,7 @@ export default class Preload extends Phaser.Scene {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
 
+		document.body.style.background = "radial-gradient(circle, rgba(101,9,121,1) 0%, rgba(114,1,151,1) 35%, rgba(52,2,89,1) 100%)"
 
 		this.load.audio('epic_musique', [
 			'assets/epic_musique.mp3'
