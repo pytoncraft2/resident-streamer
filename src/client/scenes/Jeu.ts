@@ -291,7 +291,9 @@ export default class Jeu extends Phaser.Scene {
   playersRef: any
   bombesRef: any
   lignesRef: any
+  rectanglesRef: any
   groupeLignes!: Phaser.GameObjects.Group
+  groupeRectangles!: Phaser.GameObjects.Group
   currentRoom: string = 'hall'
   listCurrentRoom: any
   ennemyRef: any
@@ -380,8 +382,10 @@ export default class Jeu extends Phaser.Scene {
 
     this.groupeProjectiles = this.add.group();
     this.groupeLignes = this.add.group();
+    this.groupeRectangles = this.add.group();
     this.projectilesRef = {}
     this.lignesRef = {}
+    this.rectanglesRef = {}
 
 		this.playersRef = {}
 		this.ennemyRef = {}
@@ -411,6 +415,7 @@ export default class Jeu extends Phaser.Scene {
 				let presences : any = {}
         let projectiles: any = {}
         let lignes: any = {}
+        let rectangles: any = {}
 
         changes.projectiles.forEach((value: any, key: any) => {
 					projectiles[key] = value
@@ -419,6 +424,11 @@ export default class Jeu extends Phaser.Scene {
         changes.lignes.forEach((value: any, key: any) => {
           lignes[key] = value
         })
+
+        changes.rectangles.forEach((value: any, key: any) => {
+          rectangles[key] = value
+        })
+
 
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
@@ -431,6 +441,8 @@ export default class Jeu extends Phaser.Scene {
           projectiles: projectiles,
           lignesListe: Object.keys(lignes),
           lignes: lignes,
+          rectanglesListe: Object.keys(rectangles),
+          rectangles: rectangles
 				})
 			})
 
@@ -479,6 +491,20 @@ export default class Jeu extends Phaser.Scene {
         this.lignesRef[item].clear()
         .lineStyle(list.lignes[item].lineHeight, list.lignes[item].couleur)
         .lineBetween(list.lignes[item].x1, list.lignes[item].y1, list.lignes[item].x2, list.lignes[item].y2)
+      }
+    })
+
+
+    list.rectanglesListe.map((item: string) => {
+      if (this.rectanglesRef[item] === undefined)
+      {
+        console.log("NOUVEAU RECTANGLE")
+        const rectangle = this.add.rectangle(200, 200, 148, 148, 0x6666ff);
+        this.groupeRectangles.add(rectangle)
+        this.rectanglesRef[item] = rectangle
+      }
+      else
+      {
       }
     })
 
