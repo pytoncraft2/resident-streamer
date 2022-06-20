@@ -53,7 +53,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
           this.agrandissement = false;
-          body.gameObject.dommage(0.08);
+          if (body.gameObject.dommage) body.gameObject.dommage(0.08);
         }
       }
     }, this);
