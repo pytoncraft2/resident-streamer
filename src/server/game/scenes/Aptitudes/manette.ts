@@ -96,3 +96,7 @@ export function vole() {
 //     manette.play('manette_vole')
 //     manette.setVelocityY(-800)
 }
+
+export function auto() {
+  punch__A()
+}

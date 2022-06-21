@@ -4,6 +4,7 @@ import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
 import TJoueur from "../types/Joueur"
 import { DefautStats, DefautDirection } from "../Stats/Defaut"
+import { AutoClass } from "../class/bosses/AutoClass"
 
 /**
  * Joueur et interaction
@@ -24,8 +25,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    attaque: boolean = false
    action: any
    zoneInteraction: any
-   etats: any
-   etatEnCours: any
    blesse_opposant: boolean = false
    soigne: boolean = false
    groupeBoules: any
@@ -55,26 +54,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.scene = scene
      this.ClientID = ClientID
      this.particules = false
-     // this.sprite = (scene as any).room.donnes[this.ClientID].sprite
      this.sprite = sprite
-     this.action = () => {
-       console.log("AAAAAAAAAAACTIONNNN !!!!")
-     };
-
-     this.etats = {
-       'initial': {
-         couleur: 16777215,
-         vitesse: 600
-       },
-       'secondaire':
-       {
-         couleur: 0x000000,
-         vitesse: 1400
-       }
-     }
-
-     this.etatEnCours = 'initial'
-
      this.bossControlable = this.scene.add.group();
 
      new AnimationJoueur(this.anims)
@@ -157,7 +137,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
-        
+
         this.fusionner = false;
          this.nouveauPilote(_e);
        }
@@ -203,6 +183,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      if (this.suivre) {
         this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
      }
+
+     AutoClass[this.sprite](this, input)
 
      // if (this.body.touching.none) {
      //   this.vole = true;
