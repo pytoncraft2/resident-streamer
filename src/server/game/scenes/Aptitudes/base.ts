@@ -19,6 +19,7 @@ export interface Touches {
     toucheGauche?: (joueur: TJoueur, input: any) => void;
     toucheDroite?: (joueur: TJoueur, input: any) => void;
     toucheEspace?: (joueur: TJoueur, input: any) => void;
+    auto?(joueur: TJoueur, input: any): void;
   }
 }
 /**

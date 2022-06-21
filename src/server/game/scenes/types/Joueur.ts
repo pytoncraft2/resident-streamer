@@ -58,6 +58,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   nouveauPilote(joueur: Phaser.Physics.Arcade.Sprite): void
 
+  //bot
+  auto(joueur: Phaser.Physics.Arcade.Sprite): void
+
 }
 
   export default TJoueur;

@@ -90,13 +90,24 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
 
 
 export function vole() {
-
 // manette.vole = true
 //   console.log("vole")
 //     manette.play('manette_vole')
 //     manette.setVelocityY(-800)
 }
 
-export function auto() {
-  punch__A()
+export function __auto(manette: TJoueur, input: any) {
+  // console.log("AUTO")
+  manette.scene.time.delayedCall(1000, () => {
+    punch__A(manette, {a: true})
+  }, null, manette);
+
+  manette.scene.time.delayedCall(3000, () => {
+    punch__A(manette, {a: true})
+    lanceManette__Z(manette, {z: true})
+    lanceManette__Z(manette, {z: false})
+  }, null, manette);
+  // return true
+
+
 }

@@ -4,7 +4,6 @@ import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
 import TJoueur from "../types/Joueur"
 import { DefautStats, DefautDirection } from "../Stats/Defaut"
-import { AutoClass } from "../class/bosses/AutoClass"
 
 /**
  * Joueur et interaction
@@ -146,6 +145,11 @@ import { AutoClass } from "../class/bosses/AutoClass"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
+     //@ts-ignore
+     // console.log(Aptitudes[this.sprite].auto(this, {a: true}))
+     //@ts-ignore
+     console.log(Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}));
+
    }
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
@@ -184,7 +188,8 @@ import { AutoClass } from "../class/bosses/AutoClass"
         this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
      }
 
-     AutoClass[this.sprite](this, input)
+     // if (Aptitudes[this.sprite].auto == "function") Aptitudes[this.sprite].auto(this, input);
+
 
      // if (this.body.touching.none) {
      //   this.vole = true;
