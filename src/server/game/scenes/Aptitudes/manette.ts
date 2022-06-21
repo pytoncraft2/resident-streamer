@@ -22,7 +22,7 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
     manette.scene.physics.add.existing(obj_manette);
-    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any).enemies, function(_obj_manette, _ennemie: any) {
+    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any).players, function(_obj_manette, _ennemie: any) {
       _ennemie.dommage(_obj_manette.getData('degat'))
       _obj_manette.setData('degat', 0)
     }, undefined, manette);
@@ -98,14 +98,14 @@ export function vole() {
 
 export function __auto(manette: TJoueur, input: any) {
   // console.log("AUTO")
+  manette.setFlipX(true)
   manette.scene.time.delayedCall(1000, () => {
-    punch__A(manette, {a: true})
+    lanceManette__Z(manette, {z: true})
   }, null, manette);
 
   manette.scene.time.delayedCall(3000, () => {
     punch__A(manette, {a: true})
     lanceManette__Z(manette, {z: true})
-    lanceManette__Z(manette, {z: false})
   }, null, manette);
   // return true
 
