@@ -121,6 +121,19 @@ var timer = manette.scene.time.addEvent({
     paused: false
 });
 
+timer.reset({
+    delay: 500,                // ms
+    callback: callback,
+    args: [],
+    callbackScope: manette,
+    loop: false,
+    repeat: 0,
+    startAt: 0,
+    timeScale: 1,
+    paused: false
+})
+manette.scene.time.addEvent(timer);
+
 
 //   manette.scene.time.delayedCall(1500, () => {
 //   lanceManette__Z(manette, {z: true})
