@@ -110,12 +110,32 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
           if (dist > 400) {
             manette.play("manette_lance")
             reactiveBoucle(manette, aptitudes)
+          } else if (dist < 400) {
+            manette.play("manette_vole")
+            manette.scene.tweens.add({
+              targets: manette,
+              x: 0,
+              y: 0,
+              duration: 1000,
+              ease: 'Sine.inOut',
+              onComplete: () => reactiveBoucle(manette, aptitudes)
+            });
           }
         } else if (positionJoueurProche.x > manette.x) {
           manette.setFlipX(false)
           if (dist > 400) {
             manette.play("manette_lance")
             reactiveBoucle(manette, aptitudes)
+          } else if (dist < 400) {
+            manette.play("manette_vole")
+            manette.scene.tweens.add({
+              targets: manette,
+              x: 1980,
+              y: 0,
+              duration: 1000,
+              ease: 'Sine.inOut',
+              onComplete: () => reactiveBoucle(manette, aptitudes)
+            });
           }
         }
 
