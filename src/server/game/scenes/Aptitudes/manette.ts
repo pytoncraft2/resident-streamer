@@ -101,25 +101,26 @@ export function vole() {
  */
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 
-  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-  if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-      if (positionJoueurProche) {
-        if (positionJoueurProche.y < manette.y) {
-          manette.body.setVelocityY(-1900)
-          manette.play("manette_vole")
-        }
-        if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
-        else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
-      }
 
-  if (manette.body) {
-    if (dist > 300) lanceManette__Z(manette, {z: true})
-    else manette.play("manette_punch")
-  }
 
-  manette.scene.time.delayedCall(500, () => {
-      __auto(manette, {}, aptitudes)
-  }, null, this);
+//   manette.scene.time.delayedCall(500, () => {
+//       __auto(manette, {}, aptitudes)
+//   }, null, this);
+//
+//   manette.scene.time.delayedCall(900, () => {
+//     __auto(manette, {}, aptitudes)
+// }, null, this);
+//
+var timer = manette.scene.time.addEvent({
+    delay: 500,                // ms
+    callback: callback,
+    args: [manette],
+    callbackScope: manette,
+    loop: false,
+    repeat: 3,
+    paused: false
+});
+
 
 //   manette.scene.time.delayedCall(1500, () => {
 //   lanceManette__Z(manette, {z: true})
@@ -152,4 +153,22 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 //   }, null, manette);
 
   // return true
+}
+
+function callback(manette) {
+  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+  if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
+  if (positionJoueurProche) {
+    if (positionJoueurProche.y < manette.y) {
+      manette.body.setVelocityY(-1900)
+      manette.play("manette_vole")
+    }
+    if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
+    else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
+  }
+
+  if (manette.body) {
+    if (dist > 300) lanceManette__Z(manette, {z: true})
+    else manette.play("manette_punch")
+  }
 }
