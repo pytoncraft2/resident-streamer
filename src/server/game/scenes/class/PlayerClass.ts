@@ -148,7 +148,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      //@ts-ignore
      // console.log(Aptitudes[this.sprite].auto(this, {a: true}))
      //@ts-ignore
-     console.log(Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}));
+     console.log(Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}, Aptitudes[this.sprite]));
 
    }
    preUpdate(time: number, delta: number) {

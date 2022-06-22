@@ -96,7 +96,7 @@ export function vole() {
 //     manette.setVelocityY(-800)
 }
 
-export function __auto(manette: TJoueur, input: any) {
+export function __auto(manette: TJoueur, input: any, aptitudes: any) {
   // console.log("AUTO")
   manette.setFlipX(true)
   manette.scene.time.delayedCall(1000, () => {
@@ -113,9 +113,9 @@ manette.body.setVelocityY(-1900)
 }, null, manette);
 
   manette.scene.time.delayedCall(3000, () => {
-    punch__A(manette, {a: true})
     lanceManette__Z(manette, {z: true})
-    __auto(manette, {})
+    aptitudes.toucheDroite(manette, {right: true})
+    __auto(manette, {}, aptitudes)
   }, null, manette);
   // return true
 }
