@@ -100,9 +100,6 @@ export function vole() {
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
-
-
-
 //   manette.scene.time.delayedCall(500, () => {
 //       __auto(manette, {}, aptitudes)
 //   }, null, this);
@@ -111,29 +108,6 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 //     __auto(manette, {}, aptitudes)
 // }, null, this);
 //
-var timer = manette.scene.time.addEvent({
-    delay: 500,                // ms
-    callback: callback,
-    args: [manette],
-    callbackScope: manette,
-    loop: false,
-    repeat: 3,
-    paused: false
-});
-
-timer.reset({
-    delay: 500,                // ms
-    callback: callback,
-    args: [],
-    callbackScope: manette,
-    loop: false,
-    repeat: 0,
-    startAt: 0,
-    timeScale: 1,
-    paused: false
-})
-manette.scene.time.addEvent(timer);
-
 
 //   manette.scene.time.delayedCall(1500, () => {
 //   lanceManette__Z(manette, {z: true})
@@ -166,6 +140,22 @@ manette.scene.time.addEvent(timer);
 //   }, null, manette);
 
   // return true
+
+
+  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+  if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
+  //si proche d'un Joueur
+  if (dist > 300)  {
+      manette.scene.time.delayedCall(3000, () => {
+        attaqueLoin(manette, dist)
+        console.log("GO")
+        // lanceManette__Z(manette, {z: true})
+        // __auto(manette, {}, aptitudes)
+      }, null, manette);
+  }
+    //loupe attaque attaqueProche
+  //si attaqueLoin
+    //loupe attaqueLoin(manette, dist)
 }
 
 function callback(manette) {
@@ -184,4 +174,12 @@ function callback(manette) {
     if (dist > 300) lanceManette__Z(manette, {z: true})
     else manette.play("manette_punch")
   }
+}
+
+function attaqueLoin(manette, dist) {
+    if (dist > 300) lanceManette__Z(manette, {z: true})
+}
+
+function attaqueProche(manette) {
+  manette.play("manette_punch")
 }
