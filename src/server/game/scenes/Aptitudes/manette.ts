@@ -30,9 +30,6 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
     (obj_manette.body as any).setAllowGravity(false);
     manette.obj_manette = obj_manette
     manette.scene.time.delayedCall(100, () => {
-      if (manette.anims.getName() == "manette_vole") {
-        manette.obj_manette.setVelocityY(2300)
-      } else {
 
         var timeline = manette.scene.tweens.createTimeline();
 
@@ -77,7 +74,6 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
         //   // }
         //   // delay: 1000
         // });
-      }
 
       manette.obj_manette = undefined;
     }, null, manette);
@@ -107,8 +103,19 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 
         if (positionJoueurProche.x < manette.x) {
           manette.setFlipX(true)
-          if (dist > 400) {
+          if (dist > 400 && dist < 900) {
             if (manette.body) lanceManette__Z(manette, {z: true})
+            reactiveBoucle(manette, aptitudes)
+          } else if (dist > 900) {
+            if (manette.body) {
+
+              // const input = (this.scene as any).room.donnes[this.ClientID].clavier
+
+              manette.body.setVelocityX(-300)
+              aptitudes.toucheGauche(manette, {left_debut: true})
+              // aptitudes.toucheGauche(manette, {left_fin: true})
+            }
+
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
             manette.play("manette_vole")
@@ -123,8 +130,16 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
           }
         } else if (positionJoueurProche.x > manette.x) {
           manette.setFlipX(false)
-          if (dist > 400) {
+          if (dist > 400 && dist < 900) {
             if (manette.body) lanceManette__Z(manette, {z: true})
+            reactiveBoucle(manette, aptitudes)
+          } else if (dist > 900) {
+                // manette.play("manette_punch")
+            if (manette.body) {
+              manette.body.setVelocityX(300)
+              aptitudes.toucheDroite(manette, {right_debut: true})
+              // aptitudes.toucheDroite(manette, {right_fin: true})
+            }
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
             manette.play("manette_vole")
