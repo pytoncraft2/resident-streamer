@@ -2,6 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import Ligne from "../class/elements/Ligne";
 import ManetteClass from '../class/elements/ManetteClass'
+import { Aptitudes } from "../Aptitudes/base"
 import { fusion } from "./_utilitaire/general";
 
 export function test() {}
@@ -21,19 +22,6 @@ export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) 
     input.a = false
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
-    if (fakhear.groupeManettes.getLength() == 0) {
-        const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
-        .setData({ ClientId: fakhear.ClientID, degat: 1}))
-      fakhear.groupeManettes.add(obj_manette);
-    } else if (fakhear.groupeManettes.getLength() == 1 && !fakhear.porteObjet) {
-      fakhear.porteObjet = true
-      fakhear.groupeManettes.getChildren()[0].traquer(fakhear)
-      console.log("TRAQUE 1")
-    } else if (fakhear.porteObjet) {
-      fakhear.groupeManettes.getChildren()[0].traquer(fakhear, true)
-      fakhear.porteObjet = false
-      console.log("TRAQUE 2")
-    }
     // if (!fakhear.obj_manette) {
     //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
     //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
@@ -67,10 +55,33 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function interaction__R(personnage: TJoueur, input) {
+export function interaction__R(fakhear: TJoueur, input) {
   if (input.r)
   {
-    // closest(personnage, true, 'enemies')
+  //@ts-ignore
+    if (fakhear.groupeManettes.getLength() == 0) {
+        const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+        .setData({ ClientId: fakhear.ClientID, degat: 1}))
+  //@ts-ignore
+      fakhear.groupeManettes.add(obj_manette);
+  //@ts-ignore
+    } else if (fakhear.groupeManettes.getLength() == 1 && !fakhear.porteObjet) {
+  //@ts-ignore
+      fakhear.porteObjet = true
+  //@ts-ignore
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear)
+      console.log("TRAQUE 1")
+  //@ts-ignore
+    } else if (fakhear.porteObjet) {
+  //@ts-ignore
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear, true)
+  //@ts-ignore
+      fakhear.porteObjet = false
+      console.log("TRAQUE 2")
+    }
+  //@ts-ignore
+  Aptitudes['manette'].animationLancerManette(fakhear)
+
     input.r = false
   }
 }

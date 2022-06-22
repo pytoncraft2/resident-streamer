@@ -92,6 +92,34 @@ export function vole() {
 //     manette.setVelocityY(-800)
 }
 
+export function __animationLancerManette(manette) {
+  var timeline = manette.scene.tweens.createTimeline();
+
+  timeline.add({
+    targets: manette.groupeManettes.getChildren()[0],
+    x: manette.flipX ? manette.x -1000 : manette.x + 1000,
+    ease: 'Power2',
+    duration: 500,
+    onComplete: function(_tw, tg: any) {
+      // tg[0].setData('degat', 1)
+    }
+  });
+
+  timeline.add({
+    targets: manette.groupeManettes.getChildren()[0],
+    // x: manette.x,
+    props: {
+      x: { value: function () { return manette.x; }, ease: 'Power1' },
+      y: { value: function () { return manette.y; }, ease: 'Power3' }
+    },
+    // y: manette.y,
+    ease: 'Power2',
+    duration: 800
+  });
+
+  timeline.play()
+}
+
 /**
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
