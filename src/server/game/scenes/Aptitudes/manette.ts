@@ -100,29 +100,18 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
   // console.log("AUTO")
 
   manette.scene.time.delayedCall(1000, () => {
-      const positionJoueurProche = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-      console.log("JOUEUR")
-      //@ts-ignore
-      console.log(positionJoueurProche.x);
-      //@ts-ignore
-      console.log(positionJoueurProche.y)
-      console.log("BOSS")
-      console.log(manette.x)
-      console.log(manette.y)
-
-      //@ts-ignore
+      const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
       if (positionJoueurProche.x < manette.x) {
         manette.setFlipX(true)
-      //@ts-ignore
       } else if (positionJoueurProche.x > manette.x) {
         manette.setFlipX(false)
       }
 
-      __auto(manette, {}, aptitudes)
   }, null, manette);
 
   manette.scene.time.delayedCall(1500, () => {
     lanceManette__Z(manette, {z: true})
+      __auto(manette, {}, aptitudes)
   }, null, manette);
 
 //   manette.scene.time.delayedCall(1500, () => {
