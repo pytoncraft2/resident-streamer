@@ -13,7 +13,7 @@ export function punch__A(manette: TJoueur, input: any) {
   }
 }
 
-export function lanceManette__Z(manette: TJoueur, input: any) {
+export function lanceManette__Z(manette: TJoueur, _input: any) {
 
   if (!manette.obj_manette) {
     manette.play('manette_lance')
@@ -38,7 +38,7 @@ export function lanceManette__Z(manette: TJoueur, input: any) {
           x: manette.flipX ? manette.x -1000 : manette.x + 1000,
           ease: 'Power2',
           duration: 500,
-          onComplete: function(tw, tg: any) {
+          onComplete: function(_tw, tg: any) {
             tg[0].setData('degat', 1)
           }
         });
@@ -95,96 +95,80 @@ export function vole() {
 /**
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
-export function __auto(manette: TJoueur, input: any, aptitudes: any) {
-  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-      if (positionJoueurProche)
-      {
-        var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
+ export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
+   const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+   if (positionJoueurProche)
+   {
+     var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
 
-        if (positionJoueurProche.x < manette.x) {
-          manette.setFlipX(true)
-          if (dist > 400 && dist < 900) {
-            if (manette.body) lanceManette__Z(manette, {z: true})
-            reactiveBoucle(manette, aptitudes)
-          } else if (dist > 900) {
-            if (manette.body) {
+     if (positionJoueurProche.x < manette.x)
+     {
+       manette.setFlipX(true)
+       if (dist > 400 && dist < 900)
+       {
+         if (manette.body) lanceManette__Z(manette, {z: true})
+         reactiveBoucle(manette, aptitudes)
+       } else if (dist > 900)
+       {
+         if (manette.body)
+         {
+           manette.body.setVelocityX(-340)
+           aptitudes.toucheGauche(manette, {left_debut: true})
+         }
 
-              // const input = (this.scene as any).room.donnes[this.ClientID].clavier
+         reactiveBoucle(manette, aptitudes)
+       }
+       else if (dist < 400)
+       {
+         manette.play("manette_punch")
+         manette.scene.tweens.add({
+           delay: 500,
+           onStart: () => manette.play("manette_vole"),
+           targets: manette,
+           x: 0,
+           y: 0,
+           duration: 1000,
+           ease: 'Sine.inOut',
+           onComplete: () => reactiveBoucle(manette, aptitudes)
+         });
+       }
+     }
+     else if (positionJoueurProche.x > manette.x)
+     {
+       manette.setFlipX(false)
+       if (dist > 400 && dist < 900)
+       {
+         if (manette.body) lanceManette__Z(manette, {z: true})
+         reactiveBoucle(manette, aptitudes)
+       }
+       else if (dist > 900)
+       {
+         if (manette.body)
+         {
+           manette.body.setVelocityX(340)
+           aptitudes.toucheDroite(manette, {right_debut: true})
+         }
+         reactiveBoucle(manette, aptitudes)
+       }
+       else if (dist < 400)
+       {
+         manette.play("manette_punch")
+         manette.scene.tweens.add({
+           delay: 500,
+           onStart: () => manette.play("manette_vole"),
+           targets: manette,
+           x: 1960,
+           y: 0,
+           duration: 1000,
+           ease: 'Sine.inOut',
+           onComplete: () => reactiveBoucle(manette, aptitudes)
+         });
+       }
+     }
+   }
+ }
 
-              manette.body.setVelocityX(-340)
-              aptitudes.toucheGauche(manette, {left_debut: true})
-              // aptitudes.toucheGauche(manette, {left_fin: true})
-            }
-
-            reactiveBoucle(manette, aptitudes)
-          } else if (dist < 400) {
-            manette.play("manette_punch")
-            // manette.play("manette_vole")
-            manette.scene.tweens.add({
-              delay: 500,
-              onStart: () => manette.play("manette_vole"),
-              targets: manette,
-              x: 0,
-              y: 0,
-              duration: 1000,
-              ease: 'Sine.inOut',
-              onComplete: () => reactiveBoucle(manette, aptitudes)
-            });
-          }
-        } else if (positionJoueurProche.x > manette.x) {
-          manette.setFlipX(false)
-          if (dist > 400 && dist < 900) {
-            if (manette.body) lanceManette__Z(manette, {z: true})
-            reactiveBoucle(manette, aptitudes)
-          } else if (dist > 900) {
-                // manette.play("manette_punch")
-            if (manette.body) {
-              manette.body.setVelocityX(340)
-              aptitudes.toucheDroite(manette, {right_debut: true})
-              // aptitudes.toucheDroite(manette, {right_fin: true})
-            }
-            reactiveBoucle(manette, aptitudes)
-          } else if (dist < 400) {
-            manette.play("manette_punch")
-            manette.scene.tweens.add({
-              delay: 500,
-              onStart: () => manette.play("manette_vole"),
-              targets: manette,
-              x: 1960,
-              y: 0,
-              duration: 1000,
-              ease: 'Sine.inOut',
-              onComplete: () => reactiveBoucle(manette, aptitudes)
-            });
-          }
-        }
-
-        // if (positionJoueurProche.y < manette.y)
-        // {
-        //   if (manette.body)
-        //   {
-        //     // manette.setTint(16777215)
-        //     // manette.body.setVelocityY(-1900)
-        //     // manette.play("manette_vole")
-        //
-        //     if (manette.body.touching.down) {
-        //       lanceManette__Z(manette, {})
-        //     }
-        //   }
-        // }
-
-      // if (manette.body) {
-      // }
-
-      }
-
-      // if (manette.body) {
-      // }
-
-
-}
-
-function reactiveBoucle(manette, aptitudes) {
+function reactiveBoucle(manette: TJoueur, aptitudes: any) {
   manette.scene.time.delayedCall(500, () => {
     __auto(manette, {}, aptitudes)
   }, null, this);
