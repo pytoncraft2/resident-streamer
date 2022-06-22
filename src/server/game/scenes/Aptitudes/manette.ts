@@ -118,8 +118,11 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
-            manette.play("manette_vole")
+            manette.play("manette_punch")
+            // manette.play("manette_vole")
             manette.scene.tweens.add({
+              delay: 500,
+              onStart: () => manette.play("manette_vole"),
               targets: manette,
               x: 0,
               y: 0,
@@ -142,8 +145,10 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
             }
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
-            manette.play("manette_vole")
+            manette.play("manette_punch")
             manette.scene.tweens.add({
+              delay: 500,
+              onStart: () => manette.play("manette_vole"),
               targets: manette,
               x: 1960,
               y: 0,
