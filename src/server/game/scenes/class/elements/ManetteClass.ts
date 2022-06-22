@@ -70,8 +70,9 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  traquer(joueur: Phaser.Physics.Arcade.Sprite) {
-    this.traqueJoueur = joueur
+  traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {
+    if (desactivation) this.traqueJoueur = null
+    else this.traqueJoueur = joueur
   }
 
 }

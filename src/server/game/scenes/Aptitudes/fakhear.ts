@@ -12,6 +12,8 @@ export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
     runChildUpdate: true,
     collideWorldBounds: true
   })
+  //@ts-ignore
+  fakhear.porteObjet = false
 }
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
@@ -19,13 +21,26 @@ export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) 
     input.a = false
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
-    if (!fakhear.obj_manette) {
-      const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
-      .setData({ ClientId: fakhear.ClientID, degat: 1}))
-      fakhear.obj_manette = obj_manette
-    } else {
-      fakhear.obj_manette.traquer(fakhear)
+    if (fakhear.groupeManettes.getLength() == 0) {
+        const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+        .setData({ ClientId: fakhear.ClientID, degat: 1}))
+      fakhear.groupeManettes.add(obj_manette);
+    } else if (fakhear.groupeManettes.getLength() == 1 && !fakhear.porteObjet) {
+      fakhear.porteObjet = true
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear)
+      console.log("TRAQUE 1")
+    } else if (fakhear.porteObjet) {
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear, true)
+      fakhear.porteObjet = false
+      console.log("TRAQUE 2")
     }
+    // if (!fakhear.obj_manette) {
+    //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+    //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
+    //   fakhear.obj_manette = obj_manette
+    // } else {
+    //   fakhear.obj_manette.traquer(fakhear)
+    // }
   }
 }
 
