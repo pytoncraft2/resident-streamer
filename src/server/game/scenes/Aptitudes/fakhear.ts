@@ -1,17 +1,31 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import Ligne from "../class/elements/Ligne";
+import ManetteClass from '../class/elements/ManetteClass'
 import { fusion } from "./_utilitaire/general";
 
 export function test() {}
 
-export function __StatsSupplementaire() {}
+export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
+  //@ts-ignore
+  fakhear.groupeManettes = fakhear.scene.physics.add.group({
+    runChildUpdate: true,
+    collideWorldBounds: true
+  })
+}
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
+    if (!fakhear.obj_manette) {
+      const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+      .setData({ ClientId: fakhear.ClientID, degat: 1}))
+      fakhear.obj_manette = obj_manette
+    } else {
+      fakhear.obj_manette.traquer(fakhear)
+    }
   }
 }
 

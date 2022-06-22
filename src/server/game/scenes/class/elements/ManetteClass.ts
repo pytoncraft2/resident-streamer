@@ -7,6 +7,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
+  traqueJoueur: Phaser.Physics.Arcade.Sprite
+  suivre: boolean
 
   vitesse: number = 0
   puissance: number = 0
@@ -43,6 +45,11 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
 
     this.angle += 32;
 
+    if (this.traqueJoueur) {
+      this.x = this.traqueJoueur.x
+      this.y = this.traqueJoueur.y
+    }
+
       (this.scene as any).room.state.projectiles.set(
         this.id,
         new Projectile({
@@ -63,9 +70,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  lancer(id) {
-    // this.proprietaire.push(id)
-    // this.animationEnvoie.play()
+  traquer(joueur: Phaser.Physics.Arcade.Sprite) {
+    this.traqueJoueur = joueur
   }
 
 }
