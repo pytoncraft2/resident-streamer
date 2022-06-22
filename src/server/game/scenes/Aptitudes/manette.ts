@@ -105,8 +105,19 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
       {
         var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
 
-        if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
-        else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
+        if (positionJoueurProche.x < manette.x) {
+          manette.setFlipX(true)
+          if (dist > 400) {
+            manette.play("manette_lance")
+            reactiveBoucle(manette, aptitudes)
+          }
+        } else if (positionJoueurProche.x > manette.x) {
+          manette.setFlipX(false)
+          if (dist > 400) {
+            manette.play("manette_lance")
+            reactiveBoucle(manette, aptitudes)
+          }
+        }
 
         // if (positionJoueurProche.y < manette.y)
         // {
@@ -130,7 +141,11 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
       // if (manette.body) {
       // }
 
+
+}
+
+function reactiveBoucle(manette, aptitudes) {
   manette.scene.time.delayedCall(500, () => {
-      __auto(manette, {}, aptitudes)
+    __auto(manette, {}, aptitudes)
   }, null, this);
 }
