@@ -135,7 +135,7 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
 anim.create({
   key: "manette_punch",
   frames: anim.generateFrameNames('atlas', { prefix: 'manettepunch', start: 0, end: 1 }),
-  frameRate: 23,
+  frameRate: 10,
   repeat: 0
 })
 
