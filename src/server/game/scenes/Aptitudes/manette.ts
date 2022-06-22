@@ -103,11 +103,19 @@ export function __auto(manette: TJoueur, input: any) {
     lanceManette__Z(manette, {z: true})
   }, null, manette);
 
+  manette.scene.time.delayedCall(1500, () => {
+  lanceManette__Z(manette, {z: true})
+}, null, manette);
+
+manette.scene.time.delayedCall(2000, () => {
+manette.play("manette_vole")
+manette.body.setVelocityY(-1900)
+}, null, manette);
+
   manette.scene.time.delayedCall(3000, () => {
     punch__A(manette, {a: true})
     lanceManette__Z(manette, {z: true})
+    __auto(manette, {})
   }, null, manette);
   // return true
-
-
 }
