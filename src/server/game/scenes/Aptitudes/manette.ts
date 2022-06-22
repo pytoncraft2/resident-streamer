@@ -98,7 +98,6 @@ export function vole() {
 
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
   // console.log("AUTO")
-  manette.setFlipX(true)
   manette.scene.time.delayedCall(1000, () => {
     lanceManette__Z(manette, {z: true})
   }, null, manette);
@@ -112,9 +111,20 @@ manette.play("manette_vole")
 manette.body.setVelocityY(-1900)
 }, null, manette);
 
+
+
   manette.scene.time.delayedCall(3000, () => {
     lanceManette__Z(manette, {z: true})
-    aptitudes.toucheDroite(manette, {right: true})
+    if (manette.scene.players.getLength() == 1)
+    {
+      const flipXJoueur = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+      //@ts-ignore
+      flipXJoueur.flipX ? aptitudes.toucheDroite(manette, {left: true}) : aptitudes.toucheGauche(manette, {right: true})
+      //@ts-ignore
+      flipXJoueur.flipX ? manette.setFlipX(false) : manette.setFlipX(true);
+      // manette.scene.physics.moveToObject(manette, manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()]), 600);
+    }
+
     __auto(manette, {}, aptitudes)
   }, null, manette);
   // return true
