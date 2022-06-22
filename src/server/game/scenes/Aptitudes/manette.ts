@@ -100,86 +100,33 @@ export function vole() {
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
-//   manette.scene.time.delayedCall(500, () => {
-//       __auto(manette, {}, aptitudes)
-//   }, null, this);
-//
-//   manette.scene.time.delayedCall(900, () => {
-//     __auto(manette, {}, aptitudes)
-// }, null, this);
-//
-
-//   manette.scene.time.delayedCall(1500, () => {
-//   lanceManette__Z(manette, {z: true})
-// }, null, manette);
-//
-// manette.scene.time.delayedCall(2000, () => {
-// manette.play("manette_vole")
-// manette.body.setVelocityY(-1900)
-// }, null, manette);
-//
-//
-//
-//   manette.scene.time.delayedCall(3000, () => {
-//     lanceManette__Z(manette, {z: true})
-//     if (manette.scene.players.getLength() == 1)
-//     {
-//       const flipXJoueur = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-//       //@ts-ignore
-//       flipXJoueur.flipX ? aptitudes.toucheDroite(manette, {left: true}) : aptitudes.toucheGauche(manette, {right: true})
-//       //@ts-ignore
-//       flipXJoueur.flipX ? manette.setFlipX(false) : manette.setFlipX(true);
-//       // manette.scene.physics.moveToObject(manette, manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()]), 600);
-//     }
-//
-//   }, null, manette);
-//
-//   manette.scene.time.delayedCall(3000, () => {
-//     // lanceManette__Z(manette, {z: true})
-//     // __auto(manette, {}, aptitudes)
-//   }, null, manette);
-
-  // return true
-
-
   const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
   if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-  //si proche d'un Joueur
-  if (dist > 300)  {
-      manette.scene.time.delayedCall(3000, () => {
-        attaqueLoin(manette, dist)
-        console.log("GO")
-        // lanceManette__Z(manette, {z: true})
-        // __auto(manette, {}, aptitudes)
-      }, null, manette);
-  }
-    //loupe attaque attaqueProche
-  //si attaqueLoin
-    //loupe attaqueLoin(manette, dist)
+  //     if (positionJoueurProche) {
+  //       if (positionJoueurProche.y < manette.y) {
+  //         manette.body.setVelocityY(-1900)
+  //         manette.play("manette_vole")
+  //       }
+  //       if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
+  //       else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
+  //     }
+  //
+  // if (manette.body) {
+  //   if (dist > 300) lanceManette__Z(manette, {z: true})
+  //   else manette.play("manette_punch")
+  // }
+
+  manette.scene.time.delayedCall(500, () => {
+      if (positionJoueurProche.x < manette.x) auto_manette(manette, {}, aptitudes)
+      else auto_punch(manette, {}, aptitudes)
+      __auto(manette, {}, aptitudes)
+  }, null, this);
 }
 
-function callback(manette) {
-  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-  if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-  if (positionJoueurProche) {
-    if (positionJoueurProche.y < manette.y) {
-      manette.body.setVelocityY(-1900)
-      manette.play("manette_vole")
-    }
-    if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
-    else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
-  }
-
-  if (manette.body) {
-    if (dist > 300) lanceManette__Z(manette, {z: true})
-    else manette.play("manette_punch")
-  }
+function auto_manette(manette, input, aptitudes) {
+  lanceManette__Z(manette, {z: true})
 }
 
-function attaqueLoin(manette, dist) {
-    if (dist > 300) lanceManette__Z(manette, {z: true})
-}
-
-function attaqueProche(manette) {
+function auto_punch(manette, input, aptitudes) {
   manette.play("manette_punch")
 }
