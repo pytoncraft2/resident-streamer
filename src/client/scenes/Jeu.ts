@@ -335,6 +335,13 @@ export default class Jeu extends Phaser.Scene {
     // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
     // var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
 
+    const rectangle_2 = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
+    rectangle_2.scaleX = 4.6929101228048555;
+    rectangle_2.scaleY = 0.11649497828162556;
+    rectangle_2.setOrigin(0, 0.5);
+    rectangle_2.isFilled = true;
+    rectangle_2.fillColor = 0x000000;
+
     this.anims.create({
       key: "huzounet_shuriken",
       frames: this.anims.generateFrameNames('huzounet_atlas', { prefix: 'shuriken', start: 0, end: 3 }),

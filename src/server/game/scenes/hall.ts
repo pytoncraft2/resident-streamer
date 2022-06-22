@@ -83,13 +83,31 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 
     this.playersRef = {}
     this.enemiesRef = {}
+    const platforme = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
+    platforme.scaleX = 4.6929101228048555;
+    platforme.scaleY = 0.11649497828162556;
+    platforme.setOrigin(0, 0.5);
+    platforme.isFilled = true;
+    platforme.fillColor = 0x000000;
 
-    // const platforme = this.add.rectangle(955, 1000, 128, 128);
-    // platforme.scaleX = 43.50112225681497;
-    // platforme.scaleY = 1.449878006775927;
+    // const platforme = this.add.rectangle(955, 1200, 40000, 10);
     // this.physics.world.setBounds(platforme.getBottomLeft().x, 0, platforme.displayWidth, 1000);
-    // this.physics.add.existing(platforme, true);
-    // this.physics.add.collider(platforme, this.players);
+    const p = this.physics.add.existing(platforme, true);
+    this.physics.add.collider(platforme, this.players);
+
+    this.tweens.add({
+      targets: platforme,
+      y: "+=400",
+      duration: 3000,
+      yoyo: true,
+      repeat: -1
+      // onComplete: function() {
+      //   if (arguments[1][0].scene){
+      //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
+      //     arguments[1][0].destroy(true);
+      //   }
+      // }
+    });
     // this.physics.add.collider(platforme, this.enemies);
     // this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
 

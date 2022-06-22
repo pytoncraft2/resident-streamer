@@ -101,32 +101,36 @@ export function vole() {
  */
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
   const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-  if (positionJoueurProche) var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-  //     if (positionJoueurProche) {
-  //       if (positionJoueurProche.y < manette.y) {
-  //         manette.body.setVelocityY(-1900)
-  //         manette.play("manette_vole")
-  //       }
-  //       if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
-  //       else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
-  //     }
-  //
-  // if (manette.body) {
-  //   if (dist > 300) lanceManette__Z(manette, {z: true})
-  //   else manette.play("manette_punch")
-  // }
+      if (positionJoueurProche)
+      {
+        var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
+
+        if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
+        else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
+
+        if (positionJoueurProche.y < manette.y)
+        {
+          if (manette.body)
+          {
+            manette.setTint(16777215)
+            manette.body.setVelocityY(-1900)
+            manette.play("manette_vole")
+
+            if (manette.body.touching.down) {
+              lanceManette__Z(manette, {})              
+            }
+          }
+        }
+
+      // if (manette.body) {
+      // }
+
+      }
+
+      // if (manette.body) {
+      // }
 
   manette.scene.time.delayedCall(500, () => {
-      if (positionJoueurProche.x < manette.x) auto_manette(manette, {}, aptitudes)
-      else auto_punch(manette, {}, aptitudes)
       __auto(manette, {}, aptitudes)
   }, null, this);
-}
-
-function auto_manette(manette, input, aptitudes) {
-  lanceManette__Z(manette, {z: true})
-}
-
-function auto_punch(manette, input, aptitudes) {
-  manette.play("manette_punch")
 }
