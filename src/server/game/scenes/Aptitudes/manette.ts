@@ -108,19 +108,19 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
         if (positionJoueurProche.x < manette.x) manette.setFlipX(true)
         else if (positionJoueurProche.x > manette.x) manette.setFlipX(false)
 
-        if (positionJoueurProche.y < manette.y)
-        {
-          if (manette.body)
-          {
-            manette.setTint(16777215)
-            manette.body.setVelocityY(-1900)
-            manette.play("manette_vole")
-
-            if (manette.body.touching.down) {
-              lanceManette__Z(manette, {})              
-            }
-          }
-        }
+        // if (positionJoueurProche.y < manette.y)
+        // {
+        //   if (manette.body)
+        //   {
+        //     // manette.setTint(16777215)
+        //     // manette.body.setVelocityY(-1900)
+        //     // manette.play("manette_vole")
+        //
+        //     if (manette.body.touching.down) {
+        //       lanceManette__Z(manette, {})
+        //     }
+        //   }
+        // }
 
       // if (manette.body) {
       // }

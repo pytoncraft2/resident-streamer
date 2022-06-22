@@ -232,13 +232,13 @@ export default class Jeu extends Phaser.Scene {
 		laser01.scaleX = 0.19265106053743225;
 		laser01.scaleY = 0.14474581179115986;
 
-		// rectangle_2
-		const rectangle_2 = this.add.rectangle(716.7470889640784, 584.3987579810794, 128, 128);
-		rectangle_2.scaleX = 4.6929101228048555;
-		rectangle_2.scaleY = 0.11649497828162556;
-		rectangle_2.setOrigin(0, 0.5);
-		rectangle_2.isFilled = true;
-		rectangle_2.fillColor = 10563832;
+		// p1
+		const p1 = this.add.rectangle(1, 939, 128, 128);
+		p1.scaleX = 14.993211052385613;
+		p1.scaleY = -0.08853600509578045;
+		p1.setOrigin(0, 0.5);
+		p1.isFilled = true;
+		p1.fillColor = 10563832;
 
 		// text_1
 		const text_1 = this.add.text(502, 543, "", {});
@@ -335,12 +335,21 @@ export default class Jeu extends Phaser.Scene {
     // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
     // var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
 
-    const rectangle_2 = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
-    rectangle_2.scaleX = 4.6929101228048555;
-    rectangle_2.scaleY = 0.11649497828162556;
-    rectangle_2.setOrigin(0, 0.5);
-    rectangle_2.isFilled = true;
-    rectangle_2.fillColor = 0x000000;
+    // const rectangle_2 = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
+    // rectangle_2.scaleX = 4.6929101228048555;
+    // rectangle_2.scaleY = 0.11649497828162556;
+    // rectangle_2.setOrigin(0, 0.5);
+    // rectangle_2.isFilled = true;
+    // rectangle_2.fillColor = 0x000000;
+
+
+    const p1 = this.add.rectangle(1, 939, 128, 128);
+    p1.scaleX = 14.993211052385613;
+    p1.scaleY = -0.08853600509578045;
+    p1.setOrigin(0, 0.5);
+    p1.isFilled = true;
+    p1.fillColor = 10563832;
+
 
     this.anims.create({
       key: "huzounet_shuriken",
