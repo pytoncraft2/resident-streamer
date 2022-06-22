@@ -108,7 +108,7 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
         if (positionJoueurProche.x < manette.x) {
           manette.setFlipX(true)
           if (dist > 400) {
-            manette.play("manette_lance")
+            if (manette.body) lanceManette__Z(manette, {z: true})
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
             manette.play("manette_vole")
@@ -124,13 +124,13 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
         } else if (positionJoueurProche.x > manette.x) {
           manette.setFlipX(false)
           if (dist > 400) {
-            manette.play("manette_lance")
+            if (manette.body) lanceManette__Z(manette, {z: true})
             reactiveBoucle(manette, aptitudes)
           } else if (dist < 400) {
             manette.play("manette_vole")
             manette.scene.tweens.add({
               targets: manette,
-              x: 1980,
+              x: 1960,
               y: 0,
               duration: 1000,
               ease: 'Sine.inOut',

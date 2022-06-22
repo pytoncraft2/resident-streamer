@@ -154,7 +154,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    preUpdate(time: number, delta: number) {
      // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
-     console.log(this.body.touching.down)
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
