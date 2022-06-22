@@ -101,6 +101,11 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 
   manette.scene.time.delayedCall(1000, () => {
       const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+
+      if (positionJoueurProche.y < manette.y) {
+        manette.body.setVelocityY(-1900)
+        manette.play("manette_vole")
+      }
       if (positionJoueurProche.x < manette.x) {
         manette.setFlipX(true)
       } else if (positionJoueurProche.x > manette.x) {
