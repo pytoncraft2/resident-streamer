@@ -98,34 +98,62 @@ export function vole() {
 
 export function __auto(manette: TJoueur, input: any, aptitudes: any) {
   // console.log("AUTO")
+
   manette.scene.time.delayedCall(1000, () => {
-    lanceManette__Z(manette, {z: true})
+      const positionJoueurProche = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+      console.log("JOUEUR")
+      //@ts-ignore
+      console.log(positionJoueurProche.x);
+      //@ts-ignore
+      console.log(positionJoueurProche.y)
+      console.log("BOSS")
+      console.log(manette.x)
+      console.log(manette.y)
+
+      //@ts-ignore
+      if (positionJoueurProche.x < manette.x) {
+        manette.setFlipX(true)
+      //@ts-ignore
+      } else if (positionJoueurProche.x > manette.x) {
+        manette.setFlipX(false)
+      }
+
+      __auto(manette, {}, aptitudes)
   }, null, manette);
 
   manette.scene.time.delayedCall(1500, () => {
-  lanceManette__Z(manette, {z: true})
-}, null, manette);
-
-manette.scene.time.delayedCall(2000, () => {
-manette.play("manette_vole")
-manette.body.setVelocityY(-1900)
-}, null, manette);
-
-
-
-  manette.scene.time.delayedCall(3000, () => {
     lanceManette__Z(manette, {z: true})
-    if (manette.scene.players.getLength() == 1)
-    {
-      const flipXJoueur = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-      //@ts-ignore
-      flipXJoueur.flipX ? aptitudes.toucheDroite(manette, {left: true}) : aptitudes.toucheGauche(manette, {right: true})
-      //@ts-ignore
-      flipXJoueur.flipX ? manette.setFlipX(false) : manette.setFlipX(true);
-      // manette.scene.physics.moveToObject(manette, manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()]), 600);
-    }
-
-    __auto(manette, {}, aptitudes)
   }, null, manette);
+
+//   manette.scene.time.delayedCall(1500, () => {
+//   lanceManette__Z(manette, {z: true})
+// }, null, manette);
+//
+// manette.scene.time.delayedCall(2000, () => {
+// manette.play("manette_vole")
+// manette.body.setVelocityY(-1900)
+// }, null, manette);
+//
+//
+//
+//   manette.scene.time.delayedCall(3000, () => {
+//     lanceManette__Z(manette, {z: true})
+//     if (manette.scene.players.getLength() == 1)
+//     {
+//       const flipXJoueur = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+//       //@ts-ignore
+//       flipXJoueur.flipX ? aptitudes.toucheDroite(manette, {left: true}) : aptitudes.toucheGauche(manette, {right: true})
+//       //@ts-ignore
+//       flipXJoueur.flipX ? manette.setFlipX(false) : manette.setFlipX(true);
+//       // manette.scene.physics.moveToObject(manette, manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()]), 600);
+//     }
+//
+//   }, null, manette);
+//
+//   manette.scene.time.delayedCall(3000, () => {
+//     // lanceManette__Z(manette, {z: true})
+//     // __auto(manette, {}, aptitudes)
+//   }, null, manette);
+
   // return true
 }
