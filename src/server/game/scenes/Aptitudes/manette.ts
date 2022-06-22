@@ -111,7 +111,7 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
 
               // const input = (this.scene as any).room.donnes[this.ClientID].clavier
 
-              manette.body.setVelocityX(-300)
+              manette.body.setVelocityX(-340)
               aptitudes.toucheGauche(manette, {left_debut: true})
               // aptitudes.toucheGauche(manette, {left_fin: true})
             }
@@ -136,7 +136,7 @@ export function __auto(manette: TJoueur, input: any, aptitudes: any) {
           } else if (dist > 900) {
                 // manette.play("manette_punch")
             if (manette.body) {
-              manette.body.setVelocityX(300)
+              manette.body.setVelocityX(340)
               aptitudes.toucheDroite(manette, {right_debut: true})
               // aptitudes.toucheDroite(manette, {right_fin: true})
             }
