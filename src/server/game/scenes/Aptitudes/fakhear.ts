@@ -11,7 +11,8 @@ export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
   //@ts-ignore
   fakhear.groupeManettes = fakhear.scene.physics.add.group({
     runChildUpdate: true,
-    collideWorldBounds: true
+    collideWorldBounds: true,
+    allowGravity: false
   })
   //@ts-ignore
   fakhear.porteObjet = false
@@ -77,10 +78,11 @@ export function interaction__R(fakhear: TJoueur, input) {
       fakhear.groupeManettes.getChildren()[0].traquer(fakhear, true)
   //@ts-ignore
       fakhear.porteObjet = false
+      //@ts-ignore
+      Aptitudes['manette'].animationLancerManette(fakhear)
       console.log("TRAQUE 2")
     }
-  //@ts-ignore
-  Aptitudes['manette'].animationLancerManette(fakhear)
+
 
     input.r = false
   }

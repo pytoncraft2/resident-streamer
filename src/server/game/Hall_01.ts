@@ -34,31 +34,31 @@ export default class GameRooms extends Room {
 
     this.clock.start();
 
-    this.clock.setTimeout(() => {
-      // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
-      // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
-
-
-      (this.scene as any).room.donnes['123456789'] = {
-        clavier: {
-          up: false,
-          right: false,
-          down: false,
-          left: false,
-          space: false,
-          a: false,
-          z: false,
-          e: false,
-          r: false
-        }
-      }
-
-      const presences = this.scene.createEnnemy('123456789', 'manette')
-      for (const [key, value] of Object.entries(presences.presences)) {
-        this.state.presences.set(key, new Player(value))
-      }
-      // this.scene.createPlayer(123456789, 'twitchman')
-    }, 2_000);
+    // this.clock.setTimeout(() => {
+    //   // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
+    //   // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
+    //
+    //
+    //   (this.scene as any).room.donnes['123456789'] = {
+    //     clavier: {
+    //       up: false,
+    //       right: false,
+    //       down: false,
+    //       left: false,
+    //       space: false,
+    //       a: false,
+    //       z: false,
+    //       e: false,
+    //       r: false
+    //     }
+    //   }
+    //
+    //   const presences = this.scene.createEnnemy('123456789', 'manette')
+    //   for (const [key, value] of Object.entries(presences.presences)) {
+    //     this.state.presences.set(key, new Player(value))
+    //   }
+    //   // this.scene.createPlayer(123456789, 'twitchman')
+    // }, 2_000);
 
     // this.clock.setTimeout(() => {
     //   this.scene.createEnnemy('boss_1', 'fakhear_atlas')
