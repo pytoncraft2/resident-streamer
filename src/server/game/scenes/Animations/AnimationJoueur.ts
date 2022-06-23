@@ -159,7 +159,7 @@ anim.create({
   key: "twitchman_vole",
   frames: anim.generateFrameNames('atlas', { prefix: 'twitchmanfly', start: 0, end: 4 }),
   frameRate: 10,
-  repeat: 0
+  repeat: -1
 })
 
 anim.create({
