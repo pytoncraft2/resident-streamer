@@ -51,11 +51,19 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
   if (positionJoueurProche)
   {
     var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
+    // if (twitchman.body) aptitudes.toucheEspace(twitchman, {space: true})
     twitchman.play("twitchman_vole")
-    if (twitchman.body) twitchman.body.setVelocityX(700)
+    // _input.space = true
     if (twitchman.body) {
+      if (dist > 960 && dist < 1920) {
+        twitchman.scene.physics.moveTo(twitchman, 1920, 0, 800, 1000);
+      } else if (dist < 960) {
+        twitchman.scene.physics.moveTo(twitchman, 0, 0, 800, 1000);
+      }
+
       // twitchman.body.setVelocityY(-6000)
       // twitchman.body.setAllowGravity(false)
+      // aptitudes.toucheDroite(twitchman, {right_debut: true})
     }
     reactiveBoucle(twitchman, aptitudes)
   }
