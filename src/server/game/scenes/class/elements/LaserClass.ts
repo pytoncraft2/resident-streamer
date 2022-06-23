@@ -78,7 +78,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   charge() {
     if (!this.proprietaire.flipX) {
 
-        const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
+        const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).players.getChildren()])
 
         if (e) {
           var rad = Phaser.Math.Angle.Between(e.x, e.y + 159, this.proprietaire.x, this.proprietaire.y);
