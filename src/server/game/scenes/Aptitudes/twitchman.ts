@@ -58,7 +58,7 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
        if (dist > 400 && dist < 900)
        {
          console.log("SUPPERRIEUR A 400 & INF 900 -- 1")
-         // if (twitchman.body) lanceManette__Z(twitchman, {z: true})
+         if (twitchman.body) charge__Z(twitchman, {z: true})
          reactiveBoucle(twitchman, aptitudes)
        } else if (dist > 900)
        {
