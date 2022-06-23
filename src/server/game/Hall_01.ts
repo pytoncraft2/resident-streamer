@@ -53,7 +53,7 @@ export default class GameRooms extends Room {
         }
       }
 
-      const presences = this.scene.createEnnemy('123456789', 'manette')
+      const presences = this.scene.createEnnemy('123456789', 'twitchman')
       for (const [key, value] of Object.entries(presences.presences)) {
         this.state.presences.set(key, new Player(value))
       }
