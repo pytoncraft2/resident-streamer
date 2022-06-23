@@ -45,13 +45,10 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       this.proprietaire.setVelocity(0)
     }
 
-    this.x = this.proprietaire.x + 80;
-    this.y = this.proprietaire.y - 185;
+    this.x = this.proprietaire.x;
+    this.y = this.proprietaire.y;
 
-    var x = this.x;
-    var y = this.y;
-
-    var within = this.scene.physics.overlapRect(x, y, this.width, this.height);
+    var within = this.scene.physics.overlapRect(this.proprietaire.x,this.proprietaire.y, this.width, this.height);
 
     within.forEach(function (body: any) {
       if (body.gameObject.type == "Sprite") {
@@ -81,17 +78,19 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   charge() {
     if (!this.proprietaire.flipX) {
 
-        const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).players.getChildren()])
+        const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
 
         if (e) {
-          var rad = Phaser.Math.Angle.Between(e.x, e.y + 140, this.proprietaire.x, this.proprietaire.y);
+          var rad = Phaser.Math.Angle.Between(e.x, e.y + 159, this.proprietaire.x, this.proprietaire.y);
           // var rad = Phaser.Math.Angle.BetweenPoints({x: e.x, y: e.y}, {x: this.proprietaire.x, y: this.proprietaire.y});
           var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
           this.setAngle(deg)
           // this.rotation = rad
         }
       this.agrandissement = true;
-      this.setOrigin(0, 6)
+      // this.setSize(1000, 300)
+      // this.height = 200
+      // this.setOrigin(0, 6)
       this.scene.time.delayedCall(400, () => {
         this.agrandissement = false;
         this.setSize(1, this.height);
