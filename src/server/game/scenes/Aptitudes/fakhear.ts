@@ -61,8 +61,19 @@ export function interaction__R(fakhear: TJoueur, input) {
   {
   //@ts-ignore
     if (fakhear.groupeManettes.getLength() == 0) {
-        const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+
+      let obj_manette
+      const positionElementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).players.getChildren()])
+      if (positionElementProche) {
+        console.log("OUI !!")
+        console.log(positionElementProche.sprite)
+        obj_manette = positionElementProche
+      }
+      else
+      {
+        obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
         .setData({ ClientId: fakhear.ClientID, degat: 1}))
+      }
   //@ts-ignore
       fakhear.groupeManettes.add(obj_manette);
   //@ts-ignore
