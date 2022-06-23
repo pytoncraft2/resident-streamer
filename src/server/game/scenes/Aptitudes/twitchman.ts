@@ -42,7 +42,6 @@ export function charge__Z(twitchman: TJoueur, input: any) {
 }
 
 export function laser__E(twitchman: TJoueur, input: any) {
-  console.log("LAZER")
   twitchman.laser.charge()
   input.e = false
 }
@@ -58,7 +57,7 @@ export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
       manette.setFlipX(true)
       if (dist > 400 && dist < 900)
       {
-        if (manette.body) laser__E(manette, {z: true})
+        if (manette.body) laser__E(manette, {e: true})
         reactiveBoucle(manette, aptitudes)
       } else if (dist > 900)
       {
@@ -75,9 +74,8 @@ export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
         manette.play("twitchman_punch")
         manette.scene.tweens.add({
           delay: 500,
-          onStart: () => manette.play(""),
+          onStart: () => manette.play("twitchman_vole"),
           targets: manette,
-          x: 0,
           y: 0,
           duration: 1000,
           ease: 'Sine.inOut',
@@ -90,7 +88,7 @@ export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
       manette.setFlipX(false)
       if (dist > 400 && dist < 900)
       {
-        if (manette.body) laser__E(manette, {z: true})
+        if (manette.body) laser__E(manette, {e: true})
         reactiveBoucle(manette, aptitudes)
       }
       else if (dist > 900)
@@ -109,7 +107,6 @@ export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
           delay: 500,
           onStart: () => manette.play("twitchman_vole"),
           targets: manette,
-          x: 1960,
           y: 0,
           duration: 1000,
           ease: 'Sine.inOut',
