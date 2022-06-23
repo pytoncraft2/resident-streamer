@@ -46,74 +46,18 @@ export function laser__E(twitchman: TJoueur, input: any) {
   input.e = false
 }
 
-export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
-  const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
+  const positionJoueurProche: any = twitchman.scene.physics.closest(twitchman, [...(twitchman.scene as any).players.getChildren()])
   if (positionJoueurProche)
   {
-    var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-
-    if (positionJoueurProche.x < manette.x)
-    {
-      manette.setFlipX(true)
-      if (dist > 400 && dist < 900)
-      {
-        if (manette.body) laser__E(manette, {e: true})
-        reactiveBoucle(manette, aptitudes)
-      } else if (dist > 900)
-      {
-        if (manette.body)
-        {
-          manette.body.setVelocityX(-340)
-          aptitudes.toucheGauche(manette, {left_debut: true})
-        }
-
-        reactiveBoucle(manette, aptitudes)
-      }
-      else if (dist < 400)
-      {
-        manette.play("twitchman_punch")
-        manette.scene.tweens.add({
-          delay: 500,
-          onStart: () => manette.play("twitchman_vole"),
-          targets: manette,
-          y: 0,
-          duration: 1000,
-          ease: 'Sine.inOut',
-          onComplete: () => reactiveBoucle(manette, aptitudes)
-        });
-      }
+    var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
+    twitchman.play("twitchman_vole")
+    // if (twitchman.body) twitchman.body.setVelocityY(-700)
+    if (twitchman.body) {
+      twitchman.body.setVelocityY(-600)
+      twitchman.body.setAllowGravity(false)
     }
-    else if (positionJoueurProche.x > manette.x)
-    {
-      manette.setFlipX(false)
-      if (dist > 400 && dist < 900)
-      {
-        if (manette.body) laser__E(manette, {e: true})
-        reactiveBoucle(manette, aptitudes)
-      }
-      else if (dist > 900)
-      {
-        if (manette.body)
-        {
-          manette.body.setVelocityX(340)
-          aptitudes.toucheDroite(manette, {right_debut: true})
-        }
-        reactiveBoucle(manette, aptitudes)
-      }
-      else if (dist < 400)
-      {
-        manette.play("twitchman_punch")
-        manette.scene.tweens.add({
-          delay: 500,
-          onStart: () => manette.play("twitchman_vole"),
-          targets: manette,
-          y: 0,
-          duration: 1000,
-          ease: 'Sine.inOut',
-          onComplete: () => reactiveBoucle(manette, aptitudes)
-        });
-      }
-    }
+    reactiveBoucle(twitchman, aptitudes)
   }
 }
 

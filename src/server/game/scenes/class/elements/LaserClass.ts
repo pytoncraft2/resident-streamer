@@ -39,7 +39,11 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   }
 
   preUpdate(_time: number, _delta: number) {
-    if (this.agrandissement) this.width += 70
+      this.setAngle(90)
+    if (this.agrandissement) {
+      console.log(this.angle)
+      this.width += 70
+    }
 
     this.x = this.proprietaire.x + 80;
     this.y = this.proprietaire.y - 185;
@@ -67,7 +71,8 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         width: this.width,
         height: this.height,
         fillColor: this.fillColor,
-        fillAlpha: this.fillColor
+        fillAlpha: this.fillColor,
+        angle: this.angle
       })
     )
 
@@ -76,7 +81,6 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   charge() {
     if (!this.proprietaire.flipX) {
       this.agrandissement = true;
-      this.setOrigin(0, 6)
       this.scene.time.delayedCall(500, () => {
         this.agrandissement = false;
         this.setSize(1, this.height);
