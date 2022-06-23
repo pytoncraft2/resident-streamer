@@ -115,6 +115,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        if (this.blesse_opposant) {
          this.blesse_opposant = false
          if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
+         console.log("BLESSE")
            if (_e.vie <= 0) {
 
              _e.vie = 10
