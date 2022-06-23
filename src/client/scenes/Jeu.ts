@@ -525,6 +525,7 @@ export default class Jeu extends Phaser.Scene {
         this.rectanglesRef[item].setPosition(list.rectangles[item].x, list.rectangles[item].y)
         if (list.rectangles[item].scaleX) this.rectanglesRef[item].setScale(list.rectangles[item].scaleX, list.rectangles[item].scaleY);
         if (list.rectangles[item].width) this.rectanglesRef[item].setSize(list.rectangles[item].width, list.rectangles[item].height);
+        if (list.rectangles[item].originX) this.rectanglesRef[item].setOrigin(list.rectangles[item].originX, list.rectangles[item].originY);
         // if (list.rectangles[item].height) this.rectanglesRef[item].height = list.rectangles[item].height;
         if (list.rectangles[item].angle) this.rectanglesRef[item].setAngle(list.rectangles[item].angle);
         // if (list.rectangles[item].fillColor) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor);

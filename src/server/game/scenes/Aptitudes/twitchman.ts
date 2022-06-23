@@ -11,7 +11,8 @@ export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
     })
   }
 
-  twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 900, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman).setOrigin(0, 0.5)
+  // twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 900, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman).setOrigin(0, 0.5)
+  twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 0, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
 
   // twitchman.laser = new LaserClass(twitchman.scene, twitchman.flipX ? twitchman.x - 80 : twitchman.x + 80, twitchman.y - 60, "laser",  `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
 

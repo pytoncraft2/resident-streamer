@@ -41,13 +41,28 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   preUpdate(_time: number, _delta: number) {
     if (this.agrandissement) {
-      // this.scaleX += 900
+      this.width += 700
       // this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
       // this.proprietaire.setVelocity(0)
     }
 
-    this.x = this.proprietaire.getTopCenter().x;
-    this.y = this.proprietaire.getTopCenter().y;
+    this.x = this.proprietaire.x;
+    this.y = this.proprietaire.y;
+
+
+    var within = this.scene.physics.overlapRect(this.proprietaire.x, this.proprietaire.y, this.width, this.height);
+    //
+    within.forEach(function (body: any) {
+      console.log(body.gameObject.type)
+      if (body.gameObject.type == "Sprite") {
+        if (body.gameObject.ClientID != this.proprietaireID) {
+          console.log("PAS MOI")
+      //     // this.agrandissement = false;
+      //     if (body.gameObject.dommage) body.gameObject.dommage(0.08);
+        }
+      }
+    }, this);
+
 
     (this.scene as any).room.state.rectangles.set(
       this.id,
@@ -60,14 +75,16 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         fillColor: this.fillColor,
         fillAlpha: this.fillColor,
         angle: this.angle,
-        scaleX: this.scaleX
+        scaleX: this.scaleX,
+        originX: this.originX,
+        originY: this.originY
       })
     )
 
   }
 
   charge() {
-    // this.setScale(2,this.scaleY)
+    this.setScale(2,this.scaleY)
     // if (!this.proprietaire.flipX) {
       const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
       //
@@ -79,11 +96,12 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       }
 
 
-      // this.agrandissement = true;
-      // this.scene.time.delayedCall(500, () => {
-      //   this.agrandissement = false;
-      //   this.setSize(1, this.height);
-      // }, null, this);
+      this.proprietaire.flipX ? this.setOrigin(1, 0.5) :this.setOrigin(0, 0.5)
+      this.agrandissement = true;
+      this.scene.time.delayedCall(500, () => {
+        this.agrandissement = false;
+        this.setSize(1, this.height);
+      }, null, this);
     // }
   }
 }
