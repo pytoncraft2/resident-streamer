@@ -52,10 +52,16 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
    {
      var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
 
+
      if (positionJoueurProche.x < twitchman.x)
      {
        twitchman.setFlipX(true)
-       if (dist > 400 && dist < 900)
+
+       if (positionJoueurProche.y == twitchman.y) {
+         console.log("JOUEUR + HAUT")
+         if (twitchman.body) charge__Z(twitchman, {z: true})
+         reactiveBoucle(twitchman, aptitudes)
+       } else if (dist > 400 && dist < 900)
        {
          console.log("SUPPERRIEUR A 400 & INF 900 -- 1")
          if (twitchman.body) charge__Z(twitchman, {z: true})
