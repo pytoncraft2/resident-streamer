@@ -57,17 +57,17 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function interaction__R(fakhear: TJoueur, input) {
-  if (input.r)
-  {
-  //@ts-ignore
-    // if (fakhear.groupeManettes.getLength() == 0) {
-
-      let obj_manette
-      const positionElementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).groupeBoulesHuzounet.getChildren()])
-      console.log(fakhear.scene.groupeBoulesHuzounet.getLength())
-      if (positionElementProche) {
-        positionElementProche.traquer(fakhear)
-      }
+  // if (input.r)
+  // {
+  // //@ts-ignore
+  //   // if (fakhear.groupeManettes.getLength() == 0) {
+  //
+  //     let obj_manette
+  //     const positionElementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).groupeBoulesHuzounet.getChildren()])
+  //     // console.log(fakhear.scene.groupeBoulesHuzounet.getLength())
+  //     // if (positionElementProche) {
+  //     //   positionElementProche.traquer(fakhear)
+  //     // }
   //     if (positionElementProche) {
   //       console.log("OUI !!")
   //       console.log(positionElementProche.sprite)
@@ -97,10 +97,83 @@ export function interaction__R(fakhear: TJoueur, input) {
   //     // Aptitudes['manette'].animationLancerManette(fakhear)
   //     console.log("TRAQUE 2")
   //   }
+  //
+  //
+  //   input.r = false
+  // }
+  //
+
+
+
+
+
+
+
+
+
+
+
+  if (input.r)
+  {
+
+    const positionElementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).groupeBoulesHuzounet.getChildren()])
+    // console.log(fakhear.scene.groupeBoulesHuzounet.getLength())
+    // if (positionElementProche) {
+    //   positionElementProche.traquer(fakhear)
+    // }
+
+    let obj_manette
+    if (positionElementProche) {
+      obj_manette = positionElementProche
+      //@ts-ignore
+      fakhear.groupeManettes.add(obj_manette);
+    }
+    else
+    {
+      obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+      .setData({ ClientId: fakhear.ClientID, degat: 1}))
+      //@ts-ignore
+      fakhear.groupeManettes.add(obj_manette);
+    }
+
+  //@ts-ignore
+    if (fakhear.groupeManettes.getLength() == 0) {
+        const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+        .setData({ ClientId: fakhear.ClientID, degat: 1}))
+  //@ts-ignore
+      fakhear.groupeManettes.add(obj_manette);
+  //@ts-ignore
+    } else if (fakhear.groupeManettes.getLength() == 1 && !fakhear.porteObjet) {
+  //@ts-ignore
+      fakhear.porteObjet = true
+  //@ts-ignore
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear)
+      console.log("TRAQUE 1")
+  //@ts-ignore
+    } else if (fakhear.porteObjet) {
+  //@ts-ignore
+      fakhear.groupeManettes.getChildren()[0].traquer(fakhear, true)
+  //@ts-ignore
+      fakhear.porteObjet = false
+      //@ts-ignore
+      Aptitudes['manette'].animationLancerManette(fakhear)
+      console.log("TRAQUE 2")
+    }
 
 
     input.r = false
   }
+
+
+
+
+
+
+
+
+
+
+
 }
 // export fusion()
 // export function fusion(personnage, input);
