@@ -63,10 +63,11 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         x: this.x,
         y: this.y,
         id: this.id,
-        width: this.width,
+        width: -this.width,
         height: this.height,
         fillColor: this.fillColor,
-        fillAlpha: this.fillColor
+        fillAlpha: this.fillColor,
+        angle: this.angle
       })
     )
 
@@ -74,6 +75,15 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   charge() {
     if (!this.proprietaire.flipX) {
+
+        const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
+
+        if (e) {
+          var rad = Phaser.Math.Angle.Between(e.x, e.y + 190, this.proprietaire.x, this.proprietaire.y);
+          // var rad = Phaser.Math.Angle.BetweenPoints({x: e.x, y: e.y}, {x: this.proprietaire.x, y: this.proprietaire.y});
+          var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
+          this.setAngle(deg)
+        }
       this.agrandissement = true;
       this.setOrigin(0, 6)
       this.scene.time.delayedCall(500, () => {
