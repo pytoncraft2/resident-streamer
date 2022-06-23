@@ -47,30 +47,94 @@ export function laser__E(twitchman: TJoueur, input: any) {
 }
 
 export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
-  const positionJoueurProche: any = twitchman.scene.physics.closest(twitchman, [...(twitchman.scene as any).players.getChildren()])
-  if (positionJoueurProche)
-  {
-    var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
-    // if (twitchman.body) aptitudes.toucheEspace(twitchman, {space: true})
-    twitchman.play("twitchman_vole")
-    // _input.space = true
-    if (twitchman.body) {
-      if (dist > 960 && dist < 1920) {
-        twitchman.scene.physics.moveTo(twitchman, 1920, 0, 800, 1000);
-      } else if (dist < 960) {
-        twitchman.scene.physics.moveTo(twitchman, 0, 0, 800, 1000);
-      }
+   const positionJoueurProche: any = twitchman.scene.physics.closest(twitchman, [...(twitchman.scene as any).players.getChildren()])
+   if (positionJoueurProche)
+   {
+     var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
 
-      // twitchman.body.setVelocityY(-6000)
-      // twitchman.body.setAllowGravity(false)
-      // aptitudes.toucheDroite(twitchman, {right_debut: true})
-    }
-    reactiveBoucle(twitchman, aptitudes)
-  }
+     if (positionJoueurProche.x < twitchman.x)
+     {
+       twitchman.setFlipX(true)
+       if (dist > 400 && dist < 900)
+       {
+         console.log("SUPPERRIEUR A 400 & INF 900 -- 1")
+         // if (twitchman.body) lanceManette__Z(twitchman, {z: true})
+         reactiveBoucle(twitchman, aptitudes)
+       } else if (dist > 900)
+       {
+         if (twitchman.body)
+         {
+           twitchman.body.setVelocityX(-340)
+           aptitudes.toucheGauche(twitchman, {left_debut: true})
+         }
+
+         reactiveBoucle(twitchman, aptitudes)
+       }
+       else if (dist < 400)
+       {
+         twitchman.play("twitchman_punch")
+         twitchman.scene.tweens.add({
+           delay: 500,
+           onStart: () => twitchman.play("twitchman_vole"),
+           targets: twitchman,
+           x: 0,
+           y: 0,
+           duration: 1000,
+           ease: 'Sine.inOut',
+           onComplete: () => reactiveBoucle(twitchman, aptitudes)
+         });
+       }
+     }
+     else if (positionJoueurProche.x > twitchman.x)
+     {
+       twitchman.setFlipX(false)
+       if (dist > 400 && dist < 900)
+       {
+         console.log("SUPPERRIEUR A 400 & INF 900 -- 2")
+         twitchman.scene.tweens.add({
+           onStart: () => twitchman.play("twitchman_vole"),
+           targets: twitchman,
+           y: 0,
+           x: "-=40",
+           duration: 1000,
+           ease: 'Sine.inOut',
+           onComplete: () => {
+             laser__E(twitchman, {e: true})
+             reactiveBoucle(twitchman, aptitudes)
+           }
+         });
+         // if (twitchman.body) lanceManette__Z(twitchman, {z: true})
+         // reactiveBoucle(twitchman, aptitudes)
+       }
+       else if (dist > 900)
+       {
+         if (twitchman.body)
+         {
+           twitchman.body.setVelocityX(340)
+           aptitudes.toucheDroite(twitchman, {right_debut: true})
+         }
+         reactiveBoucle(twitchman, aptitudes)
+       }
+       else if (dist < 400)
+       {
+         twitchman.play("twitchman_punch")
+         twitchman.scene.tweens.add({
+           delay: 500,
+           onStart: () => twitchman.play("twitchman_vole"),
+           targets: twitchman,
+           x: 1960,
+           y: 0,
+           duration: 1000,
+           ease: 'Sine.inOut',
+           onComplete: () => reactiveBoucle(twitchman, aptitudes)
+         });
+       }
+     }
+   }
 }
 
-function reactiveBoucle(manette: TJoueur, aptitudes: any) {
-  manette.scene.time.delayedCall(500, () => {
-    __auto(manette, {}, aptitudes)
+function reactiveBoucle(twitchman: TJoueur, aptitudes: any) {
+  twitchman.scene.time.delayedCall(500, () => {
+    __auto(twitchman, {}, aptitudes)
   }, null, this);
 }
