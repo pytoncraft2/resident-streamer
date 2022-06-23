@@ -45,10 +45,10 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       this.proprietaire.setVelocity(0)
     }
 
-    this.x = this.proprietaire.x;
-    this.y = this.proprietaire.y;
+    this.x = this.proprietaire.x + 80;
+    this.y = this.proprietaire.y - 185;
 
-    var within = this.scene.physics.overlapRect(this.proprietaire.x,this.proprietaire.y, this.width, this.height);
+    var within = this.scene.physics.overlapRect(this.proprietaire.x  + 80,this.proprietaire.y - 185, this.width, this.height + 500);
 
     within.forEach(function (body: any) {
       if (body.gameObject.type == "Sprite") {
