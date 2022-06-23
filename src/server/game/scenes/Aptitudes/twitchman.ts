@@ -54,8 +54,8 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
     twitchman.play("twitchman_vole")
     // if (twitchman.body) twitchman.body.setVelocityY(-700)
     if (twitchman.body) {
-      twitchman.body.setVelocityY(-600)
-      twitchman.body.setAllowGravity(false)
+      // twitchman.body.setVelocityY(-600)
+      // twitchman.body.setAllowGravity(false)
     }
     reactiveBoucle(twitchman, aptitudes)
   }
