@@ -37,8 +37,11 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.scene.physics.add.existing(this);
     this.id = id;
     this.setOrigin(0, 0.5)
+    this.width = 0
+    this.setSize(1, 1)
 
-    this.scene.physics.add.overlap(this, (this.scene as any).players, function(_kunai, _ennemie: any) {
+    this.scene.physics.add.overlap(this, (this.scene as any).enemies, function(_kunai, _ennemie: any) {
+      console.log("OVERLAP")
       _ennemie.dommage(2)
       // _kunai.setData('degat', 0)
     }, undefined, this);
@@ -50,7 +53,6 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       // this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
       // this.proprietaire.setVelocity(0)
     }
-    console.log(this.scaleX)
 
     this.x = this.proprietaire.getTopCenter().x;
     this.y = this.proprietaire.getTopCenter().y;
@@ -73,7 +75,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   }
 
   charge() {
-    this.setScale(2,this.scaleY)
+    // this.setScale(2,this.scaleY)
     // if (!this.proprietaire.flipX) {
       const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
       //
