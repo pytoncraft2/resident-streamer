@@ -7,6 +7,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   animationCharge: Phaser.Tweens.Tween
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
+  traqueJoueur: Phaser.Physics.Arcade.Sprite
   actif: boolean = true
 
   sprite: string = 'huzounet'
@@ -79,6 +80,11 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
+    if (this.traqueJoueur) {
+      this.x = this.traqueJoueur.x
+      this.y = this.traqueJoueur.y
+    }
+
 
       (this.scene as any).room.state.projectiles.set(
         this.id,
@@ -92,6 +98,11 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
           _frame: this._frame
         })
       )
+  }
+
+  traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {
+    if (desactivation) this.traqueJoueur = null
+    else this.traqueJoueur = joueur
   }
 
   setVitesse(vitesse: number) {

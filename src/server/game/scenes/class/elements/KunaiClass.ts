@@ -8,6 +8,7 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
   animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
+  traqueJoueur: Phaser.Physics.Arcade.Sprite
 
   sprite: string = 'huzounet'
   _frame: string = 'kunai'
@@ -43,6 +44,10 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
+    if (this.traqueJoueur) {
+      this.x = this.traqueJoueur.x
+      this.y = this.traqueJoueur.y
+    }
 
       (this.scene as any).room.state.projectiles.set(
         this.id,
@@ -57,6 +62,12 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
         })
       )
   }
+
+  traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {
+    if (desactivation) this.traqueJoueur = null
+    else this.traqueJoueur = joueur
+  }
+
 
   setVitesse(vitesse: number) {
     console.log("VITESSE SET:", vitesse);
