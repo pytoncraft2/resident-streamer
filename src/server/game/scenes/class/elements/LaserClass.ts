@@ -36,10 +36,11 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
     this.id = id;
+    // this.height = 200
   }
 
   preUpdate(_time: number, _delta: number) {
-    if (this.agrandissement) this.width += 70
+    if (this.agrandissement) this.width += 200
 
     this.x = this.proprietaire.x + 80;
     this.y = this.proprietaire.y - 185;
@@ -53,6 +54,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
           if (body.gameObject.dommage && this.agrandissement) body.gameObject.dommage(0.08);
+          console.log("WITHIN!!")
         }
       }
     }, this);
@@ -79,14 +81,15 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
 
         if (e) {
-          var rad = Phaser.Math.Angle.Between(e.x, e.y + 190, this.proprietaire.x, this.proprietaire.y);
+          var rad = Phaser.Math.Angle.Between(e.x, e.y + 140, this.proprietaire.x, this.proprietaire.y);
           // var rad = Phaser.Math.Angle.BetweenPoints({x: e.x, y: e.y}, {x: this.proprietaire.x, y: this.proprietaire.y});
           var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
           this.setAngle(deg)
+          // this.rotation = rad
         }
       this.agrandissement = true;
       this.setOrigin(0, 6)
-      this.scene.time.delayedCall(500, () => {
+      this.scene.time.delayedCall(400, () => {
         this.agrandissement = false;
         this.setSize(1, this.height);
       }, null, this);

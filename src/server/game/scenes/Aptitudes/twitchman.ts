@@ -52,7 +52,7 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
   {
     var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
     twitchman.play("twitchman_vole")
-    // if (twitchman.body) twitchman.body.setVelocityY(-700)
+    if (twitchman.body) twitchman.body.setVelocityX(700)
     if (twitchman.body) {
       // twitchman.body.setVelocityY(-6000)
       // twitchman.body.setAllowGravity(false)
