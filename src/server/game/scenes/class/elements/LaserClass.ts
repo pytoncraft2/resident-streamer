@@ -39,23 +39,21 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   }
 
   preUpdate(_time: number, _delta: number) {
-    if (this.agrandissement) {
-      this.width += 70
-      this.proprietaire.setVelocity(0)
-    }
+    // if (this.agrandissement) {
+      // this.scaleX += 900
+      this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
+      // this.proprietaire.setVelocity(0)
+    // }
 
-    this.x = this.proprietaire.x + 80;
-    this.y = this.proprietaire.y - 185;
-
-    var x = this.x;
-    var y = this.y;
-
-    var within = this.scene.physics.overlapRect(x, y, this.width, this.height);
-
+    this.x = this.proprietaire.getTopCenter().x;
+    this.y = this.proprietaire.getTopCenter().y;
+    //
+    var within = this.scene.physics.overlapRect(this.proprietaire.x, this.proprietaire.y, this.width, this.height);
+    //
     within.forEach(function (body: any) {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
-          this.agrandissement = false;
+          // this.agrandissement = false;
           if (body.gameObject.dommage) body.gameObject.dommage(0.08);
         }
       }
@@ -78,20 +76,22 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   }
 
   charge() {
-    if (!this.proprietaire.flipX) {
-      const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
+    // if (!this.proprietaire.flipX) {
+      // const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
+      //
+      // if (e) {
+      //   // var rad = Phaser.Math.Angle.Between(e.x, e.y, this.proprietaire.x, this.proprietaire.y);
+      //   var rad = Phaser.Math.Angle.BetweenPoints({x: e.x, y: e.y}, {x: this.proprietaire.x, y: this.proprietaire.y});
+      //   var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
+      //   // this.setAngle(deg)
+      // }
 
-      var rad = Phaser.Math.Angle.Between(e.x, e.y, this.proprietaire.x, this.proprietaire.y);
-      var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
-      this.setAngle(deg)
 
-      console.log(deg)
-
-      this.agrandissement = true;
-      this.scene.time.delayedCall(500, () => {
-        this.agrandissement = false;
-        this.setSize(1, this.height);
-      }, null, this);
-    }
+      // this.agrandissement = true;
+      // this.scene.time.delayedCall(500, () => {
+      //   this.agrandissement = false;
+      //   this.setSize(1, this.height);
+      // }, null, this);
+    // }
   }
 }
