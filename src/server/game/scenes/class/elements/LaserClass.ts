@@ -36,28 +36,19 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
     this.id = id;
+    this.setOrigin(0, 0.5)
   }
 
   preUpdate(_time: number, _delta: number) {
-    // if (this.agrandissement) {
+    if (this.agrandissement) {
       // this.scaleX += 900
-      this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
+      // this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
       // this.proprietaire.setVelocity(0)
-    // }
+    }
+    console.log(this.scaleX)
 
     this.x = this.proprietaire.getTopCenter().x;
     this.y = this.proprietaire.getTopCenter().y;
-    //
-    var within = this.scene.physics.overlapRect(this.proprietaire.x, this.proprietaire.y, this.width, this.height);
-    //
-    within.forEach(function (body: any) {
-      if (body.gameObject.type == "Sprite") {
-        if (body.gameObject.ClientID != this.proprietaireID) {
-          // this.agrandissement = false;
-          if (body.gameObject.dommage) body.gameObject.dommage(0.08);
-        }
-      }
-    }, this);
 
     (this.scene as any).room.state.rectangles.set(
       this.id,
@@ -69,13 +60,15 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         height: this.height,
         fillColor: this.fillColor,
         fillAlpha: this.fillColor,
-        angle: this.angle
+        angle: this.angle,
+        scaleX: this.scaleX
       })
     )
 
   }
 
   charge() {
+    this.setScale(2,this.scaleY)
     // if (!this.proprietaire.flipX) {
       // const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
       //

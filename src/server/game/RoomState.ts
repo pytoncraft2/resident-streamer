@@ -63,6 +63,8 @@ export class Rectangle extends Schema {
   @type("number") width?: number;
   @type("number") height?: number;
   @type("number") angle?: number;
+  @type("number") scaleX?: number;
+  @type("number") scaleY?: number;
 }
 
 
