@@ -11,7 +11,6 @@ export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
     })
   }
 
-  // twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 900, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman).setOrigin(0, 0.5)
   twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 0, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
 
   // twitchman.laser = new LaserClass(twitchman.scene, twitchman.flipX ? twitchman.x - 80 : twitchman.x + 80, twitchman.y - 60, "laser",  `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
@@ -55,7 +54,7 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
     twitchman.play("twitchman_vole")
     // if (twitchman.body) twitchman.body.setVelocityY(-700)
     if (twitchman.body) {
-      // twitchman.body.setVelocityY(-600)
+      // twitchman.body.setVelocityY(-6000)
       // twitchman.body.setAllowGravity(false)
     }
     reactiveBoucle(twitchman, aptitudes)

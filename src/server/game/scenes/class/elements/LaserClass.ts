@@ -36,33 +36,30 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
     this.id = id;
-    this.setOrigin(0, 0.5)
   }
 
   preUpdate(_time: number, _delta: number) {
     if (this.agrandissement) {
-      this.width += 700
-      // this.proprietaire.flipX ? (this.width-=5) : (this.width+=5)
-      // this.proprietaire.setVelocity(0)
+      this.width += 70
+      this.proprietaire.setVelocity(0)
     }
 
-    this.x = this.proprietaire.x;
-    this.y = this.proprietaire.y;
+    this.x = this.proprietaire.x + 80;
+    this.y = this.proprietaire.y - 185;
 
+    var x = this.x;
+    var y = this.y;
 
-    var within = this.scene.physics.overlapRect(this.proprietaire.x, this.proprietaire.y, this.width, this.height);
-    //
+    var within = this.scene.physics.overlapRect(x, y, this.width, this.height);
+
     within.forEach(function (body: any) {
-      console.log(body.gameObject.type)
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID) {
-          console.log("PAS MOI")
-      //     // this.agrandissement = false;
+          this.agrandissement = false;
           if (body.gameObject.dommage) body.gameObject.dommage(0.08);
         }
       }
     }, this);
-
 
     (this.scene as any).room.state.rectangles.set(
       this.id,
@@ -70,33 +67,27 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         x: this.x,
         y: this.y,
         id: this.id,
-        width: this.width,
+        width: -this.width,
         height: this.height,
         fillColor: this.fillColor,
         fillAlpha: this.fillColor,
-        angle: this.angle,
-        scaleX: this.scaleX,
-        originX: this.originX,
-        originY: this.originY
+        angle: this.angle
       })
     )
 
   }
 
   charge() {
-    this.setScale(2,this.scaleY)
     // if (!this.proprietaire.flipX) {
       const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any).enemies.getChildren()])
-      //
+
       if (e) {
-        // var rad = Phaser.Math.Angle.Between(e.x, e.y, this.proprietaire.x, this.proprietaire.y);
-        var rad = Phaser.Math.Angle.BetweenPoints({x: e.x, y: e.y}, {x: this.proprietaire.x, y: this.proprietaire.y});
+        var rad = Phaser.Math.Angle.Between(e.x, e.y, this.proprietaire.x, this.proprietaire.y);
         var deg = Phaser.Math.RadToDeg(rad);  // deg : -180 ~ 180
-        this.setAngle(deg)
+        // this.setAngle(deg)
       }
 
 
-      this.proprietaire.flipX ? this.setOrigin(1, 0.5) :this.setOrigin(0, 0.5)
       this.agrandissement = true;
       this.scene.time.delayedCall(500, () => {
         this.agrandissement = false;
