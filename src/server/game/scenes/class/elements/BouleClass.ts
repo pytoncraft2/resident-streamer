@@ -28,7 +28,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     this.init(scene, ClientID, sprite)
   }
 
-  init(scene: Phaser.Scene, id: string, sprite) {
+  init(scene: Phaser.Scene, id: string, sprite: string) {
     this.scene = scene
     // this.scene.add.existing(this)
     scene.physics.add.existing(this);
@@ -76,7 +76,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
 
 
   }
-  preUpdate(time, delta) {
+  preUpdate(time: number, delta: number) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
@@ -110,12 +110,12 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  suppression(id) {
+  suppression(_id: number) {
     // this.proprietaire.shift()
   }
 
-  setDestructionIminente(destruction) {
-    var tween = this.scene.tweens.addCounter({
+  setDestructionIminente(destruction: CallableFunction) {
+    this.scene.tweens.addCounter({
       from: 0,
       to: 1,
       duration: 1000,
@@ -131,8 +131,8 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
-  destructionInstantane(destruction) {
-    var tween = this.scene.tweens.addCounter({
+  destructionInstantane(destruction: CallableFunction) {
+    this.scene.tweens.addCounter({
       from: 0,
       to: 1,
       duration: 1000,

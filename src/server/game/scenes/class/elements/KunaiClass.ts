@@ -40,7 +40,7 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
 
   }
-  preUpdate(time, delta) {
+  preUpdate(time: number, delta: number) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
