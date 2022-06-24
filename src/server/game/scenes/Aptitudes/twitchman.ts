@@ -58,7 +58,6 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
        twitchman.setFlipX(true)
 
        if (positionJoueurProche.y == twitchman.y) {
-         console.log("JOUEUR + HAUT")
          if (twitchman.body) charge__Z(twitchman, {z: true})
          const colision = twitchman.scene.physics.add.collider(positionJoueurProche, twitchman)
          twitchman.scene.time.delayedCall(500, () => {
@@ -67,7 +66,6 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
          reactiveBoucle(twitchman, aptitudes)
        } else if (dist > 400 && dist < 900)
        {
-         console.log("SUPPERRIEUR A 400 & INF 900 -- 1")
          if (twitchman.body) charge__Z(twitchman, {z: true})
          reactiveBoucle(twitchman, aptitudes)
        } else if (dist > 900)
@@ -100,7 +98,6 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
        twitchman.setFlipX(false)
        if (dist > 400 && dist < 900)
        {
-         console.log("SUPPERRIEUR A 400 & INF 900 -- 2")
          twitchman.scene.tweens.add({
            onStart: () => twitchman.play("twitchman_vole"),
            targets: twitchman,

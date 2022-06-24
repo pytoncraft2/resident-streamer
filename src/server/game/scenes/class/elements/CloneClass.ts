@@ -83,8 +83,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.setDrag(1900)
     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
     this.zoneInteraction.action = (_e: Phaser.Physics.Arcade.Sprite) => {
-      console.log("INTERACTION CLONE")
-
       // if (this.blesse_opposant) {
       //   this.blesse_opposant = false
       //   if (typeof _e.dommage === "function") _e.dommage(1)
