@@ -14,10 +14,42 @@
     "displayList": [
         {
             "type": "Layer",
-            "id": "e2d1e9e3-4536-4511-96e2-a0c4cacc6985",
-            "label": "layer",
+            "id": "c4ea9d95-9b65-4f8d-9c41-499ea72cd03e",
+            "label": "btnScore",
+            "scope": "PUBLIC",
             "components": [],
-            "list": []
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "7df442a6-27c6-44d5-8399-77adebe7ee65",
+                    "label": "rectangle",
+                    "components": [],
+                    "x": 1616,
+                    "y": 814,
+                    "scaleX": 2.140625073525671,
+                    "scaleY": 0.5781249831011019,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.3,
+                    "strokeAlpha": 0.3,
+                    "lineWidth": 4,
+                    "isStroked": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Text",
+                    "id": "96f668cd-bc4a-46d7-9c22-65105ab08e85",
+                    "label": "text",
+                    "components": [],
+                    "x": 1616,
+                    "y": 814,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Scores",
+                    "fontSize": "18px"
+                }
+            ]
         }
     ],
     "plainObjects": [],

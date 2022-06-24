@@ -22,8 +22,34 @@ export default class Level extends Phaser.Scene {
 
 	editorCreate(): void {
 
+		// btnScore
+		const btnScore = this.add.layer();
+
+		// rectangle
+		const rectangle = this.add.rectangle(1616, 814, 128, 128);
+		rectangle.scaleX = 2.140625073525671;
+		rectangle.scaleY = 0.5781249831011019;
+		rectangle.isFilled = true;
+		rectangle.fillColor = 0;
+		rectangle.fillAlpha = 0.3;
+		rectangle.isStroked = true;
+		rectangle.strokeAlpha = 0.3;
+		rectangle.lineWidth = 4;
+		btnScore.add(rectangle);
+
+		// text
+		const text = this.add.text(1616, 814, "", {});
+		text.setOrigin(0.5, 0.5);
+		text.text = "Scores";
+		text.setStyle({ "fontSize": "18px" });
+		btnScore.add(text);
+
+		this.btnScore = btnScore;
+
 		this.events.emit("scene-awake");
 	}
+
+	public btnScore!: Phaser.GameObjects.Layer;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client

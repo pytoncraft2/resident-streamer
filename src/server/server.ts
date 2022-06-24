@@ -28,6 +28,10 @@ app.get("/", (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
 
+app.get('/scores', (_request, response) => {
+  response.sendFile(distPath + "/index.html")
+})
+
 app.get('/:id', (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
