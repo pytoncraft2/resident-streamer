@@ -152,22 +152,12 @@ export default class Level extends Phaser.Scene {
 
 		console.log("INIT")
 		console.log(this.boutonScore.y)
-		this.boutonScore
-		.setInteractive({ useHandCursor: true })
-		.on('pointerdown', () => {
-			this.scene.start("Scores")
-			if (this.boutonScore.height !== 1200)
-			{
-				// this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 1200, y: 200, duration: 1000, ease: 'Power3' });
-			}
-			else
-			{
-				// this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 128,y: 814, duration: 500, ease: 'Power3' });
-			}
-		})
-
-		// this.tweens.add({ targets: this.btnScore, y: 0, duration: 1000, ease: 'Power3' });
-
+		const btn = [this.boutonScore, this.voir_plus]
+		for (let key of btn)
+			key.setInteractive({ useHandCursor: true })
+			.on('pointerdown', () => {
+				this.scene.start("Scores")
+			})
 
 	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
