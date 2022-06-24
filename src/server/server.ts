@@ -62,7 +62,8 @@ app.post('/scores', (_request, res) => {
 // Storing the JSON format data in myObject
 var data:any = fs.readFileSync("./src/server/scores.json");
 var myObject = JSON.parse(data);
-console.log(myObject.push("coucou"))
+myObject[0]["zzzzzzzzzzzzz"] = "oui"
+// myObject.push({"moi":"lomepal"})
 //
 // // Defining new data to be added
 // let newData = {
@@ -73,12 +74,12 @@ console.log(myObject.push("coucou"))
 // myObject.push(newData);
 //
 // // Writing to our JSON file
-// var newData2 = JSON.stringify(myObject);
-// fs.writeFile("data2.json", newData2, (err) => {
-//   // Error checking
-//   if (err) throw err;
-//   console.log("New data added");
-// });
+var newData2 = JSON.stringify(myObject);
+fs.writeFile("./src/server/scores.json", newData2, (err) => {
+  // Error checking
+  if (err) throw err;
+  console.log("New data added");
+});
 
 
 
