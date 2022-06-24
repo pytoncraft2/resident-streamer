@@ -247,13 +247,19 @@ export default class Scores extends Phaser.Scene {
 		// test.setStyle({ "fontSize": "20px" });
 		// console.log(this.container_scores.length * 2)
 		//
+		// this.container_scores.add(test)
 		axios.get("http://localhost:3000" + "/scores").then(res => {
-			// console.log(res.data)
-			var t = []
-			res.data.map((item: any, i: number) => {
-				const test = this.add.text(0, i, "OK", {});
-				console.log(item)
-			})
+			var tableau: any = []
+			Object.entries(res.data).forEach((element: any, index: number) => {
+				// this.add.text(0, this.container_scores.length + 90, `${element[0]}`, {});
+				// test.setStyle({ "fontSize": "20px" });
+				tableau.push(element[0] + " " + element[1].joueurs.join(" "))
+				// console.log(element[1].joueurs)
+				// let text = this.add.text(0, index + 400, element[1].joueurs, { fontFamily: 'Arial', color: '#00ff00', wordWrap: { width: 310 } }).setOrigin(0);
+				// console.log(this.container_scores.length)
+			});
+			var text = this.add.text(0, 0, tableau, { fontFamily: 'Arial', color: '#00ff00', wordWrap: { width: 310 } }).setOrigin(0);
+			this.container_scores.add(text)
 
 		}).catch(err => {
 			console.log(err)
