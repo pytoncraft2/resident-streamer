@@ -35,6 +35,12 @@ app.get('/scores', (_request, res) => {
   res.end(donnes);
 })
 
+app.post('/scores', (_request, res) => {
+  const donnes = fs.readFileSync('./src/server/scores.json');
+  res.setHeader('Content-Type', 'application/json');
+  res.end(donnes);
+})
+
 app.get('/:id', (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
