@@ -241,17 +241,20 @@ export default class Scores extends Phaser.Scene {
 		.on('pointerdown', () => {
 			this.scene.start("Level")
 		})
-		const test = this.add.text(0, 210, "", {});
-		test.setOrigin(0.5, 0.5);
-		test.text = "YYYYYYYYYYYYYYYYYYYYYES";
-		test.setStyle({ "fontSize": "20px" });
-		console.log(this.container_scores.length * 2)
-
-		this.container_scores.add(test)
+		// const test = this.add.text(0, 210, "", {});
+		// test.setOrigin(0.5, 0.5);
+		// test.text = "YYYYYYYYYYYYYYYYYYYYYES";
+		// test.setStyle({ "fontSize": "20px" });
+		// console.log(this.container_scores.length * 2)
+		//
 		axios.get("http://localhost:3000" + "/scores").then(res => {
-			Object.entries(res.data).forEach((element: any) => {
-				console.log(element)
-			});
+			// console.log(res.data)
+			var t = []
+			res.data.map((item: any, i: number) => {
+				const test = this.add.text(0, i, "OK", {});
+				console.log(item)
+			})
+
 		}).catch(err => {
 			console.log(err)
 		});
