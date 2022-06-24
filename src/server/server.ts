@@ -37,6 +37,30 @@ app.get('/scores', (_request, res) => {
 
 app.post('/scores', (_request, res) => {
   const donnes = fs.readFileSync('./src/server/scores.json');
+
+//   let donnes: any = {
+//     "pays": "Angleterre"
+// }
+
+// const nouvelleDonne = JSON.parse(donnes.toString())
+
+// var json = JSON.parse(donnes)
+// json.push('search result: test')
+//
+// fs.writeFile("scores.json", JSON.stringify(json));
+//
+// var json = JSON.parse(donnes);
+// json.push("search result: " + "test");
+// fs.writeFile("scores.json", JSON.stringify(json), function(err){
+//   if (err) throw err;
+//   console.log('The "data to append" was appended to file!');
+// });
+
+// var json = JSON.parse(donnes);
+fs.appendFile("./src/server/scores.json", JSON.parse(JSON.stringify({"heyll":"h"})), function (err) {
+   if (err) throw err;
+   console.log('The "data to append" was appended to file!');
+});
   res.setHeader('Content-Type', 'application/json');
   res.end(donnes);
 })
