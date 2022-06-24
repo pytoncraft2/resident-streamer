@@ -26,6 +26,8 @@ export default class GameRooms extends Room {
 
   onCreate() {
     this.setState(new RoomState())
+    this.state.compteur = 0
+
     this.donnes = {}
 
     this.Game = new Phaser.Game(config)

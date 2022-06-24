@@ -135,7 +135,7 @@ export default class Jeu extends Phaser.Scene {
 
 		// compteur
 		const compteur = this.add.text(1676, 20, "", {});
-		compteur.text = "00:00:00";
+		compteur.text = "0";
 		compteur.setStyle({ "fontSize": "45px" });
 		barreHautContainer.add(compteur);
 
@@ -372,12 +372,12 @@ export default class Jeu extends Phaser.Scene {
       }
     }
 
-    this.time.addEvent({
-      delay: 1000,
-      callback: () => (this.compte += 1, this.compteur.setText(`${this.compte+1}`)),
-      callbackScope: this,
-      loop: true
-    });
+    // this.time.addEvent({
+    //   delay: 1000,
+    //   callback: () => (this.compte += 1, this.compteur.setText(`${this.compte+1}`)),
+    //   callbackScope: this,
+    //   loop: true
+    // });
 
     this.tweens.add({
         targets: this.indicationDroite,
@@ -445,7 +445,14 @@ export default class Jeu extends Phaser.Scene {
           rectangles[key] = value
         })
 
+        // changes.compteur.forEach((value: any, key: any) => {
+          // rectangles[key] = value
+        // })
 
+        // console.log(changes.compteur)
+        if (this.compteur.text !== `${changes.compteur}`) {
+          this.compteur.setText(`${changes.compteur}`)
+        }
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
 				})

@@ -65,6 +65,10 @@ export class Rectangle extends Schema {
   @type("number") angle?: number;
 }
 
+export class Compteur extends Schema {
+  @type("number") temps?: number
+}
+
 
 export class RoomState extends Schema {
   //@ts-ignore
@@ -72,4 +76,5 @@ export class RoomState extends Schema {
   @type({ map: Projectile }) projectiles = new MapSchema<Projectile>()
   @type({ map: Ligne }) lignes = new MapSchema<Ligne>()
   @type({ map: Rectangle }) rectangles = new MapSchema<Rectangle>()
+  @type("number") compteur: number;
 }

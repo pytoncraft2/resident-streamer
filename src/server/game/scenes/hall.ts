@@ -1,6 +1,7 @@
 // import { Player } from "../RoomState"
 
 import BossClass from "./class/bosses/BossClass"
+import { Compteur } from "../RoomState"
 import PlayerClass from "./class/PlayerClass"
 
 
@@ -113,6 +114,8 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
       _ennemie.dommage(_boule.getData('degat'))
       _boule.setData('degat', 0)
     }, null, this);
+
+    this.CommencerCompteur()
   }
 
   overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
@@ -188,5 +191,21 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     this.enemiesRef[ClientId].destroy(true)
     delete this.enemiesRef[ClientId]
     return this.getPresence()
+  }
+
+  CommencerCompteur() {
+    var timer = this.time.addEvent({
+      delay: 1000,                // ms
+      callback: function() {
+        this.room.state.compteur += 1
+      },
+      callbackScope: this,
+      loop: true
+    });
+  }
+
+  callback(r) {
+    console.log("AUGMENTATION")
+      // r.compteur += 1
   }
 }
