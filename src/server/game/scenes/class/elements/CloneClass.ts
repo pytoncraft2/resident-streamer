@@ -1,5 +1,5 @@
 import { Player } from "../../../RoomState"
-import {kunai__Z, shuriken__A, multiclonage__E} from '././../../Aptitudes/huzounet'
+import { kunai__Z } from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
@@ -36,7 +36,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.init(scene, ClientID, createur)
   }
 
-  init(scene: Phaser.Scene, id: string, createur) {
+  init(scene: Phaser.Scene, id: string, createur: Phaser.Physics.Arcade.Sprite) {
 
     this.scene = scene
     this.createur = createur
@@ -82,7 +82,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     // });
     this.setDrag(1900)
     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-    this.zoneInteraction.action = (_e) => {
+    this.zoneInteraction.action = (_e: Phaser.Physics.Arcade.Sprite) => {
+      console.log("INTERACTION CLONE")
 
       // if (this.blesse_opposant) {
       //   this.blesse_opposant = false
@@ -106,7 +107,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
 
   }
-  preUpdate(time, delta) {
+  preUpdate(time: number, delta: number) {
     // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
@@ -179,17 +180,12 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  lancer(id) {
-    // this.proprietaire.push(id)
-    // this.animationEnvoie.play()
-  }
-
-  suppression(id) {
+  suppression(_id: number) {
     // this.proprietaire.shift()
   }
 
-  setDestructionIminente(destruction) {
-    var tween = this.scene.tweens.addCounter({
+  setDestructionIminente(destruction: CallableFunction) {
+    this.scene.tweens.addCounter({
       from: 0,
       to: 1,
       duration: 1000,
@@ -205,8 +201,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
-  destructionInstantane(destruction) {
-    var tween = this.scene.tweens.addCounter({
+  destructionInstantane(destruction: CallableFunction) {
+    this.scene.tweens.addCounter({
       from: 0,
       to: 1,
       duration: 1000,

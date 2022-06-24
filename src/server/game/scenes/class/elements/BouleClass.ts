@@ -110,11 +110,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  lancer(id) {
-    // this.proprietaire.push(id)
-    // this.animationEnvoie.play()
-  }
-
   suppression(id) {
     // this.proprietaire.shift()
   }

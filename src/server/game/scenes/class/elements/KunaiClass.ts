@@ -74,9 +74,4 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(vitesse);
   }
 
-  lancer(id) {
-    // this.proprietaire.push(id)
-    // this.animationEnvoie.play()
-  }
-
 }
