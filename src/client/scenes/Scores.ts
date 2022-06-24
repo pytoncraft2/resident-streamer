@@ -241,31 +241,20 @@ export default class Scores extends Phaser.Scene {
 		.on('pointerdown', () => {
 			this.scene.start("Level")
 		})
+		const test = this.add.text(0, 210, "", {});
+		test.setOrigin(0.5, 0.5);
+		test.text = "YYYYYYYYYYYYYYYYYYYYYES";
+		test.setStyle({ "fontSize": "20px" });
+		console.log(this.container_scores.length * 2)
 
-		var payload = {
-			a: 1,
-			b: 2
-		};
-
-// var data = new FormData();
-// data.append( "json", JSON.stringify( payload ) );
-axios.get("http://localhost:3000" + "/scores").then(res => console.log(res)).catch(err => console.log(err));
-
-// fetch('http://localhost:3000/scores', {
-//   method: 'GET',
-//   headers: {
-//     'Accept': 'application/json, text/plain, */*',
-//     'Content-Type': 'application/json'
-//   },
-// }).then(res => res.json())
-//   .then(res => console.log(res));
-// fetch("http://localhost:3000/scores",
-// {
-// 	method: "POST",
-// 	mode: "no-cors",
-// 	body: data
-// }).then(function(res){ console.log(res); })
-// .then(function(data){ alert( JSON.stringify( data ) ) })
+		this.container_scores.add(test)
+		axios.get("http://localhost:3000" + "/scores").then(res => {
+			Object.entries(res.data).forEach((element: any) => {
+				console.log(element)
+			});
+		}).catch(err => {
+			console.log(err)
+		});
 	}
 
 	/* END-USER-CODE */
