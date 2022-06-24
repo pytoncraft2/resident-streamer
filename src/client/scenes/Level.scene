@@ -22,7 +22,8 @@
                 {
                     "type": "Rectangle",
                     "id": "7df442a6-27c6-44d5-8399-77adebe7ee65",
-                    "label": "rectangle",
+                    "label": "boutonScore",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": 1616,
                     "y": 814,
@@ -40,14 +41,16 @@
                 {
                     "type": "Text",
                     "id": "96f668cd-bc4a-46d7-9c22-65105ab08e85",
-                    "label": "text",
+                    "label": "texte_score",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": 1616,
                     "y": 814,
                     "originX": 0.5,
                     "originY": 0.5,
                     "text": "Scores",
-                    "fontSize": "18px"
+                    "fontFamily": "CustomFontItalic",
+                    "fontSize": "28px"
                 }
             ]
         }

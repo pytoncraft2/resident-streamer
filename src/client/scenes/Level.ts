@@ -7,6 +7,7 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { RoomAvailable } from "colyseus.js";
+import Button from "../utils/bouton"
 import Panel from "../utils/panel";
 /* END-USER-IMPORTS */
 
@@ -25,31 +26,35 @@ export default class Level extends Phaser.Scene {
 		// btnScore
 		const btnScore = this.add.layer();
 
-		// rectangle
-		const rectangle = this.add.rectangle(1616, 814, 128, 128);
-		rectangle.scaleX = 2.140625073525671;
-		rectangle.scaleY = 0.5781249831011019;
-		rectangle.isFilled = true;
-		rectangle.fillColor = 0;
-		rectangle.fillAlpha = 0.3;
-		rectangle.isStroked = true;
-		rectangle.strokeAlpha = 0.3;
-		rectangle.lineWidth = 4;
-		btnScore.add(rectangle);
+		// boutonScore
+		const boutonScore = this.add.rectangle(1616, 814, 128, 128);
+		boutonScore.scaleX = 2.140625073525671;
+		boutonScore.scaleY = 0.5781249831011019;
+		boutonScore.isFilled = true;
+		boutonScore.fillColor = 0;
+		boutonScore.fillAlpha = 0.3;
+		boutonScore.isStroked = true;
+		boutonScore.strokeAlpha = 0.3;
+		boutonScore.lineWidth = 4;
+		btnScore.add(boutonScore);
 
-		// text
-		const text = this.add.text(1616, 814, "", {});
-		text.setOrigin(0.5, 0.5);
-		text.text = "Scores";
-		text.setStyle({ "fontSize": "18px" });
-		btnScore.add(text);
+		// texte_score
+		const texte_score = this.add.text(1616, 814, "", {});
+		texte_score.setOrigin(0.5, 0.5);
+		texte_score.text = "Scores";
+		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
+		btnScore.add(texte_score);
 
 		this.btnScore = btnScore;
+		this.boutonScore = boutonScore;
+		this.texte_score = texte_score;
 
 		this.events.emit("scene-awake");
 	}
 
 	public btnScore!: Phaser.GameObjects.Layer;
+	public boutonScore!: Phaser.GameObjects.Rectangle;
+	public texte_score!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
@@ -72,6 +77,24 @@ export default class Level extends Phaser.Scene {
 	}
 
 	async afficheAcceuil() {
+
+		console.log("INIT")
+		console.log(this.boutonScore.y)
+		this.boutonScore
+		.setInteractive({ useHandCursor: true })
+		.on('pointerdown', () => {
+			if (this.boutonScore.height !== 1200)
+			{
+				this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 1200, y: 200, duration: 1000, ease: 'Power3' });
+			}
+			else
+			{
+				this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 128,y: 814, duration: 500, ease: 'Power3' });
+			}
+		})
+
+		// this.tweens.add({ targets: this.btnScore, y: 0, duration: 1000, ease: 'Power3' });
+
 
 	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
