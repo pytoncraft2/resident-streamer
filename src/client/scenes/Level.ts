@@ -27,9 +27,9 @@ export default class Level extends Phaser.Scene {
 		const btnScore = this.add.layer();
 
 		// boutonScore
-		const boutonScore = this.add.rectangle(1616, 814, 128, 128);
-		boutonScore.scaleX = 2.140625073525671;
-		boutonScore.scaleY = 0.5781249831011019;
+		const boutonScore = this.add.rectangle(1610, 296, 128, 128);
+		boutonScore.scaleX = 2.2270445356590725;
+		boutonScore.scaleY = 0.6321953827491891;
 		boutonScore.isFilled = true;
 		boutonScore.fillColor = 0;
 		boutonScore.fillAlpha = 0.3;
@@ -39,15 +39,85 @@ export default class Level extends Phaser.Scene {
 		btnScore.add(boutonScore);
 
 		// texte_score
-		const texte_score = this.add.text(1616, 814, "", {});
+		const texte_score = this.add.text(1610, 296, "", {});
 		texte_score.setOrigin(0.5, 0.5);
 		texte_score.text = "Scores";
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
 		btnScore.add(texte_score);
 
+		// boutonScore_1
+		const boutonScore_1 = this.add.rectangle(1611, 556, 128, 128);
+		boutonScore_1.scaleX = 2.2270445356590725;
+		boutonScore_1.scaleY = 3.0228413760726456;
+		boutonScore_1.isFilled = true;
+		boutonScore_1.fillColor = 0;
+		boutonScore_1.fillAlpha = 0.3;
+		boutonScore_1.isStroked = true;
+		boutonScore_1.strokeAlpha = 0.3;
+		boutonScore_1.lineWidth = 4;
+		btnScore.add(boutonScore_1);
+
+		// text
+		const text = this.add.text(1598, 404, "", {});
+		text.setOrigin(0.5, 0.5);
+		text.text = "🥇 equipe batman";
+		text.setStyle({ "fontSize": "20px" });
+		btnScore.add(text);
+
+		// text_1
+		const text_1 = this.add.text(1610, 439, "", {});
+		text_1.setOrigin(0.5, 0.5);
+		text_1.text = "🥇 equipe superman";
+		text_1.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_1);
+
+		// text_2
+		const text_2 = this.add.text(1592, 471, "", {});
+		text_2.setOrigin(0.5, 0.5);
+		text_2.text = "🥇 equipe zorro";
+		text_2.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_2);
+
+		// text_3
+		const text_3 = this.add.text(1610, 514, "", {});
+		text_3.setOrigin(0.5, 0.5);
+		text_3.text = "🥇 equipe katarina";
+		text_3.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_3);
+
+		// text_4
+		const text_4 = this.add.text(1592, 559, "", {});
+		text_4.setOrigin(0.5, 0.5);
+		text_4.text = "🥇 equipe robin";
+		text_4.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_4);
+
+		// text_5
+		const text_5 = this.add.text(1580, 605, "", {});
+		text_5.setOrigin(0.5, 0.5);
+		text_5.text = "🥇 equipe 007";
+		text_5.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_5);
+
+		// text_6
+		const text_6 = this.add.text(1598, 645, "", {});
+		text_6.setOrigin(0.5, 0.5);
+		text_6.text = "🥇 equipe marcel";
+		text_6.setStyle({ "fontSize": "20px" });
+		btnScore.add(text_6);
+
+		// voir_plus
+		const voir_plus = this.add.text(1616, 717, "", {});
+		voir_plus.setOrigin(0.5, 0.5);
+		voir_plus.text = "Voir plus...";
+		voir_plus.setStyle({ "fontSize": "20px", "fontStyle": "italic", "shadow.blur":3});
+		btnScore.add(voir_plus);
+
 		this.btnScore = btnScore;
 		this.boutonScore = boutonScore;
 		this.texte_score = texte_score;
+		this.boutonScore_1 = boutonScore_1;
+		this.voir_plus = voir_plus;
 
 		this.events.emit("scene-awake");
 	}
@@ -55,6 +125,8 @@ export default class Level extends Phaser.Scene {
 	public btnScore!: Phaser.GameObjects.Layer;
 	public boutonScore!: Phaser.GameObjects.Rectangle;
 	public texte_score!: Phaser.GameObjects.Text;
+	public boutonScore_1!: Phaser.GameObjects.Rectangle;
+	public voir_plus!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
@@ -83,13 +155,14 @@ export default class Level extends Phaser.Scene {
 		this.boutonScore
 		.setInteractive({ useHandCursor: true })
 		.on('pointerdown', () => {
+			this.scene.start("Scores")
 			if (this.boutonScore.height !== 1200)
 			{
-				this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 1200, y: 200, duration: 1000, ease: 'Power3' });
+				// this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 1200, y: 200, duration: 1000, ease: 'Power3' });
 			}
 			else
 			{
-				this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 128,y: 814, duration: 500, ease: 'Power3' });
+				// this.tweens.add({ targets: [this.boutonScore, this.texte_score], height: 128,y: 814, duration: 500, ease: 'Power3' });
 			}
 		})
 

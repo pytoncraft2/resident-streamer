@@ -3,6 +3,7 @@ import Level from "./scenes/Level";
 import Preload from "./scenes/Preload";
 import Lobby from "./scenes/Lobby";
 import Jeu from "./scenes/Jeu";
+import Scores from "./scenes/Scores";
 
 export class Boot extends Phaser.Scene {
 
@@ -35,7 +36,7 @@ window.addEventListener('load', function () {
     dom: {
       createContainer: true
     },
-		scene: [Boot, Preload, Level, Lobby, Jeu]
+		scene: [Boot, Preload, Level, Lobby, Jeu, Scores]
 	});
 
 	game.scene.start("Boot");
