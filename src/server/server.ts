@@ -36,33 +36,20 @@ app.get('/scores', (_request, res) => {
 })
 
 app.post('/scores', (_request, res) => {
-  const donnes = fs.readFileSync('./src/server/scores.json');
+  // const donnes = fs.readFileSync('./src/server/scores.json');
+  var data: any = fs.readFileSync('./src/server/scores.json');
+  const t = {e: "z"}
+  var myObject: any = JSON.parse(JSON.stringify(t));
 
-//   let donnes: any = {
-//     "pays": "Angleterre"
-// }
+var newData = JSON.stringify(myObject);
+fs.writeFile('./src/server/scores.json', newData, err => {
+    // error checking
+    if(err) throw err;
 
-// const nouvelleDonne = JSON.parse(donnes.toString())
-
-// var json = JSON.parse(donnes)
-// json.push('search result: test')
-//
-// fs.writeFile("scores.json", JSON.stringify(json));
-//
-// var json = JSON.parse(donnes);
-// json.push("search result: " + "test");
-// fs.writeFile("scores.json", JSON.stringify(json), function(err){
-//   if (err) throw err;
-//   console.log('The "data to append" was appended to file!');
-// });
-
-// var json = JSON.parse(donnes);
-fs.appendFile("./src/server/scores.json", JSON.parse(JSON.stringify({"heyll":"h"})), function (err) {
-   if (err) throw err;
-   console.log('The "data to append" was appended to file!');
+    console.log("New data added");
 });
   res.setHeader('Content-Type', 'application/json');
-  res.end(donnes);
+  res.end(JSON.stringify(newData));
 })
 
 app.get('/:id', (_request, response) => {
