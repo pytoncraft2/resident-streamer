@@ -11,8 +11,7 @@
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
     "doc:client": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts",
     "doc:server": "cd ./src/server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
-    "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
-    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959"
+    "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -34,15 +33,16 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
-    "phaser": "^3.55.2",
-    "phasereditor2d-launcher": "^3.31.2",
-    "colyseus.js": "^0.14.13",
+    "@colyseus/monitor": "^0.14.22",
     "@geckos.io/phaser-on-nodejs": "^1.2.5",
+    "axios": "^0.27.2",
     "colyseus": "^0.14.23",
+    "colyseus.js": "^0.14.13",
     "concurrently": "^6.2.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "@colyseus/monitor": "^0.14.22"
+    "phaser": "^3.55.2",
+    "phasereditor2d-launcher": "^3.31.2"
   }
 }

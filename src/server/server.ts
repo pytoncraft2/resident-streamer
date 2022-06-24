@@ -7,6 +7,9 @@ import path from "path"
 import { monitor } from "@colyseus/monitor";
 import * as fs from 'fs';
 
+var cors = require('cors')
+
+
 
 import GameRooms from "./game/Hall_01"
 import LobbyRooms from "./game/lobby"
@@ -24,6 +27,7 @@ const distPath = path.join(__dirname, "../../dist/")
 app.use(express.static(distPath))
 
 app.use('/colyseus', monitor());
+app.use(cors())
 // Register frontend pages
 app.get("/", (_request, response) => {
   response.sendFile(distPath + "/index.html")
@@ -36,32 +40,18 @@ app.get('/scores', (_request, res) => {
 })
 
 app.post('/scores', (_request, res) => {
-var data:any = fs.readFileSync("./src/server/scores.json");
-var myObject = JSON.parse(data);
-myObject["EQUIPE JAMIE"] = {
-        "joueurs": ["Jamie", "Marcel", "Jean"],
-        "score": "3min"
-      }
-var newData2 = JSON.stringify(myObject);
-fs.writeFile("./src/server/scores.json", newData2, (err) => {
-  if (err) throw err;
-});
+  const data:any = fs.readFileSync("./src/server/scores.json");
+  const myObject = JSON.parse(data);
+  myObject["EQUIPE JAMIE"] = {
+    "joueurs": ["Jamie", "Marcel", "Jean"],
+    "score": "3min"
+  }
+  var newData2 = JSON.stringify(myObject);
+  fs.writeFile("./src/server/scores.json", newData2, (err) => {
+    if (err) throw err;
+  });
   res.setHeader('Content-Type', 'application/json');
-  res.end(
-    JSON.stringify({
-      "BATMAN":{
-        "joueurs": ["Jamie", "Marcel", "Jean"],
-        "score": "3min"
-      },
-      "SUPERMAN": {
-        "joueurs": ["SOSO", "SASA", "Jean"],
-        "score": "4min"
-      },
-      "ZORRO": {
-        "joueurs": ["MDR", "LOL", "YES"],
-        "score": "1min"
-      }
-    }));
+  res.end(JSON.stringify({"status":"ok"}));
 })
 
 app.get('/:id', (_request, response) => {
