@@ -5,6 +5,7 @@ import express from "express"
 import http from "http"
 import path from "path"
 import { monitor } from "@colyseus/monitor";
+import * as fs from 'fs';
 
 
 import GameRooms from "./game/Hall_01"
@@ -28,8 +29,10 @@ app.get("/", (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
 
-app.get('/scores', (_request, response) => {
-  response.sendFile(distPath + "/index.html")
+app.get('/scores', (_request, res) => {
+  const donnes = fs.readFileSync('./src/server/scores.json');
+  res.setHeader('Content-Type', 'application/json');
+  res.end(donnes);
 })
 
 app.get('/:id', (_request, response) => {
