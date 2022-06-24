@@ -304,6 +304,33 @@
                     "originY": 0.5,
                     "text": "🥈 equipe marcel",
                     "fontSize": "20px"
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b6ccbdfd-14ba-4bba-bd6b-489057dae183",
+                    "label": "retour",
+                    "scope": "PUBLIC",
+                    "components": [],
+                    "x": 95.75,
+                    "y": 29,
+                    "scaleX": 1.4616145859770209,
+                    "scaleY": 0.43173181496874335,
+                    "isFilled": true,
+                    "fillColor": "#8e4889",
+                    "fillAlpha": 0.4,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Text",
+                    "id": "01a3d8d2-bf6f-4b9c-bc11-92d405197f31",
+                    "label": "text_9",
+                    "components": [],
+                    "x": 60.25,
+                    "y": 13,
+                    "text": "Retour",
+                    "fontFamily": "CustomFontNormal",
+                    "fontSize": "26px"
                 }
             ]
         },
