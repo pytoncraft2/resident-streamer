@@ -111,7 +111,7 @@ export default class Scores extends Phaser.Scene {
 				// let text = this.add.text(0, index + 400, element[1].joueurs, { fontFamily: 'Arial', color: '#00ff00', wordWrap: { width: 310 } }).setOrigin(0);
 				// console.log(this.container_scores.length)
 			});
-			var text = this.add.text(0, 0, tableau, { wordWrap: { width: 410 } }).setOrigin(0);
+			var text = this.add.text(100, 10, tableau, { wordWrap: { width: 410 } }).setOrigin(0.5, 0.5);
 			this.container_scores.add(text)
 
 		}).catch(err => {
