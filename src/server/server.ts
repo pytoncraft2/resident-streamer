@@ -37,19 +37,80 @@ app.get('/scores', (_request, res) => {
 
 app.post('/scores', (_request, res) => {
   // const donnes = fs.readFileSync('./src/server/scores.json');
-  var data: any = fs.readFileSync('./src/server/scores.json');
-  const t = {e: "z"}
-  var myObject: any = JSON.parse(JSON.stringify(t));
+//   var data: any = fs.readFileSync('./src/server/scores.json');
+//   const t = {e: "z"}
+//   var myObject: any = JSON.parse(JSON.stringify(t));
+//
+// var newData = JSON.stringify(myObject);
+// fs.writeFile('./src/server/scores.json', newData, err => {
+//     // error checking
+//     if(err) throw err;
+//
+//     console.log("New data added");
+// });
+//
 
-var newData = JSON.stringify(myObject);
-fs.writeFile('./src/server/scores.json', newData, err => {
-    // error checking
-    if(err) throw err;
 
-    console.log("New data added");
-});
+
+
+
+
+
+
+
+
+// Storing the JSON format data in myObject
+var data:any = fs.readFileSync("./src/server/scores.json");
+var myObject = JSON.parse(data);
+console.log(myObject.push("coucou"))
+//
+// // Defining new data to be added
+// let newData = {
+//   country: "England",
+// };
+//
+// // Adding the new data to our object
+// myObject.push(newData);
+//
+// // Writing to our JSON file
+// var newData2 = JSON.stringify(myObject);
+// fs.writeFile("data2.json", newData2, (err) => {
+//   // Error checking
+//   if (err) throw err;
+//   console.log("New data added");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(newData));
+  res.end(
+    JSON.stringify({
+      "BATMAN":{
+        "joueurs": ["Jamie", "Marcel", "Jean"],
+        "score": "3min"
+      },
+      "SUPERMAN": {
+        "joueurs": ["SOSO", "SASA", "Jean"],
+        "score": "4min"
+      },
+      "ZORRO": {
+        "joueurs": ["MDR", "LOL", "YES"],
+        "score": "1min"
+      }
+    }));
 })
 
 app.get('/:id', (_request, response) => {
