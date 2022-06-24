@@ -39,21 +39,6 @@
                     "height": 128
                 },
                 {
-                    "type": "Text",
-                    "id": "574440f0-b59a-4223-ad2d-ac6fdfdf6cfe",
-                    "label": "voir_plus",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 960,
-                    "y": 703,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "Voir plus...",
-                    "fontSize": "20px",
-                    "fontStyle": "italic",
-                    "shadow.blur": 3
-                },
-                {
                     "type": "Rectangle",
                     "id": "b6ccbdfd-14ba-4bba-bd6b-489057dae183",
                     "label": "retour",

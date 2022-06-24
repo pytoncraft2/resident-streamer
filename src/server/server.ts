@@ -42,9 +42,9 @@ app.get('/scores', (_request, res) => {
 app.post('/scores', (_request, res) => {
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  myObject["EQUIPE JAMIE"] = {
-    "joueurs": ["Jamie", "Marcel", "Jean"],
-    "score": "3min"
+  myObject["EQUIPE ZzdKE"] = {
+    "joueurs": ["kiwi", "hiver", "jsp"],
+    "score": "1min"
   }
   var newData2 = JSON.stringify(myObject);
   fs.writeFile("./src/server/scores.json", newData2, (err) => {

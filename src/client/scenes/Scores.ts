@@ -35,13 +35,6 @@ export default class Scores extends Phaser.Scene {
 		boutonScore_1.lineWidth = 4;
 		btnScore.add(boutonScore_1);
 
-		// voir_plus
-		const voir_plus = this.add.text(960, 703, "", {});
-		voir_plus.setOrigin(0.5, 0.5);
-		voir_plus.text = "Voir plus...";
-		voir_plus.setStyle({ "fontSize": "20px", "fontStyle": "italic", "shadow.blur":3});
-		btnScore.add(voir_plus);
-
 		// retour
 		const retour = this.add.rectangle(95.75, 29, 128, 128);
 		retour.scaleX = 1.4616145859770209;
@@ -69,7 +62,6 @@ export default class Scores extends Phaser.Scene {
 
 		this.btnScore = btnScore;
 		this.boutonScore_1 = boutonScore_1;
-		this.voir_plus = voir_plus;
 		this.retour = retour;
 		this.container_scores = container_scores;
 
@@ -78,7 +70,6 @@ export default class Scores extends Phaser.Scene {
 
 	public btnScore!: Phaser.GameObjects.Layer;
 	public boutonScore_1!: Phaser.GameObjects.Rectangle;
-	public voir_plus!: Phaser.GameObjects.Text;
 	public retour!: Phaser.GameObjects.Rectangle;
 	public container_scores!: Phaser.GameObjects.Container;
 
@@ -89,34 +80,51 @@ export default class Scores extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+		var graphics = this.make.graphics({
+			x: 300,
+			y: 200
+		});
+
+    graphics.fillRect(152, 133, 1000, 350);
+
+    var mask = new Phaser.Display.Masks.GeometryMask(this, graphics);
 
 		this.retour.setInteractive({ useHandCursor: true })
 		.on('pointerdown', () => {
 			this.scene.start("Level")
 		})
-		// const test = this.add.text(0, 210, "", {});
-		// test.setOrigin(0.5, 0.5);
-		// test.text = "YYYYYYYYYYYYYYYYYYYYYES";
-		// test.setStyle({ "fontSize": "20px" });
-		// console.log(this.container_scores.length * 2)
-		//
-		// this.container_scores.add(test)
+		// setTimeout(() => {
+		// 	const article = { title: 'Axios POST Request Example' };
+		// 	axios.post('http://localhost:3000/scores', article)
+		// 	    .then(response => console.log(response));
+		// }, 2000);
+			var zone = this.add.zone(152, 133, 1000, 250).setOrigin(0).setInteractive().setDepth(40);
 		axios.get("http://localhost:3000" + "/scores").then(res => {
 			var tableau: any = []
 			Object.entries(res.data).forEach((element: any, index: number) => {
-				// this.add.text(0, this.container_scores.length + 90, `${element[0]}`, {});
-				// test.setStyle({ "fontSize": "20px" });
 				tableau.push("⏱️" + element[1].score + " - " + element[0] + " (" + element[1].joueurs.join(",") + ")\n")
-				// console.log(element[1].joueurs)
-				// let text = this.add.text(0, index + 400, element[1].joueurs, { fontFamily: 'Arial', color: '#00ff00', wordWrap: { width: 310 } }).setOrigin(0);
-				// console.log(this.container_scores.length)
 			});
-			var text = this.add.text(100, 10, tableau, { wordWrap: { width: 410 } }).setOrigin(0.5, 0.5);
+			var text = this.add.text(0, 0, tableau, { wordWrap: { width: 410 } }).setOrigin(0.5, 0.5);
+			//960
+			//464
 			this.container_scores.add(text)
+			this.container_scores.setPosition(960, 464)
+			text.setMask(mask);
+
+			zone.on('pointermove', function (pointer: any) {
+				if (pointer.isDown)
+				{
+					text.y += (pointer.velocity.y / 10);
+
+					text.y = Phaser.Math.Clamp(text.y, -400, 300);
+				}
+			});
+
 
 		}).catch(err => {
 			console.log(err)
 		});
+
 	}
 
 	/* END-USER-CODE */
