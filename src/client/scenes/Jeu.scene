@@ -484,6 +484,20 @@
         },
         {
             "type": "Ellipse",
+            "id": "64b0c689-2bba-4740-acaa-3528d5931ec4",
+            "label": "ellipse_5_1",
+            "components": [],
+            "x": 613,
+            "y": 1053,
+            "scaleX": 0.37184784435596524,
+            "scaleY": 0.37184784435596524,
+            "isFilled": true,
+            "fillColor": "#36f93b",
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Ellipse",
             "id": "7ea40664-65c7-4513-9edd-2e153dd0d419",
             "label": "ellipse_5",
             "components": [],

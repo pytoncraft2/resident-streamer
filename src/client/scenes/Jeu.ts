@@ -253,6 +253,13 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_2.fillColor = 0;
 		rectangle_2.fillAlpha = 0.6;
 
+		// ellipse_5_1
+		const ellipse_5_1 = this.add.ellipse(613, 1053, 128, 128);
+		ellipse_5_1.scaleX = 0.37184784435596524;
+		ellipse_5_1.scaleY = 0.37184784435596524;
+		ellipse_5_1.isFilled = true;
+		ellipse_5_1.fillColor = 3602747;
+
 		// ellipse_5
 		const ellipse_5 = this.add.ellipse(541, 1018, 128, 128);
 		ellipse_5.scaleX = 0.8179399157486755;
