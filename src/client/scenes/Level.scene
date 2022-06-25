@@ -91,13 +91,14 @@
             "id": "6885805c-b552-4ab0-a898-831ed89d2d21",
             "label": "rectangle",
             "components": [],
+            "x": -0.7049910518748277,
             "y": 349,
             "scaleX": 3.068905970371089,
             "scaleY": 0.4845245709072934,
             "originX": 0,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0,
+            "fillAlpha": 0.1,
             "width": 128,
             "height": 128
         },
@@ -158,6 +159,19 @@
             "fillAlpha": 0,
             "width": 128,
             "height": 128
+        },
+        {
+            "type": "Text",
+            "id": "a46f9a3c-a0b6-4de9-8b1d-07decb2abd90",
+            "label": "text_1",
+            "components": [],
+            "x": 195.70499105187486,
+            "y": 347,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Salons",
+            "fontFamily": "CustomFontItalic",
+            "fontSize": "26px"
         }
     ],
     "plainObjects": [],

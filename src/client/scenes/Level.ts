@@ -58,13 +58,13 @@ export default class Level extends Phaser.Scene {
 		text.setStyle({ "fontFamily": "CustomFontNormal", "fontSize": "49px" });
 
 		// rectangle
-		const rectangle = this.add.rectangle(0, 349, 128, 128);
+		const rectangle = this.add.rectangle(-0.7049910518748277, 349, 128, 128);
 		rectangle.scaleX = 3.068905970371089;
 		rectangle.scaleY = 0.4845245709072934;
 		rectangle.setOrigin(0, 0.5);
 		rectangle.isFilled = true;
 		rectangle.fillColor = 0;
-		rectangle.fillAlpha = 0.2;
+		rectangle.fillAlpha = 0.1;
 
 		// rectangle_1
 		const rectangle_1 = this.add.rectangle(0, 419.01914507613355, 128, 128);
@@ -73,7 +73,7 @@ export default class Level extends Phaser.Scene {
 		rectangle_1.setOrigin(0, 0.5);
 		rectangle_1.isFilled = true;
 		rectangle_1.fillColor = 0;
-		rectangle_1.fillAlpha = 0.2;
+		rectangle_1.fillAlpha = 0;
 
 		// rectangle_2
 		const rectangle_2 = this.add.rectangle(196.40998210374968, 312, 128, 128);
@@ -88,7 +88,7 @@ export default class Level extends Phaser.Scene {
 		rectangle_3.setOrigin(0, 0.5);
 		rectangle_3.isFilled = true;
 		rectangle_3.fillColor = 0;
-		rectangle_3.fillAlpha = 0.2;
+		rectangle_3.fillAlpha = 0;
 
 		// rectangle_1_1
 		const rectangle_1_1 = this.add.rectangle(0, 559.0574352284007, 128, 128);
@@ -97,7 +97,13 @@ export default class Level extends Phaser.Scene {
 		rectangle_1_1.setOrigin(0, 0.5);
 		rectangle_1_1.isFilled = true;
 		rectangle_1_1.fillColor = 0;
-		rectangle_1_1.fillAlpha = 0.2;
+		rectangle_1_1.fillAlpha = 0;
+
+		// text_1
+		const text_1 = this.add.text(195.70499105187486, 347, "", {});
+		text_1.setOrigin(0.5, 0.5);
+		text_1.text = "Salons";
+		text_1.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "26px" });
 
 		// lists
 		const list: Array<any> = [];
@@ -117,8 +123,6 @@ export default class Level extends Phaser.Scene {
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
-	listeLobby: any
-	listeRoom: any
 	groupSalon!: Phaser.GameObjects.Group
 
 	// Write your code here
@@ -129,7 +133,6 @@ export default class Level extends Phaser.Scene {
 
 		const group = this.add.group();
 		this.groupSalon = group;
-		// this.alignCorrectementListe(group)
 
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
@@ -158,8 +161,6 @@ export default class Level extends Phaser.Scene {
 	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
 
-	this.listeRoom = 0;
-	this.listeLobby = []
 
 	// this.add.text(window.innerWidth/2, 100, 'RESIDENT STREAMER', { fontFamily: 'CustomFontNormal' }).setOrigin(0.5).setFontSize(45);
 
@@ -261,11 +262,10 @@ this.tweens.add({
 * @param  {String} intro: string[]             texte de bienvenue
 */
 miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
-self.listeLobby = []
 self.groupSalon.clear(true);
 allRooms.map((val: any) => {
 	if (val.metadata) {
-		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients}) 🔥`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
 		nomSalon.setInteractive({ useHandCursor: true })
 			.on('pointerover', () => {
 				this.tweens.add({ targets: this, alpha: 0.5, duration: 200, ease: 'Power3' })
@@ -286,7 +286,6 @@ allRooms.map((val: any) => {
 	}
 })
 	console.log(this.groupSalon.getLength())
-// text.setText(self.listeLobby)
 }
 
 alignCorrectementListe(group: Phaser.GameObjects.Group) {
@@ -296,7 +295,7 @@ alignCorrectementListe(group: Phaser.GameObjects.Group) {
 		cellWidth: 200,
 		cellHeight: 72,
 		x: 164,
-		y: 361
+		y: 441
 	});
 }
 
