@@ -43,13 +43,19 @@ export default class Level extends Phaser.Scene {
 		panel_score_1.scaleY = 8.514712616914972;
 		panel_score_1.isFilled = true;
 		panel_score_1.fillColor = 0;
-		panel_score_1.fillAlpha = 0.3;
+		panel_score_1.fillAlpha = 0.21;
 
 		// CustomFontNormal
 		const customFontNormal = this.add.text(202.70499105187486, 88, "", {});
 		customFontNormal.setOrigin(0.5, 0.5);
 		customFontNormal.text = "Bienvenue !";
-		customFontNormal.setStyle({ "align": "center", "fontFamily": "CustomFontNormal", "fontSize": "56px", "fontStyle": "bold" });
+		customFontNormal.setStyle({ "align": "center", "fontFamily": "CustomFontItalic", "fontSize": "56px", "fontStyle": "bold" });
+
+		// text
+		const text = this.add.text(960, 68, "", {});
+		text.setOrigin(0.5, 0.5);
+		text.text = "🧟 RESIDENT STREAMER 🦾";
+		text.setStyle({ "fontFamily": "CustomFontNormal", "fontSize": "49px" });
 
 		this.panel_score = panel_score;
 		this.texte_score = texte_score;

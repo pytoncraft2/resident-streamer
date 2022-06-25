@@ -54,7 +54,7 @@
             "scaleY": 8.514712616914972,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0.3,
+            "fillAlpha": 0.21,
             "width": 128,
             "height": 128
         },
@@ -69,9 +69,22 @@
             "originY": 0.5,
             "text": "Bienvenue !",
             "align": "center",
-            "fontFamily": "CustomFontNormal",
+            "fontFamily": "CustomFontItalic",
             "fontSize": "56px",
             "fontStyle": "bold"
+        },
+        {
+            "type": "Text",
+            "id": "02a5d8ef-2ef5-4957-85dc-f927992fb09c",
+            "label": "text",
+            "components": [],
+            "x": 960,
+            "y": 68,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "🧟 RESIDENT STREAMER 🦾",
+            "fontFamily": "CustomFontNormal",
+            "fontSize": "49px"
         }
     ],
     "plainObjects": [],
