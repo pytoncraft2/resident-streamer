@@ -493,6 +493,7 @@
             "scaleY": 0.37184784435596524,
             "isFilled": true,
             "fillColor": "#36f93b",
+            "fillAlpha": 0,
             "width": 128,
             "height": 128
         },
@@ -688,8 +689,8 @@
             "scaleX": 1.3025571558163676,
             "scaleY": 0.3373770596916607,
             "isFilled": true,
-            "fillColor": "#9810c9",
-            "fillAlpha": 0.1,
+            "fillColor": "#2cf60c",
+            "fillAlpha": 0.4,
             "isStroked": true,
             "width": 128,
             "height": 128
