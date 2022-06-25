@@ -1,7 +1,5 @@
 // import { Player } from "../RoomState"
 
-import BossClass from "./class/bosses/BossClass"
-import { Compteur } from "../RoomState"
 import PlayerClass from "./class/PlayerClass"
 
 
@@ -127,6 +125,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   getPresence() {
+    console.log("PRESENCE FONCTION")
     let response = {}
     if (this.players) {
       this.players.children.iterate((child: any) => {
@@ -138,7 +137,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }
 
     if (this.groupeBoulesHuzounet) {
-      console.log("IIIIIIIIIIIIITERATE")
+      // console.log("IIIIIIIIIIIIITERATE")
       // this.groupeBoulesHuzounet.children.iterate((child: any)=> {
       //   if (child.data.values.ClientId) {
       //     response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
@@ -194,7 +193,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   CommencerCompteur() {
-    var timer = this.time.addEvent({
+    this.time.addEvent({
       delay: 1000,                // ms
       callback: function() {
         this.room.state.compteur += 1
@@ -202,10 +201,5 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
       callbackScope: this,
       loop: true
     });
-  }
-
-  callback(r) {
-    console.log("AUGMENTATION")
-      // r.compteur += 1
   }
 }
