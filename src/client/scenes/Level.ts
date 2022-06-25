@@ -23,110 +23,54 @@ export default class Level extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// btnScore
-		const btnScore = this.add.layer();
+		// panel_score
+		const panel_score = this.add.rectangle(2066, 540, 128, 128);
+		panel_score.scaleX = 2.16237993879383;
+		panel_score.scaleY = 8.514712616914972;
+		panel_score.isFilled = true;
+		panel_score.fillColor = 0;
+		panel_score.fillAlpha = 0.3;
 
 		// boutonScore
-		const boutonScore = this.add.rectangle(1610, 296, 128, 128);
-		boutonScore.scaleX = 2.2270445356590725;
-		boutonScore.scaleY = 0.6321953827491891;
-		boutonScore.isFilled = true;
-		boutonScore.fillColor = 0;
-		boutonScore.fillAlpha = 0.3;
-		boutonScore.isStroked = true;
-		boutonScore.strokeAlpha = 0.3;
-		boutonScore.lineWidth = 4;
-		btnScore.add(boutonScore);
+		const boutonScore = this.add.container(1859, 540);
+
+		// boutonScores
+		const boutonScores = this.add.triangle(0, 0, 0, 128, 64, 0, 128, 128);
+		boutonScores.scaleX = 6.437830092434977;
+		boutonScores.scaleY = 0.9257639302863235;
+		boutonScores.angle = -90;
+		boutonScores.isFilled = true;
+		boutonScores.fillColor = 0;
+		boutonScores.fillAlpha = 0;
+		boutonScore.add(boutonScores);
 
 		// texte_score
-		const texte_score = this.add.text(1610, 296, "", {});
+		const texte_score = this.add.text(5, 0, "", {});
 		texte_score.setOrigin(0.5, 0.5);
 		texte_score.text = "Scores";
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
-		btnScore.add(texte_score);
+		boutonScore.add(texte_score);
 
-		// boutonScore_1
-		const boutonScore_1 = this.add.rectangle(1611, 556, 128, 128);
-		boutonScore_1.scaleX = 2.2270445356590725;
-		boutonScore_1.scaleY = 3.0228413760726456;
-		boutonScore_1.isFilled = true;
-		boutonScore_1.fillColor = 0;
-		boutonScore_1.fillAlpha = 0.3;
-		boutonScore_1.isStroked = true;
-		boutonScore_1.strokeAlpha = 0.3;
-		boutonScore_1.lineWidth = 4;
-		btnScore.add(boutonScore_1);
+		// ellipse
+		const ellipse = this.add.ellipse(2195, 540, 128, 128);
+		ellipse.scaleX = 6.1716101808611885;
+		ellipse.scaleY = 13.95514177129023;
+		ellipse.isFilled = true;
+		ellipse.fillColor = 0;
+		ellipse.fillAlpha = 0.3;
 
-		// text
-		const text = this.add.text(1598, 404, "", {});
-		text.setOrigin(0.5, 0.5);
-		text.text = "🥇 equipe batman";
-		text.setStyle({ "fontSize": "20px" });
-		btnScore.add(text);
-
-		// text_1
-		const text_1 = this.add.text(1610, 439, "", {});
-		text_1.setOrigin(0.5, 0.5);
-		text_1.text = "🥇 equipe superman";
-		text_1.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_1);
-
-		// text_2
-		const text_2 = this.add.text(1592, 471, "", {});
-		text_2.setOrigin(0.5, 0.5);
-		text_2.text = "🥇 equipe zorro";
-		text_2.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_2);
-
-		// text_3
-		const text_3 = this.add.text(1610, 514, "", {});
-		text_3.setOrigin(0.5, 0.5);
-		text_3.text = "🥇 equipe katarina";
-		text_3.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_3);
-
-		// text_4
-		const text_4 = this.add.text(1592, 559, "", {});
-		text_4.setOrigin(0.5, 0.5);
-		text_4.text = "🥇 equipe robin";
-		text_4.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_4);
-
-		// text_5
-		const text_5 = this.add.text(1580, 605, "", {});
-		text_5.setOrigin(0.5, 0.5);
-		text_5.text = "🥇 equipe 007";
-		text_5.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_5);
-
-		// text_6
-		const text_6 = this.add.text(1598, 645, "", {});
-		text_6.setOrigin(0.5, 0.5);
-		text_6.text = "🥇 equipe marcel";
-		text_6.setStyle({ "fontSize": "20px" });
-		btnScore.add(text_6);
-
-		// voir_plus
-		const voir_plus = this.add.text(1616, 717, "", {});
-		voir_plus.setOrigin(0.5, 0.5);
-		voir_plus.text = "Voir plus...";
-		voir_plus.setStyle({ "fontSize": "20px", "fontStyle": "italic", "shadow.blur":3});
-		btnScore.add(voir_plus);
-
-		this.btnScore = btnScore;
+		this.panel_score = panel_score;
 		this.boutonScore = boutonScore;
+		this.boutonScores = boutonScores;
 		this.texte_score = texte_score;
-		this.boutonScore_1 = boutonScore_1;
-		this.voir_plus = voir_plus;
 
 		this.events.emit("scene-awake");
 	}
 
-	public btnScore!: Phaser.GameObjects.Layer;
-	public boutonScore!: Phaser.GameObjects.Rectangle;
+	public panel_score!: Phaser.GameObjects.Rectangle;
+	public boutonScore!: Phaser.GameObjects.Container;
+	public boutonScores!: Phaser.GameObjects.Triangle;
 	public texte_score!: Phaser.GameObjects.Text;
-	public boutonScore_1!: Phaser.GameObjects.Rectangle;
-	public voir_plus!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
@@ -152,11 +96,16 @@ export default class Level extends Phaser.Scene {
 
 		console.log("INIT")
 		console.log(this.boutonScore.y)
-		const btn = [this.boutonScore, this.voir_plus]
+		const btn = [this.boutonScores]
 		for (let key of btn)
 			key.setInteractive({ useHandCursor: true })
 			.on('pointerdown', () => {
-				this.scene.start("Scores")
+				// this.scene.start("Scores")
+
+				this.panel_score.x === 1775 ?
+				this.tweens.add({ targets: [this.panel_score], x: 2066, duration: 540, ease: 'Power3' })
+				: this.tweens.add({ targets: [this.panel_score], x: 1775, duration: 400, ease: 'Power3' })
+
 			})
 
 	this.client = new Colyseus.Client("ws://localhost:3000")

@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
 
 	const game = new Phaser.Game({
 		width: 1920,
-		height: 945,
+		height: 1080,
     transparent: true,
     parent: "app",
 		scale: {
