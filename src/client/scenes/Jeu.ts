@@ -286,6 +286,66 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_3_1.isFilled = true;
 		rectangle_3_1.fillColor = 15554289;
 
+		// rectangle_4
+		const rectangle_4 = this.add.rectangle(935, 997, 128, 128);
+		rectangle_4.scaleX = 0.4926742586809625;
+		rectangle_4.scaleY = 0.4926742586809625;
+		rectangle_4.isFilled = true;
+		rectangle_4.fillColor = 9965769;
+		rectangle_4.fillAlpha = 0.1;
+		rectangle_4.isStroked = true;
+
+		// text_3
+		const text_3 = this.add.text(935, 997, "", {});
+		text_3.setOrigin(0.5, 0.5);
+		text_3.text = "A";
+		text_3.setStyle({ "fontSize": "26px" });
+
+		// rectangle_4_1
+		const rectangle_4_1 = this.add.rectangle(1004, 997, 128, 128);
+		rectangle_4_1.scaleX = 0.4926742586809625;
+		rectangle_4_1.scaleY = 0.4926742586809625;
+		rectangle_4_1.isFilled = true;
+		rectangle_4_1.fillColor = 9965769;
+		rectangle_4_1.fillAlpha = 0.1;
+		rectangle_4_1.isStroked = true;
+
+		// text_3_1
+		const text_3_1 = this.add.text(1004, 997, "", {});
+		text_3_1.setOrigin(0.5, 0.5);
+		text_3_1.text = "Z";
+		text_3_1.setStyle({ "fontSize": "26px" });
+
+		// rectangle_4_2
+		const rectangle_4_2 = this.add.rectangle(1073, 997.0000000000001, 128, 128);
+		rectangle_4_2.scaleX = 0.4926742586809625;
+		rectangle_4_2.scaleY = 0.4926742586809625;
+		rectangle_4_2.isFilled = true;
+		rectangle_4_2.fillColor = 9965769;
+		rectangle_4_2.fillAlpha = 0.1;
+		rectangle_4_2.isStroked = true;
+
+		// text_3_2
+		const text_3_2 = this.add.text(1073, 997, "", {});
+		text_3_2.setOrigin(0.5, 0.5);
+		text_3_2.text = "E";
+		text_3_2.setStyle({ "fontSize": "26px" });
+
+		// rectangle_4_2_1
+		const rectangle_4_2_1 = this.add.rectangle(1142, 997, 128, 128);
+		rectangle_4_2_1.scaleX = 0.4926742586809625;
+		rectangle_4_2_1.scaleY = 0.4926742586809625;
+		rectangle_4_2_1.isFilled = true;
+		rectangle_4_2_1.fillColor = 9965769;
+		rectangle_4_2_1.fillAlpha = 0.1;
+		rectangle_4_2_1.isStroked = true;
+
+		// text_3_2_1
+		const text_3_2_1 = this.add.text(1142, 998, "", {});
+		text_3_2_1.setOrigin(0.5, 0.5);
+		text_3_2_1.text = "R";
+		text_3_2_1.setStyle({ "fontSize": "26px" });
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
