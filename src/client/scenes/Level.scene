@@ -97,7 +97,7 @@
             "originX": 0,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0.2,
+            "fillAlpha": 0,
             "width": 128,
             "height": 128
         },
@@ -112,7 +112,7 @@
             "originX": 0,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0.2,
+            "fillAlpha": 0,
             "width": 128,
             "height": 128
         },
@@ -140,7 +140,7 @@
             "originX": 0,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0.2,
+            "fillAlpha": 0,
             "width": 128,
             "height": 128
         },
@@ -155,7 +155,7 @@
             "originX": 0,
             "isFilled": true,
             "fillColor": "#000000",
-            "fillAlpha": 0.2,
+            "fillAlpha": 0,
             "width": 128,
             "height": 128
         }

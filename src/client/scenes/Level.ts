@@ -187,7 +187,7 @@ export default class Level extends Phaser.Scene {
 		} else {
 			allRooms.push(room);
 		}
-		this.miseAjourListe(self, allRooms, text)
+		if (this.groupSalon) this.miseAjourListe(self, allRooms, text)
 	});
 
 	lobby.onMessage("-", (roomId) => {
@@ -262,15 +262,30 @@ this.tweens.add({
 */
 miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
 self.listeLobby = []
-this.groupSalon.clear(true);
+self.groupSalon.clear(true);
 allRooms.map((val: any) => {
 	if (val.metadata) {
 		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
-		console.log(this.groupSalon.getMatching('text', `${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`))
+		nomSalon.setInteractive({ useHandCursor: true })
+			.on('pointerover', () => {
+				this.tweens.add({ targets: this, alpha: 0.5, duration: 200, ease: 'Power3' })
+			})
+			.on('pointerout', () => {
+				this.tweens.add({ targets: this, alpha: 1, duration: 500, ease: 'Power3' })
+			})
+			.on('pointerdown', () => {
+				// this.scene.start("Scores")
+				// const salon = inputUsername.value;
+				// lobby.leave()
+				self.scene.stop('Level');
+
+				self.scene.start('Lobby', {salon: val.metadata.nomRoom, id: false});
+			})
 		this.groupSalon.add(nomSalon);
 		this.alignCorrectementListe(this.groupSalon)
 	}
 })
+	console.log(this.groupSalon.getLength())
 // text.setText(self.listeLobby)
 }
 
