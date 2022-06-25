@@ -45,16 +45,16 @@ export default class Level extends Phaser.Scene {
 		boutonScore.add(boutonScores);
 
 		// texte_score
-		const texte_score = this.add.text(5, 0, "", {});
+		const texte_score = this.add.text(19, 0, "", {});
 		texte_score.setOrigin(0.5, 0.5);
 		texte_score.text = "Scores";
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
 		boutonScore.add(texte_score);
 
 		// ellipse
-		const ellipse = this.add.ellipse(2195, 540, 128, 128);
+		const ellipse = this.add.ellipse(2232, 540, 128, 128);
 		ellipse.scaleX = 6.1716101808611885;
-		ellipse.scaleY = 13.95514177129023;
+		ellipse.scaleY = 17.912460404432274;
 		ellipse.isFilled = true;
 		ellipse.fillColor = 0;
 		ellipse.fillAlpha = 0.3;
@@ -105,14 +105,9 @@ export default class Level extends Phaser.Scene {
 			.on('pointerout', () => {
 				this.tweens.add({ targets: [this.panel_score], x: 2066, duration: 540, ease: 'Power3' })
 			})
-			// .on('pointerdown', () => {
-			// 	// this.scene.start("Scores")
-			//
-			// 	this.panel_score.x === 1775 ?
-			// 	this.tweens.add({ targets: [this.panel_score], x: 2066, duration: 540, ease: 'Power3' })
-			// 	: this.tweens.add({ targets: [this.panel_score], x: 1775, duration: 400, ease: 'Power3' })
-			//
-			// })
+			.on('pointerdown', () => {
+				this.scene.start("Scores")
+			})
 
 	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
