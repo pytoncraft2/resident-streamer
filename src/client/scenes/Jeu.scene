@@ -521,6 +521,20 @@
             "y": 1053,
             "scaleX": 0.16275708974409425,
             "scaleY": 0.16275708974409425
+        },
+        {
+            "type": "Rectangle",
+            "id": "f9bb9e77-dd3f-475d-990d-cd7a8a1b1f67",
+            "label": "rectangle_3",
+            "components": [],
+            "x": 1042,
+            "y": 1055,
+            "scaleX": 5.150602609693634,
+            "scaleY": 0.21267753602571016,
+            "isFilled": true,
+            "fillColor": "#ed56f1",
+            "width": 128,
+            "height": 128
         }
     ],
     "plainObjects": [],
