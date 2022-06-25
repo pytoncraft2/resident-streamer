@@ -38,7 +38,7 @@ export default class Level extends Phaser.Scene {
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
 
 		// panel_score_1
-		const panel_score_1 = this.add.rectangle(202.70499105187486, 540, 128, 128);
+		const panel_score_1 = this.add.rectangle(196.40998210374968, 540, 128, 128);
 		panel_score_1.scaleX = 3.068905970371089;
 		panel_score_1.scaleY = 8.514712616914972;
 		panel_score_1.isFilled = true;
@@ -56,6 +56,38 @@ export default class Level extends Phaser.Scene {
 		text.setOrigin(0.5, 0.5);
 		text.text = "🧟 RESIDENT STREAMER 🦾";
 		text.setStyle({ "fontFamily": "CustomFontNormal", "fontSize": "49px" });
+
+		// rectangle
+		const rectangle = this.add.rectangle(0, 349, 128, 128);
+		rectangle.scaleX = 3.068905970371089;
+		rectangle.scaleY = 0.4845245709072934;
+		rectangle.setOrigin(0, 0.5);
+		rectangle.isFilled = true;
+		rectangle.fillColor = 0;
+		rectangle.fillAlpha = 0.2;
+
+		// rectangle_1
+		const rectangle_1 = this.add.rectangle(0, 417, 128, 128);
+		rectangle_1.scaleX = 3.068905970371089;
+		rectangle_1.scaleY = 0.4845245709072934;
+		rectangle_1.setOrigin(0, 0.5);
+		rectangle_1.isFilled = true;
+		rectangle_1.fillColor = 0;
+		rectangle_1.fillAlpha = 0.2;
+
+		// text_1
+		const text_1 = this.add.text(164, 341, "", {});
+		text_1.text = "SALON 1";
+
+		// text_1_1
+		const text_1_1 = this.add.text(145, 405, "", {});
+		text_1_1.text = "SALON Jamie";
+
+		// rectangle_2
+		const rectangle_2 = this.add.rectangle(196.40998210374968, 312, 128, 128);
+		rectangle_2.scaleX = 3.068905970371089;
+		rectangle_2.scaleY = 0.021258305447056074;
+		rectangle_2.isFilled = true;
 
 		// lists
 		const list: Array<any> = [];
