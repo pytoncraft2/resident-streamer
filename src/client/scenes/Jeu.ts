@@ -363,18 +363,21 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_3.fillColor = 9965769;
 		rectangle_4_3.fillAlpha = 0.1;
 		rectangle_4_3.isStroked = true;
+		rectangle_4_3.strokeColor = 3155237;
 
 		// rectangle_5
 		const rectangle_5 = this.add.rectangle(780, 982, 128, 128);
 		rectangle_5.scaleX = 0.7998016954981302;
 		rectangle_5.scaleY = 0.04630570216976848;
 		rectangle_5.isFilled = true;
+		rectangle_5.fillColor = 5916487;
 
 		// rectangle_5_1
 		const rectangle_5_1 = this.add.rectangle(818, 1002, 128, 128);
 		rectangle_5_1.scaleX = 0.7998016954981302;
 		rectangle_5_1.scaleY = 0.04630570216976848;
 		rectangle_5_1.isFilled = true;
+		rectangle_5_1.fillColor = 5916487;
 
 		// triangle_2
 		const triangle_2 = this.add.triangle(868, 1002, 0, 128, 64, 0, 128, 128);
@@ -382,6 +385,7 @@ export default class Jeu extends Phaser.Scene {
 		triangle_2.scaleY = 0.12492350627216228;
 		triangle_2.angle = 90;
 		triangle_2.isFilled = true;
+		triangle_2.fillColor = 5916487;
 
 		// triangle_2_1
 		const triangle_2_1 = this.add.triangle(725, 982, 0, 128, 64, 0, 128, 128);
@@ -389,10 +393,12 @@ export default class Jeu extends Phaser.Scene {
 		triangle_2_1.scaleY = 0.12492350627216228;
 		triangle_2_1.angle = -90;
 		triangle_2_1.isFilled = true;
+		triangle_2_1.fillColor = 5916487;
 
 		// text_4
 		const text_4 = this.add.text(754, 1018, "", {});
 		text_4.text = "Fusionner";
+		text_4.setStyle({ "color": "#5a4747ff" });
 
 		// text_5
 		const text_5 = this.add.text(915, 1012, "", {});

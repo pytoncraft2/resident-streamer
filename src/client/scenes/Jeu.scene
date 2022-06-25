@@ -693,6 +693,7 @@
             "isFilled": true,
             "fillColor": "#9810c9",
             "fillAlpha": 0.1,
+            "strokeColor": "#302525",
             "isStroked": true,
             "width": 128,
             "height": 128
@@ -707,6 +708,7 @@
             "scaleX": 0.7998016954981302,
             "scaleY": 0.04630570216976848,
             "isFilled": true,
+            "fillColor": "#5a4747ff",
             "width": 128,
             "height": 128
         },
@@ -720,6 +722,7 @@
             "scaleX": 0.7998016954981302,
             "scaleY": 0.04630570216976848,
             "isFilled": true,
+            "fillColor": "#5a4747ff",
             "width": 128,
             "height": 128
         },
@@ -733,7 +736,8 @@
             "scaleX": 0.12492350627216228,
             "scaleY": 0.12492350627216228,
             "angle": 90,
-            "isFilled": true
+            "isFilled": true,
+            "fillColor": "#5a4747ff"
         },
         {
             "type": "Triangle",
@@ -745,7 +749,8 @@
             "scaleX": 0.12492350627216228,
             "scaleY": 0.12492350627216228,
             "angle": -90,
-            "isFilled": true
+            "isFilled": true,
+            "fillColor": "#5a4747ff"
         },
         {
             "type": "Text",
@@ -754,7 +759,8 @@
             "components": [],
             "x": 754,
             "y": 1018,
-            "text": "Fusionner"
+            "text": "Fusionner",
+            "color": "#5a4747ff"
         },
         {
             "type": "Text",
