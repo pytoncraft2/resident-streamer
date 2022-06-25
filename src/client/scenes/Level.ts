@@ -7,8 +7,6 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { RoomAvailable } from "colyseus.js";
-import Button from "../utils/bouton"
-import Panel from "../utils/panel";
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -161,24 +159,13 @@ export default class Level extends Phaser.Scene {
 	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
 
-
-	// this.add.text(window.innerWidth/2, 100, 'RESIDENT STREAMER', { fontFamily: 'CustomFontNormal' }).setOrigin(0.5).setFontSize(45);
-
-	// let intro = ["Combatter le plus rapidement possible les 5 Boss du manoirs.", "De 1 à 4 joueurs !", "__________________", "Lobby disponible", "__________________"];
-
-	// var text = new Panel("Bienvenue !",[""] , this, () => {
-	// })
-	var text = this.add.text(20, 50, [""], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
-
-
-
 	const lobby = await client.joinOrCreate("acceuil");
 
 	let allRooms: RoomAvailable[] = [];
 
 	lobby.onMessage("rooms", (rooms) => {
 		allRooms = rooms;
-		this.miseAjourListe(self, allRooms, text)
+		this.miseAjourListe(self, allRooms)
 	});
 
 	lobby.onMessage("+", ([roomId, room]) => {
@@ -188,12 +175,12 @@ export default class Level extends Phaser.Scene {
 		} else {
 			allRooms.push(room);
 		}
-		if (this.groupSalon) this.miseAjourListe(self, allRooms, text)
+		if (this.groupSalon) this.miseAjourListe(self, allRooms)
 	});
 
 	lobby.onMessage("-", (roomId) => {
 		allRooms = allRooms.filter((room) => room.roomId !== roomId);
-		this.miseAjourListe(self, allRooms, text)
+		this.miseAjourListe(self, allRooms)
 	});
 
 	const self = this;
@@ -261,7 +248,7 @@ this.tweens.add({
 * @param  {String} text: any                   texte phaser et contenu à mettre à jour
 * @param  {String} intro: string[]             texte de bienvenue
 */
-miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
+miseAjourListe(self: any, allRooms: Object[]|string[]) {
 self.groupSalon.clear(true);
 allRooms.map((val: any) => {
 	if (val.metadata) {
