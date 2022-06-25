@@ -13,15 +13,16 @@
     },
     "displayList": [
         {
-            "type": "Rectangle",
+            "type": "Ellipse",
             "id": "1616f38a-ed44-44f6-857e-03950dcc8b26",
             "label": "panel_score",
             "scope": "PUBLIC",
             "components": [],
-            "x": 2066,
+            "x": 1734,
             "y": 540,
-            "scaleX": 2.16237993879383,
-            "scaleY": 8.514712616914972,
+            "scaleX": 1.5286248291719469,
+            "scaleY": 1.5286248291719469,
+            "angle": -46,
             "isFilled": true,
             "fillColor": "#000000",
             "fillAlpha": 0.3,
@@ -29,56 +30,18 @@
             "height": 128
         },
         {
-            "type": "Container",
-            "id": "43209a43-fc83-4324-befc-3c9448166bb3",
-            "label": "boutonScore",
+            "type": "Text",
+            "id": "96f668cd-bc4a-46d7-9c22-65105ab08e85",
+            "label": "texte_score",
             "scope": "PUBLIC",
             "components": [],
-            "x": 1859,
+            "x": 1734,
             "y": 540,
-            "list": [
-                {
-                    "type": "Triangle",
-                    "id": "6113a9a1-6d9c-4b07-bf1d-f6a901719554",
-                    "label": "boutonScores",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "scaleX": 6.437830092434977,
-                    "scaleY": 0.9257639302863235,
-                    "angle": -90,
-                    "isFilled": true,
-                    "fillColor": "#000000",
-                    "fillAlpha": 0
-                },
-                {
-                    "type": "Text",
-                    "id": "96f668cd-bc4a-46d7-9c22-65105ab08e85",
-                    "label": "texte_score",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 19,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "Scores",
-                    "fontFamily": "CustomFontItalic",
-                    "fontSize": "28px"
-                }
-            ]
-        },
-        {
-            "type": "Ellipse",
-            "id": "ae41e0bd-dc01-45e1-95fb-90224774233e",
-            "label": "ellipse",
-            "components": [],
-            "x": 2232,
-            "y": 540,
-            "scaleX": 6.1716101808611885,
-            "scaleY": 17.912460404432274,
-            "isFilled": true,
-            "fillColor": "#000000",
-            "fillAlpha": 0.3,
-            "width": 128,
-            "height": 128
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Scores",
+            "fontFamily": "CustomFontItalic",
+            "fontSize": "28px"
         },
         {
             "type": "Rectangle",

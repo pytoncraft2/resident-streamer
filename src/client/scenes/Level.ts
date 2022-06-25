@@ -24,40 +24,19 @@ export default class Level extends Phaser.Scene {
 	editorCreate(): void {
 
 		// panel_score
-		const panel_score = this.add.rectangle(2066, 540, 128, 128);
-		panel_score.scaleX = 2.16237993879383;
-		panel_score.scaleY = 8.514712616914972;
+		const panel_score = this.add.ellipse(1734, 540, 128, 128);
+		panel_score.scaleX = 1.5286248291719469;
+		panel_score.scaleY = 1.5286248291719469;
+		panel_score.angle = -46;
 		panel_score.isFilled = true;
 		panel_score.fillColor = 0;
 		panel_score.fillAlpha = 0.3;
 
-		// boutonScore
-		const boutonScore = this.add.container(1859, 540);
-
-		// boutonScores
-		const boutonScores = this.add.triangle(0, 0, 0, 128, 64, 0, 128, 128);
-		boutonScores.scaleX = 6.437830092434977;
-		boutonScores.scaleY = 0.9257639302863235;
-		boutonScores.angle = -90;
-		boutonScores.isFilled = true;
-		boutonScores.fillColor = 0;
-		boutonScores.fillAlpha = 0;
-		boutonScore.add(boutonScores);
-
 		// texte_score
-		const texte_score = this.add.text(19, 0, "", {});
+		const texte_score = this.add.text(1734, 540, "", {});
 		texte_score.setOrigin(0.5, 0.5);
 		texte_score.text = "Scores";
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
-		boutonScore.add(texte_score);
-
-		// ellipse
-		const ellipse = this.add.ellipse(2232, 540, 128, 128);
-		ellipse.scaleX = 6.1716101808611885;
-		ellipse.scaleY = 17.912460404432274;
-		ellipse.isFilled = true;
-		ellipse.fillColor = 0;
-		ellipse.fillAlpha = 0.3;
 
 		// panel_score_1
 		const panel_score_1 = this.add.rectangle(196.40998210374968, 540, 128, 128);
@@ -68,17 +47,13 @@ export default class Level extends Phaser.Scene {
 		panel_score_1.fillAlpha = 0.3;
 
 		this.panel_score = panel_score;
-		this.boutonScore = boutonScore;
-		this.boutonScores = boutonScores;
 		this.texte_score = texte_score;
 		this.panel_score_1 = panel_score_1;
 
 		this.events.emit("scene-awake");
 	}
 
-	public panel_score!: Phaser.GameObjects.Rectangle;
-	public boutonScore!: Phaser.GameObjects.Container;
-	public boutonScores!: Phaser.GameObjects.Triangle;
+	public panel_score!: Phaser.GameObjects.Ellipse;
 	public texte_score!: Phaser.GameObjects.Text;
 	public panel_score_1!: Phaser.GameObjects.Rectangle;
 
@@ -104,14 +79,14 @@ export default class Level extends Phaser.Scene {
 
 	async afficheAcceuil() {
 
-		const btn = [this.boutonScores]
+		const btn = [this.panel_score]
 		for (let key of btn)
 			key.setInteractive({ useHandCursor: true })
 			.on('pointerover', () => {
-				this.tweens.add({ targets: [this.panel_score], x: 1775, duration: 400, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], angle: 90, duration: 400, ease: 'Power3' })
 			})
 			.on('pointerout', () => {
-				this.tweens.add({ targets: [this.panel_score], x: 2066, duration: 540, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], angle: -146, duration: 540, ease: 'Power3' })
 			})
 			.on('pointerdown', () => {
 				this.scene.start("Scores")
