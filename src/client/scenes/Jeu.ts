@@ -135,7 +135,7 @@ export default class Jeu extends Phaser.Scene {
 
 		// compteur
 		const compteur = this.add.text(1676, 20, "", {});
-		compteur.text = "0";
+		compteur.text = "00:00:00";
 		compteur.setStyle({ "fontSize": "45px" });
 		barreHautContainer.add(compteur);
 
@@ -244,6 +244,31 @@ export default class Jeu extends Phaser.Scene {
 		const text_1 = this.add.text(502, 543, "", {});
 		text_1.text = "Vous";
 		text_1.setStyle({ "backgroundColor": "#ffffffff", "color": "#5dcefcff", "fontStyle": "italic", "shadow.color": "#ffffffff", "shadow.blur":4,"shadow.stroke":true,"shadow.fill":true});
+
+		// rectangle_2
+		const rectangle_2 = this.add.rectangle(960, 1021, 128, 128);
+		rectangle_2.scaleX = 7.706419353393023;
+		rectangle_2.scaleY = 0.995444225494233;
+		rectangle_2.isFilled = true;
+		rectangle_2.fillColor = 0;
+		rectangle_2.fillAlpha = 0.6;
+
+		// ellipse_5
+		const ellipse_5 = this.add.ellipse(541, 1018, 128, 128);
+		ellipse_5.scaleX = 0.8179399157486755;
+		ellipse_5.scaleY = 0.8179399157486755;
+		ellipse_5.isFilled = true;
+		ellipse_5.fillAlpha = 0.2;
+
+		// profilFakhear
+		const profilFakhear = this.add.image(541, 1018, "profilFakhear");
+		profilFakhear.scaleX = 0.3983080418637645;
+		profilFakhear.scaleY = 0.3983080418637645;
+
+		// profilFakhear_1
+		const profilFakhear_1 = this.add.image(613, 1053, "profilFakhear");
+		profilFakhear_1.scaleX = 0.16275708974409425;
+		profilFakhear_1.scaleY = 0.16275708974409425;
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;

@@ -94,8 +94,6 @@ export default class Level extends Phaser.Scene {
 
 	async afficheAcceuil() {
 
-		console.log("INIT")
-		console.log(this.boutonScore.y)
 		const btn = [this.boutonScores]
 		for (let key of btn)
 			key.setInteractive({ useHandCursor: true })

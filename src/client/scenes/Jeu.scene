@@ -466,6 +466,61 @@
             "shadow.fill": true,
             "shadow.color": "#ffffffff",
             "shadow.blur": 4
+        },
+        {
+            "type": "Rectangle",
+            "id": "c87ca442-c7b8-4715-a285-70bfdcee6142",
+            "label": "rectangle_2",
+            "components": [],
+            "x": 960,
+            "y": 1021,
+            "scaleX": 7.706419353393023,
+            "scaleY": 0.995444225494233,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "fillAlpha": 0.6,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Ellipse",
+            "id": "7ea40664-65c7-4513-9edd-2e153dd0d419",
+            "label": "ellipse_5",
+            "components": [],
+            "x": 541,
+            "y": 1018,
+            "scaleX": 0.8179399157486755,
+            "scaleY": 0.8179399157486755,
+            "isFilled": true,
+            "fillAlpha": 0.2,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Image",
+            "id": "d939dd40-83eb-4bf3-986a-bcee7a574517",
+            "label": "profilFakhear",
+            "components": [],
+            "texture": {
+                "key": "profilFakhear"
+            },
+            "x": 541,
+            "y": 1018,
+            "scaleX": 0.3983080418637645,
+            "scaleY": 0.3983080418637645
+        },
+        {
+            "type": "Image",
+            "id": "8af32bcb-b081-4f3b-86d4-5a4b471e650d",
+            "label": "profilFakhear_1",
+            "components": [],
+            "texture": {
+                "key": "profilFakhear"
+            },
+            "x": 613,
+            "y": 1053,
+            "scaleX": 0.16275708974409425,
+            "scaleY": 0.16275708974409425
         }
     ],
     "plainObjects": [],
