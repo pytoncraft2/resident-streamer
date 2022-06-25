@@ -117,24 +117,6 @@
             "height": 128
         },
         {
-            "type": "Text",
-            "id": "d0690eee-88e0-472f-be6b-b522fed7693a",
-            "label": "text_1",
-            "components": [],
-            "x": 164,
-            "y": 341,
-            "text": "SALON 1"
-        },
-        {
-            "type": "Text",
-            "id": "97f6e25c-f6a3-4bb5-bde3-db328f989dd9",
-            "label": "text_1_1",
-            "components": [],
-            "x": 145,
-            "y": 405,
-            "text": "SALON Jamie"
-        },
-        {
             "type": "Rectangle",
             "id": "2f70477a-39ef-477a-a16d-73af6753efe8",
             "label": "rectangle_2",

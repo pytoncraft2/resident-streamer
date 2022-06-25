@@ -75,14 +75,6 @@ export default class Level extends Phaser.Scene {
 		rectangle_1.fillColor = 0;
 		rectangle_1.fillAlpha = 0.2;
 
-		// text_1
-		const text_1 = this.add.text(164, 341, "", {});
-		text_1.text = "SALON 1";
-
-		// text_1_1
-		const text_1_1 = this.add.text(145, 405, "", {});
-		text_1_1.text = "SALON Jamie";
-
 		// rectangle_2
 		const rectangle_2 = this.add.rectangle(196.40998210374968, 312, 128, 128);
 		rectangle_2.scaleX = 3.068905970371089;
@@ -127,6 +119,7 @@ export default class Level extends Phaser.Scene {
 	client!: Colyseus.Client
 	listeLobby: any
 	listeRoom: any
+	groupSalon!: Phaser.GameObjects.Group
 
 	// Write your code here
 
@@ -139,6 +132,7 @@ export default class Level extends Phaser.Scene {
 		var test2 = this.add.text(0, 0, ["SALUT"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
 		var test3 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
 		group.addMultiple([test, test2, test3]);
+		this.groupSalon = group;
 		this.alignCorrectementListe(group)
 
 		let salonURL = window.location.pathname.slice(1)
@@ -274,7 +268,10 @@ miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
 self.listeLobby = []
 allRooms.map((val: any) => {
 	if (val.metadata) {
-		self.listeLobby.push(`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`)
+		// self.listeLobby.push(`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`)
+		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		this.groupSalon.add(nomSalon);
+		this.alignCorrectementListe(this.groupSalon)
 	}
 })
 text.setText(self.listeLobby)
