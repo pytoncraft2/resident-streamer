@@ -23,6 +23,7 @@ export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes: any) {
  */
 export function shuriken__A(huzounet: TJoueur, input?: any) {
 
+  console.log(huzounet.y)
   if (input.a) {
 
     //creation de la boule si non créer + animation début

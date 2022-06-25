@@ -57,14 +57,7 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
      {
        twitchman.setFlipX(true)
 
-       if (positionJoueurProche.y == twitchman.y) {
-         if (twitchman.body) charge__Z(twitchman, {z: true})
-         const colision = twitchman.scene.physics.add.collider(positionJoueurProche, twitchman)
-         twitchman.scene.time.delayedCall(500, () => {
-           twitchman.scene.physics.world.removeCollider(colision);
-         }, null, this);
-         reactiveBoucle(twitchman, aptitudes)
-       } else if (dist > 400 && dist < 900)
+if (dist > 400 && dist < 900)
        {
          if (twitchman.body) charge__Z(twitchman, {z: true})
          reactiveBoucle(twitchman, aptitudes)
@@ -115,12 +108,19 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
        }
        else if (dist > 900)
        {
-         if (twitchman.body)
-         {
+         //
+         if (positionJoueurProche.y < 300) {
+           if (twitchman.body) charge__Z(twitchman, {z: true})
+           const colision = twitchman.scene.physics.add.collider(positionJoueurProche, twitchman)
+           twitchman.scene.time.delayedCall(500, () => {
+             twitchman.scene.physics.world.removeCollider(colision);
+           }, null, this);
+           reactiveBoucle(twitchman, aptitudes)
+         } else if (twitchman.body) {
            twitchman.body.setVelocityX(340)
            aptitudes.toucheDroite(twitchman, {right_debut: true})
-         }
          reactiveBoucle(twitchman, aptitudes)
+         }
        }
        else if (dist < 400)
        {
