@@ -67,7 +67,7 @@ export default class Level extends Phaser.Scene {
 		rectangle.fillAlpha = 0.2;
 
 		// rectangle_1
-		const rectangle_1 = this.add.rectangle(0, 417, 128, 128);
+		const rectangle_1 = this.add.rectangle(0, 419.01914507613355, 128, 128);
 		rectangle_1.scaleX = 3.068905970371089;
 		rectangle_1.scaleY = 0.4845245709072934;
 		rectangle_1.setOrigin(0, 0.5);
@@ -88,6 +88,24 @@ export default class Level extends Phaser.Scene {
 		rectangle_2.scaleX = 3.068905970371089;
 		rectangle_2.scaleY = 0.021258305447056074;
 		rectangle_2.isFilled = true;
+
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(0, 489.0382901522671, 128, 128);
+		rectangle_3.scaleX = 3.068905970371089;
+		rectangle_3.scaleY = 0.4845245709072934;
+		rectangle_3.setOrigin(0, 0.5);
+		rectangle_3.isFilled = true;
+		rectangle_3.fillColor = 0;
+		rectangle_3.fillAlpha = 0.2;
+
+		// rectangle_1_1
+		const rectangle_1_1 = this.add.rectangle(0, 559.0574352284007, 128, 128);
+		rectangle_1_1.scaleX = 3.068905970371089;
+		rectangle_1_1.scaleY = 0.4845245709072934;
+		rectangle_1_1.setOrigin(0, 0.5);
+		rectangle_1_1.isFilled = true;
+		rectangle_1_1.fillColor = 0;
+		rectangle_1_1.fillAlpha = 0.2;
 
 		// lists
 		const list: Array<any> = [];
@@ -116,6 +134,32 @@ export default class Level extends Phaser.Scene {
 
 		this.editorCreate();
 
+		const group = this.add.group();
+		var test = this.add.text(20, 90, ["HELLO TOI"], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
+		var test2 = this.add.text(20, 90, ["SALUT"], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
+
+		var gameObjects = group.createMultiple({
+			setScale: {
+				x: 100,
+				y: 100,
+				stepX:0,
+				stepY:200
+			},
+		}
+);    // config in array
+
+
+		group.add(test)
+		group.add(test2)
+
+		Phaser.Actions.GridAlign(group.getChildren(), {
+				width: 200,
+				height: 10,
+				cellWidth: 35,
+				cellHeight: 32,
+				x: 100,
+				y: 100
+		});
 
 
 		let salonURL = window.location.pathname.slice(1)
