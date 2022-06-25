@@ -93,5 +93,12 @@
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 3
-    }
+    },
+    "lists": [
+        {
+            "id": "5d1042a2-6aa3-462f-afc8-19b6844da8f2",
+            "label": "list",
+            "scope": "PUBLIC"
+        }
+    ]
 }

@@ -57,9 +57,13 @@ export default class Level extends Phaser.Scene {
 		text.text = "🧟 RESIDENT STREAMER 🦾";
 		text.setStyle({ "fontFamily": "CustomFontNormal", "fontSize": "49px" });
 
+		// lists
+		const list: Array<any> = [];
+
 		this.panel_score = panel_score;
 		this.texte_score = texte_score;
 		this.panel_score_1 = panel_score_1;
+		this.list = list;
 
 		this.events.emit("scene-awake");
 	}
@@ -67,6 +71,7 @@ export default class Level extends Phaser.Scene {
 	public panel_score!: Phaser.GameObjects.Rectangle;
 	public texte_score!: Phaser.GameObjects.Text;
 	public panel_score_1!: Phaser.GameObjects.Rectangle;
+	public list!: Array<any>;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
@@ -78,6 +83,8 @@ export default class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+
+
 
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
