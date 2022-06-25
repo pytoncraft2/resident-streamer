@@ -79,6 +79,22 @@
             "fillAlpha": 0.3,
             "width": 128,
             "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "b63579a5-5193-4e45-81cf-fa715c29045c",
+            "label": "panel_score_1",
+            "scope": "PUBLIC",
+            "components": [],
+            "x": 196.40998210374968,
+            "y": 540,
+            "scaleX": 3.068905970371089,
+            "scaleY": 8.514712616914972,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "fillAlpha": 0.3,
+            "width": 128,
+            "height": 128
         }
     ],
     "plainObjects": [],

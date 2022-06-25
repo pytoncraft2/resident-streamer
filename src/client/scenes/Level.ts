@@ -59,10 +59,19 @@ export default class Level extends Phaser.Scene {
 		ellipse.fillColor = 0;
 		ellipse.fillAlpha = 0.3;
 
+		// panel_score_1
+		const panel_score_1 = this.add.rectangle(196.40998210374968, 540, 128, 128);
+		panel_score_1.scaleX = 3.068905970371089;
+		panel_score_1.scaleY = 8.514712616914972;
+		panel_score_1.isFilled = true;
+		panel_score_1.fillColor = 0;
+		panel_score_1.fillAlpha = 0.3;
+
 		this.panel_score = panel_score;
 		this.boutonScore = boutonScore;
 		this.boutonScores = boutonScores;
 		this.texte_score = texte_score;
+		this.panel_score_1 = panel_score_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -71,6 +80,7 @@ export default class Level extends Phaser.Scene {
 	public boutonScore!: Phaser.GameObjects.Container;
 	public boutonScores!: Phaser.GameObjects.Triangle;
 	public texte_score!: Phaser.GameObjects.Text;
+	public panel_score_1!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 	client!: Colyseus.Client
