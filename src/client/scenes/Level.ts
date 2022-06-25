@@ -24,18 +24,17 @@ export default class Level extends Phaser.Scene {
 	editorCreate(): void {
 
 		// panel_score
-		const panel_score = this.add.ellipse(1734, 540, 128, 128);
-		panel_score.scaleX = 1.5286248291719469;
-		panel_score.scaleY = 1.5286248291719469;
-		panel_score.angle = -46;
+		const panel_score = this.add.rectangle(1725.5065221655457, 951.0340658281718, 128, 128);
+		panel_score.scaleX = 2.508579222484304;
+		panel_score.scaleY = 0.6942479428696319;
 		panel_score.isFilled = true;
 		panel_score.fillColor = 0;
 		panel_score.fillAlpha = 0.3;
 
 		// texte_score
-		const texte_score = this.add.text(1734, 540, "", {});
+		const texte_score = this.add.text(1725.5065221655457, 951.0340658281718, "", {});
 		texte_score.setOrigin(0.5, 0.5);
-		texte_score.text = "Scores";
+		texte_score.text = "Meilleurs classement 🏆";
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
 
 		// panel_score_1
@@ -59,7 +58,7 @@ export default class Level extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
-	public panel_score!: Phaser.GameObjects.Ellipse;
+	public panel_score!: Phaser.GameObjects.Rectangle;
 	public texte_score!: Phaser.GameObjects.Text;
 	public panel_score_1!: Phaser.GameObjects.Rectangle;
 
@@ -89,10 +88,10 @@ export default class Level extends Phaser.Scene {
 		for (let key of btn)
 			key.setInteractive({ useHandCursor: true })
 			.on('pointerover', () => {
-				this.tweens.add({ targets: [this.panel_score], scale: 2, duration: 400, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], scaleX: 2, duration: 400, ease: 'Power3' })
 			})
 			.on('pointerout', () => {
-				this.tweens.add({ targets: [this.panel_score], scale: 1, duration: 540, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], scaleX: 2.508579222484304, duration: 540, ease: 'Power3' })
 			})
 			.on('pointerdown', () => {
 				this.scene.start("Scores")
