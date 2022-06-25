@@ -128,12 +128,8 @@ export default class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		const group = this.add.group();
-		var test = this.add.text(0, 0, ["HELLO TOI"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
-		var test2 = this.add.text(0, 0, ["SALUT"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
-		var test3 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
-		group.addMultiple([test, test2, test3]);
 		this.groupSalon = group;
-		this.alignCorrectementListe(group)
+		// this.alignCorrectementListe(group)
 
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
@@ -266,15 +262,16 @@ this.tweens.add({
 */
 miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
 self.listeLobby = []
+this.groupSalon.clear(true);
 allRooms.map((val: any) => {
 	if (val.metadata) {
-		// self.listeLobby.push(`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`)
 		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		console.log(this.groupSalon.getMatching('text', `${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`))
 		this.groupSalon.add(nomSalon);
 		this.alignCorrectementListe(this.groupSalon)
 	}
 })
-text.setText(self.listeLobby)
+// text.setText(self.listeLobby)
 }
 
 alignCorrectementListe(group: Phaser.GameObjects.Group) {

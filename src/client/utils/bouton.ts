@@ -14,7 +14,6 @@ export default class Button {
 
     setText(text: string[]|string) {
       this.button.setText(text).setOrigin(0.5)
-      console.log("zzzzzzzzzzz")
     }
 
     setPosition(x: number, y: number) {
