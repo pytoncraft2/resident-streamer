@@ -274,11 +274,7 @@ allRooms.map((val: any) => {
 				this.tweens.add({ targets: this, alpha: 1, duration: 500, ease: 'Power3' })
 			})
 			.on('pointerdown', () => {
-				// this.scene.start("Scores")
-				// const salon = inputUsername.value;
-				// lobby.leave()
 				self.scene.stop('Level');
-
 				self.scene.start('Lobby', {salon: val.metadata.nomRoom, id: false});
 			})
 		this.groupSalon.add(nomSalon);
