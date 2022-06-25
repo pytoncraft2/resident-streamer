@@ -275,7 +275,7 @@ allRooms.map((val: any) => {
 			})
 			.on('pointerdown', () => {
 				self.scene.stop('Level');
-				self.scene.start('Lobby', {salon: val.metadata.nomRoom, id: false});
+				self.scene.start('Lobby', {salon: val.metadata.nomRoom});
 			})
 		this.groupSalon.add(nomSalon);
 		this.alignCorrectementListe(this.groupSalon)
