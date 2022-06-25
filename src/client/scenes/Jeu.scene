@@ -794,6 +794,16 @@
             "scaleX": 0.8383656155133609,
             "scaleY": 0.8383656155133609,
             "text": "kick"
+        },
+        {
+            "type": "Text",
+            "id": "99e34e4f-5698-40ab-84f0-6382c7cdfa28",
+            "label": "text_4_1",
+            "components": [],
+            "x": 840,
+            "y": 973,
+            "text": "Tab",
+            "color": "#5a4747ff"
         }
     ],
     "plainObjects": [],

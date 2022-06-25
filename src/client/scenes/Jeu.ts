@@ -418,6 +418,11 @@ export default class Jeu extends Phaser.Scene {
 		text_5_1_1.scaleY = 0.8383656155133609;
 		text_5_1_1.text = "kick";
 
+		// text_4_1
+		const text_4_1 = this.add.text(840, 973, "", {});
+		text_4_1.text = "Tab";
+		text_4_1.setStyle({ "color": "#5a4747ff" });
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
