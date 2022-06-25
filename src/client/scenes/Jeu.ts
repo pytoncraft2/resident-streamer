@@ -258,7 +258,7 @@ export default class Jeu extends Phaser.Scene {
 		ellipse_5.scaleX = 0.8179399157486755;
 		ellipse_5.scaleY = 0.8179399157486755;
 		ellipse_5.isFilled = true;
-		ellipse_5.fillAlpha = 0.2;
+		ellipse_5.fillColor = 3602747;
 
 		// profilFakhear
 		const profilFakhear = this.add.image(541, 1018, "profilFakhear");

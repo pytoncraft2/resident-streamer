@@ -492,7 +492,7 @@
             "scaleX": 0.8179399157486755,
             "scaleY": 0.8179399157486755,
             "isFilled": true,
-            "fillAlpha": 0.2,
+            "fillColor": "#36f93b",
             "width": 128,
             "height": 128
         },
