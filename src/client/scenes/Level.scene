@@ -49,7 +49,7 @@
             "label": "panel_score_1",
             "scope": "PUBLIC",
             "components": [],
-            "x": 196.40998210374968,
+            "x": 202.70499105187486,
             "y": 540,
             "scaleX": 3.068905970371089,
             "scaleY": 8.514712616914972,
@@ -58,6 +58,21 @@
             "fillAlpha": 0.3,
             "width": 128,
             "height": 128
+        },
+        {
+            "type": "Text",
+            "id": "43c1084e-d243-4b1e-a0a0-5e28f66dfc9c",
+            "label": "CustomFontNormal",
+            "components": [],
+            "x": 202.70499105187486,
+            "y": 88,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Bienvenue !",
+            "align": "center",
+            "fontFamily": "CustomFontNormal",
+            "fontSize": "56px",
+            "fontStyle": "bold"
         }
     ],
     "plainObjects": [],

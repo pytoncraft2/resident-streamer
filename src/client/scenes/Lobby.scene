@@ -11,19 +11,7 @@
         "borderWidth": 1920,
         "borderHeight": 945
     },
-    "displayList": [
-        {
-            "type": "Text",
-            "id": "2c567e91-d95d-4091-9507-846ad36b9412",
-            "label": "boutonLobby",
-            "scope": "PUBLIC",
-            "components": [],
-            "x": 884.5,
-            "y": 446.5,
-            "text": "LOBBY",
-            "fontSize": "50px"
-        }
-    ],
+    "displayList": [],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",

@@ -39,12 +39,18 @@ export default class Level extends Phaser.Scene {
 		texte_score.setStyle({ "fontFamily": "CustomFontItalic", "fontSize": "28px" });
 
 		// panel_score_1
-		const panel_score_1 = this.add.rectangle(196.40998210374968, 540, 128, 128);
+		const panel_score_1 = this.add.rectangle(202.70499105187486, 540, 128, 128);
 		panel_score_1.scaleX = 3.068905970371089;
 		panel_score_1.scaleY = 8.514712616914972;
 		panel_score_1.isFilled = true;
 		panel_score_1.fillColor = 0;
 		panel_score_1.fillAlpha = 0.3;
+
+		// CustomFontNormal
+		const customFontNormal = this.add.text(202.70499105187486, 88, "", {});
+		customFontNormal.setOrigin(0.5, 0.5);
+		customFontNormal.text = "Bienvenue !";
+		customFontNormal.setStyle({ "align": "center", "fontFamily": "CustomFontNormal", "fontSize": "56px", "fontStyle": "bold" });
 
 		this.panel_score = panel_score;
 		this.texte_score = texte_score;
@@ -83,10 +89,10 @@ export default class Level extends Phaser.Scene {
 		for (let key of btn)
 			key.setInteractive({ useHandCursor: true })
 			.on('pointerover', () => {
-				this.tweens.add({ targets: [this.panel_score], angle: 90, duration: 400, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], scale: 2, duration: 400, ease: 'Power3' })
 			})
 			.on('pointerout', () => {
-				this.tweens.add({ targets: [this.panel_score], angle: -146, duration: 540, ease: 'Power3' })
+				this.tweens.add({ targets: [this.panel_score], scale: 1, duration: 540, ease: 'Power3' })
 			})
 			.on('pointerdown', () => {
 				this.scene.start("Scores")
@@ -98,12 +104,14 @@ export default class Level extends Phaser.Scene {
 	this.listeRoom = 0;
 	this.listeLobby = []
 
-	this.add.text(window.innerWidth/2, 100, 'RESIDENT STREAMER', { fontFamily: 'CustomFontNormal' }).setOrigin(0.5).setFontSize(45);
+	// this.add.text(window.innerWidth/2, 100, 'RESIDENT STREAMER', { fontFamily: 'CustomFontNormal' }).setOrigin(0.5).setFontSize(45);
 
-	let intro = ["Combatter le plus rapidement possible les 5 Boss du manoirs.", "De 1 à 4 joueurs !", "__________________", "Lobby disponible", "__________________"];
+	// let intro = ["Combatter le plus rapidement possible les 5 Boss du manoirs.", "De 1 à 4 joueurs !", "__________________", "Lobby disponible", "__________________"];
 
-	var text = new Panel("Bienvenue !",intro , this, () => {
-	})
+	// var text = new Panel("Bienvenue !",[""] , this, () => {
+	// })
+	var text = this.add.text(20, 50, [""], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
+
 
 
 	const lobby = await client.joinOrCreate("acceuil");
@@ -112,7 +120,7 @@ export default class Level extends Phaser.Scene {
 
 	lobby.onMessage("rooms", (rooms) => {
 		allRooms = rooms;
-		this.miseAjourListe(self, allRooms, text, intro)
+		this.miseAjourListe(self, allRooms, text)
 	});
 
 	lobby.onMessage("+", ([roomId, room]) => {
@@ -122,12 +130,12 @@ export default class Level extends Phaser.Scene {
 		} else {
 			allRooms.push(room);
 		}
-		this.miseAjourListe(self, allRooms, text, intro)
+		this.miseAjourListe(self, allRooms, text)
 	});
 
 	lobby.onMessage("-", (roomId) => {
 		allRooms = allRooms.filter((room) => room.roomId !== roomId);
-		this.miseAjourListe(self, allRooms, text, intro)
+		this.miseAjourListe(self, allRooms, text)
 	});
 
 	const self = this;
@@ -195,14 +203,14 @@ this.tweens.add({
 * @param  {String} text: any                   texte phaser et contenu à mettre à jour
 * @param  {String} intro: string[]             texte de bienvenue
 */
-miseAjourListe(self: any, allRooms: Object[]|string[], text: any, intro: string[]) {
+miseAjourListe(self: any, allRooms: Object[]|string[], text: any) {
 self.listeLobby = []
 allRooms.map((val: any) => {
 	if (val.metadata) {
 		self.listeLobby.push(`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients})`)
 	}
 })
-text.setContenu(intro.concat(self.listeLobby))
+text.setText(self.listeLobby)
 }
 
 	/* END-USER-CODE */
