@@ -188,6 +188,13 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
         this.setPosition(this.currentTarget.getTopCenter().x, this.currentTarget.getTopCenter().y - 70)
      }
 
+     if (this.vie <= 0) {
+       this.vie = 10;
+       this.setAlpha(0.2);
+       this.respawn();
+       (this.scene as any).players.remove(this)
+     }
+
      // if (Aptitudes[this.sprite].auto == "function") Aptitudes[this.sprite].auto(this, input);
 
 
@@ -204,6 +211,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          y: this.y,
          sprite: this.sprite,
          scale: this.scale,
+         alpha: this.alpha,
          anim: animationName,
          flipX: this.flipX,
          tint: this.tintBottomLeft,
@@ -213,6 +221,10 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
          ya: this.zoneInteraction.y
        })
      )
+
+     if (this.sprite === "fakhear") {
+       console.log(this.alpha)
+     }
 
    }
 
@@ -248,6 +260,22 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    }
 
    suppresionPilote(suppresionJoueur: TJoueur) {
+   }
+
+   respawn() {
+     this.scene.tweens.add({
+       targets: this,
+       alpha: 1,
+       x: 987,
+       y: 755,
+       duration: 500,
+       onComplete: function() {
+         if (arguments[1][0].scene){
+           arguments[1][0].scene.players.add(arguments[1][0])
+         }
+       }
+     });
+
    }
 
  }

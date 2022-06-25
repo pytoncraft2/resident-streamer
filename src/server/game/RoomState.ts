@@ -38,6 +38,7 @@ export class Player extends Schema {
   @type("number") vie?: number
   @type("number") tint?: number
   @type("number") scale?: number;
+  @type("number") alpha?: number;
   @type("number") xa?: number
   @type("number") ya?: number
 }
