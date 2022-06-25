@@ -135,30 +135,33 @@ export default class Level extends Phaser.Scene {
 		this.editorCreate();
 
 		const group = this.add.group();
-		var test = this.add.text(20, 90, ["HELLO TOI"], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
-		var test2 = this.add.text(20, 90, ["SALUT"], { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
-
-		var gameObjects = group.createMultiple({
-			setScale: {
-				x: 100,
-				y: 100,
-				stepX:0,
-				stepY:200
-			},
-		}
-);    // config in array
-
-
+		var test = this.add.text(0, 0, ["HELLO TOI"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test2 = this.add.text(0, 0, ["SALUT"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test3 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test4 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test5 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test6 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test7 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+		var test8 = this.add.text(0, 0, ["BONSOIR"], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
 		group.add(test)
 		group.add(test2)
+		group.add(test3)
+		group.add(test4)
+		group.add(test5)
+		group.add(test6)
+		group.add(test7)
+		group.add(test8)
+
+		setTimeout(() => {
+		}, 4000);
 
 		Phaser.Actions.GridAlign(group.getChildren(), {
-				width: 200,
+				width: 1,
 				height: 10,
-				cellWidth: 35,
-				cellHeight: 32,
-				x: 100,
-				y: 100
+				cellWidth: 200,
+				cellHeight: 102,
+				x: 164,
+				y: 341
 		});
 
 
