@@ -359,8 +359,8 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_3.scaleX = 1.3025571558163676;
 		rectangle_4_3.scaleY = 0.3373770596916607;
 		rectangle_4_3.isFilled = true;
-		rectangle_4_3.fillColor = 2946572;
-		rectangle_4_3.fillAlpha = 0.4;
+		rectangle_4_3.fillColor = 9965769;
+		rectangle_4_3.fillAlpha = 0.1;
 		rectangle_4_3.isStroked = true;
 
 		// rectangle_5
@@ -392,6 +392,24 @@ export default class Jeu extends Phaser.Scene {
 		// text_4
 		const text_4 = this.add.text(754, 1018, "", {});
 		text_4.text = "Fusionner";
+
+		// text_5
+		const text_5 = this.add.text(915, 1012, "", {});
+		text_5.scaleX = 0.8383656155133609;
+		text_5.scaleY = 0.8383656155133609;
+		text_5.text = "cross";
+
+		// text_5_1
+		const text_5_1 = this.add.text(986, 1012, "", {});
+		text_5_1.scaleX = 0.8383656155133609;
+		text_5_1.scaleY = 0.8383656155133609;
+		text_5_1.text = "dash";
+
+		// text_5_1_1
+		const text_5_1_1 = this.add.text(1056, 1012, "", {});
+		text_5_1_1.scaleX = 0.8383656155133609;
+		text_5_1_1.scaleY = 0.8383656155133609;
+		text_5_1_1.text = "kick";
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;

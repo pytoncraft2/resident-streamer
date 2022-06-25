@@ -689,8 +689,8 @@
             "scaleX": 1.3025571558163676,
             "scaleY": 0.3373770596916607,
             "isFilled": true,
-            "fillColor": "#2cf60c",
-            "fillAlpha": 0.4,
+            "fillColor": "#9810c9",
+            "fillAlpha": 0.1,
             "isStroked": true,
             "width": 128,
             "height": 128
@@ -753,6 +753,39 @@
             "x": 754,
             "y": 1018,
             "text": "Fusionner"
+        },
+        {
+            "type": "Text",
+            "id": "00fd971f-b6cd-4528-8d96-ae8869941b98",
+            "label": "text_5",
+            "components": [],
+            "x": 915,
+            "y": 1012,
+            "scaleX": 0.8383656155133609,
+            "scaleY": 0.8383656155133609,
+            "text": "cross"
+        },
+        {
+            "type": "Text",
+            "id": "2fdc7671-726c-484d-bb78-69e5a7ec0961",
+            "label": "text_5_1",
+            "components": [],
+            "x": 986,
+            "y": 1012,
+            "scaleX": 0.8383656155133609,
+            "scaleY": 0.8383656155133609,
+            "text": "dash"
+        },
+        {
+            "type": "Text",
+            "id": "e7fbe773-d63d-4095-a7c6-f64e2d832cbc",
+            "label": "text_5_1_1",
+            "components": [],
+            "x": 1056,
+            "y": 1012,
+            "scaleX": 0.8383656155133609,
+            "scaleY": 0.8383656155133609,
+            "text": "kick"
         }
     ],
     "plainObjects": [],
