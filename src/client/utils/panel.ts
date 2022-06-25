@@ -4,8 +4,9 @@ export default class Panel {
 
   constructor(titre = '', contenu: string[], scene: Phaser.Scene, _callback: CallableFunction) {
     var graphics = scene.make.graphics(scene);
-    graphics.fillStyle(0x000000);
-    graphics.setAlpha(0.1)
+    // graphics.fillStyle(0x000000);
+    graphics.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.6,0.6, 0, 0);
+    graphics.setAlpha(0.5)
     graphics.fillRect(0, 0, 320, window.innerHeight);
 
     this.titre = scene.add.text(20, 50, titre, { fontFamily: 'CustomFontNormal' }).setOrigin(0).setFontSize(39);
