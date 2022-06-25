@@ -271,11 +271,20 @@ export default class Jeu extends Phaser.Scene {
 		profilFakhear_1.scaleY = 0.16275708974409425;
 
 		// rectangle_3
-		const rectangle_3 = this.add.rectangle(1042, 1055, 128, 128);
+		const rectangle_3 = this.add.rectangle(712, 1055, 128, 128);
 		rectangle_3.scaleX = 5.150602609693634;
 		rectangle_3.scaleY = 0.21267753602571016;
+		rectangle_3.setOrigin(0, 0.5);
 		rectangle_3.isFilled = true;
-		rectangle_3.fillColor = 15554289;
+		rectangle_3.fillColor = 13372942;
+
+		// rectangle_3_1
+		const rectangle_3_1 = this.add.rectangle(712, 1055, 128, 128);
+		rectangle_3_1.scaleX = 3.8600868522454492;
+		rectangle_3_1.scaleY = 0.21267753602571016;
+		rectangle_3_1.setOrigin(0, 0.5);
+		rectangle_3_1.isFilled = true;
+		rectangle_3_1.fillColor = 15554289;
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
