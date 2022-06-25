@@ -347,12 +347,13 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2_1.fillColor = 9965769;
 		rectangle_4_2_1.fillAlpha = 0.1;
 		rectangle_4_2_1.isStroked = true;
+		rectangle_4_2_1.strokeColor = 3155237;
 
 		// text_3_2_1
 		const text_3_2_1 = this.add.text(1142, 998, "", {});
 		text_3_2_1.setOrigin(0.5, 0.5);
 		text_3_2_1.text = "R";
-		text_3_2_1.setStyle({ "fontSize": "26px" });
+		text_3_2_1.setStyle({ "color": "#5a4747ff", "fontSize": "26px" });
 
 		// rectangle_4_3
 		const rectangle_4_3 = this.add.rectangle(796, 993, 128, 128);

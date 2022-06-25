@@ -663,6 +663,7 @@
             "isFilled": true,
             "fillColor": "#9810c9",
             "fillAlpha": 0.1,
+            "strokeColor": "#302525",
             "isStroked": true,
             "width": 128,
             "height": 128
@@ -677,7 +678,8 @@
             "originX": 0.5,
             "originY": 0.5,
             "text": "R",
-            "fontSize": "26px"
+            "fontSize": "26px",
+            "color": "#5a4747ff"
         },
         {
             "type": "Rectangle",
