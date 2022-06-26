@@ -145,10 +145,9 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     //@ts-ignore
      // console.log(Aptitudes[this.sprite].auto(this, {a: true}))
      //@ts-ignore
-     console.log(Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}, Aptitudes[this.sprite]));
+     Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}, Aptitudes[this.sprite]);
 
    }
    preUpdate(time: number, delta: number) {
