@@ -540,7 +540,8 @@
         {
             "type": "Rectangle",
             "id": "f9bb9e77-dd3f-475d-990d-cd7a8a1b1f67",
-            "label": "rectangle_3",
+            "label": "sous_barre_vie_joueur",
+            "scope": "PUBLIC",
             "components": [],
             "x": 712,
             "y": 1055,
@@ -555,11 +556,12 @@
         {
             "type": "Rectangle",
             "id": "35152e67-17d5-43ba-ab82-81727ea39fa1",
-            "label": "rectangle_3_1",
+            "label": "vie_joueur",
+            "scope": "PUBLIC",
             "components": [],
             "x": 712,
             "y": 1055,
-            "scaleX": 3.8600868522454492,
+            "scaleX": 5.150602609693634,
             "scaleY": 0.21267753602571016,
             "originX": 0,
             "isFilled": true,
@@ -642,7 +644,7 @@
         {
             "type": "Text",
             "id": "af336200-c7b4-47d0-a8e8-7dbe7d91ca7c",
-            "label": "text_3_2",
+            "label": "text_E",
             "components": [],
             "x": 1073,
             "y": 997,

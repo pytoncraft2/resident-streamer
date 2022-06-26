@@ -278,21 +278,21 @@ export default class Jeu extends Phaser.Scene {
 		profilFakhear_1.scaleX = 0.16275708974409425;
 		profilFakhear_1.scaleY = 0.16275708974409425;
 
-		// rectangle_3
-		const rectangle_3 = this.add.rectangle(712, 1055, 128, 128);
-		rectangle_3.scaleX = 5.150602609693634;
-		rectangle_3.scaleY = 0.21267753602571016;
-		rectangle_3.setOrigin(0, 0.5);
-		rectangle_3.isFilled = true;
-		rectangle_3.fillColor = 13372942;
+		// sous_barre_vie_joueur
+		const sous_barre_vie_joueur = this.add.rectangle(712, 1055, 128, 128);
+		sous_barre_vie_joueur.scaleX = 5.150602609693634;
+		sous_barre_vie_joueur.scaleY = 0.21267753602571016;
+		sous_barre_vie_joueur.setOrigin(0, 0.5);
+		sous_barre_vie_joueur.isFilled = true;
+		sous_barre_vie_joueur.fillColor = 13372942;
 
-		// rectangle_3_1
-		const rectangle_3_1 = this.add.rectangle(712, 1055, 128, 128);
-		rectangle_3_1.scaleX = 3.8600868522454492;
-		rectangle_3_1.scaleY = 0.21267753602571016;
-		rectangle_3_1.setOrigin(0, 0.5);
-		rectangle_3_1.isFilled = true;
-		rectangle_3_1.fillColor = 15554289;
+		// vie_joueur
+		const vie_joueur = this.add.rectangle(712, 1055, 128, 128);
+		vie_joueur.scaleX = 5.150602609693634;
+		vie_joueur.scaleY = 0.21267753602571016;
+		vie_joueur.setOrigin(0, 0.5);
+		vie_joueur.isFilled = true;
+		vie_joueur.fillColor = 15554289;
 
 		// rectangle_4
 		const rectangle_4 = this.add.rectangle(935, 997, 128, 128);
@@ -333,11 +333,11 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2.fillAlpha = 0.1;
 		rectangle_4_2.isStroked = true;
 
-		// text_3_2
-		const text_3_2 = this.add.text(1073, 997, "", {});
-		text_3_2.setOrigin(0.5, 0.5);
-		text_3_2.text = "E";
-		text_3_2.setStyle({ "fontSize": "26px" });
+		// text_E
+		const text_E = this.add.text(1073, 997, "", {});
+		text_E.setOrigin(0.5, 0.5);
+		text_E.text = "E";
+		text_E.setStyle({ "fontSize": "26px" });
 
 		// rectangle_4_2_1
 		const rectangle_4_2_1 = this.add.rectangle(1142, 997, 128, 128);
@@ -435,6 +435,8 @@ export default class Jeu extends Phaser.Scene {
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
 		this.laser01 = laser01;
+		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
+		this.vie_joueur = vie_joueur;
 
 		this.events.emit("scene-awake");
 	}
@@ -451,6 +453,8 @@ export default class Jeu extends Phaser.Scene {
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
 	public laser01!: Phaser.GameObjects.Image;
+	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
+	public vie_joueur!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -923,6 +927,17 @@ export default class Jeu extends Phaser.Scene {
             if (list.presences[item].alpha) this.playersRef[item].setAlpha(list.presences[item].alpha)
             this.playersRef[item].particules.setVisible(list.presences[item].particules)
             // console.log(list.presences[item].particules)
+
+            if (this.session === this.playersRef[item].ClientId) {
+  // list.presences[item].vie = Phaser.Math.Difference(list.presences[item].vie*2, this.sous_barre_vie_joueur.scaleX)
+  this.vie_joueur.scaleX = Phaser.Math.Percent(list.presences[item].vie, 1, 10)
+  console.log(Phaser.Math.Percent(list.presences[item].vie, 0, 10))
+
+
+
+              // this.vie_joueur.scaleX = list.presences[item].vie / (this.sous_barre_vie_joueur.scaleX * this.vie_joueur.scaleX /2)
+            }
+
 			}
 		})
 
