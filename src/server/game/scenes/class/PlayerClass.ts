@@ -217,12 +217,14 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    dommage(puissance: number) {
      //   this.play('attaque')
      //   this.setFlipX(directionFinal)
+     if (this.scene) {
      this.setTint(0xff0000)
-     this.scene.time.delayedCall(100, () => {
-       this.clearTint()
-     }, null, this);
-     if (puissance >= 0) {
-       this.vie -= puissance
+       this.scene.time.delayedCall(100, () => {
+         this.clearTint()
+       }, null, this);
+       if (puissance >= 0) {
+         this.vie -= puissance
+       }
      }
    }
 
