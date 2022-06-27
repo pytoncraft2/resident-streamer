@@ -806,57 +806,6 @@
             "y": 973,
             "text": "Tab",
             "color": "#5a4747ff"
-        },
-        {
-            "type": "Container",
-            "id": "59f57b12-b640-40b1-ae47-2d89dde6d4f0",
-            "label": "fin_de_partie_ecran",
-            "scope": "PUBLIC",
-            "components": [],
-            "list": [
-                {
-                    "type": "Rectangle",
-                    "id": "ccedba02-d166-4f10-98c9-95a67c0fc49b",
-                    "label": "ecran_fin_de_parties",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 960,
-                    "y": 472.5,
-                    "scaleX": 14.979608581625305,
-                    "scaleY": 7.338682875565045,
-                    "isFilled": true,
-                    "fillColor": "#2d0f33",
-                    "fillAlpha": 0,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Text",
-                    "id": "e8974786-4a55-4c65-b5cf-4853827c24e8",
-                    "label": "text_fin_1",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 960,
-                    "y": 464,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "FIN DE PARTIE !",
-                    "fontSize": "36px"
-                },
-                {
-                    "type": "Text",
-                    "id": "ae54f5f9-3e47-4334-af24-d3d815437634",
-                    "label": "text_fin_2",
-                    "scope": "PUBLIC",
-                    "components": [],
-                    "x": 956,
-                    "y": 524,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "Score de l'equipe: 08:03:22",
-                    "fontSize": "32px"
-                }
-            ]
         }
     ],
     "plainObjects": [],
