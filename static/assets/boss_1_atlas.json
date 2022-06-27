@@ -1,10 +1,10 @@
 {
     "frames": [
         {
-            "filename": "marche1",
+            "filename": "movechaiseboss0",
             "frame": {
-                "w": 479,
-                "h": 772,
+                "w": 240,
+                "h": 386,
                 "x": 0,
                 "y": 0
             },
@@ -14,11 +14,11 @@
             }
         },
         {
-            "filename": "marche0",
+            "filename": "movechaiseboss1",
             "frame": {
-                "w": 479,
-                "h": 772,
-                "x": 479,
+                "w": 240,
+                "h": 386,
+                "x": 240,
                 "y": 0
             },
             "anchor": {
@@ -29,10 +29,10 @@
         {
             "filename": "attackchaiseboss1",
             "frame": {
-                "w": 676,
-                "h": 734,
-                "x": 958,
-                "y": -120
+                "w": 338,
+                "h": 317,
+                "x": 0,
+                "y": 386
             },
             "anchor": {
                 "x": 0.5,
@@ -40,25 +40,12 @@
             }
         },
         {
-          "filename": "attackchaiseboss2",
-          "frame": {
-            "w": 479,
-            "h": 772,
-            "x": 479,
-            "y": 0
-          },
-          "anchor": {
-            "x": 0.5,
-            "y": 0.5
-          }
-        },
-        {
             "filename": "attackchaiseboss0",
             "frame": {
-                "w": 479,
-                "h": 772,
-                "x": 1634,
-                "y": 0
+                "w": 240,
+                "h": 386,
+                "x": 338,
+                "y": 386
             },
             "anchor": {
                 "x": 0.5,

@@ -931,7 +931,7 @@ export default class Jeu extends Phaser.Scene {
             if (this.session === this.playersRef[item].ClientId) {
   // list.presences[item].vie = Phaser.Math.Difference(list.presences[item].vie*2, this.sous_barre_vie_joueur.scaleX)
   this.vie_joueur.scaleX = Phaser.Math.Percent(list.presences[item].vie, 1, 10)
-  console.log(Phaser.Math.Percent(list.presences[item].vie, 0, 10))
+  // console.log(Phaser.Math.Percent(list.presences[item].vie, 0, 10))
 
 
 

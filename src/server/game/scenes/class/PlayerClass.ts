@@ -221,14 +221,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        })
      )
 
-     if (this.sprite === "fakhear") {
-       console.log(this.alpha)
-     }
-
-   }
-
-   test() {
-     console.log("TEST OK")
    }
 
    dommage(puissance: number) {
