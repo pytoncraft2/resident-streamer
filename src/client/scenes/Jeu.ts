@@ -542,17 +542,6 @@ export default class Jeu extends Phaser.Scene {
 		this.editorCreate();
     this.cameras.main.fadeIn(6000);
 
-
-    this.ecran_fin_de_parties.setDepth(10000)
-    this.tweens.add({
-      delay: 9000,
-      targets: this.ecran_fin_de_parties,
-      fillAlpha: 0.8,
-      ease: 'Sine.inOut',
-      duration: 1000
-    });
-
-
 /*
     var epic_musique = this.sound.add('epic_musique');
 
