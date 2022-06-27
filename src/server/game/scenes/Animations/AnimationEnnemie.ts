@@ -1,9 +1,8 @@
 export function AnimationEnnemie(anim: Phaser.Animations.AnimationState) {
   anim.create({
     key: "deplacement",
-    frames: anim.generateFrameNames('atlas', { prefix: 'marche', start: 0, end: 1 }),
-    frameRate: 1,
-    repeat: 1
+    frames: anim.generateFrameNames('atlas', { prefix: 'movechaiseboss', start: 0, end: 1 }),
+    frameRate: 11,
   })
 
   anim.create({

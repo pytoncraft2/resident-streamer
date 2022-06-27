@@ -112,6 +112,7 @@ function attaquePuisDeplacement(boss_1, condition, couleur, directionFinal, apti
 
 function reactiveBoucle(boss_1: TJoueur, aptitudes: any) {
   boss_1.scene.time.delayedCall(500, () => {
+    boss_1.play('deplacement');
     __auto(boss_1, {}, aptitudes)
   }, null, this);
 }

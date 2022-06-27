@@ -886,29 +886,8 @@ export default class Jeu extends Phaser.Scene {
           barre.add(rectangle);
 
           (player as any).barre = barre;
-
-          // if (sprite == 'boss_1') player.setScale(0.6);
           (player as any).ClientId = list.presenceList[idx];
-          // (player as any).particules = list.presenceList[idx];
-          const particules = this.add.particles('flares').setDepth(2);
 
-           (player as any).particules = particules.createEmitter({
-            x: 600,
-            y: 100,
-            // scale: 0.2,
-            speed: 400,
-            gravityY: 30,
-            lifespan: { min: 100, max: 300 },
-            blendMode: 'ADD'
-          });
-
-          (player as any).particules.setPosition(400, 300);
-          (player as any).particules.setSpeed(200);
-          (player as any).particules.setScale(0.7);
-          (player as any).particules.startFollow(player);
-          (player as any).particules.setVisible(false);
-
-          // emitter.setBlendMode(Phaser.BlendModes.ADD);
 					this.players.add(player)
 					this.playersRef[item] = player
 
@@ -925,7 +904,6 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
             if (list.presences[item].alpha) this.playersRef[item].setAlpha(list.presences[item].alpha)
-            this.playersRef[item].particules.setVisible(list.presences[item].particules)
 
             if (this.session === this.playersRef[item].ClientId) {
               this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
