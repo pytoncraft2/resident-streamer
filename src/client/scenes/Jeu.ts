@@ -506,7 +506,7 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
-    this.cameras.main.fadeIn(6000);
+    this.cameras.main.fadeIn(4000);
 
 /*
     var epic_musique = this.sound.add('epic_musique');
@@ -923,22 +923,15 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
-            // this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
+            this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
             if (list.presences[item].alpha) this.playersRef[item].setAlpha(list.presences[item].alpha)
             this.playersRef[item].particules.setVisible(list.presences[item].particules)
-            // console.log(list.presences[item].particules)
 
             if (this.session === this.playersRef[item].ClientId) {
-  // list.presences[item].vie = Phaser.Math.Difference(list.presences[item].vie*2, this.sous_barre_vie_joueur.scaleX)
-  this.vie_joueur.scaleX = Phaser.Math.Percent(list.presences[item].vie, 1, 10)
-  // console.log(Phaser.Math.Percent(list.presences[item].vie, 0, 10))
-
-
-
-              // this.vie_joueur.scaleX = list.presences[item].vie / (this.sous_barre_vie_joueur.scaleX * this.vie_joueur.scaleX /2)
+              this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
             }
 
 			}
