@@ -859,8 +859,6 @@ export default class Jeu extends Phaser.Scene {
 					.setData({ ClientId: list.presenceList[idx] })
           .setDepth(1);
 
-          (player as any).zoneAttaque = this.add.rectangle(0, 0 ,player.displayWidth, player.displayHeight, 0x0e88bd, 0.5).setDepth(400);
-
           const barre = this.add.container(-39, 21);
 
           const rectangle = this.add.rectangle(0, -8, 128, 128);
@@ -923,7 +921,6 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].setFrame(list.presences[item].anim)
             this.playersRef[item].flipX = list.presences[item].flipX
             this.playersRef[item].setTint(list.presences[item].tint)
-            this.playersRef[item].zoneAttaque.setPosition(list.presences[item].xa, list.presences[item].ya)
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
