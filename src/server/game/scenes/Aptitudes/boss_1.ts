@@ -76,7 +76,11 @@ export function __auto(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any, apt
     //   console.log("TOUCHING GAUCHE !!")
     //   // attaquePuisDeplacement(boss_1, boss_1.flipX == false && boss_1.blesse, 0xff0000, true, aptitudes)
     // }
-  boss_1.scene.physics.moveToObject(boss_1, boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()]), 800);
+    if (boss_1.scene.players.getLength() > 0 && boss_1)
+    {
+      let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
+      if (joueuProche) boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+    }
   // boss_1.play('attaque')
   reactiveBoucle(boss_1, aptitudes)
   } else {

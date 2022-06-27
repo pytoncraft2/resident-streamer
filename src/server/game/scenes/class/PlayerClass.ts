@@ -69,41 +69,45 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false
-       if (anim.key == 'cross') {
+       if (anim.key === 'cross') {
          if (frame.frame.name == 'cross4') {
            this.blesse_opposant = true
          }
        }
 
-       if (anim.key == 'attack') {
+       if (anim.key === 'attack') {
          if (frame.frame.name == 'positiona4') {
            this.blesse_opposant = true
          }
        }
 
-       if (anim.key == 'akhizonah_couteau') {
+       if (anim.key === 'akhizonah_couteau') {
          if (frame.frame.name == 'knife2') {
            this.blesse_opposant = true
          }
        }
 
 
-       if (anim.key == 'straightlead') {
+       if (anim.key === 'straightlead') {
          if (frame.frame.name == 'straightlead1') {
            this.blesse_opposant = true
          }
        }
 
-       if (anim.key == 'osmo_attaque') {
+       if (anim.key === 'osmo_attaque') {
          if (frame.frame.name == 'osmo_attaque3') {
            this.blesse_opposant = true
          }
        }
 
-       if (anim.key == 'twitchman_punch') {
+       if (anim.key === 'twitchman_punch') {
          if (frame.frame.name == 'twitchmanpunch1') {
            this.blesse_opposant = true
          }
+       }
+
+       if (anim.key === 'attaque') {
+         this.blesse_opposant = true
        }
      })
 
@@ -160,7 +164,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
 
 
      if (this.canMove) {
-       this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
+       this.zoneInteraction.setPosition(this.x + (this.flipX ? -150 : 150), this.y);
 
        // console.log(this.currentTarget.sprite)
 
