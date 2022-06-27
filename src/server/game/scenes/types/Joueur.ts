@@ -27,7 +27,6 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   sprite: string
   particules: boolean
   gfx: Phaser.GameObjects.Graphics
-  bossControlable: Phaser.Physics.Arcade.Group
 
   tweenIcon: Phaser.Tweens.Tween
   iconSuitJoueur: boolean

@@ -27,7 +27,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
    blesse_opposant: boolean = false
    soigne: boolean = false
    groupeBoules: any
-   bossControlable: any
    currentTarget: any
    me: any
 
@@ -54,7 +53,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      this.ClientID = ClientID
      this.particules = false
      this.sprite = sprite
-     this.bossControlable = this.scene.add.group();
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -67,49 +65,49 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
      // Aptitudes[this.sprite].stats.StatsSupplementaire(this)
      // new Aptitudes[this.sprite].StatsSupplementaire(this)
 
-     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
-       this.blesse_opposant = false
-       if (anim.key === 'cross') {
-         if (frame.frame.name == 'cross4') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'attack') {
-         if (frame.frame.name == 'positiona4') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'akhizonah_couteau') {
-         if (frame.frame.name == 'knife2') {
-           this.blesse_opposant = true
-         }
-       }
-
-
-       if (anim.key === 'straightlead') {
-         if (frame.frame.name == 'straightlead1') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'osmo_attaque') {
-         if (frame.frame.name == 'osmo_attaque3') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'twitchman_punch') {
-         if (frame.frame.name == 'twitchmanpunch1') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'attaque') {
-         this.blesse_opposant = true
-       }
-     })
+     // this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
+     //   this.blesse_opposant = false
+     //   if (anim.key === 'cross') {
+     //     if (frame.frame.name == 'cross4') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //   if (anim.key === 'attack') {
+     //     if (frame.frame.name == 'positiona4') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //   if (anim.key === 'akhizonah_couteau') {
+     //     if (frame.frame.name == 'knife2') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //
+     //   if (anim.key === 'straightlead') {
+     //     if (frame.frame.name == 'straightlead1') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //   if (anim.key === 'osmo_attaque') {
+     //     if (frame.frame.name == 'osmo_attaque3') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //   if (anim.key === 'twitchman_punch') {
+     //     if (frame.frame.name == 'twitchmanpunch1') {
+     //       this.blesse_opposant = true
+     //     }
+     //   }
+     //
+     //   if (anim.key === 'attaque') {
+     //     this.blesse_opposant = true
+     //   }
+     // })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
 
