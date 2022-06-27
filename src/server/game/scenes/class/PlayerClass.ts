@@ -191,7 +191,7 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        this.vie = 10;
        this.setAlpha(0.2);
        this.respawn();
-       (this.scene as any).players.remove(this)
+       // (this.scene as any).players.remove(this)
      }
 
      (this.scene as any).room.state.presences.set(
