@@ -34,7 +34,7 @@ export default class Hall extends Phaser.Scene {
   }
 
   preload() {
-    this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
+    this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
   }
 
   create() {
