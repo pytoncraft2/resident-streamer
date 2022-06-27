@@ -423,6 +423,32 @@ export default class Jeu extends Phaser.Scene {
 		text_4_1.text = "Tab";
 		text_4_1.setStyle({ "color": "#5a4747ff" });
 
+		// fin_de_partie_ecran
+		const fin_de_partie_ecran = this.add.container(0, 0);
+
+		// ecran_fin_de_parties
+		const ecran_fin_de_parties = this.add.rectangle(960, 472.5, 128, 128);
+		ecran_fin_de_parties.scaleX = 14.979608581625305;
+		ecran_fin_de_parties.scaleY = 7.338682875565045;
+		ecran_fin_de_parties.isFilled = true;
+		ecran_fin_de_parties.fillColor = 2953011;
+		ecran_fin_de_parties.fillAlpha = 0;
+		fin_de_partie_ecran.add(ecran_fin_de_parties);
+
+		// text_fin_1
+		const text_fin_1 = this.add.text(960, 464, "", {});
+		text_fin_1.setOrigin(0.5, 0.5);
+		text_fin_1.text = "FIN DE PARTIE !";
+		text_fin_1.setStyle({ "fontSize": "36px" });
+		fin_de_partie_ecran.add(text_fin_1);
+
+		// text_fin_2
+		const text_fin_2 = this.add.text(956, 524, "", {});
+		text_fin_2.setOrigin(0.5, 0.5);
+		text_fin_2.text = "Score de l'equipe: 08:03:22";
+		text_fin_2.setStyle({ "fontSize": "32px" });
+		fin_de_partie_ecran.add(text_fin_2);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -437,6 +463,10 @@ export default class Jeu extends Phaser.Scene {
 		this.laser01 = laser01;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
+		this.fin_de_partie_ecran = fin_de_partie_ecran;
+		this.ecran_fin_de_parties = ecran_fin_de_parties;
+		this.text_fin_1 = text_fin_1;
+		this.text_fin_2 = text_fin_2;
 
 		this.events.emit("scene-awake");
 	}
@@ -455,6 +485,10 @@ export default class Jeu extends Phaser.Scene {
 	public laser01!: Phaser.GameObjects.Image;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
+	public fin_de_partie_ecran!: Phaser.GameObjects.Container;
+	public ecran_fin_de_parties!: Phaser.GameObjects.Rectangle;
+	public text_fin_1!: Phaser.GameObjects.Text;
+	public text_fin_2!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -506,6 +540,19 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
+    this.cameras.main.fadeIn(6000);
+
+
+    this.ecran_fin_de_parties.setDepth(10000)
+    this.tweens.add({
+      delay: 9000,
+      targets: this.ecran_fin_de_parties,
+      fillAlpha: 0.8,
+      ease: 'Sine.inOut',
+      duration: 1000
+    });
+
+
 /*
     var epic_musique = this.sound.add('epic_musique');
 
@@ -655,6 +702,7 @@ export default class Jeu extends Phaser.Scene {
 		.catch((err) => {
 			console.error(err)
 		})
+
 
 	}
 

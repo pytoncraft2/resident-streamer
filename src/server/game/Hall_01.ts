@@ -132,6 +132,14 @@ export default class GameRooms extends Room {
   }
 
   onDispose() {
+    console.log("VIVANT ?")
+    console.log(this.scene.players.getLength())
+    console.log(this.scene.enemies.getLength())
+    this.scene.players.destroy(true)
+    this.scene.enemies.destroy(true)
+    this.Game.destroy(true)
+
+    // this.sys.game.destroy(true);
     console.log(`${this.roomId} shutting down!!`)
   }
 }

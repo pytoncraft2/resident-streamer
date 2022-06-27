@@ -114,6 +114,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     let animationName = this.anims.getFrameName();
     this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
+if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
 
     if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
       kunai__Z(this as any)
@@ -130,6 +131,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
       this.setFlipX(true)
       this.setVelocityX(-300)
     }
+  }
+
 //     if (Phaser.Math.Distance.Between(this.createur.x, this.createur.y, this.x, this.y) > 600) {
 //       // this.x += 10
 //       // this.scene.physics.moveTo(this, this.x + 200, this.y);
