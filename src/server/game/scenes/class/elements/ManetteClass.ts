@@ -36,8 +36,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.alpha = 0.3
     this.sprite = sprite;
 
-    this.scene.time.delayedCall(2000, () => {
-      (this.scene as any).room.broadcast("suppression", {groupeProjectiles: id});
+    this.scene.time.delayedCall(1300, () => {
+      (this.scene as any).room.broadcast("suppression", {projectilesRef: id});
       (this.scene as any).room.state.projectiles.delete(id);
       // console.log(id)
       this.destroy(true);
@@ -49,10 +49,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
 
   }
   preUpdate(time, delta) {
-    // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
-    console.log("UUUUUUUUUUUUUPDATE")
     this.angle += 32;
 
     if (this.traqueJoueur) {

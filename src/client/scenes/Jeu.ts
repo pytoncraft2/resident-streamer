@@ -589,15 +589,10 @@ export default class Jeu extends Phaser.Scene {
       //   this.emitter.startFollow(this.playersRef[id.id_joueur])
 
       room.onMessage("suppression", (objet: number) => {
-        console.log("DEBUT")
-        console.log(this.groupeProjectiles.getLength())
-        const o = Object.entries(objet)[0];
-          this.projectilesRef[o[1]].destroy(true)
-          delete this.projectilesRef[o[1]]
-          console.log(this.projectilesRef)
-          console.log("FIN")
-          console.log(this.groupeProjectiles.getLength())
-        console.log("message received from server");
+        const cle = Object.entries(objet)[0][0];
+        const id = Object.entries(objet)[0][1];
+        (this as any)[cle][id].destroy(true);
+        delete (this as any)[cle][id];
       });
 
 
@@ -656,7 +651,6 @@ export default class Jeu extends Phaser.Scene {
 	async patchPlayer(list: any) {
 
     list.projectilesListe.map((item: string) => {
-      console.log(list.projectiles[item].id)
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
           const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
@@ -913,27 +907,6 @@ export default class Jeu extends Phaser.Scene {
 				delete this.playersRef[id]
 			}
 		})
-
-    this.groupeProjectiles.children.iterate((child: any) => {
-      if (list.projectiles[child.id] === undefined) {
-        // this.projectilesRef[child.id].destroy(true)
-        // console.log("SUPPRESSION")
-        // console.log(child.id)
-        // delete this.projectilesRef[child.id]
-        // console.log(this.projectilesRef)
-        // console.log(this.groupeProjectiles.getLength())
-      }
-    })
-
-
-    // this.groupeBoules.getChildren().forEach((element, idx) => {
-    //   // console.log(element)
-    //   if ((element as Phaser.Physics.Arcade.Sprite).active == false) {
-    //     console.log("DDDDDDDDDDDDDDDDDDDDDDDDDESSSSTRUCTION")
-    //     this.boulesRef[(element as any).bouleID].destroy(true)
-    //     delete this.boulesRef[(element as any).bouleID]
-    //   }
-    // });
 	}
 
   fade(room: any) {
