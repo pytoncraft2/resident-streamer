@@ -34,21 +34,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.id = id
     this.scale = 0.2
     this.alpha = 0.3
-    this.sprite = sprite
-    // this.setBounce(1, 1);
-    this.setCollideWorldBounds(true);
-
-  }
-  preUpdate(time, delta) {
-    // console.log(this.anims.msPerFrame += 300)
-    super.preUpdate(time, delta);
-
-    this.angle += 32;
-
-    if (this.traqueJoueur) {
-      this.x = this.traqueJoueur.x
-      this.y = this.traqueJoueur.y
-    }
+    this.sprite = sprite;
 
       (this.scene as any).room.state.projectiles.set(
         this.id,
@@ -63,6 +49,42 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
           _frame: this._frame
         })
       )
+
+    this.scene.time.delayedCall(2000, () => {
+      (this.scene as any).room.state.projectiles.delete(id);
+      this.destroy(true);
+    }, null, this);
+
+    // this.setBounce(1, 1);
+    this.setCollideWorldBounds(true);
+
+  }
+  preUpdate(time, delta) {
+    // console.log(this.anims.msPerFrame += 300)
+    super.preUpdate(time, delta);
+
+    console.log("UUUUUUUUUUUUUPDATE")
+    this.angle += 32;
+
+    if (this.traqueJoueur) {
+      this.x = this.traqueJoueur.x
+      this.y = this.traqueJoueur.y
+    }
+/*
+      (this.scene as any).room.state.projectiles.set(
+        this.id,
+        new Projectile({
+          x: this.x,
+          y: this.y,
+          id: this.id,
+          active: this.active,
+          flipX: this.flipX,
+          sprite: this.sprite,
+          angle: this.angle,
+          _frame: this._frame
+        })
+      )
+      */
   }
 
   setVitesse(vitesse: number) {

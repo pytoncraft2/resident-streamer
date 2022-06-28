@@ -397,46 +397,6 @@
             ]
         },
         {
-            "type": "Image",
-            "id": "701dfca3-4caf-4d8d-b77e-7418c20f0a3f",
-            "label": "face0",
-            "components": [],
-            "texture": {
-                "key": "face0"
-            },
-            "x": 488,
-            "y": 743
-        },
-        {
-            "type": "Rectangle",
-            "id": "39e9e082-5907-4b5b-9df8-f634e4179e32",
-            "label": "rectangle",
-            "components": [],
-            "x": 458,
-            "y": 534,
-            "scaleX": 0.9620844184293221,
-            "scaleY": 0.10896442556651106,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Image",
-            "id": "7299a1aa-e774-46b0-b6c8-9af0603ec068",
-            "label": "laser01",
-            "scope": "PUBLIC",
-            "components": [],
-            "texture": {
-                "key": "laser01"
-            },
-            "x": 548,
-            "y": 583,
-            "scaleX": 0.19265106053743225,
-            "scaleY": 0.14474581179115986
-        },
-        {
             "type": "Rectangle",
             "id": "6c322cc1-8df9-47e1-878f-ee5554ec3a93",
             "label": "p1",
@@ -450,22 +410,6 @@
             "fillColor": "#a130f8",
             "width": 128,
             "height": 128
-        },
-        {
-            "type": "Text",
-            "id": "e35b84b2-0688-4e63-8579-fafe7e82eb86",
-            "label": "text_1",
-            "components": [],
-            "x": 502,
-            "y": 543,
-            "text": "Vous",
-            "fontStyle": "italic",
-            "color": "#5dcefcff",
-            "backgroundColor": "#ffffffff",
-            "shadow.stroke": true,
-            "shadow.fill": true,
-            "shadow.color": "#ffffffff",
-            "shadow.blur": 4
         },
         {
             "type": "Rectangle",

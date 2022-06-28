@@ -216,22 +216,6 @@ export default class Jeu extends Phaser.Scene {
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
-		// face0
-		this.add.image(488, 743, "face0");
-
-		// rectangle
-		const rectangle = this.add.rectangle(458, 534, 128, 128);
-		rectangle.scaleX = 0.9620844184293221;
-		rectangle.scaleY = 0.10896442556651106;
-		rectangle.setOrigin(0, 0.5);
-		rectangle.isFilled = true;
-		rectangle.fillColor = 10563832;
-
-		// laser01
-		const laser01 = this.add.image(548, 583, "laser01");
-		laser01.scaleX = 0.19265106053743225;
-		laser01.scaleY = 0.14474581179115986;
-
 		// p1
 		const p1 = this.add.rectangle(1, 939, 128, 128);
 		p1.scaleX = 14.993211052385613;
@@ -239,11 +223,6 @@ export default class Jeu extends Phaser.Scene {
 		p1.setOrigin(0, 0.5);
 		p1.isFilled = true;
 		p1.fillColor = 10563832;
-
-		// text_1
-		const text_1 = this.add.text(502, 543, "", {});
-		text_1.text = "Vous";
-		text_1.setStyle({ "backgroundColor": "#ffffffff", "color": "#5dcefcff", "fontStyle": "italic", "shadow.color": "#ffffffff", "shadow.blur":4,"shadow.stroke":true,"shadow.fill":true});
 
 		// rectangle_2
 		const rectangle_2 = this.add.rectangle(960, 1021, 128, 128);
@@ -434,7 +413,6 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
-		this.laser01 = laser01;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
 
@@ -452,7 +430,6 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
-	public laser01!: Phaser.GameObjects.Image;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
 

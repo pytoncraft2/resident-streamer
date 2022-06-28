@@ -194,6 +194,8 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        // (this.scene as any).players.remove(this)
      }
 
+     // console.log((this.scene as any).room.state.projectiles);
+
      (this.scene as any).room.state.presences.set(
        this.ClientID,
        new Player({
