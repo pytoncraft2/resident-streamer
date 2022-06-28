@@ -22,6 +22,7 @@ export default class Hall extends Phaser.Scene {
   playersRef: any
   enemiesRef: any
   containerColision: Phaser.GameObjects.Container
+  platforme: Phaser.GameObjects.Rectangle
   rect: any
 
 
@@ -95,6 +96,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme.setOrigin(0, 0.5);
     platforme.isFilled = true;
     platforme.fillColor = 10563832;
+    this.platforme = platforme;
 
     // const platforme = this.add.rectangle(955, 1200, 40000, 10);
     // this.physics.world.setBounds(platforme.getBottomLeft().x, 0, platforme.displayWidth, 1000);

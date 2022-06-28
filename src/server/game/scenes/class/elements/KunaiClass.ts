@@ -35,17 +35,8 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     this.id = id
     this.scale = 0.2;
 
-    // this.scene.time.delayedCall(1300, () => {
-    //   (this.scene as any).room.broadcast("suppression", {projectilesRef: id});
-    //   (this.scene as any).room.state.projectiles.delete(id);
-    //   this.destroy(true);
-    // }, null, this);
-    //
     (this.scene as any).suppressionProjectileDelai(this, id, 1300, true)
-
-
-
-    // this.setBounce(1, 1);
+    
     this.setCollideWorldBounds(true);
 
   }
