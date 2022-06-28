@@ -851,26 +851,26 @@ export default class Jeu extends Phaser.Scene {
   }
 
   animBombe(item, list) {
-        const effet_choc = this.add.ellipse(list.projectiles[item].x, list.projectiles[item].y + 200, 128, 128);
-        effet_choc.setScale(0);
-        effet_choc.isFilled = true;
-        effet_choc.fillAlpha = 0.3;
+    const effet_choc = this.add.ellipse(list.projectiles[item].x, list.projectiles[item].y + 200, 128, 128);
+    effet_choc.setScale(0);
+    effet_choc.isFilled = true;
+    effet_choc.fillAlpha = 0.3;
 
-        this.tweens.add({
-          targets: effet_choc,
-          scale: "+=6",
-          alpha: 0,
-          ease: 'Sine.inOut',
-          duration: 400,
-          delay: 1600,
-          repeat: 0,
-          onUpdate: () => {
-            effet_choc.setPosition(this.projectilesRef[item].x, this.projectilesRef[item].y)
-          },
-          onComplete: function() {
-            arguments[1][0].destroy(true)
-          }
-        });
+    this.tweens.add({
+      targets: effet_choc,
+      scale: "+=6",
+      alpha: 0,
+      ease: 'Sine.inOut',
+      duration: 400,
+      delay: 1600,
+      repeat: 0,
+      onUpdate: () => {
+        effet_choc.setPosition(this.projectilesRef[item].x, this.projectilesRef[item].y)
+      },
+      onComplete: function() {
+        arguments[1][0].destroy(true)
+      }
+    });
   }
 
   update() {
