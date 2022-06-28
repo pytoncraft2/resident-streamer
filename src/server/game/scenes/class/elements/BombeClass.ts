@@ -52,8 +52,19 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     // (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
     //@ts-ignore
-    this.fin = false
-    this.explosion = false
+    this.fin = false;
+    this.explosion = false;
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        id: this.id,
+        anim: this.anims.getFrameName(),
+        sprite: this.sprite,
+        _frame: this._frame
+      })
+    )
 
     this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function(_zone_bombe: any, _ennemie: any) {
       const d = Phaser.Math.Distance.BetweenPoints({x: _ennemie.x, y: _ennemie.y}, {x: _zone_bombe.x, y: _zone_bombe.y}); // a, b: {x, y}
