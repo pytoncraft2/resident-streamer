@@ -483,7 +483,7 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
-    this.cameras.main.fadeIn(4000);
+    this.cameras.main.fadeIn(2000);
 
 /*
     var epic_musique = this.sound.add('epic_musique');
@@ -588,6 +588,20 @@ export default class Jeu extends Phaser.Scene {
 
       //   this.emitter.startFollow(this.playersRef[id.id_joueur])
 
+      room.onMessage("suppression", (objet: number) => {
+        console.log("DEBUT")
+        console.log(this.groupeProjectiles.getLength())
+        const o = Object.entries(objet)[0];
+          this.projectilesRef[o[1]].destroy(true)
+          delete this.projectilesRef[o[1]]
+          console.log(this.projectilesRef)
+          console.log("FIN")
+          console.log(this.groupeProjectiles.getLength())
+        console.log("message received from server");
+      });
+
+
+
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
         let projectiles: any = {}
@@ -642,9 +656,12 @@ export default class Jeu extends Phaser.Scene {
 	async patchPlayer(list: any) {
 
     list.projectilesListe.map((item: string) => {
+      console.log(list.projectiles[item].id)
       if (this.projectilesRef[list.projectiles[item].id] === undefined)
       {
-          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`).setAlpha(list.projectiles[item].alpha)
+          const projectile = this.groupeProjectiles.create(list.projectiles[item].x, list.projectiles[item].y, `${list.projectiles[item].sprite}_atlas`, `${list.projectiles[item]._frame}`)
+          .setAlpha(list.projectiles[item].alpha)
+          projectile.id = list.projectiles[item].id;
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
@@ -896,6 +913,18 @@ export default class Jeu extends Phaser.Scene {
 				delete this.playersRef[id]
 			}
 		})
+
+    this.groupeProjectiles.children.iterate((child: any) => {
+      if (list.projectiles[child.id] === undefined) {
+        // this.projectilesRef[child.id].destroy(true)
+        // console.log("SUPPRESSION")
+        // console.log(child.id)
+        // delete this.projectilesRef[child.id]
+        // console.log(this.projectilesRef)
+        // console.log(this.groupeProjectiles.getLength())
+      }
+    })
+
 
     // this.groupeBoules.getChildren().forEach((element, idx) => {
     //   // console.log(element)

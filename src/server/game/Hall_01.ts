@@ -98,11 +98,14 @@ export default class GameRooms extends Room {
     // this.clock.setTimeout(() => {
     //   this.scene.createEnnemy('boss_1', 'fakhear_atlas')
     //   // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
+    // this.broadcast("test", "an action has been taken!");
     // }, 4_000);
 
     this.onMessage("inputs", (client, message) => {
       this.donnes[client.id].clavier = message
     })
+
+
   }
 
   onJoin(client: Client, options: any) {
