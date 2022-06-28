@@ -23,5 +23,4 @@ export function bombe__Z(akhizonah: TJoueur) {
     }, null, bombe);
   }
 
-  console.log("BOMBE")
 }

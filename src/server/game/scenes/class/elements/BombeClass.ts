@@ -72,15 +72,14 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
       _zone_bombe.setData('degat', 0)
     }, undefined, this);
 
+    (this.scene as any).suppressionProjectileDelai(this, id, 2000, true)
 
   }
   preUpdate(time: number, delta: number) {
-    // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
     //@ts-ignore
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
-      console.log("KABOUM -------------------------")
       this.explosion = true
       this.zoneInteraction.body.enable = true;
       this.zoneInteraction.setPosition(this.x, this.y)
@@ -88,8 +87,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
       this.fin = true
     }
 
-
-    console.log(this.anims.getFrameName());
       (this.scene as any).room.state.projectiles.set(
         this.id,
         new Projectile({
