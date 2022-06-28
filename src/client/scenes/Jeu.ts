@@ -660,6 +660,9 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
           if (list.projectiles[item].anim) projectile.setFrame(list.projectiles[item].anim)
+          if (list.projectiles[item]._frame === "bombe0") this.animBombe(item, list)
+          const b = projectile
+
           this.projectilesRef[item] = projectile
       }
       else
@@ -712,88 +715,6 @@ export default class Jeu extends Phaser.Scene {
         // if (list.rectangles[item].fillAlpha) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor, list.rectangles[item].fillAlpha);
       }
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // console.log(this.groupeBoules.getLength())
-    // console.log(list.boulesListe)
-    // list.boulesListe.map((item: string) => {
-    //   if (this.boulesRef[list.boules[item].id] === undefined && list.boules[item].active) {
-    //     const b = this.groupeBoules.create(list.boules[item].x, list.boules[item].y, `huzounet_atlas`, 'shuriken0')
-    //     .setDepth(2)
-    //     .setScale(list.boules[item].scale)
-    //     .setAlpha(list.boules[item].alpha)
-    //     .play(`huzounet_shuriken`);
-    //     this.boulesRef[item] = b
-    //   } else if (list.boules[item].active) {
-    //     this.boulesRef[item].setPosition(list.boules[item].x, list.boules[item].y);
-    //     this.boulesRef[item].setScale(list.boules[item].scale);
-    //     this.boulesRef[item].setAlpha(list.boules[item].alpha)
-    //     // console.log(list.boules[item].actif)
-    //     // console.log(list.boules[item].active)
-    //
-    //   }
-    //
-    //   if (!list.boules[item].active) {
-    //     // console.log("PASSS AAACTIF")
-    //     // console.log(this.groupeBoules.getFirstDead())
-    //
-    //     if (this.boulesRef[list.boules[item].id]) {
-    //       this.boulesRef[list.boules[item].id].destroy()
-    //       delete this.boulesRef[list.boules[item].id]
-    //     }
-    //     // console.log(this.boulesRef[list.boules[item].id])
-    //     // console.log(list.boules[item].id)
-    //     // this.boulesRef[list.boules[item].id].destroy(true)
-    //     // console.log(this.boulesRef[list.boules[item].id])
-    //   }
-    // })
-
-    // list.kunaisListe.map((item: string) => {
-    //   if (this.kunaisRef[list.kunais[item].id] === undefined && list.kunais[item].active) {
-    //     const b = this.groupeKunais.create(list.kunais[item].x, list.kunais[item].y, `huzounet_atlas`, 'kunai')
-    //     .setDepth(2)
-    //     .setAlpha(list.kunais[item].alpha)
-    //     .setFlipX(list.kunais[item].flipX)
-    //     // .play(`huzounet_shuriken`);
-    //     this.kunaisRef[item] = b
-    //   } else if (list.kunais[item].active) {
-    //     this.kunaisRef[item].setPosition(list.kunais[item].x, list.kunais[item].y);
-    //     // console.log(list.boules[item].actif)
-    //     // console.log(list.boules[item].active)
-    //
-    //   }
-    //
-    //   if (!list.kunais[item].active) {
-    //     // console.log("PASSS AAACTIF")
-    //     // console.log(this.groupeBoules.getFirstDead())
-    //
-    //     if (this.kunaisRef[list.kunais[item].id]) {
-    //       this.kunaisRef[list.kunais[item].id].destroy()
-    //       delete this.kunaisRef[list.kunais[item].id]
-    //     }
-    //     // console.log(this.boulesRef[list.boules[item].id])
-    //     // console.log(list.boules[item].id)
-    //     // this.boulesRef[list.boules[item].id].destroy(true)
-    //     // console.log(this.boulesRef[list.boules[item].id])
-    //   }
-    // })
 
     // list.bombesListe.map((item: string) => {
     //   if (this.bombesRef[list.bombes[item].id] === undefined) {
@@ -927,6 +848,29 @@ export default class Jeu extends Phaser.Scene {
           }, this);
         }
       }, this);
+  }
+
+  animBombe(item, list) {
+        const effet_choc = this.add.ellipse(list.projectiles[item].x, list.projectiles[item].y + 200, 128, 128);
+        effet_choc.setScale(0);
+        effet_choc.isFilled = true;
+        effet_choc.fillAlpha = 0.3;
+
+        this.tweens.add({
+          targets: effet_choc,
+          scale: "+=6",
+          alpha: 0,
+          ease: 'Sine.inOut',
+          duration: 400,
+          delay: 1600,
+          repeat: 0,
+          onUpdate: () => {
+            effet_choc.setPosition(this.projectilesRef[item].x, this.projectilesRef[item].y)
+          },
+          onComplete: function() {
+            arguments[1][0].destroy(true)
+          }
+        });
   }
 
   update() {

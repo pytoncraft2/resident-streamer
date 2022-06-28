@@ -198,7 +198,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     this.time.delayedCall(delai, () => {
       if (smooth)
       {
-        const tw = this.tweens.add({
+        this.tweens.add({
           targets: cible,
           alpha: 0,
           duration: 400,

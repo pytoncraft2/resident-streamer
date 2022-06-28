@@ -3,7 +3,7 @@ import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
 import TJoueur from "../types/Joueur"
-import { DefautStats, DefautDirection } from "../Stats/Defaut"
+import { DefautDirection } from "../Stats/Defaut"
 
 /**
  * Joueur et interaction
@@ -243,9 +243,6 @@ import { DefautStats, DefautDirection } from "../Stats/Defaut"
        this.currentTarget = this
        this.setScale(1)
      }, null, this);
-   }
-
-   suppresionPilote(suppresionJoueur: TJoueur) {
    }
 
    respawn() {
