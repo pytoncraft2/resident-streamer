@@ -192,6 +192,30 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     return this.getPresence()
   }
 
+  suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
+    this.time.delayedCall(delai, () => {
+      if (smooth)
+      {
+        const tw = this.tweens.add({
+          targets: cible,
+          alpha: 0,
+          duration: 400,
+          onComplete: function() {
+            arguments[1][0].scene.room.broadcast("suppression", {projectilesRef: id});
+            arguments[1][0].scene.room.state.projectiles.delete(id);
+            arguments[1][0].destroy(true);
+          }
+        });
+      }
+      else
+      {
+        this.room.broadcast("suppression", {projectilesRef: id});
+        this.room.state.projectiles.delete(id);
+        cible.destroy(true);
+      }
+    }, null, this);
+  }
+
   CommencerCompteur() {
     this.time.addEvent({
       delay: 1000,                // ms
