@@ -89,6 +89,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     }
 
 
+    console.log(this.anims.getFrameName());
       (this.scene as any).room.state.projectiles.set(
         this.id,
         new Projectile({

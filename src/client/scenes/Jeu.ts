@@ -659,6 +659,7 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].flipX) projectile.setFlipX(list.projectiles[item].flipX)
           if (list.projectiles[item].scale) projectile.setScale(list.projectiles[item].scale)
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
+          if (list.projectiles[item].anim) projectile.setFrame(list.projectiles[item].anim)
           this.projectilesRef[item] = projectile
       }
       else
@@ -668,6 +669,7 @@ export default class Jeu extends Phaser.Scene {
         if (list.projectiles[item].scaleX) this.projectilesRef[item].setScale(list.projectiles[item].scaleX, list.projectiles[item].scaleY);
         if (list.projectiles[item].alpha) this.projectilesRef[item].setAlpha(list.projectiles[item].alpha);
         if (list.projectiles[item].angle) this.projectilesRef[item].angle = list.projectiles[item].angle;
+        if (list.projectiles[item].anim) this.projectilesRef[item].setFrame(list.projectiles[item].anim)
       }
     })
 
