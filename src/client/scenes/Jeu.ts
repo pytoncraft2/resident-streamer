@@ -661,8 +661,6 @@ export default class Jeu extends Phaser.Scene {
           if (list.projectiles[item].depth) projectile.setDepth(list.projectiles[item].depth)
           if (list.projectiles[item].anim) projectile.setFrame(list.projectiles[item].anim)
           if (list.projectiles[item]._frame === "bombe0") this.animBombe(item, list)
-          const b = projectile
-
           this.projectilesRef[item] = projectile
       }
       else
@@ -850,7 +848,7 @@ export default class Jeu extends Phaser.Scene {
       }, this);
   }
 
-  animBombe(item, list) {
+  animBombe(item: any, list: any) {
     const effet_choc = this.add.ellipse(list.projectiles[item].x, list.projectiles[item].y + 200, 128, 128);
     effet_choc.setScale(0);
     effet_choc.isFilled = true;
