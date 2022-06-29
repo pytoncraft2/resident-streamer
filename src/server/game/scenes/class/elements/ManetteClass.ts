@@ -36,7 +36,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.sprite = sprite;
 
     //@ts-ignore
-    this.timer = (this.scene as any).suppressionProjectileDelai(this, id)
+    this.timer = (this.scene as any).suppressionProjectileDelai(this, id, 1100, true)
 
     // this.setBounce(1, 1);
     this.setCollideWorldBounds(true);

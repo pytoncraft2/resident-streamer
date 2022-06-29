@@ -26,6 +26,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   degat: number
   sprite: string
   particules: boolean
+  groupeManettes: Phaser.GameObjects.Group
   gfx: Phaser.GameObjects.Graphics
 
   tweenIcon: Phaser.Tweens.Tween

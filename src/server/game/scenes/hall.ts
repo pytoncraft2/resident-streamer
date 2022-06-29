@@ -207,9 +207,10 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
           targets: cible,
           alpha: 0,
           duration: 400,
-          onComplete: function() {
-            arguments[1][0].scene.room.broadcast("suppression", {projectilesRef: id});
-            arguments[1][0].scene.room.state.projectiles.delete(id);
+          onCompleteParams: [this],
+          onComplete: function(_tw, _target, scene) {
+            scene.room.broadcast("suppression", {projectilesRef: id});
+            scene.room.state.projectiles.delete(id);
             arguments[1][0].destroy(true);
           }
         });
