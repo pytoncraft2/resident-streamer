@@ -28,7 +28,9 @@ export function lanceManette__Z(manette: TJoueur, _input: any) {
     }, undefined, manette);
 
     (obj_manette.body as any).setAllowGravity(false);
-    manette.obj_manette = obj_manette
+    manette.scene.groupeManettes.add(obj_manette);
+    manette.obj_manette = obj_manette;
+
     manette.scene.time.delayedCall(100, () => {
 
         var timeline = manette.scene.tweens.createTimeline();
@@ -55,6 +57,8 @@ export function lanceManette__Z(manette: TJoueur, _input: any) {
           duration: 800
         });
 
+        //@ts-ignore
+        manette.obj_manette.tweenManette = timeline;
         timeline.play()
         // manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
         // manette.scene.tweens.add({

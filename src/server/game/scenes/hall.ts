@@ -19,6 +19,7 @@ export default class Hall extends Phaser.Scene {
   playersAttackZone: Phaser.GameObjects.Group
   ennemieAttackZone: Phaser.GameObjects.Group
   groupeBoulesHuzounet: Phaser.GameObjects.Group
+  groupeManettes: Phaser.GameObjects.Group
   playersRef: any
   enemiesRef: any
   containerColision: Phaser.GameObjects.Container
@@ -63,7 +64,11 @@ export default class Hall extends Phaser.Scene {
       collideWorldBounds: true
     })
 
-
+    this.groupeManettes = this.physics.add.group({
+      runChildUpdate: true,
+      collideWorldBounds: true,
+      allowGravity: false
+    })
 
 
     // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
@@ -195,7 +200,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
-    this.time.delayedCall(delai, () => {
+    return this.time.delayedCall(delai, () => {
       if (smooth)
       {
         this.tweens.add({
