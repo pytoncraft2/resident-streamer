@@ -35,7 +35,8 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.scale = 0.2
     this.sprite = sprite;
 
-    this.activeTimer()
+    //@ts-ignore
+    this.timer = (this.scene as any).suppressionProjectileDelai(this, id)
 
     // this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
@@ -74,11 +75,6 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {
     if (desactivation) this.traqueJoueur = null
     else this.traqueJoueur = joueur
-  }
-
-  activeTimer() {
-    //@ts-ignore
-    this.timer = (this.scene as any).suppressionProjectileDelai(this, this.id)
   }
 
 }

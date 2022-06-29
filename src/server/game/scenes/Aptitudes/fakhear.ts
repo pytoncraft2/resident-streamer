@@ -143,19 +143,10 @@ export function interaction__R(fakhear: TJoueur, input) {
           fakhear.groupeManettes.add(obj_manette);
           //@ts-ignore
         } else if (fakhear.groupeManettes.getLength() == 1) {
-          obj_manette.tweenManette.stop()
-          obj_manette.timer.remove()
-
           obj_manette.traquer(fakhear, true);
-
           // obj_manette.activeTimer()
-          fakhear.scene.time.delayedCall(200, () => {
           //@ts-ignore
-            fakhear.groupeManettes.remove(obj_manette);
-          //@ts-ignore
-            fakhear.scene.groupeBoulesHuzounet.add(obj_manette)
-            obj_manette.body.setAllowGravity(false)
-          }, null, this);
+          fakhear.groupeManettes.remove(obj_manette);
           //@ts-ignore
           Aptitudes['manette'].animationLancerManette(fakhear)
         }
