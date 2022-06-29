@@ -128,15 +128,37 @@ export function interaction__R(fakhear: TJoueur, input) {
       //@ts-ignore
       console.log("MANETTE ATTRAPER !")
       let dist = Phaser.Math.Distance.BetweenPoints(obj_manette, fakhear);
-      console.log(dist)
+      //@ts-ignore
+      console.log(fakhear.groupeManettes.getLength())
 
       if (dist < 85) {
-        obj_manette.tweenManette.stop()
-        obj_manette.timer.remove()
-        obj_manette.traquer(fakhear)
-        // obj_manette.setTint(0x2cd716)
-        //@ts-ignore
-        fakhear.groupeManettes.add(obj_manette);
+
+          //@ts-ignore
+        if (fakhear.groupeManettes.getLength() == 0) {
+          obj_manette.tweenManette.stop()
+          obj_manette.timer.remove()
+          obj_manette.traquer(fakhear)
+          // obj_manette.setTint(0x2cd716)
+          //@ts-ignore
+          fakhear.groupeManettes.add(obj_manette);
+          //@ts-ignore
+        } else if (fakhear.groupeManettes.getLength() == 1) {
+          obj_manette.tweenManette.stop()
+          obj_manette.timer.remove()
+
+          obj_manette.traquer(fakhear, true);
+
+          // obj_manette.activeTimer()
+          fakhear.scene.time.delayedCall(200, () => {
+          //@ts-ignore
+            fakhear.groupeManettes.remove(obj_manette);
+          //@ts-ignore
+            fakhear.scene.groupeBoulesHuzounet.add(obj_manette)
+            obj_manette.body.setAllowGravity(false)
+          }, null, this);
+          //@ts-ignore
+          Aptitudes['manette'].animationLancerManette(fakhear)
+        }
       }
       // obj_manette.stop()
       // var tweens = fakhear.scene.tweens.getTweensOf(obj_manette);
