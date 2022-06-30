@@ -103,6 +103,12 @@ import { DefautDirection } from "../Stats/Defaut"
          }
        }
 
+       if (anim.key === 'manette_punch') {
+         if (frame.frame.name == 'manettepunch1') {
+           this.blesse_opposant = true
+         }
+       }
+
        if (anim.key === 'attaque') {
          this.blesse_opposant = true
        }
