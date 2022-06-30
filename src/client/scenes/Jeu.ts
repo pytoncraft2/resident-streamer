@@ -882,7 +882,7 @@ export default class Jeu extends Phaser.Scene {
   animIcon(icon: any, sprite_fusion) {
     this.tweens.add({
       targets: icon,
-      angle: -360,
+      angle: -660,
       alpha: 0.5,
       scale: 0,
       ease: 'Sine.inOut',
