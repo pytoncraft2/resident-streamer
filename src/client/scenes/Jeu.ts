@@ -263,69 +263,65 @@ export default class Jeu extends Phaser.Scene {
 		vie_joueur.isFilled = true;
 		vie_joueur.fillColor = 15554289;
 
+		// touche_A
+		const touche_A = this.add.container(915, 997);
+
 		// rectangle_4
-		const rectangle_4 = this.add.rectangle(935, 997, 128, 128);
+		const rectangle_4 = this.add.rectangle(20, 5, 128, 128);
 		rectangle_4.scaleX = 0.4926742586809625;
 		rectangle_4.scaleY = 0.4926742586809625;
 		rectangle_4.isFilled = true;
 		rectangle_4.fillColor = 9965769;
 		rectangle_4.fillAlpha = 0.1;
 		rectangle_4.isStroked = true;
+		touche_A.add(rectangle_4);
 
 		// text_3
-		const text_3 = this.add.text(935, 997, "", {});
+		const text_3 = this.add.text(20, 5, "", {});
 		text_3.setOrigin(0.5, 0.5);
 		text_3.text = "A";
 		text_3.setStyle({ "fontSize": "26px" });
+		touche_A.add(text_3);
+
+		// text_5
+		const text_5 = this.add.text(0, 18, "", {});
+		text_5.scaleX = 0.8383656155133609;
+		text_5.scaleY = 0.8383656155133609;
+		text_5.text = "cross";
+		touche_A.add(text_5);
+
+		// touche_Z
+		const touche_Z = this.add.container(986, 997);
 
 		// rectangle_4_1
-		const rectangle_4_1 = this.add.rectangle(1004, 997, 128, 128);
+		const rectangle_4_1 = this.add.rectangle(18, 5, 128, 128);
 		rectangle_4_1.scaleX = 0.4926742586809625;
 		rectangle_4_1.scaleY = 0.4926742586809625;
 		rectangle_4_1.isFilled = true;
 		rectangle_4_1.fillColor = 9965769;
 		rectangle_4_1.fillAlpha = 0.1;
 		rectangle_4_1.isStroked = true;
+		touche_Z.add(rectangle_4_1);
 
 		// text_3_1
-		const text_3_1 = this.add.text(1004, 997, "", {});
+		const text_3_1 = this.add.text(18, 5, "", {});
 		text_3_1.setOrigin(0.5, 0.5);
 		text_3_1.text = "Z";
 		text_3_1.setStyle({ "fontSize": "26px" });
+		touche_Z.add(text_3_1);
 
-		// rectangle_4_2
-		const rectangle_4_2 = this.add.rectangle(1073, 997.0000000000001, 128, 128);
-		rectangle_4_2.scaleX = 0.4926742586809625;
-		rectangle_4_2.scaleY = 0.4926742586809625;
-		rectangle_4_2.isFilled = true;
-		rectangle_4_2.fillColor = 9965769;
-		rectangle_4_2.fillAlpha = 0.1;
-		rectangle_4_2.isStroked = true;
+		// text_5_1
+		const text_5_1 = this.add.text(0, 18, "", {});
+		text_5_1.scaleX = 0.8383656155133609;
+		text_5_1.scaleY = 0.8383656155133609;
+		text_5_1.text = "dash";
+		touche_Z.add(text_5_1);
 
-		// text_E
-		const text_E = this.add.text(1073, 997, "", {});
-		text_E.setOrigin(0.5, 0.5);
-		text_E.text = "E";
-		text_E.setStyle({ "fontSize": "26px" });
-
-		// rectangle_4_2_1
-		const rectangle_4_2_1 = this.add.rectangle(1142, 997, 128, 128);
-		rectangle_4_2_1.scaleX = 0.4926742586809625;
-		rectangle_4_2_1.scaleY = 0.4926742586809625;
-		rectangle_4_2_1.isFilled = true;
-		rectangle_4_2_1.fillColor = 9965769;
-		rectangle_4_2_1.fillAlpha = 0.1;
-		rectangle_4_2_1.isStroked = true;
-		rectangle_4_2_1.strokeColor = 3155237;
-
-		// text_3_2_1
-		const text_3_2_1 = this.add.text(1142, 998, "", {});
-		text_3_2_1.setOrigin(0.5, 0.5);
-		text_3_2_1.text = "R";
-		text_3_2_1.setStyle({ "color": "#5a4747ff", "fontSize": "26px" });
+		// touche_TAB
+		const touche_TAB = this.add.container(725, 973);
 
 		// rectangle_4_3
-		const rectangle_4_3 = this.add.rectangle(796, 993, 128, 128);
+		const rectangle_4_3 = this.add.rectangle(71, 20, 128, 128);
 		rectangle_4_3.scaleX = 1.3025571558163676;
 		rectangle_4_3.scaleY = 0.3373770596916607;
 		rectangle_4_3.isFilled = true;
@@ -333,64 +329,107 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_3.fillAlpha = 0.1;
 		rectangle_4_3.isStroked = true;
 		rectangle_4_3.strokeColor = 3155237;
+		touche_TAB.add(rectangle_4_3);
 
 		// rectangle_5
-		const rectangle_5 = this.add.rectangle(780, 982, 128, 128);
+		const rectangle_5 = this.add.rectangle(55, 9, 128, 128);
 		rectangle_5.scaleX = 0.7998016954981302;
 		rectangle_5.scaleY = 0.04630570216976848;
 		rectangle_5.isFilled = true;
 		rectangle_5.fillColor = 5916487;
+		touche_TAB.add(rectangle_5);
 
 		// rectangle_5_1
-		const rectangle_5_1 = this.add.rectangle(818, 1002, 128, 128);
+		const rectangle_5_1 = this.add.rectangle(93, 29, 128, 128);
 		rectangle_5_1.scaleX = 0.7998016954981302;
 		rectangle_5_1.scaleY = 0.04630570216976848;
 		rectangle_5_1.isFilled = true;
 		rectangle_5_1.fillColor = 5916487;
+		touche_TAB.add(rectangle_5_1);
 
 		// triangle_2
-		const triangle_2 = this.add.triangle(868, 1002, 0, 128, 64, 0, 128, 128);
+		const triangle_2 = this.add.triangle(143, 29, 0, 128, 64, 0, 128, 128);
 		triangle_2.scaleX = 0.12492350627216228;
 		triangle_2.scaleY = 0.12492350627216228;
 		triangle_2.angle = 90;
 		triangle_2.isFilled = true;
 		triangle_2.fillColor = 5916487;
+		touche_TAB.add(triangle_2);
 
 		// triangle_2_1
-		const triangle_2_1 = this.add.triangle(725, 982, 0, 128, 64, 0, 128, 128);
+		const triangle_2_1 = this.add.triangle(0, 9, 0, 128, 64, 0, 128, 128);
 		triangle_2_1.scaleX = 0.12492350627216228;
 		triangle_2_1.scaleY = 0.12492350627216228;
 		triangle_2_1.angle = -90;
 		triangle_2_1.isFilled = true;
 		triangle_2_1.fillColor = 5916487;
+		touche_TAB.add(triangle_2_1);
 
 		// text_4
-		const text_4 = this.add.text(754, 1018, "", {});
+		const text_4 = this.add.text(29, 45, "", {});
 		text_4.text = "Fusionner";
 		text_4.setStyle({ "color": "#5a4747ff" });
+		touche_TAB.add(text_4);
 
-		// text_5
-		const text_5 = this.add.text(915, 1012, "", {});
-		text_5.scaleX = 0.8383656155133609;
-		text_5.scaleY = 0.8383656155133609;
-		text_5.text = "cross";
+		// text_4_1
+		const text_4_1 = this.add.text(115, 0, "", {});
+		text_4_1.text = "Tab";
+		text_4_1.setStyle({ "color": "#5a4747ff" });
+		touche_TAB.add(text_4_1);
 
-		// text_5_1
-		const text_5_1 = this.add.text(986, 1012, "", {});
-		text_5_1.scaleX = 0.8383656155133609;
-		text_5_1.scaleY = 0.8383656155133609;
-		text_5_1.text = "dash";
+		// touche_E
+		const touche_E = this.add.container(1056, 1002);
+
+		// rectangle_4_2
+		const rectangle_4_2 = this.add.rectangle(17, 0, 128, 128);
+		rectangle_4_2.scaleX = 0.4926742586809625;
+		rectangle_4_2.scaleY = 0.4926742586809625;
+		rectangle_4_2.isFilled = true;
+		rectangle_4_2.fillColor = 9965769;
+		rectangle_4_2.fillAlpha = 0.1;
+		rectangle_4_2.isStroked = true;
+		touche_E.add(rectangle_4_2);
+
+		// text_E
+		const text_E = this.add.text(17, 0, "", {});
+		text_E.setOrigin(0.5, 0.5);
+		text_E.text = "E";
+		text_E.setStyle({ "fontSize": "26px" });
+		touche_E.add(text_E);
 
 		// text_5_1_1
-		const text_5_1_1 = this.add.text(1056, 1012, "", {});
+		const text_5_1_1 = this.add.text(0, 13, "", {});
 		text_5_1_1.scaleX = 0.8383656155133609;
 		text_5_1_1.scaleY = 0.8383656155133609;
 		text_5_1_1.text = "kick";
+		touche_E.add(text_5_1_1);
 
-		// text_4_1
-		const text_4_1 = this.add.text(840, 973, "", {});
-		text_4_1.text = "Tab";
-		text_4_1.setStyle({ "color": "#5a4747ff" });
+		// touche_R
+		const touche_R = this.add.container(1118, 1002);
+
+		// rectangle_4_2_1
+		const rectangle_4_2_1 = this.add.rectangle(24, 0, 128, 128);
+		rectangle_4_2_1.scaleX = 0.4926742586809625;
+		rectangle_4_2_1.scaleY = 0.4926742586809625;
+		rectangle_4_2_1.isFilled = true;
+		rectangle_4_2_1.fillColor = 9965769;
+		rectangle_4_2_1.fillAlpha = 0.1;
+		rectangle_4_2_1.isStroked = true;
+		touche_R.add(rectangle_4_2_1);
+
+		// text_E_1
+		const text_E_1 = this.add.text(24, 0, "", {});
+		text_E_1.setOrigin(0.5, 0.5);
+		text_E_1.text = "R";
+		text_E_1.setStyle({ "fontSize": "26px" });
+		touche_R.add(text_E_1);
+
+		// text_5_1_1_1
+		const text_5_1_1_1 = this.add.text(0, 13, "", {});
+		text_5_1_1_1.scaleX = 0.8383656155133609;
+		text_5_1_1_1.scaleY = 0.8383656155133609;
+		text_5_1_1_1.text = "ultime";
+		touche_R.add(text_5_1_1_1);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -405,6 +444,23 @@ export default class Jeu extends Phaser.Scene {
 		this.barre_etat = barre_etat;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
+		this.touche_A = touche_A;
+		this.rectangle_4 = rectangle_4;
+		this.text_3 = text_3;
+		this.text_5 = text_5;
+		this.touche_Z = touche_Z;
+		this.rectangle_4_1 = rectangle_4_1;
+		this.text_3_1 = text_3_1;
+		this.text_5_1 = text_5_1;
+		this.touche_TAB = touche_TAB;
+		this.touche_E = touche_E;
+		this.rectangle_4_2 = rectangle_4_2;
+		this.text_E = text_E;
+		this.text_5_1_1 = text_5_1_1;
+		this.touche_R = touche_R;
+		this.rectangle_4_2_1 = rectangle_4_2_1;
+		this.text_E_1 = text_E_1;
+		this.text_5_1_1_1 = text_5_1_1_1;
 
 		this.events.emit("scene-awake");
 	}
@@ -422,6 +478,23 @@ export default class Jeu extends Phaser.Scene {
 	public barre_etat!: Phaser.GameObjects.Container;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
+	public touche_A!: Phaser.GameObjects.Container;
+	public rectangle_4!: Phaser.GameObjects.Rectangle;
+	public text_3!: Phaser.GameObjects.Text;
+	public text_5!: Phaser.GameObjects.Text;
+	public touche_Z!: Phaser.GameObjects.Container;
+	public rectangle_4_1!: Phaser.GameObjects.Rectangle;
+	public text_3_1!: Phaser.GameObjects.Text;
+	public text_5_1!: Phaser.GameObjects.Text;
+	public touche_TAB!: Phaser.GameObjects.Container;
+	public touche_E!: Phaser.GameObjects.Container;
+	public rectangle_4_2!: Phaser.GameObjects.Rectangle;
+	public text_E!: Phaser.GameObjects.Text;
+	public text_5_1_1!: Phaser.GameObjects.Text;
+	public touche_R!: Phaser.GameObjects.Container;
+	public rectangle_4_2_1!: Phaser.GameObjects.Rectangle;
+	public text_E_1!: Phaser.GameObjects.Text;
+	public text_5_1_1_1!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -565,6 +638,14 @@ export default class Jeu extends Phaser.Scene {
     this.barreHautContainer.setScrollFactor(0)
     this.gfx = this.add.graphics();
 
+    this.touche = {
+      "A": this.touche_A,
+      "Z": this.touche_Z,
+      "E": this.touche_E,
+      "R": this.touche_R,
+      "TAB": this.touche_TAB
+    }
+
 
 		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
@@ -586,7 +667,14 @@ export default class Jeu extends Phaser.Scene {
         delete (this as any)[cle][id];
       });
 
+      setTimeout(() => {
+        this.touche_A.setAlpha(0.1)
+      }, 3000);
 
+      // room.onMessage("touches_dispo", (actif: boolean) => {
+        // this.touchesDispo["cle"].setAlpha(actif ? 1 : 0.5)
+        // this.touchesDispo["texte"].setAlpha(actif ? 1 : 0.5)
+      // });
 
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
@@ -705,46 +793,6 @@ export default class Jeu extends Phaser.Scene {
         // if (list.rectangles[item].fillAlpha) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor, list.rectangles[item].fillAlpha);
       }
     })
-
-    // list.bombesListe.map((item: string) => {
-    //   if (this.bombesRef[list.bombes[item].id] === undefined) {
-    //     const b = this.groupeBombes.create(list.bombes[item].x, list.bombes[item].y, `akhizonah_atlas`, 'bombe0')
-    //     this.bombesRef[item] = b;
-    //
-    //     b.effet_choc = this.add.ellipse(list.bombes[item].x, list.bombes[item].y, 128, 128);
-    //     b.effet_choc.setScale(0);
-    //     b.effet_choc.isFilled = true;
-    //     b.effet_choc.fillAlpha = 0.3;
-    //
-    //     this.tweens.add({
-    //       targets: b.effet_choc,
-    //       scale: "+=6",
-    //       alpha: 0,
-    //       ease: 'Sine.inOut',
-    //       duration: 400,
-    //       delay: 1600,
-    //       repeat: 0,
-    //       onUpdate: () => {
-    //         b.effet_choc.setPosition(this.bombesRef[item].x, this.bombesRef[item].y)
-    //       },
-    //       onComplete: function() {
-    //         arguments[1][0].destroy(true)
-    //       }
-    //     });
-    //
-    //   } else {
-    //     if (list.bombes[item].anim) {
-    //       this.bombesRef[item].setPosition(list.bombes[item].x, list.bombes[item].y);
-    //
-    //       this.bombesRef[item].setFrame(list.bombes[item].anim);
-    //
-    //       if (list.bombes[item].explosion) {
-    //         this.bombesRef[item].effet_choc.setPosition(list.bombes[item].x, list.bombes[item].y);
-    //       }
-    //     }
-    //   }
-    // })
-
 
 		list.presenceList.map((item: string, idx: number) => {
 
