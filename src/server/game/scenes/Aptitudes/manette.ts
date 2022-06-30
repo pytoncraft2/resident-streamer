@@ -6,10 +6,8 @@ import { fusion } from "./_utilitaire/general";
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
       personnage.setVelocityY(-1250);
+      personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
       personnage.play("manette_vole")
-      if (!personnage.body.touching.down) {
-        personnage.flipX ? (personnage.body.velocity.x -= 900) : (personnage.body.velocity.x += 900)
-      }
   }
 }
 

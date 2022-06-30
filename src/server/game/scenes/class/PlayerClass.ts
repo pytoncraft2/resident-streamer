@@ -53,6 +53,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.ClientID = ClientID
      this.particules = false
      this.sprite = sprite
+     console.log(this)
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
