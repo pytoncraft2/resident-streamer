@@ -415,13 +415,14 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2_1.fillColor = 9965769;
 		rectangle_4_2_1.fillAlpha = 0.1;
 		rectangle_4_2_1.isStroked = true;
+		rectangle_4_2_1.strokeColor = 3155237;
 		touche_R.add(rectangle_4_2_1);
 
 		// text_E_1
 		const text_E_1 = this.add.text(24, 0, "", {});
 		text_E_1.setOrigin(0.5, 0.5);
 		text_E_1.text = "R";
-		text_E_1.setStyle({ "fontSize": "26px" });
+		text_E_1.setStyle({ "color": "#5a4747ff", "fontSize": "26px" });
 		touche_R.add(text_E_1);
 
 		// text_5_1_1_1
@@ -429,6 +430,7 @@ export default class Jeu extends Phaser.Scene {
 		text_5_1_1_1.scaleX = 0.8383656155133609;
 		text_5_1_1_1.scaleY = 0.8383656155133609;
 		text_5_1_1_1.text = "ultime";
+		text_5_1_1_1.setStyle({ "color": "#5a4747ff" });
 		touche_R.add(text_5_1_1_1);
 
 		this.map_boss1 = map_boss1;
@@ -666,10 +668,6 @@ export default class Jeu extends Phaser.Scene {
         (this as any)[cle][id].destroy(true);
         delete (this as any)[cle][id];
       });
-
-      setTimeout(() => {
-        this.touche_A.setAlpha(0.1)
-      }, 3000);
 
       // room.onMessage("touches_dispo", (actif: boolean) => {
         // this.touchesDispo["cle"].setAlpha(actif ? 1 : 0.5)
