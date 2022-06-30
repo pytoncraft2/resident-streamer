@@ -724,20 +724,6 @@
             "y": 973,
             "text": "Tab",
             "color": "#5a4747ff"
-        },
-        {
-            "type": "Ellipse",
-            "id": "0d4f6d3e-9d94-4863-b360-7fdefcae4cc1",
-            "label": "ellipse_5_2",
-            "components": [],
-            "x": 541,
-            "y": 1018,
-            "scaleX": 0.8179399157486755,
-            "scaleY": 0.8179399157486755,
-            "isFilled": true,
-            "fillColor": "#ffffff",
-            "width": 128,
-            "height": 128
         }
     ],
     "plainObjects": [],

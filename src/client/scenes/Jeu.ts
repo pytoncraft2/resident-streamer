@@ -392,12 +392,6 @@ export default class Jeu extends Phaser.Scene {
 		text_4_1.text = "Tab";
 		text_4_1.setStyle({ "color": "#5a4747ff" });
 
-		// ellipse_5_2
-		const ellipse_5_2 = this.add.ellipse(541, 1018, 128, 128);
-		ellipse_5_2.scaleX = 0.8179399157486755;
-		ellipse_5_2.scaleY = 0.8179399157486755;
-		ellipse_5_2.isFilled = true;
-
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.hall = hall;
@@ -828,7 +822,7 @@ export default class Jeu extends Phaser.Scene {
               this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
               if (list.presences[item].sprite_fusion) {
                 console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
-                this.playersRef[item].sprite_fusion.setFrame(`icon_${list.presences[item].sprite_fusion}`)
+                this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
               }
             }
 
@@ -881,6 +875,21 @@ export default class Jeu extends Phaser.Scene {
       },
       onComplete: function() {
         arguments[1][0].destroy(true)
+      }
+    });
+  }
+
+  animIcon(icon: any, sprite_fusion) {
+    this.tweens.add({
+      targets: icon,
+      angle: -360,
+      alpha: 0.5,
+      scale: 0,
+      ease: 'Sine.inOut',
+      duration: 800,
+      yoyo: true,
+      onYoyo: () => {
+        icon.setFrame(`icon_${sprite_fusion}`)
       }
     });
   }
