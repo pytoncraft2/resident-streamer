@@ -141,7 +141,12 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
-
+        (this.scene as any).room.state.presences.set(
+          this.ClientID,
+          new Player({
+            sprite_fusion: _e.sprite,
+          })
+        )
         this.fusionner = false;
          this.nouveauPilote(_e);
        }
@@ -235,11 +240,18 @@ import { DefautDirection } from "../Stats/Defaut"
      this.suivre = true
      this.setScale(0.2)
 
-     this.scene.time.delayedCall(40000, () => {
+     this.scene.time.delayedCall(20000, () => {
 
        this.suivre = false
        nouveauPilote.particules = false;
-       this.currentTarget = this
+       this.currentTarget = this;
+       (this.scene as any).room.state.presences.set(
+         this.ClientID,
+         new Player({
+           sprite_fusion: this.sprite,
+         })
+       )
+
        this.setScale(1)
      }, null, this);
    }
