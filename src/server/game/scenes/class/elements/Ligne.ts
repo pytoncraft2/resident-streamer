@@ -78,6 +78,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     (this.scene as any).room.state.lignes.set(
       this.id,
       new Ligne({
+        id: this.id,
         x: 600,
         y: 200,
         x1: this.closest.x,

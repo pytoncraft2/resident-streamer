@@ -221,6 +221,15 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }, null, this);
   }
 
+  suppressionLigne(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
+    // return this.time.delayedCall(delai, () => {
+        this.room.broadcast("suppression", {lignesRef: id});
+        this.room.state.lignes.delete(id);
+        cible.destroy();
+    // }, null, this);
+  }
+
+
   CommencerCompteur() {
     this.time.addEvent({
       delay: 1000,                // ms

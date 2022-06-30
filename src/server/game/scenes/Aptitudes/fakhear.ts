@@ -1,9 +1,8 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
-import Ligne from "../class/elements/Ligne";
 import ManetteClass from '../class/elements/ManetteClass'
 import { Aptitudes } from "../Aptitudes/base"
-import { fusion } from "./_utilitaire/general";
+import { fusion, closest } from "./_utilitaire/general";
 
 export function test() {}
 
@@ -72,6 +71,5 @@ export function interaction__R(fakhear: TJoueur, input) {
 // export fusion()
 // export function fusion(personnage, input);
 export function fusion__TAB(personnage: TJoueur, input: any) {
-  console.log("TAB")
   fusion(personnage, input)
 }
