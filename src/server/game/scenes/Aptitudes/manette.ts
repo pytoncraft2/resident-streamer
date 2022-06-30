@@ -133,73 +133,76 @@ export function __animationLancerManette(manette) {
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
  export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
-   const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-   if (positionJoueurProche)
+   if (manette.scene)
    {
-     var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-
-     if (positionJoueurProche.x < manette.x)
+     const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
+     if (positionJoueurProche)
      {
-       manette.setFlipX(true)
-       if (dist > 400 && dist < 900)
-       {
-         if (manette.body) lanceManette__Z(manette, {z: true})
-         reactiveBoucle(manette, aptitudes)
-       } else if (dist > 900)
-       {
-         if (manette.body)
-         {
-           manette.body.setVelocityX(-340)
-           aptitudes.toucheGauche(manette, {left_debut: true})
-         }
+       var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
 
-         reactiveBoucle(manette, aptitudes)
-       }
-       else if (dist < 400)
+       if (positionJoueurProche.x < manette.x)
        {
-         manette.play("manette_punch")
-         manette.scene.tweens.add({
-           delay: 500,
-           onStart: () => manette.play("manette_vole"),
-           targets: manette,
-           x: 0,
-           y: 0,
-           duration: 1000,
-           ease: 'Sine.inOut',
-           onComplete: () => reactiveBoucle(manette, aptitudes)
-         });
-       }
-     }
-     else if (positionJoueurProche.x > manette.x)
-     {
-       manette.setFlipX(false)
-       if (dist > 400 && dist < 900)
-       {
-         if (manette.body) lanceManette__Z(manette, {z: true})
-         reactiveBoucle(manette, aptitudes)
-       }
-       else if (dist > 900)
-       {
-         if (manette.body)
+         manette.setFlipX(true)
+         if (dist > 400 && dist < 900)
          {
-           manette.body.setVelocityX(340)
-           aptitudes.toucheDroite(manette, {right_debut: true})
+           if (manette.body) lanceManette__Z(manette, {z: true})
+           reactiveBoucle(manette, aptitudes)
+         } else if (dist > 900)
+         {
+           if (manette.body)
+           {
+             manette.body.setVelocityX(-340)
+             aptitudes.toucheGauche(manette, {left_debut: true})
+           }
+
+           reactiveBoucle(manette, aptitudes)
          }
-         reactiveBoucle(manette, aptitudes)
+         else if (dist < 400)
+         {
+           manette.play("manette_punch")
+           manette.scene.tweens.add({
+             delay: 500,
+             onStart: () => manette.play("manette_vole"),
+             targets: manette,
+             x: 0,
+             y: 0,
+             duration: 1000,
+             ease: 'Sine.inOut',
+             onComplete: () => reactiveBoucle(manette, aptitudes)
+           });
+         }
        }
-       else if (dist < 400)
+       else if (positionJoueurProche.x > manette.x)
        {
-         manette.play("manette_punch")
-         manette.scene.tweens.add({
-           delay: 500,
-           onStart: () => manette.play("manette_vole"),
-           targets: manette,
-           x: 1960,
-           y: 0,
-           duration: 1000,
-           ease: 'Sine.inOut',
-           onComplete: () => reactiveBoucle(manette, aptitudes)
-         });
+         manette.setFlipX(false)
+         if (dist > 400 && dist < 900)
+         {
+           if (manette.body) lanceManette__Z(manette, {z: true})
+           reactiveBoucle(manette, aptitudes)
+         }
+         else if (dist > 900)
+         {
+           if (manette.body)
+           {
+             manette.body.setVelocityX(340)
+             aptitudes.toucheDroite(manette, {right_debut: true})
+           }
+           reactiveBoucle(manette, aptitudes)
+         }
+         else if (dist < 400)
+         {
+           manette.play("manette_punch")
+           manette.scene.tweens.add({
+             delay: 500,
+             onStart: () => manette.play("manette_vole"),
+             targets: manette,
+             x: 1960,
+             y: 0,
+             duration: 1000,
+             ease: 'Sine.inOut',
+             onComplete: () => reactiveBoucle(manette, aptitudes)
+           });
+         }
        }
      }
    }
