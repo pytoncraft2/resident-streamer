@@ -53,7 +53,6 @@ import { DefautDirection } from "../Stats/Defaut"
      this.ClientID = ClientID
      this.particules = false
      this.sprite = sprite
-     console.log(this)
 
      new AnimationJoueur(this.anims)
      new AnimationEnnemie(this.anims)
@@ -137,7 +136,6 @@ import { DefautDirection } from "../Stats/Defaut"
        }
 
        if (this.soigne) {
-         console.log("SOIN")
          _e.vie += 0.01
        }
 
@@ -152,13 +150,11 @@ import { DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     // console.log(Aptitudes[this.sprite].auto(this, {a: true}))
      //@ts-ignore
      Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}, Aptitudes[this.sprite]);
 
    }
    preUpdate(time: number, delta: number) {
-     // console.log(this.anims.msPerFrame += 300)
      super.preUpdate(time, delta);
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
@@ -168,8 +164,6 @@ import { DefautDirection } from "../Stats/Defaut"
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -150 : 150), this.y);
-
-       // console.log(this.currentTarget.sprite)
 
        if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].A === "function" && Aptitudes[this.currentTarget.sprite].A(this.currentTarget, input);
        if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
@@ -200,8 +194,6 @@ import { DefautDirection } from "../Stats/Defaut"
        this.respawn();
        // (this.scene as any).players.remove(this)
      }
-
-     // console.log((this.scene as any).room.state.projectiles);
 
      (this.scene as any).room.state.presences.set(
        this.ClientID,

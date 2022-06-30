@@ -85,7 +85,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    console.log(this.body.touching.down)
     //@ts-ignore
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
       this.explosion = true

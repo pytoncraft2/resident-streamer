@@ -249,11 +249,11 @@ this.tweens.add({
 * @param  {String} intro: string[]             texte de bienvenue
 */
 miseAjourListe(self: any, allRooms: Object[]|string[]) {
-self.groupSalon.clear(true);
-allRooms.map((val: any) => {
-	if (val.metadata) {
-		let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients}) 🔥`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
-		nomSalon.setInteractive({ useHandCursor: true })
+	self.groupSalon.clear(true);
+	allRooms.map((val: any) => {
+		if (val.metadata) {
+			let nomSalon = this.add.text(0, 0, [`${val.metadata.nomRoom} (${val.clients} / ${val.maxClients}) 🔥`], { fontFamily: 'CustomFontNormal' }).setOrigin(0, 0.5).setFontSize(39);
+			nomSalon.setInteractive({ useHandCursor: true })
 			.on('pointerover', () => {
 				this.tweens.add({ targets: this, alpha: 0.5, duration: 200, ease: 'Power3' })
 			})
@@ -264,11 +264,10 @@ allRooms.map((val: any) => {
 				self.scene.stop('Level');
 				self.scene.start('Lobby', {salon: val.metadata.nomRoom});
 			})
-		this.groupSalon.add(nomSalon);
-		this.alignCorrectementListe(this.groupSalon)
-	}
-})
-	console.log(this.groupSalon.getLength())
+			this.groupSalon.add(nomSalon);
+			this.alignCorrectementListe(this.groupSalon)
+		}
+	})
 }
 
 alignCorrectementListe(group: Phaser.GameObjects.Group) {

@@ -114,8 +114,6 @@ export default class GameRooms extends Room {
 
   onJoin(client: Client, options: any) {
     console.log(`${client.id} has joined!`)
-    console.log("DEBUT SPRITE -------------------------")
-    console.log(options.sprite)
     this.donnes[client.id] = {
       clavier: {
         up: false,
@@ -144,9 +142,6 @@ export default class GameRooms extends Room {
   }
 
   onDispose() {
-    console.log("VIVANT ?")
-    console.log(this.scene.players.getLength())
-    console.log(this.scene.enemies.getLength())
     this.scene.players.destroy(true)
     this.scene.enemies.destroy(true)
     this.Game.destroy(true)

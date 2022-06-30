@@ -41,6 +41,7 @@ export class Player extends Schema {
   @type("number") alpha?: number;
   @type("number") xa?: number
   @type("number") ya?: number
+  @type("string") sprite_fusion?: string
 }
 
 export class Ligne extends Schema {

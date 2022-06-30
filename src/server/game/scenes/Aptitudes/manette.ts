@@ -93,14 +93,6 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
   fusion(personnage, input)
 }
 
-
-export function vole() {
-// manette.vole = true
-//   console.log("vole")
-//     manette.play('manette_vole')
-//     manette.setVelocityY(-800)
-}
-
 export function __animationLancerManette(manette) {
   var timeline = manette.scene.tweens.createTimeline();
 

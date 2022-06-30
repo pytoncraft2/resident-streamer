@@ -72,5 +72,6 @@ export function interaction__R(fakhear: TJoueur, input) {
 // export fusion()
 // export function fusion(personnage, input);
 export function fusion__TAB(personnage: TJoueur, input: any) {
+  console.log("TAB")
   fusion(personnage, input)
 }

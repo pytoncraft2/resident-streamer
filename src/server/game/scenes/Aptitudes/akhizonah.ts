@@ -7,7 +7,6 @@ export function couteau__A(akhizonah: TJoueur, input?: any) {
   if (input.a) {
     input.a = false
     akhizonah.play('akhizonah_couteau')
-    console.log("COUTEAU")
   }
 }
 

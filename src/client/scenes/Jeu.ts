@@ -615,7 +615,6 @@ export default class Jeu extends Phaser.Scene {
           // rectangles[key] = value
         // })
 
-        // console.log(changes.compteur)
         if (this.compteur.text !== `${changes.compteur}`) {
           this.compteur.setText(`${changes.compteur}`)
         }
@@ -679,7 +678,6 @@ export default class Jeu extends Phaser.Scene {
         ligne.lineStyle(l.lineHeight, l.couleur)
         this.groupeLignes.add(ligne)
         this.lignesRef[item] = ligne
-        console.log("NOUVEAU")
       }
       else
       {
@@ -694,7 +692,6 @@ export default class Jeu extends Phaser.Scene {
       if (this.rectanglesRef[item] === undefined)
       {
         const r = list.rectangles[item]
-        console.log("NOUVEAU RECTANGLE")
         const rectangle = this.add.rectangle(r.x, r.y, r.width, r.height, r.fillColor, r.fillAlpha);
         this.groupeRectangles.add(rectangle)
         this.rectanglesRef[item] = rectangle
@@ -765,14 +762,15 @@ export default class Jeu extends Phaser.Scene {
           .setDepth(1);
 
           if (this.session === list.presenceList[idx]) {
-            this.add
+            (player as any).sprite_fusion = this.add
             .sprite(541, 1018, `icons_atlas`, `icon_${sprite}`)
-            .setScale(0.3983080418637645, 0.3983080418637645)
+            .setScale(0.3983080418637645, 0.3983080418637645);
 
             this.add
             .sprite(613, 1053, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.16275708974409425, 0.16275708974409425)
           }
+
 
 
           const barre = this.add.container(-39, 21);
@@ -823,6 +821,10 @@ export default class Jeu extends Phaser.Scene {
 
             if (this.session === this.playersRef[item].ClientId) {
               this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
+              if (list.presences[item].sprite_fusion) {
+                console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
+                // this.playersRef[item].sprite_fusion.setFrame(`icon_${list.presences[item].sprite_fusion}`)
+              }
             }
 
 			}
@@ -915,7 +917,6 @@ export default class Jeu extends Phaser.Scene {
       // if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
       //
       if (!deepEqual(inputs, this.prevInputs)) {
-        console.log("ENVOIE")
         this.prevInputs = inputs
         this.room.send("inputs", {
           ...inputs,

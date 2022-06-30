@@ -47,53 +47,9 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     new AnimationJoueur(this.anims)
 
-    // console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
-
-    // this.animationCharge = this.scene.tweens.add({
-    //   targets: this,
-    //   scale: 2,
-    //   duration: 3000,
-    //   // onComplete: function() {
-    //   //   if (arguments[1][0].scene){
-    //   //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //   //     arguments[1][0].destroy(true);
-    //   //   }
-    //   // }
-    // });
-
-    // this.animationEnvoie = this.scene.tweens.add({
-    //   targets: this,
-    //   alpha: 1,
-    //   scale: 1,
-    //   duration: 1000,
-    //   onComplete: function() {
-    //     // if (arguments[1][0].scene){
-    //
-    //     // }
-    //     console.log("FINI")
-    //     arguments[1][0].actif = false
-    //     console.log(arguments[1][0].proprietaire)
-    //     arguments[1][0].suppression(arguments[1][0].proprietaire)
-    //     console.log(arguments[1][0].proprietaire)
-    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //     arguments[1][0].destroy(true);
-    //     console.log("_________________________")
-    //   }
-    // });
     this.setDrag(1900)
     this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
     this.zoneInteraction.action = (_e: Phaser.Physics.Arcade.Sprite) => {
-      // if (this.blesse_opposant) {
-      //   this.blesse_opposant = false
-      //   if (typeof _e.dommage === "function") _e.dommage(1)
-      // }
-      //
-      //
-      // if (this.soigne) {
-      //   console.log("SOIN")
-      //   _e.vie += 0.01
-      // }
-
     };
 
     this.scene.physics.add.existing(this.zoneInteraction);
@@ -106,7 +62,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
   }
   preUpdate(time: number, delta: number) {
-    // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
     this.vie -= 0.04
@@ -133,19 +88,6 @@ if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
     }
   }
 
-//     if (Phaser.Math.Distance.Between(this.createur.x, this.createur.y, this.x, this.y) > 600) {
-//       // this.x += 10
-//       // this.scene.physics.moveTo(this, this.x + 200, this.y);
-//       // this.scene.physics.moveToObject(this, this.x + 200, this.y);
-//       this.scene.events.emit('repositionnement');
-//
-//
-// console.log((this.scene as any).room.donnes[this.createur.ClientID].clavier);
-//       console.log("SUPP")
-//     } else {
-//       // if (this.body.velocity.x != 0) this.setVelocity(0)
-//     }
-
     (this.scene as any).room.state.presences.set(
       this.ClientID,
       new Player({
@@ -163,81 +105,9 @@ if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
   }
 
   auto() {
-    // setAnimation(huzounet, 'huzounet_preparation_attaque')
-
-    // var timer = this.scene.time.addEvent({
-    //   delay: Phaser.Math.Between(600, 1000),                // ms
-    //   callback: () => {
-    //     kunai(this as any)
-    //   },
-    //   //args: [],
-    //   callbackScope: this,
-    //   repeat: 4
-    // });
-  }
-
-  setVitesse(vitesse: number) {
-    console.log("VITESSE SET:", vitesse);
-    this.setVelocityX(vitesse);
-  }
-
-  suppression(_id: number) {
-    // this.proprietaire.shift()
-  }
-
-  setDestructionIminente(destruction: CallableFunction) {
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 1000,
-      repeat: 0,            // -1: infinity
-      yoyo: false,
-      onComplete: () => {
-        // this.setActive(false);
-        destruction(this)
-        // this.destroy(true);
-        // this.scene.room.state.boules.delete(arguments[1][0].id);
-        // this.destructionColyseus();
-      }
-    });
-  }
-
-  destructionInstantane(destruction: CallableFunction) {
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 1000,
-      repeat: 0,            // -1: infinity
-      yoyo: false,
-      onComplete: () => {
-        // this.setActive(false);
-        destruction(this)
-        // this.destroy(true);
-        // this.scene.room.state.boules.delete(arguments[1][0].id);
-        // this.destructionColyseus();
-      }
-    });
-  }
-
-  destructionColyseus() {
-    // var tween = this.scene.tweens.addCounter({
-    //   from: 0,
-    //   to: 1,
-    //   duration: 1000,
-    //   onComplete: function() {
-    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //   }
-    // });
   }
 
   repositionnement() {
     this.scene.physics.moveToObject(this, {x: this.x + 200, y: this.y}, this.randomVitesse);
   }
-
-  // stopAnim() {
-  //   this.animationCharge.stop()
-  //   if (!this.animationCharge.isPlaying()) {
-  //     this.animationEnvoie.play()
-  //   }
-  // }
 }

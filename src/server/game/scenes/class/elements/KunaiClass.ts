@@ -36,12 +36,11 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     this.scale = 0.2;
 
     (this.scene as any).suppressionProjectileDelai(this, id, 1300, true)
-    
+
     this.setCollideWorldBounds(true);
 
   }
   preUpdate(time: number, delta: number) {
-    // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
     if (this.traqueJoueur) {
@@ -68,11 +67,4 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
     if (desactivation) this.traqueJoueur = null
     else this.traqueJoueur = joueur
   }
-
-
-  setVitesse(vitesse: number) {
-    console.log("VITESSE SET:", vitesse);
-    this.setVelocityX(vitesse);
-  }
-
 }

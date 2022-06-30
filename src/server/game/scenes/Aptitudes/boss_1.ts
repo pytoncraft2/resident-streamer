@@ -38,12 +38,6 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
           _ennemie.play("attaque")
         }
       }
-
-      // _ennemie.dommage(_joueur.getData('degat'))
-      // _joueur.dommage(1)
-      // console.log(_ennemie.blesse_opposant)
-      // console.log(_joueur.blesse_opposant)
-      // console.log("COLISION JOUEUR BOSS_1!!")
     }, null, this);
 
   // boss_1.scene.time.delayedCall(500, () => {
@@ -65,21 +59,11 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
 
 export function __auto(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any, aptitudes: any) {
   if (boss_1 && boss_1.body) {
-    // console.log("BOUCLE OK")
-    // console.log(boss_1.body.touching)
-    // if (boss_1.body.touching.right) {
-    //   // attaquePuisDeplacement(boss_1, boss_1.flipX == true && boss_1.blesse, 0xff0000, false, aptitudes)
-    //   console.log("TOUCHING DROITE !!")
-    // } else if (boss_1.body.touching.left) {
-    //   console.log("TOUCHING GAUCHE !!")
-    //   // attaquePuisDeplacement(boss_1, boss_1.flipX == false && boss_1.blesse, 0xff0000, true, aptitudes)
-    // }
     if (boss_1.scene.players.getLength() > 0 && boss_1)
     {
       let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
       if (joueuProche) boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
     }
-  // boss_1.play('attaque')
   reactiveBoucle(boss_1, aptitudes)
   } else {
   reactiveBoucle(boss_1, aptitudes)
@@ -87,18 +71,6 @@ export function __auto(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any, apt
 }
 
 function attaquePuisDeplacement(boss_1, condition, couleur, directionFinal, aptitudes) {
-  // if (condition) {
-  //   boss_1.setTint(couleur)
-  //   boss_1.vie -= 1
-  // }
-  // boss_1.scene.tweens.addCounter({
-  //   from: 0,
-  //   to: 1,
-  //   duration: 200,
-  //   onComplete: () => (boss_1.setTint(0x000000), boss_1.blesse = false),
-  //   repeat: 0,            // -1: infinity
-  //   yoyo: false,
-  // })
   boss_1.play('attaque')
   // boss_1.on('animationcomplete', () => {
   boss_1.scene.physics.moveToObject(boss_1, boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()]), 800);

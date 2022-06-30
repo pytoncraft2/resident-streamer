@@ -75,7 +75,6 @@ export default class Hall extends Phaser.Scene {
 // this.physics.add.existing(this.swordHitbox)
 // this.swordHitbox.body.enable = false
 // this.physics.world.remove(this.swordHitbox.body)
-// console.log(this.swordHitbox.body)
 
 // this.physics.add.collider(this.players.getChildren()[0], this.box)
 
@@ -132,7 +131,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   getPresence() {
-    console.log("PRESENCE FONCTION")
     let response = {}
     if (this.players) {
       this.players.children.iterate((child: any) => {
@@ -144,7 +142,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }
 
     if (this.groupeBoulesHuzounet) {
-      // console.log("IIIIIIIIIIIIITERATE")
       // this.groupeBoulesHuzounet.children.iterate((child: any)=> {
       //   if (child.data.values.ClientId) {
       //     response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}

@@ -40,44 +40,8 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
 
     this.setBounce(1, 1);
     this.setCollideWorldBounds(true);
-    // console.log("NNNNNNNNNNNNNNNNNNNNNNNNOUVEAUUUUU")
-
-    // this.animationCharge = this.scene.tweens.add({
-    //   targets: this,
-    //   scale: 2,
-    //   duration: 3000,
-    //   // onComplete: function() {
-    //   //   if (arguments[1][0].scene){
-    //   //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //   //     arguments[1][0].destroy(true);
-    //   //   }
-    //   // }
-    // });
-
-    // this.animationEnvoie = this.scene.tweens.add({
-    //   targets: this,
-    //   alpha: 1,
-    //   scale: 1,
-    //   duration: 1000,
-    //   onComplete: function() {
-    //     // if (arguments[1][0].scene){
-    //
-    //     // }
-    //     console.log("FINI")
-    //     arguments[1][0].actif = false
-    //     console.log(arguments[1][0].proprietaire)
-    //     arguments[1][0].suppression(arguments[1][0].proprietaire)
-    //     console.log(arguments[1][0].proprietaire)
-    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //     arguments[1][0].destroy(true);
-    //     console.log("_________________________")
-    //   }
-    // });
-
-
   }
   preUpdate(time: number, delta: number) {
-    // console.log(this.anims.msPerFrame += 300)
     super.preUpdate(time, delta);
 
     if (this.traqueJoueur) {
@@ -104,65 +68,4 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     if (desactivation) this.traqueJoueur = null
     else this.traqueJoueur = joueur
   }
-
-  setVitesse(vitesse: number) {
-    console.log("VITESSE SET:", vitesse);
-    this.setVelocityX(vitesse);
-  }
-
-  suppression(_id: number) {
-    // this.proprietaire.shift()
-  }
-
-  setDestructionIminente(destruction: CallableFunction) {
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 1000,
-      repeat: 0,            // -1: infinity
-      yoyo: false,
-      onComplete: () => {
-        // this.setActive(false);
-        destruction(this)
-        // this.destroy(true);
-        // this.scene.room.state.boules.delete(arguments[1][0].id);
-        // this.destructionColyseus();
-      }
-    });
-  }
-
-  destructionInstantane(destruction: CallableFunction) {
-    this.scene.tweens.addCounter({
-      from: 0,
-      to: 1,
-      duration: 1000,
-      repeat: 0,            // -1: infinity
-      yoyo: false,
-      onComplete: () => {
-        // this.setActive(false);
-        destruction(this)
-        // this.destroy(true);
-        // this.scene.room.state.boules.delete(arguments[1][0].id);
-        // this.destructionColyseus();
-      }
-    });
-  }
-
-  destructionColyseus() {
-    // var tween = this.scene.tweens.addCounter({
-    //   from: 0,
-    //   to: 1,
-    //   duration: 1000,
-    //   onComplete: function() {
-    //     arguments[1][0].scene.room.state.boules.delete(arguments[1][0].id);
-    //   }
-    // });
-  }
-
-  // stopAnim() {
-  //   this.animationCharge.stop()
-  //   if (!this.animationCharge.isPlaying()) {
-  //     this.animationEnvoie.play()
-  //   }
-  // }
 }

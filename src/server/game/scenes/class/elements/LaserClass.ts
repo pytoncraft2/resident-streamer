@@ -29,7 +29,6 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
   init(scene: Phaser.Scene, id: string, proprietaire: TJoueur) {
     this.scene = scene
-    console.log("PROPRIETAIRE ID:")
     this.proprietaireID = proprietaire.ClientID
     this.proprietaire = proprietaire
     this.agrandissement = false;
