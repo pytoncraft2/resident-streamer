@@ -3,8 +3,15 @@ import ManetteClass from '../class/elements/ManetteClass'
 import TJoueur from "../types/Joueur";
 import { fusion } from "./_utilitaire/general";
 
-
-export function __StatsSupplementaire() {}
+export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
+  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+      personnage.setVelocityY(-1250);
+      personnage.play("manette_vole")
+      if (!personnage.body.touching.down) {
+        personnage.flipX ? (personnage.body.velocity.x -= 900) : (personnage.body.velocity.x += 900)
+      }
+  }
+}
 
 export function punch__A(manette: TJoueur, input: any) {
   if (input.a) {

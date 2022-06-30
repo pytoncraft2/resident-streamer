@@ -23,7 +23,6 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
         if (_ennemie.flipX) {
           _ennemie.setFlipX(false);
           _ennemie.play("attaque")
-          console.log("FLIPX FALSE")
         }
       }
       else if (boss_1.body.touching.left)
@@ -35,7 +34,6 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
         }
 
         if (!_ennemie.flipX) {
-          console.log("FLIPX TRUE")
           _ennemie.setFlipX(true);
           _ennemie.play("attaque")
         }
