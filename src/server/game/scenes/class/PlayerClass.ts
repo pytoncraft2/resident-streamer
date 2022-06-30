@@ -27,6 +27,7 @@ import { DefautDirection } from "../Stats/Defaut"
    blesse_opposant: boolean = false
    soigne: boolean = false
    groupeBoules: any
+   groupeCourant: string[]
    currentTarget: any
    me: any
 
@@ -124,6 +125,7 @@ import { DefautDirection } from "../Stats/Defaut"
            if (_e.vie <= 0) {
 
              _e.vie = 10
+
              this.nouveauPilote(_e);
              // (this.scene as any).players.add(_e);
            }
@@ -141,6 +143,8 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
+        console.log(_e.groupeCourant)
+        _e.groupeCourant = ['enemies', 'players'];
         (this.scene as any).room.state.presences.set(
           this.ClientID,
           new Player({
