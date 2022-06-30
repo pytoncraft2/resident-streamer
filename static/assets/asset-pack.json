@@ -42,6 +42,12 @@
                 "key": "huzounet_atlas"
             },
             {
+                "atlasURL": "assets/icons_atlas.json",
+                "textureURL": "assets/icons_atlas.png",
+                "type": "atlas",
+                "key": "icons_atlas"
+            },
+            {
                 "atlasURL": "assets/laser_atlas.json",
                 "textureURL": "assets/laser_atlas.png",
                 "type": "atlas",
@@ -104,11 +110,6 @@
                 "textureURL": "assets/osmosiscoop_atlas.png",
                 "type": "atlas",
                 "key": "osmosiscoop_atlas"
-            },
-            {
-                "url": "assets/profilFakhear.png",
-                "type": "image",
-                "key": "profilFakhear"
             },
             {
                 "atlasURL": "assets/twitchman_atlas.json",

@@ -247,16 +247,6 @@ export default class Jeu extends Phaser.Scene {
 		ellipse_5.isFilled = true;
 		ellipse_5.fillColor = 3602747;
 
-		// profilFakhear
-		const profilFakhear = this.add.image(541, 1018, "profilFakhear");
-		profilFakhear.scaleX = 0.3983080418637645;
-		profilFakhear.scaleY = 0.3983080418637645;
-
-		// profilFakhear_1
-		const profilFakhear_1 = this.add.image(613, 1053, "profilFakhear");
-		profilFakhear_1.scaleX = 0.16275708974409425;
-		profilFakhear_1.scaleY = 0.16275708974409425;
-
 		// sous_barre_vie_joueur
 		const sous_barre_vie_joueur = this.add.rectangle(712, 1055, 128, 128);
 		sous_barre_vie_joueur.scaleX = 5.150602609693634;
@@ -401,6 +391,12 @@ export default class Jeu extends Phaser.Scene {
 		const text_4_1 = this.add.text(840, 973, "", {});
 		text_4_1.text = "Tab";
 		text_4_1.setStyle({ "color": "#5a4747ff" });
+
+		// ellipse_5_2
+		const ellipse_5_2 = this.add.ellipse(541, 1018, 128, 128);
+		ellipse_5_2.scaleX = 0.8179399157486755;
+		ellipse_5_2.scaleY = 0.8179399157486755;
+		ellipse_5_2.isFilled = true;
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -767,6 +763,17 @@ export default class Jeu extends Phaser.Scene {
 					.sprite(x, y, `${sprite}_atlas`)
 					.setData({ ClientId: list.presenceList[idx] })
           .setDepth(1);
+
+          if (this.session === list.presenceList[idx]) {
+            this.add
+            .sprite(541, 1018, `icons_atlas`, `icon_${sprite}`)
+            .setScale(0.3983080418637645, 0.3983080418637645)
+
+            this.add
+            .sprite(613, 1053, `icons_atlas`, `icon_${sprite}`)
+            .setScale(0.16275708974409425, 0.16275708974409425)
+          }
+
 
           const barre = this.add.container(-39, 21);
 

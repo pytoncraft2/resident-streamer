@@ -456,32 +456,6 @@
             "height": 128
         },
         {
-            "type": "Image",
-            "id": "d939dd40-83eb-4bf3-986a-bcee7a574517",
-            "label": "profilFakhear",
-            "components": [],
-            "texture": {
-                "key": "profilFakhear"
-            },
-            "x": 541,
-            "y": 1018,
-            "scaleX": 0.3983080418637645,
-            "scaleY": 0.3983080418637645
-        },
-        {
-            "type": "Image",
-            "id": "8af32bcb-b081-4f3b-86d4-5a4b471e650d",
-            "label": "profilFakhear_1",
-            "components": [],
-            "texture": {
-                "key": "profilFakhear"
-            },
-            "x": 613,
-            "y": 1053,
-            "scaleX": 0.16275708974409425,
-            "scaleY": 0.16275708974409425
-        },
-        {
             "type": "Rectangle",
             "id": "f9bb9e77-dd3f-475d-990d-cd7a8a1b1f67",
             "label": "sous_barre_vie_joueur",
@@ -750,6 +724,20 @@
             "y": 973,
             "text": "Tab",
             "color": "#5a4747ff"
+        },
+        {
+            "type": "Ellipse",
+            "id": "0d4f6d3e-9d94-4863-b360-7fdefcae4cc1",
+            "label": "ellipse_5_2",
+            "components": [],
+            "x": 541,
+            "y": 1018,
+            "scaleX": 0.8179399157486755,
+            "scaleY": 0.8179399157486755,
+            "isFilled": true,
+            "fillColor": "#ffffff",
+            "width": 128,
+            "height": 128
         }
     ],
     "plainObjects": [],
