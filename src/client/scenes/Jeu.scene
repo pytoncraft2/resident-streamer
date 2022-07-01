@@ -67,14 +67,15 @@
             "type": "Image",
             "id": "17d10c2d-74be-45c4-af66-44c1d145bc0f",
             "label": "map_hall1",
+            "scope": "PUBLIC",
             "components": [],
             "texture": {
                 "key": "map_hall1"
             },
-            "x": -2589,
-            "y": 488,
-            "scaleX": 2.244013013382078,
-            "scaleY": 2.4560336835205145
+            "x": 957,
+            "y": 476,
+            "scaleX": 3.0081506873206445,
+            "scaleY": 2.5829543078030315
         },
         {
             "type": "Image",
@@ -85,10 +86,11 @@
             "texture": {
                 "key": "map_hall0"
             },
-            "x": 965,
-            "y": 472,
-            "scaleX": 3.050716137046624,
-            "scaleY": 2.6263611373944493
+            "x": 15,
+            "y": 473,
+            "scaleX": 3.0088107725356585,
+            "scaleY": 2.634116448848351,
+            "originX": 0
         },
         {
             "type": "Container",

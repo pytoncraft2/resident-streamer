@@ -47,14 +47,15 @@ export default class Jeu extends Phaser.Scene {
 		map_boss2.scaleY = 2.5991763141421007;
 
 		// map_hall1
-		const map_hall1 = this.add.image(-2589, 488, "map_hall1");
-		map_hall1.scaleX = 2.244013013382078;
-		map_hall1.scaleY = 2.4560336835205145;
+		const map_hall1 = this.add.image(957, 476, "map_hall1");
+		map_hall1.scaleX = 3.0081506873206445;
+		map_hall1.scaleY = 2.5829543078030315;
 
 		// hall
-		const hall = this.add.image(965, 472, "map_hall0");
-		hall.scaleX = 3.050716137046624;
-		hall.scaleY = 2.6263611373944493;
+		const hall = this.add.image(15, 473, "map_hall0");
+		hall.scaleX = 3.0088107725356585;
+		hall.scaleY = 2.634116448848351;
+		hall.setOrigin(0, 0.5);
 
 		// barreHautContainer
 		const barreHautContainer = this.add.container(0, 0);
@@ -435,6 +436,7 @@ export default class Jeu extends Phaser.Scene {
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
+		this.map_hall1 = map_hall1;
 		this.hall = hall;
 		this.barreHautContainer = barreHautContainer;
 		this.barreHaut = barreHaut;
@@ -469,6 +471,7 @@ export default class Jeu extends Phaser.Scene {
 
 	public map_boss1!: Phaser.GameObjects.Image;
 	public map_boss2!: Phaser.GameObjects.Image;
+	public map_hall1!: Phaser.GameObjects.Image;
 	public hall!: Phaser.GameObjects.Image;
 	public barreHautContainer!: Phaser.GameObjects.Container;
 	public barreHaut!: Phaser.GameObjects.Rectangle;
@@ -672,6 +675,16 @@ export default class Jeu extends Phaser.Scene {
         delete (this as any)[cle][id];
       });
 
+      room.onMessage("RDC_OK", (objet: number) => {
+        this.tweens.add({
+          targets: this.hall,
+          alpha: 0,
+          ease: 'Sine.inOut',
+          duration: 800,
+        });
+      });
+
+
       // room.onMessage("touches_dispo", (actif: boolean) => {
         // this.touchesDispo["cle"].setAlpha(actif ? 1 : 0.5)
         // this.touchesDispo["texte"].setAlpha(actif ? 1 : 0.5)
@@ -722,6 +735,9 @@ export default class Jeu extends Phaser.Scene {
 		.catch((err) => {
 			console.error(err)
 		})
+
+    //@ts-ignore
+    this.minimap = this.cameras.add(1340, 800, 600, 400).setZoom(0.07).setName('mini');
 
 
 	}

@@ -255,7 +255,9 @@ import { DefautDirection } from "../Stats/Defaut"
          new Player({
            sprite_fusion: this.sprite,
          })
-       )
+       );
+       (this.scene as any).room.broadcast("RDC_OK");
+
 
        this.setScale(1)
      }, null, this);
