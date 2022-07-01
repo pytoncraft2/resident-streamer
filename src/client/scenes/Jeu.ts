@@ -640,13 +640,13 @@ export default class Jeu extends Phaser.Scene {
     this.barreHautContainer.setScrollFactor(0)
     this.gfx = this.add.graphics();
 
-    this.touche = {
-      "A": this.touche_A,
-      "Z": this.touche_Z,
-      "E": this.touche_E,
-      "R": this.touche_R,
-      "TAB": this.touche_TAB
-    }
+    // this.touche = {
+    //   "A": this.touche_A,
+    //   "Z": this.touche_Z,
+    //   "E": this.touche_E,
+    //   "R": this.touche_R,
+    //   "TAB": this.touche_TAB
+    // }
 
 
 		const client = new Colyseus.Client("ws://localhost:3000")
@@ -931,7 +931,7 @@ export default class Jeu extends Phaser.Scene {
     });
   }
 
-  animIcon(icon: any, sprite_fusion) {
+  animIcon(icon: any, sprite_fusion: string) {
     this.tweens.add({
       targets: icon,
       angle: -660,
