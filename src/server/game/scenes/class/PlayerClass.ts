@@ -1,6 +1,5 @@
 import { Player } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
-import { AnimationEnnemie } from "../Animations/AnimationEnnemie"
 import { Aptitudes } from "../Aptitudes/base"
 import TJoueur from "../types/Joueur"
 import { DefautDirection } from "../Stats/Defaut"
@@ -55,7 +54,6 @@ import { DefautDirection } from "../Stats/Defaut"
      this.sprite = sprite
 
      new AnimationJoueur(this.anims)
-     new AnimationEnnemie(this.anims)
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
