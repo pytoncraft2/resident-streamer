@@ -675,7 +675,7 @@ export default class Jeu extends Phaser.Scene {
         delete (this as any)[cle][id];
       });
 
-      room.onMessage("RDC_OK", (objet: number) => {
+      room.onMessage("RDC_OK", () => {
         this.tweens.add({
           targets: this.hall,
           alpha: 0,
