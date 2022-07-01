@@ -221,6 +221,31 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }, null, this);
   }
 
+  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number) {
+
+    if (smooth)
+    {
+      this.tweens.add({
+        targets: cible,
+        alpha: 0,
+        duration: 1000,
+        onCompleteParams: [this],
+        onComplete: function(_tw, _target, scene) {
+          scene.room.broadcast("suppression", {playersRef: id});
+          scene.room.state.presences.delete(id);
+          arguments[1][0].destroy(true);
+        }
+      });
+    }
+    else
+    {
+      this.room.broadcast("suppression", {playersRef: id});
+      this.room.state.presences.delete(id);
+      cible.destroy(true);
+    }
+
+  }
+
   suppressionLigne(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
     // return this.time.delayedCall(delai, () => {
         this.room.broadcast("suppression", {lignesRef: id});

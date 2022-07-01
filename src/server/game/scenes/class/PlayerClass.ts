@@ -205,6 +205,7 @@ import { DefautDirection } from "../Stats/Defaut"
      (this.scene as any).room.state.presences.set(
        this.ClientID,
        new Player({
+         id: this.ClientID,
          x: this.x,
          y: this.y,
          sprite: this.sprite,
@@ -246,6 +247,8 @@ import { DefautDirection } from "../Stats/Defaut"
 
        this.suivre = false
        nouveauPilote.particules = false;
+       // (this.scene as any).enemies.remove(nouveauPilote)
+       (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
        this.currentTarget = this;
        (this.scene as any).room.state.presences.set(
          this.ClientID,

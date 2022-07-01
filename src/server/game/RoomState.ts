@@ -31,6 +31,7 @@ export class Projectile extends Schema {
 export class Player extends Schema {
   @type("number") x?: number
   @type("number") y?: number
+  @type("string") id?: string;
   @type("string") sprite?: string
   @type("string") anim?: string
   @type("boolean") flipX?: boolean
