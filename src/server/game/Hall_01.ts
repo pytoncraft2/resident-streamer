@@ -40,8 +40,8 @@ export default class GameRooms extends Room {
       // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
 
       const boss = {
-        // 'twitchman': 1_000,
-        // 'boss_1': 2_000,
+        'twitchman': 1_000,
+        'boss_1': 2_000,
         'manette': 1_000
       }
       Object.entries(boss).map(item => {

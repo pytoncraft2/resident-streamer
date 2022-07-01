@@ -12,6 +12,7 @@ export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
   }
 
   twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 0, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
+  twitchman.cible_courante = "players"
 
   // twitchman.laser = new LaserClass(twitchman.scene, twitchman.flipX ? twitchman.x - 80 : twitchman.x + 80, twitchman.y - 60, "laser",  `${(Math.random() + 1).toString(36).substring(7)}`, twitchman)
 
@@ -47,7 +48,9 @@ export function laser__E(twitchman: TJoueur, input: any) {
 }
 
 export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
-   const positionJoueurProche: any = twitchman.scene.physics.closest(twitchman, [...(twitchman.scene as any).players.getChildren()])
+  if (twitchman.scene)
+  {
+   const positionJoueurProche: any = twitchman.scene.physics.closest(twitchman, [...(twitchman.scene as any)[`${twitchman.cible_courante}`].getChildren()])
    if (positionJoueurProche)
    {
      var dist = Phaser.Math.Distance.BetweenPoints(twitchman, positionJoueurProche);
@@ -146,10 +149,14 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
        }
      }
    }
+  }
 }
 
 function reactiveBoucle(twitchman: TJoueur, aptitudes: any) {
-  twitchman.scene.time.delayedCall(500, () => {
-    __auto(twitchman, {}, aptitudes)
-  }, null, this);
+  if (twitchman.scene)
+  {
+    twitchman.scene.time.delayedCall(500, () => {
+      __auto(twitchman, {}, aptitudes)
+    }, null, this);
+  }
 }

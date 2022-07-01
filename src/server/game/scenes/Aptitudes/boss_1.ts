@@ -62,7 +62,10 @@ export function __auto(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any, apt
     if (boss_1.scene.players.getLength() > 0 && boss_1)
     {
       let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
-      if (joueuProche) boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+      if (joueuProche) {
+        boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+        boss_1.play('deplacement');
+      }
     }
   reactiveBoucle(boss_1, aptitudes)
   } else {
@@ -81,8 +84,10 @@ function attaquePuisDeplacement(boss_1, condition, couleur, directionFinal, apti
 }
 
 function reactiveBoucle(boss_1: TJoueur, aptitudes: any) {
-  boss_1.scene.time.delayedCall(500, () => {
-    boss_1.play('deplacement');
-    __auto(boss_1, {}, aptitudes)
-  }, null, this);
+  if (boss_1.scene)
+  {
+      boss_1.scene.time.delayedCall(500, () => {
+        __auto(boss_1, {}, aptitudes)
+      }, null, this);
+  }
 }

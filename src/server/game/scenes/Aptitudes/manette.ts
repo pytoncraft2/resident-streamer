@@ -4,7 +4,7 @@ import TJoueur from "../types/Joueur";
 import { fusion } from "./_utilitaire/general";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
-  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
+  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
       personnage.setVelocityY(-1250);
       personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
       personnage.play("manette_vole")
@@ -96,7 +96,7 @@ export function fusion__TAB(personnage: TJoueur, input: any) {
   fusion(personnage, input)
 }
 
-export function __animationLancerManette(manette) {
+export function __animationLancerManette(manette: TJoueur) {
   var timeline = manette.scene.tweens.createTimeline();
 
   timeline.add({
@@ -104,7 +104,7 @@ export function __animationLancerManette(manette) {
     x: manette.flipX ? manette.x -1000 : manette.x + 1000,
     ease: 'Power2',
     duration: 500,
-    onComplete: function(_tw, tg: any) {
+    onComplete: function(_tw, _tg: any) {
       // tg[0].setData('degat', 1)
     }
   });

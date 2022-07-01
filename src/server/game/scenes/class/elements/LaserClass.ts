@@ -41,7 +41,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   preUpdate(_time: number, _delta: number) {
     if (this.agrandissement) {
       this.width += 200
-      this.proprietaire.setVelocity(0)
+      if (this.proprietaire.body) this.proprietaire.setVelocity(0)
     }
 
     this.x = this.proprietaire.x + 80;
