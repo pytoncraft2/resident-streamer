@@ -9,7 +9,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
       personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
       personnage.play("manette_vole")
   }
-  personnage.groupeCourant = ["players", "enemies"]
+  personnage.cible_courante = "players"
 }
 
 export function punch__A(manette: TJoueur, input: any) {
@@ -28,13 +28,15 @@ export function lanceManette__Z(manette: TJoueur, _input: any) {
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
     manette.scene.physics.add.existing(obj_manette);
-    // manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.groupeCourant[1]}`], function(_obj_manette, _ennemie: any) {
-    //   _ennemie.dommage(_obj_manette.getData('degat'))
-    //   _obj_manette.setData('degat', 0)
-    // }, undefined, manette);
+    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function(_obj_manette, _ennemie: any) {
+      if (_ennemie.sprite !== manette.sprite) {
+        _ennemie.dommage(_obj_manette.getData('degat'))
+        _obj_manette.setData('degat', 0)
+      }
+    }, undefined, manette);
 
     (obj_manette.body as any).setAllowGravity(false);
-    manette.scene.groupeManettes.add(obj_manette);
+    // manette.scene.groupeManettes.add(obj_manette);
     manette.obj_manette = obj_manette;
 
     manette.scene.time.delayedCall(100, () => {

@@ -17,7 +17,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   physics: Phaser.Physics.Arcade.ArcadePhysics
   masse: number,
   puissanceDeBase: number,
-  groupeCourant: string[]
+  cible_courante: string,
 
 
   containerColision: Phaser.GameObjects.Container

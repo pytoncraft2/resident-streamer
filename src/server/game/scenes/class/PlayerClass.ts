@@ -27,7 +27,6 @@ import { DefautDirection } from "../Stats/Defaut"
    blesse_opposant: boolean = false
    soigne: boolean = false
    groupeBoules: any
-   groupeCourant: string[]
    currentTarget: any
    me: any
 
@@ -143,8 +142,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
-        console.log(_e.groupeCourant)
-        _e.groupeCourant = ['enemies', 'players'];
+        _e.cible_courante = "enemies";
         (this.scene as any).room.state.presences.set(
           this.ClientID,
           new Player({
