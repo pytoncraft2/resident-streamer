@@ -802,6 +802,16 @@ export default class Jeu extends Phaser.Scene {
             this.add
             .sprite(613, 1053, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.16275708974409425, 0.16275708974409425)
+
+            // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
+              // console.log("WWW")
+              // this.cameras.main.startFollow(player);
+              // this.cameras.main.setDeadzone(900, 200);
+
+              // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
+            // },this);
+
+
           }
 
 
