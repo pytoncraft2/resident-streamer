@@ -865,7 +865,10 @@ export default class Jeu extends Phaser.Scene {
             this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
             this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
             if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
-            if (list.presences[item].alpha) this.playersRef[item].setAlpha(list.presences[item].alpha)
+            if (list.presences[item].alpha) {
+              this.playersRef[item].barre.setAlpha(list.presences[item].alpha)
+              this.playersRef[item].setAlpha(list.presences[item].alpha)
+            }
 
             if (this.session === this.playersRef[item].ClientId) {
               this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
