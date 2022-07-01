@@ -601,13 +601,6 @@ export default class Jeu extends Phaser.Scene {
       }
     }
 
-    // this.time.addEvent({
-    //   delay: 1000,
-    //   callback: () => (this.compte += 1, this.compteur.setText(`${this.compte+1}`)),
-    //   callbackScope: this,
-    //   loop: true
-    // });
-
     this.tweens.add({
         targets: this.indicationDroite,
         x: 100,
@@ -643,15 +636,6 @@ export default class Jeu extends Phaser.Scene {
     this.barreHautContainer.setScrollFactor(0)
     this.gfx = this.add.graphics();
 
-    // this.touche = {
-    //   "A": this.touche_A,
-    //   "Z": this.touche_Z,
-    //   "E": this.touche_E,
-    //   "R": this.touche_R,
-    //   "TAB": this.touche_TAB
-    // }
-
-
 		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
@@ -661,8 +645,6 @@ export default class Jeu extends Phaser.Scene {
 		.then((room) => {
 			self.room = room
 			self.session = room.sessionId
-
-      //   this.emitter.startFollow(this.playersRef[id.id_joueur])
 
       room.onMessage("suppression", (objet: number) => {
         const cle = Object.entries(objet)[0][0];
@@ -684,12 +666,6 @@ export default class Jeu extends Phaser.Scene {
         });
       });
 
-
-      // room.onMessage("touches_dispo", (actif: boolean) => {
-        // this.touchesDispo["cle"].setAlpha(actif ? 1 : 0.5)
-        // this.touchesDispo["texte"].setAlpha(actif ? 1 : 0.5)
-      // });
-
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
         let projectiles: any = {}
@@ -707,10 +683,6 @@ export default class Jeu extends Phaser.Scene {
         changes.rectangles.forEach((value: any, key: any) => {
           rectangles[key] = value
         })
-
-        // changes.compteur.forEach((value: any, key: any) => {
-          // rectangles[key] = value
-        // })
 
         if (this.compteur.text !== `${changes.compteur}`) {
           this.compteur.setText(`${changes.compteur}`)
@@ -804,10 +776,7 @@ export default class Jeu extends Phaser.Scene {
       {
         this.rectanglesRef[item].setPosition(list.rectangles[item].x, list.rectangles[item].y)
         if (list.rectangles[item].width) this.rectanglesRef[item].setSize(list.rectangles[item].width, list.rectangles[item].height);
-        // if (list.rectangles[item].height) this.rectanglesRef[item].height = list.rectangles[item].height;
         if (list.rectangles[item].angle) this.rectanglesRef[item].setAngle(list.rectangles[item].angle);
-        // if (list.rectangles[item].fillColor) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor);
-        // if (list.rectangles[item].fillAlpha) this.rectanglesRef[item].setFillStyle(list.rectangles[item].fillColor, list.rectangles[item].fillAlpha);
       }
     })
 
@@ -964,17 +933,10 @@ export default class Jeu extends Phaser.Scene {
 
   update() {
     if (this.room) {
-
-      // blocks.forEach(function (block) {
-    // block.setTint(0xffffff);
-// });
-//  We need the top-left of the rect
-
       const { right, left, space, A, Z, E, R, TAB } = this.keyboard
 
       const inputs = {
         a: A.isDown ? true : false,
-        // a_fin: A.isUp ? true : false,
         z: Z.isDown ? true : false,
         e: E.isDown ? true : false,
         r: R.isDown ? true : false,
@@ -984,20 +946,6 @@ export default class Jeu extends Phaser.Scene {
         tab: TAB.isDown ? true : false
       }
 
-      //ATTAQUE
-      // if (Phaser.Input.Keyboard.JustDown(A)) this.room.send("inputs", { ...inputs, charge: true, envoie: false })
-      // if (Phaser.Input.Keyboard.JustUp(A)) this.room.send("inputs", { ...inputs, charge: false, envoie: true })
-
-      // if (Phaser.Input.Keyboard.JustDown(space)) this.room.send("inputs", { ...inputs, saut: true})
-      //
-      // //DROITE
-      // if (Phaser.Input.Keyboard.JustDown(right)) this.room.send("inputs", { ...inputs, right: {stop: false, marche: true}})
-      // if (Phaser.Input.Keyboard.JustUp(right)) this.room.send("inputs", { ...inputs, right: {stop: true, marche: false}})
-      //
-      // //GAUCHE
-      // if (Phaser.Input.Keyboard.JustDown(left)) this.room.send("inputs", { ...inputs, left: {stop: false, marche: true}})
-      // if (Phaser.Input.Keyboard.JustUp(left)) this.room.send("inputs", { ...inputs, left: {stop: true, marche: false}})
-      //
       if (!deepEqual(inputs, this.prevInputs)) {
         this.prevInputs = inputs
         this.room.send("inputs", {
