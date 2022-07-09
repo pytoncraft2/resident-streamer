@@ -34,7 +34,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     this.agrandissement = false;
     this.scene.add.existing(this)
     this.scene.physics.add.existing(this);
-    this.setSize(1, 1)
+    this.setSize(200, 200)
     // this.setDisplaySize(1900, 90)
     // this.width = 2900;
     // this.height = 90
@@ -49,10 +49,13 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     //@ts-ignore
     this.body.collideWorldBounds = true;
     this.id = id;
-    this.setScale(1, 5)
+    // this.setScale(2, 2)
     //@ts-ignore
-    this.scene.physics.add.overlap(this, this.scene.players, this.overlapAction, undefined, this)
-    // this.scene.physics.add.collider(this, this.scene.players);
+    // this.scene.physics.add.overlap(this, this.scene.players, this.overlapAction, undefined, this)
+    this.scene.physics.add.collider(this, this.scene.players);
+    //@ts-ignore
+    this.body.setImmovable(true)
+
 
     // this.height = 200
   }
@@ -93,8 +96,8 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
         x: this.x,
         y: this.y,
         id: this.id,
-        width: this.width,
-        height: this.height,
+        // width: this.width,
+        // height: this.height,
         fillColor: this.fillColor,
         fillAlpha: this.fillColor,
         angle: this.angle,
