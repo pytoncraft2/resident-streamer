@@ -1442,6 +1442,123 @@
                 "x": 0.5,
                 "y": 0.5
             }
+        },
+        {
+            "filename": "troll0",
+            "frame": {
+                "w": 187,
+                "h": 393,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun5",
+            "frame": {
+                "w": 291,
+                "h": 352,
+                "x": 187,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun4",
+            "frame": {
+                "w": 270,
+                "h": 348,
+                "x": 478,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun3",
+            "frame": {
+                "w": 255,
+                "h": 354,
+                "x": 748,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun2",
+            "frame": {
+                "w": 268,
+                "h": 351,
+                "x": 1003,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun1",
+            "frame": {
+                "w": 306,
+                "h": 351,
+                "x": 0,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun0",
+            "frame": {
+                "w": 277,
+                "h": 351,
+                "x": 306,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollattack1",
+            "frame": {
+                "w": 262,
+                "h": 393,
+                "x": 583,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollattack0",
+            "frame": {
+                "w": 202,
+                "h": 393,
+                "x": 845,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
         }
     ],
     "meta": {
