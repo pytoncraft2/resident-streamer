@@ -72,6 +72,7 @@ export default class Lobby extends Phaser.Scene {
 	    const self = this;
 			let keyObj = this.input.keyboard.addKey('TAB');  // Get key object
 			let confirme = this.input.keyboard.addKey('ENTER');  // Get key object
+
 			const texteTab = this.add.text(window.innerWidth / 2, window.innerHeight - 160, ['Selectionner votre personnage ! (TAB)'], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3)
 
 			confirme.on('down', function() {
@@ -169,7 +170,6 @@ export default class Lobby extends Phaser.Scene {
 	    });
 
 	  }
-
 
 
 	  /**
