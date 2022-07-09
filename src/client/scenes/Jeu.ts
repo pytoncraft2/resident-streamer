@@ -766,7 +766,7 @@ export default class Jeu extends Phaser.Scene {
       if (this.rectanglesRef[item] === undefined)
       {
         const r = list.rectangles[item]
-        const rectangle = this.add.rectangle(r.x, r.y, 200, 200, r.fillColor, r.fillAlpha)
+        const rectangle = this.add.rectangle(r.x, r.y, r.width, r.height, r.fillColor, r.fillAlpha)
 
         this.groupeRectangles.add(rectangle)
         this.rectanglesRef[item] = rectangle

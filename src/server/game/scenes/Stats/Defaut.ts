@@ -11,15 +11,15 @@ export const DefautDirection = (Aptitudes: any, personnage: any) => {
     direction(input.left_debut, input.left_fin, personnage, input, false)
   }
     Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
-      // if (personnage.body.touching.down) {
+      if (personnage.body.touching.down) {
         personnage.setVelocityY(-1150);
         personnage.play("jump")
-      // }
+      }
       input.space = false
     }
 }
 
-function direction(debut, fin, personnage: any, input: any, dir) {
+function direction(debut: boolean, fin: boolean, personnage: any, _input: any, dir: boolean) {
   if (debut) {
     personnage.setFlipX(!dir)
     personnage.play('walk', true)

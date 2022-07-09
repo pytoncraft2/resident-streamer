@@ -60,12 +60,12 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // this.height = 200
   }
 
-  overlapAction(laser: any, ennemie: Phaser.Physics.Arcade.Sprite) {
-    //@ts-ignore
-    console.log("OVERLAP")
-    //@ts-ignore
-    ennemie.dommage(0.08)
-  }
+  // overlapAction(laser: any, ennemie: Phaser.Physics.Arcade.Sprite) {
+  //   //@ts-ignore
+  //   console.log("OVERLAP")
+  //   //@ts-ignore
+  //   ennemie.dommage(0.08)
+  // }
 
   preUpdate(_time: number, _delta: number) {
     if (this.agrandissement) {
