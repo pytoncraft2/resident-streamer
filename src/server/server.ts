@@ -9,8 +9,6 @@ import * as fs from 'fs';
 
 var cors = require('cors')
 
-
-
 import GameRooms from "./game/Hall_01"
 import LobbyRooms from "./game/lobby"
 import AcceuilRooms from "./game/acceuil"
@@ -42,9 +40,9 @@ app.get('/scores', (_request, res) => {
 app.post('/scores', (_request, res) => {
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  myObject["EQUIPE ZzdKE"] = {
-    "joueurs": ["kiwi", "hiver", "jsp"],
-    "score": "1min"
+  myObject["EQUIPE DAVID"] = {
+    "joueurs": ["David", "David", "EncoreDavid"],
+    "score": "5min"
   }
   var newData2 = JSON.stringify(myObject);
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
