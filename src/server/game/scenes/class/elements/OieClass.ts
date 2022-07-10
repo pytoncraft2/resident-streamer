@@ -41,7 +41,7 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     this.setFlipX(flipX)
     this.setScale(1.5);
     this.play('oie_tire');
-    this.setSize(this.width, 100);
+    this.setSize(this.width - 20, 100);
     // scene.suppressionProjectileDelai(this, id, 1400, true)
     (this.scene as any).room.state.projectiles.set(
       this.id,

@@ -66,7 +66,6 @@ export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
     troll.scene.physics.add.existing(oie);
     troll.scene.physics.add.collider(troll.scene[`${troll.cible_courante}`].getChildren(), oie,
     function (_joueur: TJoueur, _oie: any) {
-      // _joueur.dommage(_oie.getData('degat'))
       if (_oie.body.touching.left || _oie.body.touching.right) {
         _joueur.dommage(_oie.getData('degat'))
         _oie.setData('degat', 0)
