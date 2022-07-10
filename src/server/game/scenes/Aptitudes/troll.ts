@@ -94,7 +94,14 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
     // grenouille__Z(troll, {z: true})
     troll.setFlipX(!troll.flipX)
     oie__A(troll, {a: true})
-    reactiveBoucle(troll, aptitudes)
+    troll.scene.time.delayedCall(Phaser.Math.Between(100, 500), () => {
+      oie__A(troll, {a: true})
+      troll.scene.time.delayedCall(200, () => {
+        oie__A(troll, {a: true})
+        reactiveBoucle(troll, aptitudes)
+      }, null, this);
+    }, null, this);
+
   }
 }
 
