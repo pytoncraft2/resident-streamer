@@ -27,7 +27,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   personnage.cible_courante = "players"
 
 
-  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {}
+  Aptitudes[personnage.sprite].toucheEspace = (_personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {}
   Aptitudes[personnage.sprite].toucheDroite = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
     if (_input.right_fin)
     {

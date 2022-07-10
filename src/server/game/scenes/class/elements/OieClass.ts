@@ -55,7 +55,8 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
         scale: this.scale,
         _frame: this._frame
       })
-    )
+    );
+    (this.scene as any).suppressionProjectileDelai(this, id, 1300, true);
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
