@@ -1,10 +1,10 @@
 {
     "frames": [
         {
-            "filename": "icon_twitchman",
+            "filename": "troll0",
             "frame": {
-                "w": 251,
-                "h": 247,
+                "w": 187,
+                "h": 393,
                 "x": 0,
                 "y": 0
             },
@@ -14,11 +14,11 @@
             }
         },
         {
-            "filename": "icon_troll",
+            "filename": "trollrun5",
             "frame": {
-                "w": 251,
-                "h": 248,
-                "x": 251,
+                "w": 291,
+                "h": 352,
+                "x": 187,
                 "y": 0
             },
             "anchor": {
@@ -27,11 +27,11 @@
             }
         },
         {
-            "filename": "icon_osmosiscoop",
+            "filename": "trollrun4",
             "frame": {
-                "w": 251,
-                "h": 247,
-                "x": 502,
+                "w": 270,
+                "h": 348,
+                "x": 478,
                 "y": 0
             },
             "anchor": {
@@ -40,12 +40,38 @@
             }
         },
         {
-            "filename": "icon_manette",
+            "filename": "trollrun3",
             "frame": {
-                "w": 251,
-                "h": 247,
+                "w": 255,
+                "h": 354,
+                "x": 748,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun2",
+            "frame": {
+                "w": 268,
+                "h": 351,
+                "x": 1003,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun1",
+            "frame": {
+                "w": 306,
+                "h": 351,
                 "x": 0,
-                "y": 248
+                "y": 393
             },
             "anchor": {
                 "x": 0.5,
@@ -53,12 +79,12 @@
             }
         },
         {
-            "filename": "icon_huzounet",
+            "filename": "trollrun0",
             "frame": {
-                "w": 251,
-                "h": 247,
-                "x": 251,
-                "y": 248
+                "w": 277,
+                "h": 351,
+                "x": 306,
+                "y": 393
             },
             "anchor": {
                 "x": 0.5,
@@ -66,12 +92,12 @@
             }
         },
         {
-            "filename": "icon_fakhear",
+            "filename": "trollattack1",
             "frame": {
-                "w": 251,
-                "h": 247,
-                "x": 502,
-                "y": 248
+                "w": 262,
+                "h": 393,
+                "x": 583,
+                "y": 393
             },
             "anchor": {
                 "x": 0.5,
@@ -79,25 +105,12 @@
             }
         },
         {
-            "filename": "icon_boss_1",
+            "filename": "trollattack0",
             "frame": {
-                "w": 251,
-                "h": 247,
-                "x": 0,
-                "y": 495
-            },
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            }
-        },
-        {
-            "filename": "icon_akhizonah",
-            "frame": {
-                "w": 251,
-                "h": 247,
-                "x": 251,
-                "y": 495
+                "w": 202,
+                "h": 393,
+                "x": 845,
+                "y": 393
             },
             "anchor": {
                 "x": 0.5,
