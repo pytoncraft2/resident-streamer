@@ -205,6 +205,25 @@ export function AnimationBombe(anim: Phaser.Animations.AnimationState){
   });
 }
 
+export function AnimationGrenouille(anim: Phaser.Animations.AnimationState) {
+  anim.create({
+    key: 'grenouille_tire',
+    frames: anim.generateFrameNames('atlas', { prefix: 'frog', start: 0, end: 4 }),
+    frameRate: 13,
+    repeat: 0
+  });
+}
+
+export function AnimationOie(anim: Phaser.Animations.AnimationState) {
+  anim.create({
+    key: 'oie_tire',
+    frames: anim.generateFrameNames('atlas', { prefix: 'attack', start: 0, end: 13 }),
+    frameRate: 13,
+    repeat: 0
+  });
+}
+
+
 export const setAnimation = (sprite: Phaser.GameObjects.Sprite, animation: string = 'idle') => {
   if (!sprite.anims.isPlaying) sprite.play(animation)
   else if (sprite.anims.isPlaying && sprite.anims.getName() !== animation) sprite.play(animation)

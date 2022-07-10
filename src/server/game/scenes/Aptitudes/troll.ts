@@ -1,4 +1,5 @@
 import TJoueur from "../types/Joueur";
+import GrenouilleClass from "../class/elements/GrenouilleClass";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   personnage.anims.create({
@@ -57,6 +58,24 @@ export function test__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     troll.play("troll_attaque")
+    // if (!fakhear.obj_manette) {
+    //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+    //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
+    //   fakhear.obj_manette = obj_manette
+    // } else {
+    //   fakhear.obj_manette.traquer(fakhear)
+    // }
+  }
+}
+
+export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  if (input.z) {
+    input.z = false
+    // troll.play("troll_attaque")
+    // new GrenouilleClass(troll.scene, troll.x, troll.y, 'atlas')
+    const grenouille = troll.scene.add.existing(new GrenouilleClass(troll.scene, troll.flipX ? troll.x - 80 : troll.x + 80, troll.y - 60, "troll", `${(Math.random() + 1).toString(36).substring(7)}`).setData({ ClientId: troll.ClientID, degat: 0.3}));
+    troll.scene.physics.add.existing(grenouille);
+
     // if (!fakhear.obj_manette) {
     //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
     //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
