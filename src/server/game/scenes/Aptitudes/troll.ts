@@ -15,6 +15,13 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     repeat: 0
   });
 
+  personnage.anims.create({
+    key: 'troll_attaque',
+    frames: personnage.anims.generateFrameNames('atlas', { prefix: 'trollattack', start: 0, end: 1 }),
+    frameRate: 6,
+    repeat: 1
+  });
+
 
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {}
   Aptitudes[personnage.sprite].toucheDroite = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
@@ -44,5 +51,18 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
       if (!personnage.flipX) personnage.setFlipX(true)
     }
   }
+}
 
+export function test__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  if (input.a) {
+    input.a = false
+    troll.play("troll_attaque")
+    // if (!fakhear.obj_manette) {
+    //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
+    //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
+    //   fakhear.obj_manette = obj_manette
+    // } else {
+    //   fakhear.obj_manette.traquer(fakhear)
+    // }
+  }
 }
