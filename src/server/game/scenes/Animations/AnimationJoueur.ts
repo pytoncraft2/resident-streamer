@@ -219,8 +219,8 @@ export function AnimationOie(anim: Phaser.Animations.AnimationState) {
   anim.create({
     key: 'oie_tire',
     frames: anim.generateFrameNames('atlas', { prefix: 'attack', start: 0, end: 13 }),
-    frameRate: 13,
-    repeat: 0
+    frameRate: 20,
+    repeat: -1
   });
 }
 

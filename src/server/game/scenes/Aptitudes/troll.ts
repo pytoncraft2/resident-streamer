@@ -1,5 +1,6 @@
 import TJoueur from "../types/Joueur";
 import GrenouilleClass from "../class/elements/GrenouilleClass";
+import OieClass from "../class/elements/OieClass";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   personnage.anims.create({
@@ -22,6 +23,8 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     frameRate: 6,
     repeat: 1
   });
+
+  personnage.cible_courante = "players"
 
 
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {}
@@ -54,17 +57,15 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   }
 }
 
-export function test__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     troll.play("troll_attaque")
-    // if (!fakhear.obj_manette) {
-    //   const obj_manette = fakhear.scene.add.existing(new ManetteClass(fakhear.scene, fakhear.flipX ? fakhear.x - 80 : fakhear.x + 80, fakhear.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
-    //   .setData({ ClientId: fakhear.ClientID, degat: 1}))
-    //   fakhear.obj_manette = obj_manette
-    // } else {
-    //   fakhear.obj_manette.traquer(fakhear)
-    // }
+
+    const oie = troll.scene.add.existing(new OieClass(troll.scene, troll.flipX ? troll.x - 180 : troll.x + 180, troll.y, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX).setData({ ClientId: troll.ClientID, degat: 0.3}));
+    troll.scene.physics.add.existing(oie);
+    troll.scene.physics.add.collider(troll.scene[`${troll.cible_courante}`].getChildren(), oie)
+    oie.setPushable(false);
   }
 }
 
@@ -84,5 +85,24 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
     // } else {
     //   fakhear.obj_manette.traquer(fakhear)
     // }
+  }
+}
+
+export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
+  if (troll.scene)
+  {
+    // grenouille__Z(troll, {z: true})
+    troll.setFlipX(!troll.flipX)
+    oie__A(troll, {a: true})
+    reactiveBoucle(troll, aptitudes)
+  }
+}
+
+function reactiveBoucle(twitchman: TJoueur, aptitudes: any) {
+  if (twitchman.scene)
+  {
+    twitchman.scene.time.delayedCall(1300, () => {
+      __auto(twitchman, {}, aptitudes)
+    }, null, this);
   }
 }
