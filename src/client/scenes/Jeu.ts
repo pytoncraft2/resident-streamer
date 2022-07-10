@@ -794,6 +794,11 @@ export default class Jeu extends Phaser.Scene {
 					.setData({ ClientId: list.presenceList[idx] })
           .setDepth(1);
 
+          const frog = this.add
+          .sprite(x + 600, y + 780, `troll_atlas`, 'attack1')
+          .setDepth(1);
+
+
           if (this.session === list.presenceList[idx]) {
             (player as any).sprite_fusion = this.add
             .sprite(541, 1018, `icons_atlas`, `icon_${sprite}`)
