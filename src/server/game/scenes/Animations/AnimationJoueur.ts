@@ -210,6 +210,7 @@ export function AnimationGrenouille(anim: Phaser.Animations.AnimationState) {
     key: 'grenouille_tire',
     frames: anim.generateFrameNames('atlas', { prefix: 'frog', start: 0, end: 4 }),
     frameRate: 13,
+    yoyo: true,
     repeat: 0
   });
 }
