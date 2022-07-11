@@ -42,8 +42,8 @@ export default class GameRooms extends Room {
       const boss = {
         // 'twitchman': 1_000,
         // 'boss_1': 2_000,
-        'manette': 1_000,
-        'troll': 1_000
+        // 'manette': 1_000,
+        // 'troll': 1_000
       }
       Object.entries(boss).map(item => {
         const n = `${(Math.random() + 1).toString(36).substring(7)}`

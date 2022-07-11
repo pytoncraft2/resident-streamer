@@ -39,7 +39,7 @@ export function lanceManette__Z(manette: TJoueur, _input: any) {
     // manette.scene.groupeManettes.add(obj_manette);
     manette.obj_manette = obj_manette;
 
-    manette.scene.time.delayedCall(100, () => {
+    manette.scene.time.delayedCall(200, () => {
 
         var timeline = manette.scene.tweens.createTimeline();
 
