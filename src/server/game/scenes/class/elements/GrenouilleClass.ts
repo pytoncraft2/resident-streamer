@@ -21,7 +21,7 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
     this.init(scene, ClientID, flipX, cible)
   }
 
-  init(scene: Phaser.Scene, id: string, flipX: boolean, cible) {
+  init(scene: Phaser.Scene, id: string, flipX: boolean, cible: string) {
     this.scene = scene
     scene.physics.add.existing(this);
     this.id = id
@@ -35,21 +35,26 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
 
     scene.time.delayedCall(900, () => {
       this.play('grenouille_tire')
+
       const balle1 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
+      this.scene.physics.add.existing(balle1);
+
       this.scene.time.delayedCall(100, () => {
         const balle2 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
-        this.scene.physics.add.existing(balle1);
+        this.scene.physics.add.existing(balle2);
 
         this.scene.time.delayedCall(200, () => {
+
           const balle3 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
           this.scene.physics.add.existing(balle3);
+
         }, null, this);
 
       }, null, this);
     }, null, this);
 
+    (this.scene as any).suppressionProjectileDelai(this, id, 1400, true)
     //args: [],
-(this.scene as any).suppressionProjectileDelai(this, id, 1400, true)
 this.setSize(300, 300);
 
 (this.scene as any).room.state.projectiles.set(

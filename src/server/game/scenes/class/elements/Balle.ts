@@ -33,9 +33,9 @@ export class Balle extends Phaser.Physics.Arcade.Sprite {
       _ennemie.dommage(_kunai.getData('degat'))
       _kunai.setData('degat', 0)
       //@ts-ignore
-      scene.suppressionProjectileDelai(this, id, 1000, 1000)
     }, undefined, this);
 
+      // (this.scene as any).suppressionProjectileDelai(this, id, 1000, false)
 
     // this.setCollideWorldBounds(true);
 
