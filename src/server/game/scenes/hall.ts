@@ -221,14 +221,14 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }, null, this);
   }
 
-  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number) {
+  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
 
     if (smooth)
     {
       this.tweens.add({
         targets: cible,
         alpha: 0,
-        duration: 1000,
+        duration: delai,
         onCompleteParams: [this],
         onComplete: function(_tw, _target, scene) {
           scene.room.broadcast("suppression", {playersRef: id});

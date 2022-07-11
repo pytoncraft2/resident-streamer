@@ -56,6 +56,7 @@ export default class GameRooms extends Room {
                 left: false,
                 space: false,
                 a: false,
+                a_fin: false,
                 z: false,
                 e: false,
                 r: false
@@ -123,6 +124,7 @@ export default class GameRooms extends Room {
         left: false,
         space: true,
         a: false,
+        a_fin: false,
         z: false,
         e: false,
         r: false

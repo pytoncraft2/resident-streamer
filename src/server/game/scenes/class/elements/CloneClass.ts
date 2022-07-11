@@ -1,6 +1,7 @@
 import { Player } from "../../../RoomState"
-import { kunai__Z } from '././../../Aptitudes/huzounet'
+import { kunai__Z, __StatsSupplementaire, shuriken__A } from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
+import TJoueur from "../../types/Joueur"
 
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -13,15 +14,9 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   vie: number = 10
   degat: number = 0.2
 
-  zoneInteraction: any
-
-  vitesse: number = 0
-  puissance: number = 0
-
   ClientID: string
 
   createur: any
-  randomVitesse: number
 
   constructor(
     scene: Phaser.Scene,
@@ -46,47 +41,44 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     this.ClientID = id
     this.setCollideWorldBounds(true);
     new AnimationJoueur(this.anims)
+    //@ts-ignore
+    __StatsSupplementaire(this)
 
     this.setDrag(1900)
-    this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-    this.zoneInteraction.action = (_e: Phaser.Physics.Arcade.Sprite) => {
-    };
-
-    this.scene.physics.add.existing(this.zoneInteraction);
-    this.zoneInteraction.body.enable = false;
-    (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-
-    this.randomVitesse = Phaser.Math.Between(800, 1200)
-    this.scene.events.once('repositionnement', this.repositionnement, this);
-
 
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    this.vie -= 0.04
+    this.vie -= 0.02
+    if (this.vie < 0) {
+      (this.scene as any).suppressionJoueur(this, true, this.ClientID, 1000)
+      this.vie = 10;
+    }
 
     let animationName = this.anims.getFrameName();
-    this.zoneInteraction.setPosition(this.x + (this.flipX ? -100 : 100), this.y);
 
-if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
+    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
 
-    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
-      kunai__Z(this as any)
-    }
+      shuriken__A(this as unknown as TJoueur, {a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin})
 
-    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {
+      if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
+        kunai__Z(this as any)
+      }
+
+      if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {
         setAnimation(this, 'walk')
         this.setFlipX(false)
-        this.setVelocityX(300)
-    }
+        this.setVelocityX(this.createur.vel)
+      }
 
-    if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.left) {
-      setAnimation(this, 'walk')
-      this.setFlipX(true)
-      this.setVelocityX(-300)
+      if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.left) {
+        setAnimation(this, 'walk')
+        this.setFlipX(true)
+        this.setVelocityX(-this.createur.vel)
+      }
+
     }
-  }
 
     (this.scene as any).room.state.presences.set(
       this.ClientID,
@@ -96,10 +88,9 @@ if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
         sprite: this.sprite,
         anim: animationName,
         flipX: this.flipX,
+        alpha: this.alpha,
         tint: this.tintBottomLeft,
-        vie: this.vie,
-        xa: this.zoneInteraction.x,
-        ya: this.zoneInteraction.y
+        vie: this.vie
       })
     )
   }
@@ -107,7 +98,4 @@ if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
   auto() {
   }
 
-  repositionnement() {
-    this.scene.physics.moveToObject(this, {x: this.x + 200, y: this.y}, this.randomVitesse);
-  }
 }

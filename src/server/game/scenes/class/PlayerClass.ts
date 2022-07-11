@@ -182,6 +182,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (left_fin) input.left_fin = false;
        if (z_fin) input.z_fin = false;
+       // if (a_fin) input.a_fin = false;
        if (right_fin) input.right_fin = false;
        if (space_fin) input.space_fin = false;
        if (right_debut) input.right_debut = false

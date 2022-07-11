@@ -6,7 +6,7 @@ import { fusion } from "./_utilitaire/general";
 
 import TJoueur from "../types/Joueur";
 
-export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes: any) {
+export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     collideWorldBounds: true,
@@ -40,7 +40,7 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
     {
       (huzounet.boulesEnMain.getChildren()[0] as BouleClass).scale += 0.02;
       (huzounet.boulesEnMain.getChildren()[0] as BouleClass).alpha += 0.01;
-      huzounet.puissanceChargeBoule += 0.01
+      huzounet.puissanceChargeBoule += 0.03
     }
   }
 
@@ -55,7 +55,7 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
       huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].body.setVelocityX(huzounet.flipX ? -2600 : 2600);
       huzounet.scene.groupeBoulesHuzounet.getMatching('proprietaire', huzounet.ClientID)[0].proprietaire = '';
       huzounet.boulesEnMain.clear();
-      input.a_fin = false
+      // input.a_fin = false
 
       setAnimation(huzounet, 'huzounet_envoie_attaque');
     }
@@ -85,7 +85,7 @@ export function kunai__Z(huzounet: TJoueur) {
     }
 }
 
-export function multiclonage__E(huzounet: TJoueur) {
+export function multiclonage__E(huzounet: any) {
   if (!huzounet.clone) {
     huzounet.clone = true
     const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y + 10, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
