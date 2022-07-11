@@ -98,6 +98,21 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
   if (troll.scene)
   {
     // grenouille__Z(troll, {z: true})
+
+    const positionJoueurProche: any = troll.scene.physics.closest(troll, [...(troll.scene as any)[`${troll.cible_courante}`].getChildren()])
+    if (positionJoueurProche)
+    {
+      var dist = Phaser.Math.Distance.BetweenPoints(troll, positionJoueurProche);
+
+      console.log(dist)
+
+      if (dist < 172)
+      {
+        troll.play('troll_run')
+        troll.body.setVelocityX(900)
+      }
+    }
+
     troll.setFlipX(!troll.flipX)
     oie__A(troll, {a: true})
     troll.scene.time.delayedCall(Phaser.Math.Between(100, 500), () => {
