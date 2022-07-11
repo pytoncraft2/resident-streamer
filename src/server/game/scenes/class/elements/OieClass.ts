@@ -64,8 +64,9 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(this.flipX ? -500 : 500);
 
     if (this.frame.name === "attack4") {
-      const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, this.flipX))
-      this.scene.physics.add.existing(balle);
+    //   const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, this.flipX))
+    //   this.scene.physics.add.existing(balle);
+    console.log("TIRE !!")
     }
       (this.scene as any).room.state.projectiles.set(
         this.id,

@@ -200,9 +200,7 @@ export default class Level extends Phaser.Scene {
 				//  Turn off the click events
 				this.removeListener('click');
 
-				this.scene.tweens.add({ targets: element.rotate3d, x: 1, w: 90, duration: 1000, ease: 'Power3' });
-
-				this.scene.tweens.add({ targets: element, scaleX: 2, scaleY: 2, y: 700, duration: 1000, ease: 'Power3',
+				this.scene.tweens.add({ targets: element, alpha: 0, duration: 200, ease: 'Power3',
 				onComplete: async function ()
 				{
 					element.setVisible(false);
