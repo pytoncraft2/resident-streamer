@@ -27,7 +27,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.init(scene, ClientID, sprite)
   }
 
-  init(scene: Phaser.Scene, id: string, sprite) {
+  init(scene: Phaser.Scene, id: string, sprite: string) {
     this.scene = scene
     this.scene.add.existing(this)
     scene.physics.add.existing(this);
@@ -42,7 +42,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
 
   }
-  preUpdate(time, delta) {
+  preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
     this.angle += 32;
