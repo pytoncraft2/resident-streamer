@@ -789,6 +789,8 @@ export default class Jeu extends Phaser.Scene {
 				const sprite = list.presences[item].sprite
 				if (list.presences[item].sprite) {
 
+					this.add
+					.sprite(x, y, `balle_atlas`)
 					const player = this.add
 					.sprite(x, y, `${sprite}_atlas`)
 					.setData({ ClientId: list.presenceList[idx] })

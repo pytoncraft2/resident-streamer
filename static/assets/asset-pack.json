@@ -8,6 +8,12 @@
                 "key": "akhizonah_atlas"
             },
             {
+                "atlasURL": "assets/balle_atlas.json",
+                "textureURL": "assets/balle_atlas.png",
+                "type": "atlas",
+                "key": "balle_atlas"
+            },
+            {
                 "url": "assets/boss_1_atlas.png",
                 "type": "image",
                 "key": "boss_1"
