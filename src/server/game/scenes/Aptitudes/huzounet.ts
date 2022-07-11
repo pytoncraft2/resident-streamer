@@ -12,6 +12,7 @@ export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
     collideWorldBounds: true,
     maxSize: 4
   })
+  huzounet.degat = 0.3
 }
 
 
