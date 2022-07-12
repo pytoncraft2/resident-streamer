@@ -61,13 +61,26 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     );
     (this.scene as any).suppressionProjectileDelai(this, id, 1300, true);
 
-    this.scene.time.delayedCall(500, () => {
-      const idBalle = `${(Math.random() + 1).toString(36).substring(7)}`
-      const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y, 'balle', idBalle, this.flipX, cible));
-      this.scene.physics.add.existing(balle);
+    this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (_anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
 
-      (this.scene as any).suppressionProjectileDelai(balle, idBalle, 700, true)
-    }, null, this);
+        if (frame.frame.name == 'attack3') {
+          const idBalle = `${(Math.random() + 1).toString(36).substring(7)}`
+          const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 30, 'balle', idBalle, this.flipX, cible));
+          this.scene.physics.add.existing(balle);
+
+          (this.scene as any).suppressionProjectileDelai(balle, idBalle, 700, true)
+        }
+
+        if (frame.frame.name == 'attack4') {
+          const idBalleInverse = `${(Math.random() + 1).toString(36).substring(7)}`
+          const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 30, 'balle', idBalleInverse, !this.flipX, cible));
+          this.scene.physics.add.existing(balle);
+
+          (this.scene as any).suppressionProjectileDelai(balle, idBalleInverse, 700, true)
+        }
+
+    });
+
 
 
   }
@@ -76,8 +89,9 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     this.setVelocityX(this.flipX ? -500 : 500);
 
 
-    if (this.frame.name === "attack4") {
-    }
+    // if (this.frame.name === "attack4") {
+
+    // }
       (this.scene as any).room.state.projectiles.set(
         this.id,
         new Projectile({
