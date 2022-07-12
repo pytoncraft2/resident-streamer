@@ -7,7 +7,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
   proprietaire: string  = ''
-  actif: boolean = true
   sprite: string = 'huzounet'
   vie: number = 10
   degat: number = 0.2

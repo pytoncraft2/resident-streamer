@@ -20,7 +20,6 @@ export class Projectile extends Schema {
   @type("number") scaleY?: number;
   @type("boolean") active?: boolean;
   @type("boolean") flipX?: boolean;
-  @type("boolean") explosion?: boolean;
   @type("boolean") laser?: boolean;
   @type("number") depth?: number;
   @type("number") angle?: number;

@@ -6,7 +6,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   vel: number = 400
   proprietaire: string  = ''
   traqueJoueur: Phaser.Physics.Arcade.Sprite
-  actif: boolean = true
 
   sprite: string = 'huzounet'
   _frame: string = 'shuriken0'

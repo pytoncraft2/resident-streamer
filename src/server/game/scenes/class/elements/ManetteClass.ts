@@ -4,7 +4,6 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
   proprietaire: string  = ''
-  actif: boolean = true
   traqueJoueur: Phaser.Physics.Arcade.Sprite
   suivre: boolean
 
@@ -55,7 +54,6 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
           x: this.x,
           y: this.y,
           id: this.id,
-          active: this.active,
           flipX: this.flipX,
           sprite: this.sprite,
           alpha: this.alpha,

@@ -5,9 +5,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
   proprietaire: string  = ''
-  actif: boolean = true
   zoneInteraction: any
-  explosion: boolean
 
   sprite: string = 'akhizonah'
   _frame: string = 'bombe0'
@@ -58,7 +56,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     //@ts-ignore
     this.fin = false;
-    this.explosion = false;
     (this.scene as any).room.state.projectiles.set(
       this.id,
       new Projectile({
@@ -85,7 +82,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     //@ts-ignore
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
-      this.explosion = true
       this.zoneInteraction.body.enable = true;
       this.zoneInteraction.setPosition(this.x, this.y)
     //@ts-ignore
@@ -99,15 +95,11 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
           y: this.y,
           alpha: this.alpha,
           id: this.id,
-          active: this.active,
           anim: this.anims.getFrameName(),
-          explosion: this.explosion,
           sprite: this.sprite,
           _frame: this._frame
         })
       )
-
-      this.explosion = false
 
   }
 }
