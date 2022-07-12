@@ -118,6 +118,12 @@
                 "key": "osmosiscoop_atlas"
             },
             {
+                "atlasURL": "assets/super_boss_atlas.json",
+                "textureURL": "assets/super_boss_atlas.png",
+                "type": "atlas",
+                "key": "super_boss_atlas"
+            },
+            {
                 "atlasURL": "assets/troll_atlas.json",
                 "textureURL": "assets/troll_atlas.png",
                 "type": "atlas",
