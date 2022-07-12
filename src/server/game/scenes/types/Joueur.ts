@@ -2,7 +2,6 @@ import LaserClass from "../class/elements/LaserClass";
 import Hall from "../hall";
 
 export interface Scene extends Phaser.Scene {
-  containerColision: Phaser.GameObjects.Container;
   room: any
   groupeBoulesHuzounet: Phaser.Physics.Arcade.Group;
 }
@@ -14,20 +13,15 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   vie: number,
   displayWidth: number,
   displayHeight: number,
-  physics: Phaser.Physics.Arcade.ArcadePhysics
-  masse: number,
-  puissanceDeBase: number,
   cible_courante: string,
 
 
-  containerColision: Phaser.GameObjects.Container
-  animationCharge: Phaser.Tweens.Tween
-  kunai: Phaser.Physics.Arcade.Sprite|undefined
+  kunai?: Phaser.Physics.Arcade.Sprite|undefined
   compteurSaut: number;
   degat: number
   sprite: string
   particules: boolean
-  groupeManettes: Phaser.GameObjects.Group
+  groupeManettes?: Phaser.GameObjects.Group
   gfx: Phaser.GameObjects.Graphics
 
   tweenIcon: Phaser.Tweens.Tween
@@ -37,22 +31,22 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   scene: Hall
 
   //huzounet
-  puissanceChargeBoule: number,
-  boulesEnMain: Phaser.Physics.Arcade.Group
-  clone: boolean
+  puissanceChargeBoule?: number,
+  boulesEnMain?: Phaser.Physics.Arcade.Group
+  clone?: boolean
 
   //akhizonah
-  bombe: Phaser.Physics.Arcade.Sprite|undefined
+  bombe?: Phaser.Physics.Arcade.Sprite|undefined
 
   //osmosiscoop
   soigne: boolean
 
   //mannette
-  obj_manette: Phaser.Physics.Arcade.Sprite
+  obj_manette?: Phaser.Physics.Arcade.Sprite
 
   //twitchman
-  survole: boolean
-  laser: LaserClass
+  survole?: boolean
+  laser?: LaserClass
 
   //degat
   dommage(puissance: number): void
@@ -60,7 +54,8 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   nouveauPilote(joueur: Phaser.Physics.Arcade.Sprite): void
 
   //bot
-  auto(joueur: Phaser.Physics.Arcade.Sprite): void
+  auto?(joueur: Phaser.Physics.Arcade.Sprite): void
+
 
 }
 

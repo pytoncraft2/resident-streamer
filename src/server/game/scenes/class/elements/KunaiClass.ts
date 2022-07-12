@@ -4,8 +4,6 @@ import { Projectile } from "../../../RoomState"
 export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  animationCharge: Phaser.Tweens.Tween
-  animationEnvoie: Phaser.Tweens.Tween
   proprietaire: string  = ''
   actif: boolean = true
   traqueJoueur: Phaser.Physics.Arcade.Sprite

@@ -22,7 +22,6 @@ export default class Hall extends Phaser.Scene {
   groupeManettes: Phaser.GameObjects.Group
   playersRef: any
   enemiesRef: any
-  containerColision: Phaser.GameObjects.Container
   platforme: Phaser.GameObjects.Rectangle
   rect: any
 
@@ -110,8 +109,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     // this.physics.add.collider(platforme, this.enemies);
     // this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
 
-    // this.containerColision = this.add.container(0,0);
-
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {
@@ -169,9 +166,9 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     return this.getPresence()
   }
 
-  createEnnemy(EnnemyId: any, sprite: string) {
+  createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
-    const ennemy = this.add.existing(new PlayerClass(this, 1000, 0, "atlas", EnnemyId, sprite).setData({ EnnemyId }))
+    const ennemy = this.add.existing(new PlayerClass(this, 1000, 0, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
     // ennemy.setPushable(false)
     // ennemy.setDisplaySize(335, 540.4)
     // ennemy.setBounceX(40)

@@ -16,6 +16,7 @@ import { DefautDirection } from "../Stats/Defaut"
    vel: number = 600
    fusionner: boolean
    suivre: boolean
+   cible_courante: string
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
    tweenIcon: Phaser.Tweens.Tween
@@ -40,14 +41,15 @@ import { DefautDirection } from "../Stats/Defaut"
      y: number,
      atlas: string,
      ClientID: string,
-     sprite: string
+     sprite: string,
+     auto?: boolean
    ) {
      super(scene, x, y, atlas, sprite)
 
-     this.init(scene, ClientID, sprite)
+     this.init(scene, ClientID, sprite, auto)
    }
 
-   init(scene: Phaser.Scene, ClientID: string, sprite: string) {
+   init(scene: Phaser.Scene, ClientID: string, sprite: string, auto: boolean) {
      this.scene = scene
      this.ClientID = ClientID
      this.particules = false
@@ -155,8 +157,10 @@ import { DefautDirection } from "../Stats/Defaut"
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
-     //@ts-ignore
-     Aptitudes[this.sprite].auto && Aptitudes[this.sprite].auto(this, {}, Aptitudes[this.sprite]);
+
+     if (auto) {
+       if (Aptitudes[this.sprite].auto) Aptitudes[this.sprite].auto((this as any), {}, Aptitudes[this.sprite]);
+     }
 
    }
    preUpdate(time: number, delta: number) {
