@@ -82,7 +82,7 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
     // troll.play("troll_attaque")
     // new GrenouilleClass(troll.scene, troll.x, troll.y, 'atlas')
     troll.play("troll_attaque")
-    const grenouille = troll.scene.add.existing(new GrenouilleClass(troll.scene, troll.flipX ? troll.x - 380 : troll.x + 380, troll.y - 400, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, !troll.flipX, troll.cible_courante).setData({ ClientId: troll.ClientID, degat: 0.3}));
+    const grenouille = troll.scene.add.existing(new GrenouilleClass(troll.scene, troll.flipX ? troll.x - Phaser.Math.Between(380, 180) : troll.x + Phaser.Math.Between(380, 180), troll.y - 400, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, !troll.flipX, troll.cible_courante).setData({ ClientId: troll.ClientID, degat: 0.3}));
     troll.scene.physics.add.existing(grenouille);
 
     // const grenouille = troll.scene.add.existing(new GrenouilleClass(troll.scene, troll.flipX ? troll.x - 380 : troll.x + 380, troll.y - 400, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, !troll.flipX, troll.cible_courante, troll.scene.add.existing(new Balle(troll.scene, troll.x, troll.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX, troll.cible_courante))).setData({ ClientId: troll.ClientID, degat: 0.3}));
