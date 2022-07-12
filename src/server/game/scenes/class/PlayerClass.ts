@@ -165,7 +165,6 @@ import { DefautDirection } from "../Stats/Defaut"
    }
    preUpdate(time: number, delta: number) {
      super.preUpdate(time, delta);
-     console.log((this.scene as any).room.state.projectiles.size)
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
