@@ -63,7 +63,7 @@ export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
     input.a = false
     troll.play("troll_attaque")
 
-    const oie = troll.scene.add.existing(new OieClass(troll.scene, troll.flipX ? troll.x - 180 : troll.x + 180, troll.y, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX, troll.cible_courante, troll.scene.add.existing(new Balle(troll.scene, troll.x, troll.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX, troll.cible_courante))).setData({ ClientId: troll.ClientID, degat: 0.9}));
+    const oie = troll.scene.add.existing(new OieClass(troll.scene, troll.flipX ? troll.x - 180 : troll.x + 180, troll.y, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX, troll.cible_courante).setData({ ClientId: troll.ClientID, degat: 0.9}));
     troll.scene.physics.add.existing(oie);
     troll.scene.physics.add.collider(troll.scene[`${troll.cible_courante}`].getChildren(), oie)
     // function (_joueur: TJoueur, _oie: any) {
