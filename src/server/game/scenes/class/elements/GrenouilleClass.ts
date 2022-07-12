@@ -36,20 +36,26 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
     scene.time.delayedCall(900, () => {
       this.play('grenouille_tire')
 
-      const balle1 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
+      const id1 = `${(Math.random() + 1).toString(36).substring(7)}`
+      const balle1 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', id1, !this.flipX, cible))
       this.scene.physics.add.existing(balle1);
+      (this.scene as any).suppressionProjectileDelai(balle1, id1, 500, true)
 
       this.scene.time.delayedCall(100, () => {
-        const balle2 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
+
+        const id2 = `${(Math.random() + 1).toString(36).substring(7)}`
+        const balle2 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', id2, !this.flipX, cible))
         this.scene.physics.add.existing(balle2);
+        (this.scene as any).suppressionProjectileDelai(balle2, id2, 600, true)
 
         this.scene.time.delayedCall(200, () => {
 
-          const balle3 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, !this.flipX, cible))
+          const id3 = `${(Math.random() + 1).toString(36).substring(7)}`
+          const balle3 = this.scene.add.existing(new Balle(this.scene, this.x, this.y - 55, 'balle', id3, !this.flipX, cible))
           this.scene.physics.add.existing(balle3);
+          (this.scene as any).suppressionProjectileDelai(balle3, id3, 700, true)
 
         }, null, this);
-
       }, null, this);
     }, null, this);
 

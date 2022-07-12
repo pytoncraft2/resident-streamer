@@ -25,14 +25,15 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     sprite: string,
     ClientID: string,
     flipX: boolean,
-    cible: string
+    cible: string,
+    balle: any
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, ClientID, flipX, cible)
+    this.init(scene, ClientID, flipX, cible, balle)
   }
 
-  init(scene: Phaser.Scene, id: string, flipX: boolean, cible: string) {
+  init(scene: Phaser.Scene, id: string, flipX: boolean, cible: string, balle: any) {
     this.scene = scene
     scene.physics.add.existing(this);
 
@@ -61,10 +62,10 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     );
     (this.scene as any).suppressionProjectileDelai(this, id, 1300, true);
 
-    this.scene.time.delayedCall(500, () => {
-      const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, this.flipX, cible))
-      this.scene.physics.add.existing(balle);
-    }, null, this);
+    // this.scene.time.delayedCall(500, () => {
+    //   const balle = this.scene.add.existing(new Balle(this.scene, this.x, this.y, 'balle', `${(Math.random() + 1).toString(36).substring(7)}`, this.flipX, cible))
+    //   this.scene.physics.add.existing(balle);
+    // }, null, this);
 
 
   }
@@ -72,8 +73,8 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
     this.setVelocityX(this.flipX ? -500 : 500);
 
+
     if (this.frame.name === "attack4") {
-    console.log("TIRE !!")
     }
       (this.scene as any).room.state.projectiles.set(
         this.id,
