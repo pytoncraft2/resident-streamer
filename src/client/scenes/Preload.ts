@@ -25,8 +25,12 @@ export default class Preload extends Phaser.Scene {
 		progress.text = "0%";
 		progress.setStyle({ "fontSize": "30px" });
 
+		this.progress = progress;
+
 		this.events.emit("scene-awake");
 	}
+
+	public progress!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -35,6 +39,7 @@ export default class Preload extends Phaser.Scene {
 	preload() {
 
 		this.editorCreate();
+		const self = this;
 
 		this.load.html('nameform', '/assets/loginform.html');
 
@@ -50,14 +55,18 @@ export default class Preload extends Phaser.Scene {
 		const gameSize = this.scale.gameSize;
 
 		this.load.on('progress', function (value: number) {
-
 			progress.clear();
 			progress.fillStyle(0xffffff, 1);
-			progress.fillRect(0, 270, gameSize.width * value, 60);
+			progress.fillRect(0, 0, gameSize.width * value, 60);
+			const percent = value * 100;
 
+			self.progress.text = `${Math.floor(percent)}%`
 		});
 
-		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
+		this.load.on(Phaser.Loader.Events.COMPLETE, () => {
+			progress.destroy(true)
+			this.scene.start("Level")
+		});
 
 	}
 
