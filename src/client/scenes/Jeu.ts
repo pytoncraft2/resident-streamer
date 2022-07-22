@@ -918,7 +918,7 @@ export default class Jeu extends Phaser.Scene {
       delay: 1600,
       repeat: 0,
       onUpdate: () => {
-        effet_choc.setPosition(this.projectilesRef[item].x, this.projectilesRef[item].y)
+        if (this.projectilesRef[item]) effet_choc.setPosition(this.projectilesRef[item].x, this.projectilesRef[item].y)
       },
       onComplete: function() {
         arguments[1][0].destroy(true)
