@@ -46,6 +46,17 @@ export default class Preload extends Phaser.Scene {
 			'assets/epic_musique.mp3'
 		]);
 
+		var progress = this.add.graphics();
+		const gameSize = this.scale.gameSize;
+
+		this.load.on('progress', function (value: number) {
+
+			progress.clear();
+			progress.fillStyle(0xffffff, 1);
+			progress.fillRect(0, 270, gameSize.width * value, 60);
+
+		});
+
 		this.load.on(Phaser.Loader.Events.COMPLETE, () => this.scene.start("Level"));
 
 	}
