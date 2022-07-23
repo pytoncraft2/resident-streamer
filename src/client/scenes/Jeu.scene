@@ -518,7 +518,7 @@
                 {
                     "type": "Text",
                     "id": "f093fb58-fe92-42c7-bba5-8990227a1ede",
-                    "label": "text_3",
+                    "label": "commande_A",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": 20,
@@ -531,7 +531,7 @@
                 {
                     "type": "Text",
                     "id": "00fd971f-b6cd-4528-8d96-ae8869941b98",
-                    "label": "text_5",
+                    "label": "description_commande_A",
                     "scope": "PUBLIC",
                     "components": [],
                     "y": 18,
@@ -570,7 +570,7 @@
                 {
                     "type": "Text",
                     "id": "9a8e0e4c-1b24-456d-8b8d-4e2528fdf0f7",
-                    "label": "text_3_1",
+                    "label": "commande_Z",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": 18,
@@ -583,7 +583,7 @@
                 {
                     "type": "Text",
                     "id": "2fdc7671-726c-484d-bb78-69e5a7ec0961",
-                    "label": "text_5_1",
+                    "label": "description_commande_Z",
                     "scope": "PUBLIC",
                     "components": [],
                     "y": 18,
@@ -675,7 +675,7 @@
                 {
                     "type": "Text",
                     "id": "1c178621-89f3-4035-8e36-ea3d16e3ac55",
-                    "label": "text_4",
+                    "label": "description_commande_TAB",
                     "components": [],
                     "x": 29,
                     "y": 45,
@@ -685,10 +685,11 @@
                 {
                     "type": "Text",
                     "id": "99e34e4f-5698-40ab-84f0-6382c7cdfa28",
-                    "label": "text_4_1",
+                    "label": "commande_TAB",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": 115,
-                    "text": "Tab",
+                    "text": "BAT",
                     "color": "#5a4747ff"
                 }
             ]
@@ -721,7 +722,7 @@
                 {
                     "type": "Text",
                     "id": "af336200-c7b4-47d0-a8e8-7dbe7d91ca7c",
-                    "label": "text_E",
+                    "label": "commande_E",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": 17,
@@ -733,13 +734,13 @@
                 {
                     "type": "Text",
                     "id": "e7fbe773-d63d-4095-a7c6-f64e2d832cbc",
-                    "label": "text_5_1_1",
+                    "label": "description_commande_E",
                     "scope": "PUBLIC",
                     "components": [],
                     "y": 13,
                     "scaleX": 0.8383656155133609,
                     "scaleY": 0.8383656155133609,
-                    "text": "kick"
+                    "text": "kicks"
                 }
             ]
         },
@@ -772,7 +773,7 @@
                 {
                     "type": "Text",
                     "id": "4acddff3-f8d7-4222-9255-b86d75dead0c",
-                    "label": "text_E_1",
+                    "label": "commande_R",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": 24,
@@ -785,7 +786,7 @@
                 {
                     "type": "Text",
                     "id": "3ed44247-21c8-4265-a864-d0c6909727bf",
-                    "label": "text_5_1_1_1",
+                    "label": "description_commande_R",
                     "scope": "PUBLIC",
                     "components": [],
                     "y": 13,

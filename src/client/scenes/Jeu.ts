@@ -277,19 +277,19 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4.isStroked = true;
 		touche_A.add(rectangle_4);
 
-		// text_3
-		const text_3 = this.add.text(20, 5, "", {});
-		text_3.setOrigin(0.5, 0.5);
-		text_3.text = "A";
-		text_3.setStyle({ "fontSize": "26px" });
-		touche_A.add(text_3);
+		// commande_A
+		const commande_A = this.add.text(20, 5, "", {});
+		commande_A.setOrigin(0.5, 0.5);
+		commande_A.text = "A";
+		commande_A.setStyle({ "fontSize": "26px" });
+		touche_A.add(commande_A);
 
-		// text_5
-		const text_5 = this.add.text(0, 18, "", {});
-		text_5.scaleX = 0.8383656155133609;
-		text_5.scaleY = 0.8383656155133609;
-		text_5.text = "cross";
-		touche_A.add(text_5);
+		// description_commande_A
+		const description_commande_A = this.add.text(0, 18, "", {});
+		description_commande_A.scaleX = 0.8383656155133609;
+		description_commande_A.scaleY = 0.8383656155133609;
+		description_commande_A.text = "cross";
+		touche_A.add(description_commande_A);
 
 		// touche_Z
 		const touche_Z = this.add.container(986, 997);
@@ -304,19 +304,19 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_1.isStroked = true;
 		touche_Z.add(rectangle_4_1);
 
-		// text_3_1
-		const text_3_1 = this.add.text(18, 5, "", {});
-		text_3_1.setOrigin(0.5, 0.5);
-		text_3_1.text = "Z";
-		text_3_1.setStyle({ "fontSize": "26px" });
-		touche_Z.add(text_3_1);
+		// commande_Z
+		const commande_Z = this.add.text(18, 5, "", {});
+		commande_Z.setOrigin(0.5, 0.5);
+		commande_Z.text = "Z";
+		commande_Z.setStyle({ "fontSize": "26px" });
+		touche_Z.add(commande_Z);
 
-		// text_5_1
-		const text_5_1 = this.add.text(0, 18, "", {});
-		text_5_1.scaleX = 0.8383656155133609;
-		text_5_1.scaleY = 0.8383656155133609;
-		text_5_1.text = "dash";
-		touche_Z.add(text_5_1);
+		// description_commande_Z
+		const description_commande_Z = this.add.text(0, 18, "", {});
+		description_commande_Z.scaleX = 0.8383656155133609;
+		description_commande_Z.scaleY = 0.8383656155133609;
+		description_commande_Z.text = "dash";
+		touche_Z.add(description_commande_Z);
 
 		// touche_TAB
 		const touche_TAB = this.add.container(725, 973);
@@ -366,17 +366,17 @@ export default class Jeu extends Phaser.Scene {
 		triangle_2_1.fillColor = 5916487;
 		touche_TAB.add(triangle_2_1);
 
-		// text_4
-		const text_4 = this.add.text(29, 45, "", {});
-		text_4.text = "Fusionner";
-		text_4.setStyle({ "color": "#5a4747ff" });
-		touche_TAB.add(text_4);
+		// description_commande_TAB
+		const description_commande_TAB = this.add.text(29, 45, "", {});
+		description_commande_TAB.text = "Fusionner";
+		description_commande_TAB.setStyle({ "color": "#5a4747ff" });
+		touche_TAB.add(description_commande_TAB);
 
-		// text_4_1
-		const text_4_1 = this.add.text(115, 0, "", {});
-		text_4_1.text = "Tab";
-		text_4_1.setStyle({ "color": "#5a4747ff" });
-		touche_TAB.add(text_4_1);
+		// commande_TAB
+		const commande_TAB = this.add.text(115, 0, "", {});
+		commande_TAB.text = "BAT";
+		commande_TAB.setStyle({ "color": "#5a4747ff" });
+		touche_TAB.add(commande_TAB);
 
 		// touche_E
 		const touche_E = this.add.container(1056, 1002);
@@ -391,19 +391,19 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2.isStroked = true;
 		touche_E.add(rectangle_4_2);
 
-		// text_E
-		const text_E = this.add.text(17, 0, "", {});
-		text_E.setOrigin(0.5, 0.5);
-		text_E.text = "E";
-		text_E.setStyle({ "fontSize": "26px" });
-		touche_E.add(text_E);
+		// commande_E
+		const commande_E = this.add.text(17, 0, "", {});
+		commande_E.setOrigin(0.5, 0.5);
+		commande_E.text = "E";
+		commande_E.setStyle({ "fontSize": "26px" });
+		touche_E.add(commande_E);
 
-		// text_5_1_1
-		const text_5_1_1 = this.add.text(0, 13, "", {});
-		text_5_1_1.scaleX = 0.8383656155133609;
-		text_5_1_1.scaleY = 0.8383656155133609;
-		text_5_1_1.text = "kick";
-		touche_E.add(text_5_1_1);
+		// description_commande_E
+		const description_commande_E = this.add.text(0, 13, "", {});
+		description_commande_E.scaleX = 0.8383656155133609;
+		description_commande_E.scaleY = 0.8383656155133609;
+		description_commande_E.text = "kicks";
+		touche_E.add(description_commande_E);
 
 		// touche_R
 		const touche_R = this.add.container(1118, 1002);
@@ -419,20 +419,20 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2_1.strokeColor = 3155237;
 		touche_R.add(rectangle_4_2_1);
 
-		// text_E_1
-		const text_E_1 = this.add.text(24, 0, "", {});
-		text_E_1.setOrigin(0.5, 0.5);
-		text_E_1.text = "R";
-		text_E_1.setStyle({ "color": "#5a4747ff", "fontSize": "26px" });
-		touche_R.add(text_E_1);
+		// commande_R
+		const commande_R = this.add.text(24, 0, "", {});
+		commande_R.setOrigin(0.5, 0.5);
+		commande_R.text = "R";
+		commande_R.setStyle({ "color": "#5a4747ff", "fontSize": "26px" });
+		touche_R.add(commande_R);
 
-		// text_5_1_1_1
-		const text_5_1_1_1 = this.add.text(0, 13, "", {});
-		text_5_1_1_1.scaleX = 0.8383656155133609;
-		text_5_1_1_1.scaleY = 0.8383656155133609;
-		text_5_1_1_1.text = "ultime";
-		text_5_1_1_1.setStyle({ "color": "#5a4747ff" });
-		touche_R.add(text_5_1_1_1);
+		// description_commande_R
+		const description_commande_R = this.add.text(0, 13, "", {});
+		description_commande_R.scaleX = 0.8383656155133609;
+		description_commande_R.scaleY = 0.8383656155133609;
+		description_commande_R.text = "ultime";
+		description_commande_R.setStyle({ "color": "#5a4747ff" });
+		touche_R.add(description_commande_R);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -450,21 +450,22 @@ export default class Jeu extends Phaser.Scene {
 		this.vie_joueur = vie_joueur;
 		this.touche_A = touche_A;
 		this.rectangle_4 = rectangle_4;
-		this.text_3 = text_3;
-		this.text_5 = text_5;
+		this.commande_A = commande_A;
+		this.description_commande_A = description_commande_A;
 		this.touche_Z = touche_Z;
 		this.rectangle_4_1 = rectangle_4_1;
-		this.text_3_1 = text_3_1;
-		this.text_5_1 = text_5_1;
+		this.commande_Z = commande_Z;
+		this.description_commande_Z = description_commande_Z;
 		this.touche_TAB = touche_TAB;
+		this.commande_TAB = commande_TAB;
 		this.touche_E = touche_E;
 		this.rectangle_4_2 = rectangle_4_2;
-		this.text_E = text_E;
-		this.text_5_1_1 = text_5_1_1;
+		this.commande_E = commande_E;
+		this.description_commande_E = description_commande_E;
 		this.touche_R = touche_R;
 		this.rectangle_4_2_1 = rectangle_4_2_1;
-		this.text_E_1 = text_E_1;
-		this.text_5_1_1_1 = text_5_1_1_1;
+		this.commande_R = commande_R;
+		this.description_commande_R = description_commande_R;
 
 		this.events.emit("scene-awake");
 	}
@@ -485,21 +486,22 @@ export default class Jeu extends Phaser.Scene {
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
 	public touche_A!: Phaser.GameObjects.Container;
 	public rectangle_4!: Phaser.GameObjects.Rectangle;
-	public text_3!: Phaser.GameObjects.Text;
-	public text_5!: Phaser.GameObjects.Text;
+	public commande_A!: Phaser.GameObjects.Text;
+	public description_commande_A!: Phaser.GameObjects.Text;
 	public touche_Z!: Phaser.GameObjects.Container;
 	public rectangle_4_1!: Phaser.GameObjects.Rectangle;
-	public text_3_1!: Phaser.GameObjects.Text;
-	public text_5_1!: Phaser.GameObjects.Text;
+	public commande_Z!: Phaser.GameObjects.Text;
+	public description_commande_Z!: Phaser.GameObjects.Text;
 	public touche_TAB!: Phaser.GameObjects.Container;
+	public commande_TAB!: Phaser.GameObjects.Text;
 	public touche_E!: Phaser.GameObjects.Container;
 	public rectangle_4_2!: Phaser.GameObjects.Rectangle;
-	public text_E!: Phaser.GameObjects.Text;
-	public text_5_1_1!: Phaser.GameObjects.Text;
+	public commande_E!: Phaser.GameObjects.Text;
+	public description_commande_E!: Phaser.GameObjects.Text;
 	public touche_R!: Phaser.GameObjects.Container;
 	public rectangle_4_2_1!: Phaser.GameObjects.Rectangle;
-	public text_E_1!: Phaser.GameObjects.Text;
-	public text_5_1_1_1!: Phaser.GameObjects.Text;
+	public commande_R!: Phaser.GameObjects.Text;
+	public description_commande_R!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -870,7 +872,14 @@ export default class Jeu extends Phaser.Scene {
               if (list.presences[item].sprite_fusion) {
                 console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
                 console.log(list.presences[item].commandes.E)
-                console.log(Array.from(list.presences[item].commandes))
+                console.log(list.presences[item].commandes)
+                for (const [key, value] of Object.entries(list.presences[item].commandes)) {
+                  console.log(`${key}: ${value}`);
+                  (this as any)[`commande_${key}`].setText(value)
+                }
+                // this.commande_E.setText(list.presences[item].commandes.E)
+                // console.log(this.touche_A)
+                // console.log(Array.from(list.presences[item].commandes))
                 this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
               }
             }
