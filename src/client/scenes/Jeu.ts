@@ -879,7 +879,7 @@ export default class Jeu extends Phaser.Scene {
                 for (const [key, value] of Object.entries(list.presences[item].commandes)) {
                   console.log(`${key}: ${value}`);
                   // (this as any)[`commande_${key}`].setText(`${key}`)
-                  (this as any)[`description_commande_${key}`].setText(value)
+                  if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
                 }
                 // this.commande_E.setText(list.presences[item].commandes.E)
                 // console.log(this.touche_A)
@@ -942,6 +942,7 @@ export default class Jeu extends Phaser.Scene {
   }
 
   animIcon(icon: any, sprite_fusion: string) {
+    console.log("ANIM ICON-----------------")
     this.tweens.add({
       targets: icon,
       angle: -660,
