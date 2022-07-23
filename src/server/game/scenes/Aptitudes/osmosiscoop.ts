@@ -21,14 +21,3 @@ export function blesse__Z(osmo: TJoueur, input: any) {
     input.z = false;
   }
 }
-
-export function osmo_saut__E(osmo: TJoueur) {
-  if (osmo.body.touching.down) {
-    osmo.play('osmo_saut')
-    osmo.body.setVelocityY(-1400);
-    osmo.compteurSaut++
-    if (osmo.body.touching.down) {
-      osmo.compteurSaut = 0
-    }
-  }
-}

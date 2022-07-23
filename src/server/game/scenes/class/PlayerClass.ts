@@ -59,6 +59,11 @@ import { DefautDirection } from "../Stats/Defaut"
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
+     this.scene.time.delayedCall(100, () => {
+       this.changeInterfaceClient(this.sprite);
+     }, null, this);
+
+
      console.log(Aptitudes[this.sprite])
 
      this.currentTarget = this

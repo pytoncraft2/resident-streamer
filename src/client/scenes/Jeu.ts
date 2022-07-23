@@ -790,18 +790,18 @@ export default class Jeu extends Phaser.Scene {
       }
     })
 
-		list.presenceList.map((item: string, idx: number) => {
+    list.presenceList.map((item: string, idx: number) => {
 
-			if (this.playersRef[item] === undefined) {
+      if (this.playersRef[item] === undefined) {
 
-				const x = list.presences[item].x
-				const y = list.presences[item].y
-				const sprite = list.presences[item].sprite
-				if (list.presences[item].sprite) {
+        const x = list.presences[item].x
+        const y = list.presences[item].y
+        const sprite = list.presences[item].sprite
+        if (list.presences[item].sprite) {
 
-					const player = this.add
-					.sprite(x, y, `${sprite}_atlas`)
-					.setData({ ClientId: list.presenceList[idx] })
+          const player = this.add
+          .sprite(x, y, `${sprite}_atlas`)
+          .setData({ ClientId: list.presenceList[idx] })
           .setDepth(1);
 
           if (this.session === list.presenceList[idx]) {
@@ -814,11 +814,11 @@ export default class Jeu extends Phaser.Scene {
             .setScale(0.16275708974409425, 0.16275708974409425)
 
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
-              // console.log("WWW")
-              // this.cameras.main.startFollow(player);
-              // this.cameras.main.setDeadzone(900, 200);
+            // console.log("WWW")
+            // this.cameras.main.startFollow(player);
+            // this.cameras.main.setDeadzone(900, 200);
 
-              // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
+            // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
             // },this);
 
 
@@ -855,57 +855,42 @@ export default class Jeu extends Phaser.Scene {
           (player as any).barre = barre;
           (player as any).ClientId = list.presenceList[idx];
 
-					this.players.add(player)
-					this.playersRef[item] = player
+          this.players.add(player)
+          this.playersRef[item] = player
 
-				}
+        }
 
 
-			} else {
-          this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
-            if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
-            this.playersRef[item].setFrame(list.presences[item].anim)
-            this.playersRef[item].flipX = list.presences[item].flipX
-            this.playersRef[item].setTint(list.presences[item].tint)
-            this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
-            this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
-            if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
-            if (list.presences[item].alpha) {
-              this.playersRef[item].barre.setAlpha(list.presences[item].alpha)
-              this.playersRef[item].setAlpha(list.presences[item].alpha)
+      } else {
+        this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
+        if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
+        this.playersRef[item].setFrame(list.presences[item].anim)
+        this.playersRef[item].flipX = list.presences[item].flipX
+        this.playersRef[item].setTint(list.presences[item].tint)
+        this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie/(this.playersRef[item].barre.first.scaleX*10), 0, 1) , 0.0881985701178345)
+        this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
+        if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
+        if (list.presences[item].alpha) {
+          this.playersRef[item].barre.setAlpha(list.presences[item].alpha)
+          this.playersRef[item].setAlpha(list.presences[item].alpha)
+        }
+
+        if (this.session === this.playersRef[item].ClientId) {
+          this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
+          if (list.presences[item].sprite_fusion) this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
+
+          if (list.presences[item].commandes)
+          {
+            for (const [key, value] of Object.entries(list.presences[item].commandes))
+            {
+              if (!value) (this as any)[`touche_${key}`].alpha = 0.2
+              else (this as any)[`touche_${key}`].alpha = 1
+              if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
             }
-
-            if (this.session === this.playersRef[item].ClientId) {
-              this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
-              if (list.presences[item].sprite_fusion) {
-                console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
-                // console.log(list.presences[item].commandes.E)
-                console.log(list.presences[item].commandes)
-                // this.groupe_touches.getAll().forEach((element: any, index) => {
-                  // element.alpha = 0;
-                  // })
-                  for (const [key, value] of Object.entries(list.presences[item].commandes)) {
-                    console.log(`${key}: ${value}`);
-                    // (this as any)[`commande_${key}`].setText(`${key}`)
-                    if (!value) (this as any)[`touche_${key}`].alpha = 0.2
-                    else (this as any)[`touche_${key}`].alpha = 1
-                    if ((this as any)[`description_commande_${key}`]) {
-                      (this as any)[`description_commande_${key}`].setText(value)
-                      //@ts-ignore
-                      // this.groupe_touches.getAll()[index].alpha = 0.1;
-                    }
-                    // else (this as any)[`touche_${key}`].alpha = 0.2;
-                  }
-                // });
-                // this.commande_E.setText(list.presences[item].commandes.E)
-                // console.log(this.touche_A)
-                // console.log(Array.from(list.presences[item].commandes))
-                this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
-              }
-            }
-
-			}
-		})
+          }
+        }
+      }
+    })
 
 		this.players.children.iterate((child) => {
 			if (list.presences[child.data.values.ClientId] === undefined) {
