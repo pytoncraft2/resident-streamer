@@ -340,20 +340,11 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_3.strokeColor = 3155237;
 		touche_TAB.add(rectangle_4_3);
 
-		// rectangle_5
-		const rectangle_5 = this.add.rectangle(55, 9, 128, 128);
-		rectangle_5.scaleX = 0.7998016954981302;
-		rectangle_5.scaleY = 0.04630570216976848;
-		rectangle_5.isFilled = true;
-		rectangle_5.fillColor = 5916487;
-		touche_TAB.add(rectangle_5);
-
 		// rectangle_5_1
 		const rectangle_5_1 = this.add.rectangle(93, 29, 128, 128);
-		rectangle_5_1.scaleX = 0.7998016954981302;
-		rectangle_5_1.scaleY = 0.04630570216976848;
+		rectangle_5_1.scaleX = 0.6564311464079737;
+		rectangle_5_1.scaleY = 0.03844827137887741;
 		rectangle_5_1.isFilled = true;
-		rectangle_5_1.fillColor = 5916487;
 		touche_TAB.add(rectangle_5_1);
 
 		// triangle_2
@@ -362,7 +353,6 @@ export default class Jeu extends Phaser.Scene {
 		triangle_2.scaleY = 0.12492350627216228;
 		triangle_2.angle = 90;
 		triangle_2.isFilled = true;
-		triangle_2.fillColor = 5916487;
 		touche_TAB.add(triangle_2);
 
 		// triangle_2_1
@@ -371,20 +361,25 @@ export default class Jeu extends Phaser.Scene {
 		triangle_2_1.scaleY = 0.12492350627216228;
 		triangle_2_1.angle = -90;
 		triangle_2_1.isFilled = true;
-		triangle_2_1.fillColor = 5916487;
 		touche_TAB.add(triangle_2_1);
 
 		// description_commande_TAB
-		const description_commande_TAB = this.add.text(29, 45, "", {});
+		const description_commande_TAB = this.add.text(72, 51, "", {});
+		description_commande_TAB.setOrigin(0.5, 0.5);
 		description_commande_TAB.text = "Fusionner";
-		description_commande_TAB.setStyle({ "color": "#5a4747ff" });
 		touche_TAB.add(description_commande_TAB);
 
 		// commande_TAB
 		const commande_TAB = this.add.text(115, 0, "", {});
-		commande_TAB.text = "BAT";
-		commande_TAB.setStyle({ "color": "#5a4747ff" });
+		commande_TAB.text = "TAB";
 		touche_TAB.add(commande_TAB);
+
+		// rectangle
+		const rectangle = this.add.rectangle(50, 9, 128, 128);
+		rectangle.scaleX = 0.6564311464079737;
+		rectangle.scaleY = 0.03844827137887741;
+		rectangle.isFilled = true;
+		touche_TAB.add(rectangle);
 
 		// touche_E
 		const touche_E = this.add.container(331, 29);
@@ -408,7 +403,7 @@ export default class Jeu extends Phaser.Scene {
 		touche_E.add(commande_E);
 
 		// description_commande_E
-		const description_commande_E = this.add.text(21, 20, "", {});
+		const description_commande_E = this.add.text(17, 20, "", {});
 		description_commande_E.scaleX = 0.8383656155133609;
 		description_commande_E.scaleY = 0.8383656155133609;
 		description_commande_E.setOrigin(0.5, 0.5);
@@ -469,6 +464,7 @@ export default class Jeu extends Phaser.Scene {
 		this.commande_Z = commande_Z;
 		this.description_commande_Z = description_commande_Z;
 		this.touche_TAB = touche_TAB;
+		this.description_commande_TAB = description_commande_TAB;
 		this.commande_TAB = commande_TAB;
 		this.touche_E = touche_E;
 		this.rectangle_4_2 = rectangle_4_2;
@@ -506,6 +502,7 @@ export default class Jeu extends Phaser.Scene {
 	public commande_Z!: Phaser.GameObjects.Text;
 	public description_commande_Z!: Phaser.GameObjects.Text;
 	public touche_TAB!: Phaser.GameObjects.Container;
+	public description_commande_TAB!: Phaser.GameObjects.Text;
 	public commande_TAB!: Phaser.GameObjects.Text;
 	public touche_E!: Phaser.GameObjects.Container;
 	public rectangle_4_2!: Phaser.GameObjects.Rectangle;
@@ -892,7 +889,7 @@ export default class Jeu extends Phaser.Scene {
                   for (const [key, value] of Object.entries(list.presences[item].commandes)) {
                     console.log(`${key}: ${value}`);
                     // (this as any)[`commande_${key}`].setText(`${key}`)
-                    if (!value) (this as any)[`touche_${key}`].alpha = 0.1
+                    if (!value) (this as any)[`touche_${key}`].alpha = 0.2
                     else (this as any)[`touche_${key}`].alpha = 1
                     if ((this as any)[`description_commande_${key}`]) {
                       (this as any)[`description_commande_${key}`].setText(value)

@@ -1,7 +1,6 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
 import TJoueur from "../types/Joueur";
-import { fusion } from "./_utilitaire/general";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
@@ -90,10 +89,6 @@ export function lancer__Z(manette: TJoueur, _input: any) {
       manette.obj_manette = undefined;
     }, null, manette);
   }
-}
-
-export function fusion__TAB(personnage: TJoueur, input: any) {
-  fusion(personnage, input)
 }
 
 export function __animationLancerManette(manette: TJoueur) {

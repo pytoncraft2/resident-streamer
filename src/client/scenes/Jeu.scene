@@ -634,29 +634,14 @@
                         },
                         {
                             "type": "Rectangle",
-                            "id": "adeeca7a-2fd9-478c-9a98-2a80de81bbbf",
-                            "label": "rectangle_5",
-                            "components": [],
-                            "x": 55,
-                            "y": 9,
-                            "scaleX": 0.7998016954981302,
-                            "scaleY": 0.04630570216976848,
-                            "isFilled": true,
-                            "fillColor": "#5a4747ff",
-                            "width": 128,
-                            "height": 128
-                        },
-                        {
-                            "type": "Rectangle",
                             "id": "e89062af-a075-419e-ae02-fe8c6e4ba8b7",
                             "label": "rectangle_5_1",
                             "components": [],
                             "x": 93,
                             "y": 29,
-                            "scaleX": 0.7998016954981302,
-                            "scaleY": 0.04630570216976848,
+                            "scaleX": 0.6564311464079737,
+                            "scaleY": 0.03844827137887741,
                             "isFilled": true,
-                            "fillColor": "#5a4747ff",
                             "width": 128,
                             "height": 128
                         },
@@ -670,8 +655,7 @@
                             "scaleX": 0.12492350627216228,
                             "scaleY": 0.12492350627216228,
                             "angle": 90,
-                            "isFilled": true,
-                            "fillColor": "#5a4747ff"
+                            "isFilled": true
                         },
                         {
                             "type": "Triangle",
@@ -682,18 +666,19 @@
                             "scaleX": 0.12492350627216228,
                             "scaleY": 0.12492350627216228,
                             "angle": -90,
-                            "isFilled": true,
-                            "fillColor": "#5a4747ff"
+                            "isFilled": true
                         },
                         {
                             "type": "Text",
                             "id": "1c178621-89f3-4035-8e36-ea3d16e3ac55",
                             "label": "description_commande_TAB",
+                            "scope": "PUBLIC",
                             "components": [],
-                            "x": 29,
-                            "y": 45,
-                            "text": "Fusionner",
-                            "color": "#5a4747ff"
+                            "x": 72,
+                            "y": 51,
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "Fusionner"
                         },
                         {
                             "type": "Text",
@@ -702,8 +687,21 @@
                             "scope": "PUBLIC",
                             "components": [],
                             "x": 115,
-                            "text": "BAT",
-                            "color": "#5a4747ff"
+                            "text": "TAB"
+                        },
+                        {
+                            "type": "Rectangle",
+                            "id": "1d2032ff-38ee-488f-bb3d-0ca134fee514",
+                            "label": "rectangle",
+                            "components": [],
+                            "x": 50,
+                            "y": 9,
+                            "scaleX": 0.6564311464079737,
+                            "scaleY": 0.03844827137887741,
+                            "isFilled": true,
+                            "fillColor": "#ffffff",
+                            "width": 128,
+                            "height": 128
                         }
                     ]
                 },
@@ -750,7 +748,7 @@
                             "label": "description_commande_E",
                             "scope": "PUBLIC",
                             "components": [],
-                            "x": 21,
+                            "x": 17,
                             "y": 20,
                             "scaleX": 0.8383656155133609,
                             "scaleY": 0.8383656155133609,
