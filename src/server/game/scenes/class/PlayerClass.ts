@@ -59,6 +59,7 @@ import { DefautDirection } from "../Stats/Defaut"
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
+     console.log(Aptitudes[this.sprite])
 
      this.currentTarget = this
      this.me = this

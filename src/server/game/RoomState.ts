@@ -27,6 +27,23 @@ export class Projectile extends Schema {
   @type("string") _frame?: string;
 }
 
+class Commandes extends Schema {
+    @type("string")
+    A: string;
+
+    @type("string")
+    Z: string;
+
+    @type("string")
+    E: string = "dash";
+
+    @type("string")
+    R: string;
+
+    @type("string")
+    TAB: string;
+}
+
 export class Player extends Schema {
   @type("number") x?: number
   @type("number") y?: number
@@ -42,7 +59,10 @@ export class Player extends Schema {
   @type("number") xa?: number
   @type("number") ya?: number
   @type("string") sprite_fusion?: string
+  @type(Commandes)
+  commandes?: Commandes = new Commandes();
 }
+
 
 export class Ligne extends Schema {
   @type("number") x?: number
