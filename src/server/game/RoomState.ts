@@ -27,21 +27,21 @@ export class Projectile extends Schema {
   @type("string") _frame?: string;
 }
 
-class Commandes extends Schema {
+export class Commandes extends Schema {
     @type("string")
-    A: string = "AAAAAA";
+    "A": string;
 
     @type("string")
-    Z: string = "ZZZZZZZ";
+    "Z": string;
 
     @type("string")
-    E: string = "EEEE";
+    "E": string;
 
     @type("string")
-    R: string = "RRR";
+    "R": string;
 
     @type("string")
-    TAB: string = "TABBBB";
+    "TAB": string;
 }
 
 export class Player extends Schema {
