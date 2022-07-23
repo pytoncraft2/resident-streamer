@@ -144,13 +144,7 @@ import { DefautDirection } from "../Stats/Defaut"
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
         _e.cible_courante = "enemies";
-        (this.scene as any).room.state.presences.set(
-          this.ClientID,
-          new Player({
-            sprite_fusion: _e.sprite,
-            commandes: new Commandes(Aptitudes[_e.sprite]["commandes"])
-          })
-        );
+        this.changeInterfaceClient(_e.sprite);
         this.fusionner = false;
          this.nouveauPilote(_e);
        }
@@ -255,17 +249,37 @@ import { DefautDirection } from "../Stats/Defaut"
        // (this.scene as any).enemies.remove(nouveauPilote)
        (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
        this.currentTarget = this;
-       (this.scene as any).room.state.presences.set(
-         this.ClientID,
-         new Player({
-           sprite_fusion: this.sprite,
-         })
-       );
+       this.changeInterfaceClient(this.sprite);
+       // (this.scene as any).room.state.presences.set(
+       //   this.ClientID,
+       //   new Player({
+       //     sprite_fusion: this.sprite,
+       //   })
+       // );
+
+       // (this.scene as any).room.state.presences.set(
+       //   this.ClientID,
+       //   new Player({
+       //     sprite_fusion: this.sprite,
+       //     commandes: new Commandes(Aptitudes[this.sprite]["commandes"])
+       //   })
+       // );
+
        (this.scene as any).room.broadcast("RDC_OK");
 
 
        this.setScale(1)
      }, null, this);
+   }
+
+   changeInterfaceClient(sprite: string) {
+     (this.scene as any).room.state.presences.set(
+       this.ClientID,
+       new Player({
+         sprite_fusion: sprite,
+         commandes: new Commandes(Aptitudes[sprite]["commandes"])
+       })
+     );
    }
 
    respawn() {
