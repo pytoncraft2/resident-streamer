@@ -66,14 +66,16 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
           const Commandes = {};
 
           Object.values(m).forEach((fn, _i) => {
-            //regarde si la fonction contien un undescord
+            //regarde si la fonction contient un undescore
             let index = fn.toString().split(' ')[1].indexOf("__")
             let NOMFONCTION = fn.toString().split(' ')[1].split('__')[0];
-            if (NOMFONCTION != '') {
+
+            if (NOMFONCTION != '')
+            {
               let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
-              // if (Commandes[personnage] === undefined) Commandes[personnage] = {}
               Commandes[`${CLE}`] = NOMFONCTION
             }
+
             if (index != -1)
             {
               let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
@@ -83,12 +85,8 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
               //fn correspond à la fonction qui active l'aptitudes
             }
           })
+          //Stoquages des commandes disponibles
           Aptitudes[personnage]["commandes"] = Commandes
         }
       });
     });
-
-
-    setTimeout(() => {
-      console.log(Aptitudes)
-    }, 9000);

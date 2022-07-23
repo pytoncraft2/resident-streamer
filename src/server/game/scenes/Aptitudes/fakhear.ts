@@ -1,8 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
-import ManetteClass from '../class/elements/ManetteClass'
-import { Aptitudes } from "../Aptitudes/base"
-import { fusion, closest } from "./_utilitaire/general";
+import { fusion } from "./_utilitaire/general";
 
 export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
   //@ts-ignore
@@ -53,7 +51,7 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function interaction__R(fakhear: TJoueur, input) {
+export function interaction__R(fakhear: TJoueur, input: any) {
   if (input.r)
   {
     const elementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).groupeManettes.getChildren()])
@@ -66,8 +64,7 @@ export function interaction__R(fakhear: TJoueur, input) {
     input.r = false
   }
 }
-// export fusion()
-// export function fusion(personnage, input);
+
 export function fusion__TAB(personnage: TJoueur, input: any) {
   fusion(personnage, input)
 }
