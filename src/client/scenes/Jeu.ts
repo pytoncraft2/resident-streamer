@@ -609,6 +609,19 @@ export default class Jeu extends Phaser.Scene {
       }
     }
 
+    this.time.delayedCall(5000, () => {
+      this.fade('boss1')
+    }, undefined, this);
+
+    this.time.delayedCall(10000, () => {
+      this.fade('boss2')
+    }, undefined, this);
+    this.time.delayedCall(15000, () => {
+      this.fade('hall')
+    }, undefined, this);
+
+
+
     this.tweens.add({
         targets: this.indicationDroite,
         x: 100,
