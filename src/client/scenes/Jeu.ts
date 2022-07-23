@@ -285,9 +285,10 @@ export default class Jeu extends Phaser.Scene {
 		touche_A.add(commande_A);
 
 		// description_commande_A
-		const description_commande_A = this.add.text(0, 18, "", {});
+		const description_commande_A = this.add.text(19, 25, "", {});
 		description_commande_A.scaleX = 0.8383656155133609;
 		description_commande_A.scaleY = 0.8383656155133609;
+		description_commande_A.setOrigin(0.5, 0.5);
 		description_commande_A.text = "cross";
 		touche_A.add(description_commande_A);
 
@@ -312,9 +313,10 @@ export default class Jeu extends Phaser.Scene {
 		touche_Z.add(commande_Z);
 
 		// description_commande_Z
-		const description_commande_Z = this.add.text(0, 18, "", {});
+		const description_commande_Z = this.add.text(19, 25, "", {});
 		description_commande_Z.scaleX = 0.8383656155133609;
 		description_commande_Z.scaleY = 0.8383656155133609;
+		description_commande_Z.setOrigin(0.5, 0.5);
 		description_commande_Z.text = "dash";
 		touche_Z.add(description_commande_Z);
 
@@ -399,9 +401,10 @@ export default class Jeu extends Phaser.Scene {
 		touche_E.add(commande_E);
 
 		// description_commande_E
-		const description_commande_E = this.add.text(0, 13, "", {});
+		const description_commande_E = this.add.text(21, 20, "", {});
 		description_commande_E.scaleX = 0.8383656155133609;
 		description_commande_E.scaleY = 0.8383656155133609;
+		description_commande_E.setOrigin(0.5, 0.5);
 		description_commande_E.text = "kicks";
 		touche_E.add(description_commande_E);
 
@@ -875,7 +878,8 @@ export default class Jeu extends Phaser.Scene {
                 console.log(list.presences[item].commandes)
                 for (const [key, value] of Object.entries(list.presences[item].commandes)) {
                   console.log(`${key}: ${value}`);
-                  (this as any)[`commande_${key}`].setText(value)
+                  // (this as any)[`commande_${key}`].setText(`${key}`)
+                  (this as any)[`description_commande_${key}`].setText(value)
                 }
                 // this.commande_E.setText(list.presences[item].commandes.E)
                 // console.log(this.touche_A)

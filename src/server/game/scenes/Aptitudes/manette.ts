@@ -19,7 +19,7 @@ export function punch__A(manette: TJoueur, input: any) {
   }
 }
 
-export function lanceManette__Z(manette: TJoueur, _input: any) {
+export function lancer__Z(manette: TJoueur, _input: any) {
 
   if (!manette.obj_manette) {
     manette.play('manette_lance')
@@ -140,7 +140,7 @@ export function __animationLancerManette(manette: TJoueur) {
          manette.setFlipX(true)
          if (dist > 400 && dist < 900)
          {
-           if (manette.body) lanceManette__Z(manette, {z: true})
+           if (manette.body) lancer__Z(manette, {z: true})
            reactiveBoucle(manette, aptitudes)
          } else if (dist > 900)
          {
@@ -172,7 +172,7 @@ export function __animationLancerManette(manette: TJoueur) {
          manette.setFlipX(false)
          if (dist > 400 && dist < 900)
          {
-           if (manette.body) lanceManette__Z(manette, {z: true})
+           if (manette.body) lancer__Z(manette, {z: true})
            reactiveBoucle(manette, aptitudes)
          }
          else if (dist > 900)

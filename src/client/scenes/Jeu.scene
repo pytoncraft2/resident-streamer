@@ -534,9 +534,12 @@
                     "label": "description_commande_A",
                     "scope": "PUBLIC",
                     "components": [],
-                    "y": 18,
+                    "x": 19,
+                    "y": 25,
                     "scaleX": 0.8383656155133609,
                     "scaleY": 0.8383656155133609,
+                    "originX": 0.5,
+                    "originY": 0.5,
                     "text": "cross"
                 }
             ]
@@ -586,9 +589,12 @@
                     "label": "description_commande_Z",
                     "scope": "PUBLIC",
                     "components": [],
-                    "y": 18,
+                    "x": 19,
+                    "y": 25,
                     "scaleX": 0.8383656155133609,
                     "scaleY": 0.8383656155133609,
+                    "originX": 0.5,
+                    "originY": 0.5,
                     "text": "dash"
                 }
             ]
@@ -737,9 +743,12 @@
                     "label": "description_commande_E",
                     "scope": "PUBLIC",
                     "components": [],
-                    "y": 13,
+                    "x": 21,
+                    "y": 20,
                     "scaleX": 0.8383656155133609,
                     "scaleY": 0.8383656155133609,
+                    "originX": 0.5,
+                    "originY": 0.5,
                     "text": "kicks"
                 }
             ]

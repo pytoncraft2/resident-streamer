@@ -148,10 +148,7 @@ import { DefautDirection } from "../Stats/Defaut"
           this.ClientID,
           new Player({
             sprite_fusion: _e.sprite,
-            commandes: new Commandes({
-              A: "coucou",
-              Z: "Hey"
-            })
+            commandes: new Commandes(Aptitudes[_e.sprite]["commandes"])
           })
         );
         this.fusionner = false;
