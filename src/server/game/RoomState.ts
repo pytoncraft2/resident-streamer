@@ -41,7 +41,7 @@ export class Commandes extends Schema {
     R?: string;
 
     @type("string")
-    TAB?: string = "why";
+    TAB?: string;
 }
 
 export class Player extends Schema {

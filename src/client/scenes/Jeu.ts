@@ -264,8 +264,12 @@ export default class Jeu extends Phaser.Scene {
 		vie_joueur.isFilled = true;
 		vie_joueur.fillColor = 15554289;
 
+		// groupe_touches
+		const groupe_touches = this.add.container(725, 973);
+
 		// touche_A
-		const touche_A = this.add.container(915, 997);
+		const touche_A = this.add.container(190, 24);
+		groupe_touches.add(touche_A);
 
 		// rectangle_4
 		const rectangle_4 = this.add.rectangle(20, 5, 128, 128);
@@ -293,7 +297,8 @@ export default class Jeu extends Phaser.Scene {
 		touche_A.add(description_commande_A);
 
 		// touche_Z
-		const touche_Z = this.add.container(986, 997);
+		const touche_Z = this.add.container(261, 24);
+		groupe_touches.add(touche_Z);
 
 		// rectangle_4_1
 		const rectangle_4_1 = this.add.rectangle(18, 5, 128, 128);
@@ -321,7 +326,8 @@ export default class Jeu extends Phaser.Scene {
 		touche_Z.add(description_commande_Z);
 
 		// touche_TAB
-		const touche_TAB = this.add.container(725, 973);
+		const touche_TAB = this.add.container(0, 0);
+		groupe_touches.add(touche_TAB);
 
 		// rectangle_4_3
 		const rectangle_4_3 = this.add.rectangle(71, 20, 128, 128);
@@ -381,7 +387,8 @@ export default class Jeu extends Phaser.Scene {
 		touche_TAB.add(commande_TAB);
 
 		// touche_E
-		const touche_E = this.add.container(1056, 1002);
+		const touche_E = this.add.container(331, 29);
+		groupe_touches.add(touche_E);
 
 		// rectangle_4_2
 		const rectangle_4_2 = this.add.rectangle(17, 0, 128, 128);
@@ -405,11 +412,12 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_E.scaleX = 0.8383656155133609;
 		description_commande_E.scaleY = 0.8383656155133609;
 		description_commande_E.setOrigin(0.5, 0.5);
-		description_commande_E.text = "kicks";
+		description_commande_E.text = "kick";
 		touche_E.add(description_commande_E);
 
 		// touche_R
-		const touche_R = this.add.container(1118, 1002);
+		const touche_R = this.add.container(393, 29);
+		groupe_touches.add(touche_R);
 
 		// rectangle_4_2_1
 		const rectangle_4_2_1 = this.add.rectangle(24, 0, 128, 128);
@@ -451,6 +459,7 @@ export default class Jeu extends Phaser.Scene {
 		this.barre_etat = barre_etat;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
+		this.groupe_touches = groupe_touches;
 		this.touche_A = touche_A;
 		this.rectangle_4 = rectangle_4;
 		this.commande_A = commande_A;
@@ -487,6 +496,7 @@ export default class Jeu extends Phaser.Scene {
 	public barre_etat!: Phaser.GameObjects.Container;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
+	public groupe_touches!: Phaser.GameObjects.Container;
 	public touche_A!: Phaser.GameObjects.Container;
 	public rectangle_4!: Phaser.GameObjects.Rectangle;
 	public commande_A!: Phaser.GameObjects.Text;
@@ -876,11 +886,22 @@ export default class Jeu extends Phaser.Scene {
                 console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
                 // console.log(list.presences[item].commandes.E)
                 console.log(list.presences[item].commandes)
-                for (const [key, value] of Object.entries(list.presences[item].commandes)) {
-                  console.log(`${key}: ${value}`);
-                  // (this as any)[`commande_${key}`].setText(`${key}`)
-                  if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
-                }
+                // this.groupe_touches.getAll().forEach((element: any, index) => {
+                  // element.alpha = 0;
+                  // })
+                  for (const [key, value] of Object.entries(list.presences[item].commandes)) {
+                    console.log(`${key}: ${value}`);
+                    // (this as any)[`commande_${key}`].setText(`${key}`)
+                    if (!value) (this as any)[`touche_${key}`].alpha = 0.1
+                    else (this as any)[`touche_${key}`].alpha = 1
+                    if ((this as any)[`description_commande_${key}`]) {
+                      (this as any)[`description_commande_${key}`].setText(value)
+                      //@ts-ignore
+                      // this.groupe_touches.getAll()[index].alpha = 0.1;
+                    }
+                    // else (this as any)[`touche_${key}`].alpha = 0.2;
+                  }
+                // });
                 // this.commande_E.setText(list.presences[item].commandes.E)
                 // console.log(this.touche_A)
                 // console.log(Array.from(list.presences[item].commandes))

@@ -51,20 +51,6 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function interaction__R(fakhear: TJoueur, input: any) {
-  if (input.r)
-  {
-    const elementProche: any = fakhear.scene.physics.closest(fakhear, [...(fakhear.scene as any).groupeManettes.getChildren()])
-    if (elementProche) {
-      let dist = Phaser.Math.Distance.BetweenPoints(elementProche, fakhear);
-      if (dist < 225) {
-        (fakhear.scene as any).suppressionProjectileDelai(elementProche, elementProche.id, 0)
-      }
-    }
-    input.r = false
-  }
-}
-
 export function fusion__TAB(personnage: TJoueur, input: any) {
   fusion(personnage, input)
 }
