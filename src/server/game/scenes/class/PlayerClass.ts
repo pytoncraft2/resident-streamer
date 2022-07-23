@@ -144,35 +144,16 @@ import { DefautDirection } from "../Stats/Defaut"
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
         _e.cible_courante = "enemies";
-        // (this.scene as any).room.state.presences.set(
-        //   this.ClientID,
-        //   new Player({
-        //     sprite_fusion: _e.sprite,
-        //   })
-        // );
-
         (this.scene as any).room.state.presences.set(
           this.ClientID,
-          new Player(
-            {
-              sprite_fusion: _e.sprite,
-            },
-          )).commandes = new Player(
-            {
-              sprite_fusion: _e.sprite,
-            },
-          ),new Commandes({
-          "A": "zoro"
-        });
-        // (this.scene as any).room.state.presences.set(
-        //   this.ClientID,
-        //   new Player(
-        //     {
-        //       sprite_fusion: _e.sprite,
-        //     },
-        //   )
-        // );
-
+          new Player({
+            sprite_fusion: _e.sprite,
+            commandes: new Commandes({
+              A: "coucou",
+              Z: "Hey"
+            })
+          })
+        );
         this.fusionner = false;
          this.nouveauPilote(_e);
        }

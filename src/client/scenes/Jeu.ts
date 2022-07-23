@@ -871,7 +871,7 @@ export default class Jeu extends Phaser.Scene {
               this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
               if (list.presences[item].sprite_fusion) {
                 console.log("OUI !!!!!!!!!!!!!!!! SPRITE FUSION")
-                console.log(list.presences[item].commandes.E)
+                // console.log(list.presences[item].commandes.E)
                 console.log(list.presences[item].commandes)
                 for (const [key, value] of Object.entries(list.presences[item].commandes)) {
                   console.log(`${key}: ${value}`);

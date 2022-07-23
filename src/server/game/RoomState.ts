@@ -29,19 +29,19 @@ export class Projectile extends Schema {
 
 export class Commandes extends Schema {
     @type("string")
-    "A": string;
+    A: string;
 
     @type("string")
-    "Z": string;
+    Z?: string;
 
     @type("string")
-    "E": string;
+    E?: string;
 
     @type("string")
-    "R": string;
+    R?: string;
 
     @type("string")
-    "TAB": string;
+    TAB?: string = "why";
 }
 
 export class Player extends Schema {
@@ -59,8 +59,7 @@ export class Player extends Schema {
   @type("number") xa?: number
   @type("number") ya?: number
   @type("string") sprite_fusion?: string
-  @type(Commandes)
-  commandes?: Commandes = new Commandes();
+  @type(Commandes) commandes: Commandes;
 }
 
 
