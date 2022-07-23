@@ -7,7 +7,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     key: 'troll_run',
     frames: personnage.anims.generateFrameNames('atlas', { prefix: 'trollrun', start: 0, end: 5 }),
     frameRate: 30,
-    repeat: 0
+    repeat: -1
   });
 
   personnage.anims.create({
@@ -81,13 +81,82 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
 export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
   if (troll.scene)
   {
+    const positionJoueurProche: any = troll.scene.physics.closest(troll, [...(troll.scene as any).players.getChildren()])
+    if (positionJoueurProche)
+    {
+      var dist = Phaser.Math.Distance.BetweenPoints(troll, positionJoueurProche);
+
+      if (positionJoueurProche.x < troll.x)
+      {
+        troll.setFlipX(true)
+        if (dist > 400 && dist < 900)
+        {
+          if (troll.body) oie__A(troll, {a: true})
+          reactiveBoucle(troll, aptitudes)
+        } else if (dist > 900)
+        {
+          if (troll.body) grenouille__Z(troll, {z: true})
+
+          reactiveBoucle(troll, aptitudes)
+        }
+        else if (dist < 400)
+        {
+          troll.scene.tweens.add({
+            delay: 500,
+            onStart: () => troll.play("troll_run", true),
+            targets: troll,
+            x: "-=1300",
+            duration: 700,
+            onComplete: () => {
+              troll.body.setVelocityX(0);
+              troll.play("troll_idle")
+              reactiveBoucle(troll, aptitudes)
+            }
+          });
+        }
+      }
+      else if (positionJoueurProche.x > troll.x)
+      {
+        troll.setFlipX(false)
+        if (dist > 400 && dist < 900)
+        {
+          if (troll.body) oie__A(troll, {a: true})
+          reactiveBoucle(troll, aptitudes)
+        }
+        else if (dist > 900)
+        {
+          if (troll.body)
+          {
+            if (troll.body) grenouille__Z(troll, {z: true})
+          }
+          reactiveBoucle(troll, aptitudes)
+        }
+        else if (dist < 400)
+        {
+          // troll.play("troll_punch")
+          troll.scene.tweens.add({
+            delay: 500,
+            onStart: () => troll.play("troll_run", true),
+            targets: troll,
+            x: "+=1300",
+            duration: 700,
+            onComplete: () => {
+              troll.body.setVelocityX(0);
+              troll.play("troll_idle")
+              reactiveBoucle(troll, aptitudes)
+            }
+          });
+        }
+      }
+    }
+
   }
 }
 
 function reactiveBoucle(troll: TJoueur, aptitudes: any) {
   if (troll.scene)
   {
-    troll.scene.time.delayedCall(1300, () => {
+    troll.scene.time.delayedCall(800, () => {
       __auto(troll, {}, aptitudes)
     }, null, this);
   }
