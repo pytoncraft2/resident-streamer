@@ -4,8 +4,6 @@ import ManetteClass from '../class/elements/ManetteClass'
 import { Aptitudes } from "../Aptitudes/base"
 import { fusion, closest } from "./_utilitaire/general";
 
-export function test() {}
-
 export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
   //@ts-ignore
   fakhear.groupeManettes = fakhear.scene.physics.add.group({
