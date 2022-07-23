@@ -149,7 +149,7 @@ import { DefautDirection } from "../Stats/Defaut"
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
         _e.cible_courante = "enemies";
-        this.changeInterfaceClient(_e.sprite);
+        this.changeInterfaceClient(_e.sprite, true);
         this.fusionner = false;
          this.nouveauPilote(_e);
        }
@@ -254,7 +254,7 @@ import { DefautDirection } from "../Stats/Defaut"
        // (this.scene as any).enemies.remove(nouveauPilote)
        (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
        this.currentTarget = this;
-       this.changeInterfaceClient(this.sprite);
+       this.changeInterfaceClient(this.sprite, true);
        // (this.scene as any).room.state.presences.set(
        //   this.ClientID,
        //   new Player({
@@ -277,11 +277,13 @@ import { DefautDirection } from "../Stats/Defaut"
      }, null, this);
    }
 
-   changeInterfaceClient(sprite: string) {
+   changeInterfaceClient(sprite: string, icon: boolean = false) {
      (this.scene as any).room.state.presences.set(
        this.ClientID,
-       new Player({
+       new Player( icon ? {
          sprite_fusion: sprite,
+         commandes: new Commandes(Aptitudes[sprite]["commandes"])
+       } : {
          commandes: new Commandes(Aptitudes[sprite]["commandes"])
        })
      );
