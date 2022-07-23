@@ -33,7 +33,7 @@ export interface Touches {
  * ```
  */
 export const Aptitudes: Touches = {};
-export const Commandes: any = {};
+// export const Commandes: any = {};
 
  /**
   * Import tout les fichier du dossier `./src/server/game/scenes/Aptitudes`, excepté le fichier lui-même
@@ -63,14 +63,16 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
         {
           //le nom du fichier devient la clé pour l'objet (Aptitudes)
           const personnage = file.name.substring(0, file.name.lastIndexOf('.'))
+          const Commandes = {};
+
           Object.values(m).forEach((fn, _i) => {
             //regarde si la fonction contien un undescord
             let index = fn.toString().split(' ')[1].indexOf("__")
             let NOMFONCTION = fn.toString().split(' ')[1].split('__')[0];
             if (NOMFONCTION != '') {
               let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
-              if (Commandes[personnage] === undefined) Commandes[personnage] = {}
-              Commandes[personnage][`${CLE}`] = NOMFONCTION
+              // if (Commandes[personnage] === undefined) Commandes[personnage] = {}
+              Commandes[`${CLE}`] = NOMFONCTION
             }
             if (index != -1)
             {
@@ -81,12 +83,12 @@ export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', {
               //fn correspond à la fonction qui active l'aptitudes
             }
           })
+          Aptitudes[personnage]["commandes"] = Commandes
         }
       });
     });
 
 
     setTimeout(() => {
-      console.log(Commandes)
-
+      console.log(Aptitudes)
     }, 9000);
