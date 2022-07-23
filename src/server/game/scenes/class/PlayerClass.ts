@@ -16,7 +16,7 @@ import { DefautDirection } from "../Stats/Defaut"
    vel: number = 600
    fusionner: boolean
    suivre: boolean
-   cible_courante: string
+   cible_courante: string = "enemies"
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
    tweenIcon: Phaser.Tweens.Tween
