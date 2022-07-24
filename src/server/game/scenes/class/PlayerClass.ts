@@ -312,12 +312,13 @@ import { DefautDirection } from "../Stats/Defaut"
    changePiece(piece: any) {
      if (this.pieceCourante !== piece) {
        this.pieceCourante = piece;
-       (this.scene as any).room.state.presences.set(
-         this.ClientID,
-         new Player({
-           pieceCourante: this.pieceCourante
-         })
-       );
+       console.log(this.pieceCourante)
+       // (this.scene as any).room.state.presences.set(
+       //   this.ClientID,
+       //   new Player({
+       //     pieceCourante: this.pieceCourante
+       //   })
+       // );
      }
    }
 

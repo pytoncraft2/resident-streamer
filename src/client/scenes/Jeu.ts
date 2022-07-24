@@ -617,25 +617,25 @@ export default class Jeu extends Phaser.Scene {
       hall: {
         w: this.hall.getLeftCenter().x - 30
       },
-      boss1: {
-        w: this.hall.displayWidth
-      },
-      boss2: {
+      bas_gauche: {
         w: this.map_boss2.getLeftCenter().x - 100
+      },
+      bas_droite: {
+        w: this.hall.displayWidth
       }
     }
 
-    // this.time.delayedCall(5000, () => {
-    //   this.fade('boss1')
-    // }, undefined, this);
-    //
-    // this.time.delayedCall(10000, () => {
-    //   this.fade('boss2')
-    // }, undefined, this);
-    // this.time.delayedCall(15000, () => {
-    //   this.fade('hall')
-    // }, undefined, this);
-    // 
+    this.time.delayedCall(5000, () => {
+      this.fade('bas_gauche')
+    }, undefined, this);
+
+    this.time.delayedCall(10000, () => {
+      this.fade('bas_droite')
+    }, undefined, this);
+    this.time.delayedCall(15000, () => {
+      this.fade('hall')
+    }, undefined, this);
+
 
 
     this.tweens.add({
@@ -920,7 +920,6 @@ export default class Jeu extends Phaser.Scene {
 
           if (list.presences[item].pieceCourante)
           {
-            console.log("FADE ?")
             this.fade(list.presences[item].pieceCourante)
           }
         }
@@ -942,7 +941,7 @@ export default class Jeu extends Phaser.Scene {
       if (progress === 1) {
         // Change camera boundaries when fade out complete.
         this.cameras.main.setBounds(this.listCurrentRoom[room].w,
-          0,
+          -1200,
           2000,
           945,
           true);

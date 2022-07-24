@@ -100,6 +100,10 @@ export function clonage__E(huzounet: any) {
   }
 }
 
+export function TP__R(huzounet: any, input) {
+  huzounet.setPosition(huzounet.x, -900)
+}
+
 export function fusion__TAB(personnage: TJoueur, input: any) {
   fusion(personnage, input)
 }
