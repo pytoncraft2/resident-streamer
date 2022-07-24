@@ -438,6 +438,22 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_R.text = "ultime";
 		touche_R.add(description_commande_R);
 
+		// p2
+		const p2 = this.add.rectangle(-1831, 940, 128, 128);
+		p2.scaleX = 14.310196671161355;
+		p2.scaleY = -0.09826542861018456;
+		p2.setOrigin(0, 0.5);
+		p2.isFilled = true;
+		p2.fillColor = 10563832;
+
+		// platforme_droite
+		const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
+		platforme_droite.scaleX = 14.310196671161355;
+		platforme_droite.scaleY = -0.09826542861018456;
+		platforme_droite.setOrigin(0, 0.5);
+		platforme_droite.isFilled = true;
+		platforme_droite.fillColor = 10563832;
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;

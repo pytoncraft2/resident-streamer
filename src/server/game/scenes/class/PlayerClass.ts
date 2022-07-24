@@ -14,6 +14,7 @@ import { DefautDirection } from "../Stats/Defaut"
    particules: boolean
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
+   pieceCourante: string
    fusionner: boolean
    suivre: boolean
    cible_courante: string = "enemies"
@@ -166,6 +167,7 @@ import { DefautDirection } from "../Stats/Defaut"
    }
    preUpdate(time: number, delta: number) {
      super.preUpdate(time, delta);
+     console.log(this.pieceCourante)
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input

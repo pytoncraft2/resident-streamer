@@ -809,6 +809,36 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "bbfd493c-1512-49d7-97a6-b85cfa9a1586",
+            "label": "p2",
+            "components": [],
+            "x": -1831,
+            "y": 940,
+            "scaleX": 14.310196671161355,
+            "scaleY": -0.09826542861018456,
+            "originX": 0,
+            "isFilled": true,
+            "fillColor": "#a130f8",
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "fb00f750-a716-4b54-ab5a-9b0c112ad25e",
+            "label": "platforme_droite",
+            "components": [],
+            "x": 1920,
+            "y": 940,
+            "scaleX": 14.310196671161355,
+            "scaleY": -0.09826542861018456,
+            "originX": 0,
+            "isFilled": true,
+            "fillColor": "#a130f8",
+            "width": 128,
+            "height": 128
         }
     ],
     "plainObjects": [],

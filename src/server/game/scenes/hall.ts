@@ -42,7 +42,6 @@ export default class Hall extends Phaser.Scene {
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
-      collideWorldBounds: true
     })
 
     this.enemies = this.physics.add.group({
@@ -99,12 +98,39 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme.setOrigin(0, 0.5);
     platforme.isFilled = true;
     platforme.fillColor = 10563832;
+    platforme.setData('piece', 'boss2')
     this.platforme = platforme;
+
+    const platforme_gauche = this.add.rectangle(-1831, 940, 128, 128);
+		platforme_gauche.scaleX = 14.310196671161355;
+		platforme_gauche.scaleY = -0.09826542861018456;
+		platforme_gauche.setOrigin(0, 0.5);
+		platforme_gauche.isFilled = true;
+		platforme_gauche.fillColor = 10563832;
+    platforme_gauche.setData('piece', 'boss1')
+
+    const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
+    platforme_droite.scaleX = 14.310196671161355;
+    platforme_droite.scaleY = -0.09826542861018456;
+    platforme_droite.setOrigin(0, 0.5);
+    platforme_droite.isFilled = true;
+    platforme_droite.fillColor = 10563832;
+    platforme_droite.setData('piece', 'hall')
+
+    // this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
+      // function (_p: Phaser.Physics.Arcade.Sprite, _joueur: any) {
+        // _joueur.pieceCourante = _p.getData('piece')
+      // }, null, this);
+
 
     // const platforme = this.add.rectangle(955, 1200, 40000, 10);
     // this.physics.world.setBounds(platforme.getBottomLeft().x, 0, platforme.displayWidth, 1000);
     this.physics.add.existing(platforme, true);
-    this.physics.add.collider(platforme, [this.players, this.enemies]);
+    this.physics.add.existing(platforme_gauche, true);
+    this.physics.add.existing(platforme_droite, true);
+    let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche], [this.players, this.enemies], function (a:any, b:any){
+      b.pieceCourante = a.getData('piece')
+    });
 
     // this.physics.add.collider(platforme, this.enemies);
     // this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
