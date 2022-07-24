@@ -98,7 +98,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme.setOrigin(0, 0.5);
     platforme.isFilled = true;
     platforme.fillColor = 10563832;
-    platforme.setData('piece', 'boss2')
+    platforme.setData('piece', 'hall')
     this.platforme = platforme;
 
     const platforme_gauche = this.add.rectangle(-1831, 940, 128, 128);
@@ -107,7 +107,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 		platforme_gauche.setOrigin(0, 0.5);
 		platforme_gauche.isFilled = true;
 		platforme_gauche.fillColor = 10563832;
-    platforme_gauche.setData('piece', 'boss1')
+    platforme_gauche.setData('piece', 'boss2')
 
     const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
     platforme_droite.scaleX = 14.310196671161355;
@@ -115,7 +115,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.setOrigin(0, 0.5);
     platforme_droite.isFilled = true;
     platforme_droite.fillColor = 10563832;
-    platforme_droite.setData('piece', 'hall')
+    platforme_droite.setData('piece', 'boss1')
 
     // this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       // function (_p: Phaser.Physics.Arcade.Sprite, _joueur: any) {
@@ -129,7 +129,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     this.physics.add.existing(platforme_gauche, true);
     this.physics.add.existing(platforme_droite, true);
     let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche], [this.players, this.enemies], function (a:any, b:any){
-      b.pieceCourante = a.getData('piece')
+      b.changePiece(a.getData('piece'))
     });
 
     // this.physics.add.collider(platforme, this.enemies);

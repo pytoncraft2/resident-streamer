@@ -14,7 +14,7 @@ import { DefautDirection } from "../Stats/Defaut"
    particules: boolean
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
-   pieceCourante: string
+   pieceCourante: string = 'hall'
    fusionner: boolean
    suivre: boolean
    cible_courante: string = "enemies"
@@ -227,6 +227,8 @@ import { DefautDirection } from "../Stats/Defaut"
        })
      )
 
+
+
    }
 
    dommage(puissance: number) {
@@ -305,6 +307,18 @@ import { DefautDirection } from "../Stats/Defaut"
        }
      });
 
+   }
+
+   changePiece(piece: any) {
+     if (this.pieceCourante !== piece) {
+       this.pieceCourante = piece;
+       (this.scene as any).room.state.presences.set(
+         this.ClientID,
+         new Player({
+           pieceCourante: this.pieceCourante
+         })
+       );
+     }
    }
 
  }

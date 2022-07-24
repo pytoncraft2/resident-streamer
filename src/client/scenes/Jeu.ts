@@ -625,17 +625,17 @@ export default class Jeu extends Phaser.Scene {
       }
     }
 
-    this.time.delayedCall(5000, () => {
-      this.fade('boss1')
-    }, undefined, this);
-
-    this.time.delayedCall(10000, () => {
-      this.fade('boss2')
-    }, undefined, this);
-    this.time.delayedCall(15000, () => {
-      this.fade('hall')
-    }, undefined, this);
-
+    // this.time.delayedCall(5000, () => {
+    //   this.fade('boss1')
+    // }, undefined, this);
+    //
+    // this.time.delayedCall(10000, () => {
+    //   this.fade('boss2')
+    // }, undefined, this);
+    // this.time.delayedCall(15000, () => {
+    //   this.fade('hall')
+    // }, undefined, this);
+    // 
 
 
     this.tweens.add({
@@ -916,6 +916,12 @@ export default class Jeu extends Phaser.Scene {
               else (this as any)[`touche_${key}`].alpha = 1
               if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
             }
+          }
+
+          if (list.presences[item].pieceCourante)
+          {
+            console.log("FADE ?")
+            this.fade(list.presences[item].pieceCourante)
           }
         }
       }
