@@ -543,8 +543,8 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_3.fillAlpha = 0.8;
 
 		// rectangle_6
-		const rectangle_6 = this.add.rectangle(-929, -501, 128, 128);
-		rectangle_6.scaleX = 14.296694695311434;
+		const rectangle_6 = this.add.rectangle(-935, -507, 128, 128);
+		rectangle_6.scaleX = 14.495720628453666;
 		rectangle_6.scaleY = 7.392235139173692;
 		rectangle_6.isFilled = true;
 		rectangle_6.fillColor = 0;
@@ -919,6 +919,7 @@ export default class Jeu extends Phaser.Scene {
 
     //@ts-ignore
     this.minimap = this.cameras.add(1340, 825, 600, 400).setZoom(0.07).setName('mini');
+    this.interface_joueur.setScrollFactor(0)
 
 
 
@@ -1007,13 +1008,17 @@ export default class Jeu extends Phaser.Scene {
           .setDepth(1);
 
           if (this.session === list.presenceList[idx]) {
+
             (player as any).sprite_fusion = this.add
-            .sprite(541, 1018, `icons_atlas`, `icon_${sprite}`)
+            .sprite(0, 45, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.3983080418637645, 0.3983080418637645);
 
-            this.add
-            .sprite(613, 1053, `icons_atlas`, `icon_${sprite}`)
+            this.interface_joueur.add((player as any).sprite_fusion)
+
+            const petitIconJoueur = this.add
+            .sprite(75, 80, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.16275708974409425, 0.16275708974409425)
+            this.interface_joueur.add(petitIconJoueur)
 
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
