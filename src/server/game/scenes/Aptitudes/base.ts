@@ -53,6 +53,9 @@ export const Aptitudes: Touches = {};
   * }
   * //Ce qui donnes au final un objet Aptidudes comme ci dessous:
   * Aptitudes['fakhear']['A'] = fn
+  *
+  * //Stoquage des commandes pour l'affichage coté client:
+  * Aptitudes['fakhear']['commandes'] = { A: 'cross', Z: 'kick', E: 'dash', TAB: 'fusion' }
   * ```
   */
 export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
