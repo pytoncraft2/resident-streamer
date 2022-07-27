@@ -1025,6 +1025,7 @@ export default class Jeu extends Phaser.Scene {
             // this.cameras.main.startFollow(player);
             this.cameras.main.startFollow(player, false, 1, 0.3, 190);  //
 
+
             // this.cameras.main.setDeadzone(900, 200);
 
             // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
@@ -1086,7 +1087,13 @@ export default class Jeu extends Phaser.Scene {
 
         if (this.session === this.playersRef[item].ClientId) {
           this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
-          if (list.presences[item].sprite_fusion) this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
+          if (list.presences[item].sprite_fusion)
+          {
+            this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
+            this.cameras.main.stopFollow();
+            this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.3, 190);  //
+          }
+
 
           if (list.presences[item].commandes)
           {
@@ -1162,6 +1169,7 @@ export default class Jeu extends Phaser.Scene {
   }
 
   animIcon(icon: any, sprite_fusion: string) {
+
     console.log("ANIM ICON-----------------")
     this.tweens.add({
       targets: icon,

@@ -40,8 +40,6 @@ export default class Hall extends Phaser.Scene {
 
   create() {
 
-    this.cameras.main.setOrigin(-0.5, 0.5);
-
     var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
 
 
