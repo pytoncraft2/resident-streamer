@@ -220,9 +220,9 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     return this.getPresence()
   }
 
-  createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true) {
+  createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
     // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
-    const ennemy = this.add.existing(new PlayerClass(this, 1000, 0, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
+    const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
     // ennemy.setPushable(false)
     // ennemy.setDisplaySize(335, 540.4)
     // ennemy.setBounceX(40)

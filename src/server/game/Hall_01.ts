@@ -40,16 +40,32 @@ export default class GameRooms extends Room {
       // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
 
       const boss = {
-        'twitchman': 1_000,
-        // 'boss_1': 2_000,
-        // 'manette': 1_000,
-        // 'troll': 1_000
+        'twitchman': {
+          temps: 1_000,
+          x: 0,
+          y: 0,
+        },
+        'boss_1': {
+          temps: 2_000,
+          x: 0,
+          y: 0,
+        },
+        'manette': {
+          temps: 3_000,
+          x: 0,
+          y: 0,
+        },
+        'troll':  {
+          temps: 4_000,
+          x: 0,
+          y: 0,
+        }
         // 'huzounet': 1_000
       }
       Object.entries(boss).map(item => {
-        const n = `${(Math.random() + 1).toString(36).substring(7)}`
+        const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`
         this.clock.setTimeout(() => {
-            (this.scene as any).room.donnes[n] = {
+            (this.scene as any).room.donnes[randomNombre] = {
               clavier: {
                 up: false,
                 right: false,
@@ -63,11 +79,11 @@ export default class GameRooms extends Room {
                 r: false
               }
             }
-            const presences = this.scene.createEnnemy(n, item[0]);
+            const presences = this.scene.createEnnemy(randomNombre, item[0], true, 300, 300);
             for (const [key, value] of Object.entries(presences.presences)) {
               this.state.presences.set(key, new Player(value))
             }
-        }, item[1]);
+        }, item[1].temps);
 
       })
     //   for (let key of boss) {
