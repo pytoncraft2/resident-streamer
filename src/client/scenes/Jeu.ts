@@ -37,7 +37,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme.isFilled = true;
 
 		// map_boss1
-		const map_boss1 = this.add.image(2820, 486, "map_boss1");
+		const map_boss1 = this.add.image(2820, 489, "map_boss1");
 		map_boss1.scaleX = 2.868376959115476;
 		map_boss1.scaleY = 2.7049866133838867;
 
@@ -92,56 +92,6 @@ export default class Jeu extends Phaser.Scene {
 		vie_boss_1.fillColor = 10882574;
 		vie_boss_1.fillAlpha = 0.8;
 		barreHautContainer.add(vie_boss_1);
-
-		// indicationGauche
-		const indicationGauche = this.add.container(0, 0);
-
-		// triangle
-		const triangle = this.add.triangle(29, 473, 0, 128, 64, 0, 128, 128);
-		triangle.scaleX = 0.4380104140019478;
-		triangle.scaleY = 0.4380104140019478;
-		triangle.angle = -90;
-		triangle.isFilled = true;
-		triangle.fillColor = 2330047;
-		indicationGauche.add(triangle);
-
-		// ellipse_1_1
-		const ellipse_1_1 = this.add.ellipse(76, 472.5, 128, 128);
-		ellipse_1_1.scaleX = 0.559447842259604;
-		ellipse_1_1.scaleY = 0.5348936558907118;
-		ellipse_1_1.isFilled = true;
-		indicationGauche.add(ellipse_1_1);
-
-		// text_2_3_1
-		const text_2_3_1 = this.add.text(63, 449.5, "", {});
-		text_2_3_1.text = "?";
-		text_2_3_1.setStyle({ "color": "#000000ff", "fontSize": "45px" });
-		indicationGauche.add(text_2_3_1);
-
-		// indicationDroite
-		const indicationDroite = this.add.container(0, 0);
-
-		// triangle_1
-		const triangle_1 = this.add.triangle(1857, 473, 0, 128, 64, 0, 128, 128);
-		triangle_1.scaleX = 0.4380104140019478;
-		triangle_1.scaleY = 0.4380104140019478;
-		triangle_1.angle = 90;
-		triangle_1.isFilled = true;
-		triangle_1.fillColor = 2330047;
-		indicationDroite.add(triangle_1);
-
-		// ellipse_4_1
-		const ellipse_4_1 = this.add.ellipse(1809, 472.5, 128, 128);
-		ellipse_4_1.scaleX = 0.559447842259604;
-		ellipse_4_1.scaleY = 0.5348936558907118;
-		ellipse_4_1.isFilled = true;
-		indicationDroite.add(ellipse_4_1);
-
-		// movechaiseboss1_1
-		const movechaiseboss1_1 = this.add.image(1810, 472.5, "movechaiseboss1");
-		movechaiseboss1_1.scaleX = 0.08199632417946795;
-		movechaiseboss1_1.scaleY = 0.08199632417946795;
-		indicationDroite.add(movechaiseboss1_1);
 
 		// barre_etat_joueur
 		const barre_etat_joueur = this.add.container(395, 466);
@@ -199,9 +149,9 @@ export default class Jeu extends Phaser.Scene {
 		platforme_haut_gauche.fillColor = 10563832;
 
 		// map_manetteman
-		const map_manetteman = this.add.image(2849, -528, "map_manetteman");
+		const map_manetteman = this.add.image(2849, -499, "map_manetteman");
 		map_manetteman.scaleX = 2.9102765585148034;
-		map_manetteman.scaleY = 2.9102765585148034;
+		map_manetteman.scaleY = 2.6616391385535185;
 
 		// interface_joueur
 		const interface_joueur = this.add.container(541, 973);
@@ -456,13 +406,13 @@ export default class Jeu extends Phaser.Scene {
 		text_4.setStyle({ "fontSize": "29px" });
 
 		// text_5
-		const text_5 = this.add.text(-883, -1057, "", {});
+		const text_5 = this.add.text(-883, -925, "", {});
 		text_5.setOrigin(0.5, 0.5);
 		text_5.text = "BOSS 3";
 		text_5.setStyle({ "fontSize": "29px" });
 
 		// text_6
-		const text_6 = this.add.text(2896, -1146, "", {});
+		const text_6 = this.add.text(2896, -906, "", {});
 		text_6.setOrigin(0.5, 0.5);
 		text_6.text = "BOSS 4";
 		text_6.setStyle({ "fontSize": "29px" });
@@ -470,7 +420,7 @@ export default class Jeu extends Phaser.Scene {
 		// rectangle_3
 		const rectangle_3 = this.add.rectangle(2883, 480, 128, 128);
 		rectangle_3.scaleX = 14.963289520849095;
-		rectangle_3.scaleY = 7.392235139173692;
+		rectangle_3.scaleY = 7.5675971976646315;
 		rectangle_3.isFilled = true;
 		rectangle_3.fillColor = 0;
 		rectangle_3.fillAlpha = 0.8;
@@ -482,14 +432,6 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_6.isFilled = true;
 		rectangle_6.fillColor = 0;
 		rectangle_6.fillAlpha = 0.8;
-
-		// rectangle_7
-		const rectangle_7 = this.add.rectangle(2849, -537, 128, 128);
-		rectangle_7.scaleX = 14.296694695311434;
-		rectangle_7.scaleY = 7.934505638436148;
-		rectangle_7.isFilled = true;
-		rectangle_7.fillColor = 0;
-		rectangle_7.fillAlpha = 0.8;
 
 		// rectangle_8
 		const rectangle_8 = this.add.rectangle(955, -495, 128, 128);
@@ -525,19 +467,28 @@ export default class Jeu extends Phaser.Scene {
 		text_8.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_8);
 
-		// text_9
-		const text_9 = this.add.text(2855, -532, "", {});
-		text_9.setOrigin(0.5, 0.5);
-		text_9.text = "BOSS TROLL";
-		text_9.setStyle({ "fontSize": "210px" });
-		cache_gauche_bas.add(text_9);
-
 		// text_10
 		const text_10 = this.add.text(909, -506, "", {});
 		text_10.setOrigin(0.5, 0.5);
 		text_10.text = "BOSS FINAL";
 		text_10.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_10);
+
+		// rectangle_7
+		const rectangle_7 = this.add.rectangle(2880, -496, 128, 128);
+		rectangle_7.scaleX = 15.03295778960996;
+		rectangle_7.scaleY = 7.562543454428133;
+		rectangle_7.isFilled = true;
+		rectangle_7.fillColor = 0;
+		rectangle_7.fillAlpha = 0.8;
+		cache_gauche_bas.add(rectangle_7);
+
+		// text_9
+		const text_9 = this.add.text(2855, -532, "", {});
+		text_9.setOrigin(0.5, 0.5);
+		text_9.text = "BOSS TROLL";
+		text_9.setStyle({ "fontSize": "210px" });
+		cache_gauche_bas.add(text_9);
 
 		// text_11
 		const text_11 = this.add.text(2881, 490, "", {});
@@ -554,8 +505,6 @@ export default class Jeu extends Phaser.Scene {
 		this.barreHaut = barreHaut;
 		this.compteur = compteur;
 		this.vie_boss_1 = vie_boss_1;
-		this.indicationGauche = indicationGauche;
-		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
 		this.interface_joueur = interface_joueur;
@@ -595,8 +544,6 @@ export default class Jeu extends Phaser.Scene {
 	public barreHaut!: Phaser.GameObjects.Rectangle;
 	public compteur!: Phaser.GameObjects.Text;
 	public vie_boss_1!: Phaser.GameObjects.Rectangle;
-	public indicationGauche!: Phaser.GameObjects.Container;
-	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
 	public interface_joueur!: Phaser.GameObjects.Container;

@@ -45,7 +45,7 @@
                 "key": "map_boss1"
             },
             "x": 2820,
-            "y": 486,
+            "y": 489,
             "scaleX": 2.868376959115476,
             "scaleY": 2.7049866133838867
         },
@@ -156,100 +156,6 @@
                     "fillAlpha": 0.8,
                     "width": 128,
                     "height": 128
-                }
-            ]
-        },
-        {
-            "type": "Container",
-            "id": "531fb503-ed9d-4728-9de2-ba805fd1595e",
-            "label": "indicationGauche",
-            "scope": "PUBLIC",
-            "components": [],
-            "list": [
-                {
-                    "type": "Triangle",
-                    "id": "24118ec8-f438-48af-aa27-bab03f97511e",
-                    "label": "triangle",
-                    "components": [],
-                    "x": 29,
-                    "y": 473,
-                    "scaleX": 0.4380104140019478,
-                    "scaleY": 0.4380104140019478,
-                    "angle": -90,
-                    "isFilled": true,
-                    "fillColor": "#238dbf"
-                },
-                {
-                    "type": "Ellipse",
-                    "id": "102c1141-444e-4a9c-ab0a-62e26afc5442",
-                    "label": "ellipse_1_1",
-                    "components": [],
-                    "x": 76,
-                    "y": 472.5,
-                    "scaleX": 0.559447842259604,
-                    "scaleY": 0.5348936558907118,
-                    "isFilled": true,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Text",
-                    "id": "44968e68-0130-413a-9cde-bd425a7bc378",
-                    "label": "text_2_3_1",
-                    "components": [],
-                    "x": 63,
-                    "y": 449.5,
-                    "text": "?",
-                    "fontSize": "45px",
-                    "color": "#000000ff"
-                }
-            ]
-        },
-        {
-            "type": "Container",
-            "id": "b48bf290-ebef-4e3d-a491-aa091544e77f",
-            "label": "indicationDroite",
-            "scope": "PUBLIC",
-            "components": [],
-            "list": [
-                {
-                    "type": "Triangle",
-                    "id": "d23da3f3-8d4e-4f1d-a9e2-941b0b66624f",
-                    "label": "triangle_1",
-                    "components": [],
-                    "x": 1857,
-                    "y": 473,
-                    "scaleX": 0.4380104140019478,
-                    "scaleY": 0.4380104140019478,
-                    "angle": 90,
-                    "isFilled": true,
-                    "fillColor": "#238dbf"
-                },
-                {
-                    "type": "Ellipse",
-                    "id": "3d437ca1-a7dd-49b4-86f4-ef363321dcb5",
-                    "label": "ellipse_4_1",
-                    "components": [],
-                    "x": 1809,
-                    "y": 472.5,
-                    "scaleX": 0.559447842259604,
-                    "scaleY": 0.5348936558907118,
-                    "isFilled": true,
-                    "width": 128,
-                    "height": 128
-                },
-                {
-                    "type": "Image",
-                    "id": "40a96a4c-287d-4fe9-936e-8d64827e57b8",
-                    "label": "movechaiseboss1_1",
-                    "components": [],
-                    "texture": {
-                        "key": "movechaiseboss1"
-                    },
-                    "x": 1810,
-                    "y": 472.5,
-                    "scaleX": 0.08199632417946795,
-                    "scaleY": 0.08199632417946795
                 }
             ]
         },
@@ -373,9 +279,9 @@
                 "key": "map_manetteman"
             },
             "x": 2849,
-            "y": -528,
+            "y": -499,
             "scaleX": 2.9102765585148034,
-            "scaleY": 2.9102765585148034
+            "scaleY": 2.6616391385535185
         },
         {
             "type": "Container",
@@ -855,7 +761,7 @@
             "label": "text_5",
             "components": [],
             "x": -883,
-            "y": -1057,
+            "y": -925,
             "originX": 0.5,
             "originY": 0.5,
             "text": "BOSS 3",
@@ -867,7 +773,7 @@
             "label": "text_6",
             "components": [],
             "x": 2896,
-            "y": -1146,
+            "y": -906,
             "originX": 0.5,
             "originY": 0.5,
             "text": "BOSS 4",
@@ -881,7 +787,7 @@
             "x": 2883,
             "y": 480,
             "scaleX": 14.963289520849095,
-            "scaleY": 7.392235139173692,
+            "scaleY": 7.5675971976646315,
             "isFilled": true,
             "fillColor": "#000000",
             "fillAlpha": 0.8,
@@ -897,21 +803,6 @@
             "y": -507,
             "scaleX": 14.495720628453666,
             "scaleY": 7.392235139173692,
-            "isFilled": true,
-            "fillColor": "#000000",
-            "fillAlpha": 0.8,
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "cff8ffd8-4490-4766-93c2-a1963324e96f",
-            "label": "rectangle_7",
-            "components": [],
-            "x": 2849,
-            "y": -537,
-            "scaleX": 14.296694695311434,
-            "scaleY": 7.934505638436148,
             "isFilled": true,
             "fillColor": "#000000",
             "fillAlpha": 0.8,
@@ -980,18 +871,6 @@
                 },
                 {
                     "type": "Text",
-                    "id": "1919a44b-a4d5-4082-b899-d8f14499dbce",
-                    "label": "text_9",
-                    "components": [],
-                    "x": 2855,
-                    "y": -532,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "BOSS TROLL",
-                    "fontSize": "210px"
-                },
-                {
-                    "type": "Text",
                     "id": "2b67363a-befc-41f7-bf41-edc5434d05cf",
                     "label": "text_10",
                     "components": [],
@@ -1000,6 +879,33 @@
                     "originX": 0.5,
                     "originY": 0.5,
                     "text": "BOSS FINAL",
+                    "fontSize": "210px"
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "ee378e81-8e31-4870-8a3a-3f665c2d232e",
+                    "label": "rectangle_7",
+                    "components": [],
+                    "x": 2880,
+                    "y": -496,
+                    "scaleX": 15.03295778960996,
+                    "scaleY": 7.562543454428133,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.8,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Text",
+                    "id": "1919a44b-a4d5-4082-b899-d8f14499dbce",
+                    "label": "text_9",
+                    "components": [],
+                    "x": 2855,
+                    "y": -532,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "BOSS TROLL",
                     "fontSize": "210px"
                 },
                 {
