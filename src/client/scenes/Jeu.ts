@@ -1022,7 +1022,9 @@ export default class Jeu extends Phaser.Scene {
 
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
-            this.cameras.main.startFollow(player);
+            // this.cameras.main.startFollow(player);
+            this.cameras.main.startFollow(player, false, 1, 0.1, 100);  //
+
             // this.cameras.main.setDeadzone(900, 200);
 
             // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
