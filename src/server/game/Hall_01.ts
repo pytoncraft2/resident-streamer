@@ -47,8 +47,8 @@ export default class GameRooms extends Room {
         },
         'boss_1': {
           temps: 2_000,
-          x: 0,
-          y: 0,
+          x: 2900,
+          y: 600,
         },
         'manette': {
           temps: 3_000,
@@ -79,7 +79,7 @@ export default class GameRooms extends Room {
                 r: false
               }
             }
-            const presences = this.scene.createEnnemy(randomNombre, item[0], true, 300, 300);
+            const presences = this.scene.createEnnemy(randomNombre, item[0], true, item[1].x, item[1].y);
             for (const [key, value] of Object.entries(presences.presences)) {
               this.state.presences.set(key, new Player(value))
             }
