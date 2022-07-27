@@ -1128,6 +1128,7 @@ export default class Jeu extends Phaser.Scene {
 	}
 
   fade(room: any) {
+    console.log(room)
     // this.cameras.main.fadeOut(250, 0, 0, 0, (_camera: any, progress: any) => {
     //   // this.player.canMove = false;
     //   if (progress === 1) {
