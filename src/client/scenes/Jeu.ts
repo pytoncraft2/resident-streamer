@@ -1090,8 +1090,12 @@ export default class Jeu extends Phaser.Scene {
           if (list.presences[item].sprite_fusion)
           {
             this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
-            this.cameras.main.stopFollow();
-            this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.3, 190);  //
+
+            // if (list.presences[item].sprite_cible)
+            // {
+            //   this.cameras.main.stopFollow();
+            //   this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.3, 190);  //
+            // }
           }
 
 
@@ -1103,6 +1107,25 @@ export default class Jeu extends Phaser.Scene {
               else (this as any)[`touche_${key}`].alpha = 1
               if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
             }
+
+
+
+            if (list.presences[item].sprite_cible)
+            {
+              this.cameras.main.stopFollow();
+              this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.3, 190);  //
+            } else {
+              this.cameras.main.stopFollow();
+              this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.3, 190);  //
+            }
+
+            // if (this.session != list.presences[item].sprite_cible)
+            // {
+            //   // this.cameras.main.stopFollow();
+            //   console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+            //   this.cameras.main.stopFollow();
+            //   this.cameras.main.startFollow(this.playersRef[this.session as any], false, 1, 0.3, 190);  //
+            // }
           }
 
           if (list.presences[item].pieceCourante)

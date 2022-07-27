@@ -59,6 +59,7 @@ export class Player extends Schema {
   @type("number") xa?: number
   @type("number") ya?: number
   @type("string") sprite_fusion?: string
+  @type("string") sprite_cible?: string
   @type("string") pieceCourante?: string
   @type(Commandes) commandes: Commandes;
 }
