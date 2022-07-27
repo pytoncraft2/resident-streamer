@@ -40,10 +40,20 @@ export default class Hall extends Phaser.Scene {
 
   create() {
 
+    this.cameras.main.setOrigin(-0.5, 0.5);
+
+    var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
+
+
+
+
     this.players = this.physics.add.group({
-      // runChildUpdate: true,
+      runChildUpdate: true,
+      customBoundsRectangle: customBounds,
+      collideWorldBounds: true
     })
 
+    Phaser.Actions.RandomRectangle(this.players.getChildren(), customBounds);
     this.enemies = this.physics.add.group({
       // runChildUpdate: true,
       collideWorldBounds: true

@@ -9,7 +9,7 @@ import Hall from "./scenes/hall"
  const config: Phaser.Types.Core.GameConfig = {
    type: Phaser.HEADLESS,
    parent: "game",
-   width: 1920,
+   width: 5760,
    height: 945,
    scale: {
      mode: Phaser.Scale.CENTER_BOTH,
