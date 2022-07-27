@@ -266,7 +266,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme_haut_gauche.fillColor = 10563832;
 
 		// map_manetteman
-		const map_manetteman = this.add.image(2849, -673, "map_manetteman");
+		const map_manetteman = this.add.image(2849, -528, "map_manetteman");
 		map_manetteman.scaleX = 2.9102765585148034;
 		map_manetteman.scaleY = 2.9102765585148034;
 
@@ -493,13 +493,13 @@ export default class Jeu extends Phaser.Scene {
 		touche_R.add(description_commande_R);
 
 		// hall_1
-		const hall_1 = this.add.image(42, -639, "map_hall0");
+		const hall_1 = this.add.image(42, -506, "map_hall0");
 		hall_1.scaleX = 3.0088107725356585;
 		hall_1.scaleY = 2.634116448848351;
 		hall_1.setOrigin(0, 0.5);
 
 		// hall_2
-		const hall_2 = this.add.image(-1860, -640, "map_hall0");
+		const hall_2 = this.add.image(-1860, -504, "map_hall0");
 		hall_2.scaleX = 3.0088107725356585;
 		hall_2.scaleY = 2.634116448848351;
 		hall_2.setOrigin(0, 0.5);
@@ -543,7 +543,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_3.fillAlpha = 0.8;
 
 		// rectangle_6
-		const rectangle_6 = this.add.rectangle(-929, -648, 128, 128);
+		const rectangle_6 = this.add.rectangle(-929, -501, 128, 128);
 		rectangle_6.scaleX = 14.296694695311434;
 		rectangle_6.scaleY = 7.392235139173692;
 		rectangle_6.isFilled = true;
@@ -551,7 +551,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_6.fillAlpha = 0.8;
 
 		// rectangle_7
-		const rectangle_7 = this.add.rectangle(2849, -684, 128, 128);
+		const rectangle_7 = this.add.rectangle(2849, -537, 128, 128);
 		rectangle_7.scaleX = 14.296694695311434;
 		rectangle_7.scaleY = 7.934505638436148;
 		rectangle_7.isFilled = true;
@@ -559,7 +559,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_7.fillAlpha = 0.8;
 
 		// rectangle_8
-		const rectangle_8 = this.add.rectangle(955, -642, 128, 128);
+		const rectangle_8 = this.add.rectangle(955, -495, 128, 128);
 		rectangle_8.scaleX = 15.03295778960996;
 		rectangle_8.scaleY = 7.562543454428133;
 		rectangle_8.isFilled = true;
@@ -586,21 +586,21 @@ export default class Jeu extends Phaser.Scene {
 		cache_gauche_bas.add(text_7);
 
 		// text_8
-		const text_8 = this.add.text(-930, -622, "", {});
+		const text_8 = this.add.text(-930, -475, "", {});
 		text_8.setOrigin(0.5, 0.5);
 		text_8.text = "BOSS MANETTMAN";
 		text_8.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_8);
 
 		// text_9
-		const text_9 = this.add.text(2855, -679, "", {});
+		const text_9 = this.add.text(2855, -532, "", {});
 		text_9.setOrigin(0.5, 0.5);
 		text_9.text = "BOSS TROLL";
 		text_9.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_9);
 
 		// text_10
-		const text_10 = this.add.text(909, -653, "", {});
+		const text_10 = this.add.text(909, -506, "", {});
 		text_10.setOrigin(0.5, 0.5);
 		text_10.text = "BOSS FINAL";
 		text_10.setStyle({ "fontSize": "210px" });
@@ -918,7 +918,8 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     //@ts-ignore
-    this.minimap = this.cameras.add(1340, 800, 600, 400).setZoom(0.07).setName('mini');
+    this.minimap = this.cameras.add(1340, 825, 600, 400).setZoom(0.07).setName('mini');
+
 
 
 	}
@@ -1016,7 +1017,7 @@ export default class Jeu extends Phaser.Scene {
 
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
-            // this.cameras.main.startFollow(player);
+            this.cameras.main.startFollow(player);
             // this.cameras.main.setDeadzone(900, 200);
 
             // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
