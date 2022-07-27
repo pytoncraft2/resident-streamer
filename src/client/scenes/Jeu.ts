@@ -61,100 +61,33 @@ export default class Jeu extends Phaser.Scene {
 		const barreHautContainer = this.add.container(0, 0);
 
 		// barreHaut
-		const barreHaut = this.add.rectangle(960, 49.668697357177734, 128, 128);
+		const barreHaut = this.add.rectangle(960, 29, 128, 128);
 		barreHaut.scaleX = 15.008021207026625;
-		barreHaut.scaleY = 0.7760734119973385;
+		barreHaut.scaleY = 0.5105435510788869;
 		barreHaut.isFilled = true;
 		barreHaut.fillColor = 0;
 		barreHaut.fillAlpha = 0.4;
 		barreHautContainer.add(barreHaut);
 
-		// ellipse
-		const ellipse = this.add.ellipse(212.21864318847656, 44, 128, 128);
-		ellipse.scaleX = 0.559447842259604;
-		ellipse.scaleY = 0.5348936558907118;
-		ellipse.isFilled = true;
-		barreHautContainer.add(ellipse);
-
-		// ellipse_1
-		const ellipse_1 = this.add.ellipse(130.6093292236328, 44, 128, 128);
-		ellipse_1.scaleX = 0.559447842259604;
-		ellipse_1.scaleY = 0.5348936558907118;
-		ellipse_1.isFilled = true;
-		barreHautContainer.add(ellipse_1);
-
-		// ellipse_3
-		const ellipse_3 = this.add.ellipse(293.8279724121094, 44, 128, 128);
-		ellipse_3.scaleX = 0.559447842259604;
-		ellipse_3.scaleY = 0.5348936558907118;
-		ellipse_3.isFilled = true;
-		barreHautContainer.add(ellipse_3);
-
-		// ellipse_2
-		const ellipse_2 = this.add.ellipse(375.4372863769531, 44, 128, 128);
-		ellipse_2.scaleX = 0.559447842259604;
-		ellipse_2.scaleY = 0.5348936558907118;
-		ellipse_2.isFilled = true;
-		barreHautContainer.add(ellipse_2);
-
-		// ellipse_4
-		const ellipse_4 = this.add.ellipse(49, 44, 128, 128);
-		ellipse_4.scaleX = 0.559447842259604;
-		ellipse_4.scaleY = 0.5348936558907118;
-		ellipse_4.isFilled = true;
-		barreHautContainer.add(ellipse_4);
-
-		// text_2
-		const text_2 = this.add.text(362, 22, "", {});
-		text_2.text = "?";
-		text_2.setStyle({ "color": "#000000ff", "fontSize": "45px" });
-		barreHautContainer.add(text_2);
-
-		// text_2_1
-		const text_2_1 = this.add.text(280.5, 24, "", {});
-		text_2_1.text = "?";
-		text_2_1.setStyle({ "color": "#000000ff", "fontSize": "45px" });
-		barreHautContainer.add(text_2_1);
-
-		// text_2_2
-		const text_2_2 = this.add.text(198, 25, "", {});
-		text_2_2.text = "?";
-		text_2_2.setStyle({ "color": "#000000ff", "fontSize": "45px" });
-		barreHautContainer.add(text_2_2);
-
-		// text_2_3
-		const text_2_3 = this.add.text(117, 23, "", {});
-		text_2_3.text = "?";
-		text_2_3.setStyle({ "color": "#000000ff", "fontSize": "45px" });
-		barreHautContainer.add(text_2_3);
-
-		// movechaiseboss1
-		const movechaiseboss1 = this.add.image(50, 46, "movechaiseboss1");
-		movechaiseboss1.scaleX = 0.08199632417946795;
-		movechaiseboss1.scaleY = 0.08199632417946795;
-		barreHautContainer.add(movechaiseboss1);
-
 		// compteur
-		const compteur = this.add.text(1676, 20, "", {});
+		const compteur = this.add.text(1649, 7, "", {});
 		compteur.text = "00:00:00";
 		compteur.setStyle({ "fontSize": "45px" });
 		barreHautContainer.add(compteur);
 
 		// rectangle_1
-		const rectangle_1 = this.add.rectangle(446, 44, 128, 128);
-		rectangle_1.scaleX = 9.471436955268851;
-		rectangle_1.scaleY = -0.3281694373032557;
-		rectangle_1.setOrigin(0, 0.5);
+		const rectangle_1 = this.add.rectangle(957, 28, 128, 128);
+		rectangle_1.scaleX = 10.37106099308064;
+		rectangle_1.scaleY = 0.1495388434982044;
 		rectangle_1.isFilled = true;
 		rectangle_1.fillColor = 0;
 		rectangle_1.fillAlpha = 0.6;
 		barreHautContainer.add(rectangle_1);
 
 		// vie_boss_1
-		const vie_boss_1 = this.add.rectangle(447, 44, 128, 128);
-		vie_boss_1.scaleX = 9.458194301370158;
-		vie_boss_1.scaleY = 0.30320712838431607;
-		vie_boss_1.setOrigin(0, 0.5);
+		const vie_boss_1 = this.add.rectangle(958, 28, 128, 128);
+		vie_boss_1.scaleX = 10.362184539568688;
+		vie_boss_1.scaleY = 0.1777486358833607;
 		vie_boss_1.isFilled = true;
 		vie_boss_1.fillColor = 10882574;
 		vie_boss_1.fillAlpha = 0.8;
@@ -1073,7 +1006,7 @@ export default class Jeu extends Phaser.Scene {
 
       } else {
         this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
-        if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 9.47) , 0.30320712838431607)
+        if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 10.36) , 0.1777486358833607)
         this.playersRef[item].setFrame(list.presences[item].anim)
         this.playersRef[item].flipX = list.presences[item].flipX
         this.playersRef[item].setTint(list.presences[item].tint)
