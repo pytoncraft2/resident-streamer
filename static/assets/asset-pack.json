@@ -112,6 +112,11 @@
                 "key": "map_hall1"
             },
             {
+                "url": "assets/map_manetteman.png",
+                "type": "image",
+                "key": "map_manetteman"
+            },
+            {
                 "atlasURL": "assets/osmosiscoop_atlas.json",
                 "textureURL": "assets/osmosiscoop_atlas.png",
                 "type": "atlas",

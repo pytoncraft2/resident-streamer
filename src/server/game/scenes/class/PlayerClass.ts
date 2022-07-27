@@ -65,8 +65,6 @@ import { DefautDirection } from "../Stats/Defaut"
      }, null, this);
 
 
-     console.log(Aptitudes[this.sprite])
-
      this.currentTarget = this
      this.me = this
 
@@ -167,7 +165,6 @@ import { DefautDirection } from "../Stats/Defaut"
    }
    preUpdate(time: number, delta: number) {
      super.preUpdate(time, delta);
-     console.log(this.pieceCourante)
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
      let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
@@ -312,6 +309,7 @@ import { DefautDirection } from "../Stats/Defaut"
    changePiece(piece: any) {
      if (this.pieceCourante !== piece) {
        this.pieceCourante = piece;
+       console.log("CHANGE PIECE")
        console.log(this.pieceCourante)
        // (this.scene as any).room.state.presences.set(
        //   this.ClientID,

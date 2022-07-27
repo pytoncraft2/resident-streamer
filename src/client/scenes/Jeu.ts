@@ -223,49 +223,103 @@ export default class Jeu extends Phaser.Scene {
 		p1.scaleY = -0.08853600509578045;
 		p1.setOrigin(0, 0.5);
 		p1.isFilled = true;
-		p1.fillColor = 10563832;
+		p1.fillColor = 12757972;
+
+		// p2
+		const p2 = this.add.rectangle(-1831, 940, 128, 128);
+		p2.scaleX = 14.310196671161355;
+		p2.scaleY = -0.09826542861018456;
+		p2.setOrigin(0, 0.5);
+		p2.isFilled = true;
+		p2.fillColor = 10563832;
+
+		// platforme_droite
+		const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
+		platforme_droite.scaleX = 14.310196671161355;
+		platforme_droite.scaleY = -0.09826542861018456;
+		platforme_droite.setOrigin(0, 0.5);
+		platforme_droite.isFilled = true;
+		platforme_droite.fillColor = 10563832;
+
+		// platforme_haut
+		const platforme_haut = this.add.rectangle(-3, -200, 128, 128);
+		platforme_haut.scaleX = 14.993211052385613;
+		platforme_haut.scaleY = -0.08853600509578045;
+		platforme_haut.setOrigin(0, 0.5);
+		platforme_haut.isFilled = true;
+		platforme_haut.fillColor = 10563832;
+
+		// platforme_haut_droite
+		const platforme_haut_droite = this.add.rectangle(1916, -199, 128, 128);
+		platforme_haut_droite.scaleX = 14.310196671161355;
+		platforme_haut_droite.scaleY = -0.09826542861018456;
+		platforme_haut_droite.setOrigin(0, 0.5);
+		platforme_haut_droite.isFilled = true;
+		platforme_haut_droite.fillColor = 10563832;
+
+		// platforme_haut_gauche
+		const platforme_haut_gauche = this.add.rectangle(-1835, -199, 128, 128);
+		platforme_haut_gauche.scaleX = 14.310196671161355;
+		platforme_haut_gauche.scaleY = -0.09826542861018456;
+		platforme_haut_gauche.setOrigin(0, 0.5);
+		platforme_haut_gauche.isFilled = true;
+		platforme_haut_gauche.fillColor = 10563832;
+
+		// map_manetteman
+		const map_manetteman = this.add.image(2849, -673, "map_manetteman");
+		map_manetteman.scaleX = 2.9102765585148034;
+		map_manetteman.scaleY = 2.9102765585148034;
+
+		// interface_joueur
+		const interface_joueur = this.add.container(541, 973);
 
 		// rectangle_2
-		const rectangle_2 = this.add.rectangle(960, 1021, 128, 128);
+		const rectangle_2 = this.add.rectangle(419, 48, 128, 128);
 		rectangle_2.scaleX = 7.706419353393023;
 		rectangle_2.scaleY = 0.995444225494233;
 		rectangle_2.isFilled = true;
 		rectangle_2.fillColor = 0;
 		rectangle_2.fillAlpha = 0.6;
+		interface_joueur.add(rectangle_2);
 
 		// ellipse_5_1
-		const ellipse_5_1 = this.add.ellipse(613, 1053, 128, 128);
+		const ellipse_5_1 = this.add.ellipse(72, 80, 128, 128);
 		ellipse_5_1.scaleX = 0.37184784435596524;
 		ellipse_5_1.scaleY = 0.37184784435596524;
 		ellipse_5_1.isFilled = true;
 		ellipse_5_1.fillColor = 3602747;
 		ellipse_5_1.fillAlpha = 0;
+		interface_joueur.add(ellipse_5_1);
 
 		// ellipse_5
-		const ellipse_5 = this.add.ellipse(541, 1018, 128, 128);
+		const ellipse_5 = this.add.ellipse(0, 45, 128, 128);
 		ellipse_5.scaleX = 0.8179399157486755;
 		ellipse_5.scaleY = 0.8179399157486755;
 		ellipse_5.isFilled = true;
 		ellipse_5.fillColor = 3602747;
+		interface_joueur.add(ellipse_5);
 
 		// sous_barre_vie_joueur
-		const sous_barre_vie_joueur = this.add.rectangle(712, 1055, 128, 128);
+		const sous_barre_vie_joueur = this.add.rectangle(171, 82, 128, 128);
 		sous_barre_vie_joueur.scaleX = 5.150602609693634;
 		sous_barre_vie_joueur.scaleY = 0.21267753602571016;
 		sous_barre_vie_joueur.setOrigin(0, 0.5);
 		sous_barre_vie_joueur.isFilled = true;
 		sous_barre_vie_joueur.fillColor = 13372942;
+		interface_joueur.add(sous_barre_vie_joueur);
 
 		// vie_joueur
-		const vie_joueur = this.add.rectangle(712, 1055, 128, 128);
+		const vie_joueur = this.add.rectangle(171, 82, 128, 128);
 		vie_joueur.scaleX = 5.150602609693634;
 		vie_joueur.scaleY = 0.21267753602571016;
 		vie_joueur.setOrigin(0, 0.5);
 		vie_joueur.isFilled = true;
 		vie_joueur.fillColor = 15554289;
+		interface_joueur.add(vie_joueur);
 
 		// groupe_touches
-		const groupe_touches = this.add.container(725, 973);
+		const groupe_touches = this.add.container(184, 0);
+		interface_joueur.add(groupe_touches);
 
 		// touche_A
 		const touche_A = this.add.container(190, 24);
@@ -438,21 +492,47 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_R.text = "ultime";
 		touche_R.add(description_commande_R);
 
-		// p2
-		const p2 = this.add.rectangle(-1831, 940, 128, 128);
-		p2.scaleX = 14.310196671161355;
-		p2.scaleY = -0.09826542861018456;
-		p2.setOrigin(0, 0.5);
-		p2.isFilled = true;
-		p2.fillColor = 10563832;
+		// hall_1
+		const hall_1 = this.add.image(42, -639, "map_hall0");
+		hall_1.scaleX = 3.0088107725356585;
+		hall_1.scaleY = 2.634116448848351;
+		hall_1.setOrigin(0, 0.5);
 
-		// platforme_droite
-		const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
-		platforme_droite.scaleX = 14.310196671161355;
-		platforme_droite.scaleY = -0.09826542861018456;
-		platforme_droite.setOrigin(0, 0.5);
-		platforme_droite.isFilled = true;
-		platforme_droite.fillColor = 10563832;
+		// hall_2
+		const hall_2 = this.add.image(-1860, -640, "map_hall0");
+		hall_2.scaleX = 3.0088107725356585;
+		hall_2.scaleY = 2.634116448848351;
+		hall_2.setOrigin(0, 0.5);
+
+		// text_1
+		const text_1 = this.add.text(990, 116, "", {});
+		text_1.setOrigin(0.5, 0.5);
+		text_1.text = "HALL";
+		text_1.setStyle({ "fontSize": "29px" });
+
+		// text_3
+		const text_3 = this.add.text(-881, 95, "", {});
+		text_3.setOrigin(0.5, 0.5);
+		text_3.text = "BOSS 1";
+		text_3.setStyle({ "fontSize": "29px" });
+
+		// text_4
+		const text_4 = this.add.text(2820, 87, "", {});
+		text_4.setOrigin(0.5, 0.5);
+		text_4.text = "BOSS 2";
+		text_4.setStyle({ "fontSize": "29px" });
+
+		// text_5
+		const text_5 = this.add.text(-883, -1057, "", {});
+		text_5.setOrigin(0.5, 0.5);
+		text_5.text = "BOSS 3";
+		text_5.setStyle({ "fontSize": "29px" });
+
+		// text_6
+		const text_6 = this.add.text(2896, -1146, "", {});
+		text_6.setOrigin(0.5, 0.5);
+		text_6.text = "BOSS 4";
+		text_6.setStyle({ "fontSize": "29px" });
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -466,6 +546,7 @@ export default class Jeu extends Phaser.Scene {
 		this.indicationDroite = indicationDroite;
 		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
+		this.interface_joueur = interface_joueur;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
 		this.groupe_touches = groupe_touches;
@@ -488,6 +569,8 @@ export default class Jeu extends Phaser.Scene {
 		this.rectangle_4_2_1 = rectangle_4_2_1;
 		this.commande_R = commande_R;
 		this.description_commande_R = description_commande_R;
+		this.hall_1 = hall_1;
+		this.hall_2 = hall_2;
 
 		this.events.emit("scene-awake");
 	}
@@ -504,6 +587,7 @@ export default class Jeu extends Phaser.Scene {
 	public indicationDroite!: Phaser.GameObjects.Container;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
+	public interface_joueur!: Phaser.GameObjects.Container;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
 	public groupe_touches!: Phaser.GameObjects.Container;
@@ -526,6 +610,8 @@ export default class Jeu extends Phaser.Scene {
 	public rectangle_4_2_1!: Phaser.GameObjects.Rectangle;
 	public commande_R!: Phaser.GameObjects.Text;
 	public description_commande_R!: Phaser.GameObjects.Text;
+	public hall_1!: Phaser.GameObjects.Image;
+	public hall_2!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 
@@ -579,6 +665,11 @@ export default class Jeu extends Phaser.Scene {
 		this.editorCreate();
     this.cameras.main.fadeIn(2000);
 
+    // this.cameras.main.on('camerapancomplete', () => {
+      // self.cameras.main.startFollow(self.fontaine1);
+
+
+
     // var epic_musique = this.sound.add('epic_musique');
 
 		// epic_musique.play({
@@ -625,16 +716,18 @@ export default class Jeu extends Phaser.Scene {
       }
     }
 
-    this.time.delayedCall(5000, () => {
-      this.fade('bas_gauche')
-    }, undefined, this);
-
-    this.time.delayedCall(10000, () => {
-      this.fade('bas_droite')
-    }, undefined, this);
-    this.time.delayedCall(15000, () => {
-      this.fade('hall')
-    }, undefined, this);
+    // this.time.delayedCall(5000, () => {
+    //   // this.fade('bas_gauche')
+    //   this.cameras.main.pan(-900, -700, 2500);
+    //
+    // }, undefined, this);
+    //
+    // this.time.delayedCall(10000, () => {
+    //   this.fade('bas_droite')
+    // }, undefined, this);
+    // this.time.delayedCall(15000, () => {
+    //   this.fade('hall')
+    // }, undefined, this);
 
 
 
@@ -936,21 +1029,26 @@ export default class Jeu extends Phaser.Scene {
 	}
 
   fade(room: any) {
-    this.cameras.main.fadeOut(250, 0, 0, 0, (_camera: any, progress: any) => {
-      // this.player.canMove = false;
-      if (progress === 1) {
-        // Change camera boundaries when fade out complete.
-        this.cameras.main.setBounds(this.listCurrentRoom[room].w,
-          -1200,
-          2000,
-          945,
-          true);
+    // this.cameras.main.fadeOut(250, 0, 0, 0, (_camera: any, progress: any) => {
+    //   // this.player.canMove = false;
+    //   if (progress === 1) {
+    //     // Change camera boundaries when fade out complete.
+    //     this.cameras.main.setBounds(this.listCurrentRoom[room].w,
+    //       -1200,
+    //       2000,
+    //       945,
+    //       true);
+    //
+    //       // Fade back in with new boundareis.
+    //       this.cameras.main.fadeIn(500, 0, 0, 0, function(_camera: any, _progress: any) {
+    //       }, this);
+    //     }
+    //   }, this);
+    // this.time.delayedCall(5000, () => {
+  // this.cameras.main.pan(this.listCurrentRoom[room].w, -1000, 2500);
+// }, undefined, this);
 
-          // Fade back in with new boundareis.
-          this.cameras.main.fadeIn(500, 0, 0, 0, function(_camera: any, _progress: any) {
-          }, this);
-        }
-      }, this);
+
   }
 
   animBombe(item: any, list: any) {
