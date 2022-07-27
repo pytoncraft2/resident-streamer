@@ -534,6 +534,85 @@ export default class Jeu extends Phaser.Scene {
 		text_6.text = "BOSS 4";
 		text_6.setStyle({ "fontSize": "29px" });
 
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(2883, 480, 128, 128);
+		rectangle_3.scaleX = 14.963289520849095;
+		rectangle_3.scaleY = 7.392235139173692;
+		rectangle_3.isFilled = true;
+		rectangle_3.fillColor = 0;
+		rectangle_3.fillAlpha = 0.8;
+
+		// rectangle_6
+		const rectangle_6 = this.add.rectangle(-929, -648, 128, 128);
+		rectangle_6.scaleX = 14.296694695311434;
+		rectangle_6.scaleY = 7.392235139173692;
+		rectangle_6.isFilled = true;
+		rectangle_6.fillColor = 0;
+		rectangle_6.fillAlpha = 0.8;
+
+		// rectangle_7
+		const rectangle_7 = this.add.rectangle(2849, -684, 128, 128);
+		rectangle_7.scaleX = 14.296694695311434;
+		rectangle_7.scaleY = 7.934505638436148;
+		rectangle_7.isFilled = true;
+		rectangle_7.fillColor = 0;
+		rectangle_7.fillAlpha = 0.8;
+
+		// rectangle_8
+		const rectangle_8 = this.add.rectangle(955, -642, 128, 128);
+		rectangle_8.scaleX = 15.03295778960996;
+		rectangle_8.scaleY = 7.562543454428133;
+		rectangle_8.isFilled = true;
+		rectangle_8.fillColor = 0;
+		rectangle_8.fillAlpha = 0.8;
+
+		// cache_gauche_bas
+		const cache_gauche_bas = this.add.container(0, 0);
+
+		// rectangle_5
+		const rectangle_5 = this.add.rectangle(-920, 483, 128, 128);
+		rectangle_5.scaleX = 14.296694695311434;
+		rectangle_5.scaleY = 7.392235139173692;
+		rectangle_5.isFilled = true;
+		rectangle_5.fillColor = 0;
+		rectangle_5.fillAlpha = 0.8;
+		cache_gauche_bas.add(rectangle_5);
+
+		// text_7
+		const text_7 = this.add.text(-921, 481, "", {});
+		text_7.setOrigin(0.5, 0.5);
+		text_7.text = "BOSS TWITCHMAN";
+		text_7.setStyle({ "fontSize": "186px" });
+		cache_gauche_bas.add(text_7);
+
+		// text_8
+		const text_8 = this.add.text(-930, -622, "", {});
+		text_8.setOrigin(0.5, 0.5);
+		text_8.text = "BOSS MANETTMAN";
+		text_8.setStyle({ "fontSize": "210px" });
+		cache_gauche_bas.add(text_8);
+
+		// text_9
+		const text_9 = this.add.text(2855, -679, "", {});
+		text_9.setOrigin(0.5, 0.5);
+		text_9.text = "BOSS TROLL";
+		text_9.setStyle({ "fontSize": "210px" });
+		cache_gauche_bas.add(text_9);
+
+		// text_10
+		const text_10 = this.add.text(909, -653, "", {});
+		text_10.setOrigin(0.5, 0.5);
+		text_10.text = "BOSS FINAL";
+		text_10.setStyle({ "fontSize": "210px" });
+		cache_gauche_bas.add(text_10);
+
+		// text_11
+		const text_11 = this.add.text(2881, 490, "", {});
+		text_11.setOrigin(0.5, 0.5);
+		text_11.text = "BOSS 1";
+		text_11.setStyle({ "fontSize": "210px" });
+		cache_gauche_bas.add(text_11);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
