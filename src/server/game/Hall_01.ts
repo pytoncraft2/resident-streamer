@@ -55,11 +55,11 @@ export default class GameRooms extends Room {
           x: 1000,
           y: -1000,
         },
-        // 'troll':  {
-        //   temps: 4_000,
-        //   x: 0,
-        //   y: 0,
-        // }
+        'troll':  {
+          temps: 7_000,
+          x: 4800,
+          y: -900,
+        }
         // 'huzounet': 1_000
       }
       Object.entries(boss).map(item => {
