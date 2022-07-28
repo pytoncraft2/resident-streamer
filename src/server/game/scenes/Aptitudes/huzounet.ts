@@ -9,7 +9,7 @@ import TJoueur from "../types/Joueur";
 export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
-    collideWorldBounds: true,
+    // collideWorldBounds: true,
     maxSize: 4
   })
   huzounet.degat = 0.3
@@ -101,7 +101,11 @@ export function clonage__E(huzounet: any) {
 }
 
 export function TP__R(huzounet: any, input) {
-  huzounet.setPosition(huzounet.x, -900)
+  huzounet.setCollideWorldBounds(false)
+  huzounet.scene.time.delayedCall(2000, () => {
+    huzounet.setCollideWorldBounds(true)
+  }, null, huzounet);
+  huzounet.setPosition(huzounet.x, -1900)
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {

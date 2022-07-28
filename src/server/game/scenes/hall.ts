@@ -51,7 +51,7 @@ export default class Hall extends Phaser.Scene {
       collideWorldBounds: true
     })
 
-    Phaser.Actions.RandomRectangle(this.players.getChildren(), customBounds);
+    // Phaser.Actions.RandomRectangle(this.players.getChildren(), customBounds);
     this.enemies = this.physics.add.group({
       // runChildUpdate: true,
       collideWorldBounds: true
