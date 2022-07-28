@@ -12,6 +12,7 @@ import { DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
+   animationBoosFigurine: any
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    pieceCourante: string = 'hall'
@@ -315,16 +316,23 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    animationBossVaincu() {
+
      (this.body as any).setAllowGravity(false)
-     this.scene.tweens.add({
+     this.setPushable(false);
+     this.animationBoosFigurine = this.scene.tweens.add({
        targets: this,
-       alpha: "-=0.1",
-       ease: 'Sine.easeOut',
-       y: "-=400",
-       duration: 1000,
+       y: "-=90",
+       alpha: 0.5,
+       ease: 'Sine.inOut',
        yoyo: true,
-       repeat: -1,
+       duration: 1000,
+       repeat: -1
      });
+
+     console.log("ANIMATION BOSS VAINCU!!!!!!!!!!!!!!!!!!");
+     // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: true }));
+     // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: false }));
+     // (this.body as any).setAllowGravity(false)
    }
 
    changePiece(piece: any) {

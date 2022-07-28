@@ -943,11 +943,6 @@ export default class Jeu extends Phaser.Scene {
           this.players.add(player)
           this.playersRef[item] = player
 
-          this.time.delayedCall(5000, () => {
-            this.animationBossKO(`${this.session}`);
-          }, undefined, this);
-
-
         }
 
 
@@ -964,6 +959,9 @@ export default class Jeu extends Phaser.Scene {
           this.playersRef[item].barre.setAlpha(list.presences[item].alpha)
           this.playersRef[item].setAlpha(list.presences[item].alpha)
         }
+
+        console.log(list.presences[item].capturable)
+        if (list.presences[item].capturable) this.animationBossKO(`${item}`)
 
         if (this.session === this.playersRef[item].ClientId) {
           this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
