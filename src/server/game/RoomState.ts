@@ -61,7 +61,6 @@ export class Player extends Schema {
   @type("string") sprite_fusion?: string
   @type("string") sprite_cible?: string
   @type("string") pieceCourante?: string
-  @type("boolean") capturable?: boolean
   @type(Commandes) commandes?: Commandes;
 }
 

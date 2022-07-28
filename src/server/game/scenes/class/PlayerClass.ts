@@ -226,11 +226,13 @@ import { DefautDirection } from "../Stats/Defaut"
          flipX: this.flipX,
          tint: this.tintBottomLeft,
          vie: this.vie,
-         particules: this.particules,
          xa: this.zoneInteraction.x,
-         ya: this.zoneInteraction.y
+         ya: this.zoneInteraction.y,
+         particules: this.particules
        })
      )
+
+     if (this.particules) this.particules = false;
 
 
 
@@ -317,6 +319,9 @@ import { DefautDirection } from "../Stats/Defaut"
 
    animationBossVaincu() {
 
+     console.log("MMMMMONNNNNNNNNNNNNNID");
+     console.log(this.ClientID);
+     this.particules = true;
      (this.body as any).setAllowGravity(false)
      this.setPushable(false);
      this.animationBoosFigurine = this.scene.tweens.add({

@@ -960,8 +960,7 @@ export default class Jeu extends Phaser.Scene {
           this.playersRef[item].setAlpha(list.presences[item].alpha)
         }
 
-        console.log(list.presences[item].capturable)
-        if (list.presences[item].capturable) this.animationBossKO(`${item}`)
+        if (list.presences[item].particules) this.animationBossKO(`${item}`)
 
         if (this.session === this.playersRef[item].ClientId) {
           this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
