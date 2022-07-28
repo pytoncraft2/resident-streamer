@@ -218,7 +218,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   createPlayer(ClientId: any, sprite: string) {
-    const player = this.add.existing(new PlayerClass(this, 100, 100, "atlas", ClientId, sprite).setData({ ClientId }))
+    const player = this.add.existing(new PlayerClass(this, 1800, 100, "atlas", ClientId, sprite).setData({ ClientId }))
     this.players.add(player)
     this.playersRef[ClientId] = player
     player.setBounceX(0.2)

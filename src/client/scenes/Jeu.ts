@@ -690,16 +690,6 @@ export default class Jeu extends Phaser.Scene {
 
 
 
-    this.tweens.add({
-        targets: this.indicationDroite,
-        x: 100,
-        alpha: 0.5,
-        ease: 'Sine.inOut',
-        yoyo: true,
-        duration: 1000,
-        repeat: 10
-    });
-
 		const self = this;
 		this.players = this.add.group()
 		this.enemies= this.add.group()
@@ -903,10 +893,13 @@ export default class Jeu extends Phaser.Scene {
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
             // this.cameras.main.startFollow(player);
-            this.cameras.main.startFollow(player, false, 1, 0.3, 190);  //
+            // this.cameras.main.setBounds(0, 0, 720 * 2, 176);
+            this.cameras.main.setBounds(-1920, y, 1920 *3, 1080)
+
+            this.cameras.main.startFollow(player, false, 1, 0.3, 190, 2900);  //
 
 
-            // this.cameras.main.setDeadzone(900, 200);
+            // this.cameras.main.setDeadzone(200, 200);
 
             // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
             // },this);
