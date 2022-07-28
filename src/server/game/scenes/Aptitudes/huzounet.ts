@@ -101,11 +101,11 @@ export function clonage__E(huzounet: any) {
 }
 
 export function TP__R(huzounet: any, input) {
-  huzounet.setCollideWorldBounds(false)
-  huzounet.scene.time.delayedCall(2000, () => {
-    huzounet.setCollideWorldBounds(true)
-  }, null, huzounet);
-  huzounet.setPosition(huzounet.x, -1900)
+  huzounet.setCollideWorldBounds(false, false ,true, true)
+  // huzounet.scene.time.delayedCall(2000, () => {
+    // huzounet.setCollideWorldBounds(true)
+  // }, null, huzounet);
+  huzounet.setPosition(huzounet.x, -900)
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {

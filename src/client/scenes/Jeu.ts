@@ -789,7 +789,7 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     //@ts-ignore
-    this.minimap = this.cameras.add(1340, 825, 600, 400).setZoom(0.07).setName('mini');
+    this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
     this.interface_joueur.setScrollFactor(0)
 
 
@@ -895,7 +895,7 @@ export default class Jeu extends Phaser.Scene {
             // console.log("WWW")
             // this.cameras.main.startFollow(player);
             // this.cameras.main.setBounds(0, 0, 720 * 2, 176);
-            this.cameras.main.setBounds(-1835, y - 80, 9660, 2090)
+            this.cameras.main.setBounds(0, y - 80, 9660, 2090)
 
             this.cameras.main.startFollow(player, false);  //
 
