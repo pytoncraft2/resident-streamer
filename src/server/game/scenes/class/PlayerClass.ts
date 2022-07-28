@@ -201,7 +201,6 @@ import { DefautDirection } from "../Stats/Defaut"
 
      if (this.vie <= 0) {
        this.vie = 10;
-       // this.setAlpha(0.2);
        if (this.cible_courante == "players") {
          this.setScale(0.5)
          this.animationBossVaincu()
@@ -304,7 +303,13 @@ import { DefautDirection } from "../Stats/Defaut"
    respawn() {
      this.scene.tweens.add({
        targets: this,
-       alpha: 1,
+       alpha: 0.2,
+       duration: 200,
+       repeat: 3,
+       yoyo: true
+     });
+     this.scene.tweens.add({
+       targets: this,
        x: 2830,
        y: 755,
        duration: 500,

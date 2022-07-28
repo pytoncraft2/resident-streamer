@@ -1071,7 +1071,7 @@ export default class Jeu extends Phaser.Scene {
   }
 
   animationBossKO(id: any) {
-    this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
+    // this.playersRef[id].setDepth(0.1)
     const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
     ellipse_5_1.scaleX = 0.9012990507210408;
     ellipse_5_1.scaleY = 0.21224071572889464;
@@ -1081,7 +1081,7 @@ export default class Jeu extends Phaser.Scene {
     ellipse_5_1.isStroked = true;
     ellipse_5_1.lineWidth = 4;
     ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
-    this.playersRef[id].barre.setAlpha(0)
+    this.playersRef[id].barre.destroy()
     this.playersRef[id].ellipse_5_1 = ellipse_5_1
     this.animationBoosFigurine = this.tweens.add({
       targets: this.playersRef[id],
