@@ -26,39 +26,39 @@ export default class Jeu extends Phaser.Scene {
 	editorCreate(): void {
 
 		// text
-		const text = this.add.text(914.5, 446.5, "", {});
+		const text = this.add.text(2751, 447, "", {});
 		text.text = "Jeu";
 		text.setStyle({ "fontSize": "50px" });
 
 		// platforme
-		const platforme = this.add.rectangle(955, 862, 128, 128);
+		const platforme = this.add.rectangle(2791, 862, 128, 128);
 		platforme.scaleX = 43.50112225681497;
 		platforme.scaleY = 1.449878006775927;
 		platforme.isFilled = true;
 
 		// map_boss1
-		const map_boss1 = this.add.image(2820, 489, "map_boss1");
+		const map_boss1 = this.add.image(4656, 489, "map_boss1");
 		map_boss1.scaleX = 2.868376959115476;
 		map_boss1.scaleY = 2.7049866133838867;
 
 		// map_boss2
-		const map_boss2 = this.add.image(-914, 489, "map_hall0");
+		const map_boss2 = this.add.image(922, 489, "map_hall0");
 		map_boss2.scaleX = 2.90778858976818;
 		map_boss2.scaleY = 2.5991763141421007;
 
 		// map_hall1
-		const map_hall1 = this.add.image(957, 476, "map_hall1");
+		const map_hall1 = this.add.image(2793, 476, "map_hall1");
 		map_hall1.scaleX = 3.0081506873206445;
 		map_hall1.scaleY = 2.5829543078030315;
 
 		// hall
-		const hall = this.add.image(15, 473, "map_hall0");
+		const hall = this.add.image(1851, 473, "map_hall0");
 		hall.scaleX = 3.0088107725356585;
 		hall.scaleY = 2.634116448848351;
 		hall.setOrigin(0, 0.5);
 
 		// barreHautContainer
-		const barreHautContainer = this.add.container(0, 0);
+		const barreHautContainer = this.add.container(1836, 0);
 
 		// barreHaut
 		const barreHaut = this.add.rectangle(960, 29, 128, 128);
@@ -94,14 +94,14 @@ export default class Jeu extends Phaser.Scene {
 		barreHautContainer.add(vie_boss_1);
 
 		// barre_etat_joueur
-		const barre_etat_joueur = this.add.container(395, 466);
+		const barre_etat_joueur = this.add.container(2231, 466);
 
 		// barre_etat
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
 
 		// p1
-		const p1 = this.add.rectangle(1, 939, 128, 128);
+		const p1 = this.add.rectangle(1837, 939, 128, 128);
 		p1.scaleX = 14.993211052385613;
 		p1.scaleY = -0.08853600509578045;
 		p1.setOrigin(0, 0.5);
@@ -109,7 +109,7 @@ export default class Jeu extends Phaser.Scene {
 		p1.fillColor = 12757972;
 
 		// p2
-		const p2 = this.add.rectangle(-1831, 940, 128, 128);
+		const p2 = this.add.rectangle(5, 940, 128, 128);
 		p2.scaleX = 14.310196671161355;
 		p2.scaleY = -0.09826542861018456;
 		p2.setOrigin(0, 0.5);
@@ -117,7 +117,7 @@ export default class Jeu extends Phaser.Scene {
 		p2.fillColor = 10563832;
 
 		// platforme_droite
-		const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
+		const platforme_droite = this.add.rectangle(3756, 940, 128, 128);
 		platforme_droite.scaleX = 14.310196671161355;
 		platforme_droite.scaleY = -0.09826542861018456;
 		platforme_droite.setOrigin(0, 0.5);
@@ -125,7 +125,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme_droite.fillColor = 10563832;
 
 		// platforme_haut
-		const platforme_haut = this.add.rectangle(-3, -200, 128, 128);
+		const platforme_haut = this.add.rectangle(1833, -200, 128, 128);
 		platforme_haut.scaleX = 14.993211052385613;
 		platforme_haut.scaleY = -0.08853600509578045;
 		platforme_haut.setOrigin(0, 0.5);
@@ -133,7 +133,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme_haut.fillColor = 10563832;
 
 		// platforme_haut_droite
-		const platforme_haut_droite = this.add.rectangle(1916, -199, 128, 128);
+		const platforme_haut_droite = this.add.rectangle(3752, -199, 128, 128);
 		platforme_haut_droite.scaleX = 14.310196671161355;
 		platforme_haut_droite.scaleY = -0.09826542861018456;
 		platforme_haut_droite.setOrigin(0, 0.5);
@@ -141,7 +141,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme_haut_droite.fillColor = 10563832;
 
 		// platforme_haut_gauche
-		const platforme_haut_gauche = this.add.rectangle(-1835, -199, 128, 128);
+		const platforme_haut_gauche = this.add.rectangle(1, -199, 128, 128);
 		platforme_haut_gauche.scaleX = 14.310196671161355;
 		platforme_haut_gauche.scaleY = -0.09826542861018456;
 		platforme_haut_gauche.setOrigin(0, 0.5);
@@ -149,7 +149,7 @@ export default class Jeu extends Phaser.Scene {
 		platforme_haut_gauche.fillColor = 10563832;
 
 		// map_manetteman
-		const map_manetteman = this.add.image(2849, -499, "map_manetteman");
+		const map_manetteman = this.add.image(4685, -499, "map_manetteman");
 		map_manetteman.scaleX = 2.9102765585148034;
 		map_manetteman.scaleY = 2.6616391385535185;
 
@@ -376,49 +376,49 @@ export default class Jeu extends Phaser.Scene {
 		touche_R.add(description_commande_R);
 
 		// hall_1
-		const hall_1 = this.add.image(42, -506, "map_hall0");
+		const hall_1 = this.add.image(1878, -506, "map_hall0");
 		hall_1.scaleX = 3.0088107725356585;
 		hall_1.scaleY = 2.634116448848351;
 		hall_1.setOrigin(0, 0.5);
 
 		// hall_2
-		const hall_2 = this.add.image(-1860, -504, "map_hall0");
+		const hall_2 = this.add.image(-24, -504, "map_hall0");
 		hall_2.scaleX = 3.0088107725356585;
 		hall_2.scaleY = 2.634116448848351;
 		hall_2.setOrigin(0, 0.5);
 
 		// text_1
-		const text_1 = this.add.text(990, 116, "", {});
+		const text_1 = this.add.text(2826, 116, "", {});
 		text_1.setOrigin(0.5, 0.5);
 		text_1.text = "HALL";
 		text_1.setStyle({ "fontSize": "29px" });
 
 		// text_3
-		const text_3 = this.add.text(-881, 95, "", {});
+		const text_3 = this.add.text(955, 95, "", {});
 		text_3.setOrigin(0.5, 0.5);
 		text_3.text = "BOSS 1";
 		text_3.setStyle({ "fontSize": "29px" });
 
 		// text_4
-		const text_4 = this.add.text(2820, 87, "", {});
+		const text_4 = this.add.text(4656, 87, "", {});
 		text_4.setOrigin(0.5, 0.5);
 		text_4.text = "BOSS 2";
 		text_4.setStyle({ "fontSize": "29px" });
 
 		// text_5
-		const text_5 = this.add.text(-883, -925, "", {});
+		const text_5 = this.add.text(953, -925, "", {});
 		text_5.setOrigin(0.5, 0.5);
 		text_5.text = "BOSS 3";
 		text_5.setStyle({ "fontSize": "29px" });
 
 		// text_6
-		const text_6 = this.add.text(2896, -906, "", {});
+		const text_6 = this.add.text(4732, -906, "", {});
 		text_6.setOrigin(0.5, 0.5);
 		text_6.text = "BOSS 4";
 		text_6.setStyle({ "fontSize": "29px" });
 
 		// rectangle_3
-		const rectangle_3 = this.add.rectangle(2883, 480, 128, 128);
+		const rectangle_3 = this.add.rectangle(4719, 480, 128, 128);
 		rectangle_3.scaleX = 14.963289520849095;
 		rectangle_3.scaleY = 7.5675971976646315;
 		rectangle_3.isFilled = true;
@@ -426,7 +426,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_3.fillAlpha = 0.8;
 
 		// rectangle_6
-		const rectangle_6 = this.add.rectangle(-935, -507, 128, 128);
+		const rectangle_6 = this.add.rectangle(901, -507, 128, 128);
 		rectangle_6.scaleX = 14.495720628453666;
 		rectangle_6.scaleY = 7.392235139173692;
 		rectangle_6.isFilled = true;
@@ -434,7 +434,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_6.fillAlpha = 0.8;
 
 		// rectangle_8
-		const rectangle_8 = this.add.rectangle(955, -495, 128, 128);
+		const rectangle_8 = this.add.rectangle(2791, -495, 128, 128);
 		rectangle_8.scaleX = 15.03295778960996;
 		rectangle_8.scaleY = 7.562543454428133;
 		rectangle_8.isFilled = true;
@@ -442,7 +442,7 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_8.fillAlpha = 0.8;
 
 		// cache_gauche_bas
-		const cache_gauche_bas = this.add.container(0, 0);
+		const cache_gauche_bas = this.add.container(1836, 0);
 
 		// rectangle_5
 		const rectangle_5 = this.add.rectangle(-920, 483, 128, 128);
@@ -623,6 +623,7 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
     this.cameras.main.fadeIn(2000);
+    // this.cameras.main.setZoom(0.1)
 
     // this.cameras.main.on('camerapancomplete', () => {
       // self.cameras.main.startFollow(self.fontaine1);
@@ -894,7 +895,7 @@ export default class Jeu extends Phaser.Scene {
             // console.log("WWW")
             // this.cameras.main.startFollow(player);
             // this.cameras.main.setBounds(0, 0, 720 * 2, 176);
-            this.cameras.main.setBounds(-1835, y - 80, 5660, 2090)
+            this.cameras.main.setBounds(-1835, y - 80, 9660, 2090)
 
             this.cameras.main.startFollow(player, false);  //
 

@@ -17,8 +17,8 @@
             "id": "a52b5bc6-8b5c-4ddb-bae9-0cbeae3e836e",
             "label": "text",
             "components": [],
-            "x": 914.5,
-            "y": 446.5,
+            "x": 2751,
+            "y": 447,
             "text": "Jeu",
             "fontSize": "50px"
         },
@@ -27,7 +27,7 @@
             "id": "90d26c42-eb5f-40c7-a9e6-00b9d2ec6bef",
             "label": "platforme",
             "components": [],
-            "x": 955,
+            "x": 2791,
             "y": 862,
             "scaleX": 43.50112225681497,
             "scaleY": 1.449878006775927,
@@ -44,7 +44,7 @@
             "texture": {
                 "key": "map_boss1"
             },
-            "x": 2820,
+            "x": 4656,
             "y": 489,
             "scaleX": 2.868376959115476,
             "scaleY": 2.7049866133838867
@@ -58,7 +58,7 @@
             "texture": {
                 "key": "map_hall0"
             },
-            "x": -914,
+            "x": 922,
             "y": 489,
             "scaleX": 2.90778858976818,
             "scaleY": 2.5991763141421007
@@ -72,7 +72,7 @@
             "texture": {
                 "key": "map_hall1"
             },
-            "x": 957,
+            "x": 2793,
             "y": 476,
             "scaleX": 3.0081506873206445,
             "scaleY": 2.5829543078030315
@@ -86,7 +86,7 @@
             "texture": {
                 "key": "map_hall0"
             },
-            "x": 15,
+            "x": 1851,
             "y": 473,
             "scaleX": 3.0088107725356585,
             "scaleY": 2.634116448848351,
@@ -98,6 +98,7 @@
             "label": "barreHautContainer",
             "scope": "PUBLIC",
             "components": [],
+            "x": 1836,
             "list": [
                 {
                     "type": "Rectangle",
@@ -165,7 +166,7 @@
             "label": "barre_etat_joueur",
             "scope": "PUBLIC",
             "components": [],
-            "x": 395,
+            "x": 2231,
             "y": 466,
             "list": [
                 {
@@ -185,7 +186,7 @@
             "id": "6c322cc1-8df9-47e1-878f-ee5554ec3a93",
             "label": "p1",
             "components": [],
-            "x": 1,
+            "x": 1837,
             "y": 939,
             "scaleX": 14.993211052385613,
             "scaleY": -0.08853600509578045,
@@ -200,7 +201,7 @@
             "id": "bbfd493c-1512-49d7-97a6-b85cfa9a1586",
             "label": "p2",
             "components": [],
-            "x": -1831,
+            "x": 5,
             "y": 940,
             "scaleX": 14.310196671161355,
             "scaleY": -0.09826542861018456,
@@ -215,7 +216,7 @@
             "id": "fb00f750-a716-4b54-ab5a-9b0c112ad25e",
             "label": "platforme_droite",
             "components": [],
-            "x": 1920,
+            "x": 3756,
             "y": 940,
             "scaleX": 14.310196671161355,
             "scaleY": -0.09826542861018456,
@@ -230,7 +231,7 @@
             "id": "ba33ba7b-8328-4ac2-8c73-4085ea95cfa9",
             "label": "platforme_haut",
             "components": [],
-            "x": -3,
+            "x": 1833,
             "y": -200,
             "scaleX": 14.993211052385613,
             "scaleY": -0.08853600509578045,
@@ -245,7 +246,7 @@
             "id": "d8c717fe-c8be-4bf3-a6fa-27946e46312d",
             "label": "platforme_haut_droite",
             "components": [],
-            "x": 1916,
+            "x": 3752,
             "y": -199,
             "scaleX": 14.310196671161355,
             "scaleY": -0.09826542861018456,
@@ -260,7 +261,7 @@
             "id": "3d25bf95-1f42-4ac2-9ac9-df9749002798",
             "label": "platforme_haut_gauche",
             "components": [],
-            "x": -1835,
+            "x": 1,
             "y": -199,
             "scaleX": 14.310196671161355,
             "scaleY": -0.09826542861018456,
@@ -278,7 +279,7 @@
             "texture": {
                 "key": "map_manetteman"
             },
-            "x": 2849,
+            "x": 4685,
             "y": -499,
             "scaleX": 2.9102765585148034,
             "scaleY": 2.6616391385535185
@@ -698,7 +699,7 @@
             "texture": {
                 "key": "map_hall0"
             },
-            "x": 42,
+            "x": 1878,
             "y": -506,
             "scaleX": 3.0088107725356585,
             "scaleY": 2.634116448848351,
@@ -713,7 +714,7 @@
             "texture": {
                 "key": "map_hall0"
             },
-            "x": -1860,
+            "x": -24,
             "y": -504,
             "scaleX": 3.0088107725356585,
             "scaleY": 2.634116448848351,
@@ -724,7 +725,7 @@
             "id": "e9b9eb70-5725-40b3-8713-96051f803b87",
             "label": "text_1",
             "components": [],
-            "x": 990,
+            "x": 2826,
             "y": 116,
             "originX": 0.5,
             "originY": 0.5,
@@ -736,7 +737,7 @@
             "id": "8cf9935e-900b-48a8-9162-97643e6d752d",
             "label": "text_3",
             "components": [],
-            "x": -881,
+            "x": 955,
             "y": 95,
             "originX": 0.5,
             "originY": 0.5,
@@ -748,7 +749,7 @@
             "id": "708f7b84-a65c-4f3b-8ed3-fd13ba6af99a",
             "label": "text_4",
             "components": [],
-            "x": 2820,
+            "x": 4656,
             "y": 87,
             "originX": 0.5,
             "originY": 0.5,
@@ -760,7 +761,7 @@
             "id": "b026d751-fe15-49e9-bccf-781e6c8c495a",
             "label": "text_5",
             "components": [],
-            "x": -883,
+            "x": 953,
             "y": -925,
             "originX": 0.5,
             "originY": 0.5,
@@ -772,7 +773,7 @@
             "id": "f4adb92d-e351-4fb8-83c2-92c2ff00cd6c",
             "label": "text_6",
             "components": [],
-            "x": 2896,
+            "x": 4732,
             "y": -906,
             "originX": 0.5,
             "originY": 0.5,
@@ -784,7 +785,7 @@
             "id": "03652a60-a70d-4fb8-a223-5ad610abfdf6",
             "label": "rectangle_3",
             "components": [],
-            "x": 2883,
+            "x": 4719,
             "y": 480,
             "scaleX": 14.963289520849095,
             "scaleY": 7.5675971976646315,
@@ -799,7 +800,7 @@
             "id": "e0b65d47-20e8-4497-a13e-482cedbe4cea",
             "label": "rectangle_6",
             "components": [],
-            "x": -935,
+            "x": 901,
             "y": -507,
             "scaleX": 14.495720628453666,
             "scaleY": 7.392235139173692,
@@ -814,7 +815,7 @@
             "id": "e752d548-b54b-415d-acd2-2526513620aa",
             "label": "rectangle_8",
             "components": [],
-            "x": 955,
+            "x": 2791,
             "y": -495,
             "scaleX": 15.03295778960996,
             "scaleY": 7.562543454428133,
@@ -829,6 +830,7 @@
             "id": "0f07b104-8a14-4c15-ba81-3e3e737f57e0",
             "label": "cache_gauche_bas",
             "components": [],
+            "x": 1836,
             "list": [
                 {
                     "type": "Rectangle",

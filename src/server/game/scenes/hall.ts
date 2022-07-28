@@ -47,7 +47,7 @@ export default class Hall extends Phaser.Scene {
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
-      customBoundsRectangle: customBounds,
+      // customBoundsRectangle: customBounds,
       collideWorldBounds: true
     })
 

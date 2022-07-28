@@ -295,7 +295,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.scene.tweens.add({
        targets: this,
        alpha: 1,
-       x: 987,
+       x: 2830,
        y: 755,
        duration: 500,
        onComplete: function() {
