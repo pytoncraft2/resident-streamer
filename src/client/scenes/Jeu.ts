@@ -895,7 +895,7 @@ export default class Jeu extends Phaser.Scene {
             // console.log("WWW")
             // this.cameras.main.startFollow(player);
             // this.cameras.main.setBounds(0, 0, 720 * 2, 176);
-            this.cameras.main.setBounds(0, y - 80, 9660, 2090)
+            // this.cameras.main.setBounds(0, y - 80, 9660, 2090)
 
             this.cameras.main.startFollow(player, false);  //
 

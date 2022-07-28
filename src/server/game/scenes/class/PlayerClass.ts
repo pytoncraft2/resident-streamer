@@ -159,7 +159,7 @@ import { DefautDirection } from "../Stats/Defaut"
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
      if (auto) {
-       if (Aptitudes[this.sprite].auto) Aptitudes[this.sprite].auto((this as any), {}, Aptitudes[this.sprite]);
+       // if (Aptitudes[this.sprite].auto) Aptitudes[this.sprite].auto((this as any), {}, Aptitudes[this.sprite]);
      }
 
    }

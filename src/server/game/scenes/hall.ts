@@ -100,7 +100,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     // platforme.isFilled = true;
     // platforme.fillColor = 0x000000;
 
-    const platforme = this.add.rectangle(1, 939, 128, 128);
+		const platforme = this.add.rectangle(1837, 939, 128, 128);
     platforme.scaleX = 14.993211052385613;
     platforme.scaleY = -0.08853600509578045;
     platforme.setOrigin(0, 0.5);
@@ -109,7 +109,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme.setData('piece', 'hall')
     this.platforme = platforme;
 
-    const platforme_gauche = this.add.rectangle(-1831, 940, 128, 128);
+		const platforme_gauche = this.add.rectangle(5, 940, 128, 128);
 		platforme_gauche.scaleX = 14.310196671161355;
 		platforme_gauche.scaleY = -0.09826542861018456;
 		platforme_gauche.setOrigin(0, 0.5);
@@ -117,7 +117,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 		platforme_gauche.fillColor = 10563832;
     platforme_gauche.setData('piece', 'bas_gauche')
 
-    const platforme_droite = this.add.rectangle(1920, 940, 128, 128);
+		const platforme_droite = this.add.rectangle(3756, 940, 128, 128);
     platforme_droite.scaleX = 14.310196671161355;
     platforme_droite.scaleY = -0.09826542861018456;
     platforme_droite.setOrigin(0, 0.5);
@@ -125,7 +125,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.fillColor = 10563832;
     platforme_droite.setData('piece', 'boss1')
 
-    const platforme_haut = this.add.rectangle(-3, -200, 128, 128);
+		const platforme_haut = this.add.rectangle(1833, -200, 128, 128);
 		platforme_haut.scaleX = 14.993211052385613;
 		platforme_haut.scaleY = -0.08853600509578045;
 		platforme_haut.setOrigin(0, 0.5);
@@ -134,7 +134,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.setData('piece', 'haut')
 
 		// platforme_haut_droite
-		const platforme_haut_droite = this.add.rectangle(1916, -199, 128, 128);
+		const platforme_haut_droite = this.add.rectangle(3752, -199, 128, 128);
 		platforme_haut_droite.scaleX = 14.310196671161355;
 		platforme_haut_droite.scaleY = -0.09826542861018456;
 		platforme_haut_droite.setOrigin(0, 0.5);
@@ -143,7 +143,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.setData('piece', 'haut_droite')
 
 		// platforme_haut_gauche
-		const platforme_haut_gauche = this.add.rectangle(-1835, -199, 128, 128);
+		const platforme_haut_gauche = this.add.rectangle(1, -199, 128, 128);
 		platforme_haut_gauche.scaleX = 14.310196671161355;
 		platforme_haut_gauche.scaleY = -0.09826542861018456;
 		platforme_haut_gauche.setOrigin(0, 0.5);
@@ -218,7 +218,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   createPlayer(ClientId: any, sprite: string) {
-    const player = this.add.existing(new PlayerClass(this, 990, 100, "atlas", ClientId, sprite).setData({ ClientId }))
+    const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
     this.players.add(player)
     this.playersRef[ClientId] = player
     player.setBounceX(0.2)
