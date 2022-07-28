@@ -200,8 +200,15 @@ import { DefautDirection } from "../Stats/Defaut"
 
      if (this.vie <= 0) {
        this.vie = 10;
-       this.setAlpha(0.2);
-       this.respawn();
+       // this.setAlpha(0.2);
+       if (this.cible_courante == "players") {
+         this.setScale(0.5)
+         this.animationBossVaincu()
+       }
+       else
+       {
+         this.respawn();
+       }
        // (this.scene as any).players.remove(this)
      }
 
@@ -305,6 +312,19 @@ import { DefautDirection } from "../Stats/Defaut"
        }
      });
 
+   }
+
+   animationBossVaincu() {
+     (this.body as any).setAllowGravity(false)
+     this.scene.tweens.add({
+       targets: this,
+       alpha: "-=0.1",
+       ease: 'Sine.easeOut',
+       y: "-=400",
+       duration: 1000,
+       yoyo: true,
+       repeat: -1,
+     });
    }
 
    changePiece(piece: any) {

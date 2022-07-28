@@ -40,6 +40,7 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
       }
     }, null, this);
 
+    boss_1.cible_courante = "players"
   // boss_1.scene.time.delayedCall(500, () => {
     // boss_1.scene.physics.world.removeCollider(colision);
   // }, null, this);
