@@ -900,6 +900,7 @@ export default class Jeu extends Phaser.Scene {
             this.cameras.main.startFollow(player, false);  //
 
 
+
             // this.cameras.main.setDeadzone(200, 200);
 
             // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
@@ -941,6 +942,11 @@ export default class Jeu extends Phaser.Scene {
 
           this.players.add(player)
           this.playersRef[item] = player
+
+          this.time.delayedCall(5000, () => {
+            this.animationBossKO(`${this.session}`);
+          }, undefined, this);
+
 
         }
 
@@ -1050,6 +1056,8 @@ export default class Jeu extends Phaser.Scene {
 
   animIcon(icon: any, sprite_fusion: string) {
 
+
+
     console.log("ANIM ICON-----------------")
     this.tweens.add({
       targets: icon,
@@ -1064,6 +1072,50 @@ export default class Jeu extends Phaser.Scene {
       }
     });
   }
+
+  animationBossKO(id: any) {
+    this.playersRef[id].setScale(0.15956409567640198, 0.15956409567640198).clearTint().setDepth(0.1)
+    const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
+    ellipse_5_1.scaleX = 0.9012990507210408;
+    ellipse_5_1.scaleY = 0.21224071572889464;
+    ellipse_5_1.isFilled = true;
+    ellipse_5_1.fillColor = 7473815;
+    ellipse_5_1.fillAlpha = 0.8;
+    ellipse_5_1.isStroked = true;
+    ellipse_5_1.lineWidth = 4;
+    ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
+    this.playersRef[id].barre.setAlpha(0)
+    this.playersRef[id].ellipse_5_1 = ellipse_5_1
+    this.animationBoosFigurine = this.tweens.add({
+      targets: this.playersRef[id],
+      y: "-=90",
+      alpha: 0.5,
+      ease: 'Sine.inOut',
+      yoyo: true,
+      duration: 1000,
+      repeat: -1
+    });
+
+    var particles = this.add.particles('flares');
+
+    this.emitter = particles.createEmitter({
+      frame: 'blue',
+      x: this.playersRef[id].getBottomCenter().x,
+      y: 879,
+      speedY: { min: -200, max: -400 },
+      lifespan: 2000,
+      scale: { start: 0.4, end: 0 },
+      quantity: 2,
+      blendMode: 'ADD',
+    });
+    console.log("message received from server");
+  }
+
+finAnimationBossKO(id: string) {
+  this.playersRef[id].setAlpha(0)
+  this.playersRef[id].ellipse_5_1.setAlpha(0)
+}
+
 
   update() {
     if (this.room) {
