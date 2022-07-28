@@ -71,7 +71,6 @@ export default class GameRooms extends Room {
           y: -900,
           vaincu: false
         }
-        // 'huzounet': 1_000
       }
       Object.entries(this.boss).map(item => {
         const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`

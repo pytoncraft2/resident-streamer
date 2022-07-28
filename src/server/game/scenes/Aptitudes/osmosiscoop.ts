@@ -1,4 +1,5 @@
 import TJoueur from "../types/Joueur";
+import { fusion } from "./_utilitaire/general";
 
 export function __StatsSupplementaire() {}
 
@@ -20,4 +21,8 @@ export function blesse__Z(osmo: TJoueur, input: any) {
     osmo.play('osmo_attaque', true)
     input.z = false;
   }
+}
+
+export function fusion__TAB(personnage: TJoueur, input: any) {
+  fusion(personnage, input)
 }

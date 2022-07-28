@@ -1,5 +1,6 @@
 import TJoueur from "../types/Joueur";
 import BombeClass from "../class/elements/BombeClass";
+import { fusion } from "./_utilitaire/general";
 
 export function __StatsSupplementaire() {}
 
@@ -22,4 +23,8 @@ export function bombe__Z(akhizonah: TJoueur) {
     }, null, bombe);
   }
 
+}
+
+export function fusion__TAB(personnage: TJoueur, input: any) {
+  fusion(personnage, input)
 }
