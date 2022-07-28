@@ -47,12 +47,12 @@ export default class GameRooms extends Room {
         // },
         'boss_1': {
           temps: 2_000,
-          x: -2900,
-          y: -1000,
+          x: 4800,
+          y: -200,
         },
         'manette': {
-          temps: 3_000,
-          x: 2830,
+          temps: 4_000,
+          x: 1000,
           y: -1000,
         },
         // 'troll':  {
