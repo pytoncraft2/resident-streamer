@@ -974,12 +974,12 @@ export default class Jeu extends Phaser.Scene {
             if (list.presences[item].sprite_cible)
             {
               this.cameras.main.stopFollow();
-              this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.3, 190);  //
+              this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.1, 190);  //
             }
             else
             {
               this.cameras.main.stopFollow();
-              this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.3, 190);  //
+              this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
             }
           }
 

@@ -84,7 +84,9 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
          twitchman.play("twitchman_punch")
          twitchman.scene.tweens.add({
            delay: 500,
-           onStart: () => twitchman.play("twitchman_vole"),
+           onStart: () => {
+             if (twitchman) twitchman.play("twitchman_vole")
+           },
            targets: twitchman,
            x: 0,
            y: 0,
