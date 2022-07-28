@@ -40,11 +40,16 @@ export default class GameRooms extends Room {
       // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
 
       const boss = {
-        // 'twitchman': {
-        //   temps: 1_000,
-        //   x: 0,
-        //   y: 0,
-        // },
+        'super_boss': {
+          temps: 10_000,
+          x: 2830,
+          y: -900,
+        },
+        'twitchman': {
+          temps: 10_000,
+          x: 1000,
+          y: -1000,
+        },
         'boss_1': {
           temps: 2_000,
           x: 4800,
@@ -53,7 +58,7 @@ export default class GameRooms extends Room {
         'manette': {
           temps: 4_000,
           x: 1000,
-          y: -1000,
+          y: -200,
         },
         'troll':  {
           temps: 7_000,

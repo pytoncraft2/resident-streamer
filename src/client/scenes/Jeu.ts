@@ -456,14 +456,14 @@ export default class Jeu extends Phaser.Scene {
 		// text_7
 		const text_7 = this.add.text(-921, 481, "", {});
 		text_7.setOrigin(0.5, 0.5);
-		text_7.text = "BOSS TWITCHMAN";
+		text_7.text = "BOSS MANETTMAN";
 		text_7.setStyle({ "fontSize": "186px" });
 		cache_gauche_bas.add(text_7);
 
 		// text_8
 		const text_8 = this.add.text(-930, -475, "", {});
 		text_8.setOrigin(0.5, 0.5);
-		text_8.text = "BOSS MANETTMAN";
+		text_8.text = "BOSS TWITCHMAN";
 		text_8.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_8);
 
