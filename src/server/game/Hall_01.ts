@@ -45,31 +45,31 @@ export default class GameRooms extends Room {
           temps: 10_000,
           x: 2830,
           y: -900,
-          vivant: true
+          vaincu: false
         },
         'twitchman': {
           temps: 10_000,
           x: 1000,
           y: -1000,
-          vivant: true
+          vaincu: false
         },
         'boss_1': {
           temps: 2_000,
           x: 4800,
           y: -200,
-          vivant: true
+          vaincu: false
         },
         'manette': {
           temps: 4_000,
           x: 1000,
           y: -200,
-          vivant: true
+          vaincu: false
         },
         'troll':  {
           temps: 7_000,
           x: 4800,
           y: -900,
-          vivant: true
+          vaincu: false
         }
         // 'huzounet': 1_000
       }

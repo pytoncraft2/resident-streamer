@@ -323,8 +323,6 @@ import { DefautDirection } from "../Stats/Defaut"
 
    animationBossVaincu() {
 
-     console.log("MMMMMONNNNNNNNNNNNNNID");
-     console.log(this.ClientID);
      this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
