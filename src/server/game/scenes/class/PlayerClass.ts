@@ -280,7 +280,6 @@ import { DefautDirection } from "../Stats/Defaut"
        //   })
        // );
 
-       (this.scene as any).room.broadcast("RDC_OK");
 
 
        this.setScale(1)
@@ -327,6 +326,12 @@ import { DefautDirection } from "../Stats/Defaut"
      console.log("MMMMMONNNNNNNNNNNNNNID");
      console.log(this.ClientID);
      this.particules = true;
+     (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
+
+     if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+     {
+       (this.scene as any).room.broadcast("RDC_OK");
+     }
      (this.body as any).setAllowGravity(false)
      this.setPushable(false);
      this.animationBoosFigurine = this.scene.tweens.add({

@@ -29,6 +29,7 @@ export default class GameRooms extends Room {
     this.state.compteur = 0
 
     this.donnes = {}
+    this.enemies =
 
     this.Game = new Phaser.Game(config)
     this.scene = this.Game.scene.scenes[0]
@@ -39,35 +40,40 @@ export default class GameRooms extends Room {
       // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
       // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
 
-      const boss = {
+      this.boss = {
         'super_boss': {
           temps: 10_000,
           x: 2830,
           y: -900,
+          vivant: true
         },
         'twitchman': {
           temps: 10_000,
           x: 1000,
           y: -1000,
+          vivant: true
         },
         'boss_1': {
           temps: 2_000,
           x: 4800,
           y: -200,
+          vivant: true
         },
         'manette': {
           temps: 4_000,
           x: 1000,
           y: -200,
+          vivant: true
         },
         'troll':  {
           temps: 7_000,
           x: 4800,
           y: -900,
+          vivant: true
         }
         // 'huzounet': 1_000
       }
-      Object.entries(boss).map(item => {
+      Object.entries(this.boss).map(item => {
         const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`
         this.clock.setTimeout(() => {
             (this.scene as any).room.donnes[randomNombre] = {
