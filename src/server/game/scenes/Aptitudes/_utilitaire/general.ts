@@ -15,6 +15,7 @@ export function fusion(personnage: any, input: any) {
       bossObtenu.body.setAllowGravity(true)
       bossObtenu.suivre = false;
       personnage.fusionAvecBoss(bossObtenu)
+      personnage.fusionner = false
       // personnage.bossControllable.clear()
     }
     input.tab = false;
