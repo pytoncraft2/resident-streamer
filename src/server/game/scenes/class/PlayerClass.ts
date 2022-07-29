@@ -71,7 +71,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.currentTarget = this
      this.me = this
 
-     this.bossControllable = this.scene.physics.add.group();
+     this.bossControllable = this.scene.add.group();
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false
@@ -162,7 +162,6 @@ import { DefautDirection } from "../Stats/Defaut"
          {
            console.log("ACTION NUMERO 2 !!!!!")
            //@ts-ignore
-           this.fusionAvecBoss(this.bossControllable.getChildren()[0])
          }
 
         console.log("FUSION !!!!!!!!!!!!!!");
@@ -217,7 +216,6 @@ import { DefautDirection } from "../Stats/Defaut"
      if (this.vie <= 0) {
        this.vie = 10;
        if (this.cible_courante == "players") {
-         this.setScale(0.5)
          this.animationBossVaincu()
        }
        else
@@ -337,7 +335,7 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    animationBossVaincu() {
-
+     this.setScale(0.5)
      this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 

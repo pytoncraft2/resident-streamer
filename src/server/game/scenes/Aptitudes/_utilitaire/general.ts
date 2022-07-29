@@ -5,6 +5,11 @@ export function fusion(personnage: any, input: any) {
     {
       personnage.fusionner = true
     }
+    else
+    {
+      console.log("A OBTENU UN BOSS!!!!!!!!!!")
+      personnage.fusionAvecBoss(personnage.bossControllable.getChildren()[0])
+    }
     input.tab = false;
   }
   if (input.tab_fin)
