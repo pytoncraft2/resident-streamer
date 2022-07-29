@@ -1109,6 +1109,13 @@ export default class Jeu extends Phaser.Scene {
       quantity: 2,
       blendMode: 'ADD',
     });
+
+
+    this.time.delayedCall(7000, () => {
+      particles.destroy();
+      ellipse_5_1.destroy();
+    }, undefined, this);
+
     console.log("message received from server");
   }
 
