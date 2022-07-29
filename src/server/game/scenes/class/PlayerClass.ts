@@ -155,8 +155,12 @@ import { DefautDirection } from "../Stats/Defaut"
          // if (!this.aObtenuUnBoss)
          // {
            // this.aObtenuUnBoss = true
-           this.recuperationObjetBoss(_e)
-           this.bossControllable.add(_e)
+           if ((this.scene as any).room.boss[`${_e.sprite}`].vaincu)
+           {
+             this.recuperationObjetBoss(_e)
+             this.bossControllable.add(_e)
+           }
+           this.fusionner = false;
          // }
          // else
          // {
