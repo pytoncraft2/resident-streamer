@@ -151,7 +151,9 @@ import { DefautDirection } from "../Stats/Defaut"
         _e.cible_courante = "enemies";
         this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
         this.fusionner = false;
-         this.nouveauPilote(_e);
+        // _e.animationBoosFigurine.remove()
+        _e.nouveauPilote(this);
+         // this.nouveauPilote(_e);
        }
 
      };

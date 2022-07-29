@@ -125,7 +125,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.fillColor = 10563832;
     platforme_droite.setData('piece', 'boss1')
 
-		const platforme_haut = this.add.rectangle(1833, -200, 128, 128);
+		const platforme_haut = this.add.rectangle(1833, -66, 128, 128);
 		platforme_haut.scaleX = 14.993211052385613;
 		platforme_haut.scaleY = -0.08853600509578045;
 		platforme_haut.setOrigin(0, 0.5);
@@ -134,7 +134,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.setData('piece', 'haut')
 
 		// platforme_haut_droite
-		const platforme_haut_droite = this.add.rectangle(3752, -199, 128, 128);
+		const platforme_haut_droite = this.add.rectangle(3752, -66, 128, 128);
 		platforme_haut_droite.scaleX = 14.310196671161355;
 		platforme_haut_droite.scaleY = -0.09826542861018456;
 		platforme_haut_droite.setOrigin(0, 0.5);
@@ -143,7 +143,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     platforme_droite.setData('piece', 'haut_droite')
 
 		// platforme_haut_gauche
-		const platforme_haut_gauche = this.add.rectangle(1, -199, 128, 128);
+		const platforme_haut_gauche = this.add.rectangle(1, -66, 128, 128);
 		platforme_haut_gauche.scaleX = 14.310196671161355;
 		platforme_haut_gauche.scaleY = -0.09826542861018456;
 		platforme_haut_gauche.setOrigin(0, 0.5);

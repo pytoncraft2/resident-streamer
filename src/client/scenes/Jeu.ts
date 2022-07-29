@@ -1087,15 +1087,15 @@ export default class Jeu extends Phaser.Scene {
     ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y + 25)
     this.playersRef[id].barre.destroy()
     this.playersRef[id].ellipse_5_1 = ellipse_5_1
-    this.animationBoosFigurine = this.tweens.add({
-      targets: this.playersRef[id],
-      y: "-=90",
-      alpha: 0.5,
-      ease: 'Sine.inOut',
-      yoyo: true,
-      duration: 1000,
-      repeat: -1
-    });
+    // this.animationBoosFigurine = this.tweens.add({
+    //   targets: this.playersRef[id],
+    //   y: "-=90",
+    //   alpha: 0.5,
+    //   ease: 'Sine.inOut',
+    //   yoyo: true,
+    //   duration: 1000,
+    //   repeat: -1
+    // });
 
     var particles = this.add.particles('flares');
 
