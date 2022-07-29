@@ -149,9 +149,9 @@ import { DefautDirection } from "../Stats/Defaut"
        if (this.fusionner && _e.sprite != this.sprite) {
         console.log("FUSION !!!!!!!!!!!!!!");
         _e.cible_courante = "enemies";
-        this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
+        // this.changeInterfaceClient(this.sprite);
         this.fusionner = false;
-        // _e.animationBoosFigurine.remove()
+        _e.animationBoosFigurine.remove()
         _e.nouveauPilote(this);
          // this.nouveauPilote(_e);
        }
