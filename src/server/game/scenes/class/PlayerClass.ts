@@ -13,6 +13,7 @@ import { DefautDirection } from "../Stats/Defaut"
    sprite: string
    particules: boolean
    animationBoosFigurine: any
+   bossControllable: Phaser.GameObjects.Group
    aObtenuUnBoss: boolean = false
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
@@ -69,6 +70,8 @@ import { DefautDirection } from "../Stats/Defaut"
 
      this.currentTarget = this
      this.me = this
+
+     this.bossControllable = this.scene.physics.add.group();
 
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
        this.blesse_opposant = false
@@ -148,12 +151,21 @@ import { DefautDirection } from "../Stats/Defaut"
        }
 
        if (this.fusionner && _e.sprite != this.sprite) {
+
+         if (!this.aObtenuUnBoss)
+         {
+           this.aObtenuUnBoss = true
+           this.recuperationObjetBoss(_e)
+           this.bossControllable.add(_e)
+         }
+         else
+         {
+           console.log("ACTION NUMERO 2 !!!!!")
+           //@ts-ignore
+           this.fusionAvecBoss(this.bossControllable.getChildren()[0])
+         }
+
         console.log("FUSION !!!!!!!!!!!!!!");
-        _e.cible_courante = "enemies";
-        // this.changeInterfaceClient(this.sprite);
-        this.fusionner = false;
-        _e.animationBoosFigurine.remove()
-        _e.nouveauPilote(this);
          // this.nouveauPilote(_e);
        }
 
@@ -272,6 +284,21 @@ import { DefautDirection } from "../Stats/Defaut"
          this.setScale(1)
        }, null, this);
      }
+   }
+
+  recuperationObjetBoss(_e: TJoueur) {
+     _e.cible_courante = "enemies";
+     // this.changeInterfaceClient(this.sprite);
+     this.fusionner = false;
+     _e.animationBoosFigurine.remove()
+     _e.nouveauPilote(this);
+   }
+
+   fusionAvecBoss(_e: TJoueur) {
+     _e.cible_courante = "enemies";
+     this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
+     this.fusionner = false;
+     this.nouveauPilote(_e, true);
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {

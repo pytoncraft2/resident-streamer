@@ -48,6 +48,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   survole?: boolean
   laser?: LaserClass
 
+  //bosses
+  animationBoosFigurine: Phaser.Tweens.Tween
+
   //degat
   dommage(puissance: number): void
 
