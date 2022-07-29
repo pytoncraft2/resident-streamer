@@ -253,39 +253,24 @@ import { DefautDirection } from "../Stats/Defaut"
      }
    }
 
-   nouveauPilote(nouveauPilote: TJoueur) {
-     nouveauPilote.particules = true;
+   nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
+     // nouveauPilote.particules = true;
      this.currentTarget = nouveauPilote
      this.suivre = true
      this.setScale(0.2)
 
-     this.scene.time.delayedCall(20000, () => {
-
-       this.suivre = false
-       nouveauPilote.particules = false;
-       // (this.scene as any).enemies.remove(nouveauPilote)
-       (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
-       this.currentTarget = this;
-       this.changeInterfaceClient(this.sprite, true);
-       // (this.scene as any).room.state.presences.set(
-       //   this.ClientID,
-       //   new Player({
-       //     sprite_fusion: this.sprite,
-       //   })
-       // );
-
-       // (this.scene as any).room.state.presences.set(
-       //   this.ClientID,
-       //   new Player({
-       //     sprite_fusion: this.sprite,
-       //     commandes: new Commandes(Aptitudes[this.sprite]["commandes"])
-       //   })
-       // );
-
-
-
-       this.setScale(1)
-     }, null, this);
+     if (detruireApres)
+     {
+       this.scene.time.delayedCall(20000, () => {
+         this.suivre = false
+         nouveauPilote.particules = false;
+         // (this.scene as any).enemies.remove(nouveauPilote)
+         (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
+         this.currentTarget = this;
+         this.changeInterfaceClient(this.sprite, true);
+         this.setScale(1)
+       }, null, this);
+     }
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
