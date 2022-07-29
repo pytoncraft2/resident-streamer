@@ -1,7 +1,7 @@
 export function fusion(personnage: any, input: any) {
   if (input.tab)
   {
-    if (!personnage.aObtenuUnBoss)
+    if (personnage.bossControllable.getLength() == 0)
     {
       personnage.fusionner = true
     }
@@ -9,11 +9,11 @@ export function fusion(personnage: any, input: any) {
     {
       console.log("A OBTENU UN BOSS!!!!!!!!!!")
       // this.suivre = false
+      // personnage.changeInterfaceClient('huzounet', false);
       const bossObtenu = personnage.bossControllable.getFirstAlive()
       bossObtenu.setScale(1)
       bossObtenu.body.setAllowGravity(true)
       bossObtenu.suivre = false;
-      // personnage.changeInterfaceClient(bossObtenu.sprite, true,  bossObtenu.ClientID);
       personnage.fusionAvecBoss(bossObtenu)
       // personnage.bossControllable.clear()
     }

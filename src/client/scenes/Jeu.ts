@@ -977,18 +977,19 @@ export default class Jeu extends Phaser.Scene {
               if (!value) (this as any)[`touche_${key}`].alpha = 0.2
               else (this as any)[`touche_${key}`].alpha = 1
               if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
+              console.log("COMMANDES !!!")
             }
 
-            if (list.presences[item].sprite_cible)
-            {
-              this.cameras.main.stopFollow();
-              this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.1, 190);  //
-            }
-            else
-            {
-              this.cameras.main.stopFollow();
-              this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
-            }
+            // if (list.presences[item].sprite_cible)
+            // {
+            //   this.cameras.main.stopFollow();
+            //   this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.1, 190);  //
+            // }
+            // else
+            // {
+            //   this.cameras.main.stopFollow();
+            //   this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
+            // }
           }
 
           if (list.presences[item].pieceCourante)

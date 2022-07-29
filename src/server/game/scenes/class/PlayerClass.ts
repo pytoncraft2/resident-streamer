@@ -63,9 +63,9 @@ import { DefautDirection } from "../Stats/Defaut"
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
-     this.scene.time.delayedCall(100, () => {
-       this.changeInterfaceClient(this.sprite, false);
-     }, null, this);
+     // this.scene.time.delayedCall(100, () => {
+     //   this.changeInterfaceClient(this.sprite, false);
+     // }, null, this);
 
 
      this.currentTarget = this
@@ -152,17 +152,16 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
 
-         if (!this.aObtenuUnBoss)
-         {
-           this.aObtenuUnBoss = true
+         // if (!this.aObtenuUnBoss)
+         // {
+           // this.aObtenuUnBoss = true
            this.recuperationObjetBoss(_e)
            this.bossControllable.add(_e)
-         }
-         else
-         {
-           console.log("ACTION NUMERO 2 !!!!!")
-           //@ts-ignore
-         }
+         // }
+         // else
+         // {
+           // console.log("ACTION NUMERO 2 !!!!!")
+         // }
 
         console.log("FUSION !!!!!!!!!!!!!!");
          // this.nouveauPilote(_e);
