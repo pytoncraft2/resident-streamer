@@ -1084,7 +1084,7 @@ export default class Jeu extends Phaser.Scene {
     ellipse_5_1.fillAlpha = 0.8;
     ellipse_5_1.isStroked = true;
     ellipse_5_1.lineWidth = 4;
-    ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, 879)
+    ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y + 25)
     this.playersRef[id].barre.destroy()
     this.playersRef[id].ellipse_5_1 = ellipse_5_1
     this.animationBoosFigurine = this.tweens.add({
@@ -1102,7 +1102,7 @@ export default class Jeu extends Phaser.Scene {
     this.emitter = particles.createEmitter({
       frame: 'blue',
       x: this.playersRef[id].getBottomCenter().x,
-      y: 879,
+      y: this.playersRef[id].getBottomCenter().y + 25,
       speedY: { min: -200, max: -400 },
       lifespan: 2000,
       scale: { start: 0.4, end: 0 },
