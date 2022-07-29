@@ -64,7 +64,7 @@ import { DefautDirection } from "../Stats/Defaut"
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
      this.scene.time.delayedCall(100, () => {
-       this.changeInterfaceClient(this.sprite);
+       // this.changeInterfaceClient(this.sprite);
      }, null, this);
 
 
@@ -273,6 +273,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.suivre = true
      this.setScale(0.2)
 
+     this.changeInterfaceClient(this.sprite);
      if (detruireApres)
      {
        this.scene.time.delayedCall(20000, () => {
@@ -281,7 +282,7 @@ import { DefautDirection } from "../Stats/Defaut"
          // (this.scene as any).enemies.remove(nouveauPilote)
          (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
          this.currentTarget = this;
-         // this.changeInterfaceClient(this.sprite, true);
+         this.changeInterfaceClient(this.sprite, true);
          this.aObtenuUnBoss = false
          this.setScale(1)
        }, null, this);
@@ -304,6 +305,7 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
+     console.log("------------------------CHANGEMENT INTERFACE-------------------------");
      // if (!(this.scene as any).room.boss[`${sprite}`])
      // {
        (this.scene as any).room.state.presences.set(
@@ -313,7 +315,7 @@ import { DefautDirection } from "../Stats/Defaut"
            commandes: new Commandes(Aptitudes[sprite]["commandes"]),
            sprite_cible: id_cible
          } : {
-           commandes: new Commandes(Aptitudes[sprite]["commandes"])
+           commandes: new Commandes(Aptitudes['manette']["commandes"])
          })
        );
      // }

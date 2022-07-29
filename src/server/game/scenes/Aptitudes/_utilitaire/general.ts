@@ -16,6 +16,7 @@ export function fusion(personnage: any, input: any) {
       bossObtenu.suivre = false;
       personnage.fusionAvecBoss(bossObtenu)
       personnage.fusionner = false
+      // personnage.changeInterfaceClient(`${bossObtenu.sprite}`);
       // personnage.bossControllable.clear()
     }
     input.tab = false;

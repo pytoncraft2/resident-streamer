@@ -729,8 +729,6 @@ export default class Jeu extends Phaser.Scene {
       room.onMessage("suppression", (objet: number) => {
         const cle = Object.entries(objet)[0][0];
         const id = Object.entries(objet)[0][1];
-        console.log("SUPPRESSOION")
-        console.log(objet);
         if (cle === "playersRef") (this as any)[cle][id].barre.destroy();
         (this as any)[cle][id].destroy(true);
 
