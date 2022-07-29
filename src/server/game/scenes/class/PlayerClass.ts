@@ -301,10 +301,8 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
-     console.log("_____________________");
-     console.log("CHANGEMENT INTERFACE!!");
-     if (!(this.scene as any).room.boss[`${sprite}`])
-     {
+     // if (!(this.scene as any).room.boss[`${sprite}`])
+     // {
        (this.scene as any).room.state.presences.set(
          this.ClientID,
          new Player( icon ? {
@@ -315,9 +313,7 @@ import { DefautDirection } from "../Stats/Defaut"
            commandes: new Commandes(Aptitudes[sprite]["commandes"])
          })
        );
-     }
-     console.log(sprite);
-     console.log("_____________________");
+     // }
    }
 
    respawn() {
