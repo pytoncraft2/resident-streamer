@@ -11,10 +11,12 @@ export function fusion(personnage: any, input: any) {
     {
       console.log("A OBTENU UN BOSS!!!!!!!!!!")
       // this.suivre = false
-      personnage.bossControllable.getChildren()[0].setScale(1)
-      personnage.bossControllable.getChildren()[0].body.setAllowGravity(true)
-      personnage.bossControllable.getChildren()[0].suivre = false;
-      personnage.fusionAvecBoss(personnage.bossControllable.getChildren()[0])
+      const bossObtenu = personnage.bossControllable.getFirstAlive()
+      bossObtenu.setScale(1)
+      bossObtenu.body.setAllowGravity(true)
+      bossObtenu.suivre = false;
+      personnage.changeInterfaceClient(bossObtenu.sprite, true,  bossObtenu.ClientID);
+      personnage.fusionAvecBoss(bossObtenu)
       // personnage.bossControllable.clear()
     }
     input.tab = false;
