@@ -278,7 +278,7 @@ import { DefautDirection } from "../Stats/Defaut"
          // (this.scene as any).enemies.remove(nouveauPilote)
          (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
          this.currentTarget = this;
-         this.changeInterfaceClient(this.sprite, true);
+         // this.changeInterfaceClient(this.sprite, true);
          this.aObtenuUnBoss = false
          this.setScale(1)
        }, null, this);
@@ -287,7 +287,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
   recuperationObjetBoss(_e: TJoueur) {
      _e.cible_courante = "enemies";
-     this.changeInterfaceClient(this.sprite);
+     // this.changeInterfaceClient(this.sprite);
      this.fusionner = false;
      // _e.animationBoosFigurine.remove()
      _e.nouveauPilote(this);
@@ -295,22 +295,29 @@ import { DefautDirection } from "../Stats/Defaut"
 
    fusionAvecBoss(_e: TJoueur) {
      _e.cible_courante = "enemies";
-     this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
+     // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
      this.fusionner = false;
      this.nouveauPilote(_e, true);
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
-     (this.scene as any).room.state.presences.set(
-       this.ClientID,
-       new Player( icon ? {
-         sprite_fusion: sprite,
-         commandes: new Commandes(Aptitudes[sprite]["commandes"]),
-         sprite_cible: id_cible
-       } : {
-         commandes: new Commandes(Aptitudes[sprite]["commandes"])
-       })
-     );
+     console.log("_____________________");
+     console.log("CHANGEMENT INTERFACE!!");
+     if (!(this.scene as any).room.boss[`${sprite}`])
+     {
+       (this.scene as any).room.state.presences.set(
+         this.ClientID,
+         new Player( icon ? {
+           sprite_fusion: sprite,
+           commandes: new Commandes(Aptitudes[sprite]["commandes"]),
+           sprite_cible: id_cible
+         } : {
+           commandes: new Commandes(Aptitudes[sprite]["commandes"])
+         })
+       );
+     }
+     console.log(sprite);
+     console.log("_____________________");
    }
 
    respawn() {

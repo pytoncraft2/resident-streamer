@@ -3,6 +3,7 @@ export function fusion(personnage: any, input: any) {
   {
     console.log("---------------------------------------------")
     console.log(personnage.aObtenuUnBoss)
+    personnage.changeInterfaceClient('huzounet', true,  personnage.ClientID);
     if (!personnage.aObtenuUnBoss)
     {
       personnage.fusionner = true
@@ -15,7 +16,6 @@ export function fusion(personnage: any, input: any) {
       bossObtenu.setScale(1)
       bossObtenu.body.setAllowGravity(true)
       bossObtenu.suivre = false;
-      personnage.changeInterfaceClient(bossObtenu.sprite, true,  bossObtenu.ClientID);
       personnage.fusionAvecBoss(bossObtenu)
       // personnage.bossControllable.clear()
     }
