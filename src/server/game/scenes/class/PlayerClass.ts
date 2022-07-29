@@ -13,6 +13,7 @@ import { DefautDirection } from "../Stats/Defaut"
    sprite: string
    particules: boolean
    animationBoosFigurine: any
+   aObtenuUnBoss: boolean = false
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    pieceCourante: string = 'hall'

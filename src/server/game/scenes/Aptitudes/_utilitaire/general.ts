@@ -1,7 +1,13 @@
 // import Ligne from "../../class/elements/Ligne";
 export function fusion(personnage: any, input: any) {
-  if (input.tab/* && personnage.bossControlable.getLength() == 1*/) {
-    personnage.fusionner = true
+  if (input.tab) {
+
+    if (!personnage.aObtenuUnBoss)
+    {
+      personnage.fusionner = true
+      personnage.aObtenuUnBoss = true
+    }
+
     // personnage.ligne = new Ligne(personnage.scene, closest(personnage, "enemies"), personnage, 0x00000, 300, `${(Math.random() + 1).toString(36).substring(7)}`)
     input.tab = false;
   }
