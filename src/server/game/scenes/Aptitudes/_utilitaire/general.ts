@@ -1,6 +1,8 @@
 export function fusion(personnage: any, input: any) {
   if (input.tab)
   {
+    console.log("---------------------------------------------")
+    console.log(personnage.aObtenuUnBoss)
     if (!personnage.aObtenuUnBoss)
     {
       personnage.fusionner = true
@@ -8,7 +10,12 @@ export function fusion(personnage: any, input: any) {
     else
     {
       console.log("A OBTENU UN BOSS!!!!!!!!!!")
+      // this.suivre = false
+      personnage.bossControllable.getChildren()[0].setScale(1)
+      personnage.bossControllable.getChildren()[0].body.setAllowGravity(true)
+      personnage.bossControllable.getChildren()[0].suivre = false;
       personnage.fusionAvecBoss(personnage.bossControllable.getChildren()[0])
+      // personnage.bossControllable.clear()
     }
     input.tab = false;
   }

@@ -12,7 +12,7 @@ import { DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
-   animationBoosFigurine: any
+   animationBossFigurine: any
    bossControllable: Phaser.GameObjects.Group
    aObtenuUnBoss: boolean = false
    gfx: Phaser.GameObjects.Graphics
@@ -279,6 +279,7 @@ import { DefautDirection } from "../Stats/Defaut"
          (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
          this.currentTarget = this;
          this.changeInterfaceClient(this.sprite, true);
+         this.aObtenuUnBoss = false
          this.setScale(1)
        }, null, this);
      }
@@ -288,7 +289,7 @@ import { DefautDirection } from "../Stats/Defaut"
      _e.cible_courante = "enemies";
      // this.changeInterfaceClient(this.sprite);
      this.fusionner = false;
-     _e.animationBoosFigurine.remove()
+     // _e.animationBoosFigurine.remove()
      _e.nouveauPilote(this);
    }
 
@@ -345,15 +346,15 @@ import { DefautDirection } from "../Stats/Defaut"
      }
      (this.body as any).setAllowGravity(false)
      this.setPushable(false);
-     this.animationBoosFigurine = this.scene.tweens.add({
-       targets: this,
-       y: "-=90",
-       alpha: 0.5,
-       ease: 'Sine.inOut',
-       yoyo: true,
-       duration: 1000,
-       repeat: -1
-     });
+     // this.animationBossFigurine = this.scene.tweens.add({
+     //   targets: this,
+     //   y: "-=90",
+     //   alpha: 0.5,
+     //   ease: 'Sine.inOut',
+     //   yoyo: true,
+     //   duration: 1000,
+     //   repeat: -1
+     // });
 
      console.log("ANIMATION BOSS VAINCU!!!!!!!!!!!!!!!!!!");
      // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: true }));
