@@ -590,30 +590,6 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
-    // this.cameras.main.fadeIn(2000);
-    // this.cameras.main.setZoom(0.1)
-
-    // this.cameras.main.on('camerapancomplete', () => {
-      // self.cameras.main.startFollow(self.fontaine1);
-
-
-
-    // var epic_musique = this.sound.add('epic_musique');
-
-		// epic_musique.play({
-			// loop: true
-		// });
-
-    // new Ligne(fakhear.scene, 600, 200, 0, 0, 140, 0, 0x1a65ac, 1, '12345')
-    // var r3 = this.add.line(600, 200, 0, 0, 140, 0, 0x7fff00, 1)
-
-    // const rectangle_2 = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
-    // rectangle_2.scaleX = 4.6929101228048555;
-    // rectangle_2.scaleY = 0.11649497828162556;
-    // rectangle_2.setOrigin(0, 0.5);
-    // rectangle_2.isFilled = true;
-    // rectangle_2.fillColor = 0x000000;
-
 
     const p1 = this.add.rectangle(1, 939, 128, 128);
     p1.scaleX = 14.993211052385613;
@@ -643,21 +619,6 @@ export default class Jeu extends Phaser.Scene {
         w: this.hall.displayWidth
       }
     }
-
-    // this.time.delayedCall(5000, () => {
-    //   // this.fade('bas_gauche')
-    //   this.cameras.main.pan(-900, -700, 2500);
-    //
-    // }, undefined, this);
-    //
-    // this.time.delayedCall(10000, () => {
-    //   this.fade('bas_droite')
-    // }, undefined, this);
-    // this.time.delayedCall(15000, () => {
-    //   this.fade('hall')
-    // }, undefined, this);
-
-
 
 		const self = this;
 		this.players = this.add.group()
@@ -755,15 +716,8 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
-    // this.minimap = this.cameras.add(-230, 200, 1700, 800).setZoom(0.17).setName('mini');
-    //@ts-ignore
-    // this.minimap.setAlpha(0.4)
-    // this.cameras.main.setAlpha(0.3)
-    // this.cameras.main.fadeFrom(1000, 255, 255, 255);
     this.cameras.main.centerOn(2800, 390)
-    // this.cameras.main.fadeO(2000)
     this.interface_joueur.setScrollFactor(0)
-
 
     var keyObj = this.input.keyboard.addKey('T');  // Get key object
     keyObj.on('down', function(this: any) {
@@ -774,8 +728,6 @@ export default class Jeu extends Phaser.Scene {
       this.cameras.main.setAlpha(1)
       this.minimap.setViewport(1140, 829, 800, 400).setZoom(0.07)
     }, this);
-
-
 
 	}
 
@@ -916,23 +868,6 @@ export default class Jeu extends Phaser.Scene {
           player.haut_milieu = haut_milieu;
           //@ts-ignore
           player.haut_droite = haut_droite;
-
-            // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
-            // console.log("WWW")
-            // this.cameras.main.startFollow(player);
-            // this.cameras.main.setBounds(0, 0, 720 * 2, 176);
-            // this.cameras.main.setBounds(0, y - 80, 9660, 2090)
-
-            // this.cameras.main.startFollow(player, false);  //
-
-
-
-            // this.cameras.main.setDeadzone(200, 200);
-
-            // this.cameras.main.setBounds(0, 0, this.hall.displayWidth, this.hall.displayHeight);
-            // },this);
-
-
           }
 
 
@@ -1005,17 +940,6 @@ export default class Jeu extends Phaser.Scene {
               if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
               console.log("COMMANDES !!!")
             }
-
-            // if (list.presences[item].sprite_cible)
-            // {
-            //   this.cameras.main.stopFollow();
-            //   this.cameras.main.startFollow(this.playersRef[list.presences[item].sprite_cible], false, 1, 0.1, 190);  //
-            // }
-            // else
-            // {
-            //   this.cameras.main.stopFollow();
-              // this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
-            // }
           }
           this.cameraDeplacement(this.playersRef[item], 'bas_gauche', 1851/2, 543)
           this.cameraDeplacement(this.playersRef[item], 'bas_milieu', 2791, 543)
@@ -1024,102 +948,6 @@ export default class Jeu extends Phaser.Scene {
           this.cameraDeplacement(this.playersRef[item], 'haut_gauche', 1851/2, -443)
           this.cameraDeplacement(this.playersRef[item], 'haut_milieu', 2791, -443)
           this.cameraDeplacement(this.playersRef[item], 'haut_droite', 4700, -443)
-
-          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_gauche, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          // {
-          //   if (this.bas_gauche.alpha)
-          //   {
-          //     this.bas_gauche.setAlpha(0)
-          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
-          //
-          //     // this.cameras.main.centerOn(0, 0);
-          //     this.cameras.main.pan(1851/2, 543, 1000, 'Sine.easeInOut');
-          //   }
-          // }
-          // else
-          // {
-          //   if (!this.bas_gauche.alpha) this.bas_gauche.setAlpha(1)
-          // }
-
-
-
-
-
-
-          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          // {
-          //   if (this.bas_milieu.alpha)
-          //   {
-          //     this.bas_milieu.setAlpha(0)
-          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
-          //
-          //     // this.cameras.main.centerOn(0, 0);
-          //     this.cameras.main.pan(2791, 543, 1000, 'Sine.easeInOut');
-          //   }
-          // }
-          // else
-          // {
-          //   if (!this.bas_milieu.alpha) this.bas_milieu.setAlpha(1)
-          // }
-
-
-
-
-
-
-          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_droite, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          // {
-          //   if (this.bas_droite.alpha)
-          //   {
-          //     this.bas_droite.setAlpha(0)
-          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
-          //
-          //     // this.cameras.main.centerOn(0, 0);
-          //     this.cameras.main.pan(4700, 543, 1000, 'Sine.easeInOut');
-          //   }
-          // }
-          // else
-          // {
-          //   if (!this.bas_droite.alpha) this.bas_droite.setAlpha(1)
-          // }
-
-
-
-//HAUT
-
-
-          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].haut_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          // {
-          //   if (this.haut_milieu.alpha)
-          //   {
-          //     this.haut_milieu.setAlpha(0)
-          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
-          //
-          //     // this.cameras.main.centerOn(0, 0);
-          //     this.cameras.main.pan(2791, -443, 1000, 'Sine.easeInOut');
-          //   }
-          // }
-          // else
-          // {
-          //   if (!this.haut_milieu.alpha) this.haut_milieu.setAlpha(1)
-          // }
-
-
-
-
-
-
-
-
-          // if (list.presences[item].pieceCourante)
-          // {
-          //   this.fade(list.presences[item].pieceCourante)
-          // }
-          // if () {
-
-          // Phaser.Geom.Rectangle.ContainsRect(this.rectangle_5_test, 4)
-            // this.rectangle_
-          // }
         }
       }
     })
@@ -1138,7 +966,6 @@ export default class Jeu extends Phaser.Scene {
     {
       if ((this as any)[emplacement].alpha)
       {
-        // (this as any)[emplacement].setAlpha(0)
         this.tweens.add({
           targets: (this as any)[emplacement],
           alpha: 0,
@@ -1159,30 +986,6 @@ export default class Jeu extends Phaser.Scene {
         });
       }
     }
-  }
-
-  fade(room: any) {
-    console.log(room)
-    // this.cameras.main.fadeOut(250, 0, 0, 0, (_camera: any, progress: any) => {
-    //   // this.player.canMove = false;
-    //   if (progress === 1) {
-    //     // Change camera boundaries when fade out complete.
-    //     this.cameras.main.setBounds(this.listCurrentRoom[room].w,
-    //       -1200,
-    //       2000,
-    //       945,
-    //       true);
-    //
-    //       // Fade back in with new boundareis.
-    //       this.cameras.main.fadeIn(500, 0, 0, 0, function(_camera: any, _progress: any) {
-    //       }, this);
-    //     }
-    //   }, this);
-    // this.time.delayedCall(5000, () => {
-  // this.cameras.main.pan(this.listCurrentRoom[room].w, -1000, 2500);
-// }, undefined, this);
-
-
   }
 
   animBombe(item: any, list: any) {
@@ -1228,7 +1031,6 @@ export default class Jeu extends Phaser.Scene {
   }
 
   animationBossKO(id: any) {
-    // this.playersRef[id].setDepth(0.1)
     const ellipse_5_1 = this.add.ellipse(280, 256, 128, 128);
     ellipse_5_1.scaleX = 0.9012990507210408;
     ellipse_5_1.scaleY = 0.21224071572889464;
@@ -1240,15 +1042,6 @@ export default class Jeu extends Phaser.Scene {
     ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y + 25)
     this.playersRef[id].barre.destroy()
     this.playersRef[id].ellipse_5_1 = ellipse_5_1
-    // this.animationBoosFigurine = this.tweens.add({
-    //   targets: this.playersRef[id],
-    //   y: "-=90",
-    //   alpha: 0.5,
-    //   ease: 'Sine.inOut',
-    //   yoyo: true,
-    //   duration: 1000,
-    //   repeat: -1
-    // });
 
     var particles = this.add.particles('flares');
 
