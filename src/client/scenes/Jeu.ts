@@ -444,19 +444,19 @@ export default class Jeu extends Phaser.Scene {
 		// cache_gauche_bas
 		const cache_gauche_bas = this.add.container(1836, 0);
 
-		// rectangle_5
-		const rectangle_5 = this.add.rectangle(-920, 483, 128, 128);
-		rectangle_5.scaleX = 14.296694695311434;
-		rectangle_5.scaleY = 7.392235139173692;
-		rectangle_5.isFilled = true;
-		rectangle_5.fillColor = 0;
-		rectangle_5.fillAlpha = 0.8;
-		cache_gauche_bas.add(rectangle_5);
+		// rectangle_5_test
+		const rectangle_5_test = this.add.rectangle(-920, 488, 128, 128);
+		rectangle_5_test.scaleX = 14.296694695311434;
+		rectangle_5_test.scaleY = 7.392235139173692;
+		rectangle_5_test.isFilled = true;
+		rectangle_5_test.fillColor = 0;
+		rectangle_5_test.fillAlpha = 0.8;
+		cache_gauche_bas.add(rectangle_5_test);
 
 		// text_7
 		const text_7 = this.add.text(-921, 481, "", {});
 		text_7.setOrigin(0.5, 0.5);
-		text_7.text = "BOSS MANETTMAN";
+		text_7.text = "BOSS MANETTMAN_";
 		text_7.setStyle({ "fontSize": "186px" });
 		cache_gauche_bas.add(text_7);
 
@@ -532,6 +532,7 @@ export default class Jeu extends Phaser.Scene {
 		this.description_commande_R = description_commande_R;
 		this.hall_1 = hall_1;
 		this.hall_2 = hall_2;
+		this.rectangle_5_test = rectangle_5_test;
 
 		this.events.emit("scene-awake");
 	}
@@ -571,6 +572,7 @@ export default class Jeu extends Phaser.Scene {
 	public description_commande_R!: Phaser.GameObjects.Text;
 	public hall_1!: Phaser.GameObjects.Image;
 	public hall_2!: Phaser.GameObjects.Image;
+	public rectangle_5_test!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -878,6 +880,7 @@ export default class Jeu extends Phaser.Scene {
 
           if (this.session === list.presenceList[idx]) {
 
+          // this.cameras.main.startFollow(player, false, 1, 0.1, 0, 190);  //
             (player as any).sprite_fusion = this.add
             .sprite(0, 45, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.3983080418637645, 0.3983080418637645);
@@ -888,6 +891,17 @@ export default class Jeu extends Phaser.Scene {
             .sprite(75, 80, `icons_atlas`, `icon_${sprite}`)
             .setScale(0.16275708974409425, 0.16275708974409425)
             this.interface_joueur.add(petitIconJoueur)
+
+
+          // var rect = new Phaser.Geom.Rectangle(-920, 483, 128, 128);
+          var rect = new Phaser.Geom.Rectangle(-20, 483, 128, 128);
+          Phaser.Geom.Rectangle.Scale(rect, 14.296694695311434, 7.392235139173692)
+
+          let graphics = this.add.graphics()
+          graphics.fillRectShape(rect);
+          //@ts-ignore
+          player.rect = rect;
+
 
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
@@ -986,14 +1000,36 @@ export default class Jeu extends Phaser.Scene {
             // else
             // {
             //   this.cameras.main.stopFollow();
-            //   this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
+              // this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
             // }
+          }
+
+          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].rect, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          {
+            if (this.rectangle_5_test.alpha)
+            {
+              this.rectangle_5_test.setAlpha(0)
+              console.log("CONTAIN")
+            }
+          }
+          else
+          {
+            if (!this.rectangle_5_test.alpha)
+            {
+              this.rectangle_5_test.setAlpha(1)
+              console.log("PAS ")
+            }
           }
 
           if (list.presences[item].pieceCourante)
           {
             this.fade(list.presences[item].pieceCourante)
           }
+          // if () {
+
+          // Phaser.Geom.Rectangle.ContainsRect(this.rectangle_5_test, 4)
+            // this.rectangle_
+          // }
         }
       }
     })

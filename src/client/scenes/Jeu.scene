@@ -835,10 +835,11 @@
                 {
                     "type": "Rectangle",
                     "id": "13878c00-2427-45b5-88d8-f61606cb1dfd",
-                    "label": "rectangle_5",
+                    "label": "rectangle_5_test",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": -920,
-                    "y": 483,
+                    "y": 488,
                     "scaleX": 14.296694695311434,
                     "scaleY": 7.392235139173692,
                     "isFilled": true,
@@ -856,7 +857,7 @@
                     "y": 481,
                     "originX": 0.5,
                     "originY": 0.5,
-                    "text": "BOSS MANETTMAN",
+                    "text": "BOSS MANETTMAN_",
                     "fontSize": "186px"
                 },
                 {
