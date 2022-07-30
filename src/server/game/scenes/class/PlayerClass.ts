@@ -291,7 +291,8 @@ import { DefautDirection } from "../Stats/Defaut"
 
   recuperationObjetBoss(_e: TJoueur) {
      _e.cible_courante = "enemies";
-     this.changeInterfaceClient(_e.sprite);
+     //change les commandes
+     this.changeInterfaceClient(_e.sprite, true);
      this.fusionner = false;
      // _e.animationBoosFigurine.remove()
      _e.nouveauPilote(this);
