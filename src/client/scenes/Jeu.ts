@@ -893,7 +893,7 @@ export default class Jeu extends Phaser.Scene {
             this.interface_joueur.add(petitIconJoueur)
 
 
-          // var rect = new Phaser.Geom.Rectangle(-920, 483, 128, 128);
+          //BAS
           var bas_gauche = new Phaser.Geom.Rectangle(-20, 20, 128, 128);
           Phaser.Geom.Rectangle.Scale(bas_gauche, 14.296694695311434, 7.392235139173692)
 
@@ -903,11 +903,21 @@ export default class Jeu extends Phaser.Scene {
           var bas_droite = new Phaser.Geom.Rectangle(3800, 20, 128, 128);
           Phaser.Geom.Rectangle.Scale(bas_droite, 14.296694695311434, 7.392235139173692)
 
-          // var rect = new Phaser.Geom.Rectangle(-20, 20, 128, 128);
-          // Phaser.Geom.Rectangle.Scale(rect, 14.296694695311434, 7.392235139173692)
+
+          //HAUT
+
+          var haut_gauche = new Phaser.Geom.Rectangle(-20, -940, 128, 128);
+          Phaser.Geom.Rectangle.Scale(haut_gauche, 14.296694695311434, 7.392235139173692)
+
+          var haut_milieu = new Phaser.Geom.Rectangle(1900, -940, 128, 128);
+          Phaser.Geom.Rectangle.Scale(haut_milieu, 14.296694695311434, 7.392235139173692)
+
+          var haut_droite = new Phaser.Geom.Rectangle(3800, -940, 128, 128);
+          Phaser.Geom.Rectangle.Scale(haut_droite, 14.296694695311434, 7.392235139173692)
+
 
           let graphics = this.add.graphics()
-          graphics.fillRectShape(bas_droite);
+          graphics.fillRectShape(haut_droite);
           graphics.fillStyle(0x000000, 0.5)
           // graphics.fillRectShape(bas_milieu);
           //@ts-ignore
