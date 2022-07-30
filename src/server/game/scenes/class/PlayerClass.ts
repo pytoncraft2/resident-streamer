@@ -316,7 +316,7 @@ import { DefautDirection } from "../Stats/Defaut"
            commandes: new Commandes(Aptitudes[sprite]["commandes"]),
            sprite_cible: id_cible
          } : {
-           commandes: new Commandes(Aptitudes['manette']["commandes"])
+           commandes: new Commandes(Aptitudes[sprite]["commandes"])
          })
        );
      // }
