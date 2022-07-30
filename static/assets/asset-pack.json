@@ -117,6 +117,21 @@
                 "key": "map_manetteman"
             },
             {
+                "url": "assets/mapbossfinal.png",
+                "type": "image",
+                "key": "mapbossfinal"
+            },
+            {
+                "url": "assets/mapstreamdeck.png",
+                "type": "image",
+                "key": "mapstreamdeck"
+            },
+            {
+                "url": "assets/maptwitchman2.png",
+                "type": "image",
+                "key": "maptwitchman2"
+            },
+            {
                 "atlasURL": "assets/osmosiscoop_atlas.json",
                 "textureURL": "assets/osmosiscoop_atlas.png",
                 "type": "atlas",

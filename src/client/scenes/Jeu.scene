@@ -56,7 +56,7 @@
             "scope": "PUBLIC",
             "components": [],
             "texture": {
-                "key": "map_hall0"
+                "key": "maptwitchman2"
             },
             "x": 922,
             "y": 489,
@@ -712,7 +712,7 @@
             "scope": "PUBLIC",
             "components": [],
             "texture": {
-                "key": "map_hall0"
+                "key": "mapstreamdeck"
             },
             "x": -24,
             "y": -504,
@@ -730,54 +730,6 @@
             "originX": 0.5,
             "originY": 0.5,
             "text": "HALL",
-            "fontSize": "29px"
-        },
-        {
-            "type": "Text",
-            "id": "8cf9935e-900b-48a8-9162-97643e6d752d",
-            "label": "text_3",
-            "components": [],
-            "x": 955,
-            "y": 95,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "BOSS 1",
-            "fontSize": "29px"
-        },
-        {
-            "type": "Text",
-            "id": "708f7b84-a65c-4f3b-8ed3-fd13ba6af99a",
-            "label": "text_4",
-            "components": [],
-            "x": 4656,
-            "y": 87,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "BOSS 2",
-            "fontSize": "29px"
-        },
-        {
-            "type": "Text",
-            "id": "b026d751-fe15-49e9-bccf-781e6c8c495a",
-            "label": "text_5",
-            "components": [],
-            "x": 953,
-            "y": -925,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "BOSS 3",
-            "fontSize": "29px"
-        },
-        {
-            "type": "Text",
-            "id": "f4adb92d-e351-4fb8-83c2-92c2ff00cd6c",
-            "label": "text_6",
-            "components": [],
-            "x": 4732,
-            "y": -906,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "BOSS 4",
             "fontSize": "29px"
         },
         {
@@ -884,6 +836,19 @@
                     "height": 128
                 }
             ]
+        },
+        {
+            "type": "Image",
+            "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
+            "label": "mapbossfinal",
+            "components": [],
+            "texture": {
+                "key": "mapbossfinal"
+            },
+            "x": 2714,
+            "y": -1488,
+            "scaleX": 2.709638779885017,
+            "scaleY": 2.709638779885017
         }
     ],
     "plainObjects": [],

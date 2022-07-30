@@ -42,7 +42,7 @@ export default class Jeu extends Phaser.Scene {
 		map_boss1.scaleY = 2.7049866133838867;
 
 		// map_boss2
-		const map_boss2 = this.add.image(922, 489, "map_hall0");
+		const map_boss2 = this.add.image(922, 489, "maptwitchman2");
 		map_boss2.scaleX = 2.90778858976818;
 		map_boss2.scaleY = 2.5991763141421007;
 
@@ -382,7 +382,7 @@ export default class Jeu extends Phaser.Scene {
 		hall_1.setOrigin(0, 0.5);
 
 		// hall_2
-		const hall_2 = this.add.image(-24, -504, "map_hall0");
+		const hall_2 = this.add.image(-24, -504, "mapstreamdeck");
 		hall_2.scaleX = 3.0088107725356585;
 		hall_2.scaleY = 2.634116448848351;
 		hall_2.setOrigin(0, 0.5);
@@ -392,30 +392,6 @@ export default class Jeu extends Phaser.Scene {
 		text_1.setOrigin(0.5, 0.5);
 		text_1.text = "HALL";
 		text_1.setStyle({ "fontSize": "29px" });
-
-		// text_3
-		const text_3 = this.add.text(955, 95, "", {});
-		text_3.setOrigin(0.5, 0.5);
-		text_3.text = "BOSS 1";
-		text_3.setStyle({ "fontSize": "29px" });
-
-		// text_4
-		const text_4 = this.add.text(4656, 87, "", {});
-		text_4.setOrigin(0.5, 0.5);
-		text_4.text = "BOSS 2";
-		text_4.setStyle({ "fontSize": "29px" });
-
-		// text_5
-		const text_5 = this.add.text(953, -925, "", {});
-		text_5.setOrigin(0.5, 0.5);
-		text_5.text = "BOSS 3";
-		text_5.setStyle({ "fontSize": "29px" });
-
-		// text_6
-		const text_6 = this.add.text(4732, -906, "", {});
-		text_6.setOrigin(0.5, 0.5);
-		text_6.text = "BOSS 4";
-		text_6.setStyle({ "fontSize": "29px" });
 
 		// bas_droite
 		const bas_droite = this.add.rectangle(4719, 480, 128, 128);
@@ -470,6 +446,11 @@ export default class Jeu extends Phaser.Scene {
 		bas_milieu.fillColor = 0;
 		bas_milieu.fillAlpha = 0.8;
 		cache_gauche_bas.add(bas_milieu);
+
+		// mapbossfinal
+		const mapbossfinal = this.add.image(2714, -1488, "mapbossfinal");
+		mapbossfinal.scaleX = 2.709638779885017;
+		mapbossfinal.scaleY = 2.709638779885017;
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
