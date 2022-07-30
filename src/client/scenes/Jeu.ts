@@ -1096,6 +1096,26 @@ export default class Jeu extends Phaser.Scene {
 
 
 
+          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_droite, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          {
+            if (this.bas_droite.alpha)
+            {
+              this.bas_droite.setAlpha(0)
+              // this.cameras.main.setBounds(0, 0, 1024, 2048);
+
+              // this.cameras.main.centerOn(0, 0);
+              this.cameras.main.pan(4700, 543, 1000, 'Sine.easeInOut');
+            }
+          }
+          else
+          {
+            if (!this.bas_droite.alpha) this.bas_droite.setAlpha(1)
+          }
+
+
+
+
+
 
 
 
