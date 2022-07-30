@@ -417,29 +417,29 @@ export default class Jeu extends Phaser.Scene {
 		text_6.text = "BOSS 4";
 		text_6.setStyle({ "fontSize": "29px" });
 
-		// rectangle_3
-		const rectangle_3 = this.add.rectangle(4719, 480, 128, 128);
-		rectangle_3.scaleX = 14.963289520849095;
-		rectangle_3.scaleY = 7.5675971976646315;
-		rectangle_3.isFilled = true;
-		rectangle_3.fillColor = 0;
-		rectangle_3.fillAlpha = 0.8;
+		// bas_droite
+		const bas_droite = this.add.rectangle(4719, 480, 128, 128);
+		bas_droite.scaleX = 14.963289520849095;
+		bas_droite.scaleY = 7.5675971976646315;
+		bas_droite.isFilled = true;
+		bas_droite.fillColor = 0;
+		bas_droite.fillAlpha = 0.8;
 
-		// rectangle_6
-		const rectangle_6 = this.add.rectangle(901, -507, 128, 128);
-		rectangle_6.scaleX = 14.495720628453666;
-		rectangle_6.scaleY = 7.392235139173692;
-		rectangle_6.isFilled = true;
-		rectangle_6.fillColor = 0;
-		rectangle_6.fillAlpha = 0.8;
+		// haut_gauche
+		const haut_gauche = this.add.rectangle(901, -507, 128, 128);
+		haut_gauche.scaleX = 14.495720628453666;
+		haut_gauche.scaleY = 7.392235139173692;
+		haut_gauche.isFilled = true;
+		haut_gauche.fillColor = 0;
+		haut_gauche.fillAlpha = 0.8;
 
-		// rectangle_8
-		const rectangle_8 = this.add.rectangle(2791, -495, 128, 128);
-		rectangle_8.scaleX = 15.03295778960996;
-		rectangle_8.scaleY = 7.562543454428133;
-		rectangle_8.isFilled = true;
-		rectangle_8.fillColor = 0;
-		rectangle_8.fillAlpha = 0.8;
+		// haut_milieu
+		const haut_milieu = this.add.rectangle(2791, -495, 128, 128);
+		haut_milieu.scaleX = 15.03295778960996;
+		haut_milieu.scaleY = 7.562543454428133;
+		haut_milieu.isFilled = true;
+		haut_milieu.fillColor = 0;
+		haut_milieu.fillAlpha = 0.8;
 
 		// cache_gauche_bas
 		const cache_gauche_bas = this.add.container(1836, 0);
@@ -474,14 +474,14 @@ export default class Jeu extends Phaser.Scene {
 		text_10.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_10);
 
-		// rectangle_7
-		const rectangle_7 = this.add.rectangle(2880, -496, 128, 128);
-		rectangle_7.scaleX = 15.03295778960996;
-		rectangle_7.scaleY = 7.562543454428133;
-		rectangle_7.isFilled = true;
-		rectangle_7.fillColor = 0;
-		rectangle_7.fillAlpha = 0.8;
-		cache_gauche_bas.add(rectangle_7);
+		// haut_droite
+		const haut_droite = this.add.rectangle(2880, -496, 128, 128);
+		haut_droite.scaleX = 15.03295778960996;
+		haut_droite.scaleY = 7.562543454428133;
+		haut_droite.isFilled = true;
+		haut_droite.fillColor = 0;
+		haut_droite.fillAlpha = 0.8;
+		cache_gauche_bas.add(haut_droite);
 
 		// text_9
 		const text_9 = this.add.text(2855, -532, "", {});
@@ -496,6 +496,15 @@ export default class Jeu extends Phaser.Scene {
 		text_11.text = "BOSS 1";
 		text_11.setStyle({ "fontSize": "210px" });
 		cache_gauche_bas.add(text_11);
+
+		// bas_milieu
+		const bas_milieu = this.add.rectangle(954, 478, 128, 128);
+		bas_milieu.scaleX = 14.210474232806575;
+		bas_milieu.scaleY = 7.392235139173692;
+		bas_milieu.isFilled = true;
+		bas_milieu.fillColor = 0;
+		bas_milieu.fillAlpha = 0.8;
+		cache_gauche_bas.add(bas_milieu);
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -532,7 +541,12 @@ export default class Jeu extends Phaser.Scene {
 		this.description_commande_R = description_commande_R;
 		this.hall_1 = hall_1;
 		this.hall_2 = hall_2;
+		this.bas_droite = bas_droite;
+		this.haut_gauche = haut_gauche;
+		this.haut_milieu = haut_milieu;
 		this.bas_gauche = bas_gauche;
+		this.haut_droite = haut_droite;
+		this.bas_milieu = bas_milieu;
 
 		this.events.emit("scene-awake");
 	}
@@ -572,7 +586,12 @@ export default class Jeu extends Phaser.Scene {
 	public description_commande_R!: Phaser.GameObjects.Text;
 	public hall_1!: Phaser.GameObjects.Image;
 	public hall_2!: Phaser.GameObjects.Image;
+	public bas_droite!: Phaser.GameObjects.Rectangle;
+	public haut_gauche!: Phaser.GameObjects.Rectangle;
+	public haut_milieu!: Phaser.GameObjects.Rectangle;
 	public bas_gauche!: Phaser.GameObjects.Rectangle;
+	public haut_droite!: Phaser.GameObjects.Rectangle;
+	public bas_milieu!: Phaser.GameObjects.Rectangle;
 
 	/* START-USER-CODE */
 
@@ -927,6 +946,13 @@ export default class Jeu extends Phaser.Scene {
           //@ts-ignore
           player.bas_droite = bas_droite;
 
+          //@ts-ignore
+          player.haut_gauche = haut_gauche;
+          //@ts-ignore
+          player.haut_milieu = haut_milieu;
+          //@ts-ignore
+          player.haut_droite = haut_droite;
+
             // this.input.keyboard.on('keydown-' + 'W', function (this: Phaser.Scene, event: Phaser.Events.EventEmitter) {
             // console.log("WWW")
             // this.cameras.main.startFollow(player);
@@ -1043,6 +1069,40 @@ export default class Jeu extends Phaser.Scene {
           {
             if (!this.bas_gauche.alpha) this.bas_gauche.setAlpha(1)
           }
+
+
+
+
+
+
+          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          {
+            if (this.bas_milieu.alpha)
+            {
+              this.bas_milieu.setAlpha(0)
+              // this.cameras.main.setBounds(0, 0, 1024, 2048);
+
+              // this.cameras.main.centerOn(0, 0);
+              this.cameras.main.pan(2791, 543, 2000);
+            }
+          }
+          else
+          {
+            if (!this.bas_milieu.alpha) this.bas_milieu.setAlpha(1)
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           // if (list.presences[item].pieceCourante)
           // {

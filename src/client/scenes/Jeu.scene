@@ -783,7 +783,8 @@
         {
             "type": "Rectangle",
             "id": "03652a60-a70d-4fb8-a223-5ad610abfdf6",
-            "label": "rectangle_3",
+            "label": "bas_droite",
+            "scope": "PUBLIC",
             "components": [],
             "x": 4719,
             "y": 480,
@@ -798,7 +799,8 @@
         {
             "type": "Rectangle",
             "id": "e0b65d47-20e8-4497-a13e-482cedbe4cea",
-            "label": "rectangle_6",
+            "label": "haut_gauche",
+            "scope": "PUBLIC",
             "components": [],
             "x": 901,
             "y": -507,
@@ -813,7 +815,8 @@
         {
             "type": "Rectangle",
             "id": "e752d548-b54b-415d-acd2-2526513620aa",
-            "label": "rectangle_8",
+            "label": "haut_milieu",
+            "scope": "PUBLIC",
             "components": [],
             "x": 2791,
             "y": -495,
@@ -887,7 +890,8 @@
                 {
                     "type": "Rectangle",
                     "id": "ee378e81-8e31-4870-8a3a-3f665c2d232e",
-                    "label": "rectangle_7",
+                    "label": "haut_droite",
+                    "scope": "PUBLIC",
                     "components": [],
                     "x": 2880,
                     "y": -496,
@@ -922,6 +926,22 @@
                     "originY": 0.5,
                     "text": "BOSS 1",
                     "fontSize": "210px"
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "f752ca8d-0430-46eb-a3c0-e8ad0bd84f38",
+                    "label": "bas_milieu",
+                    "scope": "PUBLIC",
+                    "components": [],
+                    "x": 954,
+                    "y": 478,
+                    "scaleX": 14.210474232806575,
+                    "scaleY": 7.392235139173692,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.8,
+                    "width": 128,
+                    "height": 128
                 }
             ]
         }
