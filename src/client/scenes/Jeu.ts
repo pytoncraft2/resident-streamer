@@ -900,10 +900,10 @@ export default class Jeu extends Phaser.Scene {
           Phaser.Geom.Rectangle.Scale(haut_droite, 14.296694695311434, 7.392235139173692)
 
 
-          // let graphics = this.add.graphics()
+          let graphics = this.add.graphics()
           // graphics.fillRectShape(bas_droite);
           // graphics.fillStyle(0x000000, 0.5)
-          // graphics.fillRectShape(bas_milieu);
+          graphics.fillRectShape(bas_milieu);
           //@ts-ignore
           player.bas_gauche = bas_gauche;
           //@ts-ignore
@@ -1135,7 +1135,9 @@ export default class Jeu extends Phaser.Scene {
 	}
 
   cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 700, animation: string = 'Sine.easeInOut') {
-    if(Phaser.Geom.Rectangle.ContainsRect(joueur[emplacement], joueur.getBounds()))
+    // if(Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], joueur.getBounds()))
+    if(Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], new Phaser.Geom.Point(joueur.x, joueur.y + 100)))
+    // new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)
     {
       if ((this as any)[emplacement].alpha)
       {
