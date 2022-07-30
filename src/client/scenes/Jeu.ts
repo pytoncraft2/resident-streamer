@@ -419,7 +419,7 @@ export default class Jeu extends Phaser.Scene {
 
 		// bas_droite
 		const bas_droite = this.add.rectangle(4719, 480, 128, 128);
-		bas_droite.scaleX = 14.963289520849095;
+		bas_droite.scaleX = 15.168831928777566;
 		bas_droite.scaleY = 7.5675971976646315;
 		bas_droite.isFilled = true;
 		bas_droite.fillColor = 0;
@@ -446,33 +446,12 @@ export default class Jeu extends Phaser.Scene {
 
 		// bas_gauche
 		const bas_gauche = this.add.rectangle(-920, 488, 128, 128);
-		bas_gauche.scaleX = 14.296694695311434;
+		bas_gauche.scaleX = 14.332672621910074;
 		bas_gauche.scaleY = 7.392235139173692;
 		bas_gauche.isFilled = true;
 		bas_gauche.fillColor = 0;
 		bas_gauche.fillAlpha = 0.8;
 		cache_gauche_bas.add(bas_gauche);
-
-		// text_7
-		const text_7 = this.add.text(-921, 481, "", {});
-		text_7.setOrigin(0.5, 0.5);
-		text_7.text = "BOSS MANETTMAN";
-		text_7.setStyle({ "fontSize": "186px" });
-		cache_gauche_bas.add(text_7);
-
-		// text_8
-		const text_8 = this.add.text(-930, -475, "", {});
-		text_8.setOrigin(0.5, 0.5);
-		text_8.text = "BOSS TWITCHMAN";
-		text_8.setStyle({ "fontSize": "210px" });
-		cache_gauche_bas.add(text_8);
-
-		// text_10
-		const text_10 = this.add.text(909, -506, "", {});
-		text_10.setOrigin(0.5, 0.5);
-		text_10.text = "BOSS FINAL";
-		text_10.setStyle({ "fontSize": "210px" });
-		cache_gauche_bas.add(text_10);
 
 		// haut_droite
 		const haut_droite = this.add.rectangle(2880, -496, 128, 128);
@@ -483,24 +462,10 @@ export default class Jeu extends Phaser.Scene {
 		haut_droite.fillAlpha = 0.8;
 		cache_gauche_bas.add(haut_droite);
 
-		// text_9
-		const text_9 = this.add.text(2855, -532, "", {});
-		text_9.setOrigin(0.5, 0.5);
-		text_9.text = "BOSS TROLL";
-		text_9.setStyle({ "fontSize": "210px" });
-		cache_gauche_bas.add(text_9);
-
-		// text_11
-		const text_11 = this.add.text(2881, 490, "", {});
-		text_11.setOrigin(0.5, 0.5);
-		text_11.text = "BOSS 1";
-		text_11.setStyle({ "fontSize": "210px" });
-		cache_gauche_bas.add(text_11);
-
 		// bas_milieu
 		const bas_milieu = this.add.rectangle(954, 478, 128, 128);
-		bas_milieu.scaleX = 14.210474232806575;
-		bas_milieu.scaleY = 7.392235139173692;
+		bas_milieu.scaleX = 14.756294006927739;
+		bas_milieu.scaleY = 7.474275561173832;
 		bas_milieu.isFilled = true;
 		bas_milieu.fillColor = 0;
 		bas_milieu.fillAlpha = 0.8;
@@ -935,9 +900,9 @@ export default class Jeu extends Phaser.Scene {
           Phaser.Geom.Rectangle.Scale(haut_droite, 14.296694695311434, 7.392235139173692)
 
 
-          let graphics = this.add.graphics()
-          graphics.fillRectShape(haut_droite);
-          graphics.fillStyle(0x000000, 0.5)
+          // let graphics = this.add.graphics()
+          // graphics.fillRectShape(bas_droite);
+          // graphics.fillStyle(0x000000, 0.5)
           // graphics.fillRectShape(bas_milieu);
           //@ts-ignore
           player.bas_gauche = bas_gauche;
@@ -1169,8 +1134,8 @@ export default class Jeu extends Phaser.Scene {
 		})
 	}
 
-  cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 1000, animation: string = 'Sine.easeInOut') {
-    if(Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], new Phaser.Geom.Point(joueur.x, joueur.y)))
+  cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 700, animation: string = 'Sine.easeInOut') {
+    if(Phaser.Geom.Rectangle.ContainsRect(joueur[emplacement], joueur.getBounds()))
     {
       if ((this as any)[emplacement].alpha)
       {
