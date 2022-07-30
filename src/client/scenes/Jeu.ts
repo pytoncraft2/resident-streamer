@@ -589,7 +589,7 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
-    this.cameras.main.fadeIn(2000);
+    // this.cameras.main.fadeIn(2000);
     // this.cameras.main.setZoom(0.1)
 
     // this.cameras.main.on('camerapancomplete', () => {
@@ -754,8 +754,24 @@ export default class Jeu extends Phaser.Scene {
 		})
 
     //@ts-ignore
-    this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
+    // this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
+    this.minimap = this.cameras.add(-230, 200, 1700, 800).setZoom(0.17).setName('mini');
+    //@ts-ignore
+    // this.minimap.setAlpha(0.4)
+    // this.cameras.main.setAlpha(0.3)
+    // this.cameras.main.fadeFrom(1000, 255, 255, 255);
+    this.cameras.main.centerOn(2800, 390)
+    // this.cameras.main.fadeO(2000)
     this.interface_joueur.setScrollFactor(0)
+
+
+    var keyObj = this.input.keyboard.addKey('T');  // Get key object
+    keyObj.on('down', function(this: any) {
+      this.cameras.main.setAlpha(0.1)
+    }, this);
+    keyObj.on('up', function(this: any) {
+      this.cameras.main.setAlpha(1)
+    }, this);
 
 
 
