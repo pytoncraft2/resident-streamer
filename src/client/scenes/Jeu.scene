@@ -13,6 +13,19 @@
     },
     "displayList": [
         {
+            "type": "Image",
+            "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
+            "label": "mapbossfinal",
+            "components": [],
+            "texture": {
+                "key": "mapbossfinal"
+            },
+            "x": 2714,
+            "y": -491,
+            "scaleX": 2.709638779885017,
+            "scaleY": 2.709638779885017
+        },
+        {
             "type": "Text",
             "id": "a52b5bc6-8b5c-4ddb-bae9-0cbeae3e836e",
             "label": "text",
@@ -836,19 +849,6 @@
                     "height": 128
                 }
             ]
-        },
-        {
-            "type": "Image",
-            "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
-            "label": "mapbossfinal",
-            "components": [],
-            "texture": {
-                "key": "mapbossfinal"
-            },
-            "x": 2714,
-            "y": -1488,
-            "scaleX": 2.709638779885017,
-            "scaleY": 2.709638779885017
         }
     ],
     "plainObjects": [],

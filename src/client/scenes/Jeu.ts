@@ -25,6 +25,11 @@ export default class Jeu extends Phaser.Scene {
 
 	editorCreate(): void {
 
+		// mapbossfinal
+		const mapbossfinal = this.add.image(2714, -491, "mapbossfinal");
+		mapbossfinal.scaleX = 2.709638779885017;
+		mapbossfinal.scaleY = 2.709638779885017;
+
 		// text
 		const text = this.add.text(2751, 447, "", {});
 		text.text = "Jeu";
@@ -446,11 +451,6 @@ export default class Jeu extends Phaser.Scene {
 		bas_milieu.fillColor = 0;
 		bas_milieu.fillAlpha = 0.8;
 		cache_gauche_bas.add(bas_milieu);
-
-		// mapbossfinal
-		const mapbossfinal = this.add.image(2714, -1488, "mapbossfinal");
-		mapbossfinal.scaleX = 2.709638779885017;
-		mapbossfinal.scaleY = 2.709638779885017;
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
