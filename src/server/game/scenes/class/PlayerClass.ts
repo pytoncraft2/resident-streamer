@@ -273,7 +273,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.suivre = true
      this.setScale(0.2)
 
-     this.changeInterfaceClient(this.sprite);
+     // this.changeInterfaceClient(this.sprite, true);
      if (detruireApres)
      {
        this.scene.time.delayedCall(20000, () => {
@@ -291,7 +291,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
   recuperationObjetBoss(_e: TJoueur) {
      _e.cible_courante = "enemies";
-     // this.changeInterfaceClient(this.sprite);
+     this.changeInterfaceClient(_e.sprite);
      this.fusionner = false;
      // _e.animationBoosFigurine.remove()
      _e.nouveauPilote(this);
