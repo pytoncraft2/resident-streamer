@@ -1114,8 +1114,24 @@ export default class Jeu extends Phaser.Scene {
 
 
 
+//HAUT
 
 
+          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].haut_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          {
+            if (this.haut_milieu.alpha)
+            {
+              this.haut_milieu.setAlpha(0)
+              // this.cameras.main.setBounds(0, 0, 1024, 2048);
+
+              // this.cameras.main.centerOn(0, 0);
+              this.cameras.main.pan(2791, -443, 1000, 'Sine.easeInOut');
+            }
+          }
+          else
+          {
+            if (!this.haut_milieu.alpha) this.haut_milieu.setAlpha(1)
+          }
 
 
 
@@ -1145,6 +1161,24 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 	}
+
+  cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 1000, animation: string = 'Sine.easeInOut') {
+    if(Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], new Phaser.Geom.Point(joueur.x, joueur.y)))
+    {
+      if ((this as any)[emplacement].alpha)
+      {
+        (this as any)[emplacement].setAlpha(0)
+        // this.cameras.main.setBounds(0, 0, 1024, 2048);
+
+        // this.cameras.main.centerOn(0, 0);
+        this.cameras.main.pan(x, y, temps, animation);
+      }
+    }
+    else
+    {
+      if (!(this as any)[emplacement].alpha) (this as any)[emplacement].setAlpha(1)
+    }
+  }
 
   fade(room: any) {
     console.log(room)
