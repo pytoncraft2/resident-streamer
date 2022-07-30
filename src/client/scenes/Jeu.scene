@@ -835,7 +835,7 @@
                 {
                     "type": "Rectangle",
                     "id": "13878c00-2427-45b5-88d8-f61606cb1dfd",
-                    "label": "rectangle_5_test",
+                    "label": "bas_gauche",
                     "scope": "PUBLIC",
                     "components": [],
                     "x": -920,
@@ -857,7 +857,7 @@
                     "y": 481,
                     "originX": 0.5,
                     "originY": 0.5,
-                    "text": "BOSS MANETTMAN_",
+                    "text": "BOSS MANETTMAN",
                     "fontSize": "186px"
                 },
                 {
