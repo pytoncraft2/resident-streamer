@@ -768,7 +768,7 @@ export default class Jeu extends Phaser.Scene {
     var keyObj = this.input.keyboard.addKey('T');  // Get key object
     keyObj.on('down', function(this: any) {
       this.cameras.main.setAlpha(0.1)
-      this.minimap.setViewport(-230, 200, 1700, 800).setZoom(0.3)
+      this.minimap.setViewport(-830, 200, 2700, 800).setZoom(0.3)
     }, this);
     keyObj.on('up', function(this: any) {
       this.cameras.main.setAlpha(1)
