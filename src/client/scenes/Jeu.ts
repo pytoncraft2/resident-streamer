@@ -1062,7 +1062,7 @@ export default class Jeu extends Phaser.Scene {
               // this.cameras.main.setBounds(0, 0, 1024, 2048);
 
               // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(1851/2, 543, 2000);
+              this.cameras.main.pan(1851/2, 543, 1000, 'Sine.easeInOut');
             }
           }
           else
@@ -1083,7 +1083,7 @@ export default class Jeu extends Phaser.Scene {
               // this.cameras.main.setBounds(0, 0, 1024, 2048);
 
               // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(2791, 543, 2000);
+              this.cameras.main.pan(2791, 543, 1000, 'Sine.easeInOut');
             }
           }
           else
