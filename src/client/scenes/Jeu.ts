@@ -1053,85 +1053,92 @@ export default class Jeu extends Phaser.Scene {
               // this.cameras.main.startFollow(this.playersRef[item], false, 1, 0.1, 190);  //
             // }
           }
+          this.cameraDeplacement(this.playersRef[item], 'bas_gauche', 1851/2, 543)
+          this.cameraDeplacement(this.playersRef[item], 'bas_milieu', 2791, 543)
+          this.cameraDeplacement(this.playersRef[item], 'bas_droite', 4700, 543)
 
-          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_gauche, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          {
-            if (this.bas_gauche.alpha)
-            {
-              this.bas_gauche.setAlpha(0)
-              // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          this.cameraDeplacement(this.playersRef[item], 'haut_gauche', 1851/2, -443)
+          this.cameraDeplacement(this.playersRef[item], 'haut_milieu', 2791, -443)
+          this.cameraDeplacement(this.playersRef[item], 'haut_droite', 4700, -443)
 
-              // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(1851/2, 543, 1000, 'Sine.easeInOut');
-            }
-          }
-          else
-          {
-            if (!this.bas_gauche.alpha) this.bas_gauche.setAlpha(1)
-          }
-
-
-
-
-
-
-          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          {
-            if (this.bas_milieu.alpha)
-            {
-              this.bas_milieu.setAlpha(0)
-              // this.cameras.main.setBounds(0, 0, 1024, 2048);
-
-              // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(2791, 543, 1000, 'Sine.easeInOut');
-            }
-          }
-          else
-          {
-            if (!this.bas_milieu.alpha) this.bas_milieu.setAlpha(1)
-          }
+          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_gauche, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          // {
+          //   if (this.bas_gauche.alpha)
+          //   {
+          //     this.bas_gauche.setAlpha(0)
+          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          //
+          //     // this.cameras.main.centerOn(0, 0);
+          //     this.cameras.main.pan(1851/2, 543, 1000, 'Sine.easeInOut');
+          //   }
+          // }
+          // else
+          // {
+          //   if (!this.bas_gauche.alpha) this.bas_gauche.setAlpha(1)
+          // }
 
 
 
 
 
 
-          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_droite, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          {
-            if (this.bas_droite.alpha)
-            {
-              this.bas_droite.setAlpha(0)
-              // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          // {
+          //   if (this.bas_milieu.alpha)
+          //   {
+          //     this.bas_milieu.setAlpha(0)
+          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          //
+          //     // this.cameras.main.centerOn(0, 0);
+          //     this.cameras.main.pan(2791, 543, 1000, 'Sine.easeInOut');
+          //   }
+          // }
+          // else
+          // {
+          //   if (!this.bas_milieu.alpha) this.bas_milieu.setAlpha(1)
+          // }
 
-              // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(4700, 543, 1000, 'Sine.easeInOut');
-            }
-          }
-          else
-          {
-            if (!this.bas_droite.alpha) this.bas_droite.setAlpha(1)
-          }
+
+
+
+
+
+          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].bas_droite, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          // {
+          //   if (this.bas_droite.alpha)
+          //   {
+          //     this.bas_droite.setAlpha(0)
+          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          //
+          //     // this.cameras.main.centerOn(0, 0);
+          //     this.cameras.main.pan(4700, 543, 1000, 'Sine.easeInOut');
+          //   }
+          // }
+          // else
+          // {
+          //   if (!this.bas_droite.alpha) this.bas_droite.setAlpha(1)
+          // }
 
 
 
 //HAUT
 
 
-          if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].haut_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
-          {
-            if (this.haut_milieu.alpha)
-            {
-              this.haut_milieu.setAlpha(0)
-              // this.cameras.main.setBounds(0, 0, 1024, 2048);
-
-              // this.cameras.main.centerOn(0, 0);
-              this.cameras.main.pan(2791, -443, 1000, 'Sine.easeInOut');
-            }
-          }
-          else
-          {
-            if (!this.haut_milieu.alpha) this.haut_milieu.setAlpha(1)
-          }
+          // if(Phaser.Geom.Rectangle.ContainsPoint(this.playersRef[item].haut_milieu, new Phaser.Geom.Point(this.playersRef[item].x, this.playersRef[item].y)))
+          // {
+          //   if (this.haut_milieu.alpha)
+          //   {
+          //     this.haut_milieu.setAlpha(0)
+          //     // this.cameras.main.setBounds(0, 0, 1024, 2048);
+          //
+          //     // this.cameras.main.centerOn(0, 0);
+          //     this.cameras.main.pan(2791, -443, 1000, 'Sine.easeInOut');
+          //   }
+          // }
+          // else
+          // {
+          //   if (!this.haut_milieu.alpha) this.haut_milieu.setAlpha(1)
+          // }
 
 
 
