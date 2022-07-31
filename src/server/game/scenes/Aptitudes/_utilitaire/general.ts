@@ -9,6 +9,9 @@ export function fusion(personnage: any, input: any) {
       //un boss obtenu
         // personnage.bossControllable.getFirst()
         //fusion possible
+          // fusionAvecBoss(ennemieProche, personnage)
+          fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
+
     }
     else
     {
@@ -20,6 +23,7 @@ export function fusion(personnage: any, input: any) {
         {
           //VAINCU
           recuperationObjetBoss(ennemieProche, personnage)
+          personnage.bossControllable.add(ennemieProche)
           // fusionAvecBoss(ennemieProche, personnage)
             //
         }
@@ -41,8 +45,11 @@ function recuperationObjetBoss(ennemie: any, joueur) {
   ennemie.setScale(0.2)
 }
 
-function fusionAvecBoss(ennemie: TJoueur, joueur) {
+function fusionAvecBoss(ennemie: any, joueur) {
    ennemie.cible_courante = "enemies";
+   ennemie.currentTarget = ennemie
+   ennemie.suivre = false
+   ennemie.setScale(1)
    joueur.currentTarget = ennemie
    joueur.suivre = true
    joueur.setScale(0.2)
