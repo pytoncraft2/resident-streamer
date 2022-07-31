@@ -19,8 +19,8 @@ export function fusion(personnage: any, input: any) {
         if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
         {
           //VAINCU
-          // recuperationObjetBoss(ennemieProche, personnage)
-          fusionAvecBoss(ennemieProche, personnage)
+          recuperationObjetBoss(ennemieProche, personnage)
+          // fusionAvecBoss(ennemieProche, personnage)
             //
         }
         else
@@ -35,7 +35,10 @@ export function fusion(personnage: any, input: any) {
   }
 }
 
-function recuperationObjetBoss(ennemie: TJoueur, joueur) {
+function recuperationObjetBoss(ennemie: any, joueur) {
+  ennemie.currentTarget = joueur
+  ennemie.suivre = true
+  ennemie.setScale(0.2)
 }
 
 function fusionAvecBoss(ennemie: TJoueur, joueur) {
@@ -47,9 +50,9 @@ function fusionAvecBoss(ennemie: TJoueur, joueur) {
 
 function nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
    // nouveauPilote.particules = true;
-   this.currentTarget = nouveauPilote
-   this.suivre = true
-   this.setScale(0.2)
+   this.currentTarget = nouveauPilote;
+   this.suivre = true;
+   this.setScale(0.2);
 
    // this.changeInterfaceClient(this.sprite, true);
    // if (detruireApres)
