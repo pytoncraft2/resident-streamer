@@ -157,8 +157,8 @@ import { DefautDirection } from "../Stats/Defaut"
            // this.aObtenuUnBoss = true
            // if (true)
            // {
-             this.bossControllable.add(_e)
              this.recuperationObjetBoss(_e)
+             this.bossControllable.add(_e)
              this.fusionner = false;
            // }
          // }
@@ -304,24 +304,7 @@ import { DefautDirection } from "../Stats/Defaut"
      _e.cible_courante = "enemies";
      // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
      this.fusionner = false;
-
-     this.currentTarget = _e
-     this.suivre = true
-     this.setScale(0.2)
-
-     this.scene.time.delayedCall(20000, () => {
-       this.suivre = false;
-       // nouveauPilote.particules = false;
-       // (this.scene as any).enemies.remove(nouveauPilote)
-       (this.scene as any).suppressionJoueur(_e, true, _e.ClientID)
-       this.currentTarget = this;
-       this.changeInterfaceClient(this.sprite, true);
-       // this.aObtenuUnBoss = false
-       this.setScale(1)
-     }, null, this);
-
-
-     // this.nouveauPilote(_e, true);
+     this.nouveauPilote(_e, true);
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
