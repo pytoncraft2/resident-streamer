@@ -130,20 +130,19 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         // if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
-         //   if (_e.vie <= 0) {
-         //
-         //     _e.vie = 10
-         //
-         //     this.nouveauPilote(_e);
-         //     // (this.scene as any).players.add(_e);
-         //   }
-         //   else
-         //   {
-         //   _e.dommage(1)
-         //   }
-         //
-         // }
+         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
+           if (_e.vie <= 0) {
+
+             _e.vie = 10
+
+             // this.nouveauPilote(_e);
+             // (this.scene as any).players.add(_e);
+           }
+           else
+           {
+           _e.dommage(1)
+           }
+         }
        }
 
        if (this.soigne) {
@@ -158,7 +157,6 @@ import { DefautDirection } from "../Stats/Defaut"
            // if (true)
            // {
              this.recuperationObjetBoss(_e)
-             this.bossControllable.add(_e)
              this.fusionner = false;
            // }
          // }
@@ -290,8 +288,9 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
   recuperationObjetBoss(_e: TJoueur) {
+       this.bossControllable.add(_e)
     console.log("RECUPERATION OBJET BOSS")
-     _e.cible_courante = "enemies";
+     // _e.cible_courante = "enemies";
      //change les commandes
      this.changeInterfaceClient(_e.sprite, true);
      // this.fusionner = false;
@@ -301,7 +300,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
    fusionAvecBoss(_e: TJoueur) {
     console.log("FUSION AVEC BOSS")
-     _e.cible_courante = "enemies";
+     // _e.cible_courante = "enemies";
      // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
      this.fusionner = false;
      this.nouveauPilote(_e, true);
