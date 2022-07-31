@@ -130,20 +130,20 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
-           if (_e.vie <= 0) {
-
-             _e.vie = 10
-
-             this.nouveauPilote(_e);
-             // (this.scene as any).players.add(_e);
-           }
-           else
-           {
-           _e.dommage(1)
-           }
-
-         }
+         // if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
+         //   if (_e.vie <= 0) {
+         //
+         //     _e.vie = 10
+         //
+         //     this.nouveauPilote(_e);
+         //     // (this.scene as any).players.add(_e);
+         //   }
+         //   else
+         //   {
+         //   _e.dommage(1)
+         //   }
+         //
+         // }
        }
 
        if (this.soigne) {
@@ -155,12 +155,12 @@ import { DefautDirection } from "../Stats/Defaut"
          // if (!this.aObtenuUnBoss)
          // {
            // this.aObtenuUnBoss = true
-           if ((this.scene as any).room.boss[`${_e.sprite}`].vaincu)
-           {
+           // if (true)
+           // {
              this.recuperationObjetBoss(_e)
              this.bossControllable.add(_e)
-           }
-           this.fusionner = false;
+             this.fusionner = false;
+           // }
          // }
          // else
          // {
