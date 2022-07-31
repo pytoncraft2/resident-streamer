@@ -156,7 +156,6 @@ import { DefautDirection } from "../Stats/Defaut"
            // this.aObtenuUnBoss = true
            if ((this.scene as any).room.boss[`${_e.sprite}`].vaincu)
            {
-             this.recuperationObjetBoss(_e)
            }
          }
          // else
@@ -262,51 +261,6 @@ import { DefautDirection } from "../Stats/Defaut"
          this.vie -= puissance
        }
      }
-   }
-
-   nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
-     // nouveauPilote.particules = true;
-     this.currentTarget = nouveauPilote
-     this.suivre = true
-     this.setScale(0.2)
-     // nouveauPilote.setAlpha(0.1);
-     //
-     // // this.changeInterfaceClient(this.sprite, true);
-     // if (detruireApres)
-     // {
-     //   this.scene.time.delayedCall(5000, () => {
-     //     this.suivre = false
-     //     // nouveauPilote.particules = false;
-     //     // (this.scene as any).enemies.remove(nouveauPilote)
-     //     // this.bossControllable.remove(nouveauPilote);
-     //     console.log("SPRITE ??????????????????????????")
-     //     // nouveauPilote.setTint(0xff0000)
-     //     // (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
-     //     // this.currentTarget = this;
-     //     // this.changeInterfaceClient(this.sprite, true);
-     //     this.aObtenuUnBoss = false
-     //     this.setScale(1)
-     //   }, null, this);
-     // }
-   }
-
-  recuperationObjetBoss(_e: TJoueur) {
-       this.bossControllable.add(_e)
-    console.log("RECUPERATION OBJET BOSS")
-     // _e.cible_courante = "enemies";
-     //change les commandes
-     this.changeInterfaceClient(_e.sprite, true);
-     // this.fusionner = false;
-     // _e.animationBoosFigurine.remove()
-     _e.nouveauPilote(this);
-   }
-
-   fusionAvecBoss(_e: TJoueur) {
-    console.log("FUSION AVEC BOSS")
-     _e.cible_courante = "enemies";
-     // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
-     this.fusionner = false;
-     this.nouveauPilote(_e, true);
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
