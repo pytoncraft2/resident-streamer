@@ -269,22 +269,25 @@ import { DefautDirection } from "../Stats/Defaut"
      this.currentTarget = nouveauPilote
      this.suivre = true
      this.setScale(0.2)
-
-     // this.changeInterfaceClient(this.sprite, true);
-     if (detruireApres)
-     {
-       this.scene.time.delayedCall(5000, () => {
-         this.suivre = false
-         nouveauPilote.particules = false;
-         // (this.scene as any).enemies.remove(nouveauPilote)
-         this.bossControllable.remove(nouveauPilote);
-         (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
-         this.currentTarget = this;
-         this.changeInterfaceClient(this.sprite, true);
-         this.aObtenuUnBoss = false
-         this.setScale(1)
-       }, null, this);
-     }
+     // nouveauPilote.setAlpha(0.1);
+     //
+     // // this.changeInterfaceClient(this.sprite, true);
+     // if (detruireApres)
+     // {
+     //   this.scene.time.delayedCall(5000, () => {
+     //     this.suivre = false
+     //     // nouveauPilote.particules = false;
+     //     // (this.scene as any).enemies.remove(nouveauPilote)
+     //     // this.bossControllable.remove(nouveauPilote);
+     //     console.log("SPRITE ??????????????????????????")
+     //     // nouveauPilote.setTint(0xff0000)
+     //     // (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
+     //     // this.currentTarget = this;
+     //     // this.changeInterfaceClient(this.sprite, true);
+     //     this.aObtenuUnBoss = false
+     //     this.setScale(1)
+     //   }, null, this);
+     // }
    }
 
   recuperationObjetBoss(_e: TJoueur) {
@@ -326,7 +329,7 @@ import { DefautDirection } from "../Stats/Defaut"
    respawn() {
      this.scene.tweens.add({
        targets: this,
-       alpha: 0.2,
+       // alpha: 0.2,
        duration: 200,
        repeat: 3,
        yoyo: true
