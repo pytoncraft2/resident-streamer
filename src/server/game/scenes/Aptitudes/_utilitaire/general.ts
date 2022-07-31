@@ -55,8 +55,6 @@ function fusionAvecBoss(ennemie: any, joueur) {
    joueur.suivre = true
    joueur.setScale(0.2)
 
-
-
    joueur.scene.time.delayedCall(5000, () => {
      joueur.suivre = false;
      (joueur.scene as any).suppressionJoueur(ennemie, true, ennemie.ClientID)

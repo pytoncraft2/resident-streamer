@@ -364,21 +364,44 @@ export default class Jeu extends Phaser.Scene {
 		rectangle_4_2_1.fillColor = 9965769;
 		rectangle_4_2_1.fillAlpha = 0.1;
 		rectangle_4_2_1.isStroked = true;
+		rectangle_4_2_1.strokeColor = 0;
 		touche_R.add(rectangle_4_2_1);
 
 		// commande_R
 		const commande_R = this.add.text(24, 0, "", {});
 		commande_R.setOrigin(0.5, 0.5);
 		commande_R.text = "R";
-		commande_R.setStyle({ "fontSize": "26px" });
+		commande_R.setStyle({ "color": "#e5e5e577", "fontSize": "26px" });
 		touche_R.add(commande_R);
 
-		// description_commande_R
-		const description_commande_R = this.add.text(0, 13, "", {});
-		description_commande_R.scaleX = 0.8383656155133609;
-		description_commande_R.scaleY = 0.8383656155133609;
-		description_commande_R.text = "ultime";
-		touche_R.add(description_commande_R);
+		// touche_T
+		const touche_T = this.add.container(590, 31);
+		groupe_touches.add(touche_T);
+
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(24, 0, 128, 128);
+		rectangle_3.scaleX = 0.4926742586809625;
+		rectangle_3.scaleY = 0.4926742586809625;
+		rectangle_3.isFilled = true;
+		rectangle_3.fillColor = 9965769;
+		rectangle_3.fillAlpha = 0.1;
+		rectangle_3.isStroked = true;
+		touche_T.add(rectangle_3);
+
+		// commande_R_1
+		const commande_R_1 = this.add.text(24, 0, "", {});
+		commande_R_1.setOrigin(0.5, 0.5);
+		commande_R_1.text = "T";
+		commande_R_1.setStyle({ "fontSize": "26px" });
+		touche_T.add(commande_R_1);
+
+		// description_commande_R_1
+		const description_commande_R_1 = this.add.text(25, 21, "", {});
+		description_commande_R_1.scaleX = 0.8383656155133609;
+		description_commande_R_1.scaleY = 0.8383656155133609;
+		description_commande_R_1.setOrigin(0.5, 0.5);
+		description_commande_R_1.text = "MAP";
+		touche_T.add(description_commande_R_1);
 
 		// hall_1
 		const hall_1 = this.add.image(1878, -506, "map_hall0");
@@ -484,7 +507,10 @@ export default class Jeu extends Phaser.Scene {
 		this.touche_R = touche_R;
 		this.rectangle_4_2_1 = rectangle_4_2_1;
 		this.commande_R = commande_R;
-		this.description_commande_R = description_commande_R;
+		this.touche_T = touche_T;
+		this.rectangle_3 = rectangle_3;
+		this.commande_R_1 = commande_R_1;
+		this.description_commande_R_1 = description_commande_R_1;
 		this.hall_1 = hall_1;
 		this.hall_2 = hall_2;
 		this.bas_droite = bas_droite;
@@ -529,7 +555,10 @@ export default class Jeu extends Phaser.Scene {
 	public touche_R!: Phaser.GameObjects.Container;
 	public rectangle_4_2_1!: Phaser.GameObjects.Rectangle;
 	public commande_R!: Phaser.GameObjects.Text;
-	public description_commande_R!: Phaser.GameObjects.Text;
+	public touche_T!: Phaser.GameObjects.Container;
+	public rectangle_3!: Phaser.GameObjects.Rectangle;
+	public commande_R_1!: Phaser.GameObjects.Text;
+	public description_commande_R_1!: Phaser.GameObjects.Text;
 	public hall_1!: Phaser.GameObjects.Image;
 	public hall_2!: Phaser.GameObjects.Image;
 	public bas_droite!: Phaser.GameObjects.Rectangle;

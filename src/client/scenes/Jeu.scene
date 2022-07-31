@@ -670,6 +670,7 @@
                                     "isFilled": true,
                                     "fillColor": "#9810c9",
                                     "fillAlpha": 0.1,
+                                    "strokeColor": "#000000",
                                     "isStroked": true,
                                     "width": 128,
                                     "height": 128
@@ -684,18 +685,61 @@
                                     "originX": 0.5,
                                     "originY": 0.5,
                                     "text": "R",
+                                    "fontSize": "26px",
+                                    "color": "#e5e5e577"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "id": "181eb2e3-cd45-40a6-ba9e-6e051b9c42ec",
+                            "label": "touche_T",
+                            "scope": "PUBLIC",
+                            "components": [],
+                            "x": 590,
+                            "y": 31,
+                            "list": [
+                                {
+                                    "type": "Rectangle",
+                                    "id": "dd4925e9-931a-477e-b362-c390224605ce",
+                                    "label": "rectangle_3",
+                                    "scope": "PUBLIC",
+                                    "components": [],
+                                    "x": 24,
+                                    "scaleX": 0.4926742586809625,
+                                    "scaleY": 0.4926742586809625,
+                                    "isFilled": true,
+                                    "fillColor": "#9810c9",
+                                    "fillAlpha": 0.1,
+                                    "isStroked": true,
+                                    "width": 128,
+                                    "height": 128
+                                },
+                                {
+                                    "type": "Text",
+                                    "id": "c0914980-83be-445d-aff1-3275d7094d9b",
+                                    "label": "commande_R_1",
+                                    "scope": "PUBLIC",
+                                    "components": [],
+                                    "x": 24,
+                                    "originX": 0.5,
+                                    "originY": 0.5,
+                                    "text": "T",
                                     "fontSize": "26px"
                                 },
                                 {
                                     "type": "Text",
-                                    "id": "3ed44247-21c8-4265-a864-d0c6909727bf",
-                                    "label": "description_commande_R",
+                                    "id": "38bd83d4-bc24-4f5e-8486-f2d0b5f4d47d",
+                                    "label": "description_commande_R_1",
                                     "scope": "PUBLIC",
                                     "components": [],
-                                    "y": 13,
+                                    "x": 25,
+                                    "y": 21,
                                     "scaleX": 0.8383656155133609,
                                     "scaleY": 0.8383656155133609,
-                                    "text": "ultime"
+                                    "originX": 0.5,
+                                    "originY": 0.5,
+                                    "text": "MAP"
                                 }
                             ]
                         }
