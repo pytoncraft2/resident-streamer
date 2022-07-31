@@ -303,25 +303,25 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    animationBossVaincu() {
-     // this.setScale(0.5);
+     this.setScale(0.5);
      // this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
-     // if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
-     // {
-     //   (this.scene as any).room.broadcast("RDC_OK");
-     // }
-     // (this.body as any).setAllowGravity(false)
-     // this.setPushable(false);
-     // this.animationBossFigurine = this.scene.tweens.add({
-     //   targets: this,
-     //   y: "-=90",
-     //   alpha: 0.5,
-     //   ease: 'Sine.inOut',
-     //   yoyo: true,
-     //   duration: 1000,
-     //   repeat: -1
-     // });
+     if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+     {
+       (this.scene as any).room.broadcast("RDC_OK");
+     }
+     (this.body as any).setAllowGravity(false);
+     this.setPushable(false);
+     this.animationBossFigurine = this.scene.tweens.add({
+       targets: this,
+       y: "-=90",
+       alpha: 0.5,
+       ease: 'Sine.inOut',
+       yoyo: true,
+       duration: 1000,
+       repeat: -1
+     });
 
      console.log("ANIMATION BOSS VAINCU!!!!!!!!!!!!!!!!!!");
      // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: true }));
