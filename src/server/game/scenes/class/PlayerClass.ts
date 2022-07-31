@@ -303,16 +303,16 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    animationBossVaincu() {
-     this.setScale(0.5)
-     this.particules = true;
+     // this.setScale(0.5);
+     // this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
-     if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
-     {
-       (this.scene as any).room.broadcast("RDC_OK");
-     }
-     (this.body as any).setAllowGravity(false)
-     this.setPushable(false);
+     // if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+     // {
+     //   (this.scene as any).room.broadcast("RDC_OK");
+     // }
+     // (this.body as any).setAllowGravity(false)
+     // this.setPushable(false);
      // this.animationBossFigurine = this.scene.tweens.add({
      //   targets: this,
      //   y: "-=90",

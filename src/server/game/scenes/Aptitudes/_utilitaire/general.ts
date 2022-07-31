@@ -4,9 +4,14 @@ export function fusion(personnage: any, input: any) {
     const ennemieProche = closest(personnage, 'enemies');
     if (ennemieProche)
     {
+      // TODO: Verifier distance
       if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
       {
-        //Fusion possible
+        //ennemie vaincu
+          ennemieProche.setAlpha(0.3)
+          console.log("ENEMIE PROCHE VAINCU!")
+          console.log(ennemieProche.alpha)
+          //Fusion possible
       }
       else
       {
