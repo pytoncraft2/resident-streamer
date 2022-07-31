@@ -62,9 +62,11 @@ import { DefautDirection } from "../Stats/Defaut"
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
-     this.scene.time.delayedCall(100, () => {
-       // this.changeInterfaceClient(this.sprite);
-     }, null, this);
+     if (!(this.scene as any).room.boss[`${this.sprite}`]) {
+       this.scene.time.delayedCall(100, () => {
+         this.changeInterfaceClient(this.sprite);
+       }, null, this);
+     }
 
 
      this.currentTarget = this
