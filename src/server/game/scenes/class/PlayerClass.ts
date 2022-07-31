@@ -273,10 +273,11 @@ import { DefautDirection } from "../Stats/Defaut"
      // this.changeInterfaceClient(this.sprite, true);
      if (detruireApres)
      {
-       this.scene.time.delayedCall(20000, () => {
+       this.scene.time.delayedCall(5000, () => {
          this.suivre = false
          nouveauPilote.particules = false;
          // (this.scene as any).enemies.remove(nouveauPilote)
+         this.bossControllable.remove(nouveauPilote);
          (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
          this.currentTarget = this;
          this.changeInterfaceClient(this.sprite, true);
@@ -299,7 +300,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
    fusionAvecBoss(_e: TJoueur) {
     console.log("FUSION AVEC BOSS")
-     // _e.cible_courante = "enemies";
+     _e.cible_courante = "enemies";
      // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
      this.fusionner = false;
      this.nouveauPilote(_e, true);
