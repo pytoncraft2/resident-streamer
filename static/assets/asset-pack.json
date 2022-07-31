@@ -54,23 +54,6 @@
                 "key": "icons_atlas"
             },
             {
-                "atlasURL": "assets/laser_atlas.json",
-                "textureURL": "assets/laser_atlas.png",
-                "type": "atlas",
-                "key": "laser_atlas"
-            },
-            {
-                "url": "assets/laser01_atlas.png",
-                "type": "image",
-                "key": "laser01"
-            },
-            {
-                "atlasURL": "assets/laser01_atlas.json",
-                "textureURL": "assets/laser01_atlas.png",
-                "type": "atlas",
-                "key": "laser01_atlas"
-            },
-            {
                 "url": "assets/LeagueGothic-CondensedRegular.otf",
                 "type": "binary",
                 "key": "LeagueGothic-CondensedRegular"
