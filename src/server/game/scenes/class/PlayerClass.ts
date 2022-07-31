@@ -1,7 +1,6 @@
 import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
-import TJoueur from "../types/Joueur"
 import { DefautDirection } from "../Stats/Defaut"
 
 /**

@@ -50,11 +50,15 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   //bosses
   animationBoosFigurine: Phaser.Tweens.Tween
+  suivre: boolean
+  currentTarget: TJoueur
 
   //degat
   dommage(puissance: number): void
 
   nouveauPilote(joueur: Phaser.Physics.Arcade.Sprite): void
+
+  changeInterfaceClient(sprite: string, icon?: boolean, id_cible?: string|null): void
 
   //bot
   auto?(joueur: Phaser.Physics.Arcade.Sprite): void

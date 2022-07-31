@@ -39,13 +39,13 @@ export function fusion(personnage: any, input: any) {
   }
 }
 
-function recuperationObjetBoss(ennemie: any, joueur) {
+function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
   ennemie.currentTarget = joueur
   ennemie.suivre = true
   ennemie.setScale(0.2)
 }
 
-function fusionAvecBoss(ennemie: any, joueur) {
+function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
    ennemie.cible_courante = "enemies";
    ennemie.currentTarget = ennemie
    ennemie.suivre = false
@@ -62,30 +62,7 @@ function fusionAvecBoss(ennemie: any, joueur) {
      joueur.changeInterfaceClient(joueur.sprite, true);
      joueur.setScale(1)
    }, null, joueur);
-
 }
-
-function nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
-   // nouveauPilote.particules = true;
-   this.currentTarget = nouveauPilote;
-   this.suivre = true;
-   this.setScale(0.2);
-
-   // this.changeInterfaceClient(this.sprite, true);
-   // if (detruireApres)
-   // {
-   //   this.scene.time.delayedCall(20000, () => {
-   //     this.suivre = false
-   //     nouveauPilote.particules = false;
-   //     // (this.scene as any).enemies.remove(nouveauPilote)
-   //     (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
-   //     this.currentTarget = this;
-   //     this.changeInterfaceClient(this.sprite, true);
-   //     this.aObtenuUnBoss = false
-   //     this.setScale(1)
-   //   }, null, this);
-   // }
- }
 
 export function closest(personnage: any, type: 'players' | 'enemies') {
   let groueCible = personnage.scene[type].getChildren();
