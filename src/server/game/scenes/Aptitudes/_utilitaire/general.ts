@@ -50,9 +50,21 @@ function fusionAvecBoss(ennemie: any, joueur) {
    ennemie.currentTarget = ennemie
    ennemie.suivre = false
    ennemie.setScale(1)
+
    joueur.currentTarget = ennemie
    joueur.suivre = true
    joueur.setScale(0.2)
+
+
+
+   joueur.scene.time.delayedCall(5000, () => {
+     joueur.suivre = false;
+     (joueur.scene as any).suppressionJoueur(ennemie, true, ennemie.ClientID)
+     joueur.currentTarget = joueur;
+     joueur.changeInterfaceClient(joueur.sprite, true);
+     joueur.setScale(1)
+   }, null, joueur);
+
 }
 
 function nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
