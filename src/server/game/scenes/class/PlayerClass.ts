@@ -151,15 +151,14 @@ import { DefautDirection } from "../Stats/Defaut"
 
        if (this.fusionner && _e.sprite != this.sprite) {
 
-         // if (!this.aObtenuUnBoss)
-         // {
+         if (!this.aObtenuUnBoss)
+         {
            // this.aObtenuUnBoss = true
-           // if (true)
-           // {
+           if ((this.scene as any).room.boss[`${_e.sprite}`].vaincu)
+           {
              this.recuperationObjetBoss(_e)
-             this.fusionner = false;
-           // }
-         // }
+           }
+         }
          // else
          // {
            // console.log("ACTION NUMERO 2 !!!!!")

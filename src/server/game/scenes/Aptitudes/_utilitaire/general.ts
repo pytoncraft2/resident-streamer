@@ -23,7 +23,7 @@ export function fusion(personnage: any, input: any) {
   }
   if (input.tab_fin)
   {
-    // personnage.fusionner = false
+    personnage.fusionner = false
   }
 }
 
