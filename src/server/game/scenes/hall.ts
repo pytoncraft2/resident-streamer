@@ -282,6 +282,10 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 
   suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
 
+    console.log("SUPRESSION JOUEUR!!!!!!!!!!")
+    console.log(smooth)
+    console.log(id)
+    console.log(delai)
     if (smooth)
     {
       this.tweens.add({

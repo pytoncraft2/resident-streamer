@@ -157,8 +157,8 @@ import { DefautDirection } from "../Stats/Defaut"
            // this.aObtenuUnBoss = true
            // if (true)
            // {
-             this.recuperationObjetBoss(_e)
              this.bossControllable.add(_e)
+             this.recuperationObjetBoss(_e)
              this.fusionner = false;
            // }
          // }
@@ -167,7 +167,7 @@ import { DefautDirection } from "../Stats/Defaut"
            // console.log("ACTION NUMERO 2 !!!!!")
          // }
 
-        console.log("FUSION !!!!!!!!!!!!!!");
+        // console.log("FUSION !!!!!!!!!!!!!!");
          // this.nouveauPilote(_e);
        }
 
@@ -290,6 +290,7 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
   recuperationObjetBoss(_e: TJoueur) {
+    console.log("RECUPERATION OBJET BOSS")
      _e.cible_courante = "enemies";
      //change les commandes
      this.changeInterfaceClient(_e.sprite, true);
@@ -299,10 +300,28 @@ import { DefautDirection } from "../Stats/Defaut"
    }
 
    fusionAvecBoss(_e: TJoueur) {
+    console.log("FUSION AVEC BOSS")
      _e.cible_courante = "enemies";
      // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
      this.fusionner = false;
-     this.nouveauPilote(_e, true);
+
+     this.currentTarget = _e
+     this.suivre = true
+     this.setScale(0.2)
+
+     this.scene.time.delayedCall(20000, () => {
+       this.suivre = false;
+       // nouveauPilote.particules = false;
+       // (this.scene as any).enemies.remove(nouveauPilote)
+       (this.scene as any).suppressionJoueur(_e, true, _e.ClientID)
+       this.currentTarget = this;
+       this.changeInterfaceClient(this.sprite, true);
+       // this.aObtenuUnBoss = false
+       this.setScale(1)
+     }, null, this);
+
+
+     // this.nouveauPilote(_e, true);
    }
 
    changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
