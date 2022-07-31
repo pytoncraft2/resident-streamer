@@ -293,7 +293,7 @@ import { DefautDirection } from "../Stats/Defaut"
      _e.cible_courante = "enemies";
      //change les commandes
      this.changeInterfaceClient(_e.sprite, true);
-     this.fusionner = false;
+     // this.fusionner = false;
      // _e.animationBoosFigurine.remove()
      _e.nouveauPilote(this);
    }
