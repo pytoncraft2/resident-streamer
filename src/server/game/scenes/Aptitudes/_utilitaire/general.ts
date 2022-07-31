@@ -19,7 +19,8 @@ export function fusion(personnage: any, input: any) {
         if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
         {
           //VAINCU
-          recuperationObjetBoss(ennemieProche, personnage)
+          // recuperationObjetBoss(ennemieProche, personnage)
+          fusionAvecBoss(ennemieProche, personnage)
             //
         }
         else
@@ -34,24 +35,15 @@ export function fusion(personnage: any, input: any) {
   }
 }
 
-
 function recuperationObjetBoss(ennemie: TJoueur, joueur) {
- ennemie.cible_courante = "enemies";
- // joueur2.changeInterfaceClient(joueur2.sprite, true);
- // ennemie.animationBoosFigurine.remove()
- // joueur1.nouveauPilote(joueur2);
+}
 
+function fusionAvecBoss(ennemie: TJoueur, joueur) {
+   ennemie.cible_courante = "enemies";
    joueur.currentTarget = ennemie
    joueur.suivre = true
    joueur.setScale(0.2)
 }
-
-function fusionAvecBoss(joueur1: TJoueur, joueur2) {
-   joueur1.cible_courante = "enemies";
-   // this.changeInterfaceClient(_e.sprite, true, _e.ClientID);
-   joueur2.fusionner = false;
-   joueur2.nouveauPilote(joueur1, true);
- }
 
 function nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
    // nouveauPilote.particules = true;
