@@ -984,6 +984,7 @@ export default class Jeu extends Phaser.Scene {
 		this.players.children.iterate((child) => {
 			if (list.presences[child.data.values.ClientId] === undefined) {
         const id = child.data.values.ClientId;
+        this.playersRef[child.data.values.ClientId].barre.destroy();
 				this.playersRef[child.data.values.ClientId].destroy(true)
 				delete this.playersRef[id]
 			}
