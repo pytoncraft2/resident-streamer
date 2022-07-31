@@ -11,7 +11,7 @@ import { DefautDirection } from "../Stats/Defaut"
    ClientID: any
    sprite: string
    particules: boolean
-   animationBossFigurine: any
+   animationBossFigurine: Phaser.Tweens.Tween
    bossControllable: Phaser.GameObjects.Group
    aObtenuUnBoss: boolean = false
    gfx: Phaser.GameObjects.Graphics
