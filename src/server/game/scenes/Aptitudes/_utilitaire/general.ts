@@ -19,6 +19,7 @@ export function fusion(personnage: any, input: any) {
         if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
         {
           //VAINCU
+          recuperationObjetBoss(ennemieProche, personnage)
             //
         }
         else
@@ -34,11 +35,15 @@ export function fusion(personnage: any, input: any) {
 }
 
 
-function recuperationObjetBoss(joueur1: TJoueur, joueur2) {
- joueur1.cible_courante = "enemies";
- joueur2.changeInterfaceClient(joueur1.sprite, true);
- // _e.animationBoosFigurine.remove()
- joueur1.nouveauPilote(joueur2);
+function recuperationObjetBoss(ennemie: TJoueur, joueur) {
+ ennemie.cible_courante = "enemies";
+ // joueur2.changeInterfaceClient(joueur2.sprite, true);
+ // ennemie.animationBoosFigurine.remove()
+ // joueur1.nouveauPilote(joueur2);
+
+   joueur.currentTarget = ennemie
+   joueur.suivre = true
+   joueur.setScale(0.2)
 }
 
 function fusionAvecBoss(joueur1: TJoueur, joueur2) {
@@ -55,19 +60,19 @@ function nouveauPilote(nouveauPilote: TJoueur, detruireApres: boolean = false) {
    this.setScale(0.2)
 
    // this.changeInterfaceClient(this.sprite, true);
-   if (detruireApres)
-   {
-     this.scene.time.delayedCall(20000, () => {
-       this.suivre = false
-       nouveauPilote.particules = false;
-       // (this.scene as any).enemies.remove(nouveauPilote)
-       (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
-       this.currentTarget = this;
-       this.changeInterfaceClient(this.sprite, true);
-       this.aObtenuUnBoss = false
-       this.setScale(1)
-     }, null, this);
-   }
+   // if (detruireApres)
+   // {
+   //   this.scene.time.delayedCall(20000, () => {
+   //     this.suivre = false
+   //     nouveauPilote.particules = false;
+   //     // (this.scene as any).enemies.remove(nouveauPilote)
+   //     (this.scene as any).suppressionJoueur(nouveauPilote, true, nouveauPilote.ClientID)
+   //     this.currentTarget = this;
+   //     this.changeInterfaceClient(this.sprite, true);
+   //     this.aObtenuUnBoss = false
+   //     this.setScale(1)
+   //   }, null, this);
+   // }
  }
 
 export function closest(personnage: any, type: 'players' | 'enemies') {
