@@ -1,41 +1,30 @@
 import TJoueur from "../../types/Joueur"
 
 export function fusion(personnage: any, input: any) {
-  if (input.tab)
-  {
+  if (input.tab) {
 
-    if (personnage.bossControllable.getLength() == 1)
-    {
+    if (personnage.bossControllable.getLength() == 1) {
       //un boss obtenu
-        // personnage.bossControllable.getFirst()
-        //fusion possible
-          // fusionAvecBoss(ennemieProche, personnage)
-          fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
+      // personnage.bossControllable.getFirst()
+      //fusion possible
+      // fusionAvecBoss(ennemieProche, personnage)
+      fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
 
     }
-    else
-    {
+    else {
       const ennemieProche = closest(personnage, 'enemies');
-      if (ennemieProche)
-      {
-        // TODO: Verifier distance
-        if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
-        {
+      if (!ennemieProche) return;
+      if (Phaser.Math.Distance.Between(ennemieProche.x, ennemieProche.y, personnage.x, personnage.y) < 270) {
+        if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu) {
           //VAINCU
           recuperationObjetBoss(ennemieProche, personnage)
           personnage.bossControllable.add(ennemieProche)
           // fusionAvecBoss(ennemieProche, personnage)
-            //
-        }
-        else
-        {
+          //
         }
       }
     }
     input.tab = false;
-  }
-  if (input.tab_fin)
-  {
   }
 }
 
