@@ -744,18 +744,22 @@ export default class Jeu extends Phaser.Scene {
 			console.error(err)
 		})
 
-    this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
+    // this.minimap = this.cameras.add(1140, 829, 800, 400).setZoom(0.07).setName('mini');
+    this.minimap = this.cameras.add(-899, 100, 2800, 1200).setZoom(0.34).setName('mini');
+	this.minimap.setVisible(false)
+	this.minimap.ignore(this.interface_joueur);
+
     this.cameras.main.centerOn(2800, 390)
     this.interface_joueur.setScrollFactor(0)
 
     var keyObj = this.input.keyboard.addKey('T');  // Get key object
     keyObj.on('down', function(this: any) {
       this.cameras.main.setAlpha(0.1)
-      this.minimap.setViewport(-830, 200, 2700, 800).setZoom(0.3)
+	  this.minimap.setVisible(true)
     }, this);
     keyObj.on('up', function(this: any) {
       this.cameras.main.setAlpha(1)
-      this.minimap.setViewport(1140, 829, 800, 400).setZoom(0.07)
+	  this.minimap.setVisible(false)
     }, this);
 
 	}
