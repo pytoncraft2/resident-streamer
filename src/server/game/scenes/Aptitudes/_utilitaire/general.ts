@@ -26,8 +26,9 @@ function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
 }
 
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
-  //@ts-ignore
-  console.log(ennemie.animationBossFigurine.remove());
+   ennemie.animationBossFigurine.remove();
+   ennemie.setAlpha(1);
+   ennemie.body.setAllowGravity(true);
    ennemie.cible_courante = "enemies";
    ennemie.currentTarget = ennemie
    ennemie.suivre = false

@@ -49,7 +49,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   laser?: LaserClass
 
   //bosses
-  animationBoosFigurine: Phaser.Tweens.Tween
+  animationBossFigurine: Phaser.Tweens.Tween
   suivre: boolean
   currentTarget: TJoueur
 
