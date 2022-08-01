@@ -26,16 +26,6 @@
             "scaleY": 2.709638779885017
         },
         {
-            "type": "Text",
-            "id": "a52b5bc6-8b5c-4ddb-bae9-0cbeae3e836e",
-            "label": "text",
-            "components": [],
-            "x": 2751,
-            "y": 447,
-            "text": "Jeu",
-            "fontSize": "50px"
-        },
-        {
             "type": "Rectangle",
             "id": "90d26c42-eb5f-40c7-a9e6-00b9d2ec6bef",
             "label": "platforme",
@@ -111,7 +101,7 @@
             "label": "barreHautContainer",
             "scope": "PUBLIC",
             "components": [],
-            "x": 1836,
+            "alpha": 0.9,
             "list": [
                 {
                     "type": "Rectangle",
@@ -137,7 +127,6 @@
                     "components": [],
                     "x": 1649,
                     "y": 7,
-                    "text": "00:00:00",
                     "fontSize": "45px"
                 },
                 {
@@ -193,96 +182,6 @@
                     "list": []
                 }
             ]
-        },
-        {
-            "type": "Rectangle",
-            "id": "6c322cc1-8df9-47e1-878f-ee5554ec3a93",
-            "label": "p1",
-            "components": [],
-            "x": 1837,
-            "y": 939,
-            "scaleX": 14.993211052385613,
-            "scaleY": -0.08853600509578045,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#c2abd4",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "bbfd493c-1512-49d7-97a6-b85cfa9a1586",
-            "label": "p2",
-            "components": [],
-            "x": 5,
-            "y": 940,
-            "scaleX": 14.310196671161355,
-            "scaleY": -0.09826542861018456,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "fb00f750-a716-4b54-ab5a-9b0c112ad25e",
-            "label": "platforme_droite",
-            "components": [],
-            "x": 3756,
-            "y": 940,
-            "scaleX": 14.310196671161355,
-            "scaleY": -0.09826542861018456,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "ba33ba7b-8328-4ac2-8c73-4085ea95cfa9",
-            "label": "platforme_haut",
-            "components": [],
-            "x": 1833,
-            "y": -200,
-            "scaleX": 14.993211052385613,
-            "scaleY": -0.08853600509578045,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "d8c717fe-c8be-4bf3-a6fa-27946e46312d",
-            "label": "platforme_haut_droite",
-            "components": [],
-            "x": 3752,
-            "y": -199,
-            "scaleX": 14.310196671161355,
-            "scaleY": -0.09826542861018456,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
-        },
-        {
-            "type": "Rectangle",
-            "id": "3d25bf95-1f42-4ac2-9ac9-df9749002798",
-            "label": "platforme_haut_gauche",
-            "components": [],
-            "x": 1,
-            "y": -199,
-            "scaleX": 14.310196671161355,
-            "scaleY": -0.09826542861018456,
-            "originX": 0,
-            "isFilled": true,
-            "fillColor": "#a130f8",
-            "width": 128,
-            "height": 128
         },
         {
             "type": "Image",

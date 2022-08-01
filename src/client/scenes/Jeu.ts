@@ -30,11 +30,6 @@ export default class Jeu extends Phaser.Scene {
 		mapbossfinal.scaleX = 2.709638779885017;
 		mapbossfinal.scaleY = 2.709638779885017;
 
-		// text
-		const text = this.add.text(2751, 447, "", {});
-		text.text = "Jeu";
-		text.setStyle({ "fontSize": "50px" });
-
 		// platforme
 		const platforme = this.add.rectangle(2791, 862, 128, 128);
 		platforme.scaleX = 43.50112225681497;
@@ -63,7 +58,8 @@ export default class Jeu extends Phaser.Scene {
 		hall.setOrigin(0, 0.5);
 
 		// barreHautContainer
-		const barreHautContainer = this.add.container(1836, 0);
+		const barreHautContainer = this.add.container(0, 0);
+		barreHautContainer.alpha = 0.9;
 
 		// barreHaut
 		const barreHaut = this.add.rectangle(960, 29, 128, 128);
@@ -76,7 +72,6 @@ export default class Jeu extends Phaser.Scene {
 
 		// compteur
 		const compteur = this.add.text(1649, 7, "", {});
-		compteur.text = "00:00:00";
 		compteur.setStyle({ "fontSize": "45px" });
 		barreHautContainer.add(compteur);
 
@@ -104,54 +99,6 @@ export default class Jeu extends Phaser.Scene {
 		// barre_etat
 		const barre_etat = this.add.container(-39, 21);
 		barre_etat_joueur.add(barre_etat);
-
-		// p1
-		const p1 = this.add.rectangle(1837, 939, 128, 128);
-		p1.scaleX = 14.993211052385613;
-		p1.scaleY = -0.08853600509578045;
-		p1.setOrigin(0, 0.5);
-		p1.isFilled = true;
-		p1.fillColor = 12757972;
-
-		// p2
-		const p2 = this.add.rectangle(5, 940, 128, 128);
-		p2.scaleX = 14.310196671161355;
-		p2.scaleY = -0.09826542861018456;
-		p2.setOrigin(0, 0.5);
-		p2.isFilled = true;
-		p2.fillColor = 10563832;
-
-		// platforme_droite
-		const platforme_droite = this.add.rectangle(3756, 940, 128, 128);
-		platforme_droite.scaleX = 14.310196671161355;
-		platforme_droite.scaleY = -0.09826542861018456;
-		platforme_droite.setOrigin(0, 0.5);
-		platforme_droite.isFilled = true;
-		platforme_droite.fillColor = 10563832;
-
-		// platforme_haut
-		const platforme_haut = this.add.rectangle(1833, -200, 128, 128);
-		platforme_haut.scaleX = 14.993211052385613;
-		platforme_haut.scaleY = -0.08853600509578045;
-		platforme_haut.setOrigin(0, 0.5);
-		platforme_haut.isFilled = true;
-		platforme_haut.fillColor = 10563832;
-
-		// platforme_haut_droite
-		const platforme_haut_droite = this.add.rectangle(3752, -199, 128, 128);
-		platforme_haut_droite.scaleX = 14.310196671161355;
-		platforme_haut_droite.scaleY = -0.09826542861018456;
-		platforme_haut_droite.setOrigin(0, 0.5);
-		platforme_haut_droite.isFilled = true;
-		platforme_haut_droite.fillColor = 10563832;
-
-		// platforme_haut_gauche
-		const platforme_haut_gauche = this.add.rectangle(1, -199, 128, 128);
-		platforme_haut_gauche.scaleX = 14.310196671161355;
-		platforme_haut_gauche.scaleY = -0.09826542861018456;
-		platforme_haut_gauche.setOrigin(0, 0.5);
-		platforme_haut_gauche.isFilled = true;
-		platforme_haut_gauche.fillColor = 10563832;
 
 		// map_manetteman
 		const map_manetteman = this.add.image(4685, -499, "map_manetteman");
@@ -596,7 +543,6 @@ export default class Jeu extends Phaser.Scene {
   salon?: string
   keyboard!: any
   room?: Colyseus.Room<unknown>
-  rooms: any
   personnage?: string
   compte: number = 0
   prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean, tab: boolean }
@@ -620,59 +566,30 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
-    const p1 = this.add.rectangle(1, 939, 128, 128);
-    p1.scaleX = 14.993211052385613;
-    p1.scaleY = -0.08853600509578045;
-    p1.setOrigin(0, 0.5);
-    p1.isFilled = true;
-    p1.fillColor = 10563832;
-
-
-    this.anims.create({
-      key: "huzounet_shuriken",
-      frames: this.anims.generateFrameNames('huzounet_atlas', { prefix: 'shuriken', start: 0, end: 3 }),
-      frameRate: 23,
-      repeat: -1
-    })
-
-
-    this.rooms = []
-    this.listCurrentRoom = {
-      hall: {
-        w: this.hall.getLeftCenter().x - 30
-      },
-      bas_gauche: {
-        w: this.map_boss2.getLeftCenter().x - 100
-      },
-      bas_droite: {
-        w: this.hall.displayWidth
-      }
-    }
-
 		const self = this;
 		this.players = this.add.group()
 		this.enemies= this.add.group()
-    this.groupeBoules = this.add.group();
-    this.groupeKunais = this.add.group();
-    this.groupeBombes = this.add.group();
+		this.groupeBoules = this.add.group();
+		this.groupeKunais = this.add.group();
+		this.groupeBombes = this.add.group();
 
-    this.groupeProjectiles = this.add.group();
-    this.groupeLignes = this.add.group();
-    this.groupeRectangles = this.add.group();
-    this.projectilesRef = {}
-    this.lignesRef = {}
-    this.rectanglesRef = {}
+		this.groupeProjectiles = this.add.group();
+		this.groupeLignes = this.add.group();
+		this.groupeRectangles = this.add.group();
+		this.projectilesRef = {}
+		this.lignesRef = {}
+		this.rectanglesRef = {}
 
 		this.playersRef = {}
 		this.ennemyRef = {}
 		this.boulesRef = {}
 		this.kunaisRef = {}
-    this.bombesRef = {}
+		this.bombesRef = {}
 
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
 
-    this.barreHautContainer.setScrollFactor(0)
-    this.gfx = this.add.graphics();
+		this.barreHautContainer.setScrollFactor(0)
+		this.gfx = this.add.graphics();
 
 		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
