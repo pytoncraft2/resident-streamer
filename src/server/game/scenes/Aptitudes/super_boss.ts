@@ -26,6 +26,9 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
 // personnage.scene.physics.add.collider(personnage.scene[`${personnage.cible_courante}`].getChildren(), trone)
 trone1.setPushable(false);
 trone2.setPushable(false);
+personnage.setActive(false)
+
+personnage.cible_courante = "players"
 
 }
 

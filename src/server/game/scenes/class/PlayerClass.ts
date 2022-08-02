@@ -312,6 +312,12 @@ import { DefautDirection } from "../Stats/Defaut"
      {
        (this.scene as any).room.broadcast("RDC_OK");
      }
+
+     if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["twitchman"].vaincu)
+     {
+       (this.scene as any).room.broadcast("ETAGE_OK");
+       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true)
+     }
      (this.body as any).setAllowGravity(false);
      this.setPushable(false);
      this.animationBossFigurine = this.scene.tweens.add({

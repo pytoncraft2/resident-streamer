@@ -29,7 +29,6 @@ export default class GameRooms extends Room {
     this.state.compteur = 0
 
     this.donnes = {}
-    this.enemies =
 
     this.Game = new Phaser.Game(config)
     this.scene = this.Game.scene.scenes[0]
@@ -73,7 +72,8 @@ export default class GameRooms extends Room {
         }
       }
       Object.entries(this.boss).map(item => {
-        const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`
+        const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`;
+        this.boss[item[0]]['id'] = randomNombre;
         this.clock.setTimeout(() => {
             (this.scene as any).room.donnes[randomNombre] = {
               clavier: {
@@ -96,6 +96,7 @@ export default class GameRooms extends Room {
         }, item[1].temps);
 
       })
+      console.log(this.boss)
 
     this.onMessage("inputs", (client, message) => {
       this.donnes[client.id].clavier = message
