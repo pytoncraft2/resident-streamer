@@ -880,6 +880,7 @@ export default class Jeu extends Phaser.Scene {
         if (this.session === this.playersRef[item].ClientId) {
           this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15
           if (list.presences[item].sprite_fusion) this.animIcon(this.playersRef[item].sprite_fusion, list.presences[item].sprite_fusion)
+          console.log(list.presences[item].sprite_fusion)
 
           if (list.presences[item].commandes)
           {

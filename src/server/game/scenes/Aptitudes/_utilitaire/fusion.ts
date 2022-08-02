@@ -20,9 +20,12 @@ export default function fusion(personnage: any, input: any) {
 }
 
 function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
-  ennemie.currentTarget = joueur
-  ennemie.suivre = true
-  ennemie.setScale(0.2)
+  joueur.scene.time.delayedCall(100, () => {
+    joueur.changeInterfaceClient(ennemie.sprite);
+  }, null, joueur);
+  ennemie.currentTarget = joueur;
+  ennemie.suivre = true;
+  ennemie.setScale(0.2);
 }
 
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
