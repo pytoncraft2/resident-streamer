@@ -19,7 +19,7 @@ export default function fusion(personnage: any, input: any) {
   }
 }
 
-export function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
+function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
   ennemie.currentTarget = joueur;
   ennemie.suivre = true;
   ennemie.setScale(0.2);
