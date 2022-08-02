@@ -48,7 +48,7 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
    }, null, joueur);
 }
 
-export function closest(personnage: any, type: 'players' | 'enemies') {
+function closest(personnage: any, type: 'players' | 'enemies') {
   let groueCible = personnage.scene[type].getChildren();
   return personnage.scene.physics.closest(personnage, groueCible);
 }
