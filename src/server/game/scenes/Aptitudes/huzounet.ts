@@ -79,7 +79,7 @@ export function kunai__Z(huzounet: TJoueur) {
 
       (kunai.body as any).setAllowGravity(false);
       huzounet.kunai = kunai
-      huzounet.scene.time.delayedCall(100, () => {
+      huzounet.scene.time.delayedCall(200, () => {
           huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
             huzounet.kunai = undefined;
       }, null, huzounet);
@@ -98,14 +98,6 @@ export function clonage__E(huzounet: any) {
     huzounet.scene.physics.add.existing(clone3);
     huzounet.scene.physics.add.existing(clone4);
   }
-}
-
-export function TP__R(huzounet: any, input) {
-  huzounet.setCollideWorldBounds(false, false ,true, true)
-  // huzounet.scene.time.delayedCall(2000, () => {
-    // huzounet.setCollideWorldBounds(true)
-  // }, null, huzounet);
-  huzounet.setPosition(huzounet.x, -900)
 }
 
 export function fusion__TAB(personnage: TJoueur, input: any) {

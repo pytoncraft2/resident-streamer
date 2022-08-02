@@ -66,13 +66,11 @@ export default class Hall extends Phaser.Scene {
     })
 
     this.groupeBoulesHuzounet = this.physics.add.group({
-      runChildUpdate: true,
-      collideWorldBounds: true
+      runChildUpdate: true
     })
 
     this.groupeManettes = this.physics.add.group({
       runChildUpdate: true,
-      collideWorldBounds: true,
       allowGravity: false
     })
 
