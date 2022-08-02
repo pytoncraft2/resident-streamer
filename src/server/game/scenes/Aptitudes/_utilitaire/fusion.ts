@@ -19,9 +19,9 @@ export default function fusion(personnage: any, input: any) {
   }
 }
 
-function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
+function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
   joueur.scene.time.delayedCall(100, () => {
-    joueur.changeInterfaceClient(ennemie.sprite);
+    joueur.changeInterfaceClient(ennemie.sprite, true);
   }, null, joueur);
   ennemie.currentTarget = joueur;
   ennemie.suivre = true;
