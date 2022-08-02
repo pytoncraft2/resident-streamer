@@ -1024,7 +1024,7 @@ finAnimationBossKO(id: string) {
 
   update() {
     if (this.room) {
-      const { right, left, space, A, Z, E, R, TAB } = this.keyboard
+      const { right, left, up, down, space, A, Z, E, R, TAB } = this.keyboard
 
       const inputs = {
         a: A.isDown ? true : false,
@@ -1034,6 +1034,8 @@ finAnimationBossKO(id: string) {
         space: space.isDown ? true : false,
         right: right.isDown ? true : false,
         left: left.isDown ? true : false,
+        up: up.isDown ? true : false,
+        down: down.isDown ? true : false,
         tab: TAB.isDown ? true : false
       }
 

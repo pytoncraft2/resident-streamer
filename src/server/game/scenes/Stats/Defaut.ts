@@ -17,6 +17,14 @@ export const DefautDirection = (Aptitudes: any, personnage: any) => {
       // }
       // input.space = false
     }
+  Aptitudes[personnage.sprite].toucheHaut = (personnage: any, input: any) => {
+    changementEtage(personnage, -2600, 1000)
+    input.up = false;
+  }
+  Aptitudes[personnage.sprite].toucheBas = (personnage: any, input: any) => {
+    changementEtage(personnage, 900, 500)
+    input.down = false;
+  }
 }
 
 function direction(debut: boolean, fin: boolean, personnage: any, _input: any, dir: boolean) {
@@ -29,4 +37,12 @@ function direction(debut: boolean, fin: boolean, personnage: any, _input: any, d
     personnage.play('idle_walk', true)
   }
   else personnage.setVelocityX(dir ? (personnage as any).vel : -(personnage as any).vel)
+}
+
+function changementEtage(personnage, velocite, delai){
+    personnage.body.checkCollision.none = true;
+    personnage.setVelocityY(velocite);
+    personnage.scene.time.delayedCall(delai, () => {
+      personnage.body.checkCollision.none = false;
+    }, null, personnage);
 }

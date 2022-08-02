@@ -18,6 +18,8 @@ export interface Touches {
     TAB?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
     toucheGauche?: (joueur: TJoueur, input: any) => void;
     toucheDroite?: (joueur: TJoueur, input: any) => void;
+    toucheHaut?: (joueur: TJoueur, input: any) => void;
+    toucheBas?: (joueur: TJoueur, input: any) => void;
     toucheEspace?: (joueur: TJoueur, input: any) => void;
     auto?(joueur: TJoueur, input: any, Aptitudes?: any): void;
   }

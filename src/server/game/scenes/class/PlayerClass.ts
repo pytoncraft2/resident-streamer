@@ -182,7 +182,7 @@ import { DefautDirection } from "../Stats/Defaut"
      super.preUpdate(time, delta);
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
+     let { right, left, space, a, z, e, r, up, down, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
 
 
@@ -194,14 +194,14 @@ import { DefautDirection } from "../Stats/Defaut"
        if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
        if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget, input);
        if (tab || tab_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget, input);
-       /*this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheR === "function" && Aptitudes[this.currentTarget.sprite].toucheR(this.currentTarget);*/
        if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
        if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
+       if (up) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheHaut === "function" && Aptitudes[this.currentTarget.sprite].toucheHaut(this.currentTarget, input)
+       if (down) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheBas === "function" && Aptitudes[this.currentTarget.sprite].toucheBas(this.currentTarget, input)
        if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
 
        if (left_fin) input.left_fin = false;
        if (z_fin) input.z_fin = false;
-       // if (a_fin) input.a_fin = false;
        if (right_fin) input.right_fin = false;
        if (space_fin) input.space_fin = false;
        if (right_debut) input.right_debut = false
