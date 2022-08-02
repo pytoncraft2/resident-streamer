@@ -20,7 +20,6 @@ export function fusion(personnage: any, input: any) {
 }
 
 function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
-  joueur.changeInterfaceClient(ennemie.sprite, true);
   ennemie.currentTarget = joueur
   ennemie.suivre = true
   ennemie.setScale(0.2)
