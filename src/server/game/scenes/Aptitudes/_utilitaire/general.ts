@@ -20,6 +20,7 @@ export function fusion(personnage: any, input: any) {
 }
 
 function recuperationObjetBoss(ennemie: TJoueur, joueur:TJoueur) {
+  joueur.changeInterfaceClient(ennemie.sprite, true);
   ennemie.currentTarget = joueur
   ennemie.suivre = true
   ennemie.setScale(0.2)
@@ -30,13 +31,13 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
    ennemie.setAlpha(1);
    ennemie.body.setAllowGravity(true);
    ennemie.cible_courante = "enemies";
-   ennemie.currentTarget = ennemie
-   ennemie.suivre = false
-   ennemie.setScale(1)
+   ennemie.currentTarget = ennemie;
+   ennemie.suivre = false;
+   ennemie.setScale(1);
 
-   joueur.currentTarget = ennemie
-   joueur.suivre = true
-   joueur.setScale(0.2)
+   joueur.currentTarget = ennemie;
+   joueur.suivre = true;
+   joueur.setScale(0.2);
 
    joueur.scene.time.delayedCall(5000, () => {
      joueur.suivre = false;
