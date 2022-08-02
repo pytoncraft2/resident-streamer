@@ -2,7 +2,7 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/elements/BouleClass"
 import KunaiClass from "../class/elements/KunaiClass"
 import CloneClass from "../class/elements/CloneClass"
-import { fusion } from "./_utilitaire/fusion";
+import fusion from "./_utilitaire/fusion";
 
 import TJoueur from "../types/Joueur";
 

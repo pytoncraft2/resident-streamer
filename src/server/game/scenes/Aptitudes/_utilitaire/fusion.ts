@@ -1,6 +1,6 @@
 import TJoueur from "../../types/Joueur"
 
-export function fusion(personnage: any, input: any) {
+export default function fusion(personnage: any, input: any) {
   if (input.tab) {
     if (personnage.bossControllable.getLength() == 1) fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
     else {

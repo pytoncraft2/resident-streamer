@@ -1,6 +1,6 @@
 import TJoueur from "../types/Joueur";
 import BombeClass from "../class/elements/BombeClass";
-import { fusion } from "./_utilitaire/fusion";
+import fusion from "./_utilitaire/fusion";
 
 export function __StatsSupplementaire() {}
 
