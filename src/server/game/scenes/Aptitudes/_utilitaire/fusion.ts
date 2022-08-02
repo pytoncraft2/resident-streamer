@@ -19,16 +19,16 @@ export default function fusion(personnage: any, input: any) {
   }
 }
 
-function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
-  joueur.scene.time.delayedCall(100, () => {
-    joueur.changeInterfaceClient(ennemie.sprite, true);
-  }, null, joueur);
+export function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
   ennemie.currentTarget = joueur;
   ennemie.suivre = true;
   ennemie.setScale(0.2);
 }
 
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
+  joueur.scene.time.delayedCall(1, () => {
+    joueur.changeInterfaceClient(ennemie.sprite, true);
+  }, null, joueur);
    ennemie.animationBossFigurine.remove();
    ennemie.setAlpha(1);
    ennemie.body.setAllowGravity(true);
