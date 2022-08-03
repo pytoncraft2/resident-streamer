@@ -50,10 +50,19 @@ app.post('/scores', (request, res: any) => {
   }
 
   // console.log(Object.values(myObject))
-  const scoreCroissant = Object.values(myObject).sort(function(obj1, obj2) {
-    return (obj1[0] as any).score - (obj2[0] as any).score;
-  });
-  console.log(scoreCroissant)
+  // const scoreCroissant = Object.values(myObject).sort(function(obj1, obj2) {
+  //   return (obj1[0] as any).score - (obj2[0] as any).score;
+  // });
+  const test = []
+
+  const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
+    console.log(obj1)
+    console.log("PUIS")
+    console.log(obj2)
+    test.push(obj1)
+  return (obj1[1] as any).score - (obj2[1] as any).score;
+});
+  console.log(test)
 
 //   const output = Object.fromEntries(
 //   Object.entries(scoreCroissant)
@@ -64,12 +73,12 @@ app.post('/scores', (request, res: any) => {
 
 // console.log(output)
   //
-  var newData2 = JSON.stringify(scoreCroissant);
+  // var newData2 = JSON.stringify(scoreCroissant[0]);
   // console.log("EEEEEEEEEEEEEEEETT")
   // console.log(newData2)
-  fs.writeFile("./src/server/scores.json", newData2, (err) => {
-    if (err) throw err;
-  });
+  // fs.writeFile("./src/server/scores.json", newData2, (err) => {
+  //   if (err) throw err;
+  // });
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({"status":"ok"}));
 })
