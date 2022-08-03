@@ -431,9 +431,42 @@ export default class Jeu extends Phaser.Scene {
 		bg_ecran_fin.fillAlpha = 0;
 
 		// ecran_fin_text
-		const ecran_fin_text = this.add.text(4060, 698, "", {});
-		ecran_fin_text.text = "FIN";
+		const ecran_fin_text = this.add.text(2825, 279, "", {});
+		ecran_fin_text.setOrigin(0.5, 0.5);
+		ecran_fin_text.text = "FIN DE PARTIE !";
 		ecran_fin_text.setStyle({ "fontSize": "46px" });
+
+		// ecran_fin_text_1
+		const ecran_fin_text_1 = this.add.text(2825, 394, "", {});
+		ecran_fin_text_1.setOrigin(0.5, 0.5);
+		ecran_fin_text_1.text = "Votre score : 43";
+		ecran_fin_text_1.setStyle({ "fontSize": "46px" });
+
+		// rectangle_5
+		const rectangle_5 = this.add.rectangle(2830, 570, 128, 128);
+		rectangle_5.scaleX = 2.51984025459455;
+		rectangle_5.scaleY = 0.658859670974759;
+		rectangle_5.isFilled = true;
+		rectangle_5.fillColor = 9638544;
+
+		// ecran_fin_text_2
+		const ecran_fin_text_2 = this.add.text(2829, 571, "", {});
+		ecran_fin_text_2.setOrigin(0.5, 0.5);
+		ecran_fin_text_2.text = "Rejouer";
+		ecran_fin_text_2.setStyle({ "fontSize": "46px" });
+
+		// rectangle_6
+		const rectangle_6 = this.add.rectangle(2833, 711, 128, 128);
+		rectangle_6.scaleX = 1.9425244551373009;
+		rectangle_6.scaleY = 0.5404369914284701;
+		rectangle_6.isFilled = true;
+		rectangle_6.fillColor = 4526739;
+
+		// ecran_fin_text_3
+		const ecran_fin_text_3 = this.add.text(2832, 712, "", {});
+		ecran_fin_text_3.setOrigin(0.5, 0.5);
+		ecran_fin_text_3.text = "Quitter";
+		ecran_fin_text_3.setStyle({ "fontSize": "40px" });
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
@@ -481,6 +514,9 @@ export default class Jeu extends Phaser.Scene {
 		this.vie_boss_1 = vie_boss_1;
 		this.bg_ecran_fin = bg_ecran_fin;
 		this.ecran_fin_text = ecran_fin_text;
+		this.ecran_fin_text_1 = ecran_fin_text_1;
+		this.ecran_fin_text_2 = ecran_fin_text_2;
+		this.ecran_fin_text_3 = ecran_fin_text_3;
 
 		this.events.emit("scene-awake");
 	}
@@ -531,6 +567,9 @@ export default class Jeu extends Phaser.Scene {
 	public vie_boss_1!: Phaser.GameObjects.Rectangle;
 	public bg_ecran_fin!: Phaser.GameObjects.Rectangle;
 	public ecran_fin_text!: Phaser.GameObjects.Text;
+	public ecran_fin_text_1!: Phaser.GameObjects.Text;
+	public ecran_fin_text_2!: Phaser.GameObjects.Text;
+	public ecran_fin_text_3!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
