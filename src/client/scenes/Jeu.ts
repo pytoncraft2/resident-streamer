@@ -422,6 +422,19 @@ export default class Jeu extends Phaser.Scene {
 		vie_boss_1.fillAlpha = 0.8;
 		barreHautContainer.add(vie_boss_1);
 
+		// bg_ecran_fin
+		const bg_ecran_fin = this.add.rectangle(2838, 154, 128, 128);
+		bg_ecran_fin.scaleX = 45.82583153437573;
+		bg_ecran_fin.scaleY = 20.08364068022166;
+		bg_ecran_fin.isFilled = true;
+		bg_ecran_fin.fillColor = 0;
+		bg_ecran_fin.fillAlpha = 0;
+
+		// ecran_fin_text
+		const ecran_fin_text = this.add.text(4060, 698, "", {});
+		ecran_fin_text.text = "FIN";
+		ecran_fin_text.setStyle({ "fontSize": "46px" });
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
@@ -466,6 +479,8 @@ export default class Jeu extends Phaser.Scene {
 		this.barreHaut = barreHaut;
 		this.compteur = compteur;
 		this.vie_boss_1 = vie_boss_1;
+		this.bg_ecran_fin = bg_ecran_fin;
+		this.ecran_fin_text = ecran_fin_text;
 
 		this.events.emit("scene-awake");
 	}
@@ -514,6 +529,8 @@ export default class Jeu extends Phaser.Scene {
 	public barreHaut!: Phaser.GameObjects.Rectangle;
 	public compteur!: Phaser.GameObjects.Text;
 	public vie_boss_1!: Phaser.GameObjects.Rectangle;
+	public bg_ecran_fin!: Phaser.GameObjects.Rectangle;
+	public ecran_fin_text!: Phaser.GameObjects.Text;
 
 	/* START-USER-CODE */
 
@@ -589,6 +606,7 @@ export default class Jeu extends Phaser.Scene {
 		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
 
 		this.barreHautContainer.setScrollFactor(0)
+    this.bg_ecran_fin.setDepth(3)
 		this.gfx = this.add.graphics();
 
 		const client = new Colyseus.Client("ws://localhost:3000")
@@ -633,6 +651,12 @@ export default class Jeu extends Phaser.Scene {
         console.log("FIN DU JEU!!")
         console.log("TEMP:")
         console.log(resultat)
+        this.tweens.add({
+          targets: this.bg_ecran_fin,
+          fillAlpha: 0.8,
+          ease: 'Sine.inOut',
+          duration: 1000,
+        });
       });
 
 			room.onStateChange((changes: any) => {

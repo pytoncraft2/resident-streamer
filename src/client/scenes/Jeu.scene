@@ -792,6 +792,33 @@
                     "height": 128
                 }
             ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "c4d250a3-7bbe-42ba-84b9-9dc264943cbb",
+            "label": "bg_ecran_fin",
+            "scope": "PUBLIC",
+            "components": [],
+            "x": 2838,
+            "y": 154,
+            "scaleX": 45.82583153437573,
+            "scaleY": 20.08364068022166,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "fillAlpha": 0,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Text",
+            "id": "7e23245e-7d16-45ee-893f-37da489c7928",
+            "label": "ecran_fin_text",
+            "scope": "PUBLIC",
+            "components": [],
+            "x": 4060,
+            "y": 698,
+            "text": "FIN",
+            "fontSize": "46px"
         }
     ],
     "plainObjects": [],

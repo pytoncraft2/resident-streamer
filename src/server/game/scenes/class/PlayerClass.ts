@@ -141,7 +141,7 @@ import { DefautDirection } from "../Stats/Defaut"
            }
            else
            {
-           _e.dommage(1)
+           _e.dommage(4)
            }
          }
        }
