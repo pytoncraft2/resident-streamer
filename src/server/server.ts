@@ -59,9 +59,9 @@ app.post('/scores', (request, res: any) => {
   //@ts-ignore
   return obj1[1].score - obj2[1].score;
 });
-console.log(rep)
-console.log("ENSUITE !!!!!!!!!!!!!!!!")
-console.log(Object.fromEntries(rep))
+// console.log(rep)
+// console.log("ENSUITE !!!!!!!!!!!!!!!!")
+// console.log(Object.fromEntries(rep))
 const nouvelleObjet = {}
 const finalObjet = {}
 nouvelleObjet[`${request.body.equipe}`] = {
@@ -88,6 +88,7 @@ rep.forEach((e, i:number) => {
 // console.log(output)
   //
   var newData2 = JSON.stringify(Object.fromEntries(rep));
+  console.log(Object.fromEntries(rep))
   // console.log("EEEEEEEEEEEEEEEETT")
   // console.log(newData2)
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
