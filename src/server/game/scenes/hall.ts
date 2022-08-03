@@ -329,7 +329,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   }
 
   StopCompteur() {
-    const resultat = this.compteur.getElapsedSeconds()
+    const resultat = this.room.state.compteur
     this.compteur.remove()
     return resultat;
   }
