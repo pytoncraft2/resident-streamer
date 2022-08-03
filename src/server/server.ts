@@ -20,6 +20,8 @@ const PORT = parseInt(process.env.PORT || "3000")
 // Instantiate Express app
 const app = express()
 
+app.use(express.json())
+
 // Serve dist folder
 const distPath = path.join(__dirname, "../../dist/")
 app.use(express.static(distPath))
@@ -37,12 +39,14 @@ app.get('/scores', (_request, res) => {
   res.end(donnes);
 })
 
-app.post('/scores', (_request, res) => {
+app.post('/scores', (request, res: any) => {
+  console.log("POST SCORES !!")
+  console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  myObject["EQUIPE DAVID"] = {
+  myObject[`${request.body.equipe}`] = {
     "joueurs": ["David", "David", "EncoreDavid"],
-    "score": "5min"
+    "score": `${request.body.score}`
   }
   var newData2 = JSON.stringify(myObject);
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
