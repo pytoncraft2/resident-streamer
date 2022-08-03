@@ -44,42 +44,19 @@ app.post('/scores', (request, res: any) => {
   console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-
-  for (const [key, value] of Object.entries(myObject))
-{
-  (value as any).score
-}
-
-const asArray = Object.entries(myObject);
-
-const filtered = asArray.filter(([key, value]) => typeof value === 'string');
-
-// Convert the key/value array back to an object:
-// `{ name: 'Luke Skywalker', title: 'Jedi Knight' }`
-const justStrings = Object.fromEntries(filtered);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   myObject[`${request.body.equipe}`] = {
     "joueurs": request.body.joueur,
     "score": `${request.body.score}`
   }
-  var newData2 = JSON.stringify(myObject);
+
+  const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
+    return parseInt((obj1[1] as any).score.replace(/:/g,'')) - parseInt((obj2[1] as any).score.replace(/:/g,''));
+  });
+  console.log(...scoreCroissant[0])
+
+  var newData2 = JSON.stringify({...scoreCroissant[0]});
+  console.log("EEEEEEEEEEEEEEEETT")
+  console.log(newData2)
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
     if (err) throw err;
   });
