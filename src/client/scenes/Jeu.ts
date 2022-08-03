@@ -629,6 +629,12 @@ export default class Jeu extends Phaser.Scene {
         });
       });
 
+      room.onMessage("FIN_JEU", (resultat: any) => {
+        console.log("FIN DU JEU!!")
+        console.log("TEMP:")
+        console.log(resultat)
+      });
+
 			room.onStateChange((changes: any) => {
 				let presences : any = {}
         let projectiles: any = {}

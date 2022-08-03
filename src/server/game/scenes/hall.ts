@@ -24,6 +24,7 @@ export default class Hall extends Phaser.Scene {
   enemiesRef: any
   platforme: Phaser.GameObjects.Rectangle
   rect: any
+  compteur: Phaser.Time.TimerEvent
 
 
   constructor() {
@@ -317,7 +318,7 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 
 
   CommencerCompteur() {
-    this.time.addEvent({
+    this.compteur = this.time.addEvent({
       delay: 1000,                // ms
       callback: function() {
         this.room.state.compteur += 1
@@ -325,5 +326,11 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
       callbackScope: this,
       loop: true
     });
+  }
+
+  StopCompteur() {
+    const resultat = this.compteur.getElapsedSeconds()
+    this.compteur.remove()
+    return resultat;
   }
 }
