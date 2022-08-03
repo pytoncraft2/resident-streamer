@@ -331,6 +331,15 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
   StopCompteur() {
     const resultat = this.room.state.compteur
     this.compteur.remove()
-    return resultat;
+    return this.secondsToTime(resultat);
+  }
+
+  secondsToTime(e: number){
+      const h = Math.floor(e / 3600).toString().padStart(2,'0'),
+            m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
+            s = Math.floor(e % 60).toString().padStart(2,'0');
+
+      return h + ':' + m + ':' + s;
+      //return `${h}:${m}:${s}`;
   }
 }

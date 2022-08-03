@@ -716,12 +716,12 @@ export default class Jeu extends Phaser.Scene {
           method: 'post',
           url: "http://localhost:3000/scores",
           data: {
-            equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} non`,
+            equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
             joueur: resultat.joueur,
             score: resultat.temps
           }
         });
-        this.ecran_fin_text_score.setText(`Votre score : ${this.secondsToTime(resultat.temps)}`)
+        this.ecran_fin_text_score.setText(`Votre score : ${resultat.temps}`)
         this.ecran_fin_text_quitter
         .setInteractive(({ useHandCursor: true }))
         .on('pointerdown', function(this: any) {
@@ -1138,16 +1138,6 @@ finAnimationBossKO(id: string) {
   this.playersRef[id].setAlpha(0)
   this.playersRef[id].ellipse_5_1.setAlpha(0)
 }
-
-secondsToTime(e: number){
-    const h = Math.floor(e / 3600).toString().padStart(2,'0'),
-          m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
-          s = Math.floor(e % 60).toString().padStart(2,'0');
-
-    return h + ':' + m + ':' + s;
-    //return `${h}:${m}:${s}`;
-}
-
 
   update() {
     if (this.room) {
