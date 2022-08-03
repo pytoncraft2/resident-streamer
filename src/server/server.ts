@@ -41,44 +41,58 @@ app.get('/scores', (_request, res) => {
 
 app.post('/scores', (request, res: any) => {
   console.log("POST SCORES !!")
-  // console.log(request.body)
+  console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  myObject[`${request.body.equipe}`] = {
+  // myObject[`${request.body.equipe}`] = {
+  //   "joueurs": request.body.joueur,
+  //   "score": `${request.body.score}`
+  // }
+
+  // console.log(Object.entries(myObject))
+  // const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
+  //   return (obj1[1] as any).score - (obj2[1] as any).score;
+  // });
+  // console.log(scoreCroissant)
+  //
+  var rep = Object.entries(myObject).sort(function(obj1, obj2) {
+  //@ts-ignore
+  return obj1[1].score - obj2[1].score;
+});
+console.log(rep)
+console.log("ENSUITE !!!!!!!!!!!!!!!!")
+console.log(Object.fromEntries(rep))
+const nouvelleObjet = {}
+const finalObjet = {}
+nouvelleObjet[`${request.body.equipe}`] = {
     "joueurs": request.body.joueur,
     "score": `${request.body.score}`
   }
-
-  // console.log(Object.values(myObject))
-  // const scoreCroissant = Object.values(myObject).sort(function(obj1, obj2) {
-  //   return (obj1[0] as any).score - (obj2[0] as any).score;
-  // });
-  const test = []
-
-  const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
-    console.log(obj1)
-    console.log("PUIS")
-    console.log(obj2)
-    test.push(obj1)
-  return (obj1[1] as any).score - (obj2[1] as any).score;
+rep.push(Object.entries(nouvelleObjet)[0])
+// console.log(rep)
+rep.forEach((e, i:number) => {
+  finalObjet[e[0]] = {
+    "joueurs": (e[1] as any).joueurs,
+    "score": (e[1] as any).score
+  }
 });
-  console.log(test)
 
 //   const output = Object.fromEntries(
-//   Object.entries(scoreCroissant)
+//   Object.entries(rep)
 //     .filter(([k, v]) => {
 //       return true; // some irrelevant conditions here
 //     })
 // );
+// console.log(output)
 
 // console.log(output)
   //
-  // var newData2 = JSON.stringify(scoreCroissant[0]);
+  var newData2 = JSON.stringify(rep);
   // console.log("EEEEEEEEEEEEEEEETT")
   // console.log(newData2)
-  // fs.writeFile("./src/server/scores.json", newData2, (err) => {
-  //   if (err) throw err;
-  // });
+  fs.writeFile("./src/server/scores.json", newData2, (err) => {
+    if (err) throw err;
+  });
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify({"status":"ok"}));
 })
