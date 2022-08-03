@@ -11,6 +11,7 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
+import axios from "axios";
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
@@ -711,6 +712,15 @@ export default class Jeu extends Phaser.Scene {
         console.log("FIN DU JEU!!")
         console.log("TEMP:")
         console.log(resultat)
+        axios({
+          method: 'post',
+          url: "http://localhost:3000/scores",
+          data: {
+            equipe: 'Mon equipe',
+            joueur: ["nusky", "Nekfeu", "Nadjee"],
+            score: resultat.temps
+          }
+        });
         this.ecran_fin_text_score.setText(`Votre score : ${resultat.temps}`)
         this.ecran_fin_text_quitter
         .setInteractive(({ useHandCursor: true }))

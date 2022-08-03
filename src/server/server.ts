@@ -45,7 +45,7 @@ app.post('/scores', (request, res: any) => {
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
   myObject[`${request.body.equipe}`] = {
-    "joueurs": ["David", "David", "EncoreDavid"],
+    "joueurs": request.body.joueur,
     "score": `${request.body.score}`
   }
   var newData2 = JSON.stringify(myObject);
