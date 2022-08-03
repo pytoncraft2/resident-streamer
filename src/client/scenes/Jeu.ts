@@ -716,8 +716,8 @@ export default class Jeu extends Phaser.Scene {
           method: 'post',
           url: "http://localhost:3000/scores",
           data: {
-            equipe: 'Mon equipe',
-            joueur: ["nusky", "Nekfeu", "Nadjee"],
+            equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()}`,
+            joueur: resultat.joueur,
             score: resultat.temps
           }
         });

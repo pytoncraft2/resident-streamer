@@ -327,8 +327,12 @@ import { DefautDirection } from "../Stats/Defaut"
        (this.scene as any).room.boss["super_boss"].vaincu
      )
      {
+       const joueur = [];
        const resultat = (this.scene as any).StopCompteur();
-       (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat});
+       (this.scene as any).players.getChildren().forEach(j => {
+         joueur.push(j.sprite);
+       });
+       (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat, joueur});
      }
 
      (this.body as any).setAllowGravity(false);
