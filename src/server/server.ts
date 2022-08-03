@@ -41,7 +41,7 @@ app.get('/scores', (_request, res) => {
 
 app.post('/scores', (request, res: any) => {
   console.log("POST SCORES !!")
-  console.log(request.body)
+  // console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
   myObject[`${request.body.equipe}`] = {
@@ -49,14 +49,24 @@ app.post('/scores', (request, res: any) => {
     "score": `${request.body.score}`
   }
 
-  const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
-    return parseInt((obj1[1] as any).score.replace(/:/g,'')) - parseInt((obj2[1] as any).score.replace(/:/g,''));
+  // console.log(Object.values(myObject))
+  const scoreCroissant = Object.values(myObject).sort(function(obj1, obj2) {
+    return (obj1[0] as any).score - (obj2[0] as any).score;
   });
-  console.log(...scoreCroissant[0])
+  console.log(scoreCroissant)
 
-  var newData2 = JSON.stringify({...scoreCroissant[0]});
-  console.log("EEEEEEEEEEEEEEEETT")
-  console.log(newData2)
+//   const output = Object.fromEntries(
+//   Object.entries(scoreCroissant)
+//     .filter(([k, v]) => {
+//       return true; // some irrelevant conditions here
+//     })
+// );
+
+// console.log(output)
+  //
+  var newData2 = JSON.stringify(scoreCroissant);
+  // console.log("EEEEEEEEEEEEEEEETT")
+  // console.log(newData2)
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
     if (err) throw err;
   });
