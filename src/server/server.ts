@@ -87,7 +87,7 @@ rep.forEach((e, i:number) => {
 
 // console.log(output)
   //
-  var newData2 = JSON.stringify(rep);
+  var newData2 = JSON.stringify(Object.fromEntries(rep));
   // console.log("EEEEEEEEEEEEEEEETT")
   // console.log(newData2)
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
