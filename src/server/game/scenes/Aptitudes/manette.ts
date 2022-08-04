@@ -21,6 +21,7 @@ export function punch__A(manette: TJoueur, input: any) {
 export function lancer__Z(manette: TJoueur, _input: any) {
 
   if (!manette.obj_manette) {
+    manette.son = 'manette'
     manette.play('manette_lance')
       manette.body.setVelocityY(1000)
     const obj_manette = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)

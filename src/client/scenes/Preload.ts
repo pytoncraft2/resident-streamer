@@ -103,6 +103,9 @@ export default class Preload extends Phaser.Scene {
 			'assets/attaque.wav'
 		]);
 
+		this.load.audio('manette', [
+			'assets/manette.wav'
+		]);
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 
