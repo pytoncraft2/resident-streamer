@@ -5,3 +5,5 @@
 **/components
 **/server
 **/favicons
+**/*.wav
+**/*.mp3
