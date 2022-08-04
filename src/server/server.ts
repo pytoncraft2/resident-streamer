@@ -40,33 +40,25 @@ app.get('/scores', (_request, res) => {
 })
 
 app.post('/scores', (request, res: any) => {
-  console.log("POST SCORES !!")
-  console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  var rep = Object.entries(myObject).sort(function(obj1, obj2) {
-  //@ts-ignore
-  return obj1[1].score - obj2[1].score;
-});
-const nouvelleObjet = {}
-// const finalObjet = {}
-nouvelleObjet[`${request.body.equipe}`] = {
+  const objetFinal = { ...myObject }
+  objetFinal[`${request.body.equipe}`] = {
     "joueurs": request.body.joueur,
     "score": `${request.body.score}`
   }
-rep.push(Object.entries(nouvelleObjet)[0])
-// console.log(rep)
-// rep.forEach((e, i:number) => {
-//   let logo = ''
-//   console.log(i)
-//   if (i == 1) logo = '🥇'
-//   if (i == 2) logo = '🥈'
-//   if (i == 3) logo = '🥉'
-//   finalObjet[e[0] += logo] = {
-//     "joueurs": (e[1] as any).joueurs,
-//     "score": (e[1] as any).score
-//   }
-// });
+
+  console.log(myObject)
+  var rep = Object.entries(objetFinal).sort(function(obj1, obj2) {
+    //@ts-ignore
+    return obj1[1].score - obj2[1].score;
+  });
+  // const nouvelleObjet = {}
+  // nouvelleObjet[`${request.body.equipe}`] = {
+  //   "joueurs": request.body.joueur,
+  //   "score": `${request.body.score}`
+  // }
+  // rep.push(Object.entries(nouvelleObjet)[0])
 
   var newData2 = JSON.stringify(Object.fromEntries(rep));
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
