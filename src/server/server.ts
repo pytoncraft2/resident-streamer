@@ -48,6 +48,7 @@ app.post('/scores', (request, res: any) => {
     "score": `${request.body.score}`
   }
 
+  //tri par ordre croissant de l'objet score
   var rep = Object.entries(objetFinal).sort(function(obj1, obj2) {
     return parseInt((obj1[1] as any).score.replace(/:/g,'')) - parseInt((obj2[1] as any).score.replace(/:/g,''));
   });

@@ -1,8 +1,4 @@
-// import { Player } from "../RoomState"
-
 import PlayerClass from "./class/PlayerClass"
-
-
 
 /**
  * Serveur Phaser 3 Epreuve 1
@@ -13,7 +9,6 @@ export default class Hall extends Phaser.Scene {
   room: any
   swordHitbox!: Phaser.Types.Physics.Arcade.ImageWithDynamicBody
   colisionJoueurEnnemie?: any
-  // groupeBoules: any
   colisionShurikenEnnemie: any
   enemies: Phaser.GameObjects.Group
   playersAttackZone: Phaser.GameObjects.Group
@@ -35,16 +30,20 @@ export default class Hall extends Phaser.Scene {
     this.room = room
   }
 
+  /**
+   * Chargement de tout les atlas avec une mini image pour le serveur<br>
+   */
   preload() {
     this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
   }
 
+  /**
+   * Création des groupes + platformes + colision
+   * Commence le compte à rebours
+   */
   create() {
 
     var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
-
-
-
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
@@ -75,29 +74,11 @@ export default class Hall extends Phaser.Scene {
       allowGravity: false
     })
 
-
-    // this.swordHitbox = this.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody
-// this.physics.add.existing(this.swordHitbox)
-// this.swordHitbox.body.enable = false
-// this.physics.world.remove(this.swordHitbox.body)
-
-// this.physics.add.collider(this.players.getChildren()[0], this.box)
-
-// TODO: add physics overlap with dummy box; show box damaged on overlap
-// this.boxStateMachine.setState('damage')
-this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
-this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapActionEnnemie, undefined, this)
-// this.physics.add.overlap(this.players, this.enemies);
-
+    this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
+    this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapActionEnnemie, undefined, this)
 
     this.playersRef = {}
     this.enemiesRef = {}
-    // const platforme = this.add.rectangle(716.7470889640784, 894.3987579810794, 128, 128);
-    // platforme.scaleX = 4.6929101228048555;
-    // platforme.scaleY = 0.11649497828162556;
-    // platforme.setOrigin(0, 0.5);
-    // platforme.isFilled = true;
-    // platforme.fillColor = 0x000000;
 
 		const platforme = this.add.rectangle(1837, 939, 128, 128);
     platforme.scaleX = 14.993211052385613;
@@ -150,15 +131,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
 		platforme_haut_gauche.fillColor = 10563832;
     platforme_droite.setData('piece', 'bas_droite')
 
-
-    // this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
-      // function (_p: Phaser.Physics.Arcade.Sprite, _joueur: any) {
-        // _joueur.pieceCourante = _p.getData('piece')
-      // }, null, this);
-
-
-    // const platforme = this.add.rectangle(955, 1200, 40000, 10);
-    // this.physics.world.setBounds(platforme.getBottomLeft().x, 0, platforme.displayWidth, 1000);
     this.physics.add.existing(platforme, true);
     this.physics.add.existing(platforme_gauche, true);
     this.physics.add.existing(platforme_droite, true);
@@ -166,10 +138,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     this.physics.add.existing(platforme_haut_gauche, true);
     this.physics.add.existing(platforme_haut_droite, true);
     let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche, platforme_haut, platforme_haut_gauche, platforme_haut_droite], [this.players, this.enemies]);
-
-    // this.physics.add.collider(platforme, this.enemies);
-    // this.colisionJoueurEnnemie = this.physics.add.collider(this.players, this.enemies);
-
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {
@@ -180,14 +148,47 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     this.CommencerCompteur()
   }
 
+
+  /**
+   * #### Description
+   * Active la fonction du joueur 'action' quand la zone d'interaction (rectangle) overlap
+   * 
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Overlaps action
+   * @param playerActionZone 
+   * @param ennemie 
+   */
   overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
     playerActionZone.action(ennemie)
   }
 
+  /**
+   * #### Description
+   * Active la fonction du ennemie 'action' quand la zone d'interaction (rectangle) overlap
+   * 
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Overlaps action
+   * @param ennemieActionZone 
+   * @param joueur 
+   */
   overlapActionEnnemie(ennemieActionZone: any, joueur: Phaser.Physics.Arcade.Sprite) {
     ennemieActionZone.action(joueur)
   }
 
+
+  /**
+   * #### Description
+   * Retourne tout les joueurs et éléments presents dans la partie
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Gets presence
+   * @returns liste des joueurs/elements présents 
+   */
   getPresence() {
     let response = {}
     if (this.players) {
@@ -198,16 +199,6 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
         }
       })
     }
-
-    if (this.groupeBoulesHuzounet) {
-      // this.groupeBoulesHuzounet.children.iterate((child: any)=> {
-      //   if (child.data.values.ClientId) {
-      //     response[child.data.values.ClientId] = { x: child.x, y: child.y, alpha: child.alpha}
-      //   }
-      // })
-    }
-
-
     return {
       presences: response,
       presenceList: Object.keys(response),
@@ -216,6 +207,22 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }
   }
 
+
+  /**
+   * #### Description
+   * 
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * 
+   * #### Links
+   * 
+   * 
+   * Creates player
+   * @param ClientId id de la session colyseus
+   * @param sprite nom du sprite
+   * @returns liste des elements présents 
+   */
   createPlayer(ClientId: any, sprite: string) {
     const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
     this.players.add(player)
@@ -223,16 +230,33 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     player.setBounceX(0.2)
     player.setDragX(300)
 
-
     return this.getPresence()
   }
 
+
+  /**
+   * #### Description
+   * 
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * ```ts
+   * createEnnemy(1234, 'manette', true, 1000, 200)
+   * ```
+   * #### Links
+   * {@link game/Hall_01 | détail de l'objet des boss (position, nom, etat...) }
+   * 
+   * 
+   * Creates ennemy
+   * @param EnnemyId id généré au hazard
+   * @param sprite nom du sprite
+   * @param [auto] active ou non le mode 'bot' automatique
+   * @param [x] emplacement de l'apparition généré dans l'objet des boss
+   * @param [y] emplacement de l'apparition généré dans l'objet des boss
+   * @returns  
+   */
   createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
-    // const ennemy = new EnnemyClass(this, 3539, 706, "atlas", EnnemyId).setData({ EnnemyId })
     const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
-    // ennemy.setPushable(false)
-    // ennemy.setDisplaySize(335, 540.4)
-    // ennemy.setBounceX(40)
 
     this.enemies.add(ennemy)
     this.enemiesRef[EnnemyId] = ennemy
@@ -242,18 +266,60 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     return this.getPresence()
   }
 
+  
+  /**
+   * #### Description
+   * Suppression de la reference de l'objet et du joueur dans son groupe
+   * 
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Removes player
+   * @param ClientId id du joueur
+   * @returns  
+   */
   removePlayer(ClientId: any) {
     this.playersRef[ClientId].destroy(true)
     delete this.playersRef[ClientId]
     return this.getPresence()
   }
 
+
+  /**
+   * #### Description
+   * Suppression de la reference de l'objet et de l'ennemie dans son groupe
+   * 
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Removes ennemy
+   * @param ClientId 
+   * @returns  
+   */
   removeEnnemy(ClientId: any) {
     this.enemiesRef[ClientId].destroy(true)
     delete this.enemiesRef[ClientId]
     return this.getPresence()
   }
 
+
+  /**
+   * #### Description
+   * Supprime un projectile avec une disparition prossif ou sans
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * ```ts
+   * this.suppressionProjectileDelai(balle, idBalle, 500, true)
+   * ```
+   * 
+   * Suppressions projectile delai
+   * @param cible element à supprimer
+   * @param id id de l'element à supprimer
+   * @param [delai] delai avant la suppression
+   * @param [smooth] effet progessif opacité
+   * @returns  
+   */
   suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
     return this.time.delayedCall(delai, () => {
       if (smooth)
@@ -279,12 +345,24 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     }, null, this);
   }
 
-  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
 
-    console.log("SUPRESSION JOUEUR!!!!!!!!!!")
-    console.log(smooth)
-    console.log(id)
-    console.log(delai)
+  /**
+   * #### Description
+   * Suppression du joueur avec transition possible
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * ```ts
+   * this.suppressionJoueur(joueur, true, joueur.ClientID)
+   * ```
+   * 
+   * Suppressions joueur
+   * @param cible 
+   * @param smooth 
+   * @param id 
+   * @param [delai] 
+   */
+  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
     if (smooth)
     {
       this.tweens.add({
@@ -305,18 +383,39 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
       this.room.state.presences.delete(id);
       cible.destroy(true);
     }
-
   }
 
+
+  /**
+   * #### Description
+   * !Non utilisé
+   * Supprimer les lignes
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Suppressions ligne
+   * @param cible ligne à supprimer
+   * @param id id de la ligne
+   * @param [delai] 
+   * @param [smooth] 
+   */
   suppressionLigne(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
-    // return this.time.delayedCall(delai, () => {
         this.room.broadcast("suppression", {lignesRef: id});
         this.room.state.lignes.delete(id);
         cible.destroy();
-    // }, null, this);
   }
 
 
+
+  /**
+   * #### Description
+   * Toute les 1 secondes incrémente le compteur de 1
+   * 
+   * #### Version
+   * since: V1.0.0
+   * 
+   * Commencer compteur
+   */
   CommencerCompteur() {
     this.compteur = this.time.addEvent({
       delay: 1000,                // ms
@@ -328,18 +427,49 @@ this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapAct
     });
   }
 
+
+  /**
+   * #### Description
+   * Capture le resultat du compteur et convertit en heure + minute + secondes
+   * Retoure le resulat en string
+   * 
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * 
+   * #### Links
+   * 
+   * 
+   * Stops compteur
+   * @returns  
+   */
   StopCompteur() {
     const resultat = this.room.state.compteur
     this.compteur.remove()
     return this.secondsToTime(resultat);
   }
 
+
+  /**
+   * #### Description
+   * Convertis les millisecondes en heure + minute + secondes
+   * 
+   * #### Version
+   * since: V1.0.0
+   * #### Example
+   * ```ts
+   * secondsToTime(21)
+   * ```
+   * 
+   * Seconds to time
+   * @param e nombre à convertir
+   * @returns heure + minutes + secondes 
+   */
   secondsToTime(e: number){
       const h = Math.floor(e / 3600).toString().padStart(2,'0'),
             m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
             s = Math.floor(e % 60).toString().padStart(2,'0');
 
       return h + ':' + m + ':' + s;
-      //return `${h}:${m}:${s}`;
   }
 }

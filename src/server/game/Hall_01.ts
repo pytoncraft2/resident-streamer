@@ -139,8 +139,6 @@ export default class GameRooms extends Room {
     this.scene.players.destroy(true)
     this.scene.enemies.destroy(true)
     this.Game.destroy(true)
-
-    // this.sys.game.destroy(true);
     console.log(`${this.roomId} shutting down!!`)
   }
 }
