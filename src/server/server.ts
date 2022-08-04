@@ -44,58 +44,31 @@ app.post('/scores', (request, res: any) => {
   console.log(request.body)
   const data:any = fs.readFileSync("./src/server/scores.json");
   const myObject = JSON.parse(data);
-  // myObject[`${request.body.equipe}`] = {
-  //   "joueurs": request.body.joueur,
-  //   "score": `${request.body.score}`
-  // }
-
-  // console.log(Object.entries(myObject))
-  // const scoreCroissant = Object.entries(myObject).sort(function(obj1, obj2) {
-  //   return (obj1[1] as any).score - (obj2[1] as any).score;
-  // });
-  // console.log(scoreCroissant)
-  //
   var rep = Object.entries(myObject).sort(function(obj1, obj2) {
   //@ts-ignore
   return obj1[1].score - obj2[1].score;
 });
-// console.log(rep)
-// console.log("ENSUITE !!!!!!!!!!!!!!!!")
-// console.log(Object.fromEntries(rep))
 const nouvelleObjet = {}
-const finalObjet = {}
+// const finalObjet = {}
 nouvelleObjet[`${request.body.equipe}`] = {
     "joueurs": request.body.joueur,
     "score": `${request.body.score}`
   }
 rep.push(Object.entries(nouvelleObjet)[0])
 // console.log(rep)
-rep.forEach((e, i:number) => {
-  let logo = ''
-  console.log(i)
-  if (i == 1) logo = '🥇'
-  if (i == 2) logo = '🥈'
-  if (i == 3) logo = '🥉'
-  finalObjet[e[0] += logo] = {
-    "joueurs": (e[1] as any).joueurs,
-    "score": (e[1] as any).score
-  }
-});
+// rep.forEach((e, i:number) => {
+//   let logo = ''
+//   console.log(i)
+//   if (i == 1) logo = '🥇'
+//   if (i == 2) logo = '🥈'
+//   if (i == 3) logo = '🥉'
+//   finalObjet[e[0] += logo] = {
+//     "joueurs": (e[1] as any).joueurs,
+//     "score": (e[1] as any).score
+//   }
+// });
 
-//   const output = Object.fromEntries(
-//   Object.entries(rep)
-//     .filter(([k, v]) => {
-//       return true; // some irrelevant conditions here
-//     })
-// );
-// console.log(output)
-
-// console.log(output)
-  //
   var newData2 = JSON.stringify(Object.fromEntries(rep));
-  console.log(Object.fromEntries(rep))
-  // console.log("EEEEEEEEEEEEEEEETT")
-  // console.log(newData2)
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
     if (err) throw err;
   });
