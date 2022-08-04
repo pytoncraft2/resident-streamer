@@ -1,7 +1,8 @@
 import TJoueur from "../types/Joueur";
 import fusion from "./_utilitaire/fusion";
 
-export function __StatsSupplementaire() {}
+export function __StatsSupplementaire(personnage: TJoueur) {
+}
 
 export function soin__A(osmo: TJoueur, input: any) {
   if (input.a)

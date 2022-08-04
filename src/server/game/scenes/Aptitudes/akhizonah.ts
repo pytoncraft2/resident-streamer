@@ -11,6 +11,7 @@ export function couteau__A(akhizonah: TJoueur, input?: any) {
   }
 }
 
+
 export function bombe__Z(akhizonah: TJoueur) {
 
   if (!akhizonah.bombe) {
