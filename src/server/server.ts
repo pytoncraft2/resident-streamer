@@ -48,17 +48,10 @@ app.post('/scores', (request, res: any) => {
     "score": `${request.body.score}`
   }
 
-  console.log(myObject)
   var rep = Object.entries(objetFinal).sort(function(obj1, obj2) {
     //@ts-ignore
     return obj1[1].score - obj2[1].score;
   });
-  // const nouvelleObjet = {}
-  // nouvelleObjet[`${request.body.equipe}`] = {
-  //   "joueurs": request.body.joueur,
-  //   "score": `${request.body.score}`
-  // }
-  // rep.push(Object.entries(nouvelleObjet)[0])
 
   var newData2 = JSON.stringify(Object.fromEntries(rep));
   fs.writeFile("./src/server/scores.json", newData2, (err) => {
