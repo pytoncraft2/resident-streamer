@@ -106,6 +106,11 @@ export default class Preload extends Phaser.Scene {
 		this.load.audio('manette', [
 			'assets/manette.wav'
 		]);
+
+		this.load.audio('laser', [
+			'assets/laser.wav'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 

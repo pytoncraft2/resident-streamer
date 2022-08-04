@@ -41,6 +41,7 @@ export function charge__Z(twitchman: TJoueur, input: any) {
 }
 
 export function laser__E(twitchman: TJoueur, input: any) {
+  twitchman.son = 'laser'
   twitchman.laser.charge()
   input.e = false
 }
