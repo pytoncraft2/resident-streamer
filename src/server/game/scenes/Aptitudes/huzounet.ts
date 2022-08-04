@@ -50,6 +50,7 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
   {
     if (huzounet.boulesEnMain && huzounet.boulesEnMain.getLength())
     {
+      huzounet.son = 'boule'
       const boule = (huzounet.boulesEnMain.getChildren()[0] as BouleClass);
       boule.proprietaire = huzounet.ClientID;
       huzounet.scene.groupeBoulesHuzounet.add(boule.setData('degat', huzounet.puissanceChargeBoule));
@@ -68,6 +69,7 @@ export function kunai__Z(huzounet: TJoueur) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
     if (!huzounet.kunai) {
+      huzounet.son = 'kunai'
       const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "huzounet",  `${(Math.random() + 1).toString(36).substring(7)}`)
       .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat}))
       .setFlipX(huzounet.flipX)
@@ -79,7 +81,7 @@ export function kunai__Z(huzounet: TJoueur) {
 
       (kunai.body as any).setAllowGravity(false);
       huzounet.kunai = kunai
-      huzounet.scene.time.delayedCall(200, () => {
+      huzounet.scene.time.delayedCall(100, () => {
           huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
             huzounet.kunai = undefined;
       }, null, huzounet);

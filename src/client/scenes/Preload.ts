@@ -75,8 +75,13 @@ export default class Preload extends Phaser.Scene {
 			'assets/ejection.wav'
 		]);
 
+		this.load.audio('kunai', [
+			'assets/kunai.wav'
+		]);
 
-
+		this.load.audio('boule', [
+			'assets/boule.wav'
+		]);
 
 		this.load.audio('punch_fast', [
 			'assets/punch_fast.mp3'
