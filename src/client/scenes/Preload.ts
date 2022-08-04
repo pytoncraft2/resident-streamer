@@ -116,6 +116,14 @@ export default class Preload extends Phaser.Scene {
 			'assets/boss_attaque.wav'
 		]);
 
+		this.load.audio('troll_bouton', [
+			'assets/troll_bouton.wav'
+		]);
+
+		this.load.audio('troll_bouton2', [
+			'assets/troll_bouton2.wav'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 

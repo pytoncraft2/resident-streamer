@@ -62,6 +62,7 @@ export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
     input.a = false
     troll.play("troll_attaque")
 
+    troll.son = 'troll_bouton'
     const oie = troll.scene.add.existing(new OieClass(troll.scene, troll.flipX ? troll.x - 180 : troll.x + 180, troll.y, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, troll.flipX, troll.cible_courante).setData({ ClientId: troll.ClientID, degat: 0.9}));
     troll.scene.physics.add.existing(oie);
     troll.scene.physics.add.collider(troll.scene[`${troll.cible_courante}`].getChildren(), oie)
@@ -72,6 +73,7 @@ export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
 export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.z) {
     input.z = false
+    troll.son = 'troll_bouton2'
     troll.play("troll_attaque")
     const grenouille = troll.scene.add.existing(new GrenouilleClass(troll.scene, troll.flipX ? troll.x - Phaser.Math.Between(380, 180) : troll.x + Phaser.Math.Between(380, 180), troll.y - 400, "troll", `${(Math.random() + 1).toString(36).substring(7)}`, !troll.flipX, troll.cible_courante).setData({ ClientId: troll.ClientID, degat: 0.3}));
     troll.scene.physics.add.existing(grenouille);
