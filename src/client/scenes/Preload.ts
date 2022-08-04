@@ -59,6 +59,11 @@ export default class Preload extends Phaser.Scene {
 			'assets/kick.mp3'
 		]);
 
+		this.load.audio('fusion', [
+			'assets/fusion.wav'
+		]);
+
+
 
 
 		this.load.audio('punch_fast', [

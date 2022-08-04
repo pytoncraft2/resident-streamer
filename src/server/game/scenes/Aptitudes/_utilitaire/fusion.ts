@@ -10,6 +10,7 @@ export default function fusion(personnage: any, input: any) {
       {
         if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
         {
+          personnage.son = 'fusion'
           recuperationObjetBoss(ennemieProche, personnage)
           personnage.bossControllable.add(ennemieProche)
         }
