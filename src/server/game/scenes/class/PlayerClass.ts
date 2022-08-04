@@ -140,6 +140,7 @@ import { DefautDirection } from "../Stats/Defaut"
            else
            {
            _e.dommage(12)
+           if (_e.cible_courante == "enemies") _e.son = 'game-over';
            }
          }
        }

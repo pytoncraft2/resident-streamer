@@ -63,6 +63,10 @@ export default class Preload extends Phaser.Scene {
 			'assets/fusion.wav'
 		]);
 
+		this.load.audio('game-over', [
+			'assets/game-over.wav'
+		]);
+
 
 
 
