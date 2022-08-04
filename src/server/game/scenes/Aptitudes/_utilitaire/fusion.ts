@@ -2,8 +2,13 @@ import TJoueur from "../../types/Joueur"
 
 export default function fusion(personnage: any, input: any) {
   if (input.tab) {
-    if (personnage.bossControllable.getLength() == 1) fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
-    else {
+    if (personnage.bossControllable.getLength() == 1)
+    {
+      fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
+      personnage.son = 'fusion2'
+    }
+    else
+    {
       const ennemieProche = closest(personnage, 'enemies');
       if (!ennemieProche) return;
       if (Phaser.Math.Distance.Between(ennemieProche.x, ennemieProche.y, personnage.x, personnage.y) < 270)
@@ -43,6 +48,7 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
    joueur.setScale(0.2);
 
    joueur.scene.time.delayedCall(5000, () => {
+     joueur.son = "ejection"
      joueur.suivre = false;
      (joueur.scene as any).suppressionJoueur(ennemie, true, ennemie.ClientID)
      joueur.currentTarget = joueur;
