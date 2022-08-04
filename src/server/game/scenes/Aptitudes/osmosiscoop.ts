@@ -2,6 +2,9 @@ import TJoueur from "../types/Joueur";
 import fusion from "./_utilitaire/fusion";
 
 export function __StatsSupplementaire(personnage: TJoueur) {
+  // personnage.scene.time.delayedCall(100, () => {
+    // personnage.setSize(100, 200)
+  // }, null, this);
 }
 
 export function soin__A(osmo: TJoueur, input: any) {
