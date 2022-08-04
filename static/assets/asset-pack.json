@@ -121,6 +121,13 @@
                 "key": "osmosiscoop_atlas"
             },
             {
+                "url": [
+                    "assets/punch_fast.mp3"
+                ],
+                "type": "audio",
+                "key": "punch_fast"
+            },
+            {
                 "atlasURL": "assets/super_boss_atlas.json",
                 "textureURL": "assets/super_boss_atlas.png",
                 "type": "atlas",

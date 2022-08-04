@@ -32,6 +32,7 @@ import { DefautDirection } from "../Stats/Defaut"
    groupeBoules: any
    currentTarget: any
    me: any
+   son: string
 
    survole: boolean = false
 
@@ -218,11 +219,13 @@ import { DefautDirection } from "../Stats/Defaut"
          vie: this.vie,
          xa: this.zoneInteraction.x,
          ya: this.zoneInteraction.y,
+         son: this.son,
          particules: this.particules
        })
      )
 
      if (this.particules) this.particules = false;
+     if (this.son) this.son = undefined;
 
 
 

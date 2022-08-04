@@ -51,6 +51,10 @@ export default class Preload extends Phaser.Scene {
 			'assets/epic_musique.mp3'
 		]);
 
+		this.load.audio('punch_fast', [
+			'assets/punch_fast.mp3'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 

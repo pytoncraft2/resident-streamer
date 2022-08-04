@@ -642,6 +642,11 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
+    // this.time.delayedCall(5000, () => {
+		// this.sound.play('punch_fast');
+    // }, undefined, this);
+
+
 		const self = this;
 		this.players = this.add.group()
 		this.enemies= this.add.group()
@@ -995,6 +1000,8 @@ export default class Jeu extends Phaser.Scene {
         if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
 
         if (list.presences[item].particules) this.animationBossKO(`${item}`)
+		
+        if (list.presences[item].son) this.sound.play(list.presences[item].son);
 
         if (this.session === this.playersRef[item].ClientId) {
           this.vie_joueur.scaleX = list.presences[item].vie / 2 + 0.15

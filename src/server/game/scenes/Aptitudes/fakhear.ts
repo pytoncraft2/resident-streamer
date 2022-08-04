@@ -7,6 +7,7 @@ export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {}
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
+    fakhear.son = 'punch_fast'
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
   }
