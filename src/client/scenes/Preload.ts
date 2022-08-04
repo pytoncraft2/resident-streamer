@@ -94,6 +94,15 @@ export default class Preload extends Phaser.Scene {
 		this.load.audio('couteau', [
 			'assets/couteau.wav'
 		]);
+
+		this.load.audio('soin', [
+			'assets/soin.wav'
+		]);
+
+		this.load.audio('attaque', [
+			'assets/attaque.wav'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 
