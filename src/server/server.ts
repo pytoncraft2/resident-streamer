@@ -49,8 +49,7 @@ app.post('/scores', (request, res: any) => {
   }
 
   var rep = Object.entries(objetFinal).sort(function(obj1, obj2) {
-    //@ts-ignore
-    return obj1[1].score - obj2[1].score;
+    return parseInt((obj1[1] as any).score.replace(/:/g,'')) - parseInt((obj2[1] as any).score.replace(/:/g,''));
   });
 
   var newData2 = JSON.stringify(Object.fromEntries(rep));

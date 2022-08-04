@@ -756,7 +756,7 @@ export default class Jeu extends Phaser.Scene {
         })
 
         if (this.compteur.text !== `${changes.compteur}`) {
-          this.compteur.setText(`${changes.compteur}`)
+          this.compteur.setText(`${this.secondsToTime(changes.compteur)}`)
         }
 				changes.presences.forEach((value: any, key: any) => {
 					presences[key] = value
@@ -783,6 +783,7 @@ export default class Jeu extends Phaser.Scene {
     this.minimap = this.cameras.add(-899, 100, 2800, 1200).setZoom(0.34).setName('mini');
 	this.minimap.setVisible(false)
 	this.minimap.ignore(this.interface_joueur);
+	this.minimap.ignore(this.barreHautContainer);
 
     this.cameras.main.centerOn(2800, 390)
     this.interface_joueur.setScrollFactor(0)
@@ -1137,6 +1138,16 @@ export default class Jeu extends Phaser.Scene {
 finAnimationBossKO(id: string) {
   this.playersRef[id].setAlpha(0)
   this.playersRef[id].ellipse_5_1.setAlpha(0)
+}
+
+
+secondsToTime(e: number){
+  const h = Math.floor(e / 3600).toString().padStart(2,'0'),
+  m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
+  s = Math.floor(e % 60).toString().padStart(2,'0');
+
+  return h + ':' + m + ':' + s;
+  //return `${h}:${m}:${s}`;
 }
 
   update() {
