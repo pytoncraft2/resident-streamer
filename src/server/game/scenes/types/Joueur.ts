@@ -58,7 +58,7 @@ interface TJoueur extends Phaser.GameObjects.Sprite
 
   nouveauPilote(joueur: Phaser.Physics.Arcade.Sprite): void
 
-  changeInterfaceClient(sprite: string, icon?: boolean, id_cible?: string|null): void
+  changeInterfaceClient(sprite: string, icon?: boolean): void
 
   //bot
   auto?(joueur: Phaser.Physics.Arcade.Sprite): void

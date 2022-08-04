@@ -58,6 +58,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.particules = false
      this.sprite = sprite
 
+     //initialisation de l'etat du joueur
      new AnimationJoueur(this.anims)
      const self = this;
      DefautDirection(Aptitudes, this)
@@ -133,11 +134,7 @@ import { DefautDirection } from "../Stats/Defaut"
          this.blesse_opposant = false
          if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
            if (_e.vie <= 0) {
-
              _e.vie = 10
-
-             // this.nouveauPilote(_e);
-             // (this.scene as any).players.add(_e);
            }
            else
            {
@@ -149,25 +146,6 @@ import { DefautDirection } from "../Stats/Defaut"
        if (this.soigne) {
          _e.vie += 0.01
        }
-
-       if (this.fusionner && _e.sprite != this.sprite) {
-
-         if (!this.aObtenuUnBoss)
-         {
-           // this.aObtenuUnBoss = true
-           if ((this.scene as any).room.boss[`${_e.sprite}`].vaincu)
-           {
-           }
-         }
-         // else
-         // {
-           // console.log("ACTION NUMERO 2 !!!!!")
-         // }
-
-        // console.log("FUSION !!!!!!!!!!!!!!");
-         // this.nouveauPilote(_e);
-       }
-
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      this.zoneInteraction.body.enable = false;
@@ -250,9 +228,22 @@ import { DefautDirection } from "../Stats/Defaut"
 
    }
 
+   /**
+    * #### Description
+    * Change la couleur du personnage en rouge pendant 100ms<br>
+    * Puis diminue la vie selon la puissance reçu
+    * 
+    * #### Version
+    * since: V1.0.0
+    * #### Example
+    * ```ts
+    * dommage(3)
+    * ```
+    * 
+    * Dommages player class
+    * @param puissance degat de l'attaquant
+    */
    dommage(puissance: number) {
-     //   this.play('attaque')
-     //   this.setFlipX(directionFinal)
      if (this.scene) {
      this.setTint(0xff0000)
        this.scene.time.delayedCall(100, () => {
@@ -264,23 +255,51 @@ import { DefautDirection } from "../Stats/Defaut"
      }
    }
 
-   changeInterfaceClient(sprite: string, icon: boolean = false, id_cible: string|null = null) {
-     console.log("------------------------CHANGEMENT INTERFACE-------------------------");
-     // if (!(this.scene as any).room.boss[`${sprite}`])
-     // {
+
+
+   /**
+    * #### Description
+    * Change la liste des commandes ou/et de l'icon selon<br>
+    * selon les commandes disponibles du joueur
+    * 
+    * #### Version
+    * since: V1.0.0
+    * #### Example
+    * ```ts
+    * changeInterfaceClient('fakhear', true);
+    * ```
+    * 
+    * 
+    * #### Links
+    * {@link game/scenes/Aptitudes/base | fonctionnement de la construction de l'objet pour les touches }
+    * 
+    * Changes interface client
+    * @param sprite 
+    * @param [icon] 
+    */
+   changeInterfaceClient(sprite: string, icon: boolean = false) {
        (this.scene as any).room.state.presences.set(
          this.ClientID,
          new Player( icon ? {
            sprite_fusion: sprite,
-           commandes: new Commandes(Aptitudes[sprite]["commandes"]),
-           sprite_cible: id_cible
+           commandes: new Commandes(Aptitudes[sprite]["commandes"])
          } : {
            commandes: new Commandes(Aptitudes[sprite]["commandes"])
          })
        );
-     // }
    }
 
+
+   /**
+    * #### Description
+    * Déplacer le joueur dans le hall + animation opacité <br>
+    * Ajout du personnage dans l'objet joueur
+    * 
+    * #### Version
+    * since: V1.0.0
+    * 
+    * Respawns player class
+    */
    respawn() {
      this.scene.tweens.add({
        targets: this,
@@ -303,6 +322,18 @@ import { DefautDirection } from "../Stats/Defaut"
 
    }
 
+
+   /**
+    * #### Description
+    * Change l'état du boss en "vaincu"<br>
+    * Emit le Débloquage d'un étage au client selon le boss vaincu<br>
+    * Ajout une animation au boss et modifie sa dimension
+    * 
+    * #### Version
+    * since: V1.0.0
+    * 
+    * Animations boss vaincu
+    */
    animationBossVaincu() {
      this.setScale(0.5);
      // this.particules = true;
@@ -329,7 +360,7 @@ import { DefautDirection } from "../Stats/Defaut"
      {
        const joueur = [];
        const resultat = (this.scene as any).StopCompteur();
-       (this.scene as any).players.getChildren().forEach(j => {
+       (this.scene as any).players.getChildren().forEach((j: any) => {
          joueur.push(j.sprite);
        });
        (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat, joueur});
@@ -346,25 +377,5 @@ import { DefautDirection } from "../Stats/Defaut"
        duration: 1000,
        repeat: -1
      });
-
-     console.log("ANIMATION BOSS VAINCU!!!!!!!!!!!!!!!!!!");
-     // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: true }));
-     // (this.scene as any).room.state.presences.set(this.ClientID, new Player({ capturable: false }));
-     // (this.body as any).setAllowGravity(false)
    }
-
-   changePiece(piece: any) {
-     if (this.pieceCourante !== piece) {
-       this.pieceCourante = piece;
-       console.log("CHANGE PIECE")
-       console.log(this.pieceCourante)
-       // (this.scene as any).room.state.presences.set(
-       //   this.ClientID,
-       //   new Player({
-       //     pieceCourante: this.pieceCourante
-       //   })
-       // );
-     }
-   }
-
  }
