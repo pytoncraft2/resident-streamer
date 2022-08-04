@@ -51,6 +51,16 @@ export default class Preload extends Phaser.Scene {
 			'assets/epic_musique.mp3'
 		]);
 
+		this.load.audio('quick-punch', [
+			'assets/quick-punch.wav'
+		]);
+
+		this.load.audio('kick', [
+			'assets/kick.mp3'
+		]);
+
+
+
 		this.load.audio('punch_fast', [
 			'assets/punch_fast.mp3'
 		]);

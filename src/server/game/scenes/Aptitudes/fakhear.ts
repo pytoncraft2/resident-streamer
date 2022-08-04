@@ -7,15 +7,20 @@ export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {}
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
-    fakhear.son = 'punch_fast'
+    fakhear.son = 'quick-punch'
     fakhear.setVelocityX(0)
     setAnimation(fakhear, 'cross')
   }
 }
 
-export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any) {
+export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  if (input.z)
+  {
+  fakhear.son = 'kick'
   fakhear.play('attack')
   fakhear.setVelocityX(0);
+  }
+  input.z = false
 }
 
 export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
@@ -24,6 +29,7 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   // fakhear.body.checkCollision.none = true;
 
   if (!fakhear.animation_dash)  {
+    fakhear.son = 'punch_fast'
     fakhear.animation_dash = fakhear.scene.tweens.addCounter({
       duration: 300,
       onUpdate: () => (fakhear.setVelocity((fakhear.flipX ? -1700 : 1700), -70)),
@@ -32,6 +38,7 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
       yoyo: false,
     })
   } else if (!fakhear.animation_dash.isPlaying()) {
+    fakhear.son = 'punch_fast'
     fakhear.animation_dash.restart()
   }
 }
