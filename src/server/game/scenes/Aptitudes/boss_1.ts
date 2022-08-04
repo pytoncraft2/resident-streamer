@@ -46,9 +46,13 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
   // }, null, this);
 }
 
-export function pique__A(boss_1: Phaser.Physics.Arcade.Sprite|any, input) {
-  boss_1.play('attaque')
-  input.a = false
+export function pique__A(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  if (input.a)
+  {
+    boss_1.son = 'boss_attaque'
+    input.a = false
+    boss_1.play('attaque')
+  }
 }
 
 export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {

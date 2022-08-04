@@ -111,6 +111,11 @@ export default class Preload extends Phaser.Scene {
 			'assets/laser.wav'
 		]);
 
+
+		this.load.audio('boss_attaque', [
+			'assets/boss_attaque.wav'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 
