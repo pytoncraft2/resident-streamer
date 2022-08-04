@@ -71,7 +71,12 @@ nouvelleObjet[`${request.body.equipe}`] = {
 rep.push(Object.entries(nouvelleObjet)[0])
 // console.log(rep)
 rep.forEach((e, i:number) => {
-  finalObjet[e[0]] = {
+  let logo = ''
+  console.log(i)
+  if (i == 1) logo = '🥇'
+  if (i == 2) logo = '🥈'
+  if (i == 3) logo = '🥉'
+  finalObjet[e[0] += logo] = {
     "joueurs": (e[1] as any).joueurs,
     "score": (e[1] as any).score
   }
