@@ -195,14 +195,8 @@ import { DefautDirection } from "../Stats/Defaut"
 
      if (this.vie <= 0) {
        this.vie = 10;
-       if (this.cible_courante == "players") {
-         this.animationBossVaincu()
-       }
-       else
-       {
-         this.respawn();
-       }
-       // (this.scene as any).players.remove(this)
+       if (this.cible_courante == "players") this.animationBossVaincu()
+       else this.respawn()
      }
 
      (this.scene as any).room.state.presences.set(

@@ -44,31 +44,36 @@ export default class GameRooms extends Room {
           temps: 10_000,
           x: 2830,
           y: -900,
-          vaincu: false
+          vaincu: false,
+          inaccessible: false
         },
         'twitchman': {
           temps: 10_000,
           x: 1000,
           y: -1000,
-          vaincu: false
+          vaincu: false,
+          inaccessible: false
         },
         'boss_1': {
           temps: 2_000,
           x: 4800,
           y: -200,
-          vaincu: false
+          vaincu: false,
+          inaccessible: false
         },
         'manette': {
           temps: 4_000,
           x: 1000,
           y: -200,
-          vaincu: false
+          vaincu: false,
+          inaccessible: false
         },
         'troll':  {
           temps: 7_000,
           x: 4800,
           y: -900,
-          vaincu: false
+          vaincu: false,
+          inaccessible: false
         }
       }
       Object.entries(this.boss).map(item => {

@@ -32,29 +32,31 @@ function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
 }
 
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
-  joueur.scene.time.delayedCall(1, () => {
-    joueur.changeInterfaceClient(ennemie.sprite, true);
-  }, null, joueur);
-   ennemie.animationBossFigurine.remove();
-   ennemie.setAlpha(1);
-   ennemie.body.setAllowGravity(true);
-   ennemie.cible_courante = "enemies";
-   ennemie.currentTarget = ennemie;
-   ennemie.suivre = false;
-   ennemie.setScale(1);
+  if ((joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible) return;
+    joueur.scene.time.delayedCall(1, () => {
+      joueur.changeInterfaceClient(ennemie.sprite, true);
+    }, null, joueur);
+    ennemie.animationBossFigurine.remove();
+    ennemie.setAlpha(1);
+    ennemie.body.setAllowGravity(true);
+    ennemie.cible_courante = "enemies";
+    ennemie.currentTarget = ennemie;
+    ennemie.suivre = false;
+    ennemie.setScale(1);
 
-   joueur.currentTarget = ennemie;
-   joueur.suivre = true;
-   joueur.setScale(0.2);
+    joueur.currentTarget = ennemie;
+    joueur.suivre = true;
+    joueur.setScale(0.2);
 
-   joueur.scene.time.delayedCall(5000, () => {
-     joueur.son = "ejection"
-     joueur.suivre = false;
-     (joueur.scene as any).suppressionJoueur(ennemie, true, ennemie.ClientID)
-     joueur.currentTarget = joueur;
-     joueur.changeInterfaceClient(joueur.sprite, true);
-     joueur.setScale(1)
-   }, null, joueur);
+    joueur.scene.time.delayedCall(5000, () => {
+      (joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible = true;
+      joueur.son = "ejection"
+      joueur.suivre = false;
+      (joueur.scene as any).suppressionJoueur(ennemie, true, ennemie.ClientID)
+      joueur.currentTarget = joueur;
+      joueur.changeInterfaceClient(joueur.sprite, true);
+      joueur.setScale(1)
+    }, null, joueur);
 }
 
 function closest(personnage: any, type: 'players' | 'enemies') {
