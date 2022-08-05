@@ -35,7 +35,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     if (_joueur.blesse_opposant) {
       const cible = personnage.trones.getFirstAlive()
       personnage.trones.remove(personnage.trones.getFirstAlive(), true);
-      personnage.trones.setVelocityY(400)
+      personnage.trones.setVelocityY(340)
       personnage.scene.time.delayedCall(350, () => {
         personnage.trones.setVelocityY(0);
         (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100)
