@@ -37,13 +37,13 @@ export default class GameRooms extends Room {
     this.clock.start();
 
       this.boss = {
-        'super_boss': {
-          temps: 10_000,
-          x: 2830,
-          y: -900,
-          vaincu: false,
-          inaccessible: false
-        },
+        // 'super_boss': {
+        //   temps: 10_000,
+        //   x: 2830,
+        //   y: -900,
+        //   vaincu: false,
+        //   inaccessible: false
+        // },
         'twitchman': {
           temps: 10_000,
           x: 1000,

@@ -19,6 +19,7 @@ export default class Hall extends Phaser.Scene {
   enemiesRef: any
   platforme: Phaser.GameObjects.Rectangle
   rect: any
+  platforme_haut: Phaser.GameObjects.Rectangle
   compteur: Phaser.Time.TimerEvent
 
 
@@ -112,6 +113,7 @@ export default class Hall extends Phaser.Scene {
 		platforme_haut.isFilled = true;
 		platforme_haut.fillColor = 10563832;
     platforme_droite.setData('piece', 'haut')
+    this.platforme_haut = platforme_haut;
 
 		// platforme_haut_droite
 		const platforme_haut_droite = this.add.rectangle(3752, -66, 128, 128);

@@ -16,23 +16,26 @@ export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     sprite: string,
-    ClientID: string
+    ClientID: string,
+    frame: string,
+    positionY: number
   ) {
     super(scene, x, y, sprite)
 
-    this.init(scene, ClientID)
+    this.init(scene, ClientID, frame, positionY)
   }
 
-  init(scene: Phaser.Scene, id: string) {
+  init(scene: Phaser.Scene, id: string, frame: string, positionY) {
     this.scene = scene
+    this._frame = frame
     this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
 
-    this.setPosition(300, Phaser.Math.Between(900, 0))
+    this.setPosition(3000, positionY)
     // (this.scene as any).suppressionProjectileDelai(this, id, 1300, true)
 
-    this.setCollideWorldBounds(true);
+    // this.setCollideWorldBounds(true);
 
   }
   preUpdate(time: number, delta: number) {
