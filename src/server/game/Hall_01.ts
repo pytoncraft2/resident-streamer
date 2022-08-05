@@ -36,9 +36,6 @@ export default class GameRooms extends Room {
 
     this.clock.start();
 
-      // this.scene.createEnnemy('boss_1', 'fakhear_atlas')
-      // this.scene.createEnnemy('twitchman', 'fakhear_atlas')
-
       this.boss = {
         'super_boss': {
           temps: 10_000,

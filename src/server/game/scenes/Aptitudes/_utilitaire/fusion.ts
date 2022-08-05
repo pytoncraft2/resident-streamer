@@ -9,7 +9,7 @@ export default function fusion(personnage: any, input: any) {
     }
     else
     {
-      const ennemieProche = closest(personnage, 'enemies');
+      const ennemieProche = closest(personnage, 'enemies') as TJoueur;
       if (!ennemieProche) return;
       if (Phaser.Math.Distance.Between(ennemieProche.x, ennemieProche.y, personnage.x, personnage.y) < 270)
       {
@@ -25,12 +25,45 @@ export default function fusion(personnage: any, input: any) {
   }
 }
 
+/**
+ * #### Description
+ * L'ennemie se place au dessus du joueur en petit<br>
+ * L'ennemie suit le joueur
+ * 
+ * #### Version
+ * since: V1.0.0
+ * 
+ * Recuperations objet boss
+ * @param ennemie 
+ * @param joueur 
+ */
 function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
   ennemie.currentTarget = joueur;
   ennemie.suivre = true;
   ennemie.setScale(0.2);
 }
 
+
+/**
+ * #### Description
+ * Si la fusion avec le boss est possible, Change l'inerface coté client<br>
+ * pour que l'interface (icon, commandes...) corresponde bien à celui que le joueur controlle
+ * 
+ * Redimensionne correctement l'ennemie et son alpha
+ * Le joueur prend le controlle de l'ennemie et suit l'ennemie en petit au dessus de lui 
+ * 
+ * Au bout d'un certain temps l'ennemie devient innacessible au joueur
+ * Le joueur reprend sa taille initial
+ * L'ennemie et détruit du groupe et de colyseus
+ * 
+ * #### Version
+ * since: V1.0.0
+ * 
+ * Fusions avec boss
+ * @param ennemie 
+ * @param joueur 
+ * @returns  
+ */
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
   if ((joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible) return;
     joueur.scene.time.delayedCall(1, () => {
@@ -59,7 +92,7 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
     }, null, joueur);
 }
 
-function closest(personnage: any, type: 'players' | 'enemies') {
+function closest(personnage: TJoueur, type: 'players' | 'enemies') {
   let groueCible = personnage.scene[type].getChildren();
   return personnage.scene.physics.closest(personnage, groueCible);
 }
