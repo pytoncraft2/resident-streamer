@@ -198,7 +198,15 @@ anim.create({
   frames: anim.generateFrameNames('atlas', { prefix: 'bossfly', start: 0, end: 5 }),
   frameRate: 18,
   yoyo: true,
-  repeat: -1
+  repeat: 2
+})
+
+anim.create({
+  key: "super_boss_contreattaque",
+  frames: anim.generateFrameNames('atlas', { prefix: 'contreattaque', start: 0, end: 2 }),
+  frameRate: 7,
+  yoyo: true,
+  repeat: 2
 })
 
 }

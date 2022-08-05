@@ -1,5 +1,6 @@
 import TJoueur from "../types/Joueur";
 import Trone from "../class/elements/TroneClass";
+import { autoImport } from "./base";
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   // const groupeTrone = personnage.scene.physics.add.group({
   //   runChildUpdate: true,
@@ -40,6 +41,10 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
         personnage.play('super_boss_vole')
         personnage.setY(-750)
         personnage.body.setAllowGravity(false);
+        personnage.scene.time.delayedCall(2000, () => {
+          personnage.play('super_boss_contreattaque');
+        }, null, this);
+
         // personnage.trones.remove(dernier, true);
         (personnage.scene as any).suppressionProjectileDelai(dernier, dernier._frame, 100);
         (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100);
