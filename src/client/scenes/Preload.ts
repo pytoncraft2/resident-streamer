@@ -124,6 +124,10 @@ export default class Preload extends Phaser.Scene {
 			'assets/troll_bouton2.wav'
 		]);
 
+		this.load.audio('victoire', [
+			'assets/victoire.wav'
+		]);
+
 		var progress = this.add.graphics();
 		const gameSize = this.scale.gameSize;
 

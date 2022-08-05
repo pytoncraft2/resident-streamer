@@ -726,6 +726,7 @@ export default class Jeu extends Phaser.Scene {
             score: resultat.temps
           }
         });
+		this.sound.play('victoire')
         this.ecran_fin_text_score.setText(`Votre score : ${resultat.temps}`)
         this.ecran_fin_text_quitter
         .setInteractive(({ useHandCursor: true }))

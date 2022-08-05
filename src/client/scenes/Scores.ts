@@ -93,18 +93,17 @@ export default class Scores extends Phaser.Scene {
 		.on('pointerdown', () => {
 			this.scene.start("Level")
 		})
-		// setTimeout(() => {
-		// 	const article = { title: 'Axios POST Request Example' };
-		// 	axios.post('http://localhost:3000/scores', article)
-		// 	    .then(response => console.log(response));
-		// }, 2000);
 			var zone = this.add.zone(152, 133, 1000, 250).setOrigin(0).setInteractive().setDepth(40);
 		axios.get("http://localhost:3000" + "/scores").then(res => {
-			var tableau: any = []
+			var tableau: any = [];
 			Object.entries(res.data).forEach((element: any, _index: number) => {
-				tableau.push("⏱️" + element[1].score + " - " + element[0] + " (" + element[1].joueurs.join(",") + ")\n")
+				let prefixe = '';
+				if (_index == 0) prefixe = "🥇 -";
+				if (_index === 1) prefixe = "🥈 -";
+				if (_index === 2) prefixe = "🥉 -";
+				tableau.push( prefixe + " ⏱️ " + element[1].score + " - " + element[0] + " (" + element[1].joueurs.join(",") + ")\n")
 			});
-			var text = this.add.text(0, 0, tableau, { wordWrap: { width: 410 } }).setOrigin(0.5, 0.5);
+			var text = this.add.text(0, 0, tableau, { wordWrap: { width: 1000 }, fontSize: '23px' }).setOrigin(0.5, 0.5);
 			//960
 			//464
 			this.container_scores.add(text)
