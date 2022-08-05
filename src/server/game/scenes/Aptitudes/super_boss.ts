@@ -34,12 +34,25 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     
     if (_joueur.blesse_opposant) {
       const cible = personnage.trones.getFirstAlive()
+      if (personnage.trones.getLength() == 2) 
+      {
+        const dernier: any = personnage.trones.getChildren()[1];
+        personnage.play('super_boss_vole')
+        personnage.setY(-750)
+        personnage.body.setAllowGravity(false);
+        // personnage.trones.remove(dernier, true);
+        (personnage.scene as any).suppressionProjectileDelai(dernier, dernier._frame, 100);
+        (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100);
+      }
+      else
+      {
       personnage.trones.remove(personnage.trones.getFirstAlive(), true);
       personnage.trones.setVelocityY(340)
       personnage.scene.time.delayedCall(350, () => {
         personnage.trones.setVelocityY(0);
         (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100)
       }, null, this);
+    }
 
       _joueur.blesse_opposant = false;
     }
@@ -70,4 +83,8 @@ function creerTrone(personnage: TJoueur, etageTrone: string, positionY: number) 
   trone.setSize(1000, 100)
 
   return personnage.scene.physics.add.existing(trone);
+}
+
+function transformation() {
+
 }

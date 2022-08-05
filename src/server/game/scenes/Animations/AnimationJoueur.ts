@@ -192,6 +192,14 @@ anim.create({
   repeat: 0
 })
 
+//super_boss
+anim.create({
+  key: "super_boss_vole",
+  frames: anim.generateFrameNames('atlas', { prefix: 'bossfly', start: 0, end: 5 }),
+  frameRate: 18,
+  yoyo: true,
+  repeat: -1
+})
 
 }
 
