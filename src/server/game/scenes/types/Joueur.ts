@@ -49,6 +49,9 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   survole?: boolean
   laser?: LaserClass
 
+  //super_boss
+  trones?: Phaser.Physics.Arcade.Group
+
   //bosses
   animationBossFigurine: Phaser.Tweens.Tween
   suivre: boolean

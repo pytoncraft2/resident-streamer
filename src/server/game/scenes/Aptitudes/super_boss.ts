@@ -6,11 +6,10 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   //   collideWorldBounds: true
   // })
 
-  //@ts-ignore
   personnage.trones = personnage.scene.physics.add.group({
-    runChildUpdate: true,
+    runChildUpdate: false,
     collideWorldBounds: false,
-    allowGravity: false
+    allowGravity: true,
   })
 
   const trone1 = creerTrone(personnage, 'tronetest', -100);
@@ -21,8 +20,26 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   const trone6 = creerTrone(personnage, 'tronetest6', -750);
   const trone = creerTrone(personnage, 'tronehautv2', -880);
 
-  //@ts-ignore
   personnage.trones.addMultiple([trone1, trone2, trone3, trone4, trone5, trone6, trone]); 
+  personnage.scene.physics.add.collider(personnage.trones, personnage.scene.platforme)
+  personnage.scene.physics.add.collider(personnage.trones.getChildren(), personnage.trones.getChildren())
+  
+  // personnage.scene.physics.add.overlap(personnage.trones, personnage.scene.players, function (_trone:TJoueur, _joueur: any) {
+  //   console.log("COLISION!!");
+    
+  //   if (_joueur.blesse_opposant) {
+  //     personnage.trones.remove(personnage.trones.getFirstAlive(), true);
+  //     personnage.trones.setVelocityY(400)
+  //     personnage.scene.time.delayedCall(350, () => {
+  //       personnage.trones.setVelocityY(0)
+  //     }, null, this);
+
+  //     _joueur.blesse_opposant = false;
+  //   }
+    
+    
+  // }, undefined, personnage.scene)
+
 
 // trone2.setPushable(false);
 // trone2.setSize(1000, 100)
@@ -41,9 +58,9 @@ export function ok__A(personnage: Phaser.Physics.Arcade.Sprite|any, input: any) 
 }
 
 function creerTrone(personnage: TJoueur, etageTrone: string, positionY: number) {
-  const trone = personnage.scene.add.existing(new Trone(personnage.scene, personnage.flipX ? personnage.x - 180 : personnage.x + 180, -900, "personnage", `${(Math.random() + 1).toString(36).substring(7)}`, etageTrone, positionY).setData({ ClientId: personnage.ClientID, degat: 0.9 }));
-  trone.setPushable(false);
-  trone.setSize(1000, 100)
+  const trone = personnage.scene.add.existing(new Trone(personnage.scene, personnage.flipX ? personnage.x - 180 : personnage.x + 180, -900, "personnage", `${etageTrone}`, etageTrone, positionY).setData({ ClientId: personnage.ClientID, degat: 0.9 }));
+  // trone.setPushable(false);
+  trone.setSize(1000, 200)
 
   return personnage.scene.physics.add.existing(trone);
 }

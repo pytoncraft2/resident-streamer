@@ -168,7 +168,7 @@ export default class Hall extends Phaser.Scene {
 
   /**
    * #### Description
-   * Active la fonction du ennemie 'action' quand la zone d'interaction (rectangle) overlap
+   * Active la fonction 'action' de l'ennmie qui gère l'interaction
    * 
    * #### Version
    * since: V1.0.0
