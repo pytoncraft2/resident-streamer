@@ -428,7 +428,7 @@ export default class Jeu extends Phaser.Scene {
 		interface_fin.alpha = 0;
 
 		// container_interface_fin
-		const container_interface_fin = this.add.container(2838, -844);
+		const container_interface_fin = this.add.container(2838, 1);
 		interface_fin.add(container_interface_fin);
 
 		// bg_ecran_fin
@@ -441,47 +441,31 @@ export default class Jeu extends Phaser.Scene {
 		container_interface_fin.add(bg_ecran_fin);
 
 		// ecran_fin_text
-		const ecran_fin_text = this.add.text(18, 160, "", {});
+		const ecran_fin_text = this.add.text(18, -638, "", {});
 		ecran_fin_text.setOrigin(0.5, 0.5);
 		ecran_fin_text.text = "FIN DE PARTIE !";
-		ecran_fin_text.setStyle({ "fontSize": "46px" });
+		ecran_fin_text.setStyle({ "fontSize": "246px" });
 		container_interface_fin.add(ecran_fin_text);
 
 		// ecran_fin_text_score
-		const ecran_fin_text_score = this.add.text(17, 289, "", {});
+		const ecran_fin_text_score = this.add.text(17, -195, "", {});
 		ecran_fin_text_score.setOrigin(0.5, 0.5);
 		ecran_fin_text_score.text = "Votre score : 43 ";
-		ecran_fin_text_score.setStyle({ "fontSize": "46px" });
+		ecran_fin_text_score.setStyle({ "fontSize": "246px" });
 		container_interface_fin.add(ecran_fin_text_score);
 
-		// rectangle_5
-		const rectangle_5 = this.add.rectangle(18, 487, 128, 128);
-		rectangle_5.scaleX = 2.51984025459455;
-		rectangle_5.scaleY = 0.658859670974759;
-		rectangle_5.isFilled = true;
-		rectangle_5.fillColor = 9638544;
-		container_interface_fin.add(rectangle_5);
-
 		// ecran_fin_text_rejouer
-		const ecran_fin_text_rejouer = this.add.text(17, 489, "", {});
+		const ecran_fin_text_rejouer = this.add.text(-638, 633, "", {});
 		ecran_fin_text_rejouer.setOrigin(0.5, 0.5);
 		ecran_fin_text_rejouer.text = "REJOUER ";
-		ecran_fin_text_rejouer.setStyle({ "fontSize": "46px" });
+		ecran_fin_text_rejouer.setStyle({ "color": "#93caedff", "fontSize": "246px" });
 		container_interface_fin.add(ecran_fin_text_rejouer);
 
-		// rectangle_6
-		const rectangle_6 = this.add.rectangle(19, 646, 128, 128);
-		rectangle_6.scaleX = 1.9425244551373009;
-		rectangle_6.scaleY = 0.5404369914284701;
-		rectangle_6.isFilled = true;
-		rectangle_6.fillColor = 4526739;
-		container_interface_fin.add(rectangle_6);
-
 		// ecran_fin_text_quitter
-		const ecran_fin_text_quitter = this.add.text(20, 647, "", {});
+		const ecran_fin_text_quitter = this.add.text(734, 633, "", {});
 		ecran_fin_text_quitter.setOrigin(0.5, 0.5);
 		ecran_fin_text_quitter.text = "QUITTER ";
-		ecran_fin_text_quitter.setStyle({ "fontSize": "40px" });
+		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
 		this.map_boss1 = map_boss1;
@@ -642,9 +626,14 @@ export default class Jeu extends Phaser.Scene {
 
 		this.editorCreate();
 
-    // this.time.delayedCall(5000, () => {
+    this.time.delayedCall(5000, () => {
 		// this.sound.play('punch_fast');
-    // }, undefined, this);
+
+		this.cameras.main.setZoom(0.2);  // The minimum it can be is 0.001.
+
+
+        // this.cameras.main.centerOn(2791, -443)
+    }, undefined, this);
 
 
 		const self = this;
@@ -717,6 +706,8 @@ export default class Jeu extends Phaser.Scene {
         console.log("FIN DU JEU!!")
         console.log("TEMP:")
         console.log(resultat)
+
+
         axios({
           method: 'post',
           url: "http://localhost:3000/scores",
@@ -1001,7 +992,7 @@ export default class Jeu extends Phaser.Scene {
         if (list.presences[item].scale) this.playersRef[item].setScale(list.presences[item].scale)
 
         if (list.presences[item].particules) this.animationBossKO(`${item}`)
-		
+
         if (list.presences[item].son) this.sound.play(list.presences[item].son);
 
         if (this.session === this.playersRef[item].ClientId) {

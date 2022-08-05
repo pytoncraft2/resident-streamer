@@ -808,7 +808,7 @@
                     "scope": "PUBLIC",
                     "components": [],
                     "x": 2838,
-                    "y": -844,
+                    "y": 1,
                     "list": [
                         {
                             "type": "Rectangle",
@@ -831,11 +831,11 @@
                             "scope": "PUBLIC",
                             "components": [],
                             "x": 18,
-                            "y": 160,
+                            "y": -638,
                             "originX": 0.5,
                             "originY": 0.5,
                             "text": "FIN DE PARTIE !",
-                            "fontSize": "46px"
+                            "fontSize": "246px"
                         },
                         {
                             "type": "Text",
@@ -844,25 +844,11 @@
                             "scope": "PUBLIC",
                             "components": [],
                             "x": 17,
-                            "y": 289,
+                            "y": -195,
                             "originX": 0.5,
                             "originY": 0.5,
                             "text": "Votre score : 43 ",
-                            "fontSize": "46px"
-                        },
-                        {
-                            "type": "Rectangle",
-                            "id": "6de95d74-0403-4958-b54a-1355c47d8337",
-                            "label": "rectangle_5",
-                            "components": [],
-                            "x": 18,
-                            "y": 487,
-                            "scaleX": 2.51984025459455,
-                            "scaleY": 0.658859670974759,
-                            "isFilled": true,
-                            "fillColor": "#931290",
-                            "width": 128,
-                            "height": 128
+                            "fontSize": "246px"
                         },
                         {
                             "type": "Text",
@@ -870,26 +856,13 @@
                             "label": "ecran_fin_text_rejouer",
                             "scope": "PUBLIC",
                             "components": [],
-                            "x": 17,
-                            "y": 489,
+                            "x": -638,
+                            "y": 633,
                             "originX": 0.5,
                             "originY": 0.5,
                             "text": "REJOUER ",
-                            "fontSize": "46px"
-                        },
-                        {
-                            "type": "Rectangle",
-                            "id": "0be2d073-bda6-4c90-89a0-b43a59c7e31d",
-                            "label": "rectangle_6",
-                            "components": [],
-                            "x": 19,
-                            "y": 646,
-                            "scaleX": 1.9425244551373009,
-                            "scaleY": 0.5404369914284701,
-                            "isFilled": true,
-                            "fillColor": "#451293",
-                            "width": 128,
-                            "height": 128
+                            "fontSize": "246px",
+                            "color": "#93caedff"
                         },
                         {
                             "type": "Text",
@@ -897,12 +870,13 @@
                             "label": "ecran_fin_text_quitter",
                             "scope": "PUBLIC",
                             "components": [],
-                            "x": 20,
-                            "y": 647,
+                            "x": 734,
+                            "y": 633,
                             "originX": 0.5,
                             "originY": 0.5,
                             "text": "QUITTER ",
-                            "fontSize": "40px"
+                            "fontSize": "240px",
+                            "color": "#f3c061ff"
                         }
                     ]
                 }
