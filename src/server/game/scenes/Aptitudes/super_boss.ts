@@ -31,8 +31,6 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
 
   
   personnage.scene.physics.add.overlap(personnage.trones, personnage.scene.players, function (_trone:TJoueur, _joueur: any) {
-    console.log("COLISION!!");
-    
     if (_joueur.blesse_opposant) {
       const cible = personnage.trones.getFirstAlive()
       if (personnage.trones.getLength() == 2) 
@@ -64,15 +62,6 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
     
     
   }, undefined, personnage.scene)
-
-
-// trone2.setPushable(false);
-// trone2.setSize(1000, 100)
-  // personnage.scene.physics.add.collider(trone1, personnage);
-  // personnage.scene.physics.add.collider(trone2, personnage);
-  // personnage.scene.physics.add.collider(trone3, personnage);
-  // personnage.scene.physics.add.collider(trone1, [trone2, trone3]);
-// personnage.setActive(false)
 
 personnage.cible_courante = "players"
 
