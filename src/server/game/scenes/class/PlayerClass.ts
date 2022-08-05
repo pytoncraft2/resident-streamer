@@ -334,7 +334,7 @@ import { DefautDirection } from "../Stats/Defaut"
     */
    animationBossVaincu() {
      this.setScale(0.5);
-     // this.particules = true;
+     this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
      if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)

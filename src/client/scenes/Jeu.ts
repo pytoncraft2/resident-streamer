@@ -1122,9 +1122,8 @@ export default class Jeu extends Phaser.Scene {
 		ellipse_5_1.fillAlpha = 0.8;
 		ellipse_5_1.isStroked = true;
 		ellipse_5_1.lineWidth = 4;
-		ellipse_5_1.setPosition(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y + 25)
-		this.playersRef[id].barre.destroy()
-		this.playersRef[id].ellipse_5_1 = ellipse_5_1
+		ellipse_5_1.setPosition(this.playersRef[`${id}`].getBottomCenter().x, this.playersRef[`${id}`].getBottomCenter().y + 25)
+		this.playersRef[id].ellipse_5_1 = ellipse_5_1;
 
 		var particles = this.add.particles('flares');
 
