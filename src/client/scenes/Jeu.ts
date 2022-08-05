@@ -721,6 +721,9 @@ export default class Jeu extends Phaser.Scene {
 						.setInteractive(({ useHandCursor: true }))
 						.on('pointerdown', function (this: any) {
 							this.room.leave()
+							let getUrl = window.location;
+							let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
+							window.location.replace(baseUrl)
 							this.scene.start('Level');
 						}, this);
 					this.tweens.add({
