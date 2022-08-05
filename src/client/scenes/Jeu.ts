@@ -629,10 +629,8 @@ export default class Jeu extends Phaser.Scene {
     this.time.delayedCall(5000, () => {
 		// this.sound.play('punch_fast');
 
-		this.cameras.main.setZoom(0.2);  // The minimum it can be is 0.001.
 
 
-        // this.cameras.main.centerOn(2791, -443)
     }, undefined, this);
 
 
@@ -732,6 +730,37 @@ export default class Jeu extends Phaser.Scene {
           ease: 'Sine.inOut',
           duration: 1000,
         });
+
+    //   this.cameras.main.setAlpha(0.1)
+
+	  this.minimap.setVisible(true)
+	  this.minimap.setAlpha(0)
+	  this.minimap.width = 0;
+	  this.minimap.height = 0;
+
+	// this.cameras.main.pan(767, 1096, 2000, 'Power2');
+	// this.cameras.main.zoomTo(0.3, 1500)
+// -899, 100, 2800, 1200
+
+		  this.tweens.add({
+			  targets: this.cameras.main,
+			  alpha: 0,
+			  ease: 'Sine.inOut',
+			  duration: 1000,
+		  });
+
+		  this.tweens.add({
+			  targets: this.minimap,
+			  alpha: 1,
+			  x: -899,
+			  y: 100,
+			  width: 2800,
+			  height: 1200,
+			  ease: 'Sine.inOut',
+			  duration: 1000,
+		  });
+
+
       });
 
 			room.onStateChange((changes: any) => {
