@@ -62,23 +62,22 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, aptitudes: any) {
-  // console.log("AUTO");
-  if (!(boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) {
-    if (boss_1 && boss_1.body) {
-      if (boss_1.scene.players.getLength() > 0 && boss_1) {
-        let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
-        if (joueuProche) {
-          boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
-          boss_1.play('deplacement');
-        }
+
+  if ((boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) return boss_1.scene.physics.world.removeCollider(boss_1.auto_colision);
+  if (boss_1 && boss_1.body)
+  {
+    if (boss_1.scene.players.getLength() > 0 && boss_1)
+    {
+      let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
+      if (joueuProche)
+      {
+        boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+        boss_1.play('deplacement');
       }
-      reactiveBoucle(boss_1, aptitudes)
-    } else {
-      reactiveBoucle(boss_1, aptitudes)
     }
-  } else {
-    boss_1.scene.physics.world.removeCollider(boss_1.auto_colision);
+    reactiveBoucle(boss_1, aptitudes)
   }
+  else reactiveBoucle(boss_1, aptitudes)
 }
 
 function attaquePuisDeplacement(boss_1, condition, couleur, directionFinal, aptitudes) {
