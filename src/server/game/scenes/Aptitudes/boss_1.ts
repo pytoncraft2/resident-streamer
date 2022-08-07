@@ -9,7 +9,7 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
 
   // const colision = boss_1.scene.physics.add.collider(boss_1.scene.players, boss_1)
   var compteurAttaque: number = 0;
-  boss_1.scene.physics.add.collider(boss_1.scene.players, boss_1,
+  boss_1.auto_colision = boss_1.scene.physics.add.collider(boss_1.scene.players, boss_1,
     function (_ennemie: any, _joueur: any) {
       if (_ennemie.body.touching.right)
       {
@@ -62,7 +62,7 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
 }
 
 export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, aptitudes: any) {
-  console.log("AUTO");
+  // console.log("AUTO");
   if (!(boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) {
     if (boss_1 && boss_1.body) {
       if (boss_1.scene.players.getLength() > 0 && boss_1) {
@@ -76,6 +76,8 @@ export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, a
     } else {
       reactiveBoucle(boss_1, aptitudes)
     }
+  } else {
+    boss_1.scene.physics.world.removeCollider(boss_1.auto_colision);
   }
 }
 
