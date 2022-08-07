@@ -365,6 +365,7 @@ import { DefautDirection } from "../Stats/Defaut"
     //  }
 
      (this.body as any).setAllowGravity(false);
+     this.setVelocity(0)
      this.setPushable(false);
      this.animationBossFigurine = this.scene.tweens.add({
        targets: this,

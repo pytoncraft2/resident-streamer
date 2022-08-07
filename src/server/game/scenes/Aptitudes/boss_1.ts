@@ -40,7 +40,6 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
       }
     }, null, this);
 
-    boss_1.cible_courante = "players"
   // boss_1.scene.time.delayedCall(500, () => {
     // boss_1.scene.physics.world.removeCollider(colision);
   // }, null, this);
@@ -62,19 +61,21 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function __auto(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any, aptitudes: any) {
-  if (boss_1 && boss_1.body) {
-    if (boss_1.scene.players.getLength() > 0 && boss_1)
-    {
-      let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
-      if (joueuProche) {
-        boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
-        boss_1.play('deplacement');
+export function __auto(boss_1: Phaser.Physics.Arcade.Sprite | any, input: any, aptitudes: any) {
+  console.log("AUTO");
+  if (!(boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) {
+    if (boss_1 && boss_1.body) {
+      if (boss_1.scene.players.getLength() > 0 && boss_1) {
+        let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
+        if (joueuProche) {
+          boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
+          boss_1.play('deplacement');
+        }
       }
+      reactiveBoucle(boss_1, aptitudes)
+    } else {
+      reactiveBoucle(boss_1, aptitudes)
     }
-  reactiveBoucle(boss_1, aptitudes)
-  } else {
-  reactiveBoucle(boss_1, aptitudes)
   }
 }
 
