@@ -227,10 +227,10 @@ export default class Hall extends Phaser.Scene {
    */
   createPlayer(ClientId: any, sprite: string) {
     const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
+    player.cible_courante = "enemies"
     this.players.add(player)
     this.playersRef[ClientId] = player
-    player.setBounceX(0.2)
-    player.setDragX(300)
+    player.setBounceX(0.2).setDragX(300)
 
     return this.getPresence()
   }
@@ -259,11 +259,11 @@ export default class Hall extends Phaser.Scene {
    */
   createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
     const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
+    ennemy.cible_courante = "players"
 
     this.enemies.add(ennemy)
     this.enemiesRef[EnnemyId] = ennemy
-    ennemy.setBounceX(0.2)
-    ennemy.setDragX(300)
+    ennemy.setBounceX(0.2).setDragX(300)
 
     return this.getPresence()
   }

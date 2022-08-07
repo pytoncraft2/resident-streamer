@@ -139,7 +139,7 @@ import { DefautDirection } from "../Stats/Defaut"
            }
            else
            {
-           _e.dommage(12)
+           _e.dommage(this.degat)
            if (_e.cible_courante == "enemies") _e.son = 'game-over';
            }
          }
@@ -337,32 +337,32 @@ import { DefautDirection } from "../Stats/Defaut"
      this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
-     if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
-     {
-       (this.scene as any).room.broadcast("RDC_OK");
-     }
+    //  if ((this.scene as any).room.boss["manette"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+    //  {
+    //    (this.scene as any).room.broadcast("RDC_OK");
+    //  }
 
-     if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["twitchman"].vaincu)
-     {
-       (this.scene as any).room.broadcast("ETAGE_OK");
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true)
-     }
+    //  if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["twitchman"].vaincu)
+    //  {
+    //    (this.scene as any).room.broadcast("ETAGE_OK");
+    //    (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true)
+    //  }
 
-     if (
-       (this.scene as any).room.boss["troll"].vaincu &&
-       (this.scene as any).room.boss["twitchman"].vaincu &&
-       (this.scene as any).room.boss["manette"].vaincu &&
-       (this.scene as any).room.boss["boss_1"].vaincu &&
-       (this.scene as any).room.boss["super_boss"].vaincu
-     )
-     {
-       const joueur = [];
-       const resultat = (this.scene as any).StopCompteur();
-       (this.scene as any).players.getChildren().forEach((j: any) => {
-         joueur.push(j.sprite);
-       });
-       (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat, joueur});
-     }
+    //  if (
+    //    (this.scene as any).room.boss["troll"].vaincu &&
+    //    (this.scene as any).room.boss["twitchman"].vaincu &&
+    //    (this.scene as any).room.boss["manette"].vaincu &&
+    //    (this.scene as any).room.boss["boss_1"].vaincu &&
+    //    (this.scene as any).room.boss["super_boss"].vaincu
+    //  )
+    //  {
+    //    const joueur = [];
+    //    const resultat = (this.scene as any).StopCompteur();
+    //    (this.scene as any).players.getChildren().forEach((j: any) => {
+    //      joueur.push(j.sprite);
+    //    });
+    //    (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat, joueur});
+    //  }
 
      (this.body as any).setAllowGravity(false);
      this.setPushable(false);

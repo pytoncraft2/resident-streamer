@@ -89,7 +89,7 @@ function attaquePuisDeplacement(boss_1, condition, couleur, directionFinal, apti
 }
 
 function reactiveBoucle(boss_1: TJoueur, aptitudes: any) {
-  if (boss_1.scene)
+  if (boss_1.scene && boss_1.scene.time)
   {
       boss_1.scene.time.delayedCall(500, () => {
         __auto(boss_1, {}, aptitudes)
