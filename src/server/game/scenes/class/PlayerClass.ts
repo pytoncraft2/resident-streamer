@@ -351,7 +351,8 @@ import { DefautDirection } from "../Stats/Defaut"
      if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["manette"].vaincu)
      {
        (this.scene as any).room.broadcast("ETAGE_OK");
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true)
+       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true);
+       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].trones.setActive(true);
      }
 
      if (

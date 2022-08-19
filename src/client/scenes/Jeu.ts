@@ -1052,7 +1052,7 @@ export default class Jeu extends Phaser.Scene {
 		})
 	}
 
-	cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 900, animation: string = 'Sine.easeInOut') {
+	cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 240, animation: string = 'Sine.easeInOut') {
 		if (Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], new Phaser.Geom.Point(joueur.x, joueur.y + 100))) {
 			if ((this as any)[emplacement].alpha) {
 				this.tweens.add({

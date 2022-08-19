@@ -2,7 +2,9 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import fusion from "./_utilitaire/fusion";
 
-export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {}
+export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
+  fakhear.degat = 10
+}
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {

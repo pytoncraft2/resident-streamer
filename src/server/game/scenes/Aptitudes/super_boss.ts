@@ -1,11 +1,6 @@
 import TJoueur from "../types/Joueur";
 import Trone from "../class/elements/TroneClass";
-import { autoImport } from "./base";
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
-  // const groupeTrone = personnage.scene.physics.add.group({
-  //   runChildUpdate: true,
-  //   collideWorldBounds: true
-  // })
   personnage.setActive(false)
 
   personnage.trones = personnage.scene.physics.add.group({
@@ -30,54 +25,46 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
 
   personnage.trones.addMultiple([trone1, trone2, trone3, trone4, trone5, trone6, trone]); 
 
-  
   personnage.scene.physics.add.overlap(personnage.trones, personnage.scene.players, function (_trone:TJoueur, _joueur: any) {
     if (_joueur.blesse_opposant) {
       const cible = personnage.trones.getFirstAlive()
       if (personnage.trones.getLength() == 2) 
       {
-        const dernier: any = personnage.trones.getChildren()[1];
-        personnage.setActive(true);
-        personnage.play('super_boss_vole')
-        personnage.setY(-750)
-        personnage.body.setAllowGravity(false);
-        personnage.scene.time.delayedCall(2000, () => {
-          personnage.play('super_boss_contreattaque');
-        }, null, this);
+        // const dernier: any = personnage.trones.getChildren()[1];
+        // personnage.setActive(true);
+        // personnage.play('super_boss_vole')
+        // personnage.setY(-750)
+        // personnage.body.setAllowGravity(false);
+        // personnage.scene.time.delayedCall(2000, () => {
+        //   personnage.play('super_boss_contreattaque');
+        // }, null, this);
 
 
         // personnage.trones.remove(dernier, true);
-        (personnage.scene as any).suppressionProjectileDelai(dernier, dernier._frame, 100);
-        (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100);
+        // (personnage.scene as any).suppressionProjectileDelai(dernier, dernier._frame, 100);
+        // (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100);
       }
       else
       {
-      personnage.trones.remove(personnage.trones.getFirstAlive(), true);
-      personnage.trones.setVelocityY(340)
-      personnage.scene.time.delayedCall(350, () => {
-        personnage.trones.setVelocityY(0);
-        (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100)
-      }, null, this);
+      // personnage.trones.remove(personnage.trones.getFirstAlive(), true);
+      // personnage.trones.setVelocityY(340)
+      // personnage.scene.time.delayedCall(350, () => {
+      //   personnage.trones.setVelocityY(0);
+      //   (personnage.scene as any).suppressionProjectileDelai(cible, cible._frame, 100)
+      // }, null, this);
     }
-
       _joueur.blesse_opposant = false;
     }
-    
-    
   }, undefined, personnage.scene)
 
-personnage.cible_courante = "players"
-
-}
-
-
-export function ok__A(personnage: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  personnage.cible_courante = "players"
 }
 
 function creerTrone(personnage: TJoueur, etageTrone: string, positionY: number) {
   const trone = personnage.scene.add.existing(new Trone(personnage.scene, personnage.flipX ? personnage.x - 180 : personnage.x + 180, -900, "personnage", `${etageTrone}`, etageTrone, positionY).setData({ ClientId: personnage.ClientID, degat: 0.9 }));
   trone.setPushable(false);
   trone.setSize(1000, 100)
+  trone.setActive(false)
 
   return personnage.scene.physics.add.existing(trone);
 }
