@@ -41,3 +41,11 @@ __(cliquez pour voir la vidéo)__
 - [ ] Optimisation code
 - [ ] Choisir un nom d'équipe
 - [ ] Choisir un pseudo
+
+## Démarrer le projet 🧪
+
+```
+npm i
+npm run serve:server
+npm run dev
+```
