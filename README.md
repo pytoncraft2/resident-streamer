@@ -29,6 +29,7 @@ Le temps sera arrêté lorsque vous aurez vaincu tous les boss des pièces. Ce t
 
 ## Vidéos
 
+__(cliquez pour voir la vidéo)__
 [![Démo 1](https://img.youtube.com/vi/VZUTvlFXNag/maxresdefault.jpg)](https://youtu.be/2GCkF1rgLWI)
 
 [![Démo 2](https://img.youtube.com/vi/2GCkF1rgLWI/maxresdefault.jpg)](https://youtu.be/VZUTvlFXNag)
