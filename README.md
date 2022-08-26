@@ -20,19 +20,20 @@ Vous pouvez incarner 4 personnages streamers :
 
 Le temps sera arrêté lorsque vous aurez vaincu tous les boss des pièces. Ce temps sera le score de l’équipe qui sera ajouté à la liste du classement avec le nom de l’équipe choisi et ses membres. Pour être le premier dans le classement il faut avoir le temps le plus petit.
 
-## Images & Vidéos 🎥
+## Vidéos 🎥 & Images
+
+__(cliquez pour voir la vidéo)__
+
+[![Démo 1](https://img.youtube.com/vi/VZUTvlFXNag/maxresdefault.jpg)](https://youtu.be/2GCkF1rgLWI)
+
+[![Démo 2](https://img.youtube.com/vi/2GCkF1rgLWI/maxresdefault.jpg)](https://youtu.be/VZUTvlFXNag)
+
+## Images
 
 ![Image démo](static/c4.png?raw=true "Jeu")
 ![Image démo](static/ce1.png?raw=true "Jeu")
 ![Image démo](static/ce2.png?raw=true "Jeu")
 ![Image démo](static/c3.png?raw=true "Jeu")
-
-## Vidéos
-
-__(cliquez pour voir la vidéo)__
-[![Démo 1](https://img.youtube.com/vi/VZUTvlFXNag/maxresdefault.jpg)](https://youtu.be/2GCkF1rgLWI)
-
-[![Démo 2](https://img.youtube.com/vi/2GCkF1rgLWI/maxresdefault.jpg)](https://youtu.be/VZUTvlFXNag)
 
 ## TODO 📋
 
