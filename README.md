@@ -74,3 +74,9 @@ https://www.colyseus.io/
 https://phasereditor2d.com/
 
 https://gamedevacademy.org/create-a-basic-multiplayer-game-in-phaser-3-with-socket-io-part-1/
+
+https://typedoc.org/
+
+https://tsdoc.org/
+
+https://vitejs.dev/
