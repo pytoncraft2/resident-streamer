@@ -64,3 +64,10 @@ ou
 
 npm run doc
 ```
+
+## Sources
+
+https://github.com/geckosio/phaser3-multiplayer-game-example
+https://www.colyseus.io/
+https://phasereditor2d.com/
+https://gamedevacademy.org/create-a-basic-multiplayer-game-in-phaser-3-with-socket-io-part-1/
