@@ -32,7 +32,7 @@ __(cliquez pour voir la vidéo)__
 
 ![Image démo](static/c4.png?raw=true "Jeu")
 ![Image démo](static/ce1.png?raw=true "Jeu")
-![Image démo](static/ce2.png?raw=true "Jeu")
+![Image démo](static/c5.png?raw=true "Jeu")
 ![Image démo](static/c3.png?raw=true "Jeu")
 
 ## TODO 📋
