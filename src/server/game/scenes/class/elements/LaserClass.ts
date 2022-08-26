@@ -79,8 +79,6 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
   charge() {
     if (!this.proprietaire.flipX) {
 
-      console.log("CIBLE ???")
-      console.log(this.cible)
         const e: any = this.scene.physics.closest(this.proprietaire, [...(this.scene as any)[`players`].getChildren()])
 
         if (e) {

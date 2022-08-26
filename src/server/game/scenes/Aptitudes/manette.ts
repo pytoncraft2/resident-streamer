@@ -221,7 +221,9 @@ export function __animationLancerManette(manette: TJoueur) {
  }
 
 function reactiveBoucle(manette: TJoueur, aptitudes: any) {
+  if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
   manette.scene.time.delayedCall(500, () => {
+    if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
     __auto(manette, {}, aptitudes)
   }, null, this);
 }

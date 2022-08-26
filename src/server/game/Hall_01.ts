@@ -98,7 +98,6 @@ export default class GameRooms extends Room {
         }, item[1].temps);
 
       })
-      console.log(this.boss)
 
     this.onMessage("inputs", (client, message) => {
       this.donnes[client.id].clavier = message
@@ -108,7 +107,6 @@ export default class GameRooms extends Room {
   }
 
   onJoin(client: Client, options: any) {
-    console.log(`${client.id} has joined!`)
     this.donnes[client.id] = {
       clavier: {
         up: false,
@@ -131,7 +129,6 @@ export default class GameRooms extends Room {
   }
 
   onLeave(client: Client) {
-    console.log(`${client.id} left !! `)
     const presence = this.scene.removePlayer(client.id)
     this.state.presences.delete(client.id)
     delete this.donnes[client.id].clavier
@@ -141,6 +138,5 @@ export default class GameRooms extends Room {
     this.scene.players.destroy(true)
     this.scene.enemies.destroy(true)
     this.Game.destroy(true)
-    console.log(`${this.roomId} shutting down!!`)
   }
 }

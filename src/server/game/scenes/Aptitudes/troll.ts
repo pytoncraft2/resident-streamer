@@ -177,7 +177,10 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
 function reactiveBoucle(troll: TJoueur, aptitudes: any) {
   if (troll.scene)
   {
+
+    if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
     troll.scene.time.delayedCall(800, () => {
+      if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
       __auto(troll, {}, aptitudes)
     }, null, this);
   }

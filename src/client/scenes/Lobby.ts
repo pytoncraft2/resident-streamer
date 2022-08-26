@@ -177,7 +177,7 @@ export default class Lobby extends Phaser.Scene {
 	   */
 	  async connexion() {
 	    const self = this
-	    this.client = new Colyseus.Client("ws://localhost:3000")
+	    this.client = new Colyseus.Client("ws://192.168.1.15:3000")
 	    const salon = this.salon
 	    const client = this.client
 
@@ -246,8 +246,6 @@ export default class Lobby extends Phaser.Scene {
 	  }
 
 	  commencerJeu() {
-			console.log(this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_')))
-			console.log(this.personnageChoisie)
 	    this.room.leave()
 	    this.scene.start('Jeu', {
 	      salon: this.salon,

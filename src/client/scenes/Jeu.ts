@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("ws://localhost:3000")
+		const client = new Colyseus.Client("ws://192.168.1.15:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
@@ -671,6 +671,7 @@ export default class Jeu extends Phaser.Scene {
 			.then((room) => {
 				self.room = room
 				self.session = room.sessionId
+				
 
 				room.onMessage("suppression", (objet: number) => {
 					const cle = Object.entries(objet)[0][0];
@@ -701,14 +702,10 @@ export default class Jeu extends Phaser.Scene {
 				});
 
 				room.onMessage("FIN_JEU", (resultat: any) => {
-					console.log("FIN DU JEU!!")
-					console.log("TEMP:")
-					console.log(resultat)
-
 
 					axios({
 						method: 'post',
-						url: "http://localhost:3000/scores",
+						url: "http://192.168.1.15:3000/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,
@@ -726,6 +723,17 @@ export default class Jeu extends Phaser.Scene {
 							window.location.replace(baseUrl)
 							this.scene.start('Level');
 						}, this);
+					
+					this.ecran_fin_text_rejouer
+						.setInteractive(({ useHandCursor: true }))
+						.on('pointerdown', function (this: any) {
+							this.room.leave()
+							let getUrl = window.location;
+							let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
+							window.location.replace(baseUrl + this.salon)
+							this.scene.start('Lobby', {salon: this.salon});
+						}, this);
+
 					this.tweens.add({
 						targets: [this.bg_ecran_fin, this.interface_fin],
 						fillAlpha: 0.9,
@@ -868,7 +876,6 @@ export default class Jeu extends Phaser.Scene {
 				this.lignesRef[item].clear()
 					.lineStyle(list.lignes[item].lineHeight, list.lignes[item].couleur)
 					.lineBetween(list.lignes[item].x1, list.lignes[item].y1, list.lignes[item].x2, list.lignes[item].y2)
-				console.log(this.groupeLignes.getLength())
 			}
 		})
 
@@ -1028,7 +1035,6 @@ export default class Jeu extends Phaser.Scene {
 							if (!value) (this as any)[`touche_${key}`].alpha = 0.2
 							else (this as any)[`touche_${key}`].alpha = 1
 							if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
-							console.log("COMMANDES !!!")
 						}
 					}
 					this.cameraDeplacement(this.playersRef[item], 'bas_gauche', 1851 / 2, 543)
@@ -1144,7 +1150,6 @@ export default class Jeu extends Phaser.Scene {
 			ellipse_5_1.destroy();
 		}, undefined, this);
 
-		console.log("message received from server");
 	}
 
 

@@ -156,7 +156,7 @@ export default class Level extends Phaser.Scene {
 				this.scene.start("Scores")
 			})
 
-	this.client = new Colyseus.Client("ws://localhost:3000")
+	this.client = new Colyseus.Client("ws://192.168.1.15:3000")
 	const client = this.client
 
 	const lobby = await client.joinOrCreate("acceuil");

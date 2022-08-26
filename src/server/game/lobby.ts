@@ -132,7 +132,6 @@ export default class LobbyRooms extends Room {
       delete this.etatJoueur[client.id]
     }
 
-    console.log(`${client.id} à bientôt 👋 !! `)
   }
 
   onDispose() {

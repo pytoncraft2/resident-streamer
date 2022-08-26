@@ -165,7 +165,9 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
 function reactiveBoucle(twitchman: TJoueur, aptitudes: any) {
   if (twitchman.scene)
   {
+  if ((twitchman.scene as any).room.boss[`${twitchman.sprite}`].vaincu) return;
     twitchman.scene.time.delayedCall(500, () => {
+      if ((twitchman.scene as any).room.boss[`${twitchman.sprite}`].vaincu) return;
       __auto(twitchman, {}, aptitudes)
     }, null, this);
   }
