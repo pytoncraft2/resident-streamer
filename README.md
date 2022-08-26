@@ -49,3 +49,18 @@ npm i
 npm run serve:server
 npm run dev
 ```
+
+installer PhaserEditor https://phasereditor2d.com/downloads/ (facultatif)
+
+## Autre
+
+Produire la documentation
+
+```
+npm run doc:client
+npm run doc:server
+
+ou
+
+npm run doc
+```
