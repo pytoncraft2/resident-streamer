@@ -34,4 +34,9 @@ __(cliquez pour voir la vidéo)__
 
 [![Démo 2](https://img.youtube.com/vi/2GCkF1rgLWI/maxresdefault.jpg)](https://youtu.be/VZUTvlFXNag)
 
+## TODO 📋
 
+- [ ] Boss final
+- [ ] Optimisation code
+- [ ] Choisir un nom d'équipe
+- [ ] Choisir un pseudo
