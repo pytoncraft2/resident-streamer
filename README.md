@@ -27,7 +27,7 @@ Le temps sera arrêté lorsque vous aurez vaincu tous les boss des pièces. Ce t
 
 ## Images
 
-![Image démo](static/c1?raw=true "Jeu")
-![Image démo](static/c2?raw=true "Jeu")
-![Image démo](static/c3?raw=true "Jeu")
-![Image démo](static/c4?raw=true "Jeu")
+![Image démo](static/c1.png?raw=true "Jeu")
+![Image démo](static/c2.png?raw=true "Jeu")
+![Image démo](static/c3.png?raw=true "Jeu")
+![Image démo](static/c4.png?raw=true "Jeu")
