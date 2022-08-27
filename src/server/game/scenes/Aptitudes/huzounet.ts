@@ -9,7 +9,6 @@ import TJoueur from "../types/Joueur";
 export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
-    // collideWorldBounds: true,
     maxSize: 4
   })
   huzounet.degat = 0.7

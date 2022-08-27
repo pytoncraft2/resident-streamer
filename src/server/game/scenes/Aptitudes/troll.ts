@@ -163,11 +163,9 @@ export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
            onComplete: () => {
              reactiveBoucle(troll, aptitudes)
            },
-           // alpha: 0.2,
            duration: 900,
          });
 
-         // boss_1.scene.physics.moveTo(boss_1, 5010, 755)
        } else reactiveBoucle(troll, aptitudes)
      }
     }

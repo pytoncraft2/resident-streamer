@@ -28,7 +28,6 @@ export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
 export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
   fakhear.play('straightlead')
   fakhear.setVelocityX(0);
-  // fakhear.body.checkCollision.none = true;
 
   if (!fakhear.animation_dash)  {
     fakhear.son = 'punch_fast'
@@ -36,7 +35,7 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
       duration: 300,
       onUpdate: () => (fakhear.setVelocity((fakhear.flipX ? -1700 : 1700), -70)),
       onComplete: () => (fakhear.setVelocityX(0), fakhear.play('idle_attack')),
-      repeat: 0,            // -1: infinity
+      repeat: 0,
       yoyo: false,
     })
   } else if (!fakhear.animation_dash.isPlaying()) {

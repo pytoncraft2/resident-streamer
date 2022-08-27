@@ -116,8 +116,6 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
                reactiveBoucle(twitchman, aptitudes)
              }
            });
-           // if (twitchman.body) lanceManette__Z(twitchman, {z: true})
-           // reactiveBoucle(twitchman, aptitudes)
          }
          else if (dist > 900) {
            if (twitchman.body) {
@@ -151,11 +149,8 @@ export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
            onComplete: () => {
              reactiveBoucle(twitchman, aptitudes)
            },
-           // alpha: 0.2,
            duration: 900,
          });
-
-         // boss_1.scene.physics.moveTo(boss_1, 5010, 755)
        } else reactiveBoucle(twitchman, aptitudes)
      }
    }

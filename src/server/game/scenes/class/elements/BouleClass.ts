@@ -4,7 +4,7 @@ import { Projectile } from "../../../RoomState"
 export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  proprietaire: string  = ''
+  proprietaire: string = ''
   traqueJoueur: Phaser.Physics.Arcade.Sprite
 
   sprite: string = 'huzounet'
@@ -47,18 +47,18 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-      (this.scene as any).room.state.projectiles.set(
-        this.id,
-        new Projectile({
-          x: this.x,
-          y: this.y,
-          scale: this.scale,
-          alpha: this.alpha,
-          id: this.id,
-          sprite: this.sprite,
-          _frame: this._frame
-        })
-      )
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        scale: this.scale,
+        alpha: this.alpha,
+        id: this.id,
+        sprite: this.sprite,
+        _frame: this._frame
+      })
+    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

@@ -29,16 +29,11 @@ export class Balle extends Phaser.Physics.Arcade.Sprite {
     //@ts-ignore
     this.body.setAllowGravity(false);
 
-    scene.physics.add.overlap(this, (scene as any)[cible], function(_kunai, _ennemie: any) {
+    scene.physics.add.overlap(this, (scene as any)[cible], function (_kunai, _ennemie: any) {
       _ennemie.dommage(_kunai.getData('degat'))
       _kunai.setData('degat', 0)
       //@ts-ignore
     }, undefined, this);
-
-      // (this.scene as any).suppressionProjectileDelai(this, id, 1000, false)
-
-    // this.setCollideWorldBounds(true);
-
 
     (this.scene as any).room.state.projectiles.set(
       this.id,
@@ -50,22 +45,21 @@ export class Balle extends Phaser.Physics.Arcade.Sprite {
         _frame: this._frame
       })
     );
-    // (this.scene as any).suppressionProjectileDelai(this, id, 1300, true);
     this.setVelocityX(flipX ? -1900 : 1900);
 
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-      (this.scene as any).room.state.projectiles.set(
-        this.id,
-        new Projectile({
-          x: this.x,
-          y: this.y,
-          id: this.id,
-          sprite: this.sprite,
-          _frame: this._frame
-        })
-      )
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        id: this.id,
+        sprite: this.sprite,
+        _frame: this._frame
+      })
+    )
   }
 }

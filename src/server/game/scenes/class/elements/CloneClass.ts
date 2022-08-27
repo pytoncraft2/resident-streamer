@@ -6,7 +6,7 @@ import TJoueur from "../../types/Joueur"
 export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  proprietaire: string  = ''
+  proprietaire: string = ''
   sprite: string = 'huzounet'
   vie: number = 10
   degat: number = 0.2
@@ -59,7 +59,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
 
-      shuriken__A(this as unknown as TJoueur, {a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin})
+      shuriken__A(this as unknown as TJoueur, { a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin })
 
       if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
         kunai__Z(this as any)

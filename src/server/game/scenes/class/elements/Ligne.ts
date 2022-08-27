@@ -16,7 +16,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     id: string,
   ) {
     // super(scene, [x, y, x1, y1, x2, y2, strokeColor, strokeAlpha])
-    super(scene,{
+    super(scene, {
       x: 0,
       y: 0,
       lineStyle: {

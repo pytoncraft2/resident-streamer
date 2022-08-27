@@ -65,6 +65,18 @@ ou
 npm run doc
 ```
 
+### Tester tous les personnages (boss ou joueurs)
+
+http://localhost:3001/test?p=fakhear
+http://localhost:3001/test?p=huzounet
+http://localhost:3001/test?p=akhizonah
+http://localhost:3001/test?p=osmosiscoop
+
+http://localhost:3001/test?p=manette
+http://localhost:3001/test?p=boss_1
+http://localhost:3001/test?p=twitchman
+http://localhost:3001/test?p=troll
+
 ## Sources
 
 https://github.com/geckosio/phaser3-multiplayer-game-example

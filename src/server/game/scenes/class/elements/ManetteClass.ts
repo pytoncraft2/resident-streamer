@@ -3,7 +3,7 @@ import { Projectile } from "../../../RoomState"
 export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  proprietaire: string  = ''
+  proprietaire: string = ''
   traqueJoueur: Phaser.Physics.Arcade.Sprite
   suivre: boolean
 
@@ -48,19 +48,19 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
       this.x = this.traqueJoueur.x
       this.y = this.traqueJoueur.y
     }
-      (this.scene as any).room.state.projectiles.set(
-        this.id,
-        new Projectile({
-          x: this.x,
-          y: this.y,
-          id: this.id,
-          flipX: this.flipX,
-          sprite: this.sprite,
-          alpha: this.alpha,
-          angle: this.angle,
-          _frame: this._frame
-        })
-      )
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        id: this.id,
+        flipX: this.flipX,
+        sprite: this.sprite,
+        alpha: this.alpha,
+        angle: this.angle,
+        _frame: this._frame
+      })
+    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

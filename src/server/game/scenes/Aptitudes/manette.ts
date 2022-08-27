@@ -55,12 +55,10 @@ export function lancer__Z(manette: TJoueur, _input: any) {
 
         timeline.add({
           targets: manette.obj_manette,
-          // x: manette.x,
           props: {
             x: { value: function () { return manette.x; }, ease: 'Power1' },
             y: { value: function () { return manette.y; }, ease: 'Power3' }
           },
-          // y: manette.y,
           ease: 'Power2',
           duration: 800
         });
@@ -68,25 +66,6 @@ export function lancer__Z(manette: TJoueur, _input: any) {
         //@ts-ignore
         manette.obj_manette.tweenManette = timeline;
         timeline.play()
-        // manette.obj_manette.setVelocityX(manette.flipX ? -2300 : 2300)
-        // manette.scene.tweens.add({
-        //   targets: manette.obj_manette,
-        //   x: manette.flipX ? manette.x -1000 : manette.x + 1000,
-        //   duration: 900,
-        //   ease: 'Power2',
-        //   // yoyo: true,
-        //   alpha: 0,
-        //   onComplete: (tw, _target: any) => {
-        //     manette.scene.physics.moveToObject(manette, manette.obj_manette, 1200)
-        //   },
-        //   // onYoyoParams: [manette],
-        //   // onYoyo: function(tw, target, manette) {
-        //   //   target.setData('degat', 1)
-        //   //   if (target.y > manette.y) target.y += 20
-        //   // }
-        //   // delay: 1000
-        // });
-
       manette.obj_manette = undefined;
     }, null, manette);
   }
@@ -107,12 +86,10 @@ export function __animationLancerManette(manette: TJoueur) {
 
   timeline.add({
     targets: manette.groupeManettes.getChildren()[0],
-    // x: manette.x,
     props: {
       x: { value: function () { return manette.x; }, ease: 'Power1' },
       y: { value: function () { return manette.y; }, ease: 'Power3' }
     },
-    // y: manette.y,
     ease: 'Power2',
     duration: 800
   });
@@ -210,7 +187,6 @@ export function __animationLancerManette(manette: TJoueur) {
            onComplete: () => {
              reactiveBoucle(manette, aptitudes)
            },
-           // alpha: 0.2,
            duration: 900,
          });
        }

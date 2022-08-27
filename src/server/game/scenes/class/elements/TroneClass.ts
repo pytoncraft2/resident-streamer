@@ -3,7 +3,7 @@ import { Projectile } from "../../../RoomState"
 export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  proprietaire: string  = ''
+  proprietaire: string = ''
   traqueJoueur: Phaser.Physics.Arcade.Sprite
 
   sprite: string = 'super_boss'
@@ -32,32 +32,24 @@ export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
     this.id = id
 
-    this.setPosition(3000, positionY)
-    // (this.scene as any).suppressionProjectileDelai(this, id, 1300, true)
-
-    // this.setCollideWorldBounds(true);
+    this.setPosition(3000, positionY);
 
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    // if (this.traqueJoueur) {
-    //   this.x = this.traqueJoueur.x
-    //   this.y = this.traqueJoueur.y
-    // }
-
-      (this.scene as any).room.state.projectiles.set(
-        this.id,
-        new Projectile({
-          x: this.x,
-          y: this.y,
-          id: this.id,
-          flipX: this.flipX,
-          sprite: this.sprite,
-          alpha: this.alpha,
-          _frame: this._frame
-        })
-      )
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        id: this.id,
+        flipX: this.flipX,
+        sprite: this.sprite,
+        alpha: this.alpha,
+        _frame: this._frame
+      })
+    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

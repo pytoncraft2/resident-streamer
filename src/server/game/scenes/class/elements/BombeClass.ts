@@ -4,7 +4,7 @@ import { AnimationBombe } from "../../Animations/AnimationJoueur"
 export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
   id: any
   vel: number = 400
-  proprietaire: string  = ''
+  proprietaire: string = ''
   zoneInteraction: any
 
   sprite: string = 'akhizonah'
@@ -43,18 +43,16 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     this.zoneInteraction.setData('degat', 3);
 
 
-    //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
     this.scene.physics.add.existing(this.zoneInteraction);
 
     //@ts-ignore
     this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], [this],
-    function (_boule: Phaser.Physics.Arcade.Sprite, _j2: any) {
-      (_j2.body as any).setAllowGravity(false);
-    }, null, this);
+      function (_boule: Phaser.Physics.Arcade.Sprite, _j2: any) {
+        (_j2.body as any).setAllowGravity(false);
+      }, null, this);
 
 
     this.zoneInteraction.body.enable = false;
-    // (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 
     //@ts-ignore
     this.fin = false;
@@ -70,8 +68,8 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
       })
     )
 
-    this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function(_zone_bombe: any, _ennemie: any) {
-      const d = Phaser.Math.Distance.BetweenPoints({x: _ennemie.x, y: _ennemie.y}, {x: _zone_bombe.x, y: _zone_bombe.y}); // a, b: {x, y}
+    this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function (_zone_bombe: any, _ennemie: any) {
+      const d = Phaser.Math.Distance.BetweenPoints({ x: _ennemie.x, y: _ennemie.y }, { x: _zone_bombe.x, y: _zone_bombe.y }); // a, b: {x, y}
       _ennemie.dommage(_zone_bombe.getData('degat') - d / 100)
       _zone_bombe.setData('degat', 0)
     }, undefined, this);
@@ -86,22 +84,22 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     if (this.anims.getFrameName() == "bombe4" && !this.fin) {
       this.zoneInteraction.body.enable = true;
       this.zoneInteraction.setPosition(this.x, this.y)
-    //@ts-ignore
+      //@ts-ignore
       this.fin = true
     }
 
-      (this.scene as any).room.state.projectiles.set(
-        this.id,
-        new Projectile({
-          x: this.x,
-          y: this.y,
-          alpha: this.alpha,
-          id: this.id,
-          anim: this.anims.getFrameName(),
-          sprite: this.sprite,
-          _frame: this._frame
-        })
-      )
+    (this.scene as any).room.state.projectiles.set(
+      this.id,
+      new Projectile({
+        x: this.x,
+        y: this.y,
+        alpha: this.alpha,
+        id: this.id,
+        anim: this.anims.getFrameName(),
+        sprite: this.sprite,
+        _frame: this._frame
+      })
+    )
 
   }
 }
