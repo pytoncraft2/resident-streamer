@@ -67,14 +67,24 @@ npm run doc
 
 ### Tester tous les personnages (boss ou joueurs)
 
+__JOUEURS__
+
 http://localhost:3001/test?p=fakhear
+
 http://localhost:3001/test?p=huzounet
+
 http://localhost:3001/test?p=akhizonah
+
 http://localhost:3001/test?p=osmosiscoop
 
+__BOSS__
+
 http://localhost:3001/test?p=manette
+
 http://localhost:3001/test?p=boss_1
+
 http://localhost:3001/test?p=twitchman
+
 http://localhost:3001/test?p=troll
 
 ## Sources
