@@ -1,12 +1,9 @@
 {
   "name": "resident-streamer",
   "version": "0.0.0",
-  "main": "src/server/server.ts",
   "scripts": {
     "dev": "vite",
-    "start": "nodemon src/server/server.ts --ignore src/client/",
-    "build": "tsc -p src/server/tsconfig.json",
-    "bc": "tsc && vite build && phaser-asset-pack-hashing -j -r dist",
+    "build": "tsc && vite build && phaser-asset-pack-hashing -j -r dist",
     "build:server": "tsc -p src/server/tsconfig.json",
     "serve:server": "nodemon src/server/server.ts --ignore src/client/",
     "preview": "vite preview",
