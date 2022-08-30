@@ -55,12 +55,12 @@ app.get("/", (_request, response) => {
     response.sendFile(distPath + "/index.html");
 });
 app.get('/scores', (_request, res) => {
-    const donnes = fs.readFileSync('./scores.json');
+    const donnes = fs.readFileSync('./src/server/scores.json');
     res.setHeader('Content-Type', 'application/json');
     res.end(donnes);
 });
 app.post('/scores', (request, res) => {
-    const data = fs.readFileSync("./scores.json");
+    const data = fs.readFileSync("./src/server/scores.json");
     const myObject = JSON.parse(data);
     const objetFinal = Object.assign({}, myObject);
     objetFinal[`${request.body.equipe}`] = {

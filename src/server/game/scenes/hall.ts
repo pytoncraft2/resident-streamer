@@ -234,13 +234,15 @@ export default class Hall extends Phaser.Scene {
    * @returns liste des elements présents 
    */
   createPlayer(ClientId: any, sprite: string) {
-    const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
-    player.cible_courante = "enemies"
-    this.players.add(player)
-    this.playersRef[ClientId] = player
-    player.setBounceX(0.2).setDragX(300)
+    this.time.delayedCall(8000, () => {
+      const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
+      player.cible_courante = "enemies"
+      this.players.add(player)
+      this.playersRef[ClientId] = player
+      player.setBounceX(0.2).setDragX(300)
 
-    return this.getPresence()
+    }, null, this);
+      return this.getPresence()
   }
 
 
@@ -266,12 +268,14 @@ export default class Hall extends Phaser.Scene {
    * @returns  
    */
   createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
-    const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
-    ennemy.cible_courante = "players"
+    this.time.delayedCall(8000, () => {
+      const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
+      ennemy.cible_courante = "players"
 
-    this.enemies.add(ennemy)
-    this.enemiesRef[EnnemyId] = ennemy
-    ennemy.setBounceX(0.2).setDragX(300)
+      this.enemies.add(ennemy)
+      this.enemiesRef[EnnemyId] = ennemy
+      ennemy.setBounceX(0.2).setDragX(300)
+    }, null, this);
 
     return this.getPresence()
   }
