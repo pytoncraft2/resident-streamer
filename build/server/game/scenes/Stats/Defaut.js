@@ -7,6 +7,10 @@ const DefautStats = (personnage) => {
 };
 exports.DefautStats = DefautStats;
 const DefautDirection = (Aptitudes, personnage) => {
+    console.log("PPPPPPPPPPPPPPPPPPPPPPPPPERRRRRRRRRRRRRSO!");
+    console.log(Aptitudes);
+    console.log("_________________________________________");
+    console.log(personnage.sprite);
     Aptitudes[personnage.sprite].toucheDroite = (personnage, input) => {
         direction(input.right_debut, input.right_fin, personnage, input, true);
     };

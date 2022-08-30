@@ -65,7 +65,7 @@ exports.Aptitudes = {};
  * Aptitudes['fakhear']['commandes'] = { A: 'cross', Z: 'kick', E: 'dash', TAB: 'fusion' }
  * ```
  */
-exports.autoImport = fs.readdirSync('.', { withFileTypes: true })
+exports.autoImport = fs.readdirSync(__dirname, { withFileTypes: true })
     .filter(autoImport => autoImport.isFile())
     .map(file => {
     Promise.resolve().then(() => __importStar(require('./' + file.name))).then((m) => {
