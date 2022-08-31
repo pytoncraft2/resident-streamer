@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("wss://pacific-dusk-74740.herokuapp.com")
+		const client = new Colyseus.Client("ws://pacific-dusk-74740.herokuapp.com")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
