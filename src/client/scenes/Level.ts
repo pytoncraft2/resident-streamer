@@ -156,7 +156,7 @@ export default class Level extends Phaser.Scene {
 				this.scene.start("Scores")
 			})
 
-	this.client = new Colyseus.Client("ws://resident-streamer.servegame.com:3000")
+	this.client = new Colyseus.Client("ws://localhost:3000")
 	const client = this.client
 
 	const lobby = await client.joinOrCreate("acceuil");
