@@ -1,6 +1,7 @@
 {
   "name": "resident-streamer",
   "version": "0.0.0",
+  "main": "build/server/server.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && phaser-asset-pack-hashing -j -r dist",
