@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "tsc && vite build && phaser-asset-pack-hashing -j -r dist",
     "build:server": "tsc -p src/server/tsconfig.json",
+    "start": "nodemon src/server/server.ts --ignore src/client/",
     "serve:server": "nodemon src/server/server.ts --ignore src/client/",
     "clean": "rm -rf ./build ./dist",
     "preview": "vite preview",
