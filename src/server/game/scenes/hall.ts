@@ -234,7 +234,7 @@ export default class Hall extends Phaser.Scene {
    * @returns liste des elements présents 
    */
   createPlayer(ClientId: any, sprite: string) {
-    this.time.delayedCall(8000, () => {
+    this.time.delayedCall(1000, () => {
       const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
       player.cible_courante = "enemies"
       this.players.add(player)
@@ -268,7 +268,7 @@ export default class Hall extends Phaser.Scene {
    * @returns  
    */
   createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
-    this.time.delayedCall(8000, () => {
+    this.time.delayedCall(1000, () => {
       const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, auto).setData({ EnnemyId }))
       ennemy.cible_courante = "players"
 

@@ -34,13 +34,13 @@ app.get("/", (_request, response) => {
 })
 
 app.get('/scores', (_request, res) => {
-  const donnes = fs.readFileSync('./src/server/scores.json');
+  const donnes = fs.readFileSync(__dirname + '/scores.json');
   res.setHeader('Content-Type', 'application/json');
   res.end(donnes);
 })
 
 app.post('/scores', (request, res: any) => {
-  const data:any = fs.readFileSync("./src/server/scores.json");
+  const data:any = fs.readFileSync(__dirname + "/scores.json");
   const myObject = JSON.parse(data);
   const objetFinal = { ...myObject }
   objetFinal[`${request.body.equipe}`] = {
@@ -54,7 +54,7 @@ app.post('/scores', (request, res: any) => {
   });
 
   var newData2 = JSON.stringify(Object.fromEntries(rep));
-  fs.writeFile("./src/server/scores.json", newData2, (err) => {
+  fs.writeFile(__dirname + "/scores.json", newData2, (err) => {
     if (err) throw err;
   });
   res.setHeader('Content-Type', 'application/json');

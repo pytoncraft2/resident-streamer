@@ -705,7 +705,7 @@ export default class Jeu extends Phaser.Scene {
 
 					axios({
 						method: 'post',
-						url: "https://serveur-resident-streamer.herokuapp.com/scores",
+						url: "http://localhost:3000/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,
