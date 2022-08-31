@@ -94,7 +94,7 @@ export default class Scores extends Phaser.Scene {
 			this.scene.start("Level")
 		})
 			var zone = this.add.zone(152, 133, 1000, 250).setOrigin(0).setInteractive().setDepth(40);
-		axios.get("https://pacific-dusk-74740.herokuapp.com" + "/scores").then(res => {
+		axios.get("http://pacific-dusk-74740.herokuapp.com" + "/scores").then(res => {
 			var tableau: any = [];
 			Object.entries(res.data).forEach((element: any, _index: number) => {
 				let prefixe = '';
