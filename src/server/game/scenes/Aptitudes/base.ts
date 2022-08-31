@@ -60,7 +60,7 @@ export const Aptitudes: Touches = {};
   * Aptitudes['fakhear']['commandes'] = { A: 'cross', Z: 'kick', E: 'dash', TAB: 'fusion' }
   * ```
   */
-export const autoImport = fs.readdirSync('./src/server/game/scenes/Aptitudes', { withFileTypes: true })
+export const autoImport = fs.readdirSync(__dirname, { withFileTypes: true })
 .filter(autoImport => autoImport.isFile())
     .map(file => {
       import('./' + file.name).then((m) => {
