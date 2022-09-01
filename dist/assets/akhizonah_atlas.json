@@ -1,0 +1,398 @@
+{
+    "frames": [
+        {
+            "filename": "face0",
+            "frame": {
+                "w": 131,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche8",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 131,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump1",
+            "frame": {
+                "w": 156,
+                "h": 379,
+                "x": 227,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump0",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 383,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche7",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 479,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche6",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 578,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche5",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 745,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche4",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 844,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche3",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 0,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche2",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 99,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche1",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 266,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche0",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 365,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife3",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife2",
+            "frame": {
+                "w": 229,
+                "h": 371,
+                "x": 461,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife1",
+            "frame": {
+                "w": 173,
+                "h": 371,
+                "x": 690,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife0",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump6",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 1037,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump5",
+            "frame": {
+                "w": 156,
+                "h": 379,
+                "x": 0,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump4",
+            "frame": {
+                "w": 146,
+                "h": 421,
+                "x": 156,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump3",
+            "frame": {
+                "w": 155,
+                "h": 448,
+                "x": 302,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump2",
+            "frame": {
+                "w": 144,
+                "h": 416,
+                "x": 457,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe8",
+            "frame": {
+              "w": 122,
+              "h": 128,
+              "x": 913,
+              "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe3",
+            "frame": {
+                "w": 158,
+                "h": 146,
+                "x": 712,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe2",
+            "frame": {
+                "w": 149,
+                "h": 146,
+                "x": 870,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe1",
+            "frame": {
+                "w": 146,
+                "h": 140,
+                "x": 1019,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe0",
+            "frame": {
+                "w": 113,
+                "h": 146,
+                "x": 0,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe7",
+            "frame": {
+                "w": 122,
+                "h": 128,
+                "x": 113,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe6",
+            "frame": {
+                "w": 118,
+                "h": 124,
+                "x": 235,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe5",
+            "frame": {
+                "w": 121,
+                "h": 125,
+                "x": 353,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe4",
+            "frame": {
+                "w": 146,
+                "h": 152,
+                "x": 474,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

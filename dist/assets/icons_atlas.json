@@ -1,0 +1,112 @@
+{
+    "frames": [
+        {
+            "filename": "icon_twitchman",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_troll",
+            "frame": {
+                "w": 251,
+                "h": 248,
+                "x": 251,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_osmosiscoop",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 502,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_manette",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 0,
+                "y": 248
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_huzounet",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 251,
+                "y": 248
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_fakhear",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 502,
+                "y": 248
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_boss_1",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 0,
+                "y": 495
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "icon_akhizonah",
+            "frame": {
+                "w": 251,
+                "h": 247,
+                "x": 251,
+                "y": 495
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
