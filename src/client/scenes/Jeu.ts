@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("ws://pacific-dusk-74740.herokuapp.com")
+		const client = new Colyseus.Client("ws://83.196.13.173")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
@@ -705,7 +705,7 @@ export default class Jeu extends Phaser.Scene {
 
 					axios({
 						method: 'post',
-						url: "https://pacific-dusk-74740.herokuapp.com/scores",
+						url: "http://83.196.13.173/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,

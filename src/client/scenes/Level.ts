@@ -156,7 +156,7 @@ export default class Level extends Phaser.Scene {
 				this.scene.start("Scores")
 			})
 
-	this.client = new Colyseus.Client("wss://pacific-dusk-74740.herokuapp.com")
+	this.client = new Colyseus.Client("ws://83.196.13.173")
 	const client = this.client
 
 	const lobby = await client.joinOrCreate("acceuil");
