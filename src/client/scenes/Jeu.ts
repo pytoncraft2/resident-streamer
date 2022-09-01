@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("ws://83.196.13.173:3000")
+		const client = new Colyseus.Client("ws://resident-streamer.servegame.com:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
@@ -705,7 +705,7 @@ export default class Jeu extends Phaser.Scene {
 
 					axios({
 						method: 'post',
-						url: "http://83.196.13.173/scores",
+						url: "http://resident-streamer.servegame.com/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,
