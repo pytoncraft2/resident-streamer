@@ -77,8 +77,8 @@ app.get('/:id', (_request, response) => {
 
 // Define game server
 const server = https.createServer({
-      key: fs.readFileSync("./server.key"),
-      cert: fs.readFileSync("./server.cert"),
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
     },app)
 const gameServer = new Server({
   transport: new WebSocketTransport({
