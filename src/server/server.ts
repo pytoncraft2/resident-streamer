@@ -2,7 +2,7 @@ import { WebSocketTransport } from "@colyseus/ws-transport"
 import { Server } from "colyseus"
 import dotenv from "dotenv"
 import express from "express"
-import http from "http"
+import https from "https"
 import path from "path"
 import { monitor } from "@colyseus/monitor";
 import * as fs from 'fs';
@@ -76,7 +76,10 @@ app.get('/:id', (_request, response) => {
 
 
 // Define game server
-const server = http.createServer(app)
+const server = https.createServer({
+      key: fs.readFileSync("./server.key"),
+      cert: fs.readFileSync("./server.cert"),
+    },app)
 const gameServer = new Server({
   transport: new WebSocketTransport({
     server: server,
