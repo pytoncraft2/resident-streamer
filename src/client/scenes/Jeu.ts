@@ -705,7 +705,7 @@ export default class Jeu extends Phaser.Scene {
 
 					axios({
 						method: 'post',
-						url: "http://resident-streamer.servegame.com/scores",
+						url: "https://resident-streamer.servegame.com:3000/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,
