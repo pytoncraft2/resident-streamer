@@ -2,7 +2,6 @@ import { WebSocketTransport } from "@colyseus/ws-transport"
 import { Server } from "colyseus"
 import dotenv from "dotenv"
 import express from "express"
-import https from "https"
 import http from "http"
 import path from "path"
 import { monitor } from "@colyseus/monitor";
@@ -74,13 +73,8 @@ app.get('/:id', (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
 
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/resident-streamer.servegame.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/resident-streamer.servegame.com/fullchain.pem')
-};
-
 // Define game server
-const server = https.createServer(options, app)
+const server = http.createServer(app)
 
 const gameServer = new Server({
   transport: new WebSocketTransport({
