@@ -1,0 +1,229 @@
+{
+    "frames": [
+        {
+            "filename": "super_boss",
+            "frame": {
+                "w": 218,
+                "h": 330,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque2",
+            "frame": {
+                "w": 304,
+                "h": 481,
+                "x": 218,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly5",
+            "frame": {
+                "w": 484,
+                "h": 481,
+                "x": 522,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly1",
+            "frame": {
+                "w": 747,
+                "h": 481,
+                "x": 1006,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly0",
+            "frame": {
+                "w": 779,
+                "h": 481,
+                "x": 0,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly4",
+            "frame": {
+                "w": 747,
+                "h": 481,
+                "x": 779,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque1",
+            "frame": {
+                "w": 747,
+                "h": 481,
+                "x": 1526,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque0",
+            "frame": {
+                "w": 779,
+                "h": 481,
+                "x": 2273,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest6",
+            "frame": {
+                "w": 313,
+                "h": 148,
+                "x": 0,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest5",
+            "frame": {
+                "w": 730,
+                "h": 148,
+                "x": 313,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest4",
+            "frame": {
+                "w": 832,
+                "h": 157,
+                "x": 1043,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest3",
+            "frame": {
+                "w": 938,
+                "h": 157,
+                "x": 1875,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest2",
+            "frame": {
+                "w": 1046,
+                "h": 157,
+                "x": 0,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest",
+            "frame": {
+                "w": 1147,
+                "h": 150,
+                "x": 1046,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronehautv2",
+            "frame": {
+                "w": 579,
+                "h": 428,
+                "x": 2193,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronehaut",
+            "frame": {
+                "w": 579,
+                "h": 428,
+                "x": 2772,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "pc",
+            "frame": {
+                "w": 72,
+                "h": 128,
+                "x": 0,
+                "y": 1547
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
