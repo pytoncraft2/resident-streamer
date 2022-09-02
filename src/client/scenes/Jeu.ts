@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("ws://resident-streamer.servegame.com:3000")
+		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
