@@ -3,6 +3,7 @@ import { Server } from "colyseus"
 import dotenv from "dotenv"
 import express from "express"
 import https from "https"
+import http from "http"
 import path from "path"
 import { monitor } from "@colyseus/monitor";
 import * as fs from 'fs';
@@ -75,12 +76,14 @@ app.get('/:id', (_request, response) => {
 
 
 const options = {
-  key: fs.readFileSync('./privkey.pem'),
-  cert: fs.readFileSync('./fullchain.pem')
+  key: fs.readFileSync(__dirname + '/privkey.pem'),
+  cert: fs.readFileSync(__dirname + '/fullchain.pem')
 };
 
+http.createServer(app).listen(3000);
 // Define game server
-const server = https.createServer(options, app)
+const server = https.createServer(options, app).listen(443)
+
 const gameServer = new Server({
   transport: new WebSocketTransport({
     server: server,
