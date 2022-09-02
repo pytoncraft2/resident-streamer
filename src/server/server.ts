@@ -79,7 +79,6 @@ const options = {
   cert: fs.readFileSync('/etc/letsencrypt/live/resident-streamer.servegame.com/fullchain.pem')
 };
 
-http.createServer(app).listen(3000);
 // Define game server
 const server = https.createServer(options, app)
 
