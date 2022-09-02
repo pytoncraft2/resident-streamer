@@ -82,7 +82,7 @@ const options = {
 
 http.createServer(app).listen(3000);
 // Define game server
-const server = https.createServer(options, app).listen(443)
+const server = https.createServer(options, app)
 
 const gameServer = new Server({
   transport: new WebSocketTransport({
