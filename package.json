@@ -4,7 +4,7 @@
   "main": "build/server/server.js",
   "scripts": {
     "dev": "vite",
-    "start": "node build/server/server.js",
+    "start": "node build/server/server.js && cp src/server/scores.json build/server/",
     "build": "tsc && vite build && phaser-asset-pack-hashing -j -r dist",
     "build:server": "tsc -p src/server/tsconfig.json",
     "serve:server": "nodemon src/server/server.ts --ignore src/client/",
