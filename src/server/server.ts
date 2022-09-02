@@ -74,10 +74,9 @@ app.get('/:id', (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
 
-
 const options = {
-  key: fs.readFileSync(__dirname + '/privkey.pem'),
-  cert: fs.readFileSync(__dirname + '/fullchain.pem')
+  key: fs.readFileSync('/etc/letsencrypt/live/resident-streamer.servegame.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/resident-streamer.servegame.com/fullchain.pem')
 };
 
 http.createServer(app).listen(3000);
