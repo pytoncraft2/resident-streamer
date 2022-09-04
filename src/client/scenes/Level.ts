@@ -52,7 +52,7 @@ export default class Level extends Phaser.Scene {
 		// text
 		const text = this.add.text(960, 68, "", {});
 		text.setOrigin(0.5, 0.5);
-		text.text = "🧟 RESIDENT STREAMER 🦾";
+		text.text = "🧟 COUCOU 🦾";
 		text.setStyle({ "fontFamily": "CustomFontNormal", "fontSize": "49px" });
 
 		// rectangle
