@@ -14,6 +14,9 @@ import LobbyRooms from "./game/lobby"
 import AcceuilRooms from "./game/acceuil"
 // Get environment variables
 dotenv.config()
+console.log("---------PORT---------");
+console.log(process.env.PORT);
+
 const HOST = process.env.HOST || "0.0.0.0"
 const PORT = parseInt(process.env.PORT || "3000")
 
