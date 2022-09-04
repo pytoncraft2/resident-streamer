@@ -1,0 +1,216 @@
+{
+    "frames": [
+        {
+            "filename": "marche0",
+            "frame": {
+                "w": 251,
+                "h": 353,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettepunch0",
+            "frame": {
+                "w": 332,
+                "h": 353,
+                "x": 251,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettepunch1",
+            "frame": {
+                "w": 251,
+                "h": 353,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance3",
+            "frame": {
+                "w": 335,
+                "h": 323,
+                "x": 583,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance2",
+            "frame": {
+                "w": 236,
+                "h": 326,
+                "x": 918,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance1",
+            "frame": {
+                "w": 265,
+                "h": 374,
+                "x": 0,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance0",
+            "frame": {
+                "w": 236,
+                "h": 326,
+                "x": 265,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettevole0",
+            "frame": {
+                "w": 383,
+                "h": 231,
+                "x": 501,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche7",
+            "frame": {
+                "w": 200,
+                "h": 334,
+                "x": 0,
+                "y": 1090
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche6",
+            "frame": {
+                "w": 247,
+                "h": 334,
+                "x": 884,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche5",
+            "frame": {
+                "w": 200,
+                "h": 334,
+                "x": 0,
+                "y": 727
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche4",
+            "frame": {
+                "w": 197,
+                "h": 363,
+                "x": 200,
+                "y": 727
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche3",
+            "frame": {
+                "w": 244,
+                "h": 343,
+                "x": 397,
+                "y": 727
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche2",
+            "frame": {
+                "w": 197,
+                "h": 343,
+                "x": 641,
+                "y": 727
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche1",
+            "frame": {
+                "w": 200,
+                "h": 334,
+                "x": 0,
+                "y": 1090
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "objet_manette",
+            "frame": {
+                "w": 96,
+                "h": 66,
+                "x": 200,
+                "y": 1090
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
