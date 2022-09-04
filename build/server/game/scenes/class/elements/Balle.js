@@ -1,0 +1,46 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Balle = void 0;
+const RoomState_1 = require("../../../RoomState");
+class Balle extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y, sprite, ClientID, flipX, cible) {
+        super(scene, x, y, sprite);
+        this.vel = 400;
+        this.sprite = 'balle';
+        this._frame = 'balle';
+        this.init(scene, ClientID, flipX, cible);
+    }
+    init(scene, id, flipX, cible) {
+        this.scene = scene;
+        this.setData('degat', 0.2);
+        scene.physics.add.existing(this);
+        this.id = id;
+        //@ts-ignore
+        this.body.setAllowGravity(false);
+        scene.physics.add.overlap(this, scene[cible], function (_kunai, _ennemie) {
+            _ennemie.dommage(_kunai.getData('degat'));
+            _kunai.setData('degat', 0);
+            //@ts-ignore
+        }, undefined, this);
+        this.scene.room.state.projectiles.set(this.id, new RoomState_1.Projectile({
+            x: this.x,
+            y: this.y,
+            id: this.id,
+            sprite: this.sprite,
+            _frame: this._frame
+        }));
+        this.setVelocityX(flipX ? -1900 : 1900);
+    }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        this.scene.room.state.projectiles.set(this.id, new RoomState_1.Projectile({
+            x: this.x,
+            y: this.y,
+            id: this.id,
+            sprite: this.sprite,
+            _frame: this._frame
+        }));
+    }
+}
+exports.Balle = Balle;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQmFsbGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvc2VydmVyL2dhbWUvc2NlbmVzL2NsYXNzL2VsZW1lbnRzL0JhbGxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLGtEQUErQztBQUUvQyxNQUFhLEtBQU0sU0FBUSxNQUFNLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxNQUFNO0lBT3JELFlBQ0UsS0FBbUIsRUFDbkIsQ0FBUyxFQUNULENBQVMsRUFDVCxNQUFjLEVBQ2QsUUFBZ0IsRUFDaEIsS0FBYyxFQUNkLEtBQWE7UUFFYixLQUFLLENBQUMsS0FBSyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsTUFBTSxDQUFDLENBQUE7UUFkNUIsUUFBRyxHQUFXLEdBQUcsQ0FBQTtRQUVqQixXQUFNLEdBQVcsT0FBTyxDQUFBO1FBQ3hCLFdBQU0sR0FBVyxPQUFPLENBQUE7UUFhdEIsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLEVBQUUsUUFBUSxFQUFFLEtBQUssRUFBRSxLQUFLLENBQUMsQ0FBQTtJQUMxQyxDQUFDO0lBRUQsSUFBSSxDQUFDLEtBQW1CLEVBQUUsRUFBVSxFQUFFLEtBQWMsRUFBRSxLQUFhO1FBQ2pFLElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFBO1FBQ2xCLElBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxFQUFFLEdBQUcsQ0FBQyxDQUFBO1FBQzFCLEtBQUssQ0FBQyxPQUFPLENBQUMsR0FBRyxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUNqQyxJQUFJLENBQUMsRUFBRSxHQUFHLEVBQUUsQ0FBQztRQUNiLFlBQVk7UUFDWixJQUFJLENBQUMsSUFBSSxDQUFDLGVBQWUsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUVqQyxLQUFLLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsSUFBSSxFQUFHLEtBQWEsQ0FBQyxLQUFLLENBQUMsRUFBRSxVQUFVLE1BQU0sRUFBRSxRQUFhO1lBQ3BGLFFBQVEsQ0FBQyxPQUFPLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFBO1lBQ3pDLE1BQU0sQ0FBQyxPQUFPLENBQUMsT0FBTyxFQUFFLENBQUMsQ0FBQyxDQUFBO1lBQzFCLFlBQVk7UUFDZCxDQUFDLEVBQUUsU0FBUyxFQUFFLElBQUksQ0FBQyxDQUFDO1FBRW5CLElBQUksQ0FBQyxLQUFhLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxXQUFXLENBQUMsR0FBRyxDQUM1QyxJQUFJLENBQUMsRUFBRSxFQUNQLElBQUksc0JBQVUsQ0FBQztZQUNiLENBQUMsRUFBRSxJQUFJLENBQUMsQ0FBQztZQUNULENBQUMsRUFBRSxJQUFJLENBQUMsQ0FBQztZQUNULEVBQUUsRUFBRSxJQUFJLENBQUMsRUFBRTtZQUNYLE1BQU0sRUFBRSxJQUFJLENBQUMsTUFBTTtZQUNuQixNQUFNLEVBQUUsSUFBSSxDQUFDLE1BQU07U0FDcEIsQ0FBQyxDQUNILENBQUM7UUFDRixJQUFJLENBQUMsWUFBWSxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDO0lBRTFDLENBQUM7SUFDRCxTQUFTLENBQUMsSUFBWSxFQUFFLEtBQWE7UUFDbkMsS0FBSyxDQUFDLFNBQVMsQ0FBQyxJQUFJLEVBQUUsS0FBSyxDQUFDLENBQUM7UUFFNUIsSUFBSSxDQUFDLEtBQWEsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLFdBQVcsQ0FBQyxHQUFHLENBQzVDLElBQUksQ0FBQyxFQUFFLEVBQ1AsSUFBSSxzQkFBVSxDQUFDO1lBQ2IsQ0FBQyxFQUFFLElBQUksQ0FBQyxDQUFDO1lBQ1QsQ0FBQyxFQUFFLElBQUksQ0FBQyxDQUFDO1lBQ1QsRUFBRSxFQUFFLElBQUksQ0FBQyxFQUFFO1lBQ1gsTUFBTSxFQUFFLElBQUksQ0FBQyxNQUFNO1lBQ25CLE1BQU0sRUFBRSxJQUFJLENBQUMsTUFBTTtTQUNwQixDQUFDLENBQ0gsQ0FBQTtJQUNILENBQUM7Q0FDRjtBQTlERCxzQkE4REMifQ==
