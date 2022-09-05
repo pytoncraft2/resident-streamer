@@ -156,7 +156,7 @@ export default class Level extends Phaser.Scene {
 				this.scene.start("Scores")
 			})
 
-	this.client = new Colyseus.Client("wss://resident-streamer.servegame.com:3000")
+	this.client = new Colyseus.Client("wss://resident-steamer-backend.herokuapp.com")
 	const client = this.client
 
 	const lobby = await client.joinOrCreate("acceuil");

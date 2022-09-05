@@ -662,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("wss://resident-streamer.servegame.com:3000")
+		const client = new Colyseus.Client("wss://resident-steamer-backend.herokuapp.com")
 		const salon = this.salon;
 		const sprite = this.personnage;
 
@@ -705,7 +705,7 @@ export default class Jeu extends Phaser.Scene {
 
 					axios({
 						method: 'post',
-						url: "https://resident-streamer.servegame.com:3000/scores",
+						url: "https://resident-steamer-backend.herokuapp.com/scores",
 						data: {
 							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
 							joueur: resultat.joueur,
