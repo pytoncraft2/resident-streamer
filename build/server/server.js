@@ -39,7 +39,9 @@ const lobby_1 = __importDefault(require("./game/lobby"));
 const acceuil_1 = __importDefault(require("./game/acceuil"));
 // Get environment variables
 dotenv_1.default.config();
-const HOST = process.env.HOST || "0.0.0.0";
+// const HOST = process.env.HOST || "0.0.0.0";
+console.log("-------------------------COUCOU--------------------------");
+const HOST = "resident-steamer-backend.herokuapp.com";
 const PORT = parseInt(process.env.PORT || "3000");
 // Instantiate Express app
 const app = (0, express_1.default)();

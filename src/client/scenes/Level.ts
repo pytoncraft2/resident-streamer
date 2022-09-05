@@ -7,6 +7,7 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { RoomAvailable } from "colyseus.js";
+import dotenv from "dotenv"
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -129,6 +130,8 @@ export default class Level extends Phaser.Scene {
 
 		this.editorCreate();
 
+		
+		console.log(process.env.PORT);
 		const group = this.add.group();
 		this.groupSalon = group;
 
