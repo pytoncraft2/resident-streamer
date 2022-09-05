@@ -45,7 +45,7 @@ app.get('/scores', (_request, res) => {
   res.end(donnes);
 })
 
-app.get('/cahier-des-charge', (_request, response) => {
+app.get('/cahier-des-charges', (_request, response) => {
   response.sendFile(homePath + "/index.html")
 })
 
