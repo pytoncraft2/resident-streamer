@@ -132,7 +132,6 @@ export default class Level extends Phaser.Scene {
 
 		
 		dotenv.config()
-		console.log(process.env.PORT);
 		const group = this.add.group();
 		this.groupSalon = group;
 
