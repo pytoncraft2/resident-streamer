@@ -41,7 +41,7 @@ const acceuil_1 = __importDefault(require("./game/acceuil"));
 dotenv_1.default.config();
 // const HOST = process.env.HOST || "0.0.0.0";
 console.log("-------------------------COUCOU--------------------------");
-const HOST = "resident-steamer-backend.herokuapp.com";
+const HOST = process.env.HOST || "0.0.0.0";
 const PORT = parseInt(process.env.PORT || "3000");
 // Instantiate Express app
 const app = (0, express_1.default)();
