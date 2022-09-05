@@ -1,0 +1,2049 @@
+{
+    "frames": [
+        {
+            "filename": "face0",
+            "frame": {
+                "w": 131,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly4",
+            "frame": {
+                "w": 328,
+                "h": 379,
+                "x": 783,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmancharge0",
+            "frame": {
+                "w": 320,
+                "h": 379,
+                "x": 0,
+                "y": 828
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly3",
+            "frame": {
+                "w": 345,
+                "h": 379,
+                "x": 0,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly2",
+            "frame": {
+                "w": 334,
+                "h": 379,
+                "x": 345,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly1",
+            "frame": {
+                "w": 352,
+                "h": 379,
+                "x": 679,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "twitchmanfly0",
+            "frame": {
+                "w": 320,
+                "h": 379,
+                "x": 1031,
+                "y": 414
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+          {
+              "filename": "manette6",
+              "frame": {
+                  "w": 247,
+                  "h": 379,
+                  "x": 884,
+                  "y": 353
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette5",
+              "frame": {
+                  "w": 200,
+                  "h": 379,
+                  "x": 0,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette4",
+              "frame": {
+                  "w": 197,
+                  "h": 379,
+                  "x": 200,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette3",
+              "frame": {
+                  "w": 244,
+                  "h": 379,
+                  "x": 397,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette2",
+              "frame": {
+                  "w": 197,
+                  "h": 379,
+                  "x": 641,
+                  "y": 727
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+              "filename": "manette1",
+              "frame": {
+                  "w": 200,
+                  "h": 379,
+                  "x": 0,
+                  "y": 1090
+              },
+              "anchor": {
+                  "x": 0.5,
+                  "y": 0.5
+              }
+          },
+          {
+            "filename": "manette0",
+            "frame": {
+              "w": 251,
+              "h": 379,
+              "x": 0,
+              "y": 0
+            },
+            "anchor": {
+              "x": 0.5,
+              "y": 0.5
+            }
+          },
+          {
+            "filename": "manettevole0",
+            "frame": {
+                "w": 251,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+          "filename": "twitchmanpunch1",
+          "frame": {
+            "w": 251,
+            "h": 379,
+            "x": 0,
+            "y": 0
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "twitchmanpunch0",
+            "frame": {
+                "w": 332,
+                "h": 379,
+                "x": 251,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettepunch1",
+            "frame": {
+                "w": 251,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettepunch0",
+            "frame": {
+                "w": 332,
+                "h": 379,
+                "x": 251,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance3",
+            "frame": {
+                "w": 335,
+                "h": 379,
+                "x": 583,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance2",
+            "frame": {
+                "w": 236,
+                "h": 379,
+                "x": 918,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance1",
+            "frame": {
+                "w": 265,
+                "h": 379,
+                "x": 0,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "manettelance0",
+            "frame": {
+                "w": 236,
+                "h": 379,
+                "x": 265,
+                "y": 353
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "straightlead1",
+            "frame": {
+                "w": 347,
+                "h": 379,
+                "x": 131,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cross0",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 478,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "straightlead0",
+            "frame": {
+                "w": 347,
+                "h": 379,
+                "x": 645,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positionm4",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 992,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positionm3",
+            "frame": {
+                "w": 201,
+                "h": 379,
+                "x": 1166,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positionm2",
+            "frame": {
+                "w": 338,
+                "h": 379,
+                "x": 1367,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positionm1",
+            "frame": {
+                "w": 201,
+                "h": 379,
+                "x": 1705,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positionm0",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 1906,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona5",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 0,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona4",
+            "frame": {
+                "w": 308,
+                "h": 379,
+                "x": 174,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona3",
+            "frame": {
+                "w": 299,
+                "h": 379,
+                "x": 482,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona2",
+            "frame": {
+                "w": 308,
+                "h": 379,
+                "x": 781,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona1",
+            "frame": {
+                "w": 308,
+                "h": 379,
+                "x": 1089,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "positiona0",
+            "frame": {
+                "w": 162,
+                "h": 379,
+                "x": 1397,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche8",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 1559,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche7",
+            "frame": {
+                "w": 108,
+                "h": 379,
+                "x": 1655,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche6",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 1763,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche5",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 0,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche4",
+            "frame": {
+                "w": 168,
+                "h": 379,
+                "x": 99,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche3",
+            "frame": {
+                "w": 108,
+                "h": 379,
+                "x": 267,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche2",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 375,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche1",
+            "frame": {
+                "w": 99,
+                "h": 379,
+                "x": 542,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "marche0",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 641,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_saut1",
+            "frame": {
+                "w": 156,
+                "h": 379,
+                "x": 524,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_saut2",
+            "frame": {
+                "w": 154,
+                "h": 379,
+                "x": 370,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface5",
+            "frame": {
+                "w": 148,
+                "h": 379,
+                "x": 737,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface4",
+            "frame": {
+                "w": 135,
+                "h": 379,
+                "x": 885,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface3",
+            "frame": {
+                "w": 176,
+                "h": 379,
+                "x": 1020,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface2",
+            "frame": {
+                "w": 177,
+                "h": 379,
+                "x": 0,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface1",
+            "frame": {
+                "w": 179,
+                "h": 379,
+                "x": 177,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jumpface0",
+            "frame": {
+                "w": 123,
+                "h": 379,
+                "x": 356,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump6",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 479,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump5",
+            "frame": {
+                "w": 156,
+                "h": 379,
+                "x": 575,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump4",
+            "frame": {
+                "w": 146,
+                "h": 379,
+                "x": 731,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump3",
+            "frame": {
+                "w": 155,
+                "h": 379,
+                "x": 877,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump2",
+            "frame": {
+                "w": 144,
+                "h": 379,
+                "x": 1032,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump1",
+            "frame": {
+                "w": 156,
+                "h": 379,
+                "x": 1176,
+                "y": 1137
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "jump0",
+            "frame": {
+                "w": 96,
+                "h": 379,
+                "x": 0,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "face5",
+            "frame": {
+                "w": 122,
+                "h": 379,
+                "x": 96,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "face4",
+            "frame": {
+                "w": 124,
+                "h": 379,
+                "x": 218,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "face3",
+            "frame": {
+                "w": 121,
+                "h": 379,
+                "x": 342,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "face2",
+            "frame": {
+                "w": 123,
+                "h": 379,
+                "x": 463,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "face1",
+            "frame": {
+                "w": 122,
+                "h": 379,
+                "x": 586,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos6",
+            "frame": {
+                "w": 133,
+                "h": 379,
+                "x": 708,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos5",
+            "frame": {
+                "w": 132,
+                "h": 379,
+                "x": 841,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos4",
+            "frame": {
+                "w": 123,
+                "h": 379,
+                "x": 973,
+                "y": 1585
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos3",
+            "frame": {
+                "w": 131,
+                "h": 379,
+                "x": 0,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos2",
+            "frame": {
+                "w": 131,
+                "h": 379,
+                "x": 131,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos1",
+            "frame": {
+                "w": 130,
+                "h": 379,
+                "x": 262,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "dos0",
+            "frame": {
+                "w": 131,
+                "h": 379,
+                "x": 392,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+          "filename": "cross5",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 1397,
+            "y": 379
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "cross4",
+            "frame": {
+                "w": 167,
+                "h": 379,
+                "x": 523,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cross3",
+            "frame": {
+                "w": 245,
+                "h": 379,
+                "x": 690,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cross2",
+            "frame": {
+                "w": 295,
+                "h": 379,
+                "x": 935,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cross1",
+            "frame": {
+                "w": 245,
+                "h": 379,
+                "x": 1230,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "movechaiseboss1",
+            "frame": {
+                "w": 245,
+                "h": 379,
+                "x": 1230,
+                "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "movechaiseboss0",
+            "frame": {
+              "w": 245,
+              "h": 379,
+              "x": 1230,
+              "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attackchaiseboss1",
+            "frame": {
+              "w": 245,
+              "h": 379,
+              "x": 1230,
+              "y": 1964
+            },
+             "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+          "filename": "attackchaiseboss2",
+          "frame": {
+            "w": 245,
+            "h": 379,
+            "x": 1230,
+            "y": 1964
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "attackchaiseboss0",
+            "frame": {
+              "w": 245,
+              "h": 379,
+              "x": 1230,
+              "y": 1964
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+          "filename": "shuriken3",
+          "frame": {
+            "w": 96,
+            "h": 379,
+            "x": 185,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken2",
+          "frame": {
+            "w": 91,
+            "h": 379,
+            "x": 281,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken1",
+          "frame": {
+            "w": 93,
+            "h": 379,
+            "x": 372,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "shuriken0",
+          "frame": {
+            "w": 86,
+            "h": 379,
+            "x": 465,
+            "y": 1206
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "attaque_kunai2",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 584,
+            "y": 448
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "attaque_kunai1",
+          "frame": {
+            "w": 227,
+            "h": 379,
+            "x": 638,
+            "y": 827
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "filename": "attaque_kunai0",
+          "frame": {
+            "w": 162,
+            "h": 379,
+            "x": 865,
+            "y": 827
+          },
+          "anchor": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+            "filename": "knife3",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife2",
+            "frame": {
+                "w": 229,
+                "h": 379,
+                "x": 461,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife1",
+            "frame": {
+                "w": 173,
+                "h": 379,
+                "x": 690,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "knife0",
+            "frame": {
+                "w": 174,
+                "h": 379,
+                "x": 863,
+                "y": 379
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe8",
+            "frame": {
+                "w": 111,
+                "h": 379,
+                "x": 601,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe3",
+            "frame": {
+                "w": 158,
+                "h": 379,
+                "x": 712,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe2",
+            "frame": {
+                "w": 149,
+                "h": 379,
+                "x": 870,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe1",
+            "frame": {
+                "w": 146,
+                "h": 379,
+                "x": 1019,
+                "y": 758
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe0",
+            "frame": {
+                "w": 113,
+                "h": 379,
+                "x": 0,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe7",
+            "frame": {
+                "w": 122,
+                "h": 379,
+                "x": 113,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe6",
+            "frame": {
+                "w": 118,
+                "h": 379,
+                "x": 235,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe5",
+            "frame": {
+                "w": 121,
+                "h": 379,
+                "x": 353,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombe4",
+            "frame": {
+                "w": 146,
+                "h": 379,
+                "x": 474,
+                "y": 1206
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_soin3",
+            "frame": {
+                "w": 186,
+                "h": 379,
+                "x": 0,
+                "y": 192
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_soin2",
+            "frame": {
+                "w": 180,
+                "h": 379,
+                "x": 0,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_soin1",
+            "frame": {
+                "w": 182,
+                "h": 379,
+                "x": 180,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_soin0",
+            "frame": {
+                "w": 160,
+                "h": 379,
+                "x": 362,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque3",
+            "frame": {
+                "w": 160,
+                "h": 379,
+                "x": 362,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque2",
+            "frame": {
+                "w": 146,
+                "h": 379,
+                "x": 522,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque1",
+            "frame": {
+                "w": 182,
+                "h": 379,
+                "x": 668,
+                "y": 384
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "osmo_attaque0",
+            "frame": {
+                "w": 160,
+                "h": 379,
+                "x": 184,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "troll0",
+            "frame": {
+                "w": 187,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun5",
+            "frame": {
+                "w": 291,
+                "h": 379,
+                "x": 187,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun4",
+            "frame": {
+                "w": 270,
+                "h": 379,
+                "x": 478,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun2",
+            "frame": {
+                "w": 268,
+                "h": 379,
+                "x": 748,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun0",
+            "frame": {
+                "w": 277,
+                "h": 379,
+                "x": 1016,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun3",
+            "frame": {
+                "w": 255,
+                "h": 379,
+                "x": 0,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollrun1",
+            "frame": {
+                "w": 306,
+                "h": 379,
+                "x": 255,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollattack1",
+            "frame": {
+                "w": 262,
+                "h": 379,
+                "x": 561,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "trollattack0",
+            "frame": {
+                "w": 202,
+                "h": 379,
+                "x": 823,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack0",
+            "frame": {
+                "w": 113,
+                "h": 379,
+                "x": 1025,
+                "y": 393
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack13",
+            "frame": {
+                "w": 117,
+                "h": 379,
+                "x": 0,
+                "y": 786
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack12",
+            "frame": {
+                "w": 116,
+                "h": 379,
+                "x": 117,
+                "y": 786
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack11",
+            "frame": {
+                "w": 112,
+                "h": 379,
+                "x": 233,
+                "y": 786
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack10",
+            "frame": {
+                "w": 116,
+                "h": 379,
+                "x": 345,
+                "y": 786
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack9",
+            "frame": {
+                "w": 98,
+                "h": 379,
+                "x": 461,
+                "y": 786
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack8",
+            "frame": {
+                "w": 102,
+                "h": 379,
+                "x": 0,
+                "y": 898
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack7",
+            "frame": {
+                "w": 108,
+                "h": 379,
+                "x": 102,
+                "y": 898
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack6",
+            "frame": {
+                "w": 123,
+                "h": 379,
+                "x": 210,
+                "y": 898
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack5",
+            "frame": {
+                "w": 111,
+                "h": 379,
+                "x": 333,
+                "y": 898
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack4",
+            "frame": {
+                "w": 111,
+                "h": 379,
+                "x": 444,
+                "y": 898
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack3",
+            "frame": {
+                "w": 106,
+                "h": 379,
+                "x": 0,
+                "y": 1010
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack2",
+            "frame": {
+                "w": 116,
+                "h": 379,
+                "x": 106,
+                "y": 1010
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "attack1",
+            "frame": {
+                "w": 106,
+                "h": 379,
+                "x": 222,
+                "y": 1010
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "frog0",
+            "frame": {
+                "w": 55,
+                "h": 379,
+                "x": 328,
+                "y": 1010
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "frog4",
+            "frame": {
+                "w": 73,
+                "h": 379,
+                "x": 383,
+                "y": 1010
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "frog3",
+            "frame": {
+                "w": 55,
+                "h": 379,
+                "x": 0,
+                "y": 1114
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "frog2",
+            "frame": {
+                "w": 55,
+                "h": 379,
+                "x": 55,
+                "y": 1114
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "frog1",
+            "frame": {
+                "w": 75,
+                "h": 379,
+                "x": 110,
+                "y": 1114
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "balle",
+            "frame": {
+                "w": 20,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "super_boss",
+            "frame": {
+                "w": 218,
+                "h": 379,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque2",
+            "frame": {
+                "w": 304,
+                "h": 379,
+                "x": 218,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly5",
+            "frame": {
+                "w": 484,
+                "h": 379,
+                "x": 522,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly1",
+            "frame": {
+                "w": 747,
+                "h": 379,
+                "x": 1006,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly0",
+            "frame": {
+                "w": 779,
+                "h": 379,
+                "x": 0,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bossfly4",
+            "frame": {
+                "w": 747,
+                "h": 379,
+                "x": 779,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque1",
+            "frame": {
+                "w": 747,
+                "h": 379,
+                "x": 1526,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "contreattaque0",
+            "frame": {
+                "w": 779,
+                "h": 379,
+                "x": 2273,
+                "y": 481
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest6",
+            "frame": {
+                "w": 313,
+                "h": 379,
+                "x": 0,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest5",
+            "frame": {
+                "w": 730,
+                "h": 379,
+                "x": 313,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest4",
+            "frame": {
+                "w": 832,
+                "h": 379,
+                "x": 1043,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest3",
+            "frame": {
+                "w": 938,
+                "h": 379,
+                "x": 1875,
+                "y": 962
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest2",
+            "frame": {
+                "w": 1046,
+                "h": 379,
+                "x": 0,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronetest",
+            "frame": {
+                "w": 1147,
+                "h": 379,
+                "x": 1046,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronehautv2",
+            "frame": {
+                "w": 579,
+                "h": 379,
+                "x": 2193,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tronehaut",
+            "frame": {
+                "w": 579,
+                "h": 379,
+                "x": 2772,
+                "y": 1119
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "pc",
+            "frame": {
+                "w": 72,
+                "h": 379,
+                "x": 0,
+                "y": 1547
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
