@@ -27,7 +27,9 @@ app.use(express.json())
 
 // Serve dist folder
 const distPath = path.join(__dirname, "../../dist/")
-app.use(express.static(distPath))
+const homePath = path.join(__dirname, "../../accueil/")
+app.use(express.static(distPath));
+app.use(express.static(homePath));
 
 // app.use('/colyseus', monitor());
 app.use(cors());
@@ -41,6 +43,10 @@ app.get('/scores', (_request, res) => {
   const donnes = fs.readFileSync(__dirname + '/scores.json');
   res.setHeader('Content-Type', 'application/json');
   res.end(donnes);
+})
+
+app.get('/cahier-des-charge', (_request, response) => {
+  response.sendFile(homePath + "/index.html")
 })
 
 app.post('/scores', (request, res: any) => {
