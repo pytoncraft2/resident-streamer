@@ -1,7 +1,7 @@
 {
     "name": "redident-streamer",
     "description": "Resident Streamer Jeu multijoueur",
-    "start_url": "/",
+    "start_url": "https://resident-streamer.herokuapp.com",
     "scope": ".",
     "lang": "fr-FR",
     "icons": [
