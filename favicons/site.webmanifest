@@ -1,19 +1,22 @@
 {
     "name": "redident-streamer",
-    "short_name": "RS",
+    "description": "Resident Streamer Jeu multijoueur",
+    "start_url": "/",
+    "scope": ".",
+    "lang": "fr-FR",
     "icons": [
         {
-            "src": "/favicons/80.png",
+            "src": "/80.png",
             "sizes": "80x80",
             "type": "image/png"
         },
         {
-            "src": "/favicons/144.png",
+            "src": "/144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/favicons/512.png",
+            "src": "/512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
