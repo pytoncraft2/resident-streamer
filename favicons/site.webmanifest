@@ -22,6 +22,7 @@
         }
     ],
     "theme_color": "#ffffff",
+    "purpose": "maskable",
     "background_color": "#ffffff",
     "orientation": "landscape-primary",
     "display": "standalone"
