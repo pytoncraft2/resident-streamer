@@ -6,17 +6,17 @@
     "lang": "fr-FR",
     "icons": [
         {
-            "src": "./80.png",
+            "src": "80.png",
             "sizes": "80x80",
             "type": "image/png"
         },
         {
-            "src": "./144.png",
+            "src": "144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "./512.png",
+            "src": "512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
