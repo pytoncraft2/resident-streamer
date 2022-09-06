@@ -3,12 +3,23 @@
     "short_name": "RS",
     "icons": [
         {
-            "src": "/favicons/android-chrome-192x192.png",
-            "sizes": "192x192",
+            "src": "/favicons/80.png",
+            "sizes": "80x80",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/512.png",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
+    "orientation": "portrait-primary",
     "display": "standalone"
 }
