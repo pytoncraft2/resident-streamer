@@ -2,6 +2,10 @@
   "name": "resident-streamer",
   "version": "0.0.0",
   "main": "build/server/server.js",
+  "engines": {
+    "node": "16.17.0",
+    "npm": "8.5.5"
+  },
   "scripts": {
     "dev": "vite",
     "start": "node build/server/server.js",
