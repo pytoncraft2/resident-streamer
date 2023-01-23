@@ -2,7 +2,7 @@
 ### Un jeu 2D speedrun multijoueur de 2 à 4 joueurs
 Jeu multijoueur en ligne 🥷 - speedrun Phaser 3 + Colyseus + Phaser Editor 2D + Typescript
 disponible sur le site:
-- https://resident-streamer.herokuapp.com/
+- http://resident-streamer.herokuapp.com/
 
 ### Description
 

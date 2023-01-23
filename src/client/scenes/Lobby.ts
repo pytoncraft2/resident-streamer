@@ -177,7 +177,7 @@ export default class Lobby extends Phaser.Scene {
 	   */
 	  async connexion() {
 	    const self = this
-	    this.client = new Colyseus.Client("wss://resident-streamer.herokuapp.com")
+	    this.client = new Colyseus.Client("ws://localhost:3000")
 	    const salon = this.salon
 	    const client = this.client
 

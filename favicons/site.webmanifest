@@ -1,21 +1,21 @@
 {
     "name": "redident-streamer",
     "description": "Resident Streamer Jeu multijoueur",
-    "start_url": "https://resident-streamer.herokuapp.com",
+    "start_url": "http://resident-streamer.herokuapp.com",
     "lang": "fr-FR",
     "icons": [
         {
-            "src": "https://resident-streamer.herokuapp.com/80.png",
+            "src": "http://resident-streamer.herokuapp.com/80.png",
             "sizes": "80x80",
             "type": "image/png"
         },
         {
-            "src": "https://resident-streamer.herokuapp.com/144.png",
+            "src": "http://resident-streamer.herokuapp.com/144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "https://resident-streamer.herokuapp.com/512.png",
+            "src": "http://resident-streamer.herokuapp.com/512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
