@@ -18,7 +18,7 @@ console.log("---------PORT---------");
 console.log(process.env.PORT);
 
 const HOST = process.env.HOST || "0.0.0.0"
-const PORT = parseInt(process.env.PORT || "8000")
+const PORT = parseInt(process.env.PORT || "3000")
 
 // Instantiate Express app
 const app = express()
