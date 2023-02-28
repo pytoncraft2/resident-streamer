@@ -48,7 +48,7 @@ export default class Lobby extends Phaser.Scene {
 	 init(salon: any) {
     this.salon = salon.salon
     this.personnageChoisie = salon.personnage
-    this.personnages = ['fakhear', 'akhizonah', 'huzounet', 'osmosiscoop'];
+    this.personnages = ['fakhear', 'akhizonah', 'huzounet', 'osmosiscoop', 'huipat'];
   }
 
 
@@ -108,7 +108,8 @@ export default class Lobby extends Phaser.Scene {
 	      0: self.add.text(645, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
 	      1: self.add.text(845, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
 	      2: self.add.text(1045, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
-	      3: self.add.text(1245, 759, [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3)
+	      3: self.add.text(1245, 759, [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
+	      4: self.add.text(1245, 759, [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3)
 	    }
 	    new Titre(window.innerWidth/2, 100, `Lobby : ${this.salon}`, this, () => this.copieUrl())
 
@@ -204,6 +205,8 @@ export default class Lobby extends Phaser.Scene {
 					changes.listeJoueurIndex.forEach((listeID: string, idx: any) => {
 						let obj = JSON.parse(listeID)
 						for (const [key, value] of Object.entries(obj[idx])) {
+							console.log(this.listeJoueur);
+							
 							if (value) {
 								//@ts-ignore
 								this.listeJoueur[key].setText(value)

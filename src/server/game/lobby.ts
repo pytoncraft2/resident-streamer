@@ -42,7 +42,8 @@ export default class LobbyRooms extends Room {
       0: [],
       1: [],
       2: [],
-      3: []
+      3: [],
+      4: []
     }
 
     this.onMessage("etatJoueur", (client, message) => {

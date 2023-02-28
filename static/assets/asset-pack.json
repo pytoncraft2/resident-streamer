@@ -25,6 +25,12 @@
                 "key": "boss_1_atlas"
             },
             {
+                "atlasURL": "assets/atlas/boss_1_atlas.json",
+                "textureURL": "assets/atlas/boss_1_atlas.png",
+                "type": "atlas",
+                "key": "boss_1_atlas_1"
+            },
+            {
                 "url": "assets/face0.png",
                 "type": "image",
                 "key": "face0"
@@ -40,6 +46,12 @@
                 "textureURL": "assets/flares.png",
                 "type": "atlas",
                 "key": "flares"
+            },
+            {
+                "atlasURL": "assets/huipat_atlas.json",
+                "textureURL": "assets/huipat_atlas.png",
+                "type": "atlas",
+                "key": "huipat_atlas"
             },
             {
                 "atlasURL": "assets/huzounet_atlas.json",
