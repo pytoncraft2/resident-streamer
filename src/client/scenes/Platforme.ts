@@ -7,35 +7,37 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
-export default interface Platforme {
-
-	 body: Phaser.Physics.Arcade.Body;
-}
-
 export default class Platforme extends Phaser.GameObjects.Container {
 
 	constructor(scene: Phaser.Scene, x?: number, y?: number) {
-		super(scene, x ?? 0, y ?? -105);
+		super(scene, x ?? 397, y ?? 524.4367298681091);
 
-		scene.physics.add.existing(this, false);
-		this.body.moves = false;
-		this.body.immovable = true;
-		this.body.setOffset(-350.1279404022271, 63.792077287566954);
-		this.body.setSize(700.2558808044543, 82.4158454248661, false);
+		// map_hall0
+		const map_hall0 = scene.add.image(571, 23.56327013189093, "map_hall0");
+		map_hall0.scaleX = 3.060777824192423;
+		map_hall0.scaleY = 3.060777824192423;
+		this.add(map_hall0);
 
-		// platforme
-		const platforme = scene.add.rectangle(6, 105, 128, 128) as Phaser.GameObjects.Rectangle & { body: Phaser.Physics.Arcade.Body };
-		platforme.scaleX = 5.470749068784799;
-		platforme.scaleY = 0.6438737923817663;
-		scene.physics.add.existing(platforme, false);
-		platforme.body.moves = false;
-		platforme.body.allowGravity = false;
-		platforme.body.pushable = false;
-		platforme.body.immovable = true;
-		platforme.body.setSize(128, 128, false);
-		platforme.isFilled = true;
-		platforme.fillColor = 26265;
-		this.add(platforme);
+		// rectangle_1
+		const rectangle_1 = scene.add.rectangle(0, 393.56327013189093, 128, 128);
+		rectangle_1.scaleX = 6.111305753984601;
+		rectangle_1.scaleY = 0.44985684163535844;
+		rectangle_1.isFilled = true;
+		this.add(rectangle_1);
+
+		// rectangle
+		const rectangle = scene.add.rectangle(1124, -73, 128, 128);
+		rectangle.scaleX = 6.111305753984601;
+		rectangle.scaleY = 0.44985684163535844;
+		rectangle.isFilled = true;
+		this.add(rectangle);
+
+		// rectangle_2
+		const rectangle_2 = scene.add.rectangle(-3, -242, 128, 128);
+		rectangle_2.scaleX = 6.111305753984601;
+		rectangle_2.scaleY = 0.44985684163535844;
+		rectangle_2.isFilled = true;
+		this.add(rectangle_2);
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

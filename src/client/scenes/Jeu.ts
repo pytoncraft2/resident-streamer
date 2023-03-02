@@ -8,7 +8,6 @@ export interface Initialisation {
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
-import Platforme from "./Platforme";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
@@ -469,13 +468,6 @@ export default class Jeu extends Phaser.Scene {
 		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
-		// platformLayer
-		const platformLayer = this.add.layer();
-
-		// platforme_1
-		const platforme_1 = new Platforme(this, 2293, 505);
-		platformLayer.add(platforme_1);
-
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
@@ -633,39 +625,6 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
-		const layerPlatforme = this.add.layer();
-
-		// platforme
-		const platforme = new Platforme(this, 354, 357);
-		layerPlatforme.add(platforme);
-
-		// platforme_1
-		const platforme_1 = new Platforme(this, 1570, 264);
-		layerPlatforme.add(platforme_1);
-
-		// platforme_2
-		const platforme_2 = new Platforme(this, 1090, 111);
-		platforme_2.scaleX = 0.6051618385700501;
-		platforme_2.scaleY = 0.90278201350956;
-		layerPlatforme.add(platforme_2);
-
-		// platforme_4
-		const platforme_4 = new Platforme(this, 6, 705);
-		platforme_4.scaleX = 2.8429608315876465;
-		platforme_4.scaleY = 0.7677009268656273;
-		layerPlatforme.add(platforme_4);
-
-		// platforme_5
-		const platforme_5 = new Platforme(this, 2262, 855);
-		platforme_5.scaleX = 2.8429608315876465;
-		platforme_5.scaleY = 0.7677009268656273;
-		layerPlatforme.add(platforme_5);
-
-		// platforme_6
-		const platforme_6 = new Platforme(this, -271, 1017);
-		platforme_6.scaleX = 2.8429608315876465;
-		platforme_6.scaleY = 0.7677009268656273;
-		layerPlatforme.add(platforme_6);
 
 		this.time.delayedCall(5000, () => {
 			// this.sound.play('punch_fast');

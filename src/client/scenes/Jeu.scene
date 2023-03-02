@@ -881,28 +881,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "type": "Layer",
-            "id": "3b12f374-7956-412e-90ce-21c727aa00cb",
-            "label": "platformLayer",
-            "components": [],
-            "list": [
-                {
-                    "prefabId": "635147c7-2f16-4b58-ba7c-0d4d327b0a2c",
-                    "id": "fa5a191d-11ea-4123-a2a4-d16a50acd476",
-                    "unlock": [
-                        "x",
-                        "y"
-                    ],
-                    "label": "platforme_1",
-                    "components": [],
-                    "x": 2293,
-                    "y": 505,
-                    "nestedPrefabs": [],
-                    "list": []
-                }
-            ]
         }
     ],
     "plainObjects": [],
