@@ -36,6 +36,13 @@ window.addEventListener('load', function () {
     dom: {
       createContainer: true
     },
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 2600 },
+        debug: false
+      }
+    },
 		scene: [Boot, Preload, Level, Lobby, Jeu, Scores]
 	});
 

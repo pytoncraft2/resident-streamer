@@ -1,4 +1,5 @@
 import PlayerClass from "./class/PlayerClass"
+import Platforme from "../../../client/scenes/Platforme"
 
 /**
  * Serveur Phaser 3 Epreuve 1
@@ -47,6 +48,8 @@ export default class Hall extends Phaser.Scene {
    * Commence le compte à rebours
    */
   create() {
+    const p = new Platforme(this)
+    // this.physics.add.existing(p);
 
     var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
 
@@ -141,12 +144,13 @@ export default class Hall extends Phaser.Scene {
 
 
     this.physics.add.existing(platforme, true);
+    this.physics.add.existing(p, true);
     this.physics.add.existing(platforme_gauche, true);
     this.physics.add.existing(platforme_droite, true);
     this.physics.add.existing(platforme_haut, true);
     this.physics.add.existing(platforme_haut_gauche, true);
     this.physics.add.existing(platforme_haut_droite, true);
-    let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche, platforme_haut, platforme_haut_gauche, platforme_haut_droite], [this.players, this.enemies]);
+    let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche, platforme_haut, platforme_haut_gauche, platforme_haut_droite, p], [this.players, this.enemies]);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {

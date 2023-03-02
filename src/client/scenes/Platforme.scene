@@ -1,0 +1,60 @@
+{
+    "id": "635147c7-2f16-4b58-ba7c-0d4d327b0a2c",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "263bb601-0dac-4dbb-9e85-f5cba6c6e172",
+            "label": "container_1",
+            "components": [],
+            "y": -105,
+            "ArcadeComponent.active": true,
+            "moves": false,
+            "immovable": true,
+            "body.width": 700.2558808044543,
+            "body.height": 82.4158454248661,
+            "body.offset.x": -350.1279404022271,
+            "body.offset.y": 63.792077287566954,
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "a4d31185-4b89-40db-b32e-9650a84b8d94",
+                    "label": "platforme",
+                    "components": [],
+                    "x": 6,
+                    "y": 105,
+                    "scaleX": 5.470749068784799,
+                    "scaleY": 0.6438737923817663,
+                    "ArcadeComponent.active": true,
+                    "moves": false,
+                    "allowGravity": false,
+                    "pushable": false,
+                    "immovable": true,
+                    "body.width": 128,
+                    "body.height": 128,
+                    "isFilled": true,
+                    "fillColor": "#006699",
+                    "width": 128,
+                    "height": 128
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}
