@@ -13,7 +13,6 @@ import Platforme from "./Platforme";
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
 import axios from "axios";
-import Platforme from "./Platforme";
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
