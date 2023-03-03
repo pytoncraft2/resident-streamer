@@ -8,6 +8,11 @@
                 "key": "akhizonah_atlas"
             },
             {
+                "url": "assets/animations.json",
+                "type": "animation",
+                "key": "animations"
+            },
+            {
                 "atlasURL": "assets/balle_atlas.json",
                 "textureURL": "assets/balle_atlas.png",
                 "type": "atlas",
@@ -46,6 +51,12 @@
                 "textureURL": "assets/flares.png",
                 "type": "atlas",
                 "key": "flares"
+            },
+            {
+                "atlasURL": "assets/girl_atlas.json",
+                "textureURL": "assets/girl_atlas.png",
+                "type": "atlas",
+                "key": "girl_atlas"
             },
             {
                 "atlasURL": "assets/huipat_atlas.json",

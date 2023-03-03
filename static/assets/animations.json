@@ -1,7 +1,79 @@
 {
-    "anims": [],
+    "anims": [
+        {
+            "key": "run_right",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight01.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight02.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight03.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight04.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "run_left",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight04.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight03.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight02.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "girl_atlas",
+                    "frame": "RunRight01.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D v3",
         "contentType": "Phaser v3 Animations"
+    },
+    "settings": {
+        "sourceLang": "JAVA_SCRIPT",
+        "esModule": true,
+        "generateCode": true
     }
 }

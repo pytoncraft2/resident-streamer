@@ -1,0 +1,1 @@
+export const availablePlayer = ['huipat', 'girl'];

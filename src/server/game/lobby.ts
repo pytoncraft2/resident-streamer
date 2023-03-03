@@ -3,6 +3,7 @@ import "@geckos.io/phaser-on-nodejs"
 import { Room, Client } from "colyseus"
 
 import { LobbyState, Joueur } from "./LobbyState"
+import { availablePlayer } from "../../shared/avaiablePlayer"
 
 
 /**
@@ -11,6 +12,7 @@ import { LobbyState, Joueur } from "./LobbyState"
 export default class LobbyRooms extends Room {
   Game!: Phaser.Game
   scene!: Phaser.Scene
+  availablePlayer!: String[] = availablePlayer
 
   constructor() {
     super()
@@ -38,12 +40,10 @@ export default class LobbyRooms extends Room {
     }
 
     this.etatJoueur = {}
-    this.listeIndex = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: []
+    this.listeIndex = {}
+
+    for (let index = 0; index < this.availablePlayer.length; index++) {
+      this.listeIndex[index] = []
     }
 
     this.onMessage("etatJoueur", (client, message) => {

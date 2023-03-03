@@ -41,6 +41,7 @@ export default class Hall extends Phaser.Scene {
    * Chargement de tout les atlas avec une mini image pour le serveur<br>
    */
   preload() {
+    this.load.animation('run', __dirname + '/../../../../static/assets/animations.json');
     this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
   }
 

@@ -9,6 +9,7 @@ import * as Colyseus from "colyseus.js"
 import Panel from "../utils/panel"
 import Button from "../utils/bouton"
 import Titre from "../utils/titre"
+import { availablePlayer } from "../../shared/avaiablePlayer"
 /* END-USER-IMPORTS */
 
 export default class Lobby extends Phaser.Scene {
@@ -48,7 +49,7 @@ export default class Lobby extends Phaser.Scene {
 	 init(salon: any) {
     this.salon = salon.salon
     this.personnageChoisie = salon.personnage
-    this.personnages = ['fakhear', 'akhizonah', 'huzounet', 'osmosiscoop', 'huipat'];
+    this.personnages = availablePlayer;
   }
 
 
@@ -69,7 +70,7 @@ export default class Lobby extends Phaser.Scene {
 			this.editorCreate();
 
 			var iterateJoueur = -1;
-	    const self = this;
+		  const self = this;
 			let keyObj = this.input.keyboard.addKey('TAB');  // Get key object
 			let confirme = this.input.keyboard.addKey('ENTER');  // Get key object
 
@@ -104,13 +105,13 @@ export default class Lobby extends Phaser.Scene {
 
 	    this.panelGauche = new Panel("JOUEURS: 0/4",['Selectionner un personnage !'], this, () => {})
 
-	    this.listeJoueur = {
-	      0: self.add.text(645, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
-	      1: self.add.text(845, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
-	      2: self.add.text(1045, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
-	      3: self.add.text(1245, 759, [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3),
-	      4: self.add.text(1245, 759, [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3)
-	    }
+	    this.listeJoueur = {}
+		let decalage = 200;
+		let emplacementX = 645;
+		for (let index = 0; index < this.personnages.length; index++) {
+			(this.listeJoueur as any)[index] = self.add.text(emplacementX, 759 , [''], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3);
+			emplacementX += decalage;
+		}
 	    new Titre(window.innerWidth/2, 100, `Lobby : ${this.salon}`, this, () => this.copieUrl())
 
 	    this.bouton = new Button(window.innerWidth / 2, window.innerHeight - 100, 'Selectionner votre personnage !', this, () => {
