@@ -146,6 +146,12 @@
                 "key": "super_boss_atlas"
             },
             {
+                "atlasURL": "assets/toile_atlas.json",
+                "textureURL": "assets/toile_atlas.png",
+                "type": "atlas",
+                "key": "toile_atlas"
+            },
+            {
                 "atlasURL": "assets/troll_atlas.json",
                 "textureURL": "assets/troll_atlas.png",
                 "type": "atlas",

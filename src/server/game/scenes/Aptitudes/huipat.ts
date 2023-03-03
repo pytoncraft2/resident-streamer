@@ -2,6 +2,8 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
 import fusion from "./_utilitaire/fusion";
 import ManetteClass from "../class/elements/ManetteClass";
+import { Balle } from "../class/elements/Balle";
+import Toile from "../class/elements/Toile";
 
 export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
   fakhear.degat = 10
@@ -80,13 +82,16 @@ export function kick__Z(manette: Phaser.Physics.Arcade.Sprite|any, input: any) {
 //   input.z = false
 }
 
-export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
-    console.log("HUIPAT E");
-    
+export function dash__E(huipat: Phaser.Physics.Arcade.Sprite | any) {
+  console.log("HUIPAT E");
+  const id1 = `${(Math.random() + 1).toString(36).substring(7)}`
+  const balle1 = huipat.scene.add.existing(new Balle(huipat.scene, huipat.x, huipat.y - 55, 'balle', id1, huipat.flipX, huipat.scene.enemies))
+  huipat.scene.physics.add.existing(balle1);
 }
 
-export function fusion__TAB(personnage: TJoueur, input: any) {
-    console.log("FUSION TAB HUIPAT");
-    
-//   fusion(personnage, input)
+export function fusion__TAB(huipat: TJoueur, input: any) {
+  const id1 = `${(Math.random() + 1).toString(36).substring(7)}`
+  const balle1 = huipat.scene.add.existing(new Toile(huipat.scene, huipat.x, huipat.y - 55, 'toile', id1, huipat.flipX))
+  huipat.scene.physics.add.existing(balle1);
+  console.log("FUSION TAB HUIPAT");
 }
