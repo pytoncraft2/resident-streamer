@@ -1,19 +1,22 @@
-import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
-import fusion from "./_utilitaire/fusion";
-import ManetteClass from "../class/elements/ManetteClass";
-import { Balle } from "../class/elements/Balle";
-import Toile from "../class/elements/Toile";
 
 export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
   fakhear.degat = 10
+  var json = fakhear.scene.anims.toJSON();
+  console.log(json);
+  fakhear.scene.anims.fromJSON(json);
 }
 
-export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function cross__A(girl: Phaser.Physics.Arcade.Sprite|any, input: any) {
+  if (input.a)
+  {
     console.log("GRIAL A");
+    girl.play("run_right")
+    input.a = false
+  }
 }
 
-export function kick__Z(manette: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function kick__Z(girl: Phaser.Physics.Arcade.Sprite|any, input: any) {
     console.log("GIRL Z");
 }
 

@@ -41,7 +41,7 @@ export default class Hall extends Phaser.Scene {
    * Chargement de tout les atlas avec une mini image pour le serveur<br>
    */
   preload() {
-    this.load.animation('run', __dirname + '/../../../../static/assets/animations.json');
+    this.load.animation('girlData', __dirname + '/../../../../static/assets/animations.json');
     this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
   }
 
@@ -50,6 +50,8 @@ export default class Hall extends Phaser.Scene {
    * Commence le compte à rebours
    */
   create() {
+    //@ts-ignore
+    // console.log('anims', this.anims.anims.entries);
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
