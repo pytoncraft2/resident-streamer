@@ -34,21 +34,6 @@
             "repeat": -1
         },
         {
-            "key": "huipat_run",
-            "type": "frame",
-            "frames": [
-                {
-                    "key": "liste_atlas",
-                    "frame": "huipat_run.png",
-                    "duration": 0,
-                    "keyframe": false
-                }
-            ],
-            "frameRate": 24,
-            "skipMissedFrames": true,
-            "repeat": -1
-        },
-        {
             "key": "spider_run",
             "type": "frame",
             "frames": [
@@ -94,39 +79,6 @@
             "repeat": -1
         },
         {
-            "key": "walk",
-            "type": "frame",
-            "frames": [
-                {
-                    "key": "liste_atlas",
-                    "frame": "girl_run00.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "liste_atlas",
-                    "frame": "girl_run01.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "liste_atlas",
-                    "frame": "girl_run02.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "liste_atlas",
-                    "frame": "girl_run03.png",
-                    "duration": 0,
-                    "keyframe": false
-                }
-            ],
-            "frameRate": 24,
-            "skipMissedFrames": true,
-            "repeat": -1
-        },
-        {
             "key": "idle_walk",
             "type": "frame",
             "frames": [
@@ -142,42 +94,12 @@
             "repeat": -1
         },
         {
-            "key": "huipat_idle_walk",
-            "type": "frame",
-            "frames": [
-                {
-                    "key": "liste_atlas",
-                    "frame": "huipat_run.png",
-                    "duration": 0,
-                    "keyframe": false
-                }
-            ],
-            "frameRate": 24,
-            "skipMissedFrames": true,
-            "repeat": -1
-        },
-        {
             "key": "girl_idle_walk",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
                     "frame": "girl_run01.png",
-                    "duration": 0,
-                    "keyframe": false
-                }
-            ],
-            "frameRate": 24,
-            "skipMissedFrames": true,
-            "repeat": -1
-        },
-        {
-            "key": "huipat_walk",
-            "type": "frame",
-            "frames": [
-                {
-                    "key": "liste_atlas",
-                    "frame": "huipat_run.png",
                     "duration": 0,
                     "keyframe": false
                 }
@@ -211,6 +133,228 @@
                 {
                     "key": "liste_atlas",
                     "frame": "girl_run03.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "boy_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk1.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk10.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk11.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk12.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk13.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk14.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk15.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk2.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk3.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk4.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk5.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk6.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk7.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk8.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_walk9.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 46,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "boy_idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle10.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle11.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle12.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle13.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle14.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle15.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle2.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle3.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle4.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle5.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle6.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle7.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle8.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "boy_idle9.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "huipat_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "huipat_atlas.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "huipat_idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "huipat_atlas.png",
                     "duration": 0,
                     "keyframe": false
                 }
