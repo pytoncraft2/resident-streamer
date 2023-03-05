@@ -14,6 +14,19 @@
     "displayList": [
         {
             "type": "Image",
+            "id": "44c3d389-ca79-43db-bdaa-3b87d97c9d3e",
+            "label": "bg",
+            "components": [],
+            "texture": {
+                "key": "bg"
+            },
+            "x": 962,
+            "y": 478,
+            "scaleX": 0.31877122769443794,
+            "scaleY": 0.31877122769443794
+        },
+        {
+            "type": "Image",
             "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
             "label": "mapbossfinal",
             "components": [],
@@ -35,6 +48,7 @@
             "scaleX": 43.50112225681497,
             "scaleY": 1.449878006775927,
             "isFilled": true,
+            "fillAlpha": 0.4,
             "width": 128,
             "height": 128
         },
@@ -51,20 +65,6 @@
             "y": 489,
             "scaleX": 2.868376959115476,
             "scaleY": 2.7049866133838867
-        },
-        {
-            "type": "Image",
-            "id": "dda5bea8-1047-40c0-a98c-95c5a9a5f3f9",
-            "label": "map_boss2",
-            "scope": "PUBLIC",
-            "components": [],
-            "texture": {
-                "key": "maptwitchman2"
-            },
-            "x": 922,
-            "y": 489,
-            "scaleX": 2.90778858976818,
-            "scaleY": 2.5991763141421007
         },
         {
             "type": "Image",
@@ -232,8 +232,8 @@
                     "label": "bas_gauche",
                     "scope": "PUBLIC",
                     "components": [],
-                    "x": -920,
-                    "y": 488,
+                    "x": 332,
+                    "y": 932,
                     "scaleX": 14.332672621910074,
                     "scaleY": 7.392235139173692,
                     "isFilled": true,
@@ -890,7 +890,6 @@
                 "y"
             ],
             "label": "platformeLayer",
-            "scope": "CLASS",
             "components": [],
             "nestedPrefabs": [],
             "list": []

@@ -19,6 +19,11 @@
                 "key": "balle_atlas"
             },
             {
+                "url": "assets/bg.jpg",
+                "type": "image",
+                "key": "bg"
+            },
+            {
                 "url": "assets/boss_1_atlas.png",
                 "type": "image",
                 "key": "boss_1"
@@ -51,6 +56,16 @@
                 "textureURL": "assets/flares.png",
                 "type": "atlas",
                 "key": "flares"
+            },
+            {
+                "url": "assets/herbe.png",
+                "type": "image",
+                "key": "herbe"
+            },
+            {
+                "url": "assets/herbe3D.png",
+                "type": "image",
+                "key": "herbe3D"
             },
             {
                 "atlasURL": "assets/huzounet_atlas.json",

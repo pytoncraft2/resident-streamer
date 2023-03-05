@@ -362,6 +362,36 @@
             "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
+        },
+        {
+            "key": "spider_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "spider_run.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "spider_idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "spider_run.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
         }
     ],
     "meta": {

@@ -72,11 +72,19 @@ export default class GameRooms extends Room {
         //   vaincu: false,
         //   inaccessible: false
         // }
-        'girl':  {
-          temps: 7_000,
+        // 'girl':  {
+        //   temps: 7_000,
+        //   x: 1000,
+        //   y: -1000,
+        //   frame: "boy_idle1.png",
+        //   vaincu: false,
+        //   inaccessible: false
+        // },
+        'spider':  {
+          temps: 1_000,
           x: 1000,
           y: -1000,
-          frame: "boy_idle1.png",
+          frame: "spider_run.png",
           vaincu: false,
           inaccessible: false
         }

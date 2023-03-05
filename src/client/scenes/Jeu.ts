@@ -28,6 +28,11 @@ export default class Jeu extends Phaser.Scene {
 
 	editorCreate(): void {
 
+		// bg
+		const bg = this.add.image(962, 478, "bg");
+		bg.scaleX = 0.31877122769443794;
+		bg.scaleY = 0.31877122769443794;
+
 		// mapbossfinal
 		const mapbossfinal = this.add.image(2714, -491, "mapbossfinal");
 		mapbossfinal.scaleX = 2.709638779885017;
@@ -38,16 +43,12 @@ export default class Jeu extends Phaser.Scene {
 		platforme.scaleX = 43.50112225681497;
 		platforme.scaleY = 1.449878006775927;
 		platforme.isFilled = true;
+		platforme.fillAlpha = 0.4;
 
 		// map_boss1
 		const map_boss1 = this.add.image(4656, 489, "map_boss1");
 		map_boss1.scaleX = 2.868376959115476;
 		map_boss1.scaleY = 2.7049866133838867;
-
-		// map_boss2
-		const map_boss2 = this.add.image(922, 489, "maptwitchman2");
-		map_boss2.scaleX = 2.90778858976818;
-		map_boss2.scaleY = 2.5991763141421007;
 
 		// map_hall1
 		const map_hall1 = this.add.image(2793, 476, "map_hall1");
@@ -118,7 +119,7 @@ export default class Jeu extends Phaser.Scene {
 		const cache_gauche_bas = this.add.container(1836, 0);
 
 		// bas_gauche
-		const bas_gauche = this.add.rectangle(-920, 488, 128, 128);
+		const bas_gauche = this.add.rectangle(332, 932, 128, 128);
 		bas_gauche.scaleX = 14.332672621910074;
 		bas_gauche.scaleY = 7.392235139173692;
 		bas_gauche.isFilled = true;
@@ -475,7 +476,6 @@ export default class Jeu extends Phaser.Scene {
 		this.add.existing(platformeLayer);
 
 		this.map_boss1 = map_boss1;
-		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
 		this.hall = hall;
 		this.barre_etat_joueur = barre_etat_joueur;
@@ -525,13 +525,11 @@ export default class Jeu extends Phaser.Scene {
 		this.ecran_fin_text_score = ecran_fin_text_score;
 		this.ecran_fin_text_rejouer = ecran_fin_text_rejouer;
 		this.ecran_fin_text_quitter = ecran_fin_text_quitter;
-		this.platformeLayer = platformeLayer;
 
 		this.events.emit("scene-awake");
 	}
 
 	public map_boss1!: Phaser.GameObjects.Image;
-	public map_boss2!: Phaser.GameObjects.Image;
 	public map_hall1!: Phaser.GameObjects.Image;
 	public hall!: Phaser.GameObjects.Image;
 	public barre_etat_joueur!: Phaser.GameObjects.Container;
@@ -581,7 +579,6 @@ export default class Jeu extends Phaser.Scene {
 	public ecran_fin_text_score!: Phaser.GameObjects.Text;
 	public ecran_fin_text_rejouer!: Phaser.GameObjects.Text;
 	public ecran_fin_text_quitter!: Phaser.GameObjects.Text;
-	private platformeLayer!: PlatformePrefab;
 
 	/* START-USER-CODE */
 
@@ -918,14 +915,14 @@ export default class Jeu extends Phaser.Scene {
 				const sprite = list.presences[item].sprite
 				const firstFrame = list.presences[item].firstFrame
 				console.log(list.presences[item]);
-				
+
 				if (list.presences[item].sprite) {
 
 					console.log("___________");
 
 					console.log(this.personnageFrame);
 					console.log(firstFrame);
-					
+
 
 					const player = this.add
 						.sprite(x, y, "liste_atlas", `${firstFrame}`)
