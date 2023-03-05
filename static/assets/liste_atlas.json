@@ -1,25 +1,5 @@
 {
 	"frames": {
-		"chauve_run.png": {
-			"frame": {
-				"x": 1,
-				"y": 1,
-				"w": 400,
-				"h": 244
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 400,
-				"h": 244
-			},
-			"sourceSize": {
-				"w": 400,
-				"h": 244
-			}
-		},
 		"girl_run00.png": {
 			"frame": {
 				"x": 403,
@@ -158,6 +138,26 @@
 			"sourceSize": {
 				"w": 320,
 				"h": 320
+			}
+		},
+		"chauve_run.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 400,
+				"h": 244
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 244
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 244
 			}
 		}
 	},

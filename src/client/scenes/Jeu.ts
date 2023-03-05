@@ -3,6 +3,7 @@
 export interface Initialisation {
 	salon: string;
 	personnage: string;
+	frame: string;
 };
 
 /* START OF COMPILED CODE */
@@ -468,9 +469,6 @@ export default class Jeu extends Phaser.Scene {
 		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
-		// face0
-		this.add.image(1067, 223, "face0");
-
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
@@ -607,6 +605,7 @@ export default class Jeu extends Phaser.Scene {
 	keyboard!: any
 	room?: Colyseus.Room<unknown>
 	personnage?: string
+	personnageFrame?: string
 	compte: number = 0
 	prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean, tab: boolean }
 	attaqueDirecte: boolean = false
@@ -622,6 +621,7 @@ export default class Jeu extends Phaser.Scene {
 	init(info: Initialisation) {
 		this.salon = info.salon
 		this.personnage = info.personnage
+		this.personnageFrame = info.frame
 	}
 
 
@@ -668,9 +668,10 @@ export default class Jeu extends Phaser.Scene {
 		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
+		const frame = this.personnageFrame;
 
 		await client
-			.joinOrCreate("game_instance", { salon: salon, sprite: sprite })
+			.joinOrCreate("game_instance", { salon: salon, sprite: sprite, frame: frame })
 			.then((room) => {
 				self.room = room
 				self.session = room.sessionId
@@ -819,7 +820,7 @@ export default class Jeu extends Phaser.Scene {
 		this.minimap.ignore(this.interface_joueur);
 		this.minimap.ignore(this.barreHautContainer);
 
-		this.cameras.main.centerOn(2800, 390)
+		// this.cameras.main.centerOn(600, 390)
 		this.interface_joueur.setScrollFactor(0)
 
 		var keyObj = this.input.keyboard.addKey('T');  // Get key object
@@ -910,10 +911,12 @@ export default class Jeu extends Phaser.Scene {
 				const sprite = list.presences[item].sprite
 				if (list.presences[item].sprite) {
 
-					console.log(sprite);
+					console.log("___________");
+
+					console.log(this.personnageFrame);
 
 					const player = this.add
-						.sprite(x, y, "liste_atlas", "RunRight01.png")
+						.sprite(x, y, "liste_atlas", `${this.personnageFrame}`)
 						.setData({ ClientId: list.presenceList[idx] })
 						.setDepth(1);
 
@@ -1014,7 +1017,7 @@ export default class Jeu extends Phaser.Scene {
 			} else {
 				if (list.presences[item].x) this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
 				if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 10.36), 0.1777486358833607)
-				this.playersRef[item].setFrame(list.presences[item].anim)
+				if (list.presences[item].anim) this.playersRef[item].setFrame(list.presences[item].anim)
 				this.playersRef[item].flipX = list.presences[item].flipX
 				this.playersRef[item].setTint(list.presences[item].tint)
 				if (this.playersRef[item].barre.last) {

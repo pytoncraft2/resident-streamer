@@ -42,6 +42,7 @@ export default class Lobby extends Phaser.Scene {
 	panelGauche: any
 	listeJoueur!: Object
 	personnageChoisie: string = "huzounet"
+	personnageChoisieFrame: string = "huzounet"
 	boutonActivable: boolean = false
 	bouton: any
 	pret: boolean = false
@@ -49,6 +50,8 @@ export default class Lobby extends Phaser.Scene {
 	 init(salon: any) {
     this.salon = salon.salon
     this.personnageChoisie = salon.personnage
+
+
     this.personnages = availablePlayer;
   }
 
@@ -125,33 +128,25 @@ export default class Lobby extends Phaser.Scene {
 	    this.container = this.add.container(645, 0);
 	    await this.connexion()
 
+		  var atlasTexture = self.textures.get('liste_atlas');
+		  var frames = atlasTexture.getFrameNames();
 	    this.personnages.forEach((element, idx) => {
-			// this.add.image(903, 273, "liste_atlas", "RunRight01.png");
 
 			console.log(element);
 			
-	      const img = self.add.sprite(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", "girl_run00.png")
+			const realIndex: any = frames.findIndex(e => e.substring(0, e.indexOf('_')) == element);
+			console.log(realIndex);
+			
+	      const img = self.add.sprite(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", `${frames[realIndex]}`)
 	      .setData('actif', false)
 	      .setAlpha(0.8)
 	      .setInteractive(({ useHandCursor: true }))
 	      .on('pointerdown', function() {
 	        listeIndex.push(idx)
 					//@ts-ignore
-			  var atlasTexture = self.textures.get('liste_atlas');
-			  var frames = atlasTexture.getFrameNames();
 
-			  console.log(atlasTexture);
-			  console.log(frames);
-			  
-			  
-					
-					console.log("HHHHHHHHHHHHHHHHHHH");
-					
-					//@ts-ignore
-	        console.log(this.frame.texture)
-					
-	        // self.personnageChoisie = `${this.frame.texture.key}`
-	        self.personnageChoisie = "huipat_run"
+	        self.personnageChoisie = `${frames[realIndex]}`;
+			self.personnageChoisieFrame = `${frames[realIndex]}`
 	        self.container.iterate(function(el: any) {
 	              el.setAlpha(0.3)
 	              el.setData('actif', false)
@@ -273,7 +268,8 @@ export default class Lobby extends Phaser.Scene {
 		
 	    this.scene.start('Jeu', {
 	      salon: this.salon,
-	      personnage: this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_'))
+	      personnage: this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_')),
+		  frame: this.personnageChoisieFrame
 	    });
 	  }
 

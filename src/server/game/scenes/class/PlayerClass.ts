@@ -44,20 +44,23 @@ import { DefautDirection } from "../Stats/Defaut"
      x: number,
      y: number,
      atlas: string,
-     ClientID: string,
      sprite: string,
-     auto?: boolean
+     frame: string,
+     ClientID: string,
+     auto?: boolean,
    ) {
-     super(scene, x, y, atlas, sprite)
+     super(scene, x, y, atlas, frame)
 
-     this.init(scene, ClientID, sprite, auto)
+     this.init(scene, atlas, sprite, frame, ClientID, auto)
    }
 
-   init(scene: Phaser.Scene, ClientID: string, sprite: string, auto: boolean) {
+   init(scene: Phaser.Scene, atlas: string, sprite: string, frame: string, ClientID: string, auto: boolean) {
      this.scene = scene
      this.ClientID = ClientID
      this.particules = false
-     this.sprite = sprite
+    
+     this.sprite = sprite.substring(0, sprite.indexOf('_'))
+    //  this.play(this.sprite + '_idle_walk')
 
      //initialisation de l'etat du joueur
     //  new AnimationJoueur(this.anims)
@@ -73,6 +76,7 @@ import { DefautDirection } from "../Stats/Defaut"
 
      this.currentTarget = this
      this.me = this
+     
 
      this.bossControllable = this.scene.add.group();
 

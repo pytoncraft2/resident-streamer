@@ -881,17 +881,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "type": "Image",
-            "id": "86f490bc-4518-43fb-87bb-821f37adc6c4",
-            "label": "face0",
-            "components": [],
-            "texture": {
-                "key": "face0"
-            },
-            "x": 1067,
-            "y": 223
         }
     ],
     "plainObjects": [],

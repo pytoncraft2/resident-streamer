@@ -140,6 +140,84 @@
             "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1
+        },
+        {
+            "key": "huipat_idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "huipat_run.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "girl_idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run01.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "huipat_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "huipat_run.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "girl_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run00.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run01.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run02.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run03.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
         }
     ],
     "meta": {
