@@ -126,7 +126,9 @@ export default class Lobby extends Phaser.Scene {
 	    await this.connexion()
 
 	    this.personnages.forEach((element, idx) => {
-	      const img = self.add.image(0 + idx * 200, this.cameras.main.centerY, element + "_atlas")
+			// this.add.image(903, 273, "liste_atlas", "RunRight01.png");
+
+	      const img = self.add.image(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", "RunRight01.png")
 	      .setData('actif', false)
 	      .setAlpha(0.8)
 	      .setInteractive(({ useHandCursor: true }))
@@ -251,9 +253,11 @@ export default class Lobby extends Phaser.Scene {
 
 	  commencerJeu() {
 	    this.room.leave()
+		console.log(this.personnageChoisie);
+		
 	    this.scene.start('Jeu', {
 	      salon: this.salon,
-	      personnage: this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_'))
+	      personnage: "girl"
 	    });
 	  }
 

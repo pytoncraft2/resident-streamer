@@ -76,26 +76,26 @@ export default class GameRooms extends Room {
       Object.entries(this.boss).map(item => {
         const randomNombre = `${(Math.random() + 1).toString(36).substring(7)}`;
         this.boss[item[0]]['id'] = randomNombre;
-        this.clock.setTimeout(() => {
-            (this.scene as any).room.donnes[randomNombre] = {
-              clavier: {
-                up: false,
-                right: false,
-                down: false,
-                left: false,
-                space: false,
-                a: false,
-                a_fin: false,
-                z: false,
-                e: false,
-                r: false
-              }
-            }
-            const presences = this.scene.createEnnemy(randomNombre, item[0], true, item[1].x, item[1].y);
-            for (const [key, value] of Object.entries(presences.presences)) {
-              this.state.presences.set(key, new Player(value))
-            }
-        }, item[1].temps);
+        // this.clock.setTimeout(() => {
+        //     (this.scene as any).room.donnes[randomNombre] = {
+        //       clavier: {
+        //         up: false,
+        //         right: false,
+        //         down: false,
+        //         left: false,
+        //         space: false,
+        //         a: false,
+        //         a_fin: false,
+        //         z: false,
+        //         e: false,
+        //         r: false
+        //       }
+        //     }
+        //     const presences = this.scene.createEnnemy(randomNombre, item[0], true, item[1].x, item[1].y);
+        //     for (const [key, value] of Object.entries(presences.presences)) {
+        //       this.state.presences.set(key, new Player(value))
+        //     }
+        // }, item[1].temps);
 
       })
 
@@ -107,6 +107,8 @@ export default class GameRooms extends Room {
   }
 
   onJoin(client: Client, options: any) {
+    console.log(options);
+    
     this.donnes[client.id] = {
       clavier: {
         up: false,

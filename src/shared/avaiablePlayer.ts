@@ -1,1 +1,1 @@
-export const availablePlayer = ['huipat', 'girl'];
+export const availablePlayer = ['girl'];

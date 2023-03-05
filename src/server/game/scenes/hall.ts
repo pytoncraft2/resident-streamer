@@ -42,7 +42,7 @@ export default class Hall extends Phaser.Scene {
    */
   preload() {
     this.load.animation('girlData', __dirname + '/../../../../static/assets/animations.json');
-    this.load.atlas('atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/fakhear_atlas.json');
+    this.load.atlas('liste_atlas', __dirname + '/../../../../static/assets/fakhear_atlas_serveur.png', __dirname + '/../../../../static/assets/liste_atlas.json');
   }
 
   /**
@@ -189,7 +189,7 @@ export default class Hall extends Phaser.Scene {
    */
   createPlayer(ClientId: any, sprite: string) {
     this.time.delayedCall(1000, () => {
-      const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
+      const player = this.add.existing(new PlayerClass(this, 2830, 700, "liste_atlas", ClientId, sprite).setData({ ClientId }))
       player.cible_courante = "enemies"
       this.players.add(player)
       this.playersRef[ClientId] = player

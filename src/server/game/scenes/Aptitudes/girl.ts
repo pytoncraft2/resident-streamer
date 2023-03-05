@@ -11,13 +11,15 @@ export function cross__A(girl: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a)
   {
     console.log("GRIAL A");
-    girl.play("run_right")
+    girl.play("run")
     input.a = false
   }
 }
 
 export function kick__Z(girl: Phaser.Physics.Arcade.Sprite|any, input: any) {
     console.log("GIRL Z");
+    
+    girl.play("reverse_run")
 }
 
 export function dash__E(huipat: Phaser.Physics.Arcade.Sprite | any) {

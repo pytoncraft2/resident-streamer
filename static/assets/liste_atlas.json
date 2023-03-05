@@ -42,8 +42,8 @@
 		},
 		"RunRight03.png": {
 			"frame": {
-				"x": 1,
-				"y": 131,
+				"x": 261,
+				"y": 1,
 				"w": 128,
 				"h": 128
 			},
@@ -62,8 +62,8 @@
 		},
 		"RunRight04.png": {
 			"frame": {
-				"x": 131,
-				"y": 131,
+				"x": 391,
+				"y": 1,
 				"w": 128,
 				"h": 128
 			},
@@ -79,6 +79,86 @@
 				"w": 128,
 				"h": 128
 			}
+		},
+		"araigne.png": {
+			"frame": {
+				"x": 1,
+				"y": 131,
+				"w": 228,
+				"h": 79
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 228,
+				"h": 79
+			},
+			"sourceSize": {
+				"w": 228,
+				"h": 79
+			}
+		},
+		"chauve-souris.png": {
+			"frame": {
+				"x": 1,
+				"y": 212,
+				"w": 400,
+				"h": 244
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 400,
+				"h": 244
+			},
+			"sourceSize": {
+				"w": 400,
+				"h": 244
+			}
+		},
+		"huipat.png": {
+			"frame": {
+				"x": 521,
+				"y": 1,
+				"w": 200,
+				"h": 189
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 189
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 189
+			}
+		},
+		"toile.png": {
+			"frame": {
+				"x": 403,
+				"y": 192,
+				"w": 320,
+				"h": 320
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 320,
+				"h": 320
+			},
+			"sourceSize": {
+				"w": 320,
+				"h": 320
+			}
 		}
 	},
 	"meta": {
@@ -87,8 +167,8 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 260,
-			"h": 260
+			"w": 724,
+			"h": 513
 		},
 		"scale": "1"
 	}

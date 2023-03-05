@@ -468,6 +468,9 @@ export default class Jeu extends Phaser.Scene {
 		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
+		// runRight01_png
+		this.add.sprite(903, 273, "liste_atlas", "RunRight01.png");
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
@@ -907,8 +910,10 @@ export default class Jeu extends Phaser.Scene {
 				const sprite = list.presences[item].sprite
 				if (list.presences[item].sprite) {
 
+					console.log(sprite);
+
 					const player = this.add
-						.sprite(x, y, `${sprite}_atlas`)
+						.sprite(x, y, "liste_atlas", "RunRight01.png")
 						.setData({ ClientId: list.presenceList[idx] })
 						.setDepth(1);
 

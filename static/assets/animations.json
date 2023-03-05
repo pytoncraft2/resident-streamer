@@ -1,29 +1,29 @@
 {
     "anims": [
         {
-            "key": "run_right",
+            "key": "run",
             "type": "frame",
             "frames": [
                 {
-                    "key": "girl_atlas",
+                    "key": "liste_atlas",
                     "frame": "RunRight01.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "girl_atlas",
+                    "key": "liste_atlas",
                     "frame": "RunRight02.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "girl_atlas",
+                    "key": "liste_atlas",
                     "frame": "RunRight03.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
-                    "key": "girl_atlas",
+                    "key": "liste_atlas",
                     "frame": "RunRight04.png",
                     "duration": 0,
                     "keyframe": false
@@ -31,41 +31,66 @@
             ],
             "frameRate": 24,
             "skipMissedFrames": true,
-            "repeat": -1,
-            "yoyo": true,
-            "showOnStart": true,
-            "hideOnComplete": true
+            "repeat": -1
         },
         {
-            "key": "run_left",
+            "key": "toile",
             "type": "frame",
             "frames": [
                 {
-                    "key": "girl_atlas",
-                    "frame": "RunRight04.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "girl_atlas",
-                    "frame": "RunRight03.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "girl_atlas",
-                    "frame": "RunRight02.png",
-                    "duration": 0,
-                    "keyframe": false
-                },
-                {
-                    "key": "girl_atlas",
-                    "frame": "RunRight01.png",
+                    "key": "liste_atlas",
+                    "frame": "toile.png",
                     "duration": 0,
                     "keyframe": false
                 }
             ],
             "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "spider",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "araigne.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "huipat",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "huipat.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "chauve",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "chauve-souris.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
             "repeat": -1
         }
     ],
@@ -75,7 +100,7 @@
     },
     "settings": {
         "sourceLang": "TYPE_SCRIPT",
-        "esModule": true,
+        "esModule": false,
         "generateCode": false,
         "outputFolder": "resident-streamer/src/shared"
     }

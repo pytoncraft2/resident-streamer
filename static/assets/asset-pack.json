@@ -53,18 +53,6 @@
                 "key": "flares"
             },
             {
-                "atlasURL": "assets/girl_atlas.json",
-                "textureURL": "assets/girl_atlas.png",
-                "type": "atlas",
-                "key": "girl_atlas"
-            },
-            {
-                "atlasURL": "assets/huipat_atlas.json",
-                "textureURL": "assets/huipat_atlas.png",
-                "type": "atlas",
-                "key": "huipat_atlas"
-            },
-            {
                 "atlasURL": "assets/huzounet_atlas.json",
                 "textureURL": "assets/huzounet_atlas.png",
                 "type": "atlas",
@@ -90,6 +78,12 @@
                 "url": "assets/LeagueGothic-Regular.otf",
                 "type": "binary",
                 "key": "LeagueGothic-Regular"
+            },
+            {
+                "atlasURL": "assets/liste_atlas.json",
+                "textureURL": "assets/liste_atlas.png",
+                "type": "atlas",
+                "key": "liste_atlas"
             },
             {
                 "url": "assets/loginform.html",

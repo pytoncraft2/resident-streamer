@@ -60,7 +60,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.sprite = sprite
 
      //initialisation de l'etat du joueur
-     new AnimationJoueur(this.anims)
+    //  new AnimationJoueur(this.anims)
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
