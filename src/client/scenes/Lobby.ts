@@ -72,6 +72,10 @@ export default class Lobby extends Phaser.Scene {
 	  async create() {
 			this.editorCreate();
 
+		  var atlasTexture = this.textures.get('liste_atlas');
+		  var frames = atlasTexture.getFrameNames();
+			
+
 			var iterateJoueur = -1;
 		  const self = this;
 			let keyObj = this.input.keyboard.addKey('TAB');  // Get key object
@@ -92,8 +96,11 @@ export default class Lobby extends Phaser.Scene {
 					if (self.personnages.length -1 != iterateJoueur) iterateJoueur++
 					else iterateJoueur = 0
 				}
+			const realIndex: any = frames.findIndex(e => e.substring(0, e.indexOf('_')) == self.personnages[iterateJoueur]);
 				texteTab.text = self.personnages[iterateJoueur]
-				self.personnageChoisie = `${self.personnages[iterateJoueur]}_atlas`
+				
+				self.personnageChoisie = self.personnages[iterateJoueur];
+				self.personnageChoisieFrame = `${frames[realIndex]}`;
 
 				self.tweens.add({
 					targets: self.container.getByName(`${self.personnages[iterateJoueur]}`),
@@ -128,14 +135,11 @@ export default class Lobby extends Phaser.Scene {
 	    this.container = this.add.container(645, 0);
 	    await this.connexion()
 
-		  var atlasTexture = self.textures.get('liste_atlas');
-		  var frames = atlasTexture.getFrameNames();
 	    this.personnages.forEach((element, idx) => {
 
 			console.log(element);
 			
 			const realIndex: any = frames.findIndex(e => e.substring(0, e.indexOf('_')) == element);
-			console.log(realIndex);
 			
 	      const img = self.add.sprite(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", `${frames[realIndex]}`)
 	      .setData('actif', false)
