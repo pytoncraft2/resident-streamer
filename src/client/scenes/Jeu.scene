@@ -883,16 +883,15 @@
             ]
         },
         {
-            "type": "Sprite",
-            "id": "63e410b2-a14d-40f0-9d8a-d9edd9a2ca3c",
-            "label": "runRight01_png",
+            "type": "Image",
+            "id": "86f490bc-4518-43fb-87bb-821f37adc6c4",
+            "label": "face0",
             "components": [],
             "texture": {
-                "key": "liste_atlas",
-                "frame": "RunRight01.png"
+                "key": "face0"
             },
-            "x": 903,
-            "y": 273
+            "x": 1067,
+            "y": 223
         }
     ],
     "plainObjects": [],

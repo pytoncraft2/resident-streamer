@@ -128,14 +128,30 @@ export default class Lobby extends Phaser.Scene {
 	    this.personnages.forEach((element, idx) => {
 			// this.add.image(903, 273, "liste_atlas", "RunRight01.png");
 
-	      const img = self.add.image(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", "RunRight01.png")
+			console.log(element);
+			
+	      const img = self.add.sprite(0 + idx * 200, this.cameras.main.centerY, "liste_atlas", "girl_run00.png")
 	      .setData('actif', false)
 	      .setAlpha(0.8)
 	      .setInteractive(({ useHandCursor: true }))
 	      .on('pointerdown', function() {
 	        listeIndex.push(idx)
 					//@ts-ignore
-	        self.personnageChoisie = `${this.frame.texture.key}`
+			  var atlasTexture = self.textures.get('liste_atlas');
+			  var frames = atlasTexture.getFrameNames();
+
+			  console.log(atlasTexture);
+			  console.log(frames);
+			  
+			  
+					
+					console.log("HHHHHHHHHHHHHHHHHHH");
+					
+					//@ts-ignore
+	        console.log(this.frame.texture)
+					
+	        // self.personnageChoisie = `${this.frame.texture.key}`
+	        self.personnageChoisie = "huipat_run"
 	        self.container.iterate(function(el: any) {
 	              el.setAlpha(0.3)
 	              el.setData('actif', false)
@@ -257,7 +273,7 @@ export default class Lobby extends Phaser.Scene {
 		
 	    this.scene.start('Jeu', {
 	      salon: this.salon,
-	      personnage: "girl"
+	      personnage: this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_'))
 	    });
 	  }
 

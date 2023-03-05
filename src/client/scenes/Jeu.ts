@@ -468,8 +468,8 @@ export default class Jeu extends Phaser.Scene {
 		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
-		// runRight01_png
-		this.add.sprite(903, 273, "liste_atlas", "RunRight01.png");
+		// face0
+		this.add.image(1067, 223, "face0");
 
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;

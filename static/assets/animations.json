@@ -1,30 +1,30 @@
 {
     "anims": [
         {
-            "key": "run",
+            "key": "girl_run",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
-                    "frame": "RunRight01.png",
+                    "frame": "girl_run00.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
                     "key": "liste_atlas",
-                    "frame": "RunRight02.png",
+                    "frame": "girl_run01.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
                     "key": "liste_atlas",
-                    "frame": "RunRight03.png",
+                    "frame": "girl_run02.png",
                     "duration": 0,
                     "keyframe": false
                 },
                 {
                     "key": "liste_atlas",
-                    "frame": "RunRight04.png",
+                    "frame": "girl_run03.png",
                     "duration": 0,
                     "keyframe": false
                 }
@@ -34,12 +34,12 @@
             "repeat": -1
         },
         {
-            "key": "toile",
+            "key": "huipat_run",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
-                    "frame": "toile.png",
+                    "frame": "huipat_run.png",
                     "duration": 0,
                     "keyframe": false
                 }
@@ -49,12 +49,12 @@
             "repeat": -1
         },
         {
-            "key": "spider",
+            "key": "spider_run",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
-                    "frame": "araigne.png",
+                    "frame": "spider_run.png",
                     "duration": 0,
                     "keyframe": false
                 }
@@ -64,12 +64,12 @@
             "repeat": -1
         },
         {
-            "key": "huipat",
+            "key": "toile_idle",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
-                    "frame": "huipat.png",
+                    "frame": "toile_idle.png",
                     "duration": 0,
                     "keyframe": false
                 }
@@ -79,12 +79,60 @@
             "repeat": -1
         },
         {
-            "key": "chauve",
+            "key": "chauve_idle",
             "type": "frame",
             "frames": [
                 {
                     "key": "liste_atlas",
-                    "frame": "chauve-souris.png",
+                    "frame": "chauve_run.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run00.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run01.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run02.png",
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run03.png",
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 24,
+            "skipMissedFrames": true,
+            "repeat": -1
+        },
+        {
+            "key": "idle_walk",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "liste_atlas",
+                    "frame": "girl_run00.png",
                     "duration": 0,
                     "keyframe": false
                 }
