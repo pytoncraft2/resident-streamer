@@ -916,14 +916,19 @@ export default class Jeu extends Phaser.Scene {
 				const x = list.presences[item].x
 				const y = list.presences[item].y
 				const sprite = list.presences[item].sprite
+				const firstFrame = list.presences[item].firstFrame
+				console.log(list.presences[item]);
+				
 				if (list.presences[item].sprite) {
 
 					console.log("___________");
 
 					console.log(this.personnageFrame);
+					console.log(firstFrame);
+					
 
 					const player = this.add
-						.sprite(x, y, "liste_atlas", `${this.personnageFrame}`)
+						.sprite(x, y, "liste_atlas", `${firstFrame}`)
 						.setData({ ClientId: list.presenceList[idx] })
 						.setDepth(1);
 

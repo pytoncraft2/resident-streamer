@@ -218,9 +218,9 @@ export default class Hall extends Phaser.Scene {
    * @param [y] emplacement de l'apparition généré dans l'objet des boss
    * @returns  
    */
-  createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0) {
+  createEnnemy(EnnemyId: any, sprite: string, auto: boolean = true, x: number = 1000, y: number = 0, frame: string) {
     this.time.delayedCall(1000, () => {
-      const ennemy = this.add.existing(new PlayerClass(this, x, y, "atlas", EnnemyId, sprite, 'test', auto).setData({ EnnemyId }))
+      const ennemy = this.add.existing(new PlayerClass(this, x, y, "liste_atlas", frame, frame, EnnemyId, auto).setData({ EnnemyId }))
       ennemy.cible_courante = "players"
 
       this.enemies.add(ennemy)

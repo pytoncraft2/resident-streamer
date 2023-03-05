@@ -17,6 +17,7 @@ import { DefautDirection } from "../Stats/Defaut"
    gfx: Phaser.GameObjects.Graphics
    vel: number = 600
    pieceCourante: string = 'hall'
+   firstFrame: string
    fusionner: boolean
    suivre: boolean
    cible_courante: string = "enemies"
@@ -58,6 +59,7 @@ import { DefautDirection } from "../Stats/Defaut"
      this.scene = scene
      this.ClientID = ClientID
      this.particules = false
+     this.firstFrame = frame;
     
      this.sprite = sprite.substring(0, sprite.indexOf('_'))
     //  this.play(this.sprite + '_idle_walk')
@@ -219,7 +221,8 @@ import { DefautDirection } from "../Stats/Defaut"
          xa: this.zoneInteraction.x,
          ya: this.zoneInteraction.y,
          son: this.son,
-         particules: this.particules
+         particules: this.particules,
+         firstFrame: this.firstFrame
        })
      )
 
