@@ -1,0 +1,67 @@
+{
+    "id": "ebae923b-abe4-45ef-818c-00687c9c84fc",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1920,
+        "borderHeight": 945
+    },
+    "displayList": [
+        {
+            "type": "Layer",
+            "id": "ca69695d-d41e-49ed-8caf-ef447b2331ac",
+            "label": "platformeLayer",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "bb6055b6-8444-4d99-bee6-f4ed951fcfeb",
+                    "label": "rectangle_2",
+                    "components": [],
+                    "x": 957,
+                    "y": 695,
+                    "scaleX": 6.002917368092423,
+                    "scaleY": 0.5438118909887464,
+                    "ArcadeComponent.active": true,
+                    "allowGravity": false,
+                    "immovable": true,
+                    "body.width": 128,
+                    "body.height": 128,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "a81457ee-e38e-4dbf-ac34-55ef6c6b86f9",
+                    "label": "rectangle",
+                    "components": [],
+                    "x": 388,
+                    "y": 337,
+                    "scaleX": 6.002917368092423,
+                    "scaleY": 0.5438118909887464,
+                    "ArcadeComponent.active": true,
+                    "allowGravity": false,
+                    "immovable": true,
+                    "body.width": 128,
+                    "body.height": 128,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}

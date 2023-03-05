@@ -881,6 +881,19 @@
                     ]
                 }
             ]
+        },
+        {
+            "prefabId": "ebae923b-abe4-45ef-818c-00687c9c84fc",
+            "id": "1c0d7e6c-a735-4dfb-ba21-24c013278a4a",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "platformeLayer",
+            "scope": "CLASS",
+            "components": [],
+            "nestedPrefabs": [],
+            "list": []
         }
     ],
     "plainObjects": [],

@@ -1,5 +1,6 @@
 import PlayerClass from "./class/PlayerClass"
 import Platforme from "../../../client/scenes/Platforme"
+import PlatformePrefab from "../../../client/scenes/PlatformePrefab"
 
 /**
  * Serveur Phaser 3 Epreuve 1
@@ -52,6 +53,10 @@ export default class Hall extends Phaser.Scene {
   create() {
     //@ts-ignore
     // console.log('anims', this.anims.anims.entries);
+    const layerPlatforme = new PlatformePrefab(this);
+    console.log(layerPlatforme.list);
+    
+    
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
@@ -86,19 +91,6 @@ export default class Hall extends Phaser.Scene {
     this.playersRef = {}
     this.enemiesRef = {}
   
-    const layerPlatforme = this.add.layer();
-
-		const platforme = this.add.rectangle(137, 940, 128, 128);
-    platforme.scaleX = 14.993211052385613;
-    platforme.scaleY = -0.08853600509578045;
-    platforme.setOrigin(0, 0.5);
-    platforme.isFilled = true;
-    platforme.fillColor = 10563832;
-    platforme.setData('piece', 'hall')
-  
-    layerPlatforme.add(platforme);
-
-    this.physics.add.existing(platforme, true);
     let listePlatforme = this.physics.add.collider(layerPlatforme.list, [this.players, this.enemies]);
     this.layerPlatforme = layerPlatforme;
 

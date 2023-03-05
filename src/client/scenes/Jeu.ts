@@ -9,6 +9,7 @@ export interface Initialisation {
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
+import PlatformePrefab from "./PlatformePrefab";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
@@ -469,6 +470,10 @@ export default class Jeu extends Phaser.Scene {
 		ecran_fin_text_quitter.setStyle({ "color": "#f3c061ff", "fontSize": "240px" });
 		container_interface_fin.add(ecran_fin_text_quitter);
 
+		// platformeLayer
+		const platformeLayer = new PlatformePrefab(this);
+		this.add.existing(platformeLayer);
+
 		this.map_boss1 = map_boss1;
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
@@ -520,6 +525,7 @@ export default class Jeu extends Phaser.Scene {
 		this.ecran_fin_text_score = ecran_fin_text_score;
 		this.ecran_fin_text_rejouer = ecran_fin_text_rejouer;
 		this.ecran_fin_text_quitter = ecran_fin_text_quitter;
+		this.platformeLayer = platformeLayer;
 
 		this.events.emit("scene-awake");
 	}
@@ -575,6 +581,7 @@ export default class Jeu extends Phaser.Scene {
 	public ecran_fin_text_score!: Phaser.GameObjects.Text;
 	public ecran_fin_text_rejouer!: Phaser.GameObjects.Text;
 	public ecran_fin_text_quitter!: Phaser.GameObjects.Text;
+	private platformeLayer!: PlatformePrefab;
 
 	/* START-USER-CODE */
 
