@@ -42,6 +42,7 @@ export default class Jeu extends Phaser.Scene {
 		const platforme = this.add.rectangle(2791, 862, 128, 128);
 		platforme.scaleX = 43.50112225681497;
 		platforme.scaleY = 1.449878006775927;
+		platforme.alpha = 0;
 		platforme.isFilled = true;
 		platforme.fillAlpha = 0.4;
 
@@ -119,7 +120,7 @@ export default class Jeu extends Phaser.Scene {
 		const cache_gauche_bas = this.add.container(1836, 0);
 
 		// bas_gauche
-		const bas_gauche = this.add.rectangle(332, 932, 128, 128);
+		const bas_gauche = this.add.rectangle(950, 1574, 128, 128);
 		bas_gauche.scaleX = 14.332672621910074;
 		bas_gauche.scaleY = 7.392235139173692;
 		bas_gauche.isFilled = true;
