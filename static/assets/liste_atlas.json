@@ -1242,26 +1242,6 @@
 		},
 		"girl_run01.png": {
 			"frame": {
-				"x": 1159,
-				"y": 1002,
-				"w": 130,
-				"h": 130
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 130,
-				"h": 130
-			},
-			"sourceSize": {
-				"w": 130,
-				"h": 130
-			}
-		},
-		"girl_run02.png": {
-			"frame": {
 				"x": 1027,
 				"y": 1134,
 				"w": 130,
@@ -1280,10 +1260,30 @@
 				"h": 130
 			}
 		},
+		"girl_run02.png": {
+			"frame": {
+				"x": 1249,
+				"y": 1,
+				"w": 130,
+				"h": 130
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 130,
+				"h": 130
+			},
+			"sourceSize": {
+				"w": 130,
+				"h": 130
+			}
+		},
 		"girl_run03.png": {
 			"frame": {
-				"x": 1159,
-				"y": 1134,
+				"x": 1249,
+				"y": 133,
 				"w": 130,
 				"h": 130
 			},
@@ -1303,27 +1303,27 @@
 		"huipat_atlas.png": {
 			"frame": {
 				"x": 1249,
-				"y": 1,
-				"w": 200,
-				"h": 189
+				"y": 265,
+				"w": 160,
+				"h": 151
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 200,
-				"h": 189
+				"w": 160,
+				"h": 151
 			},
 			"sourceSize": {
-				"w": 200,
-				"h": 189
+				"w": 160,
+				"h": 151
 			}
 		},
 		"spider_run.png": {
 			"frame": {
-				"x": 1249,
-				"y": 192,
+				"x": 1159,
+				"y": 1002,
 				"w": 228,
 				"h": 79
 			},
@@ -1342,7 +1342,7 @@
 		},
 		"toile_idle.png": {
 			"frame": {
-				"x": 1479,
+				"x": 1411,
 				"y": 1,
 				"w": 320,
 				"h": 320
@@ -1367,7 +1367,7 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 1800,
+			"w": 1732,
 			"h": 1265
 		},
 		"scale": "1"

@@ -21,7 +21,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle_2.body.immovable = true;
 		rectangle_2.body.setSize(128, 128, false);
 		rectangle_2.isFilled = true;
-		rectangle_2.fillAlpha = 0;
 		this.add(rectangle_2);
 
 		// rectangle
@@ -33,7 +32,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle.body.immovable = true;
 		rectangle.body.setSize(128, 128, false);
 		rectangle.isFilled = true;
-		rectangle.fillAlpha = 0;
 		this.add(rectangle);
 
 		// rectangle_3
@@ -45,7 +43,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle_3.body.immovable = true;
 		rectangle_3.body.setSize(128, 128, false);
 		rectangle_3.isFilled = true;
-		rectangle_3.fillAlpha = 0;
 		this.add(rectangle_3);
 
 		// rectangle_4
@@ -57,7 +54,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle_4.body.immovable = true;
 		rectangle_4.body.setSize(128, 128, false);
 		rectangle_4.isFilled = true;
-		rectangle_4.fillAlpha = 0;
 		this.add(rectangle_4);
 
 		// rectangle_5
@@ -70,7 +66,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle_5.body.immovable = true;
 		rectangle_5.body.setSize(128, 128, false);
 		rectangle_5.isFilled = true;
-		rectangle_5.fillAlpha = 0;
 		this.add(rectangle_5);
 
 		// rectangle_6
@@ -83,7 +78,6 @@ export default class PlatformePrefab extends Phaser.GameObjects.Layer {
 		rectangle_6.body.immovable = true;
 		rectangle_6.body.setSize(128, 128, false);
 		rectangle_6.isFilled = true;
-		rectangle_6.fillAlpha = 0;
 		this.add(rectangle_6);
 
 		/* START-USER-CTR-CODE */

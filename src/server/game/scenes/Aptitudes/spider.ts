@@ -27,6 +27,7 @@ export function fusion__TAB(huipat: TJoueur, input: any) {
  export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
    if (manette.scene)
    {
+    
      const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
      if (positionJoueurProche)
      {
@@ -36,11 +37,19 @@ export function fusion__TAB(huipat: TJoueur, input: any) {
        if (positionJoueurProche.x < manette.x)
        {
          manette.setFlipX(true)
+         
+         
+         console.log(dist);
+         if (dist > 400 && dist < 900) manette.body?.setVelocityX(-200)
+         else manette.body?.setVelocity(-500, -800)
+
+         
          reactiveBoucle(manette, aptitudes)
        }
        else if (positionJoueurProche.x > manette.x)
        {
          manette.setFlipX(false)
+         manette.body?.setVelocityX(200)
          reactiveBoucle(manette, aptitudes)
        }
      }

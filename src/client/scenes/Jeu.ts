@@ -28,11 +28,6 @@ export default class Jeu extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// bg
-		const bg = this.add.image(962, 478, "bg");
-		bg.scaleX = 0.31877122769443794;
-		bg.scaleY = 0.31877122769443794;
-
 		// mapbossfinal
 		const mapbossfinal = this.add.image(2714, -491, "mapbossfinal");
 		mapbossfinal.scaleX = 2.709638779885017;

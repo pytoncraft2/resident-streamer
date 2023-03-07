@@ -14,19 +14,6 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "44c3d389-ca79-43db-bdaa-3b87d97c9d3e",
-            "label": "bg",
-            "components": [],
-            "texture": {
-                "key": "bg"
-            },
-            "x": 962,
-            "y": 478,
-            "scaleX": 0.31877122769443794,
-            "scaleY": 0.31877122769443794
-        },
-        {
-            "type": "Image",
             "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
             "label": "mapbossfinal",
             "components": [],
