@@ -29,7 +29,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
     this.scene.add.existing(this)
     scene.physics.add.existing(this);
     this.id = id
-    this.scale = 0.2
+    this.scale = 0.4
     this.sprite = sprite;
 
     //@ts-ignore
@@ -58,6 +58,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         alpha: this.alpha,
         angle: this.angle,
+        scale: this.scale,
         _frame: this._frame
       })
     )

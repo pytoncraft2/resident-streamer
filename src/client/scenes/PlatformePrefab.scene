@@ -33,6 +33,7 @@
                     "body.width": 128,
                     "body.height": 128,
                     "isFilled": true,
+                    "fillColor": "#ffffff",
                     "width": 128,
                     "height": 128
                 },

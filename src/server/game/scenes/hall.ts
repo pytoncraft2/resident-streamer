@@ -91,7 +91,11 @@ export default class Hall extends Phaser.Scene {
     this.playersRef = {}
     this.enemiesRef = {}
   
-    let listePlatforme = this.physics.add.collider(layerPlatforme.list, [this.players, this.enemies]);
+    let listePlatforme = this.physics.add.collider(layerPlatforme.list, [this.players, this.enemies],
+      function (_platforme: any, _player: any) {
+        _platforme.fillColor = 7665675;
+        // _platforme.setTint(0xff0000)
+      }, null, this);
     this.layerPlatforme = layerPlatforme;
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,

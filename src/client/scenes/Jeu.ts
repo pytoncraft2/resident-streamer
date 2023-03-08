@@ -628,7 +628,23 @@ export default class Jeu extends Phaser.Scene {
 	async create() {
 
 		this.editorCreate();
+		       var FKey = this.input.keyboard.addKey('F');
 
+                this.scale.startFullscreen();
+        FKey.on('down', function (this: Phaser.Scene) {
+
+            if (this.scale.isFullscreen)
+            {
+                //button.setFrame(0);
+                this.scale.stopFullscreen();
+            }
+            else
+            {
+                //button.setFrame(1);
+                this.scale.startFullscreen();
+            }
+
+        }, this);
 		this.time.delayedCall(5000, () => {
 			// this.sound.play('punch_fast');
 

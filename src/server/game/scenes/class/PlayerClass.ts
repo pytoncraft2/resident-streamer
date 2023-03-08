@@ -344,24 +344,24 @@ import { DefautDirection } from "../Stats/Defaut"
      this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
-     if ((this.scene as any).room.boss["twitchman"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+     if ((this.scene as any).room.boss?.twitchman?.vaincu && (this.scene as any).room.boss?.["boss_1"]?.vaincu)
      {
        (this.scene as any).room.broadcast("RDC_OK");
      }
 
-     if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["manette"].vaincu)
+     if ((this.scene as any).room.boss?.["troll"]?.vaincu && (this.scene as any).room.boss?.["manette"]?.vaincu)
      {
        (this.scene as any).room.broadcast("ETAGE_OK");
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true);
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].trones.setActive(true);
+       (this.scene as any).enemiesRef[(this.scene as any).room.boss?.["super_boss"]?.id].setActive(true);
+       (this.scene as any).enemiesRef[(this.scene as any).room.boss?.["super_boss"]?.id].trones.setActive(true);
      }
 
      if (
-       (this.scene as any).room.boss["troll"].vaincu &&
-       (this.scene as any).room.boss["twitchman"].vaincu &&
-       (this.scene as any).room.boss["manette"].vaincu &&
-       (this.scene as any).room.boss["boss_1"].vaincu &&
-       (this.scene as any).room.boss["super_boss"].vaincu
+       (this.scene as any).room.boss?.["troll"]?.vaincu &&
+       (this.scene as any).room.boss?.["twitchman"]?.vaincu &&
+       (this.scene as any).room.boss?.["manette"]?.vaincu &&
+       (this.scene as any).room.boss?.["boss_1"]?.vaincu &&
+       (this.scene as any).room.boss?.["super_boss"]?.vaincu
      )
      {
        const joueur = [];
