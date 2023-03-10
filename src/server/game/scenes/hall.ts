@@ -57,7 +57,7 @@ export default class Hall extends Phaser.Scene {
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
-      collideWorldBounds: true
+      collideWorldBounds: false
     })
 
     this.enemies = this.physics.add.group({
@@ -98,7 +98,7 @@ export default class Hall extends Phaser.Scene {
       _boule.setData('degat', 0)
     }, null, this);
 
-    this.physics.world.setBoundsCollision(true, true, false, true)
+    this.physics.world.setBoundsCollision(false, false, false, true)
     this.CommencerCompteur()
   }
 

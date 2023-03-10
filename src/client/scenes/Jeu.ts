@@ -669,6 +669,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
+
 		const client = new Colyseus.Client("ws://localhost:3000")
 		const salon = this.salon;
 		const sprite = this.personnage;
@@ -921,11 +922,13 @@ export default class Jeu extends Phaser.Scene {
 
 					if (this.session === list.presenceList[idx]) {
 
+
 						// this.cameras.main.startFollow(player, false, 1, 0.1, 0, 190);  //
 						(player as any).sprite_fusion = this.add
 							.sprite(0, 45, `icons_atlas`, `icon_${sprite}`)
 							.setScale(0.3983080418637645, 0.3983080418637645);
 
+						this.cameras.main.startFollow(player, true, 0.2, 0.2, 0, 200/*, [roundPixels], [lerpX], [lerpY], [offsetX], [offsetY]*/)
 						this.interface_joueur.add((player as any).sprite_fusion)
 
 						const petitIconJoueur = this.add
@@ -1044,13 +1047,13 @@ export default class Jeu extends Phaser.Scene {
 							if ((this as any)[`description_commande_${key}`]) (this as any)[`description_commande_${key}`].setText(value)
 						}
 					}
-					this.cameraDeplacement(this.playersRef[item], 'bas_gauche', 1851 / 2, 543)
-					this.cameraDeplacement(this.playersRef[item], 'bas_milieu', 2791, 543)
-					this.cameraDeplacement(this.playersRef[item], 'bas_droite', 4700, 543)
+					// this.cameraDeplacement(this.playersRef[item], 'bas_gauche', 1851 / 2, 543)
+					// this.cameraDeplacement(this.playersRef[item], 'bas_milieu', 2791, 543)
+					// this.cameraDeplacement(this.playersRef[item], 'bas_droite', 4700, 543)
 
-					this.cameraDeplacement(this.playersRef[item], 'haut_gauche', 1851 / 2, -443)
-					this.cameraDeplacement(this.playersRef[item], 'haut_milieu', 2791, -443)
-					this.cameraDeplacement(this.playersRef[item], 'haut_droite', 4700, -443)
+					// this.cameraDeplacement(this.playersRef[item], 'haut_gauche', 1851 / 2, -443)
+					// this.cameraDeplacement(this.playersRef[item], 'haut_milieu', 2791, -443)
+					// this.cameraDeplacement(this.playersRef[item], 'haut_droite', 4700, -443)
 				}
 			}
 		})
