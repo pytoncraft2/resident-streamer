@@ -46,7 +46,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.add.existing(this.zoneInteraction);
 
     //@ts-ignore
-    this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], [this],
+    this.scene.physics.add.collider(this.scene.layerPlatforme.list, [this],
       function (_boule: Phaser.Physics.Arcade.Sprite, _j2: any) {
         (_j2.body as any).setAllowGravity(false);
       }, null, this);

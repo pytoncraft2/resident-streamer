@@ -33,9 +33,8 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
 
     this.id = id;
 
-    this.scene.physics.add.collider((this.scene as any).platforme_haut_gauche, this);
     //@ts-ignore
-    this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], this)
+    this.scene.physics.add.collider(this.scene.layerPlatforme.list, this)
 
     new AnimationOie(this.anims)
     this.setFlipX(flipX)

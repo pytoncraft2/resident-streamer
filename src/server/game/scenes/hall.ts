@@ -1,4 +1,5 @@
 import PlayerClass from "./class/PlayerClass"
+import PlatformePrefab from "../../../client/scenes/PlatformePrefab"
 
 /**
  * Serveur Phaser 3 Epreuve 1
@@ -18,6 +19,7 @@ export default class Hall extends Phaser.Scene {
   playersRef: any
   enemiesRef: any
   platforme: Phaser.GameObjects.Rectangle
+  layerPlatforme: Phaser.GameObjects.Layer
   rect: any
   platforme_haut: Phaser.GameObjects.Rectangle
   platforme_haut_gauche: Phaser.GameObjects.Rectangle
@@ -25,6 +27,7 @@ export default class Hall extends Phaser.Scene {
   platforme_gauche: Phaser.GameObjects.Rectangle
   platforme_droite: Phaser.GameObjects.Rectangle
   compteur: Phaser.Time.TimerEvent
+
 
 
   constructor() {
@@ -48,7 +51,9 @@ export default class Hall extends Phaser.Scene {
    */
   create() {
 
-    var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
+    const layerPlatforme = new PlatformePrefab(this);
+
+    // var customBounds = new Phaser.Geom.Rectangle(-3700 / 2, 20, 5660, 945);
 
     this.players = this.physics.add.group({
       runChildUpdate: true,
@@ -83,70 +88,9 @@ export default class Hall extends Phaser.Scene {
     this.playersRef = {}
     this.enemiesRef = {}
 
-		const platforme = this.add.rectangle(1837, 940, 128, 128);
-    platforme.scaleX = 14.993211052385613;
-    platforme.scaleY = -0.08853600509578045;
-    platforme.setOrigin(0, 0.5);
-    platforme.isFilled = true;
-    platforme.fillColor = 10563832;
-    platforme.setData('piece', 'hall')
-    this.platforme = platforme;
+    let listePlatforme = this.physics.add.collider(layerPlatforme.list, [this.players, this.enemies]);
+    this.layerPlatforme = layerPlatforme;
 
-		const platforme_gauche = this.add.rectangle(5, 940, 128, 128);
-		platforme_gauche.scaleX = 14.310196671161355;
-		platforme_gauche.scaleY = -0.09826542861018456;
-		platforme_gauche.setOrigin(0, 0.5);
-		platforme_gauche.isFilled = true;
-		platforme_gauche.fillColor = 10563832;
-    platforme_gauche.setData('piece', 'bas_gauche')
-    this.platforme_gauche = platforme_gauche
-
-		const platforme_droite = this.add.rectangle(3756, 940, 128, 128);
-    platforme_droite.scaleX = 14.310196671161355;
-    platforme_droite.scaleY = -0.09826542861018456;
-    platforme_droite.setOrigin(0, 0.5);
-    platforme_droite.isFilled = true;
-    platforme_droite.fillColor = 10563832;
-    platforme_droite.setData('piece', 'boss1')
-    this.platforme_droite = platforme_droite
-
-		const platforme_haut = this.add.rectangle(1833, -66, 128, 128);
-		platforme_haut.scaleX = 14.993211052385613;
-		platforme_haut.scaleY = -0.08853600509578045;
-		platforme_haut.setOrigin(0, 0.5);
-		platforme_haut.isFilled = true;
-		platforme_haut.fillColor = 10563832;
-    platforme_droite.setData('piece', 'haut')
-    this.platforme_haut = platforme_haut;
-
-		// platforme_haut_droite
-		const platforme_haut_droite = this.add.rectangle(3752, -66, 128, 128);
-		platforme_haut_droite.scaleX = 14.310196671161355;
-		platforme_haut_droite.scaleY = -0.09826542861018456;
-		platforme_haut_droite.setOrigin(0, 0.5);
-		platforme_haut_droite.isFilled = true;
-		platforme_haut_droite.fillColor = 10563832;
-    platforme_droite.setData('piece', 'haut_droite')
-    this.platforme_haut_droite = platforme_haut_droite
-
-		// platforme_haut_gauche
-		const platforme_haut_gauche = this.add.rectangle(1, -66, 128, 128);
-		platforme_haut_gauche.scaleX = 14.310196671161355;
-		platforme_haut_gauche.scaleY = -0.09826542861018456;
-		platforme_haut_gauche.setOrigin(0, 0.5);
-		platforme_haut_gauche.isFilled = true;
-		platforme_haut_gauche.fillColor = 10563832;
-    platforme_droite.setData('piece', 'bas_droite')
-    this.platforme_haut_gauche = platforme_haut_gauche
-
-
-    this.physics.add.existing(platforme, true);
-    this.physics.add.existing(platforme_gauche, true);
-    this.physics.add.existing(platforme_droite, true);
-    this.physics.add.existing(platforme_haut, true);
-    this.physics.add.existing(platforme_haut_gauche, true);
-    this.physics.add.existing(platforme_haut_droite, true);
-    let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche, platforme_haut, platforme_haut_gauche, platforme_haut_droite], [this.players, this.enemies]);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
       function (_boule: Phaser.Physics.Arcade.Sprite, _ennemie: any) {

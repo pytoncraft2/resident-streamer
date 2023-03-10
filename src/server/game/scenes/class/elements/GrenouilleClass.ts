@@ -32,7 +32,7 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
     new AnimationGrenouille(this.anims)
 
     //@ts-ignore
-    this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], this)
+    this.scene.physics.add.collider(this.scene.layerPlatforme.list, this)
 
 
     scene.time.delayedCall(900, () => {
