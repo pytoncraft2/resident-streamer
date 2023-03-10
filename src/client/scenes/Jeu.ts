@@ -928,7 +928,7 @@ export default class Jeu extends Phaser.Scene {
 							.sprite(0, 45, `icons_atlas`, `icon_${sprite}`)
 							.setScale(0.3983080418637645, 0.3983080418637645);
 
-						this.cameras.main.startFollow(player, true, 0.2, 0.2, 0, 200/*, [roundPixels], [lerpX], [lerpY], [offsetX], [offsetY]*/)
+						this.cameras.main.startFollow(player/*, [roundPixels], [lerpX], [lerpY], [offsetX], [offsetY]*/)
 						this.interface_joueur.add((player as any).sprite_fusion)
 
 						const petitIconJoueur = this.add
