@@ -19,36 +19,37 @@ export function punch__A(manette: TJoueur, input: any) {
 }
 
 export function lancer__Z(manette: TJoueur, _input: any) {
-
-  if (!manette.obj_manette) {
-    manette.son = 'manette'
-    manette.play('manette_lance')
+  if (_input.z) {
+    _input.z = false;
+    if (!manette.obj_manette) {
+      manette.son = 'manette'
+      manette.play('manette_lance')
       manette.body.setVelocityY(1000)
-    const obj_manette = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "manette",  `${(Math.random() + 1).toString(36).substring(7)}`)
-    .setData({ ClientId: manette.ClientID, degat: manette.degat}))
-    .setFlipX(manette.flipX)
-    manette.scene.physics.add.existing(obj_manette);
-    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function(_obj_manette, _ennemie: any) {
-      if (_ennemie.sprite !== manette.sprite) {
-        _ennemie.dommage(_obj_manette.getData('degat'))
-        _obj_manette.setData('degat', 0)
-      }
-    }, undefined, manette);
+      const obj_manette = manette.scene.add.existing(new ManetteClass(manette.scene, manette.flipX ? manette.x - 80 : manette.x + 80, manette.y - 60, "manette", `${(Math.random() + 1).toString(36).substring(7)}`)
+        .setData({ ClientId: manette.ClientID, degat: manette.degat }))
+        .setFlipX(manette.flipX)
+      manette.scene.physics.add.existing(obj_manette);
+      manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function (_obj_manette, _ennemie: any) {
+        if (_ennemie.sprite !== manette.sprite) {
+          _ennemie.dommage(_obj_manette.getData('degat'))
+          _obj_manette.setData('degat', 0)
+        }
+      }, undefined, manette);
 
-    (obj_manette.body as any).setAllowGravity(false);
-    // manette.scene.groupeManettes.add(obj_manette);
-    manette.obj_manette = obj_manette;
+      (obj_manette.body as any).setAllowGravity(false);
+      // manette.scene.groupeManettes.add(obj_manette);
+      manette.obj_manette = obj_manette;
 
-    manette.scene.time.delayedCall(200, () => {
+      manette.scene.time.delayedCall(200, () => {
 
         var timeline = manette.scene.tweens.createTimeline();
 
         timeline.add({
           targets: manette.obj_manette,
-          x: manette.flipX ? manette.x -1000 : manette.x + 1000,
+          x: manette.flipX ? manette.x - 1000 : manette.x + 1000,
           ease: 'Power2',
           duration: 500,
-          onComplete: function(_tw, tg: any) {
+          onComplete: function (_tw, tg: any) {
             tg[0].setData('degat', 1)
           }
         });
@@ -66,8 +67,9 @@ export function lancer__Z(manette: TJoueur, _input: any) {
         //@ts-ignore
         manette.obj_manette.tweenManette = timeline;
         timeline.play()
-      manette.obj_manette = undefined;
-    }, null, manette);
+        manette.obj_manette = undefined;
+      }, null, manette);
+    }
   }
 }
 

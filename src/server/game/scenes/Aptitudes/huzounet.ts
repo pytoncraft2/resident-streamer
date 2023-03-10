@@ -64,16 +64,18 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
 
 }
 
-export function kunai__Z(huzounet: TJoueur) {
+export function kunai__Z(huzounet: TJoueur, input: any) {
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
+  if (input.z) {
+    input.z = false;
     if (!huzounet.kunai) {
       huzounet.son = 'kunai'
-      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "huzounet",  `${(Math.random() + 1).toString(36).substring(7)}`)
-      .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat}))
-      .setFlipX(huzounet.flipX)
+      const kunai = huzounet.scene.add.existing(new KunaiClass(huzounet.scene, huzounet.flipX ? huzounet.x - 80 : huzounet.x + 80, huzounet.y - 60, "huzounet", `${(Math.random() + 1).toString(36).substring(7)}`)
+        .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat }))
+        .setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
-      huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
+      huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function (_kunai, _ennemie: any) {
         _ennemie.dommage(_kunai.getData('degat'))
         _kunai.setData('degat', 0)
       }, undefined, huzounet);
@@ -81,10 +83,11 @@ export function kunai__Z(huzounet: TJoueur) {
       (kunai.body as any).setAllowGravity(false);
       huzounet.kunai = kunai
       huzounet.scene.time.delayedCall(100, () => {
-          huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
-            huzounet.kunai = undefined;
+        huzounet.kunai.setVelocityX(huzounet.flipX ? -2300 : 2300).setFlipX(huzounet.flipX)
+        huzounet.kunai = undefined;
       }, null, huzounet);
     }
+  }
 }
 
 export function clonage__E(huzounet: any) {

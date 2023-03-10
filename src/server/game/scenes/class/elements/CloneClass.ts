@@ -62,7 +62,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
       shuriken__A(this as unknown as TJoueur, { a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin })
 
       if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
-        kunai__Z(this as any)
+        kunai__Z(this as any, {})
       }
 
       if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {
