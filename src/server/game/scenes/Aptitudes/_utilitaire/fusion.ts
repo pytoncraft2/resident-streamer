@@ -2,9 +2,6 @@ import TJoueur from "../../types/Joueur"
 
 export default function fusion(personnage: any, input: any) {
   if (input.tab) {
-    console.log("TAB");
-    
-    console.log(personnage.bossControllable.getLength());
     
     if (personnage.bossControllable.getLength() == 1)
     {
@@ -85,7 +82,7 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
     joueur.suivre = true;
     joueur.setScale(0.2);
 
-    joueur.scene.time.delayedCall(10000, () => {
+    joueur.scene.time.delayedCall(8000, () => {
       (joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible = true;
       joueur.son = "ejection"
       joueur.suivre = false;
