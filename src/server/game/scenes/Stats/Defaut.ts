@@ -18,11 +18,11 @@ export const DefautDirection = (Aptitudes: any, personnage: any) => {
       // input.space = false
     }
   Aptitudes[personnage.sprite].toucheHaut = (personnage: any, input: any) => {
-    changementEtage(personnage, -2600, 1000)
+    changementEtage(personnage, -1300, 200)
     input.up = false;
   }
   Aptitudes[personnage.sprite].toucheBas = (personnage: any, input: any) => {
-    changementEtage(personnage, 900, 500)
+    changementEtage(personnage, 300, 100)
     input.down = false;
   }
 }

@@ -83,7 +83,7 @@ export default class GameRooms extends Room {
         'spider':  {
           temps: 1_000,
           x: 1000,
-          y: -1000,
+          y: -300,
           frame: "spider_run.png",
           vaincu: false,
           inaccessible: false

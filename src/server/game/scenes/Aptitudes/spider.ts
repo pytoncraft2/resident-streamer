@@ -1,4 +1,5 @@
 import TJoueur from "../types/Joueur";
+import { Aptitudes } from "./base";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   // fakhear.flipX = !fakhear.flipX
@@ -85,6 +86,7 @@ export function cross__A(girl: Phaser.Physics.Arcade.Sprite|any, input: any) {
          if (dist < 434 && dist > 394 && manette.body?.touching.down) manette.body?.setVelocity(900, -600)
          reactiveBoucle(manette, aptitudes)
        }
+
      }
     } 
  }
