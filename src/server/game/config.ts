@@ -18,7 +18,7 @@ import Hall from "./scenes/hall"
    physics: {
      default: 'arcade',
      arcade: {
-       gravity: { y: 2600 },
+       gravity: { x: 0, y: 2600 },
        debug: false
      }
    },

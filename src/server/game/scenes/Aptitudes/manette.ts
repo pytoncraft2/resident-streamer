@@ -3,7 +3,7 @@ import ManetteClass from '../class/elements/ManetteClass'
 import TJoueur from "../types/Joueur";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
-  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
+  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
       personnage.setVelocityY(-1250);
       personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
       personnage.play("manette_vole")
@@ -30,7 +30,9 @@ export function lancer__Z(manette: TJoueur, _input: any) {
     manette.scene.physics.add.existing(obj_manette);
     manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function(_obj_manette, _ennemie: any) {
       if (_ennemie.sprite !== manette.sprite) {
+        //@ts-ignore
         _ennemie.dommage(_obj_manette.getData('degat'))
+        //@ts-ignore
         _obj_manette.setData('degat', 0)
       }
     }, undefined, manette);
@@ -41,6 +43,7 @@ export function lancer__Z(manette: TJoueur, _input: any) {
 
     manette.scene.time.delayedCall(200, () => {
 
+        //@ts-ignore
         var timeline = manette.scene.tweens.createTimeline();
 
         timeline.add({
@@ -72,6 +75,7 @@ export function lancer__Z(manette: TJoueur, _input: any) {
 }
 
 export function __animationLancerManette(manette: TJoueur) {
+  //@ts-ignore
   var timeline = manette.scene.tweens.createTimeline();
 
   timeline.add({
@@ -198,7 +202,7 @@ export function __animationLancerManette(manette: TJoueur) {
 
 function reactiveBoucle(manette: TJoueur, aptitudes: any) {
   if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
-  manette.scene.time.delayedCall(500, () => {
+  manette.scene.time.delayedCall(500, () => {
     if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
     __auto(manette, {}, aptitudes)
   }, null, this);

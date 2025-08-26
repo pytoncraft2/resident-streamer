@@ -30,7 +30,9 @@ export class Balle extends Phaser.Physics.Arcade.Sprite {
     this.body.setAllowGravity(false);
 
     scene.physics.add.overlap(this, (scene as any)[cible], function (_kunai, _ennemie: any) {
+    // @ts-ignore
       _ennemie.dommage(_kunai.getData('degat'))
+    // @ts-ignore
       _kunai.setData('degat', 0)
       //@ts-ignore
     }, undefined, this);

@@ -36,7 +36,7 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
       setAnimation(huzounet, 'huzounet_preparation_attaque')
 
     //grossisement de la boule
-    } else 
+    } else 
     {
       (huzounet.boulesEnMain.getChildren()[0] as BouleClass).scale += 0.02;
       (huzounet.boulesEnMain.getChildren()[0] as BouleClass).alpha += 0.01;
@@ -74,7 +74,9 @@ export function kunai__Z(huzounet: TJoueur) {
       .setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
       huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
+        //@ts-ignore
         _ennemie.dommage(_kunai.getData('degat'))
+        //@ts-ignore
         _kunai.setData('degat', 0)
       }, undefined, huzounet);
 
@@ -88,7 +90,7 @@ export function kunai__Z(huzounet: TJoueur) {
 }
 
 export function clonage__E(huzounet: any) {
-  if (!huzounet.clone) {
+  if (!huzounet.clone) {
     huzounet.clone = true
     const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y - 5, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
     const clone2 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 200, huzounet.y - 5, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)

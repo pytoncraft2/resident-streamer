@@ -77,7 +77,9 @@ export default class Hall extends Phaser.Scene {
       allowGravity: false
     })
 
+    // @ts-ignore
     this.physics.add.overlap(this.playersAttackZone, [this.enemies, this.players], this.overlapAction, undefined, this)
+    // @ts-ignore
     this.physics.add.overlap(this.ennemieAttackZone, [this.players], this.overlapActionEnnemie, undefined, this)
 
     this.playersRef = {}
@@ -146,6 +148,7 @@ export default class Hall extends Phaser.Scene {
     this.physics.add.existing(platforme_haut, true);
     this.physics.add.existing(platforme_haut_gauche, true);
     this.physics.add.existing(platforme_haut_droite, true);
+    // @ts-ignore
     let listePlatforme = this.physics.add.collider([platforme, platforme_droite, platforme_gauche, platforme_haut, platforme_haut_gauche, platforme_haut_droite], [this.players, this.enemies]);
 
     this.colisionShurikenEnnemie = this.physics.add.collider(this.groupeBoulesHuzounet, this.enemies,
@@ -170,7 +173,7 @@ export default class Hall extends Phaser.Scene {
    * @param playerActionZone 
    * @param ennemie 
    */
-  overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
+  overlapAction(playerActionZone: any, ennemie: Phaser.Physics.Arcade.Sprite) {
     playerActionZone.action(ennemie)
   }
 
@@ -202,6 +205,7 @@ export default class Hall extends Phaser.Scene {
   getPresence() {
     let response = {}
     if (this.players) {
+    // @ts-ignore
       this.players.children.iterate((child: any) => {
         if (child.data.values.ClientId) {
           // response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
@@ -376,7 +380,7 @@ export default class Hall extends Phaser.Scene {
    * @param id 
    * @param [delai] 
    */
-  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
+  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
     if (smooth)
     {
       this.tweens.add({
