@@ -11,8 +11,8 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 
 ## Phase 0 — Reprise et diagnostic
 
-- [ ] Créer une branche de travail et identifier un commit de référence.
-- [ ] Installer et démarrer le projet sur un environnement isolé reproduisant les versions historiques nécessaires.
+- [x] Créer une branche de travail et identifier un commit de référence. → `5f55b7d`, voir `docs/phase0-diagnostic.md`
+- [x] Installer et démarrer le projet sur un environnement isolé reproduisant les versions historiques nécessaires. → Node 16.20.2
 - [ ] Capturer les erreurs initiales : installation, client, serveur, navigateur, WebSocket et jeu.
 - [ ] Documenter les flux lobby → partie → élimination des boss → classement ; vérifier ce qui est réellement fonctionnel.
 - [ ] Auditer les dépendances et la compatibilité d'une version Node LTS actuelle, sans migration transversale immédiate.
