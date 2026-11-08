@@ -2,6 +2,7 @@ import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { DefautDirection } from "../Stats/Defaut"
+import { vieApresDommage } from "../../../domain/combat"
 
 /**
  * Joueur et interaction
@@ -247,9 +248,7 @@ import { DefautDirection } from "../Stats/Defaut"
        this.scene.time.delayedCall(100, () => {
          this.clearTint()
        }, null, this);
-       if (puissance >= 0) {
-         this.vie -= puissance
-       }
+       this.vie = vieApresDommage(this.vie, puissance)
      }
    }
 
