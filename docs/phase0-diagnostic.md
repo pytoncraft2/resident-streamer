@@ -48,6 +48,8 @@ Script exécuté hors dépôt (client `colyseus.js` du projet, 4 clients, salon 
 | B4 | Moyenne | `scores.json` est lu et écrit dans `__dirname` : en production, `build/server/scores.json` (copie écrasée à chaque `build:server`) ; en dev (`serve:server`), `src/server/scores.json`, donc un fichier versionné modifié par les parties. | `server.ts`, script `build:server` |
 | B5 | Basse | Serveur : nombreux `Texture.frame missing` / `generateFrameNames: Frame missing` (atlas non chargé côté serveur HEADLESS). Probablement sans effet sur la physique, à confirmer. | journal serveur |
 | B6 | Basse | URL serveur codée en dur `ws://localhost:3000` / `http://localhost:3000` côté client. | `Lobby.ts:180`, `Jeu.ts:665`, `Jeu.ts:708` |
+| B7 | Moyenne (équilibrage / autorité serveur) | Aucune aptitude n'a de temps de recharge. Les touches non consommées (bombe d'akhizonah, kunaï de huzounet) relancent l'action ~8 fois/s tant qu'elles sont maintenues ; le serveur accepte n'importe quel flux d'`inputs`. Constaté en phase 1. | `test/integration/aptitudes.test.ts` |
+| B8 | À vérifier (intention de design ?) | Le clonage de huzounet (E) ne fonctionne qu'une fois par partie : `huzounet.clone` n'est jamais remis à `false`, et les 4 clones persistent. | `Aptitudes/huzounet.ts` (`clonage__E`) |
 
 ## 4. Dépendances
 

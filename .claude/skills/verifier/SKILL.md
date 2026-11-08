@@ -16,7 +16,7 @@ Objectif : rapporter des faits vérifiés, pas une impression de réussite. Une 
 | `npm run build` | typecheck client (`tsc`, `noEmit`) + bundle Vite + hash des asset packs | écrit `dist/` (ignoré par git) |
 | `npm run build:server` | compilation serveur (`src/server/tsconfig.json`) | écrit `build/server/` et y copie `scores.json` (ignoré par git) |
 | `npx tsc -p test/tsconfig.json` | typecheck strict des tests | aucun |
-| `npm test` | recompile le serveur puis tests mocha (intégration des rooms, ~10 s) | démarre/arrête un serveur sur un port libre |
+| `npm test` | recompile le serveur puis tests mocha (unitaires + intégration rooms, scores, aptitudes, ~30 s) | démarre/arrête un serveur sur un port libre |
 
 - Il n'existe pas de lint fiable (ESLint 6 sans configuration) : le dire explicitement plutôt que d'improviser une commande.
 - Ne jamais lancer `npm run clean`, ni modifier `src/server/scores.json` pour faire passer une vérification.

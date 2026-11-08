@@ -40,7 +40,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - Compiler le serveur : `npm run build:server`.
 - Vérifier/compiler le client : `npm run build`.
 - Documentation existante : `npm run doc`.
-- Tests : `npm test` (compile le serveur puis lance mocha + ts-node sur `test/**/*.test.ts`, config `.mocharc.cjs`, types stricts `test/tsconfig.json`). Les tests d'intégration démarrent le serveur compilé sur un port libre (~10 s). Compléter par des tests de caractérisation avant toute refonte.
+- Tests : `npm test` (compile le serveur puis lance mocha + ts-node sur `test/**/*.test.ts`, config `.mocharc.cjs`, types stricts `test/tsconfig.json`). Les tests d'intégration démarrent le serveur compilé sur un port libre (suite complète ~30 s). Compléter par des tests de caractérisation avant toute refonte.
 
 ## Méthode exigée pour chaque intervention
 1. Lire le code concerné et les contrats adjacents ; expliquer l'état actuel et le comportement à préserver.
