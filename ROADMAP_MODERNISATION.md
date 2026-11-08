@@ -22,9 +22,9 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 
 ## Phase 1 — Sécuriser le comportement
 
-- [ ] Installer un runner de tests adapté à la version de Node retenue ; documenter les nouvelles commandes.
+- [x] Installer un runner de tests adapté à la version de Node retenue ; documenter les nouvelles commandes. → mocha 9 + ts-node, `npm test`
 - [ ] Écrire des tests de caractérisation sur les calculs purs : dégâts, cooldowns, scores et chronométrage (après extraction sans modification de comportement).
-- [ ] Mettre en place des tests d'intégration pour la création, la jonction et la destruction de rooms Colyseus.
+- [x] Mettre en place des tests d'intégration pour la création, la jonction et la destruction de rooms Colyseus. → `test/integration/rooms.test.ts`
 - [ ] Valider des scénarios manuels multi-clients : 2, 3 et 4 joueurs ; déconnexion/reconnexion ; quatre personnages ; combats ; boss ; fin de partie.
 - [ ] Vérifier que `scores.json` ne sera pas modifié accidentellement par les tests ; isoler le stockage de test.
 

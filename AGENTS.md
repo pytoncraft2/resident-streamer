@@ -3,7 +3,7 @@
 ## Mission et état actuel
 Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueurs. L'équipe affronte les boss de plusieurs pièces ; son temps sert au classement. Les quatre personnages jouables ont des aptitudes distinctes.
 
-**État constaté sur `main` (audit du 08/11/2026) :** TypeScript, Phaser 3.55.2, Colyseus 0.14, Vite 2.7, ancien Phaser Editor 2D. Les `engines` du `package.json` mentionnent Node 16.17.0 / npm 8.5.5 : ce n'est pas une recommandation pour la cible modernisée. Le dépôt ne définit pas encore de script `test`.
+**État constaté sur `main` (audit du 08/11/2026) :** TypeScript, Phaser 3.55.2, Colyseus 0.14, Vite 2.7, ancien Phaser Editor 2D. Les `engines` du `package.json` mentionnent Node 16.17.0 / npm 8.5.5 : ce n'est pas une recommandation pour la cible modernisée. Environnement de référence vérifié : **Node 16.20.2** (Node 24 bloqué par `canvas`, voir `docs/phase0-diagnostic.md`).
 
 **Objectif :** retrouver une base exécutable et testée, migrer prudemment vers Phaser 4, corriger les régressions, puis moderniser progressivement l'architecture du gameplay, de l'IA et du réseau. Ne pas confondre objectif futur et architecture déjà en place.
 
@@ -40,7 +40,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - Compiler le serveur : `npm run build:server`.
 - Vérifier/compiler le client : `npm run build`.
 - Documentation existante : `npm run doc`.
-- **Pas de commande `npm test` définie** : créer des tests de caractérisation avant une refonte importante.
+- Tests : `npm test` (compile le serveur puis lance mocha + ts-node sur `test/**/*.test.ts`, config `.mocharc.cjs`, types stricts `test/tsconfig.json`). Les tests d'intégration démarrent le serveur compilé sur un port libre (~10 s). Compléter par des tests de caractérisation avant toute refonte.
 
 ## Méthode exigée pour chaque intervention
 1. Lire le code concerné et les contrats adjacents ; expliquer l'état actuel et le comportement à préserver.

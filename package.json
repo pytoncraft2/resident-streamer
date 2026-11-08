@@ -18,11 +18,13 @@
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
     "doc:client": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts",
     "doc:server": "cd ./src/server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
-    "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts"
+    "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
+    "test": "npm run build:server && mocha"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/mocha": "9.1.1",
     "@types/node": "^16.9.1",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",

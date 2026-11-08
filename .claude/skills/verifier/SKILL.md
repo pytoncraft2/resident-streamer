@@ -8,15 +8,17 @@ description: Exécute les vérifications réellement disponibles de Resident Str
 Objectif : rapporter des faits vérifiés, pas une impression de réussite. Une compilation réussie ne prouve pas que le jeu fonctionne.
 
 ## 1. Prérequis
-- Si `node_modules/` est absent, ne pas installer sans accord : signaler qu'il faut lancer `npm ci`. Le `package.json` déclare Node 16.17.0 ; noter la version utilisée (`node -v`), car un écart peut expliquer un échec.
+- Si `node_modules/` est absent, ne pas installer sans accord : signaler qu'il faut lancer `npm ci`. Environnement de référence : **Node 16.20.2** (`nvm use 16`) ; sous Node 24 le serveur ne démarre pas (`canvas` natif incompatible). Noter la version utilisée (`node -v`).
 
 ## 2. Vérifications (dans cet ordre, chacune même si la précédente échoue)
 | Commande | Vérifie | Effets de bord |
 |---|---|---|
 | `npm run build` | typecheck client (`tsc`, `noEmit`) + bundle Vite + hash des asset packs | écrit `dist/` (ignoré par git) |
 | `npm run build:server` | compilation serveur (`src/server/tsconfig.json`) | écrit `build/server/` et y copie `scores.json` (ignoré par git) |
+| `npx tsc -p test/tsconfig.json` | typecheck strict des tests | aucun |
+| `npm test` | recompile le serveur puis tests mocha (intégration des rooms, ~10 s) | démarre/arrête un serveur sur un port libre |
 
-- Il n'existe **pas** de `npm test` ni de lint fiable (ESLint 6 sans configuration) : le dire explicitement plutôt que d'improviser une commande.
+- Il n'existe pas de lint fiable (ESLint 6 sans configuration) : le dire explicitement plutôt que d'improviser une commande.
 - Ne jamais lancer `npm run clean`, ni modifier `src/server/scores.json` pour faire passer une vérification.
 - Distinguer les erreurs **préexistantes** des erreurs introduites : en cas de doute, comparer avec `git stash` uniquement si l'utilisateur l'accepte.
 
