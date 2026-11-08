@@ -6,7 +6,8 @@
  * - une touche « consommée » (`input.x = false`) déclenche une action par appui ;
  * - une touche non consommée relance l'action tant qu'elle est maintenue, limitée
  *   seulement par un drapeau remis à zéro après un délai (100 ms pour bombe et kunaï) ;
- * - un drapeau jamais remis à zéro rend l'action unique pour la partie (clonage).
+ * - un drapeau jamais remis à zéro rend l'action unique pour la partie (clonage) ;
+ * - une animation (tween) en cours bloque sa relance (dash de fakhear, 300 ms).
  * Mesures de référence (Node 16, 2 exécutions) : ~8 projectiles par seconde de maintien.
  */
 import { strict as assert } from "assert";
@@ -20,6 +21,7 @@ interface MapVue<T> {
 }
 interface ObjetVue {
   readonly sprite?: string;
+  readonly x?: number;
 }
 interface EtatJeu {
   readonly presences?: MapVue<ObjetVue>;
@@ -114,6 +116,23 @@ describe("aptitudes : cadence (intégration)", function () {
       await maintenir(room, "e", 50);
       await pause(1500);
       assert.equal(clones(), 4);
+    });
+  });
+
+  describe("fakhear · dash (E, tween relancé tant qu'il n'est pas en cours)", function () {
+    it("chaque appui déplace fakhear d'environ 500 px, y compris le deuxième", async function () {
+      const room = await partieSolo("fakhear");
+      const x = (): number => room.state.presences?.get(room.sessionId)?.x ?? Number.NaN;
+      await attendre(() => Number.isFinite(x()), 3000, "position initiale");
+
+      // Un tween détruit à sa fin (comportement par défaut de Phaser ≥ 3.60) casserait le 2e dash.
+      for (const dash of [1, 2]) {
+        const avant = x();
+        await maintenir(room, "e", 50);
+        await pause(700); // 300 ms de dash + marge
+        const deplacement = x() - avant;
+        assert.ok(deplacement > 250, `dash ${dash} : déplacement de ${Math.round(deplacement)} px (attendu ≈ 500)`);
+      }
     });
   });
 });
