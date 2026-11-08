@@ -15,7 +15,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [x] Installer et démarrer le projet sur un environnement isolé reproduisant les versions historiques nécessaires. → Node 16.20.2
 - [ ] Capturer les erreurs initiales : installation, client, serveur, navigateur, WebSocket et jeu.
 - [ ] Documenter les flux lobby → partie → élimination des boss → classement ; vérifier ce qui est réellement fonctionnel.
-- [ ] Auditer les dépendances et la compatibilité d'une version Node LTS actuelle, sans migration transversale immédiate.
+- [x] Auditer les dépendances et la compatibilité d'une version Node LTS actuelle, sans migration transversale immédiate. → Node 24 adopté via `phaser-on-nodejs` 1.3.1, sans autre montée de version (ADR-001 étape 1).
 - [ ] Cartographier les responsabilités et les couplages dans `Jeu.ts`, `hall.ts`, `PlayerClass.ts`, `Aptitudes/`, `RoomState.ts`.
 
 **Sortie :** une exécution de référence reproductible, une liste de bugs observés, un premier inventaire du protocole réseau. Si le jeu ne démarre plus, documenter précisément l'environnement nécessaire et traiter d'abord ce blocage.

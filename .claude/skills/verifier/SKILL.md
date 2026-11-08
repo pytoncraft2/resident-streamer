@@ -8,7 +8,7 @@ description: Exécute les vérifications réellement disponibles de Resident Str
 Objectif : rapporter des faits vérifiés, pas une impression de réussite. Une compilation réussie ne prouve pas que le jeu fonctionne.
 
 ## 1. Prérequis
-- Si `node_modules/` est absent, ne pas installer sans accord : signaler qu'il faut lancer `npm ci`. Environnement de référence : **Node 16.20.2** (`nvm use 16`) ; sous Node 24 le serveur ne démarre pas (`canvas` natif incompatible). Noter la version utilisée (`node -v`).
+- Si `node_modules/` est absent, ne pas installer sans accord : signaler qu'il faut lancer `npm ci`. Environnement de référence : **Node 24** (`nvm use`, lit `.nvmrc`). Si `node_modules` a été installé avec une autre version de Node, `canvas` (module natif) peut refuser de se charger : refaire `npm ci`. Noter la version utilisée (`node -v`).
 
 ## 2. Vérifications (dans cet ordre, chacune même si la précédente échoue)
 | Commande | Vérifie | Effets de bord |
