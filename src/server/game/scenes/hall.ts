@@ -203,7 +203,8 @@ export default class Hall extends Phaser.Scene {
   getPresence() {
     let response = {}
     if (this.players) {
-      this.players.children.iterate((child: any) => {
+      // getChildren() existe en Phaser 3 et 4 (children.iterate a disparu avec Phaser ≥ 3.60).
+      this.players.getChildren().forEach((child: any) => {
         if (child.data.values.ClientId) {
           // response[child.data.values.ClientId] = { x: child.x, y: child.y, sprite: child.sprite, vie: child.vie}
           response[child.data.values.ClientId] = { x: child.x, y: child.y }
