@@ -9,6 +9,7 @@ import * as fs from 'fs';
 
 var cors = require('cors')
 
+import { ajouterScore, Classement } from "./domain/classement"
 import GameRooms from "./game/Hall_01"
 import LobbyRooms from "./game/lobby"
 import AcceuilRooms from "./game/acceuil"
@@ -44,20 +45,9 @@ app.get('/scores', (_request, res) => {
 })
 
 app.post('/scores', (request, res: any) => {
-  const data:any = fs.readFileSync(__dirname + "/scores.json");
-  const myObject = JSON.parse(data);
-  const objetFinal = { ...myObject }
-  objetFinal[`${request.body.equipe}`] = {
-    "joueurs": request.body.joueur,
-    "score": `${request.body.score}`
-  }
-
-  //tri par ordre croissant de l'objet score
-  var rep = Object.entries(objetFinal).sort(function(obj1, obj2) {
-    return parseInt((obj1[1] as any).score.replace(/:/g,'')) - parseInt((obj2[1] as any).score.replace(/:/g,''));
-  });
-
-  var newData2 = JSON.stringify(Object.fromEntries(rep));
+  // Contenu du fichier supposé conforme : il n'est écrit que par cette route.
+  const classement: Classement = JSON.parse(fs.readFileSync(__dirname + "/scores.json", "utf8"));
+  const newData2 = JSON.stringify(ajouterScore(classement, request.body.equipe, request.body.joueur, request.body.score));
   fs.writeFile(__dirname + "/scores.json", newData2, (err) => {
     if (err) throw err;
   });
