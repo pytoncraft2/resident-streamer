@@ -15,7 +15,7 @@ export default class LobbyRooms extends Room {
   constructor() {
     super()
     this.autoDispose = true
-    this.setPatchRate(17)
+    this.patchRate = 17
     this.maxClients = 20
   }
 
@@ -31,7 +31,7 @@ export default class LobbyRooms extends Room {
    */
   onCreate(options: any) {
 
-    this.setState(new LobbyState())
+    this.state = new LobbyState()
 
     // Fusion explicite : depuis Colyseus 0.18, filterBy place déjà `salon` dans les métadonnées
     // et setMetadata remplace au lieu de fusionner. Level.ts lit metadata.nomRoom.

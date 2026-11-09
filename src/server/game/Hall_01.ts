@@ -24,12 +24,12 @@ export default class GameRooms extends Room {
   constructor() {
     super()
     this.autoDispose = true
-    this.setPatchRate(1)
+    this.patchRate = 1
     this.maxClients = 4
   }
 
   onCreate() {
-    this.setState(new RoomState())
+    this.state = new RoomState()
     this.state.compteur = 0
 
     this.donnes = {}

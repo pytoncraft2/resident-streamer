@@ -17,7 +17,7 @@ export default class CustomLobbyRoom extends LobbyRoom {
     async onCreate(options: any) {
         await super.onCreate(options);
 
-        this.setState(this.etat);
+        this.state = this.etat;
     }
 
     onJoin(client: Client, options: any) {
