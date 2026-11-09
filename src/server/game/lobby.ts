@@ -46,16 +46,16 @@ export default class LobbyRooms extends Room {
     }
 
     this.onMessage("etatJoueur", (client, message) => {
-      this.etatJoueur[client.id] = message
-      if (!this.listeIndex[message.indexConfirmation].includes(client.id)) {
-        this.listeIndex[message.indexConfirmation].push(client.id)
+      this.etatJoueur[client.sessionId] = message
+      if (!this.listeIndex[message.indexConfirmation].includes(client.sessionId)) {
+        this.listeIndex[message.indexConfirmation].push(client.sessionId)
       }
 
       if (this.listeIndex[message.ancienIndexConfirmation]) {
         if (this.listeIndex[message.ancienIndexConfirmation] !== this.listeIndex[message.indexConfirmation]) {
           let arr = this.listeIndex[message.ancienIndexConfirmation]
           for( var i = 0; i < arr.length; i++){
-            if ( arr[i] === client.id) {
+            if ( arr[i] === client.sessionId) {
               arr.splice(i, 1);
               i--;
             }
@@ -65,7 +65,7 @@ export default class LobbyRooms extends Room {
 
       this.state.listeJoueurIndex.shift()
       this.state.listeJoueurIndex.push(JSON.stringify([this.listeIndex]))
-      this.state.joueurs.set(client.id, new Joueur(message));
+      this.state.joueurs.set(client.sessionId, new Joueur(message));
     })
 
 
@@ -84,14 +84,14 @@ export default class LobbyRooms extends Room {
    * @param  {Object} client: Client
    */
   onJoin(client: Client) {
-    this.etatJoueur[client.id] = {
+    this.etatJoueur[client.sessionId] = {
       pret: false,
       indexConfirmation: -1,
       ancienIndexConfirmation: -1
     }
 
     if (!this.state.proprietaire.length) {
-      this.state.proprietaire.push(client.id)
+      this.state.proprietaire.push(client.sessionId)
     }
 
     for (const [key, value] of Object.entries(this.etatJoueur)) {
@@ -116,20 +116,20 @@ export default class LobbyRooms extends Room {
    */
   onLeave(client: Client) {
 
-    this.state.joueurs.delete(client.id)
+    this.state.joueurs.delete(client.sessionId)
     for (const [key] of Object.entries(this.listeIndex)) {
-      this.listeIndex[key] = this.listeIndex[key].filter((a: any) => a !== client.id)
+      this.listeIndex[key] = this.listeIndex[key].filter((a: any) => a !== client.sessionId)
     }
 
     this.state.listeJoueurIndex.shift()
     this.state.listeJoueurIndex.push(JSON.stringify([this.listeIndex]))
 
-    if (this.state.proprietaire.includes(client.id) && Object.entries(this.etatJoueur).length > 1) {
-      delete this.etatJoueur[client.id]
+    if (this.state.proprietaire.includes(client.sessionId) && Object.entries(this.etatJoueur).length > 1) {
+      delete this.etatJoueur[client.sessionId]
       this.state.proprietaire.shift()
       this.state.proprietaire.push(Object.keys(this.etatJoueur)[0])
     } else {
-      delete this.etatJoueur[client.id]
+      delete this.etatJoueur[client.sessionId]
     }
 
   }

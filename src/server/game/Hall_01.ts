@@ -105,14 +105,14 @@ export default class GameRooms extends Room {
       })
 
     this.onMessage("inputs", (client, message) => {
-      this.donnes[client.id].clavier = message
+      this.donnes[client.sessionId].clavier = message
     })
 
 
   }
 
   onJoin(client: Client, options: any) {
-    this.donnes[client.id] = {
+    this.donnes[client.sessionId] = {
       clavier: {
         up: false,
         right: false,
@@ -127,16 +127,16 @@ export default class GameRooms extends Room {
       },
       sprite: `${options.sprite}`
     }
-    const presences = this.scene.createPlayer(client.id, options.sprite)
+    const presences = this.scene.createPlayer(client.sessionId, options.sprite)
     for (const [key, value] of Object.entries(presences.presences)) {
       this.state.presences.set(key, new Player(value))
     }
   }
 
   onLeave(client: Client) {
-    const presence = this.scene.removePlayer(client.id)
-    this.state.presences.delete(client.id)
-    delete this.donnes[client.id].clavier
+    const presence = this.scene.removePlayer(client.sessionId)
+    this.state.presences.delete(client.sessionId)
+    delete this.donnes[client.sessionId].clavier
   }
 
   onDispose() {
