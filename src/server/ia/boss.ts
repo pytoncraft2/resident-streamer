@@ -40,6 +40,8 @@ export interface PerceptionBoss {
   readonly temps?: number;
   /** Boss final : rangées de trône encore debout. */
   readonly tronesRestants?: number;
+  /** Heure du dernier coup reçu par le boss (heure de la scène, en ms), s'il en a reçu un. */
+  readonly dernierCoup?: number;
 }
 
 /** Ce que le boss veut faire ; appliqué dans l'ordre par l'exécuteur Phaser. */

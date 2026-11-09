@@ -5,6 +5,8 @@
  * invulnérable, lance des PC sur un joueur de la pièce centrale de l'étage ; chaque coup (corps à
  * corps, kunaï, boule, bombe…) fait tomber une rangée ; trône détruit → siège vide (« tronehautv2 »),
  * boss visible et vulnérable.
+ * Phase « Envol » : le boss plane, pique sur le joueur (impact qui blesse), reste un moment au sol où
+ * il peut être frappé, et contre-attaque quand on le frappe.
  */
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
@@ -16,6 +18,7 @@ interface PresenceVue {
   readonly sprite?: string;
   readonly alpha?: number;
   readonly vie?: number;
+  readonly anim?: string;
 }
 interface ProjectileVue {
   readonly sprite?: string;
@@ -110,24 +113,32 @@ describe("boss final (intégration)", function () {
       }
     });
 
-    it("six coups font tomber les rangées ; le boss apparaît, vulnérable, sur le sol de l'étage", async function () {
+    it("six coups font tomber les rangées ; le boss apparaît en vol, pique, puis peut être frappé au sol et contre-attaque", async function () {
       const room = await partieALEtage("fakhear");
+      const frapper = async (): Promise<void> => {
+        room.send("inputs", { ...AU_REPOS, a: true });
+        await pause(150);
+        room.send("inputs", AU_REPOS);
+      };
       try {
         for (let coup = 0; coup < 12 && elementsDuTrone(room).length > 1; coup++) {
-          room.send("inputs", { ...AU_REPOS, a: true });
-          await pause(150);
-          room.send("inputs", AU_REPOS);
+          await frapper();
           await pause(600);
         }
         const trone = elementsDuTrone(room);
         assert.deepEqual(trone.map((t) => t.anim), ["tronehautv2"], "seul le siège vide reste");
-        await attendre(() => bossFinal(room)?.alpha === 1 && Math.abs((bossFinal(room)?.y ?? 0) + 250) < 30, 3000, "boss visible sur le sol de l'étage");
+        await attendre(() => bossFinal(room)?.alpha === 1 && (bossFinal(room)?.y ?? 0) < -500, 3000, "boss visible, en vol");
 
-        const vieAvant = bossFinal(room)?.vie ?? 0;
-        room.send("inputs", { ...AU_REPOS, a: true });
-        await pause(150);
-        room.send("inputs", AU_REPOS);
-        await attendre(() => (bossFinal(room)?.vie ?? vieAvant) < vieAvant, 3000, "boss blessé : il est vulnérable");
+        // Piqué : le boss descend jusqu'au joueur, dont la vie baisse à l'impact.
+        const vieJoueur = room.state.presences?.get(room.sessionId)?.vie ?? 0;
+        await attendre(() => (bossFinal(room)?.y ?? -Infinity) > -400, 6000, "piqué jusqu'au sol");
+        await attendre(() => (room.state.presences?.get(room.sessionId)?.vie ?? vieJoueur) < vieJoueur, 2000, "joueur blessé par l'impact");
+
+        // Au sol : frappé, il perd de la vie puis contre-attaque.
+        const vieBoss = bossFinal(room)?.vie ?? 0;
+        await frapper();
+        await attendre(() => (bossFinal(room)?.vie ?? vieBoss) < vieBoss, 2000, "boss blessé au sol : il est vulnérable");
+        await attendre(() => (bossFinal(room)?.anim ?? "").startsWith("contreattaque"), 2000, "contre-attaque");
       } finally {
         await room.leave();
       }

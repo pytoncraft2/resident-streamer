@@ -288,7 +288,64 @@ describe("ia/bosses · boss final, phase « Trône »", function () {
     assert.deepEqual(decider(arbreBossFinal, percevoir(0, 6, { x: 2830, y: 756 })), []);
   });
 
-  it("ne tire plus une fois le trône détruit (phase « Envol » à venir)", function () {
-    assert.deepEqual(decider(arbreBossFinal, percevoir(0, 0, DANS_LA_PIECE)), []);
+  it("ne tire plus de PC une fois le trône détruit", function () {
+    const intentions = decider(arbreBossFinal, percevoir(0, 0, DANS_LA_PIECE));
+    assert.ok(!intentions.some((i) => i.type === "aptitude" && i.nom === "Z"), JSON.stringify(intentions));
+  });
+});
+
+describe("ia/bosses · boss final, phase « Envol »", function () {
+  const R = REGLAGES_BOSS_FINAL;
+  const EN_VOL = { x: 3000, y: R.yVol };
+  const CIBLE = { x: 2500, y: -250 };
+  const percevoir = (temps: number, extra: Partial<PerceptionBoss> = {}): PerceptionBoss => ({
+    position: EN_VOL, temps, tronesRestants: 0, cible: { position: CIBLE }, ...extra,
+  });
+  const vers = (versLaGauche: boolean) => ({ type: "orienter", versLaGauche });
+  const pique = {
+    type: "rejoindre", position: { x: CIBLE.x + R.ecartPique, y: CIBLE.y }, duree: R.dureePique, courbe: "Quad.in", animationAuDepart: "super_boss_vole",
+    attendreLaFin: true, ensuite: [{ type: "aptitude", nom: "A", entree: { a: true } }],
+  };
+  const plane = (x: number) => ({
+    type: "rejoindre", position: { x, y: R.yVol }, duree: R.dureePlane, courbe: "Sine.inOut", animationAuDepart: "super_boss_vole", attendreLaFin: true,
+  });
+
+  it("pique sur la cible (impact A à l'arrivée), puis reste au sol, puis plane au-dessus d'elle", function () {
+    const memoire = new Map<string, number>();
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000), memoire), [vers(true), pique]);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + R.dureePique + R.pauseAuSol - 1), memoire), [vers(true)]);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + R.dureePique + R.pauseAuSol), memoire), [vers(true), plane(CIBLE.x)]);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + R.rechargePique), memoire), [vers(true), pique]);
+  });
+
+  it("atterrit devant la cible, du côté d'où il vient", function () {
+    const aGauche = decider(arbreBossFinal, percevoir(0, { position: { x: 2000, y: R.yVol } }))[1];
+    assert.deepEqual(aGauche?.type === "rejoindre" && aGauche.position, { x: CIBLE.x - R.ecartPique, y: CIBLE.y });
+    const aLaVerticale = decider(arbreBossFinal, percevoir(0, { position: { x: CIBLE.x, y: R.yVol } }))[1];
+    assert.deepEqual(aLaVerticale?.type === "rejoindre" && aLaVerticale.position, { x: CIBLE.x + R.ecartPique, y: CIBLE.y });
+  });
+
+  it("plane sans sortir de la pièce centrale (200 px des murs)", function () {
+    const memoire = new Map<string, number>([["piquer sur la cible", 0]]);
+    const temps = R.dureePique + R.pauseAuSol;
+    assert.deepEqual(decider(arbreBossFinal, percevoir(temps, { cible: { position: { x: 1800, y: -250 } } }), memoire)[1], plane(1989));
+    assert.deepEqual(decider(arbreBossFinal, percevoir(temps, { cible: { position: { x: 3800, y: -250 } } }), memoire)[1], plane(3602));
+  });
+
+  it("contre-attaque (E) juste après un coup reçu, au plus une fois par recharge", function () {
+    const memoire = new Map<string, number>([["piquer sur la cible", 0]]);
+    const contre = [vers(true), { type: "aptitude", nom: "E", entree: { e: true } }];
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000, { dernierCoup: 900 }), memoire), contre);
+    assert.notDeepEqual(decider(arbreBossFinal, percevoir(1500, { dernierCoup: 1400 }), memoire), contre);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + R.rechargeContreAttaque, { dernierCoup: 2900 }), memoire), contre);
+  });
+
+  it("ne contre-attaque pas un coup ancien", function () {
+    const intentions = decider(arbreBossFinal, percevoir(5000, { dernierCoup: 5000 - R.reactionContreAttaque }));
+    assert.deepEqual(intentions, [vers(true), pique]);
+  });
+
+  it("ne fait rien si la cible n'est pas dans la pièce centrale", function () {
+    assert.deepEqual(decider(arbreBossFinal, percevoir(0, { cible: { position: { x: 4500, y: -250 } } })), []);
   });
 });
