@@ -5,8 +5,8 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import * as Colyseus from "colyseus.js"
-import { RoomAvailable } from "colyseus.js";
+import * as Colyseus from "@colyseus/sdk"
+import { RoomAvailable } from "@colyseus/sdk";
 import { URL_WS_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 

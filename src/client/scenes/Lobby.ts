@@ -5,7 +5,7 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import * as Colyseus from "colyseus.js"
+import * as Colyseus from "@colyseus/sdk"
 import Panel from "../utils/panel"
 import Button from "../utils/bouton"
 import Titre from "../utils/titre"

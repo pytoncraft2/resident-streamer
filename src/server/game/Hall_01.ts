@@ -1,7 +1,7 @@
 //@ts-nocheck
 
 import "@geckos.io/phaser-on-nodejs"
-import { Room, Client, Delayed } from "colyseus"
+import { Room, Client, Delayed } from "@colyseus/core"
 import config from "./config"
 import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaserHeadless"
 

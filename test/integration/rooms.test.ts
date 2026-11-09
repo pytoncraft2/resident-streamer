@@ -4,7 +4,7 @@
  * Ils démarrent le serveur compilé : lancer via `npm test` (qui compile le serveur).
  */
 import { strict as assert } from "assert";
-import { Client, Room } from "colyseus.js";
+import { Client, Room } from "@colyseus/sdk";
 import { attendre, demarrerServeur, getStatut, ServeurDeTest } from "../helpers/serveur";
 
 /** Vue minimale, en lecture seule, des schémas de src/server/game/RoomState.ts. */
@@ -36,7 +36,7 @@ const BOSS_OBSERVES = ["manette", "twitchman", "boss_1", "troll"] as const;
 let compteurSalon = 0;
 const nouveauSalon = (): string => `test-${process.pid}-${Date.now()}-${++compteurSalon}`;
 
-const sprites = (room: Room<EtatJeu>): string[] =>
+const sprites = (room: Room<unknown, EtatJeu>): string[] =>
   Array.from(room.state.presences?.values() ?? []).map((p) => p.sprite ?? "");
 
 describe("serveur (intégration)", function () {
@@ -49,7 +49,7 @@ describe("serveur (intégration)", function () {
     await room.leave();
   };
 
-  const rejoindre = async <T>(nom: string, options: Record<string, string>): Promise<Room<T>> => {
+  const rejoindre = async <T>(nom: string, options: Record<string, string>): Promise<Room<unknown, T>> => {
     const room = await new Client(serveur.wsUrl).joinOrCreate<T>(nom, options);
     // Ignorer les messages diffusés (suppression, RDC_OK…) sans avertissement.
     room.onMessage("*", () => undefined);
@@ -76,8 +76,8 @@ describe("serveur (intégration)", function () {
       const a = await rejoindre("lobby", { salon });
       const b = await rejoindre("lobby", { salon });
       const autre = await rejoindre("lobby", { salon: nouveauSalon() });
-      assert.equal(a.id, b.id);
-      assert.notEqual(a.id, autre.id);
+      assert.equal(a.roomId, b.roomId);
+      assert.notEqual(a.roomId, autre.roomId);
     });
   });
 
@@ -101,14 +101,14 @@ describe("serveur (intégration)", function () {
 
   describe("room game_instance, partie à 4 joueurs", function () {
     const salon = nouveauSalon();
-    const joueurs: Room<EtatJeu>[] = [];
+    const joueurs: Room<unknown, EtatJeu>[] = [];
 
     before(async function () {
       for (const sprite of PERSONNAGES) joueurs.push(await rejoindre<EtatJeu>("game_instance", { salon, sprite }));
     });
 
     it("place les 4 joueurs du salon dans la même room", function () {
-      assert.ok(joueurs.every((j) => j.id === joueurs[0].id));
+      assert.ok(joueurs.every((j) => j.roomId === joueurs[0].roomId));
     });
 
     it("synchronise une présence par joueur avec son personnage", async function () {
@@ -118,7 +118,7 @@ describe("serveur (intégration)", function () {
 
     it("refuse un 5e joueur dans la room (maxClients = 4) et lui en crée une autre", async function () {
       const cinquieme = await rejoindre<EtatJeu>("game_instance", { salon, sprite: "huzounet" });
-      assert.notEqual(cinquieme.id, joueurs[0].id);
+      assert.notEqual(cinquieme.roomId, joueurs[0].roomId);
       await quitter(cinquieme);
     });
 

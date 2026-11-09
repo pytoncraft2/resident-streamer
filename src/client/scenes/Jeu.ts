@@ -9,7 +9,7 @@ export interface Initialisation {
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import * as Colyseus from "colyseus.js"
+import * as Colyseus from "@colyseus/sdk"
 import { deepEqual } from "../components/deepEqual"
 import { URL_WS_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */

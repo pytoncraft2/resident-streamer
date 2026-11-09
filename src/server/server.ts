@@ -1,11 +1,10 @@
 // En premier : les variables de .env doivent exister avant que les modules importés les lisent (ex. SCORES_FICHIER).
 import "dotenv/config"
 import { WebSocketTransport } from "@colyseus/ws-transport"
-import { Server } from "colyseus"
+import { Server } from "@colyseus/core"
 import express from "express"
 import http from "http"
 import path from "path"
-import { monitor } from "@colyseus/monitor";
 
 var cors = require('cors')
 
@@ -60,6 +59,8 @@ app.get('/:id', (_request, response) => {
 const server = http.createServer(app)
 
 const gameServer = new Server({
+  // Pas de bannière publicitaire au démarrage (Colyseus 0.18) : garde le journal lisible.
+  greet: false,
   transport: new WebSocketTransport({
     server: server,
     pingInterval: 5000,

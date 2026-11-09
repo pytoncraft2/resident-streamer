@@ -1,6 +1,6 @@
 //@ts-nocheck
 import "@geckos.io/phaser-on-nodejs"
-import { Room, Client } from "colyseus"
+import { Room, Client } from "@colyseus/core"
 
 import { LobbyState, Joueur } from "./LobbyState"
 

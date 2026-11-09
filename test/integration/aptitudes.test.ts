@@ -11,7 +11,7 @@
  * Mesures de référence (Node 16, 2 exécutions) : ~8 projectiles par seconde de maintien.
  */
 import { strict as assert } from "assert";
-import { Client, Room } from "colyseus.js";
+import { Client, Room } from "@colyseus/sdk";
 import { attendre, demarrerServeur, ServeurDeTest } from "../helpers/serveur";
 
 interface MapVue<T> {
@@ -51,7 +51,7 @@ describe("aptitudes : cadence (intégration)", function () {
   });
 
   /** Partie à un seul joueur, dans un salon dédié. */
-  async function partieSolo(sprite: string): Promise<Room<EtatJeu>> {
+  async function partieSolo(sprite: string): Promise<Room<unknown, EtatJeu>> {
     const room = await new Client(serveur.wsUrl).joinOrCreate<EtatJeu>("game_instance", { salon: `aptitudes-${sprite}-${Date.now()}`, sprite });
     room.onMessage("*", () => undefined);
     ouvertes.add(room);
@@ -61,14 +61,14 @@ describe("aptitudes : cadence (intégration)", function () {
   }
 
   /** Maintient une touche pendant `dureeMs`, puis la relâche. */
-  async function maintenir(room: Room<EtatJeu>, touche: Touche, dureeMs: number): Promise<void> {
+  async function maintenir(room: Room<unknown, EtatJeu>, touche: Touche, dureeMs: number): Promise<void> {
     room.send("inputs", { ...AU_REPOS, [touche]: true });
     await pause(dureeMs);
     room.send("inputs", AU_REPOS);
   }
 
   /** Nombre de projectiles distincts d'un sprite apparus pendant `action` (+ 800 ms de marge). */
-  async function compterProjectiles(room: Room<EtatJeu>, sprite: string, action: () => Promise<void>): Promise<number> {
+  async function compterProjectiles(room: Room<unknown, EtatJeu>, sprite: string, action: () => Promise<void>): Promise<number> {
     const vus = new Set<string>();
     const releve = setInterval(() => {
       const projectiles = room.state.projectiles;
