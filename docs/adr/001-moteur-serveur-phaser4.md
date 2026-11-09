@@ -108,7 +108,7 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 
 ### Découpage révisé de l'étape 4
 
-- **4a — TypeScript 6** sur Phaser 3.55 (`tsconfig` ci-dessus), seul.
+- **4a — TypeScript 6** sur Phaser 3.55 (`tsconfig` ci-dessus), seul. → fait sur `chore/typescript-6` : TS 6.0.3, **typedoc 0.22 → 0.28** (0.22 plante sous TS 6, 0.28 refuse TS 4.7 : changement indissociable), 4 `tsconfig` ajustés (dont `src/client/tsconfig.json`, utilisé par `npm run doc:client`). JavaScript serveur émis équivalent (seul le placement des `exports` et le helper `__importStar` changent ; ordre des exports d'aptitudes identique).
 - **4b — Corrections compatibles** client (`getChildren`, `Rectangle.Contains`, `tweens.add`, typage), seules.
 - **4c — Bascule Phaser 4.2.1** client + serveur : particules, masque, `tweens.chain`, `persist: true`, typage serveur.
 - **4d — Recette navigateur multijoueur complète** (`/recette-multijoueur`), dont l'écran de chargement, les particules d'apparition et le défilement des scores.
