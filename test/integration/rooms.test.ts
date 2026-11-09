@@ -29,7 +29,8 @@ interface Clavier {
 const AU_REPOS: Clavier = { up: false, right: false, down: false, left: false, space: false, a: false, a_fin: false, z: false, e: false, r: false };
 
 const PERSONNAGES = ["fakhear", "akhizonah", "huzounet", "osmosiscoop"] as const;
-// super_boss est volontairement absent : il n'apparaît pas dans l'état synchronisé (anomalie B2).
+// super_boss est absent par conception : créé inactif (Aptitudes/super_boss.ts), il ne publie sa présence
+// qu'une fois activé, quand troll et manette sont vaincus (ETAGE_OK, PlayerClass.ts). Ancienne « anomalie » B2.
 const BOSS_OBSERVES = ["manette", "twitchman", "boss_1", "troll"] as const;
 
 let compteurSalon = 0;
