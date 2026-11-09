@@ -107,12 +107,18 @@ Piège rencontré : les frames du vol et de la contre-attaque sont bien plus lar
 
 Vérifications : tests unitaires (piqué, pause au sol, vol borné à la pièce, atterrissage devant la cible, contre-attaque et sa recharge) ; test d'intégration (boss en vol, piqué qui blesse, boss frappé au sol, contre-attaque).
 
+## Boss final : phase « Rage »
+
+À 15 points de vie ou moins (perception `vie`), la branche « rage », placée avant « envol », reprend le même combat en vol (sous-arbre `combatEnVol`, paramétré par le rythme) avec les réglages de `REGLAGES_BOSS_FINAL.rage` : piqué toutes les 2,5 s, en 350 ms, 1 s au sol, vol en 450 ms. Elle ajoute, juste après la contre-attaque, une **pluie de PC** (aptitude R) toutes les 5 s : 4 PC tombent du plafond à des écarts fixes (-450, -150, +150, +450 px) autour du joueur, bornés à la pièce — pas de hasard, pour des tests reproductibles. Les recharges portent les mêmes noms dans les deux phases : un piqué lancé en « Envol » compte encore en « Rage ».
+
+Vérifications : tests unitaires (seuil, pluie et sa recharge, rythme plus rapide, priorité de la contre-attaque, abscisses bornées) ; test d'intégration (boss frappé jusqu'à mi-vie, puis 4 PC à la fois).
+
 ## Suite
 
 1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
-4. Boss final : phases « Trône » et « Envol » faites ; phase « Rage » à suivre.
+4. ~~Boss final~~ : phases « Trône », « Envol » et « Rage » faites.
 
 ## Retour arrière
 
