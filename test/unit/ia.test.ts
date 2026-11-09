@@ -5,7 +5,7 @@ import { arbreBoss1, PLACE_BOSS_1 } from "../../src/server/ia/bosses/boss_1";
 import { arbreManette, COINS_MANETTE, PLACE_MANETTE } from "../../src/server/ia/bosses/manette";
 import { arbreTroll, PLACE_TROLL } from "../../src/server/ia/bosses/troll";
 import { arbreTwitchman, COINS_TWITCHMAN, PLACE_TWITCHMAN } from "../../src/server/ia/bosses/twitchman";
-import { arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../src/server/ia/bosses/super_boss";
+import { abscissesPluie, arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../src/server/ia/bosses/super_boss";
 
 describe("ia/arbre · briques", function () {
   const trace: string[] = [];
@@ -347,5 +347,49 @@ describe("ia/bosses · boss final, phase « Envol »", function () {
 
   it("ne fait rien si la cible n'est pas dans la pièce centrale", function () {
     assert.deepEqual(decider(arbreBossFinal, percevoir(0, { cible: { position: { x: 4500, y: -250 } } })), []);
+  });
+});
+
+describe("ia/bosses · boss final, phase « Rage »", function () {
+  const R = REGLAGES_BOSS_FINAL;
+  const CIBLE = { x: 2500, y: -250 };
+  const percevoir = (temps: number, vie: number, extra: Partial<PerceptionBoss> = {}): PerceptionBoss => ({
+    position: { x: 3000, y: R.yVol }, temps, tronesRestants: 0, vie, cible: { position: CIBLE }, ...extra,
+  });
+  const pluie = { type: "aptitude", nom: "R", entree: { r: true } };
+  const typesEtNoms = (temps: number, vie: number, memoire: Map<string, number>, extra: Partial<PerceptionBoss> = {}) =>
+    decider(arbreBossFinal, percevoir(temps, vie, extra), memoire).map((i) => (i.type === "aptitude" ? `aptitude ${i.nom}` : i.type));
+
+  it("au-dessus du seuil de vie : pas de pluie (phase « Envol »)", function () {
+    const intentions = decider(arbreBossFinal, percevoir(0, R.rage.seuilVie + 1));
+    assert.ok(!intentions.some((i) => i.type === "aptitude" && i.nom === "R"), JSON.stringify(intentions));
+  });
+
+  it("à mi-vie : pluie de PC, puis piqué plus rapide, au plus une pluie par recharge", function () {
+    const memoire = new Map<string, number>();
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000, R.rage.seuilVie), memoire), [{ type: "orienter", versLaGauche: true }, pluie]);
+    const pique = decider(arbreBossFinal, percevoir(1500, R.rage.seuilVie), memoire)[1];
+    assert.ok(pique?.type === "rejoindre" && pique.duree === R.rage.dureePique, JSON.stringify(pique));
+    assert.deepEqual(typesEtNoms(1000 + R.rage.rechargePluie - 1, R.rage.seuilVie, memoire), ["orienter", "rejoindre"]);
+    assert.deepEqual(typesEtNoms(1000 + R.rage.rechargePluie, R.rage.seuilVie, memoire), ["orienter", "aptitude R"]);
+  });
+
+  it("au sol moins longtemps et piqués plus fréquents qu'en phase « Envol »", function () {
+    const memoire = new Map<string, number>([["pluie de PC", 0], ["piquer sur la cible", 0]]);
+    const vie = R.rage.seuilVie;
+    assert.deepEqual(typesEtNoms(R.rage.dureePique + R.rage.pauseAuSol - 1, vie, memoire), ["orienter"]);
+    assert.deepEqual(typesEtNoms(R.rage.dureePique + R.rage.pauseAuSol, vie, memoire), ["orienter", "rejoindre"]);
+    const replique = decider(arbreBossFinal, percevoir(R.rage.rechargePique, vie), memoire)[1];
+    assert.ok(replique?.type === "rejoindre" && replique.ensuite !== undefined, "nouveau piqué après rage.rechargePique");
+    assert.ok(R.rage.rechargePique < R.rechargePique && R.rage.pauseAuSol < R.pauseAuSol);
+  });
+
+  it("la contre-attaque reste prioritaire sur la pluie", function () {
+    assert.deepEqual(typesEtNoms(1000, R.rage.seuilVie, new Map(), { dernierCoup: 900 }), ["orienter", "aptitude E"]);
+  });
+
+  it("la pluie tombe autour de la cible sans sortir de la pièce centrale", function () {
+    assert.deepEqual(abscissesPluie(2800), [2350, 2650, 2950, 3250]);
+    assert.deepEqual(abscissesPluie(1900), [1989, 1989, 2050, 2350]);
   });
 });

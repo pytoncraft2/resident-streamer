@@ -1,14 +1,17 @@
 /**
- * Boss final (docs/conception/intentions.md §3), conçu en trois phases ; « Trône » et « Envol » sont
- * implémentées, « Rage » viendra ensuite :
+ * Boss final (docs/conception/intentions.md §3), en trois phases : « Trône », « Envol », « Rage » :
  *
  *   boss final : sélecteur
  *     ├─ trône : séquence
  *     │    [rangées de trône restantes > 0] → [cible dans la pièce centrale de l'étage ?]
  *     │    → recharge (rechargePc) → lancer un PC vers la cible (aptitude Z)
+ *     ├─ rage : séquence
+ *     │    [trône détruit] → [vie ≤ rage.seuilVie] → [cible dans la pièce centrale ?] → se tourner vers elle →
+ *     │    combat en vol au rythme de la rage, avec la pluie de PC (aptitude R, recharge rage.rechargePluie)
+ *     │    juste après la contre-attaque
  *     └─ envol : séquence
  *          [trône détruit] → [cible dans la pièce centrale ?] → se tourner vers elle →
- *          sélecteur
+ *          combat en vol : sélecteur
  *            ├─ [frappé depuis peu] → recharge (rechargeContreAttaque) → contre-attaque (aptitude E)
  *            ├─ [piqué récent : encore au sol] → reprendre son souffle (ne rien faire)
  *            ├─ recharge (rechargePique) → piquer devant la cible (action longue), impact (aptitude A)
@@ -66,16 +69,50 @@ export const REGLAGES_BOSS_FINAL = {
   degatContreAttaque: 1,
   /** Rayon de l'onde de contre-attaque, en px. */
   rayonContreAttaque: 300,
+  /** Phase « Rage » : à mi-vie, rythme plus rapide et pluie de PC. */
+  rage: {
+    /** Vie à partir de laquelle (incluse) le boss enrage. */
+    seuilVie: 15,
+    rechargePique: 2500,
+    dureePique: 350,
+    pauseAuSol: 1000,
+    dureePlane: 450,
+    /** Délai minimal entre deux pluies de PC, en ms. */
+    rechargePluie: 5000,
+    /** Écarts horizontaux des PC de la pluie autour de la cible, en px (fixes : comportement reproductible). */
+    ecartsPluie: [-450, -150, 150, 450],
+    /** Hauteur d'où tombent les PC (plafond de la pièce centrale). */
+    yPluie: -1000,
+    /** Vitesse de chute d'un PC de la pluie, en px/s. */
+    vitessePluie: 450,
+    /** Durée de vie d'un PC de la pluie, en ms (assez pour traverser la pièce, pas pour atteindre le rez-de-chaussée). */
+    dureePluie: 2000,
+  },
 } as const;
+
+/** Rythme du combat en vol : celui de la phase « Envol », ou celui, plus rapide, de la phase « Rage ». */
+interface RythmeVol {
+  readonly rechargePique: number;
+  readonly dureePique: number;
+  readonly pauseAuSol: number;
+  readonly dureePlane: number;
+}
 
 /** Pièce centrale de l'étage, entre celle de troll (x < 1789) et celle de manette (x > 3802). */
 export const PIECE_BOSS_FINAL: Zone = { xMin: 1789, xMax: 3802, yMax: -249 };
+
+/** Abscisses des PC d'une pluie autour d'une abscisse, sans sortir de la pièce centrale. */
+export function abscissesPluie(x: number): number[] {
+  return REGLAGES_BOSS_FINAL.rage.ecartsPluie.map((ecart) => xDansLaPiece(x + ecart));
+}
 /** Marge aux murs de la pièce centrale pendant le vol, en px. */
 const MARGE_VOL = 200;
 
 const PIQUE = "piquer sur la cible";
 
 const enPhaseTrone = ({ perception }: ContexteBoss): boolean => (perception.tronesRestants ?? 0) > 0;
+const enRage = ({ perception }: ContexteBoss): boolean =>
+  perception.vie !== undefined && perception.vie <= REGLAGES_BOSS_FINAL.rage.seuilVie;
 const cibleDansLaPiece = ({ perception }: ContexteBoss): boolean =>
   perception.cible !== undefined && contient(PIECE_BOSS_FINAL, perception.cible.position);
 const cibleAGauche = ({ perception }: ContexteBoss): boolean => (perception.cible?.position.x ?? Infinity) < perception.position.x;
@@ -87,6 +124,59 @@ const pointDAtterrissage = (c: ContexteBoss): Point => {
   const cible = c.perception.cible?.position ?? c.perception.position;
   return { x: cible.x + (cibleAGauche(c) || cible.x === c.perception.position.x ? 1 : -1) * REGLAGES_BOSS_FINAL.ecartPique, y: cible.y };
 };
+
+/**
+ * Combat en vol, commun aux phases « Envol » et « Rage » (seul le rythme change ; la rage ajoute la
+ * pluie de PC, après la contre-attaque) : contre-attaquer, reprendre son souffle, piquer, planer.
+ * Les recharges portent les mêmes noms dans les deux phases : la mémoire passe de l'une à l'autre.
+ */
+function combatEnVol(nom: string, rythme: RythmeVol, ...enPlus: ArbreBoss[]): ArbreBoss {
+  return selecteur(
+    nom,
+    sequence(
+      "contre-attaquer",
+      condition(
+        "frappé depuis peu",
+        ({ perception, temps }) => perception.dernierCoup !== undefined && temps - perception.dernierCoup < REGLAGES_BOSS_FINAL.reactionContreAttaque,
+      ),
+      recharge(
+        "contre-attaque",
+        REGLAGES_BOSS_FINAL.rechargeContreAttaque,
+        action("onde de contre-attaque", (c) => c.intentions.push({ type: "aptitude", nom: "E", entree: { e: true } })),
+      ),
+    ),
+    ...enPlus,
+    condition("reprendre son souffle au sol après un piqué", ({ memoire, temps }) => {
+      const depart = memoire.get(PIQUE);
+      return depart !== undefined && temps - depart < rythme.dureePique + rythme.pauseAuSol;
+    }),
+    recharge(
+      PIQUE,
+      rythme.rechargePique,
+      action("piquer puis frapper le sol", (c) =>
+        c.intentions.push({
+          type: "rejoindre",
+          position: pointDAtterrissage(c),
+          duree: rythme.dureePique,
+          courbe: "Quad.in",
+          animationAuDepart: "super_boss_vole",
+          attendreLaFin: true,
+          ensuite: [{ type: "aptitude", nom: "A", entree: { a: true } }],
+        }),
+      ),
+    ),
+    action("planer au-dessus de la cible", (c) =>
+      c.intentions.push({
+        type: "rejoindre",
+        position: { x: xDansLaPiece(c.perception.cible?.position.x ?? c.perception.position.x), y: REGLAGES_BOSS_FINAL.yVol },
+        duree: rythme.dureePlane,
+        courbe: "Sine.inOut",
+        animationAuDepart: "super_boss_vole",
+        attendreLaFin: true,
+      }),
+    ),
+  );
+}
 
 export const arbreBossFinal: ArbreBoss = selecteur(
   "boss final",
@@ -101,53 +191,22 @@ export const arbreBossFinal: ArbreBoss = selecteur(
     ),
   ),
   sequence(
+    "rage",
+    condition("trône détruit", (c) => !enPhaseTrone(c)),
+    condition("à mi-vie", enRage),
+    condition("cible dans la pièce centrale", cibleDansLaPiece),
+    action("se tourner vers la cible", (c) => c.intentions.push({ type: "orienter", versLaGauche: cibleAGauche(c) })),
+    combatEnVol("attaque enragée", REGLAGES_BOSS_FINAL.rage, recharge(
+      "pluie de PC",
+      REGLAGES_BOSS_FINAL.rage.rechargePluie,
+      action("faire pleuvoir des PC autour de la cible", (c) => c.intentions.push({ type: "aptitude", nom: "R", entree: { r: true } })),
+    )),
+  ),
+  sequence(
     "envol",
     condition("trône détruit", (c) => !enPhaseTrone(c)),
     condition("cible dans la pièce centrale", cibleDansLaPiece),
     action("se tourner vers la cible", (c) => c.intentions.push({ type: "orienter", versLaGauche: cibleAGauche(c) })),
-    selecteur(
-      "attaque en vol",
-      sequence(
-        "contre-attaquer",
-        condition(
-          "frappé depuis peu",
-          ({ perception, temps }) => perception.dernierCoup !== undefined && temps - perception.dernierCoup < REGLAGES_BOSS_FINAL.reactionContreAttaque,
-        ),
-        recharge(
-          "contre-attaque",
-          REGLAGES_BOSS_FINAL.rechargeContreAttaque,
-          action("onde de contre-attaque", (c) => c.intentions.push({ type: "aptitude", nom: "E", entree: { e: true } })),
-        ),
-      ),
-      condition("reprendre son souffle au sol après un piqué", ({ memoire, temps }) => {
-        const depart = memoire.get(PIQUE);
-        return depart !== undefined && temps - depart < REGLAGES_BOSS_FINAL.dureePique + REGLAGES_BOSS_FINAL.pauseAuSol;
-      }),
-      recharge(
-        PIQUE,
-        REGLAGES_BOSS_FINAL.rechargePique,
-        action("piquer puis frapper le sol", (c) =>
-          c.intentions.push({
-            type: "rejoindre",
-            position: pointDAtterrissage(c),
-            duree: REGLAGES_BOSS_FINAL.dureePique,
-            courbe: "Quad.in",
-            animationAuDepart: "super_boss_vole",
-            attendreLaFin: true,
-            ensuite: [{ type: "aptitude", nom: "A", entree: { a: true } }],
-          }),
-        ),
-      ),
-      action("planer au-dessus de la cible", (c) =>
-        c.intentions.push({
-          type: "rejoindre",
-          position: { x: xDansLaPiece(c.perception.cible?.position.x ?? c.perception.position.x), y: REGLAGES_BOSS_FINAL.yVol },
-          duree: REGLAGES_BOSS_FINAL.dureePlane,
-          courbe: "Sine.inOut",
-          animationAuDepart: "super_boss_vole",
-          attendreLaFin: true,
-        }),
-      ),
-    ),
+    combatEnVol("attaque en vol", REGLAGES_BOSS_FINAL),
   ),
 );

@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import TJoueur from "../types/Joueur";
 import Trone from "../class/elements/TroneClass";
 import PcClass from "../class/elements/PcClass";
-import { arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../../ia/bosses/super_boss";
+import { abscissesPluie, arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../../ia/bosses/super_boss";
 import { demarrerIA } from "../../ia/pilote";
 
 /**
@@ -12,6 +12,7 @@ import { demarrerIA } from "../../ia/pilote";
  * fait tomber la rangée du bas et descendre le reste d'un étage.
  * Rangées détruites : le siège devient vide (« tronehautv2 »), le boss apparaît, vulnérable, et
  * passe en phase « Envol » : il plane, pique sur les joueurs (A) et contre-attaque quand on le frappe (E).
+ * À mi-vie, phase « Rage » : même combat, plus rapide, avec une pluie de PC (R).
  */
 export function __StatsSupplementaire(personnage: TJoueur | any, _Aptitudes: any) {
   personnage.setActive(false)
@@ -145,6 +146,19 @@ export function pc__Z(personnage: TJoueur | any, _input: any) {
     REGLAGES_BOSS_FINAL.vitessePc, REGLAGES_BOSS_FINAL.degatPc, REGLAGES_BOSS_FINAL.dureePc)
 }
 
+/** Phase « Rage » : pluie de PC qui tombent du plafond autour du joueur le plus proche. */
+export function pluie__R(personnage: TJoueur | any, _input: any) {
+  const scene = personnage.scene
+  if (!scene) return
+  const cible = scene.physics.closest(personnage, scene.players.getChildren())
+  if (!cible) return
+  const { yPluie, vitessePluie, dureePluie } = REGLAGES_BOSS_FINAL.rage
+  for (const x of abscissesPluie(cible.x)) {
+    new PcClass(scene, x, yPluie, `pc-${(Math.random() + 1).toString(36).substring(7)}`, { x, y: cible.y },
+      vitessePluie, REGLAGES_BOSS_FINAL.degatPc, dureePluie)
+  }
+}
+
 /**
  * IA du boss final : arbre de comportement (src/server/ia/bosses/super_boss.ts, ADR-003).
  * Inactive tant que le boss n'est pas révélé (le pilote ignore les boss inactifs).
@@ -153,7 +167,7 @@ export function __auto(personnage: TJoueur | any, _input: any, aptitudes: any) {
   demarrerIA(personnage, arbreBossFinal, {
     periode: 500,
     aptitudes,
-    percevoir: () => ({ tronesRestants: personnage.rangees?.length ?? 0, dernierCoup: personnage.dernierCoup }),
+    percevoir: () => ({ tronesRestants: personnage.rangees?.length ?? 0, dernierCoup: personnage.dernierCoup, vie: personnage.vie }),
   });
 }
 

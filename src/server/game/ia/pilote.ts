@@ -29,7 +29,7 @@ export interface OptionsPilote {
   /** Appelé une fois quand le boss est vaincu, avant l'arrêt de l'IA. */
   surVaincu?: () => void;
   /** Données de perception propres à ce boss (ex. rangées de trône restantes, dernier coup reçu). */
-  percevoir?: () => Pick<PerceptionBoss, "tronesRestants" | "dernierCoup">;
+  percevoir?: () => Pick<PerceptionBoss, "tronesRestants" | "dernierCoup" | "vie">;
 }
 
 /**

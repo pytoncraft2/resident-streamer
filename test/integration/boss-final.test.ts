@@ -7,6 +7,7 @@
  * boss visible et vulnérable.
  * Phase « Envol » : le boss plane, pique sur le joueur (impact qui blesse), reste un moment au sol où
  * il peut être frappé, et contre-attaque quand on le frappe.
+ * Phase « Rage » (à mi-vie) : même combat, plus rapide, avec une pluie de PC autour du joueur.
  */
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
@@ -139,6 +140,39 @@ describe("boss final (intégration)", function () {
         await frapper();
         await attendre(() => (bossFinal(room)?.vie ?? vieBoss) < vieBoss, 2000, "boss blessé au sol : il est vulnérable");
         await attendre(() => (bossFinal(room)?.anim ?? "").startsWith("contreattaque"), 2000, "contre-attaque");
+      } finally {
+        await room.leave();
+      }
+    });
+  });
+
+  describe("phase « Rage »", function () {
+    it("à mi-vie, le boss fait pleuvoir des PC autour du joueur", async function () {
+      const room = await partieALEtage("fakhear");
+      const auSol = (): boolean => (room.state.presences?.get(room.sessionId)?.y ?? 0) > 0;
+      try {
+        // Frapper sans relâche ; un joueur tué réapparaît au rez-de-chaussée : il remonte.
+        const debut = Date.now();
+        while ((bossFinal(room)?.vie ?? 0) > 15) {
+          assert.ok(Date.now() - debut < 50000, `boss pas encore à mi-vie : ${bossFinal(room)?.vie}`);
+          if (auSol()) {
+            room.send("inputs", { ...AU_REPOS, up: true });
+            await pause(100);
+            room.send("inputs", AU_REPOS);
+            await pause(1500);
+          }
+          room.send("inputs", { ...AU_REPOS, a: true });
+          await pause(100);
+          room.send("inputs", AU_REPOS);
+          await pause(400);
+        }
+        if (auSol()) {
+          room.send("inputs", { ...AU_REPOS, up: true });
+          await pause(100);
+          room.send("inputs", AU_REPOS);
+        }
+        const pcs = (): number => Array.from(room.state.projectiles?.values() ?? []).filter((p) => p._frame === "pc").length;
+        await attendre(() => pcs() >= 4, 8000, "pluie de PC (4 PC à la fois)");
       } finally {
         await room.leave();
       }
