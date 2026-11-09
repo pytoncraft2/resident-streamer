@@ -81,6 +81,24 @@ describe("serveur (intégration)", function () {
     });
   });
 
+  describe("room acceuil (liste des salons de l'écran d'accueil)", function () {
+    it("annonce chaque salon avec son nom dans metadata.nomRoom, lu par Level.ts", async function () {
+      interface Annonce {
+        metadata?: { nomRoom?: string };
+      }
+      const accueil = await new Client(serveur.wsUrl).joinOrCreate("acceuil");
+      rooms.push(accueil);
+      const annonces: Annonce[] = [];
+      accueil.onMessage("rooms", () => undefined);
+      accueil.onMessage("-", () => undefined);
+      accueil.onMessage("+", (message: [string, Annonce]) => annonces.push(message[1]));
+
+      const salon = nouveauSalon();
+      await rejoindre("lobby", { salon });
+      await attendre(() => annonces.some((a) => a.metadata?.nomRoom === salon), 3000, `annonce du salon ${salon} avec nomRoom`);
+    });
+  });
+
   describe("room game_instance, partie à 4 joueurs", function () {
     const salon = nouveauSalon();
     const joueurs: Room<EtatJeu>[] = [];
