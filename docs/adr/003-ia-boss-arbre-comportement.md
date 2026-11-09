@@ -51,9 +51,19 @@ Vérifications :
 
 Hors périmètre du pilote : l'attaque au contact de `boss_1` (collisionneur dans `__StatsSupplementaire`), reprise telle quelle.
 
+## Deuxième boss : manette
+
+Arbre `src/server/ia/bosses/manette.ts` (pièce à l'étage) : se tourner vers la cible ; à moins de 400, frapper puis s'envoler vers le coin de son côté ; à moins de 900, lancer la manette (aptitude Z) ; sinon avancer ; hors de la pièce, voler jusqu'à sa place.
+
+Vocabulaire ajouté (`src/server/ia/boss.ts`) : `distance`, intentions `orienter`, `vitesseX`, `aptitude` (appel d'une aptitude du boss avec une entrée), `animation`, et `rejoindre` enrichi (`delai`, `courbe`, `animationAuDepart`, **`attendreLaFin`** : action longue, la décision suivante attend l'arrivée). Le pilote applique les intentions dans l'ordre et programme la décision suivante après une action longue.
+
+**Différences voulues** avec l'ancien `__auto` : il cessait définitivement de décider quand la distance valait exactement 400 ou 900, quand la cible avait la même abscisse, ou sans aucun joueur ; l'arbre continue de décider (400 → lancer, 900 → avancer).
+
+Vérifications : 3 tests de caractérisation (place, lancer orienté, envol puis retour) passant sur l'ancien et le nouveau code, échouant si le lancer ou l'envol est cassé ; tests unitaires de l'arbre.
+
 ## Suite
 
-1. `manette`, `troll`, `twitchman`, un boss à la fois, même méthode (caractérisation → arbre → recette).
+1. `troll`, `twitchman`, un boss à la fois, même méthode (caractérisation → arbre → recette) ; `manette` fait.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
 4. Boss final conçu avec l'auteur à partir des briques.
