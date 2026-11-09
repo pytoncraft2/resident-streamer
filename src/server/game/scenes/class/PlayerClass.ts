@@ -2,7 +2,7 @@ import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { DefautDirection } from "../Stats/Defaut"
-import { vieApresDommage } from "../../../domain/combat"
+import { Camp, peutBlesser, peutSoigner, vieApresDommage } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
 import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
@@ -136,10 +136,14 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
 
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
      this.zoneInteraction.action = (_e: any) => {
+       // Camp de la cible : pas de tir ami, soin réservé aux alliés (intentions §2).
+       const scene = this.scene as any
+       const campCible: Camp | undefined = scene.players.contains(_e) ? "players" : scene.enemies.contains(_e) ? "enemies" : undefined
+       const campVise = this.cible_courante as Camp
 
        if (this.blesse_opposant) {
          this.blesse_opposant = false
-         if (typeof _e.dommage === "function" && _e.sprite != this.sprite) {
+         if (typeof _e.dommage === "function" && _e.sprite != this.sprite && peutBlesser(campVise, campCible)) {
            if (_e.vie <= 0) {
              _e.vie = 10
              if (_e.cible_courante == "enemies") _e.son = 'game-over';
@@ -151,7 +155,7 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
          }
        }
 
-       if (this.soigne) {
+       if (this.soigne && peutSoigner(campVise, campCible)) {
          _e.vie += 0.01
        }
      };
