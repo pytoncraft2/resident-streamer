@@ -3,6 +3,10 @@
 import "@geckos.io/phaser-on-nodejs"
 import { Room, Client, Delayed } from "colyseus"
 import config from "./config"
+import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaserHeadless"
+
+// Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
+installerPolyfillsHeadless()
 
 import { RoomState, Player } from "./RoomState"
 
@@ -31,6 +35,7 @@ export default class GameRooms extends Room {
     this.donnes = {}
 
     this.Game = new Phaser.Game(config)
+    completerDemarrageHeadless(this.Game)
     this.scene = this.Game.scene.scenes[0]
     this.scene.setRoom(this)
 
