@@ -64,12 +64,13 @@ fakhear inflige 2 (5 coups par boss) : la valeur 10, qui tuait un boss d'un coup
 | boss_1 | arbre de comportement (`src/server/ia/bosses/boss_1.ts`) : poursuit le joueur le plus proche dans sa pièce, sinon rejoint sa place | ✅ pilote ADR-003 |
 | manette | arbre de comportement (`src/server/ia/bosses/manette.ts`) : à l'étage, se tourne vers le joueur, frappe puis s'envole s'il est proche, lance sa manette à distance moyenne, avance s'il est loin ; sinon vole jusqu'à sa place | ✅ ADR-003 |
 | troll | arbre de comportement (`src/server/ia/bosses/troll.ts`) : à l'étage à gauche, se tourne vers le joueur, charge s'il est proche, lance une oie à distance moyenne, une grenouille s'il est loin ; sinon rejoint sa place | ✅ ADR-003 |
-| twitchman | ancien `__auto` | 🚧 à migrer |
+| twitchman | arbre de comportement (`src/server/ia/bosses/twitchman.ts`) : au rez-de-chaussée à gauche, charge un joueur à sa hauteur, frappe puis s'envole s'il est proche, à distance moyenne charge (à gauche) ou s'élève et tire le laser (à droite), avance s'il est loin ; sinon vole jusqu'à sa place | ✅ ADR-003 |
 | boss final | inactif tant que les 4 boss ne sont pas vaincus ; aucun comportement | 🚧 à concevoir |
 
 ## Questions ouvertes
 
 - ❓ **Plafond du soin** : le soin (`+0,01` vie par image) n'a pas de limite au-delà de 10 ; non tranché.
+- ❓ **twitchman, distance moyenne** : il charge un joueur à sa gauche mais s'élève et tire au laser sur un joueur à sa droite (comportement de l'ancien code, conservé). Voulu ?
 - 🚧 **Boss final** : à concevoir avec les briques de l'ADR-003 (le code contient des « trônes » à détruire, `Aptitudes/super_boss.ts`, en partie commentés).
 
 ## Glossaire

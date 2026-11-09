@@ -69,9 +69,21 @@ Vocabulaire ajouté : intention **`charger`** (déplacement horizontal relatif, 
 
 Vérifications : 2 tests de caractérisation (place, tirs orientés vers le joueur entré dans la pièce) passant sur l'ancien et le nouveau code, échouant si les tirs sont cassés ; la charge, inatteignable de façon fiable en intégration (le joueur est repoussé avant), est couverte par les tests unitaires ; sonde identique à l'ancien code (positions et nombre de projectiles).
 
+## Quatrième boss : twitchman
+
+Arbre `src/server/ia/bosses/twitchman.ts` (pièce au rez-de-chaussée, à gauche) : se tourner vers la cible ; **exactement à sa hauteur** → charger (Z) et la percuter 500 ms ; à moins de 400 → frapper puis s'envoler vers le coin de son côté ; à moins de 900 → **à gauche** charger (Z), **à droite** s'élever puis tirer le laser (E) ; sinon avancer ; hors de la pièce, voler jusqu'à sa place.
+
+Vocabulaire ajouté : intention **`collisionTemporaire`** ; `rejoindre` accepte **`relatifX`** (décalage résolu au départ, comme l'ancien `x: "-=40"`) et **`ensuite`** (intentions appliquées à l'arrivée, ici le laser).
+
+L'**asymétrie** à distance moyenne (charge à gauche, laser à droite) vient de l'ancien code ; elle est reproduite à l'identique, en attente d'une décision de l'auteur. Mêmes différences voulues que pour les autres boss (plus de blocage aux distances limites).
+
+Vérifications : 3 tests de caractérisation (place, charge qui projette le joueur hors de la pièce, retour) passant sur l'ancien et le nouveau code, échouant si la charge est cassée ; laser, envols et asymétrie couverts par les tests unitaires ; sonde équivalente à l'ancien code.
+
+**Bilan** : les 4 boss principaux sont pilotés par des arbres (environ 330 lignes de `if` imbriqués remplacées par quatre déclarations et un pilote commun) ; plus aucun `reactiveBoucle`.
+
 ## Suite
 
-1. `twitchman`, même méthode (caractérisation → arbre → recette) ; `manette` et `troll` faits.
+1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
 4. Boss final conçu avec l'auteur à partir des briques.
