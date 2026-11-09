@@ -3,14 +3,18 @@
  * sur un port libre, pour les tests d'intégration.
  */
 import { ChildProcess, spawn } from "child_process";
+import { promises as fs } from "fs";
 import http from "http";
 import net from "net";
+import os from "os";
 import path from "path";
 
 export interface ServeurDeTest {
   readonly port: number;
   readonly httpUrl: string;
   readonly wsUrl: string;
+  /** Fichier du classement de ce serveur (dossier temporaire, supprimé à l'arrêt). */
+  readonly fichierScores: string;
   /** Sortie standard et d'erreur cumulées du serveur. */
   journal(): string;
   arreter(): Promise<void>;
@@ -60,12 +64,20 @@ export async function attendre(condition: () => boolean | Promise<boolean>, dela
   }
 }
 
-export async function demarrerServeur(): Promise<ServeurDeTest> {
+export interface OptionsServeur {
+  /** Classement écrit avant le démarrage ; sinon le serveur crée le sien depuis src/server/scores.json. */
+  classement?: unknown;
+}
+
+export async function demarrerServeur(options: OptionsServeur = {}): Promise<ServeurDeTest> {
   const port = await portLibre();
+  const dossier = await fs.mkdtemp(path.join(os.tmpdir(), "resident-streamer-test-"));
+  const fichierScores = path.join(dossier, "scores.json");
+  if (options.classement !== undefined) await fs.writeFile(fichierScores, JSON.stringify(options.classement));
   let sortie = "";
   const processus: ChildProcess = spawn(process.execPath, [POINT_ENTREE], {
     cwd: RACINE,
-    env: { ...process.env, PORT: String(port), HOST: "127.0.0.1" },
+    env: { ...process.env, PORT: String(port), HOST: "127.0.0.1", SCORES_FICHIER: fichierScores },
     stdio: ["ignore", "pipe", "pipe"],
   });
   processus.stdout?.on("data", (d: Buffer) => (sortie += d.toString()));
@@ -78,12 +90,16 @@ export async function demarrerServeur(): Promise<ServeurDeTest> {
     port,
     httpUrl,
     wsUrl: `ws://127.0.0.1:${port}`,
+    fichierScores,
     journal: () => sortie,
-    arreter: () =>
-      new Promise((resolve) => {
-        if (processus.exitCode !== null) return resolve();
-        processus.once("exit", () => resolve());
-        processus.kill("SIGTERM");
-      }),
+    arreter: async () => {
+      if (processus.exitCode === null) {
+        await new Promise<void>((resolve) => {
+          processus.once("exit", () => resolve());
+          processus.kill("SIGTERM");
+        });
+      }
+      await fs.rm(dossier, { recursive: true, force: true });
+    },
   };
 }

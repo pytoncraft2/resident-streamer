@@ -1,8 +1,7 @@
 /**
  * API du classement sur le serveur compilé : GET /scores ; plus de POST depuis la correction de B3
  * (le serveur enregistre lui-même les scores en fin de partie, voir src/server/game/finDePartie.ts).
- * Le serveur lit et écrit build/server/scores.json (copie produite par build:server) :
- * son contenu est restauré à la fin, src/server/scores.json n'est jamais touché.
+ * Chaque serveur de test a son propre fichier de scores (SCORES_FICHIER temporaire, anomalie B4).
  */
 import { strict as assert } from "assert";
 import { promises as fs } from "fs";
@@ -10,7 +9,7 @@ import http from "http";
 import path from "path";
 import { demarrerServeur, ServeurDeTest } from "../helpers/serveur";
 
-const FICHIER_SCORES = path.resolve(__dirname, "../../build/server/scores.json");
+const CLASSEMENT_VERSIONNE = path.resolve(__dirname, "../../src/server/scores.json");
 
 type Classement = Record<string, { joueurs: unknown; score: string }>;
 
@@ -28,38 +27,50 @@ function requete(url: string, methode: "GET" | "POST", corps?: unknown): Promise
   });
 }
 
+const CLASSEMENT: Classement = {
+  "EQUIPE B": { joueurs: ["b"], score: "00:02:00" },
+  "EQUIPE A": { joueurs: ["a"], score: "00:01:00" },
+};
+
 describe("API /scores (intégration)", function () {
-  let serveur: ServeurDeTest;
-  let sauvegarde: string;
+  describe("avec un classement existant", function () {
+    let serveur: ServeurDeTest;
 
-  const lireClassement = async (): Promise<Classement> => JSON.parse((await requete(`${serveur.httpUrl}/scores`, "GET")).texte) as Classement;
-  const ecrireFichier = (c: Classement): Promise<void> => fs.writeFile(FICHIER_SCORES, JSON.stringify(c));
-  before(async function () {
-    sauvegarde = await fs.readFile(FICHIER_SCORES, "utf8");
-    serveur = await demarrerServeur();
-  });
+    before(async function () {
+      serveur = await demarrerServeur({ classement: CLASSEMENT });
+    });
 
-  after(async function () {
-    await serveur?.arreter();
-    await fs.writeFile(FICHIER_SCORES, sauvegarde);
-  });
+    after(async function () {
+      await serveur?.arreter();
+    });
 
-  beforeEach(async function () {
-    await ecrireFichier({
-      "EQUIPE B": { joueurs: ["b"], score: "00:02:00" },
-      "EQUIPE A": { joueurs: ["a"], score: "00:01:00" },
+    it("GET renvoie le fichier tel quel", async function () {
+      const rep = await requete(`${serveur.httpUrl}/scores`, "GET");
+      assert.equal(rep.statut, 200);
+      assert.equal(rep.texte, await fs.readFile(serveur.fichierScores, "utf8"));
+      assert.deepEqual(Object.keys(JSON.parse(rep.texte) as Classement), ["EQUIPE B", "EQUIPE A"]);
+    });
+
+    it("POST /scores n'existe plus (404) et ne modifie pas le classement (anomalie B3)", async function () {
+      const avant = await fs.readFile(serveur.fichierScores, "utf8");
+      const rep = await requete(`${serveur.httpUrl}/scores`, "POST", { equipe: "TRICHE", joueur: ["x"], score: "00:00:01" });
+      assert.equal(rep.statut, 404);
+      await new Promise((r) => setTimeout(r, 200));
+      assert.equal(await fs.readFile(serveur.fichierScores, "utf8"), avant);
     });
   });
 
-  it("GET renvoie le fichier tel quel", async function () {
-    assert.deepEqual(Object.keys(await lireClassement()), ["EQUIPE B", "EQUIPE A"]);
-  });
-
-  it("POST /scores n'existe plus (404) et ne modifie pas le classement (anomalie B3)", async function () {
-    const avant = await fs.readFile(FICHIER_SCORES, "utf8");
-    const rep = await requete(`${serveur.httpUrl}/scores`, "POST", { equipe: "TRICHE", joueur: ["x"], score: "00:00:01" });
-    assert.equal(rep.statut, 404);
-    await new Promise((r) => setTimeout(r, 200));
-    assert.equal(await fs.readFile(FICHIER_SCORES, "utf8"), avant);
+  describe("au premier démarrage (anomalie B4)", function () {
+    it("crée le classement depuis src/server/scores.json, sans modifier ce dernier", async function () {
+      const versionne = await fs.readFile(CLASSEMENT_VERSIONNE, "utf8");
+      const serveur = await demarrerServeur();
+      try {
+        assert.equal(await fs.readFile(serveur.fichierScores, "utf8"), versionne);
+        assert.equal((await requete(`${serveur.httpUrl}/scores`, "GET")).texte, versionne);
+      } finally {
+        await serveur.arreter();
+      }
+      assert.equal(await fs.readFile(CLASSEMENT_VERSIONNE, "utf8"), versionne);
+    });
   });
 });

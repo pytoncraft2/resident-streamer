@@ -1,19 +1,19 @@
+// En premier : les variables de .env doivent exister avant que les modules importés les lisent (ex. SCORES_FICHIER).
+import "dotenv/config"
 import { WebSocketTransport } from "@colyseus/ws-transport"
 import { Server } from "colyseus"
-import dotenv from "dotenv"
 import express from "express"
 import http from "http"
 import path from "path"
 import { monitor } from "@colyseus/monitor";
-import * as fs from 'fs';
 
 var cors = require('cors')
 
+import { CLASSEMENT_INITIAL, scoresServeur } from "./stockage/fichierScores"
 import GameRooms from "./game/Hall_01"
 import LobbyRooms from "./game/lobby"
 import AcceuilRooms from "./game/acceuil"
 // Get environment variables
-dotenv.config()
 console.log("---------PORT---------");
 console.log(process.env.PORT);
 
@@ -37,10 +37,17 @@ app.get("/", (_request, response) => {
   response.sendFile(distPath + "/index.html")
 })
 
+// Classement hors du build (anomalie B4) : créé au premier démarrage depuis le classement versionné.
+if (scoresServeur.initialiser(CLASSEMENT_INITIAL)) console.info(`Classement initialisé : ${scoresServeur.chemin}`)
+
 app.get('/scores', (_request, res) => {
-  const donnes = fs.readFileSync(__dirname + '/scores.json');
-  res.setHeader('Content-Type', 'application/json');
-  res.end(donnes);
+  scoresServeur.lireBrut().then((donnes) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(donnes);
+  }).catch((erreur: unknown) => {
+    console.error("Lecture du classement impossible :", erreur);
+    res.status(500).end();
+  });
 })
 
 // Pas de POST /scores : le serveur enregistre lui-même les scores en fin de partie (anomalie B3).
