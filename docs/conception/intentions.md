@@ -51,7 +51,7 @@ Communes à tous : déplacements gauche/droite, **Espace** saut, **haut/bas** ch
 
 fakhear inflige 2 (5 coups par boss) : la valeur 10, qui tuait un boss d'un coup, était une valeur de test. La bombe inflige 0,3. Un joueur à 0 point de vie réapparaît avec 10 ; un boss à 0 est vaincu.
 
-**Camps** (`domain/combat.ts`, `peutBlesser` / `peutSoigner`) : une attaque au contact ne blesse que le groupe visé par l'attaquant (`cible_courante`) — **pas de tir ami** ; le soin d'osmosiscoop ne s'applique **qu'aux alliés**. Corrigé : avant, les joueurs se blessaient entre eux et le soin soignait aussi les boss. Un boss fusionné vise les boss, comme son joueur.
+**Camps** (`domain/combat.ts`, `peutBlesser` / `peutSoigner`) : une attaque au contact ne blesse que le groupe visé par l'attaquant (`cible_courante`) — **pas de tir ami** ; le soin d'osmosiscoop ne s'applique **qu'aux alliés**. Corrigé : avant, les joueurs se blessaient entre eux et le soin soignait aussi les boss. Un boss fusionné vise les boss, comme son joueur. Le **laser de twitchman** suit la même règle (camp de son propriétaire lu à chaque tir, `game/camps.ts`) : avant, il blessait tout corps physique, dont les autres boss et le trône du boss final, ou les joueurs quand un joueur le contrôlait.
 
 Le **soin est plafonné à 10** (vie maximale, `vieApresSoin`) ; une vie déjà au-dessus n'est pas réduite.
 
