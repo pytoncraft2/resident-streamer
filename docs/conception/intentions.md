@@ -30,8 +30,32 @@ Légende : ✅ conforme au code · ⚠️ écart avec le code · 🚧 inachevé 
 | Fin de partie | les 5 boss vaincus → `FIN_JEU`, score enregistré par le serveur (B3) | ✅ |
 | Score | temps du chronomètre serveur | ✅ |
 
+## 2. Personnages
+
+| Personnage | Rôle voulu | A | Z | E | TAB |
+|---|---|---|---|---|---|
+| fakhear | **corps à corps** | coup de poing (`cross`) | coup de pied | dash | fusion |
+| akhizonah | **bombes** | couteau | bombe | — | fusion |
+| huzounet | **distance** | boule chargée (maintenir puis relâcher) | kunaï | clonage, une fois par partie (voulu, B8) | fusion |
+| osmosiscoop | **soin** | soin (maintenu) | attaque | — | fusion |
+
+Communes à tous : déplacements gauche/droite, **Espace** saut, **haut/bas** changement d'étage. **R** n'est utilisée par aucun personnage. Un appui = une action pour la bombe, le kunaï et le dash (B7).
+
+### Statistiques dans le code
+
+| | fakhear | akhizonah | huzounet | osmosiscoop | boss |
+|---|---|---|---|---|---|
+| Vie | 10 | 10 | 10 | 10 | 10 (aucun boss ne la redéfinit) |
+| Dégâts au contact | 2 | 1 | 0,7 (kunaï 0,7, boule selon la charge) | 1 | — |
+| Vitesse | 600 | 600 | 600 | 600 | — |
+
+fakhear inflige 2 (5 coups par boss) : la valeur 10, qui tuait un boss d'un coup, était une valeur de test. La bombe inflige 0,3. Un joueur à 0 point de vie réapparaît avec 10 ; un boss à 0 est vaincu.
+
+**Camps** (`domain/combat.ts`, `peutBlesser` / `peutSoigner`) : une attaque au contact ne blesse que le groupe visé par l'attaquant (`cible_courante`) — **pas de tir ami** ; le soin d'osmosiscoop ne s'applique **qu'aux alliés**. Corrigé : avant, les joueurs se blessaient entre eux et le soin soignait aussi les boss. Un boss fusionné vise les boss, comme son joueur.
+
 ## Questions ouvertes
 
+- ❓ **Plafond du soin** : le soin (`+0,01` vie par image) n'a pas de limite au-delà de 10 ; non tranché.
 - 🚧 **Boss final** : comportement prévu (le code contient des « trônes » à détruire, `Aptitudes/super_boss.ts`, en partie commentés).
 
 ## Glossaire
