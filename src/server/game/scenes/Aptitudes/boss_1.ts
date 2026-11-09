@@ -1,4 +1,6 @@
 import TJoueur from "../types/Joueur";
+import { arbreBoss1 } from "../../../ia/bosses/boss_1";
+import { demarrerIA } from "../../ia/pilote";
 export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
   Aptitudes[boss_1.sprite].toucheDroite = function (_boss_1: any) {
     boss_1.setVelocityX(400)
@@ -56,44 +58,13 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
   }
 }
 
-export function __auto(boss_1: TJoueur | any, input: any, aptitudes: any) {
-
-  if ((boss_1.scene as any).room.boss[`${boss_1.sprite}`].vaincu) return boss_1.scene.physics.world.removeCollider(boss_1.auto_colision);
-  if (boss_1 && boss_1.body)
-  {
-    if (boss_1.scene.players.getLength() > 0 && boss_1)
-    {
-      let joueuProche = boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()])
-      if (joueuProche)
-      {
-        if (joueuProche.x < 5627 && joueuProche.x > 3802 && joueuProche.y > -249)
-        {
-          boss_1.scene.physics.moveToObject(boss_1, joueuProche, 800);
-          boss_1.play('deplacement');
-        }
-        else
-        {
-          if (boss_1.x != 5010) {
-            boss_1.scene.tweens.add({
-              targets: boss_1,
-              x: 5010,
-              y: 755,
-              duration: 500,
-            });
-          }
-        }
-      }
-    }
-    reactiveBoucle(boss_1, aptitudes)
-  }
-  else reactiveBoucle(boss_1, aptitudes)
-}
-
-function reactiveBoucle(boss_1: TJoueur, aptitudes: any) {
-  if (boss_1.scene && boss_1.scene.time)
-  {
-      boss_1.scene.time.delayedCall(500, () => {
-        __auto(boss_1, {}, aptitudes)
-      }, null, this);
-  }
+/**
+ * IA de boss_1 : arbre de comportement (src/server/ia/bosses/boss_1.ts) piloté toutes les 500 ms
+ * (ADR-003). Une fois vaincu, le boss ne réagit plus au contact des joueurs.
+ */
+export function __auto(boss_1: TJoueur | any, _input: any, _aptitudes: any) {
+  demarrerIA(boss_1, arbreBoss1, {
+    periode: 500,
+    surVaincu: () => boss_1.scene.physics.world.removeCollider(boss_1.auto_colision),
+  });
 }
