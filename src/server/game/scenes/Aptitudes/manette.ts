@@ -1,6 +1,8 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
 import TJoueur from "../types/Joueur";
+import { arbreManette } from "../../../ia/bosses/manette";
+import { demarrerIA } from "../../ia/pilote";
 
 export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
@@ -101,106 +103,9 @@ export function __animationLancerManette(manette: TJoueur) {
 /**
  * @see {@link game/scenes/Aptitudes/base} pour un example
  */
- export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
-   if (manette.scene)
-   {
-     if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
-     const positionJoueurProche: any = manette.scene.physics.closest(manette, [...(manette.scene as any).players.getChildren()])
-     if (positionJoueurProche)
-     {
-
-        if (positionJoueurProche.x < 5627 && positionJoueurProche.x > 3802 && positionJoueurProche.y < -249) {
-
-       var dist = Phaser.Math.Distance.BetweenPoints(manette, positionJoueurProche);
-
-       if (positionJoueurProche.x < manette.x)
-       {
-         manette.setFlipX(true)
-         if (dist > 400 && dist < 900)
-         {
-           if (manette.body) lancer__Z(manette, {z: true})
-           reactiveBoucle(manette, aptitudes)
-         } else if (dist > 900)
-         {
-           if (manette.body)
-           {
-             manette.body.setVelocityX(-340)
-             aptitudes.toucheGauche(manette, {left_debut: true})
-           }
-
-           reactiveBoucle(manette, aptitudes)
-         }
-         else if (dist < 400)
-         {
-           manette.play("manette_punch")
-           manette.scene.tweens.add({
-             delay: 500,
-             onStart: () => manette.play("manette_vole"),
-             targets: manette,
-             x: 3970,
-             y: -950,
-             duration: 1000,
-             ease: 'Sine.inOut',
-             onComplete: () => reactiveBoucle(manette, aptitudes)
-           });
-         }
-       }
-       else if (positionJoueurProche.x > manette.x)
-       {
-         manette.setFlipX(false)
-         if (dist > 400 && dist < 900)
-         {
-           if (manette.body) lancer__Z(manette, {z: true})
-           reactiveBoucle(manette, aptitudes)
-         }
-         else if (dist > 900)
-         {
-           if (manette.body)
-           {
-             manette.body.setVelocityX(340)
-             aptitudes.toucheDroite(manette, {right_debut: true})
-           }
-           reactiveBoucle(manette, aptitudes)
-         }
-         else if (dist < 400)
-         {
-           manette.play("manette_punch")
-           manette.scene.tweens.add({
-             delay: 500,
-             onStart: () => manette.play("manette_vole"),
-             targets: manette,
-             x: 5337,
-             y: -950,
-             duration: 1000,
-             ease: 'Sine.inOut',
-             onComplete: () => reactiveBoucle(manette, aptitudes)
-           });
-         }
-       }
-     } else {
-
-       if (manette.x != 4800) {
-         manette.scene.tweens.add({
-           targets: manette,
-           x: 4800,
-           y: -249,
-           onStart: () => manette.play("manette_vole"),
-           onComplete: () => {
-             reactiveBoucle(manette, aptitudes)
-           },
-           duration: 900,
-         });
-       }
-       else reactiveBoucle(manette, aptitudes)
-     }
-    } 
-   }
- }
-
-function reactiveBoucle(manette: TJoueur, aptitudes: any) {
-  if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
-  manette.scene.time.delayedCall(500, () => {
-    if ((manette.scene as any).room.boss[`${manette.sprite}`].vaincu) return;
-    __auto(manette, {}, aptitudes)
-  }, null, this);
+/**
+ * IA de manette : arbre de comportement (src/server/ia/bosses/manette.ts) piloté toutes les 500 ms (ADR-003).
+ */
+export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
+  demarrerIA(manette as any, arbreManette, { periode: 500, aptitudes });
 }

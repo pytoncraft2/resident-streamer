@@ -26,6 +26,11 @@ export function contient(zone: Zone, point: Point): boolean {
   );
 }
 
+/** Distance euclidienne entre deux points. */
+export function distance(a: Point, b: Point): number {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
 /** Ce que le boss perçoit à chaque tick. */
 export interface PerceptionBoss {
   readonly position: Point;
@@ -33,12 +38,31 @@ export interface PerceptionBoss {
   readonly cible?: { readonly position: Point };
 }
 
-/** Ce que le boss veut faire ; appliqué par l'exécuteur Phaser. */
+/** Ce que le boss veut faire ; appliqué dans l'ordre par l'exécuteur Phaser. */
 export type Intention =
   /** Foncer vers la cible à cette vitesse, en jouant cette animation. */
   | { readonly type: "poursuivre"; readonly vitesse: number; readonly animation: string }
-  /** Rejoindre ce point en `duree` ms. */
-  | { readonly type: "rejoindre"; readonly position: Point; readonly duree: number };
+  /**
+   * Rejoindre ce point en `duree` ms, après `delai` ms, en jouant `animationAuDepart` au départ.
+   * `attendreLaFin` : aucune nouvelle décision avant l'arrivée (action longue, comme un vol).
+   */
+  | {
+      readonly type: "rejoindre";
+      readonly position: Point;
+      readonly duree: number;
+      readonly delai?: number;
+      readonly animationAuDepart?: string;
+      readonly courbe?: string;
+      readonly attendreLaFin?: boolean;
+    }
+  /** Regarder vers la gauche (`true`) ou la droite. */
+  | { readonly type: "orienter"; readonly versLaGauche: boolean }
+  /** Fixer la vitesse horizontale. */
+  | { readonly type: "vitesseX"; readonly valeur: number }
+  /** Utiliser une aptitude du boss (clé dans `Aptitudes[boss]`, ex. « Z », « toucheGauche ») avec cette entrée. */
+  | { readonly type: "aptitude"; readonly nom: string; readonly entree: Readonly<Record<string, boolean>> }
+  /** Jouer une animation. */
+  | { readonly type: "animation"; readonly nom: string };
 
 export interface ContexteBoss {
   readonly perception: PerceptionBoss;

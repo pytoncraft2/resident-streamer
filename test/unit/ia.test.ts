@@ -1,7 +1,8 @@
 import { strict as assert } from "assert";
 import { action, condition, selecteur, sequence } from "../../src/server/ia/arbre";
-import { contient, decider, PerceptionBoss } from "../../src/server/ia/boss";
+import { contient, decider, distance, PerceptionBoss } from "../../src/server/ia/boss";
 import { arbreBoss1, PLACE_BOSS_1 } from "../../src/server/ia/bosses/boss_1";
+import { arbreManette, COINS_MANETTE, PLACE_MANETTE } from "../../src/server/ia/bosses/manette";
 
 describe("ia/arbre · briques", function () {
   const trace: string[] = [];
@@ -73,5 +74,68 @@ describe("ia/bosses · boss_1 (comportement repris de l'ancien __auto)", functio
 
   it("aucun joueur → aucune intention", function () {
     assert.deepEqual(decider(arbreBoss1, percevoir({ x: 4600, y: 756 })), []);
+  });
+});
+
+describe("ia/boss · distance", function () {
+  it("distance euclidienne", function () {
+    assert.equal(distance({ x: 0, y: 0 }, { x: 3, y: 4 }), 5);
+  });
+});
+
+describe("ia/bosses · manette (comportement repris de l'ancien __auto)", function () {
+  const ETAGE = -300;
+  const percevoir = (boss: { x: number; y: number }, cible?: { x: number; y: number }): PerceptionBoss => ({
+    position: boss,
+    cible: cible ? { position: cible } : undefined,
+  });
+  const types = (p: PerceptionBoss): string[] => decider(arbreManette, p).map((i) => i.type);
+
+  it("cible proche (< 400) à gauche → se tourne, frappe puis s'envole vers le coin gauche (action longue)", function () {
+    const intentions = decider(arbreManette, percevoir({ x: 4800, y: ETAGE }, { x: 4500, y: ETAGE }));
+    assert.deepEqual(intentions[0], { type: "orienter", versLaGauche: true });
+    assert.deepEqual(intentions[1], { type: "animation", nom: "manette_punch" });
+    assert.deepEqual(intentions[2], {
+      type: "rejoindre", position: COINS_MANETTE.gauche, delai: 500, duree: 1000, courbe: "Sine.inOut", animationAuDepart: "manette_vole", attendreLaFin: true,
+    });
+  });
+
+  it("cible proche à droite → s'envole vers le coin droit", function () {
+    const vol = decider(arbreManette, percevoir({ x: 4800, y: ETAGE }, { x: 5100, y: ETAGE })).find((i) => i.type === "rejoindre");
+    assert.deepEqual(vol && "position" in vol ? vol.position : undefined, COINS_MANETTE.droite);
+  });
+
+  it("cible à distance moyenne (400 à 900) → se tourne et lance (Z)", function () {
+    assert.deepEqual(decider(arbreManette, percevoir({ x: 4800, y: ETAGE }, { x: 4200, y: ETAGE })), [
+      { type: "orienter", versLaGauche: true },
+      { type: "aptitude", nom: "Z", entree: { z: true } },
+    ]);
+  });
+
+  it("cible lointaine (> 900) à droite → avance vers elle", function () {
+    assert.deepEqual(decider(arbreManette, percevoir({ x: 3900, y: ETAGE }, { x: 5500, y: ETAGE })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "vitesseX", valeur: 340 },
+      { type: "aptitude", nom: "toucheDroite", entree: { right_debut: true } },
+    ]);
+  });
+
+  it("distances limites : 400 → lance, 900 → avance (l'ancien code cessait de décider)", function () {
+    assert.deepEqual(types(percevoir({ x: 4800, y: ETAGE }, { x: 4400, y: ETAGE })), ["orienter", "aptitude"]);
+    assert.deepEqual(types(percevoir({ x: 4800, y: ETAGE }, { x: 3900, y: ETAGE })), ["orienter", "vitesseX", "aptitude"]);
+  });
+
+  it("cible au rez-de-chaussée (y > -249) → vole jusqu'à sa place (action longue)", function () {
+    assert.deepEqual(decider(arbreManette, percevoir({ x: 3970, y: ETAGE }, { x: 4500, y: 756 })), [
+      { type: "rejoindre", position: PLACE_MANETTE, duree: 900, animationAuDepart: "manette_vole", attendreLaFin: true },
+    ]);
+  });
+
+  it("déjà à sa place (x = 4800) et cible hors de la pièce → rien", function () {
+    assert.deepEqual(decider(arbreManette, percevoir(PLACE_MANETTE, { x: 2830, y: 756 })), []);
+  });
+
+  it("aucun joueur → aucune intention", function () {
+    assert.deepEqual(decider(arbreManette, percevoir({ x: 4000, y: ETAGE })), []);
   });
 });
