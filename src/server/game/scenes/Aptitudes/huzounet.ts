@@ -73,7 +73,7 @@ export function kunai__Z(huzounet: TJoueur) {
       .setData({ ClientId: huzounet.ClientID, degat: huzounet.degat}))
       .setFlipX(huzounet.flipX)
       huzounet.scene.physics.add.existing(kunai);
-      huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai, _ennemie: any) {
+      huzounet.scene.physics.add.overlap(kunai, (huzounet.scene as any).enemies, function(_kunai: Phaser.Types.Physics.Arcade.GameObjectWithBody, _ennemie: any) {
         _ennemie.dommage(_kunai.getData('degat'))
         _kunai.setData('degat', 0)
       }, undefined, huzounet);

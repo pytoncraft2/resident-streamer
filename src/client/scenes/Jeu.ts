@@ -654,7 +654,7 @@ export default class Jeu extends Phaser.Scene {
 		this.kunaisRef = {}
 		this.bombesRef = {}
 
-		this.keyboard = this.input.keyboard.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
+		this.keyboard = this.input.keyboard!.addKeys("up,right,left,down,space,A,Z,E,R,TAB")
 
 		this.barreHautContainer.setScrollFactor(0)
 		// this.bg_ecran_fin.setDepth(3)
@@ -819,7 +819,7 @@ export default class Jeu extends Phaser.Scene {
 		this.cameras.main.centerOn(2800, 390)
 		this.interface_joueur.setScrollFactor(0)
 
-		var keyObj = this.input.keyboard.addKey('T');  // Get key object
+		var keyObj = this.input.keyboard!.addKey('T');  // Get key object
 		keyObj.on('down', function (this: any) {
 			this.cameras.main.setAlpha(0.1)
 			this.minimap.setVisible(true)
@@ -1133,18 +1133,16 @@ export default class Jeu extends Phaser.Scene {
 		ellipse_5_1.setPosition(this.playersRef[`${id}`].getBottomCenter().x, this.playersRef[`${id}`].getBottomCenter().y + 25)
 		this.playersRef[id].ellipse_5_1 = ellipse_5_1;
 
-		var particles = this.add.particles('flares');
-
-		this.emitter = particles.createEmitter({
+		// Phaser ≥ 3.60 : add.particles(x, y, texture, config) renvoie directement l'émetteur.
+		var particles = this.add.particles(this.playersRef[id].getBottomCenter().x, this.playersRef[id].getBottomCenter().y + 25, 'flares', {
 			frame: 'blue',
-			x: this.playersRef[id].getBottomCenter().x,
-			y: this.playersRef[id].getBottomCenter().y + 25,
 			speedY: { min: -200, max: -400 },
 			lifespan: 2000,
 			scale: { start: 0.4, end: 0 },
 			quantity: 2,
 			blendMode: 'ADD',
 		});
+		this.emitter = particles;
 
 
 		this.time.delayedCall(7000, () => {

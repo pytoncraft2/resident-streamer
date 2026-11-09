@@ -110,7 +110,7 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 
 - **4a — TypeScript 6** sur Phaser 3.55 (`tsconfig` ci-dessus), seul. → fait sur `chore/typescript-6` : TS 6.0.3, **typedoc 0.22 → 0.28** (0.22 plante sous TS 6, 0.28 refuse TS 4.7 : changement indissociable), 4 `tsconfig` ajustés (dont `src/client/tsconfig.json`, utilisé par `npm run doc:client`). JavaScript serveur émis équivalent (seul le placement des `exports` et le helper `__importStar` changent ; ordre des exports d'aptitudes identique).
 - **4b — Corrections compatibles** client (`getChildren`, `Rectangle.Contains`, `tweens.add`, typage), seules. → fait sur `refactor/compat-phaser4-client` : `Jeu.ts` (`getChildren`, `Rectangle.Contains`), `Level.ts` (`tweens.add`), `panel.ts` (`make.graphics({}, true)`). Les `!` sur `input.keyboard` sont reportés à 4c (inutiles sous les types de Phaser 3). Vérifié manuellement par l'utilisateur dans le navigateur (2026-11-09) : fonctionne.
-- **4c — Bascule Phaser 4.2.1** client + serveur : particules, masque, `tweens.chain`, `persist: true`, typage serveur.
+- **4c — Bascule Phaser 4.2.1** client + serveur : particules, masque, `tweens.chain`, `persist: true`, typage serveur. → fait sur `chore/phaser-4` : typecheck 0 erreur (4 `tsconfig`), build OK, 34/34 (×2), partie longue sans erreur autre que B1, console navigateur sans erreur sur l'accueil. `manette.ts` réécrit proprement (indentation, variable inutilisée). Recette navigateur manuelle par l'utilisateur (2026-11-09) : fonctionne.
 - **4d — Recette navigateur multijoueur complète** (`/recette-multijoueur`), dont l'écran de chargement, les particules d'apparition et le défilement des scores.
 
 ## Conséquences

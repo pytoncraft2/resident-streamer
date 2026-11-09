@@ -37,6 +37,8 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
       onComplete: () => (fakhear.setVelocityX(0), fakhear.play('idle_attack')),
       repeat: 0,
       yoyo: false,
+      // Phaser ≥ 3.60 : sans persist, le tween est détruit à la fin et restart() échoue.
+      persist: true,
     })
   } else if (!fakhear.animation_dash.isPlaying()) {
     fakhear.son = 'punch_fast'

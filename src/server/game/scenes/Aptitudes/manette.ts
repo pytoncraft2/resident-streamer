@@ -28,7 +28,7 @@ export function lancer__Z(manette: TJoueur, _input: any) {
     .setData({ ClientId: manette.ClientID, degat: manette.degat}))
     .setFlipX(manette.flipX)
     manette.scene.physics.add.existing(obj_manette);
-    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function(_obj_manette, _ennemie: any) {
+    manette.scene.physics.add.overlap(obj_manette, (manette.scene as any)[`${manette.cible_courante}`], function(_obj_manette: Phaser.Types.Physics.Arcade.GameObjectWithBody, _ennemie: any) {
       if (_ennemie.sprite !== manette.sprite) {
         _ennemie.dommage(_obj_manette.getData('degat'))
         _obj_manette.setData('degat', 0)
@@ -41,60 +41,61 @@ export function lancer__Z(manette: TJoueur, _input: any) {
 
     manette.scene.time.delayedCall(200, () => {
 
-        var timeline = manette.scene.tweens.createTimeline();
-
-        timeline.add({
-          targets: manette.obj_manette,
-          x: manette.flipX ? manette.x -1000 : manette.x + 1000,
-          ease: 'Power2',
-          duration: 500,
-          onComplete: function(_tw, tg: any) {
-            tg[0].setData('degat', 1)
-          }
-        });
-
-        timeline.add({
-          targets: manette.obj_manette,
-          props: {
-            x: { value: function () { return manette.x; }, ease: 'Power1' },
-            y: { value: function () { return manette.y; }, ease: 'Power3' }
-          },
-          ease: 'Power2',
-          duration: 800
+        // Phaser ≥ 3.60 : tweens.createTimeline a disparu, tweens.chain enchaîne les tweens.
+        var timeline = manette.scene.tweens.chain({
+          tweens: [
+            {
+              targets: manette.obj_manette,
+              x: manette.flipX ? manette.x -1000 : manette.x + 1000,
+              ease: 'Power2',
+              duration: 500,
+              onComplete: function(_tw, tg: any) {
+                tg[0].setData('degat', 1)
+              }
+            },
+            {
+              targets: manette.obj_manette,
+              props: {
+                x: { value: function () { return manette.x; }, ease: 'Power1' },
+                y: { value: function () { return manette.y; }, ease: 'Power3' }
+              },
+              ease: 'Power2',
+              duration: 800
+            }
+          ]
         });
 
         //@ts-ignore
         manette.obj_manette.tweenManette = timeline;
-        timeline.play()
       manette.obj_manette = undefined;
     }, null, manette);
   }
 }
 
 export function __animationLancerManette(manette: TJoueur) {
-  var timeline = manette.scene.tweens.createTimeline();
-
-  timeline.add({
-    targets: manette.groupeManettes.getChildren()[0],
-    x: manette.flipX ? manette.x -1000 : manette.x + 1000,
-    ease: 'Power2',
-    duration: 500,
-    onComplete: function(_tw, _tg: any) {
-      // tg[0].setData('degat', 1)
-    }
+  // Phaser ≥ 3.60 : tweens.createTimeline a disparu, tweens.chain enchaîne les tweens.
+  manette.scene.tweens.chain({
+    tweens: [
+      {
+        targets: manette.groupeManettes.getChildren()[0],
+        x: manette.flipX ? manette.x -1000 : manette.x + 1000,
+        ease: 'Power2',
+        duration: 500,
+        onComplete: function(_tw, _tg: any) {
+          // tg[0].setData('degat', 1)
+        }
+      },
+      {
+        targets: manette.groupeManettes.getChildren()[0],
+        props: {
+          x: { value: function () { return manette.x; }, ease: 'Power1' },
+          y: { value: function () { return manette.y; }, ease: 'Power3' }
+        },
+        ease: 'Power2',
+        duration: 800
+      }
+    ]
   });
-
-  timeline.add({
-    targets: manette.groupeManettes.getChildren()[0],
-    props: {
-      x: { value: function () { return manette.x; }, ease: 'Power1' },
-      y: { value: function () { return manette.y; }, ease: 'Power3' }
-    },
-    ease: 'Power2',
-    duration: 800
-  });
-
-  timeline.play()
 }
 
 /**

@@ -108,7 +108,10 @@ export default class Scores extends Phaser.Scene {
 			//464
 			this.container_scores.add(text)
 			this.container_scores.setPosition(960, 464)
-			text.setMask(mask);
+			// Phaser 4 : setMask est ignoré en WebGL, le masque passe par un filtre ; setMask reste valable en Canvas.
+			text.enableFilters();
+			if (text.filters) text.filters.external.addMask(graphics, false, this.cameras.main);
+			else text.setMask(mask);
 
 			zone.on('pointermove', function (pointer: any) {
 				if (pointer.isDown)

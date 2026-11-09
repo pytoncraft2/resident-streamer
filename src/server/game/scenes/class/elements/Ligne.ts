@@ -39,7 +39,8 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
     this.closest = closest;
     this.personnage = personnage
     this.scene.time.delayedCall(10000, () => {
-      this.defaultFillColor = 0x03bb03
+      // Propriété modifiable à l'exécution (Phaser 3 et 4) ; seuls les types de Phaser 4 la marquent readonly.
+      (this as { defaultFillColor: number }).defaultFillColor = 0x03bb03
     }, null, this);
 
     // this.scene.tweens.add({

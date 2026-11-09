@@ -3,7 +3,7 @@
 ## Mission et état actuel
 Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueurs. L'équipe affronte les boss de plusieurs pièces ; son temps sert au classement. Les quatre personnages jouables ont des aptitudes distinctes.
 
-**État constaté sur `main` (audit du 08/11/2026) :** TypeScript, Phaser 3.55.2, Colyseus 0.14, Vite 2.7, ancien Phaser Editor 2D. Environnement de référence : **Node 24** (`.nvmrc`, `engines`), depuis le passage à `@geckos.io/phaser-on-nodejs` 1.3.1 (`canvas` 3) — ADR-001 étape 1. Node 16 n'est plus supporté (`canvas` 3 exige Node ≥ 18).
+**État sur `main` (mis à jour le 09/11/2026) :** TypeScript 6, **Phaser 4.2.1** (client et serveur, ADR-001), Colyseus 0.14, Vite 2.7, scènes générées par Phaser Editor 2D v3. Environnement de référence : **Node 24** (`.nvmrc`, `engines`), depuis le passage à `@geckos.io/phaser-on-nodejs` 1.3.1 (`canvas` 3) — ADR-001 étape 1. Node 16 n'est plus supporté (`canvas` 3 exige Node ≥ 18).
 
 **Objectif :** retrouver une base exécutable et testée, migrer prudemment vers Phaser 4, corriger les régressions, puis moderniser progressivement l'architecture du gameplay, de l'IA et du réseau. Ne pas confondre objectif futur et architecture déjà en place.
 
