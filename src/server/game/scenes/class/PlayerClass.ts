@@ -136,6 +136,8 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
 
      //ACTIVER GRACE À LA FONCTION OVERLAP DE PHASER #hall.ts
      this.zoneInteraction.action = (_e: any) => {
+       // Entité détruite (joueur parti, boss retiré après une fusion) : sa zone ne doit plus agir.
+       if (!this.scene) return
        // Camp de la cible : pas de tir ami, soin réservé aux alliés (intentions §2).
        const scene = this.scene as any
        const campCible: Camp | undefined = scene.players.contains(_e) ? "players" : scene.enemies.contains(_e) ? "enemies" : undefined
@@ -160,6 +162,8 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
        }
      };
      this.scene.physics.add.existing(this.zoneInteraction);
+     // La zone d'attaque est un objet séparé : la détruire avec l'entité, sinon elle reste dans le monde physique.
+     this.once(Phaser.GameObjects.Events.DESTROY, () => this.zoneInteraction.destroy());
      this.zoneInteraction.body.enable = false;
      if (this.scene) (this.scene as any).playersAttackZone.add(this.zoneInteraction);
 

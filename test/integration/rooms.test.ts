@@ -141,6 +141,24 @@ describe("serveur (intégration)", function () {
       await attendre(() => joueurs[0].state.presences?.get(partant.sessionId) === undefined, 5000, "retrait de la présence");
     });
 
+    it("la zone d'attaque d'un joueur parti ne provoque pas d'erreur serveur", async function () {
+      // Un joueur parti est détruit ; sa zone d'attaque ne doit plus agir quand un autre joueur la traverse.
+      const salonZone = nouveauSalon();
+      const partant = await rejoindre<EtatJeu>("game_instance", { salon: salonZone, sprite: "fakhear" });
+      const restant = await rejoindre<EtatJeu>("game_instance", { salon: salonZone, sprite: "osmosiscoop" });
+      await attendre(() => restant.state.presences?.get(restant.sessionId) !== undefined, 5000, "présence du joueur restant");
+      await new Promise((r) => setTimeout(r, 1500));
+      await quitter(partant);
+      await new Promise((r) => setTimeout(r, 1000));
+      restant.send("inputs", { ...AU_REPOS, right: true });
+      await new Promise((r) => setTimeout(r, 1500));
+      restant.send("inputs", { ...AU_REPOS, left: true });
+      await new Promise((r) => setTimeout(r, 1500));
+      restant.send("inputs", AU_REPOS);
+      await quitter(restant);
+      assert.doesNotMatch(serveur.journal(), /TypeError/, "erreur dans le journal du serveur");
+    });
+
     it("le serveur reste disponible après la destruction de la room", async function () {
       for (const j of joueurs.slice(0, 3)) await quitter(j);
       // onDispose lève actuellement une exception (anomalie B1) sans arrêter le processus.
