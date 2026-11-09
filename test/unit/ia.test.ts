@@ -4,6 +4,7 @@ import { contient, decider, distance, PerceptionBoss } from "../../src/server/ia
 import { arbreBoss1, PLACE_BOSS_1 } from "../../src/server/ia/bosses/boss_1";
 import { arbreManette, COINS_MANETTE, PLACE_MANETTE } from "../../src/server/ia/bosses/manette";
 import { arbreTroll, PLACE_TROLL } from "../../src/server/ia/bosses/troll";
+import { arbreTwitchman, COINS_TWITCHMAN, PLACE_TWITCHMAN } from "../../src/server/ia/bosses/twitchman";
 
 describe("ia/arbre · briques", function () {
   const trace: string[] = [];
@@ -179,5 +180,60 @@ describe("ia/bosses · troll (comportement repris de l'ancien __auto)", function
     assert.deepEqual(decider(arbreTroll, percevoir({ x: 1200, y: ETAGE }, { x: 1881, y: ETAGE })), retour);
     assert.deepEqual(decider(arbreTroll, percevoir({ x: 1200, y: ETAGE }, { x: 1000, y: 756 })), retour);
     assert.deepEqual(decider(arbreTroll, percevoir(PLACE_TROLL, { x: 1881, y: ETAGE })), []);
+  });
+});
+
+describe("ia/bosses · twitchman (comportement repris de l'ancien __auto)", function () {
+  const SOL = 756;
+  const percevoir = (boss: { x: number; y: number }, cible?: { x: number; y: number }): PerceptionBoss => ({
+    position: boss,
+    cible: cible ? { position: cible } : undefined,
+  });
+
+  it("cible exactement à sa hauteur dans sa pièce → se tourne, charge (Z) et la percute 500 ms", function () {
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 510, y: SOL }, { x: 1640, y: SOL })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "aptitude", nom: "Z", entree: { z: true } },
+      { type: "collisionTemporaire", duree: 500 },
+    ]);
+  });
+
+  it("cible proche (< 400), hauteur différente, à gauche → frappe puis s'envole vers (0, 0)", function () {
+    const intentions = decider(arbreTwitchman, percevoir({ x: 900, y: SOL }, { x: 700, y: SOL - 100 }));
+    assert.deepEqual(intentions.slice(0, 2), [{ type: "orienter", versLaGauche: true }, { type: "animation", nom: "twitchman_punch" }]);
+    const vol = intentions[2];
+    assert.deepEqual(vol && "position" in vol ? vol.position : undefined, COINS_TWITCHMAN.gauche);
+  });
+
+  it("distance moyenne, cible à gauche → charge (Z)", function () {
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 1600, y: SOL }, { x: 1000, y: SOL - 100 })), [
+      { type: "orienter", versLaGauche: true },
+      { type: "aptitude", nom: "Z", entree: { z: true } },
+    ]);
+  });
+
+  it("distance moyenne, cible à droite → s'élève (40 px à gauche, y = 0) puis tire le laser (E)", function () {
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 500, y: SOL }, { x: 1100, y: SOL - 100 })), [
+      { type: "orienter", versLaGauche: false },
+      {
+        type: "rejoindre", position: { x: -40, y: 0 }, relatifX: true, duree: 1000, courbe: "Sine.inOut",
+        animationAuDepart: "twitchman_vole", attendreLaFin: true, ensuite: [{ type: "aptitude", nom: "E", entree: { e: true } }],
+      },
+    ]);
+  });
+
+  it("cible lointaine (> 900), hauteur différente → avance vers elle", function () {
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 100, y: SOL }, { x: 1700, y: SOL - 100 })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "vitesseX", valeur: 340 },
+      { type: "aptitude", nom: "toucheDroite", entree: { right_debut: true } },
+    ]);
+  });
+
+  it("cible hors de la pièce → vole jusqu'à sa place (427, 755), sauf s'il y est", function () {
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 1500, y: SOL }, { x: 5635, y: SOL })), [
+      { type: "rejoindre", position: PLACE_TWITCHMAN, duree: 900, animationAuDepart: "twitchman_vole", attendreLaFin: true },
+    ]);
+    assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 427, y: SOL }, { x: 5635, y: SOL })), []);
   });
 });

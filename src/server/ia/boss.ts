@@ -45,6 +45,8 @@ export type Intention =
   /**
    * Rejoindre ce point en `duree` ms, après `delai` ms, en jouant `animationAuDepart` au départ.
    * `attendreLaFin` : aucune nouvelle décision avant l'arrivée (action longue, comme un vol).
+   * `relatifX` : `position.x` est un décalage depuis la position au départ (comme `x: "-=40"`).
+   * `ensuite` : intentions appliquées à l'arrivée (ex. tirer après s'être élevé).
    */
   | {
       readonly type: "rejoindre";
@@ -54,6 +56,8 @@ export type Intention =
       readonly animationAuDepart?: string;
       readonly courbe?: string;
       readonly attendreLaFin?: boolean;
+      readonly relatifX?: boolean;
+      readonly ensuite?: readonly Intention[];
     }
   /**
    * Charger horizontalement de `decalageX` px (relatif, mesuré au départ), après `delai` ms, en `duree` ms ;
@@ -67,6 +71,8 @@ export type Intention =
       readonly animationAuDepart?: string;
       readonly animationALaFin?: string;
     }
+  /** Entrer en collision avec la cible pendant `duree` ms (ex. pour la projeter pendant une charge). */
+  | { readonly type: "collisionTemporaire"; readonly duree: number }
   /** Regarder vers la gauche (`true`) ou la droite. */
   | { readonly type: "orienter"; readonly versLaGauche: boolean }
   /** Fixer la vitesse horizontale. */

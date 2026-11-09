@@ -48,18 +48,31 @@ function appliquer(
       boss.play(intention.animation);
       return false;
     case "rejoindre": {
-      const { animationAuDepart, attendreLaFin } = intention;
+      const { animationAuDepart, attendreLaFin, ensuite, position, relatifX } = intention;
+      const aLArrivee = ensuite?.length || attendreLaFin
+        ? () => {
+            for (const suite of ensuite ?? []) appliquer(boss, scene, cible, suite, options, () => undefined);
+            if (attendreLaFin) quandTermine();
+          }
+        : undefined;
       scene.tweens.add({
         targets: boss,
-        x: intention.position.x,
-        y: intention.position.y,
+        // Valeur relative résolue au départ du tween, comme l'ancien x: "-=40".
+        x: relatifX ? `${position.x < 0 ? "-=" : "+="}${Math.abs(position.x)}` : position.x,
+        y: position.y,
         duration: intention.duree,
         delay: intention.delai ?? 0,
         ease: intention.courbe,
         onStart: animationAuDepart ? () => boss.play(animationAuDepart) : undefined,
-        onComplete: attendreLaFin ? quandTermine : undefined,
+        onComplete: aLArrivee,
       });
       return attendreLaFin === true;
+    }
+    case "collisionTemporaire": {
+      if (!cible) return false;
+      const collision = scene.physics.add.collider(cible, boss);
+      scene.time.delayedCall(intention.duree, () => scene.physics.world.removeCollider(collision));
+      return false;
     }
     case "charger": {
       const { animationAuDepart, animationALaFin, decalageX } = intention;
