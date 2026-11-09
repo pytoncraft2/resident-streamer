@@ -67,6 +67,8 @@ export async function attendre(condition: () => boolean | Promise<boolean>, dela
 export interface OptionsServeur {
   /** Classement écrit avant le démarrage ; sinon le serveur crée le sien depuis src/server/scores.json. */
   classement?: unknown;
+  /** Variables d'environnement supplémentaires du serveur (ex. BOSS_FINAL_DIRECT). */
+  env?: Readonly<Record<string, string>>;
 }
 
 export async function demarrerServeur(options: OptionsServeur = {}): Promise<ServeurDeTest> {
@@ -77,7 +79,7 @@ export async function demarrerServeur(options: OptionsServeur = {}): Promise<Ser
   let sortie = "";
   const processus: ChildProcess = spawn(process.execPath, [POINT_ENTREE], {
     cwd: RACINE,
-    env: { ...process.env, PORT: String(port), HOST: "127.0.0.1", SCORES_FICHIER: fichierScores },
+    env: { ...process.env, ...options.env, PORT: String(port), HOST: "127.0.0.1", SCORES_FICHIER: fichierScores },
     stdio: ["ignore", "pipe", "pipe"],
   });
   processus.stdout?.on("data", (d: Buffer) => (sortie += d.toString()));

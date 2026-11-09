@@ -19,3 +19,11 @@ export function bossPrincipauxVaincus(boss: EtatBoss): boolean {
 export function partieGagnee(boss: EtatBoss): boolean {
   return bossPrincipauxVaincus(boss) && boss[BOSS_FINAL]?.vaincu === true;
 }
+
+/**
+ * Raccourci de développement : `BOSS_FINAL_DIRECT=1` active le boss final dès le début de la partie,
+ * sans vaincre les 4 boss (recette et tests du boss final). Inactif par défaut.
+ */
+export function bossFinalDirect(env: Readonly<Record<string, string | undefined>> = process.env): boolean {
+  return env.BOSS_FINAL_DIRECT === "1";
+}

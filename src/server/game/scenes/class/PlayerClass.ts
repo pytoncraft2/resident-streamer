@@ -5,7 +5,8 @@ import { DefautDirection } from "../Stats/Defaut"
 import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
-import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
+import { bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
+import { revelerBossFinal } from "../../bossFinal"
 
 /**
  * Joueur et interaction
@@ -351,16 +352,8 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
 
      const room = (this.scene as any).room;
 
-     // Les 4 boss principaux vaincus (intentions §1), une seule fois par partie : porte du
-     // rez-de-chaussée ouverte (RDC_OK), pièce centrale de l'étage révélée (ETAGE_OK), boss final actif.
-     if (bossPrincipauxVaincus(room.boss) && !room.bossFinalRevele)
-     {
-       room.bossFinalRevele = true;
-       room.broadcast("RDC_OK");
-       room.broadcast("ETAGE_OK");
-       (this.scene as any).enemiesRef[room.boss[BOSS_FINAL].id].setActive(true);
-       (this.scene as any).enemiesRef[room.boss[BOSS_FINAL].id].trones.setActive(true);
-     }
+     // Les 4 boss principaux vaincus (intentions §1) : révélation du boss final, une seule fois par partie.
+     if (bossPrincipauxVaincus(room.boss)) revelerBossFinal(room);
 
      if (partieGagnee(room.boss))
      {

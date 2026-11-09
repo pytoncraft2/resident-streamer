@@ -5,6 +5,8 @@ import { Room, Client, Delayed } from "@colyseus/core"
 import config from "./config"
 import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaserHeadless"
 import { clavierRecu } from "../domain/entrees"
+import { BOSS_FINAL, bossFinalDirect } from "../domain/progression"
+import { revelerBossFinal } from "./bossFinal"
 
 // Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
 installerPolyfillsHeadless()
@@ -103,6 +105,9 @@ export default class GameRooms extends Room {
             for (const [key, value] of Object.entries(presences.presences)) {
               this.state.presences.set(key, new Player(value))
             }
+            // Raccourci de développement : boss final actif dès sa création (BOSS_FINAL_DIRECT=1).
+            // createEnnemy le crée après 1000 ms sur l'horloge Phaser : révéler juste après, sur la même horloge.
+            if (item[0] === BOSS_FINAL && bossFinalDirect()) this.scene.time.delayedCall(1050, () => revelerBossFinal(this))
         }, item[1].temps);
 
       })
