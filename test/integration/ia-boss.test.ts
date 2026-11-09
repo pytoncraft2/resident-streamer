@@ -9,6 +9,9 @@
  * troll : pièce à l'étage, à gauche (x < 1789, y < -249), place (427, -249) ; joueur dans sa pièce
  * → se tourne vers lui et lance oies et grenouilles (projectiles « troll »), qui le repoussent.
  * La charge (joueur à moins de 400) n'est pas atteignable de façon fiable ici : tests unitaires.
+ * twitchman : pièce au rez-de-chaussée, à gauche (x < 1789, y > -249), place (427, 756) ; joueur
+ * entré dans sa pièce, à la même hauteur → charge (animation « twitchmancharge ») qui le projette
+ * hors de la pièce, puis retour à sa place. Laser et envols : tests unitaires.
  */
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
@@ -25,6 +28,7 @@ interface MapVue<T> {
 }
 interface PresenceVueOrientee extends PresenceVue {
   readonly flipX?: boolean;
+  readonly anim?: string;
 }
 interface ProjectileVue {
   readonly sprite?: string;
@@ -59,6 +63,50 @@ describe("IA des boss (intégration)", function () {
   after(async function () {
     await room?.leave();
     await serveur?.arreter();
+  });
+
+  describe("twitchman", function () {
+    const PLACE_TWITCHMAN = { x: 427, y: 756 };
+    const PIECE_TWITCHMAN_XMAX = 1789;
+    let r: Room<unknown, EtatJeu>;
+    const joueur = (): PresenceVueOrientee | undefined => r.state.presences?.get(r.sessionId);
+    const twitchman = (): PresenceVueOrientee | undefined => Array.from(r.state.presences?.values() ?? []).find((p) => p.sprite === "twitchman");
+    let aCharge = false;
+    let releve: NodeJS.Timeout | undefined;
+    const aSaPlaceTwitchman = (): boolean => {
+      const t = twitchman();
+      return t?.x !== undefined && t.y !== undefined && Math.abs(t.x - PLACE_TWITCHMAN.x) < 30 && Math.abs(t.y - PLACE_TWITCHMAN.y) < 30;
+    };
+
+    before(async function () {
+      r = await new Client(serveur.wsUrl).joinOrCreate<EtatJeu>("game_instance", { salon: `ia-twitchman-${Date.now()}`, sprite: "osmosiscoop" });
+      r.onMessage("*", () => undefined);
+      releve = setInterval(() => {
+        if (twitchman()?.anim?.startsWith("twitchmancharge")) aCharge = true;
+      }, 20);
+    });
+
+    after(async function () {
+      if (releve) clearInterval(releve);
+      await r?.leave();
+    });
+
+    it("se tient à sa place tant qu'aucun joueur n'est dans sa pièce", async function () {
+      await attendre(aSaPlaceTwitchman, 8000, "twitchman à sa place (427, 756)");
+      assert.equal(aCharge, false);
+    });
+
+    it("charge un joueur entré dans sa pièce à la même hauteur et le projette hors de la pièce", async function () {
+      r.send("inputs", { ...AU_REPOS, left: true });
+      await attendre(() => (joueur()?.x ?? 9999) < 1650, 6000, "joueur entré dans la pièce de twitchman");
+      r.send("inputs", AU_REPOS);
+      await attendre(() => aCharge, 3000, "charge de twitchman");
+      await attendre(() => (joueur()?.x ?? 0) > PIECE_TWITCHMAN_XMAX, 4000, "joueur projeté hors de la pièce");
+    });
+
+    it("revient à sa place une fois le joueur hors de sa pièce", async function () {
+      await attendre(aSaPlaceTwitchman, 10000, "twitchman revenu à sa place");
+    });
   });
 
   describe("troll", function () {
