@@ -61,9 +61,17 @@ Vocabulaire ajouté (`src/server/ia/boss.ts`) : `distance`, intentions `orienter
 
 Vérifications : 3 tests de caractérisation (place, lancer orienté, envol puis retour) passant sur l'ancien et le nouveau code, échouant si le lancer ou l'envol est cassé ; tests unitaires de l'arbre.
 
+## Troisième boss : troll
+
+Arbre `src/server/ia/bosses/troll.ts` (pièce à l'étage, à gauche ; décision toutes les 800 ms) : se tourner vers la cible ; à moins de 400, **charger** de 1300 px vers elle ; à moins de 900, lancer une oie (A) ; sinon une grenouille (Z) ; hors de la pièce, rejoindre sa place.
+
+Vocabulaire ajouté : intention **`charger`** (déplacement horizontal relatif, résolu au départ comme l'ancien `x: "-=1300"`, puis arrêt et animation de fin ; action longue). Mêmes différences voulues que pour manette (plus de blocage aux distances limites).
+
+Vérifications : 2 tests de caractérisation (place, tirs orientés vers le joueur entré dans la pièce) passant sur l'ancien et le nouveau code, échouant si les tirs sont cassés ; la charge, inatteignable de façon fiable en intégration (le joueur est repoussé avant), est couverte par les tests unitaires ; sonde identique à l'ancien code (positions et nombre de projectiles).
+
 ## Suite
 
-1. `troll`, `twitchman`, un boss à la fois, même méthode (caractérisation → arbre → recette) ; `manette` fait.
+1. `twitchman`, même méthode (caractérisation → arbre → recette) ; `manette` et `troll` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
 4. Boss final conçu avec l'auteur à partir des briques.
