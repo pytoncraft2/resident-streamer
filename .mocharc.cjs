@@ -3,7 +3,7 @@ process.env.TS_NODE_PROJECT = "test/tsconfig.json";
 
 module.exports = {
   require: ["ts-node/register"],
-  // Node ≥ 23 charge les .ts nativement (types retirés, sans vérification) : mocha 9 essaie import()
+  // Node ≥ 23 charge les .ts nativement (types retirés, sans vérification) : mocha essaie import()
   // avant require(), si bien qu'un test pouvait échapper à ts-node. On force le passage par ts-node.
   "node-option": ["no-experimental-strip-types"],
   extension: ["ts"],
