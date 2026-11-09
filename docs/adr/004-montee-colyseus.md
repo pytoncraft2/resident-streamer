@@ -42,6 +42,13 @@ Branche locale `spike/colyseus-018` (worktree), à partir de `main` + préalable
 | Client en navigateur | — | démarre sans erreur console ; recette manuelle de l'utilisateur (accueil, lobby, partie) : fonctionne |
 | `npm audit` | 57 (35 hautes, 5 critiques) | 48 (30 hautes, 4 critiques), **aucune haute/critique venant de Colyseus** |
 
+## Suivi
+
+- **Étape 1 (fait) :** préalables compatibles sur 0.14 (`b4d91dd`, `c939fe2`, `8ec63b7`).
+- **Étape 2 (fait) :** bascule 0.18 sur `chore/colyseus-018`, avec `greet: false` ; `npm ci` propre, typecheck 0 erreur, 55/55 (×2), partie longue et liste des salons sans erreur, journal serveur sans bannière.
+- **Étape 3 :** recette navigateur faite sur le spike (identique à la bascule hors `greet: false`).
+- **Étape 4 (à faire) :** remplacer `setState` / `setPatchRate` dépréciés.
+
 ## Options
 
 - **A — Saut direct 0.14 → 0.18** (spike) : un seul passage, protocole client/serveur cohérent, versions maintenues.
