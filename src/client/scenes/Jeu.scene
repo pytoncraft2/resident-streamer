@@ -16,7 +16,6 @@
             "type": "Image",
             "id": "0f646e4b-702f-41a3-b024-9e7c389a5663",
             "label": "mapbossfinal",
-            "components": [],
             "texture": {
                 "key": "mapbossfinal"
             },
@@ -29,7 +28,6 @@
             "type": "Rectangle",
             "id": "90d26c42-eb5f-40c7-a9e6-00b9d2ec6bef",
             "label": "platforme",
-            "components": [],
             "x": 2791,
             "y": 862,
             "scaleX": 43.50112225681497,
@@ -43,7 +41,6 @@
             "id": "62608c05-f6a0-4057-a968-99d56a3f5de0",
             "label": "map_boss1",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "map_boss1"
             },
@@ -57,7 +54,6 @@
             "id": "dda5bea8-1047-40c0-a98c-95c5a9a5f3f9",
             "label": "map_boss2",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "maptwitchman2"
             },
@@ -71,7 +67,6 @@
             "id": "17d10c2d-74be-45c4-af66-44c1d145bc0f",
             "label": "map_hall1",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "map_hall1"
             },
@@ -85,7 +80,6 @@
             "id": "9aaddc90-5814-48eb-904c-cd0dbe110b26",
             "label": "hall",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "map_hall0"
             },
@@ -100,7 +94,6 @@
             "id": "7f78e61e-19e2-4297-8659-eff05524f24e",
             "label": "barre_etat_joueur",
             "scope": "PUBLIC",
-            "components": [],
             "x": 2231,
             "y": 466,
             "list": [
@@ -109,10 +102,8 @@
                     "id": "c26b63f4-9c09-4f38-bae4-8f370ea14491",
                     "label": "barre_etat",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": -39,
-                    "y": 21,
-                    "list": []
+                    "y": 21
                 }
             ]
         },
@@ -120,7 +111,6 @@
             "type": "Image",
             "id": "cf7076cd-ce79-4cb6-ab82-6a02a994569c",
             "label": "map_manetteman",
-            "components": [],
             "texture": {
                 "key": "map_manetteman"
             },
@@ -134,7 +124,6 @@
             "id": "aa2a9897-8c2c-4257-a218-6a64e5319a56",
             "label": "hall_1",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "map_hall0"
             },
@@ -149,7 +138,6 @@
             "id": "e195d071-7918-44d6-b679-b71862d48fe2",
             "label": "hall_2",
             "scope": "PUBLIC",
-            "components": [],
             "texture": {
                 "key": "mapstreamdeck"
             },
@@ -163,7 +151,6 @@
             "type": "Text",
             "id": "e9b9eb70-5725-40b3-8713-96051f803b87",
             "label": "text_1",
-            "components": [],
             "x": 2826,
             "y": 116,
             "originX": 0.5,
@@ -176,7 +163,6 @@
             "id": "03652a60-a70d-4fb8-a223-5ad610abfdf6",
             "label": "bas_droite",
             "scope": "PUBLIC",
-            "components": [],
             "x": 4719,
             "y": 480,
             "scaleX": 15.168831928777566,
@@ -192,7 +178,6 @@
             "id": "e0b65d47-20e8-4497-a13e-482cedbe4cea",
             "label": "haut_gauche",
             "scope": "PUBLIC",
-            "components": [],
             "x": 901,
             "y": -507,
             "scaleX": 14.495720628453666,
@@ -208,7 +193,6 @@
             "id": "e752d548-b54b-415d-acd2-2526513620aa",
             "label": "haut_milieu",
             "scope": "PUBLIC",
-            "components": [],
             "x": 2791,
             "y": -495,
             "scaleX": 15.03295778960996,
@@ -223,7 +207,6 @@
             "type": "Container",
             "id": "0f07b104-8a14-4c15-ba81-3e3e737f57e0",
             "label": "cache_gauche_bas",
-            "components": [],
             "x": 1836,
             "list": [
                 {
@@ -231,7 +214,6 @@
                     "id": "13878c00-2427-45b5-88d8-f61606cb1dfd",
                     "label": "bas_gauche",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": -920,
                     "y": 488,
                     "scaleX": 14.332672621910074,
@@ -247,7 +229,6 @@
                     "id": "ee378e81-8e31-4870-8a3a-3f665c2d232e",
                     "label": "haut_droite",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 2880,
                     "y": -496,
                     "scaleX": 15.03295778960996,
@@ -263,7 +244,6 @@
                     "id": "f752ca8d-0430-46eb-a3c0-e8ad0bd84f38",
                     "label": "bas_milieu",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 954,
                     "y": 478,
                     "scaleX": 14.756294006927739,
@@ -281,7 +261,6 @@
             "id": "903f5614-5253-4c84-9932-b6ff099393d7",
             "label": "interface_joueur",
             "scope": "PUBLIC",
-            "components": [],
             "x": 541,
             "y": 973,
             "list": [
@@ -289,7 +268,6 @@
                     "type": "Rectangle",
                     "id": "c87ca442-c7b8-4715-a285-70bfdcee6142",
                     "label": "rectangle_2",
-                    "components": [],
                     "x": 419,
                     "y": 48,
                     "scaleX": 7.706419353393023,
@@ -304,7 +282,6 @@
                     "type": "Ellipse",
                     "id": "64b0c689-2bba-4740-acaa-3528d5931ec4",
                     "label": "ellipse_5_1",
-                    "components": [],
                     "x": 72,
                     "y": 80,
                     "scaleX": 0.37184784435596524,
@@ -319,7 +296,6 @@
                     "type": "Ellipse",
                     "id": "7ea40664-65c7-4513-9edd-2e153dd0d419",
                     "label": "ellipse_5",
-                    "components": [],
                     "y": 45,
                     "scaleX": 0.8179399157486755,
                     "scaleY": 0.8179399157486755,
@@ -333,7 +309,6 @@
                     "id": "f9bb9e77-dd3f-475d-990d-cd7a8a1b1f67",
                     "label": "sous_barre_vie_joueur",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 171,
                     "y": 82,
                     "scaleX": 5.150602609693634,
@@ -349,7 +324,6 @@
                     "id": "35152e67-17d5-43ba-ab82-81727ea39fa1",
                     "label": "vie_joueur",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 171,
                     "y": 82,
                     "scaleX": 5.150602609693634,
@@ -365,7 +339,6 @@
                     "id": "5fc635c2-8d51-4a55-b52f-f422d6fd619a",
                     "label": "groupe_touches",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 184,
                     "list": [
                         {
@@ -373,7 +346,6 @@
                             "id": "8b2f4ae1-baf7-44d3-a9b1-4c35ab6fe96f",
                             "label": "touche_A",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 190,
                             "y": 24,
                             "list": [
@@ -382,7 +354,6 @@
                                     "id": "ae9b4bde-830d-4d45-ad2f-1efcbc303c5c",
                                     "label": "rectangle_4",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 20,
                                     "y": 5,
                                     "scaleX": 0.4926742586809625,
@@ -399,7 +370,6 @@
                                     "id": "f093fb58-fe92-42c7-bba5-8990227a1ede",
                                     "label": "commande_A",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 20,
                                     "y": 5,
                                     "originX": 0.5,
@@ -412,7 +382,6 @@
                                     "id": "00fd971f-b6cd-4528-8d96-ae8869941b98",
                                     "label": "description_commande_A",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 19,
                                     "y": 25,
                                     "scaleX": 0.8383656155133609,
@@ -428,7 +397,6 @@
                             "id": "8244435b-a38d-444b-8d96-52648b1c68e8",
                             "label": "touche_Z",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 261,
                             "y": 24,
                             "list": [
@@ -437,7 +405,6 @@
                                     "id": "b95f98cb-f2d6-4acc-9d71-8496f9658ad0",
                                     "label": "rectangle_4_1",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 18,
                                     "y": 5,
                                     "scaleX": 0.4926742586809625,
@@ -454,7 +421,6 @@
                                     "id": "9a8e0e4c-1b24-456d-8b8d-4e2528fdf0f7",
                                     "label": "commande_Z",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 18,
                                     "y": 5,
                                     "originX": 0.5,
@@ -467,7 +433,6 @@
                                     "id": "2fdc7671-726c-484d-bb78-69e5a7ec0961",
                                     "label": "description_commande_Z",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 19,
                                     "y": 25,
                                     "scaleX": 0.8383656155133609,
@@ -483,13 +448,11 @@
                             "id": "57202ff8-987c-4c6e-afbd-e06968f9bbbc",
                             "label": "touche_TAB",
                             "scope": "PUBLIC",
-                            "components": [],
                             "list": [
                                 {
                                     "type": "Rectangle",
                                     "id": "b14afe32-db38-400b-a293-7a16498803f9",
                                     "label": "rectangle_4_3",
-                                    "components": [],
                                     "x": 71,
                                     "y": 20,
                                     "scaleX": 1.3025571558163676,
@@ -506,7 +469,6 @@
                                     "type": "Rectangle",
                                     "id": "e89062af-a075-419e-ae02-fe8c6e4ba8b7",
                                     "label": "rectangle_5_1",
-                                    "components": [],
                                     "x": 93,
                                     "y": 29,
                                     "scaleX": 0.6564311464079737,
@@ -519,7 +481,6 @@
                                     "type": "Triangle",
                                     "id": "d82ece35-70f9-48e4-80ad-0cfd3e84ddfe",
                                     "label": "triangle_2",
-                                    "components": [],
                                     "x": 143,
                                     "y": 29,
                                     "scaleX": 0.12492350627216228,
@@ -531,7 +492,6 @@
                                     "type": "Triangle",
                                     "id": "3f542bd5-4395-4332-b9f5-c9666ba8ace1",
                                     "label": "triangle_2_1",
-                                    "components": [],
                                     "y": 9,
                                     "scaleX": 0.12492350627216228,
                                     "scaleY": 0.12492350627216228,
@@ -543,7 +503,6 @@
                                     "id": "1c178621-89f3-4035-8e36-ea3d16e3ac55",
                                     "label": "description_commande_TAB",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 72,
                                     "y": 51,
                                     "originX": 0.5,
@@ -555,7 +514,6 @@
                                     "id": "99e34e4f-5698-40ab-84f0-6382c7cdfa28",
                                     "label": "commande_TAB",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 115,
                                     "text": "TAB"
                                 },
@@ -563,7 +521,6 @@
                                     "type": "Rectangle",
                                     "id": "1d2032ff-38ee-488f-bb3d-0ca134fee514",
                                     "label": "rectangle",
-                                    "components": [],
                                     "x": 50,
                                     "y": 9,
                                     "scaleX": 0.6564311464079737,
@@ -580,7 +537,6 @@
                             "id": "deeca7fa-c924-4b9c-9eea-7b1bca992dc5",
                             "label": "touche_E",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 331,
                             "y": 29,
                             "list": [
@@ -589,7 +545,6 @@
                                     "id": "76742d30-528b-45db-80d0-5d793f4df363",
                                     "label": "rectangle_4_2",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 17,
                                     "scaleX": 0.4926742586809625,
                                     "scaleY": 0.4926742586809625,
@@ -605,7 +560,6 @@
                                     "id": "af336200-c7b4-47d0-a8e8-7dbe7d91ca7c",
                                     "label": "commande_E",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 17,
                                     "originX": 0.5,
                                     "originY": 0.5,
@@ -617,7 +571,6 @@
                                     "id": "e7fbe773-d63d-4095-a7c6-f64e2d832cbc",
                                     "label": "description_commande_E",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 17,
                                     "y": 20,
                                     "scaleX": 0.8383656155133609,
@@ -633,7 +586,6 @@
                             "id": "51ae44bc-2553-467d-a522-805b3d3b0a31",
                             "label": "touche_R",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 393,
                             "y": 29,
                             "list": [
@@ -642,7 +594,6 @@
                                     "id": "38ccf992-fe8c-4f56-9911-a70855ee65eb",
                                     "label": "rectangle_4_2_1",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 24,
                                     "scaleX": 0.4926742586809625,
                                     "scaleY": 0.4926742586809625,
@@ -659,7 +610,6 @@
                                     "id": "4acddff3-f8d7-4222-9255-b86d75dead0c",
                                     "label": "commande_R",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 24,
                                     "originX": 0.5,
                                     "originY": 0.5,
@@ -674,7 +624,6 @@
                             "id": "181eb2e3-cd45-40a6-ba9e-6e051b9c42ec",
                             "label": "touche_T",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 590,
                             "y": 31,
                             "list": [
@@ -683,7 +632,6 @@
                                     "id": "dd4925e9-931a-477e-b362-c390224605ce",
                                     "label": "rectangle_3",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 24,
                                     "scaleX": 0.4926742586809625,
                                     "scaleY": 0.4926742586809625,
@@ -699,7 +647,6 @@
                                     "id": "c0914980-83be-445d-aff1-3275d7094d9b",
                                     "label": "commande_R_1",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 24,
                                     "originX": 0.5,
                                     "originY": 0.5,
@@ -711,7 +658,6 @@
                                     "id": "38bd83d4-bc24-4f5e-8486-f2d0b5f4d47d",
                                     "label": "description_commande_R_1",
                                     "scope": "PUBLIC",
-                                    "components": [],
                                     "x": 25,
                                     "y": 21,
                                     "scaleX": 0.8383656155133609,
@@ -731,7 +677,6 @@
             "id": "3dcf9a82-fc95-4be2-b8b1-6451cf2f6c74",
             "label": "barreHautContainer",
             "scope": "PUBLIC",
-            "components": [],
             "alpha": 0.9,
             "list": [
                 {
@@ -739,7 +684,6 @@
                     "id": "b650811d-b24a-4970-b619-c816e02224d6",
                     "label": "barreHaut",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 960,
                     "y": 29,
                     "scaleX": 15.008021207026625,
@@ -755,7 +699,6 @@
                     "id": "e261576f-604f-47de-b3b0-fb053395736b",
                     "label": "compteur",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 1649,
                     "y": 7,
                     "fontSize": "45px"
@@ -764,7 +707,6 @@
                     "type": "Rectangle",
                     "id": "8041a54e-7347-43f8-b592-62b5ddd7c544",
                     "label": "rectangle_1",
-                    "components": [],
                     "x": 957,
                     "y": 28,
                     "scaleX": 10.37106099308064,
@@ -780,7 +722,6 @@
                     "id": "b65dfa83-5d7c-4fc5-8968-48322417c618",
                     "label": "vie_boss_1",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 958,
                     "y": 28,
                     "scaleX": 10.362184539568688,
@@ -798,7 +739,6 @@
             "id": "a082f8e7-5546-4af6-9156-8fded5c5eb5c",
             "label": "interface_fin",
             "scope": "PUBLIC",
-            "components": [],
             "alpha": 0,
             "list": [
                 {
@@ -806,7 +746,6 @@
                     "id": "d1f392d5-3f7e-4201-8ced-e3271488e281",
                     "label": "container_interface_fin",
                     "scope": "PUBLIC",
-                    "components": [],
                     "x": 2838,
                     "y": 1,
                     "list": [
@@ -815,7 +754,6 @@
                             "id": "c4d250a3-7bbe-42ba-84b9-9dc264943cbb",
                             "label": "bg_ecran_fin",
                             "scope": "PUBLIC",
-                            "components": [],
                             "scaleX": 45.82583153437573,
                             "scaleY": 20.08364068022166,
                             "isFilled": true,
@@ -829,7 +767,6 @@
                             "id": "7e23245e-7d16-45ee-893f-37da489c7928",
                             "label": "ecran_fin_text",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 18,
                             "y": -638,
                             "originX": 0.5,
@@ -842,7 +779,6 @@
                             "id": "81d26a16-9391-4a68-8828-808e043264eb",
                             "label": "ecran_fin_text_score",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 17,
                             "y": -195,
                             "originX": 0.5,
@@ -855,7 +791,6 @@
                             "id": "c0fc377e-4dd4-4ca5-a1b4-ce29e92aa228",
                             "label": "ecran_fin_text_rejouer",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": -638,
                             "y": 633,
                             "originX": 0.5,
@@ -869,7 +804,6 @@
                             "id": "6f9ea657-b10f-49ad-b0ac-e572a84fe570",
                             "label": "ecran_fin_text_quitter",
                             "scope": "PUBLIC",
-                            "components": [],
                             "x": 734,
                             "y": 633,
                             "originX": 0.5,
@@ -885,9 +819,9 @@
     ],
     "plainObjects": [],
     "meta": {
-        "app": "Phaser Editor 2D - Scene Editor",
-        "url": "https://phasereditor2d.com",
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 5
     }
 }

@@ -220,6 +220,7 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_A.scaleY = 0.8383656155133609;
 		description_commande_A.setOrigin(0.5, 0.5);
 		description_commande_A.text = "cross";
+		description_commande_A.setStyle({  });
 		touche_A.add(description_commande_A);
 
 		// touche_Z
@@ -249,6 +250,7 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_Z.scaleY = 0.8383656155133609;
 		description_commande_Z.setOrigin(0.5, 0.5);
 		description_commande_Z.text = "dash";
+		description_commande_Z.setStyle({  });
 		touche_Z.add(description_commande_Z);
 
 		// touche_TAB
@@ -293,11 +295,13 @@ export default class Jeu extends Phaser.Scene {
 		const description_commande_TAB = this.add.text(72, 51, "", {});
 		description_commande_TAB.setOrigin(0.5, 0.5);
 		description_commande_TAB.text = "Fusionner";
+		description_commande_TAB.setStyle({  });
 		touche_TAB.add(description_commande_TAB);
 
 		// commande_TAB
 		const commande_TAB = this.add.text(115, 0, "", {});
 		commande_TAB.text = "TAB";
+		commande_TAB.setStyle({  });
 		touche_TAB.add(commande_TAB);
 
 		// rectangle
@@ -334,6 +338,7 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_E.scaleY = 0.8383656155133609;
 		description_commande_E.setOrigin(0.5, 0.5);
 		description_commande_E.text = "kick";
+		description_commande_E.setStyle({  });
 		touche_E.add(description_commande_E);
 
 		// touche_R
@@ -385,6 +390,7 @@ export default class Jeu extends Phaser.Scene {
 		description_commande_R_1.scaleY = 0.8383656155133609;
 		description_commande_R_1.setOrigin(0.5, 0.5);
 		description_commande_R_1.text = "MAP";
+		description_commande_R_1.setStyle({  });
 		touche_T.add(description_commande_R_1);
 
 		// barreHautContainer
@@ -472,8 +478,8 @@ export default class Jeu extends Phaser.Scene {
 		this.map_boss2 = map_boss2;
 		this.map_hall1 = map_hall1;
 		this.hall = hall;
-		this.barre_etat_joueur = barre_etat_joueur;
 		this.barre_etat = barre_etat;
+		this.barre_etat_joueur = barre_etat_joueur;
 		this.hall_1 = hall_1;
 		this.hall_2 = hall_2;
 		this.bas_droite = bas_droite;
@@ -482,43 +488,43 @@ export default class Jeu extends Phaser.Scene {
 		this.bas_gauche = bas_gauche;
 		this.haut_droite = haut_droite;
 		this.bas_milieu = bas_milieu;
-		this.interface_joueur = interface_joueur;
 		this.sous_barre_vie_joueur = sous_barre_vie_joueur;
 		this.vie_joueur = vie_joueur;
-		this.groupe_touches = groupe_touches;
-		this.touche_A = touche_A;
 		this.rectangle_4 = rectangle_4;
 		this.commande_A = commande_A;
 		this.description_commande_A = description_commande_A;
-		this.touche_Z = touche_Z;
+		this.touche_A = touche_A;
 		this.rectangle_4_1 = rectangle_4_1;
 		this.commande_Z = commande_Z;
 		this.description_commande_Z = description_commande_Z;
-		this.touche_TAB = touche_TAB;
+		this.touche_Z = touche_Z;
 		this.description_commande_TAB = description_commande_TAB;
 		this.commande_TAB = commande_TAB;
-		this.touche_E = touche_E;
+		this.touche_TAB = touche_TAB;
 		this.rectangle_4_2 = rectangle_4_2;
 		this.commande_E = commande_E;
 		this.description_commande_E = description_commande_E;
-		this.touche_R = touche_R;
+		this.touche_E = touche_E;
 		this.rectangle_4_2_1 = rectangle_4_2_1;
 		this.commande_R = commande_R;
-		this.touche_T = touche_T;
+		this.touche_R = touche_R;
 		this.rectangle_3 = rectangle_3;
 		this.commande_R_1 = commande_R_1;
 		this.description_commande_R_1 = description_commande_R_1;
-		this.barreHautContainer = barreHautContainer;
+		this.touche_T = touche_T;
+		this.groupe_touches = groupe_touches;
+		this.interface_joueur = interface_joueur;
 		this.barreHaut = barreHaut;
 		this.compteur = compteur;
 		this.vie_boss_1 = vie_boss_1;
-		this.interface_fin = interface_fin;
-		this.container_interface_fin = container_interface_fin;
+		this.barreHautContainer = barreHautContainer;
 		this.bg_ecran_fin = bg_ecran_fin;
 		this.ecran_fin_text = ecran_fin_text;
 		this.ecran_fin_text_score = ecran_fin_text_score;
 		this.ecran_fin_text_rejouer = ecran_fin_text_rejouer;
 		this.ecran_fin_text_quitter = ecran_fin_text_quitter;
+		this.container_interface_fin = container_interface_fin;
+		this.interface_fin = interface_fin;
 
 		this.events.emit("scene-awake");
 	}
@@ -527,8 +533,8 @@ export default class Jeu extends Phaser.Scene {
 	public map_boss2!: Phaser.GameObjects.Image;
 	public map_hall1!: Phaser.GameObjects.Image;
 	public hall!: Phaser.GameObjects.Image;
-	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public barre_etat!: Phaser.GameObjects.Container;
+	public barre_etat_joueur!: Phaser.GameObjects.Container;
 	public hall_1!: Phaser.GameObjects.Image;
 	public hall_2!: Phaser.GameObjects.Image;
 	public bas_droite!: Phaser.GameObjects.Rectangle;
@@ -537,43 +543,43 @@ export default class Jeu extends Phaser.Scene {
 	public bas_gauche!: Phaser.GameObjects.Rectangle;
 	public haut_droite!: Phaser.GameObjects.Rectangle;
 	public bas_milieu!: Phaser.GameObjects.Rectangle;
-	public interface_joueur!: Phaser.GameObjects.Container;
 	public sous_barre_vie_joueur!: Phaser.GameObjects.Rectangle;
 	public vie_joueur!: Phaser.GameObjects.Rectangle;
-	public groupe_touches!: Phaser.GameObjects.Container;
-	public touche_A!: Phaser.GameObjects.Container;
 	public rectangle_4!: Phaser.GameObjects.Rectangle;
 	public commande_A!: Phaser.GameObjects.Text;
 	public description_commande_A!: Phaser.GameObjects.Text;
-	public touche_Z!: Phaser.GameObjects.Container;
+	public touche_A!: Phaser.GameObjects.Container;
 	public rectangle_4_1!: Phaser.GameObjects.Rectangle;
 	public commande_Z!: Phaser.GameObjects.Text;
 	public description_commande_Z!: Phaser.GameObjects.Text;
-	public touche_TAB!: Phaser.GameObjects.Container;
+	public touche_Z!: Phaser.GameObjects.Container;
 	public description_commande_TAB!: Phaser.GameObjects.Text;
 	public commande_TAB!: Phaser.GameObjects.Text;
-	public touche_E!: Phaser.GameObjects.Container;
+	public touche_TAB!: Phaser.GameObjects.Container;
 	public rectangle_4_2!: Phaser.GameObjects.Rectangle;
 	public commande_E!: Phaser.GameObjects.Text;
 	public description_commande_E!: Phaser.GameObjects.Text;
-	public touche_R!: Phaser.GameObjects.Container;
+	public touche_E!: Phaser.GameObjects.Container;
 	public rectangle_4_2_1!: Phaser.GameObjects.Rectangle;
 	public commande_R!: Phaser.GameObjects.Text;
-	public touche_T!: Phaser.GameObjects.Container;
+	public touche_R!: Phaser.GameObjects.Container;
 	public rectangle_3!: Phaser.GameObjects.Rectangle;
 	public commande_R_1!: Phaser.GameObjects.Text;
 	public description_commande_R_1!: Phaser.GameObjects.Text;
-	public barreHautContainer!: Phaser.GameObjects.Container;
+	public touche_T!: Phaser.GameObjects.Container;
+	public groupe_touches!: Phaser.GameObjects.Container;
+	public interface_joueur!: Phaser.GameObjects.Container;
 	public barreHaut!: Phaser.GameObjects.Rectangle;
 	public compteur!: Phaser.GameObjects.Text;
 	public vie_boss_1!: Phaser.GameObjects.Rectangle;
-	public interface_fin!: Phaser.GameObjects.Layer;
-	public container_interface_fin!: Phaser.GameObjects.Container;
+	public barreHautContainer!: Phaser.GameObjects.Container;
 	public bg_ecran_fin!: Phaser.GameObjects.Rectangle;
 	public ecran_fin_text!: Phaser.GameObjects.Text;
 	public ecran_fin_text_score!: Phaser.GameObjects.Text;
 	public ecran_fin_text_rejouer!: Phaser.GameObjects.Text;
 	public ecran_fin_text_quitter!: Phaser.GameObjects.Text;
+	public container_interface_fin!: Phaser.GameObjects.Container;
+	public interface_fin!: Phaser.GameObjects.Layer;
 
 	/* START-USER-CODE */
 
@@ -671,7 +677,7 @@ export default class Jeu extends Phaser.Scene {
 			.then((room) => {
 				self.room = room
 				self.session = room.sessionId
-				
+
 
 				room.onMessage("suppression", (objet: number) => {
 					const cle = Object.entries(objet)[0][0];
@@ -715,7 +721,7 @@ export default class Jeu extends Phaser.Scene {
 							window.location.replace(baseUrl)
 							this.scene.start('Level');
 						}, this);
-					
+
 					this.ecran_fin_text_rejouer
 						.setInteractive(({ useHandCursor: true }))
 						.on('pointerdown', function (this: any) {
