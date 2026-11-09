@@ -30,7 +30,6 @@
     "nodemon": "^2.0.12",
     "phaser-asset-pack-hashing": "^1.0.5",
     "phasereditor2d-launcher": "^3.32.0",
-    "prettier": "^2.4.0",
     "ts-node": "^10.2.1",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
