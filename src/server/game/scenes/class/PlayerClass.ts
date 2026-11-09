@@ -7,6 +7,7 @@ import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
 import { bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
 import { revelerBossFinal } from "../../bossFinal"
+import { campDe } from "../../camps"
 
 /**
  * Joueur et interaction
@@ -144,7 +145,7 @@ import { revelerBossFinal } from "../../bossFinal"
        if (_e.invulnerable) return
        // Camp de la cible : pas de tir ami, soin réservé aux alliés (intentions §2).
        const scene = this.scene as any
-       const campCible: Camp | undefined = scene.players.contains(_e) ? "players" : scene.enemies.contains(_e) ? "enemies" : undefined
+       const campCible = campDe(scene, _e)
        const campVise = this.cible_courante as Camp
 
        if (this.blesse_opposant) {

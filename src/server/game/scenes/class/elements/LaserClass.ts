@@ -1,5 +1,7 @@
 import { Rectangle } from "../../../RoomState"
 import TJoueur from "../../types/Joueur";
+import { Camp, peutBlesser } from "../../../../domain/combat";
+import { campDe, SceneCamps } from "../../../camps";
 
 export default class LaserClass extends Phaser.GameObjects.Rectangle {
   sprite: string = 'laser'
@@ -52,9 +54,13 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
 
     var within = this.scene.physics.overlapRect(this.proprietaire.x + 80, this.proprietaire.y - 185, this.width, this.height + 500);
 
+    // Camp visé lu à chaque tir : il change quand un joueur fusionne avec twitchman (« enemies »).
+    // Sans ce filtre, le laser blessait tout corps physique : les autres boss, le trône du boss final,
+    // ou les joueurs quand un joueur le contrôle (intentions §2 : pas de tir ami).
+    const campVise = this.proprietaire.cible_courante as Camp
     within.forEach(function (body: any) {
       if (body.gameObject.type == "Sprite") {
-        if (body.gameObject.ClientID != this.proprietaireID) {
+        if (body.gameObject.ClientID != this.proprietaireID && peutBlesser(campVise, campDe(this.scene as unknown as SceneCamps, body.gameObject))) {
           if (body.gameObject.dommage && this.agrandissement) body.gameObject.dommage(0.08);
         }
       }
