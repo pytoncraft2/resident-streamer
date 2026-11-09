@@ -9,6 +9,7 @@ import * as Colyseus from "colyseus.js"
 import Panel from "../utils/panel"
 import Button from "../utils/bouton"
 import Titre from "../utils/titre"
+import { URL_WS_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 
 export default class Lobby extends Phaser.Scene {
@@ -177,7 +178,7 @@ export default class Lobby extends Phaser.Scene {
 	   */
 	  async connexion() {
 	    const self = this
-	    this.client = new Colyseus.Client("ws://localhost:3000")
+	    this.client = new Colyseus.Client(URL_WS_SERVEUR)
 	    const salon = this.salon
 	    const client = this.client
 

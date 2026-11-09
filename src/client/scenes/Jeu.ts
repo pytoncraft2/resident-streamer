@@ -11,6 +11,7 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
+import { URL_WS_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
@@ -661,7 +662,7 @@ export default class Jeu extends Phaser.Scene {
 		this.container_interface_fin.setDepth(4)
 		this.gfx = this.add.graphics();
 
-		const client = new Colyseus.Client("ws://localhost:3000")
+		const client = new Colyseus.Client(URL_WS_SERVEUR)
 		const salon = this.salon;
 		const sprite = this.personnage;
 

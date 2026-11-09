@@ -6,6 +6,7 @@
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import axios from "axios";
+import { URL_HTTP_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 
 export default class Scores extends Phaser.Scene {
@@ -94,7 +95,7 @@ export default class Scores extends Phaser.Scene {
 			this.scene.start("Level")
 		})
 			var zone = this.add.zone(152, 133, 1000, 250).setOrigin(0).setInteractive().setDepth(40);
-		axios.get("http://localhost:3000/scores").then(res => {
+		axios.get(`${URL_HTTP_SERVEUR}/scores`).then(res => {
 			var tableau: any = [];
 			Object.entries(res.data).forEach((element: any, _index: number) => {
 				let prefixe = '';

@@ -7,6 +7,7 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { RoomAvailable } from "colyseus.js";
+import { URL_WS_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -156,7 +157,7 @@ export default class Level extends Phaser.Scene {
 				this.scene.start("Scores")
 			})
 
-	this.client = new Colyseus.Client("ws://localhost:3000")
+	this.client = new Colyseus.Client(URL_WS_SERVEUR)
 	const client = this.client
 
 	const lobby = await client.joinOrCreate("acceuil");
