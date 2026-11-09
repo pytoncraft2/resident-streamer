@@ -49,7 +49,7 @@ npm run serve:server
 npm run dev
 ```
 
-installer PhaserEditor https://phasereditor2d.com/downloads/ (facultatif)
+installer Phaser Editor v5 Core https://phaser.io/editor (facultatif, licence payante), puis `PHASER_EDITOR=/chemin/vers/PhaserEditor npm run editor`
 
 ## Autre
 

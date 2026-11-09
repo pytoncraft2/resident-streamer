@@ -3,7 +3,7 @@
 ## Mission et état actuel
 Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueurs. L'équipe affronte les boss de plusieurs pièces ; son temps sert au classement. Les quatre personnages jouables ont des aptitudes distinctes.
 
-**État sur `main` (mis à jour le 09/11/2026) :** TypeScript 6, **Phaser 4.2.1** (client et serveur, ADR-001), Colyseus 0.18 (`@colyseus/core`, `@colyseus/schema` 5, client `@colyseus/sdk` ; versions figées par `overrides`, ADR-004), Vite 8 (`vite.config.mjs`), Express 5, scènes générées par Phaser Editor 2D v3. Environnement de référence : **Node 24** (`.nvmrc`, `engines`), depuis le passage à `@geckos.io/phaser-on-nodejs` 1.3.1 (`canvas` 3) — ADR-001 étape 1. Node 16 n'est plus supporté (`canvas` 3 exige Node ≥ 18).
+**État sur `main` (mis à jour le 09/11/2026) :** TypeScript 6, **Phaser 4.2.1** (client et serveur, ADR-001), Colyseus 0.18 (`@colyseus/core`, `@colyseus/schema` 5, client `@colyseus/sdk` ; versions figées par `overrides`, ADR-004), Vite 8 (`vite.config.mjs`), Express 5, scènes générées par Phaser Editor (v5 Core depuis l'ADR-005, scènes encore au format v3 tant qu'elles ne sont pas réenregistrées). Environnement de référence : **Node 24** (`.nvmrc`, `engines`), depuis le passage à `@geckos.io/phaser-on-nodejs` 1.3.1 (`canvas` 3) — ADR-001 étape 1. Node 16 n'est plus supporté (`canvas` 3 exige Node ≥ 18).
 
 **Objectif :** retrouver une base exécutable et testée, migrer prudemment vers Phaser 4, corriger les régressions, puis moderniser progressivement l'architecture du gameplay, de l'IA et du réseau. Ne pas confondre objectif futur et architecture déjà en place.
 
@@ -27,7 +27,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 2. **Ne jamais monter Phaser ou `@geckos.io/phaser-on-nodejs` à l'aveugle.** Le serveur exécute Phaser en HEADLESS via ce pont (jsdom + `canvas` natif), non documenté officiellement pour Phaser 4 (ADR-001). À chaque montée de version : `npm test` vert, partie longue sans nouvelle erreur dans le journal serveur, puis recette navigateur. Les tests ne couvrent pas tout (ex. tweens détruits à leur fin).
 3. **Maintenir l'autorité serveur.** Le client transmet des intentions ; la simulation et les décisions de gameplay critiques sont validées côté serveur. Ne pas faire confiance aux positions, dégâts ou scores annoncés par le client.
 4. **Préserver les contrats réseau** (`RoomState`, messages Colyseus, IDs d'entités, création/destruction, input, progression). Documenter les changements de protocole et prévoir la compatibilité de chaque étape.
-5. **Ne pas réécrire les zones générées par Phaser Editor sans vérification.** Identifier les blocs générés et leurs zones utilisateur dans `src/client/scenes/*.ts`, ainsi que les fichiers `.scene`. Vérifier la version de l'éditeur et sa compatibilité avant toute régénération.
+5. **Ne pas réécrire les zones générées par Phaser Editor sans vérification.** Identifier les blocs générés (`START OF COMPILED CODE` … `END OF COMPILED CODE`) et leurs zones utilisateur (`START-USER-CODE`, `START-USER-IMPORTS`) dans `src/client/scenes/*.ts`, ainsi que les fichiers `.scene`. Éditeur : **Phaser Editor v5 Core** (`npm run editor`, variable `PHASER_EDITOR`, ADR-005) ; une scène enregistrée passe au format 5, illisible par l'ancien éditeur v3. Après toute session d'édition, relire le `git diff` des `.scene` et des `.ts` générés : un objet déplacé par erreur change le jeu.
 6. **Ne pas remplacer un monolithe par de l'abstraction gratuite.** Refactoriser par comportements observables et extractions testables ; pas de migration globale vers ECS, GOAP ou un nouveau framework sans preuve du besoin.
 
 ## Architecture cible : principes, pas décision prématurée
@@ -44,6 +44,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - Compiler le serveur : `npm run build:server`.
 - Vérifier/compiler le client : `npm run build`.
 - Documentation existante : `npm run doc`.
+- Éditeur de scènes : `PHASER_EDITOR=/chemin/vers/PhaserEditor npm run editor` (Phaser Editor v5 Core, licence requise ; `editor-remote` ajoute `-public`).
 - Tests : `npm test` (compile le serveur puis lance mocha + ts-node sur `test/**/*.test.ts`, config `.mocharc.cjs`, types stricts `test/tsconfig.json`). Les tests d'intégration démarrent le serveur compilé sur un port libre (suite complète ~30 s). Compléter par des tests de caractérisation avant toute refonte.
 
 ## Méthode exigée pour chaque intervention
@@ -61,4 +62,4 @@ Consulter `ROADMAP_MODERNISATION.md` avant de traiter une phase entière. Ordre 
 - Phaser 3 → 4 : https://github.com/phaserjs/phaser/blob/master/changelog/v4/4.0/MIGRATION-GUIDE.md
 - Compétence officielle Phaser pour agents IA : https://github.com/phaserjs/phaser/blob/master/skills/v3-to-v4-migration/SKILL.md
 - Compatibilité actuelle de `phaser-on-nodejs` : https://github.com/geckosio/phaser-on-nodejs
-- MCP Phaser Editor v5 : https://github.com/phaserjs/editor-mcp-server (utile pour les scènes éditées visuellement, pas un substitut aux tests et à l'audit de migration).
+- MCP Phaser Editor v5 : intégré à l'éditeur (menu AI → MCP Server Configuration) ; utile pour les scènes éditées visuellement, pas un substitut aux tests et à l'audit de migration.
