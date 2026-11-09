@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
-const path = require('path')
+import { fileURLToPath } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: "static",
   resolve:{
     alias:{
-      '@' : path.resolve(__dirname, './static')
+      // ESM : pas de require/__dirname dans la config depuis Vite 5+.
+      '@' : fileURLToPath(new URL('./static', import.meta.url))
     },
   },
   server: {
