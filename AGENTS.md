@@ -10,7 +10,8 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 ## Carte du dépôt (vérifiée)
 - `src/client/index.ts` : création du jeu Phaser et déclaration des scènes.
 - `src/client/scenes/` : écrans et jeu (`Jeu.ts`, `Level.ts`, `Lobby.ts`, `Preload.ts`, `Scores.ts`) ; plusieurs fichiers `.ts` sont associés à des fichiers `.scene` de Phaser Editor.
-- `src/server/server.ts` : Express, Colyseus, endpoints et lecture/écriture de `scores.json`.
+- `src/server/server.ts` : Express, Colyseus, `GET /scores` (lecture seule de `scores.json`).
+- `src/server/game/finDePartie.ts`, `src/server/stockage/fichierScores.ts` : fin de partie décidée par le serveur (temps, nom d'équipe) et enregistrement sérialisé du score ; **aucune route n'accepte de score venant du client** (anomalie B3).
 - `src/server/game/Hall_01.ts` : room Colyseus `game_instance`, entrées des joueurs, création des boss et synchronisation.
 - `src/server/game/RoomState.ts` : schémas réseau Colyseus ; contrat critique à préserver.
 - `src/server/game/phaserHeadless.ts` : contournements indispensables à la destruction des rooms en HEADLESS (anomalie B1) ; à réévaluer à chaque montée de Phaser ou du pont.
