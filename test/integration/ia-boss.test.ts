@@ -6,6 +6,9 @@
  * manette : pièce à l'étage (3802 < x < 5627, y < -249), place (4800, -249) ; joueur à distance
  * moyenne → se tourne vers lui et lance une manette ; joueur proche → frappe puis s'envole vers
  * un coin (y ≈ -950) ; joueur sorti → revient à sa place.
+ * troll : pièce à l'étage, à gauche (x < 1789, y < -249), place (427, -249) ; joueur dans sa pièce
+ * → se tourne vers lui et lance oies et grenouilles (projectiles « troll »), qui le repoussent.
+ * La charge (joueur à moins de 400) n'est pas atteignable de façon fiable ici : tests unitaires.
  */
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
@@ -56,6 +59,49 @@ describe("IA des boss (intégration)", function () {
   after(async function () {
     await room?.leave();
     await serveur?.arreter();
+  });
+
+  describe("troll", function () {
+    const PLACE_TROLL = { x: 427, y: -249 };
+    let r: Room<unknown, EtatJeu>;
+    const joueur = (): PresenceVueOrientee | undefined => r.state.presences?.get(r.sessionId);
+    const troll = (): PresenceVueOrientee | undefined => Array.from(r.state.presences?.values() ?? []).find((p) => p.sprite === "troll");
+    const tirs = new Set<string>();
+    let releve: NodeJS.Timeout | undefined;
+
+    before(async function () {
+      r = await new Client(serveur.wsUrl).joinOrCreate<EtatJeu>("game_instance", { salon: `ia-troll-${Date.now()}`, sprite: "osmosiscoop" });
+      r.onMessage("*", () => undefined);
+      releve = setInterval(() => {
+        const pj = r.state.projectiles;
+        if (pj) for (const id of Array.from(pj.keys())) if (pj.get(id)?.sprite === "troll") tirs.add(id);
+      }, 20);
+    });
+
+    after(async function () {
+      if (releve) clearInterval(releve);
+      await r?.leave();
+    });
+
+    it("se tient à sa place à l'étage tant qu'aucun joueur n'est dans sa pièce", async function () {
+      await attendre(() => {
+        const t = troll();
+        return t?.x !== undefined && t.y !== undefined && Math.abs(t.x - PLACE_TROLL.x) < 30 && Math.abs(t.y - PLACE_TROLL.y) < 30;
+      }, 12000, "troll à sa place (427, -249)");
+      assert.equal(tirs.size, 0);
+    });
+
+    it("se tourne vers un joueur entré dans sa pièce et lui lance des projectiles", async function () {
+      r.send("inputs", { ...AU_REPOS, up: true });
+      await attendre(() => (joueur()?.y ?? 0) < -200, 4000, "joueur monté à l'étage");
+      r.send("inputs", AU_REPOS);
+      await attendre(() => Math.abs((joueur()?.y ?? 0) + 249) < 20, 4000, "joueur posé à l'étage");
+      r.send("inputs", { ...AU_REPOS, left: true });
+      await attendre(() => (joueur()?.x ?? 9999) < 1650, 6000, "joueur entré dans la pièce de troll");
+      r.send("inputs", AU_REPOS);
+      await attendre(() => tirs.size >= 1, 4000, "projectile lancé par troll");
+      assert.equal(troll()?.flipX, false, "troll doit regarder vers la droite, où est le joueur");
+    });
   });
 
   describe("manette", function () {
