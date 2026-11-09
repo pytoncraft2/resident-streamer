@@ -14,8 +14,8 @@
     "serve:server": "nodemon src/server/server.ts --ignore src/client/ --ignore donnees/",
     "clean": "rm -rf ./build ./dist",
     "preview": "vite preview",
-    "editor": "phasereditor2d-launcher -project . -port 1959",
-    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
+    "editor": "sh scripts/editeur.sh",
+    "editor-remote": "sh scripts/editeur.sh -public",
     "doc:client": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts",
     "doc:server": "cd ./src/server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
     "doc": "cd ./src/client/ && typedoc --out ../../doc_client ./index.ts scenes/*.ts && cd ../server/ && typedoc --out ../../doc_server server.ts game/*.ts game/scenes/**/*.ts",
@@ -29,7 +29,6 @@
     "mocha": "12.0.3",
     "nodemon": "^3.1.14",
     "phaser-asset-pack-hashing": "^1.0.5",
-    "phasereditor2d-launcher": "^3.32.0",
     "ts-node": "^10.2.1",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
@@ -44,8 +43,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^5.3.0",
-    "phaser": "^4.2.1",
-    "phasereditor2d-launcher": "^3.31.2"
+    "phaser": "^4.2.1"
   },
   "overrides": {
     "@colyseus/core": "0.18.23",
