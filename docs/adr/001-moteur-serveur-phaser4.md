@@ -68,6 +68,51 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 4. **Bascule Phaser 4 client + serveur** : `chain` dans `manette.ts`, `persist: true`, typage, puis recette multijoueur complète.
 5. Traiter B1 (destruction des rooms) : contribution ou polyfill local de `cancelAnimationFrame`, à mesurer sur des parties répétées.
 
+## Suivi
+
+- **Étape 1 (fait) :** Node 24 via `phaser-on-nodejs` 1.3.1 (`72946ca`).
+- **Étape 2 (fait) :** `getPresence` compatible, test du dash répété (`6227ae2`, `f5152f8`).
+- **Étape 3 (spike client, 2026-11-09) :** branche locale `spike/phaser4-client`, partie de `main`, avec Phaser 4.2.1 + TypeScript 6.0.3.
+
+### Résultats de l'étape 3
+
+| Vérification | Résultat |
+|---|---|
+| Typecheck client / serveur / tests | 0 erreur, après corrections ci-dessous |
+| `npm run build` (tsc + Vite + asset packs) | ✅ |
+| `npm test` | 34/34 (2 exécutions) |
+| Chrome sans interface, écran d'accueil | Phaser 4.2.1 démarre en WebGL, **aucune erreur console** ; capture bloquée sur l'écran de chargement à 100 % (la référence Phaser 3 n'atteint que 49 % dans les mêmes conditions de rendu logiciel) : **transition `Preload` → `Level` à vérifier dans un vrai navigateur** |
+| Test manuel dans un navigateur (utilisateur, Node 24, 2026-11-09) | fonctionne |
+
+**TypeScript 6** (Phaser 4.2.1 est développé avec TS ^6.0.2 ; TS 4.7 ne lit pas ses types) :
+- `moduleResolution: "node"` est déprécié (bloquant sans `"ignoreDeprecations": "6.0"`). `"bundler"` côté client fait perdre les types de `colyseus.js` 0.14 : à reconsidérer avec la montée de Colyseus. À traiter avant TypeScript 7.
+- `strict` devient actif par défaut : `src/server/tsconfig.json` doit déclarer `"strict": false` explicitement (sinon 155 erreurs).
+- `typeRoots` du serveur (dont un chemin erroné `node_module/…`) empêche de trouver les types `phaser` : à retirer.
+- Client : `skipLibCheck: true` (les `.d.ts` de `@colyseus/schema` 0.14 et de Phaser ne passent pas).
+- **TS 6 seul, en Phaser 3.55 : 0 erreur, 34/34, build OK** → peut être une étape séparée avant Phaser 4.
+
+**Écarts Phaser 4 côté client** (tous dans les zones utilisateur des fichiers Phaser Editor) :
+
+| Écart | Impact sans correction | Correctif | Compatible Phaser 3.55 |
+|---|---|---|---|
+| `children.iterate` (`Jeu.ts`) | joueurs partis jamais retirés | `getChildren().forEach` | ✅ |
+| `Geom.Point` retiré (`Jeu.ts`) | caméra entre pièces : exception | `Geom.Rectangle.Contains(rect, x, y)` | ✅ |
+| `tweens.timeline` retiré (`Level.ts`), masqué par `any` | exception sur saisie invalide | `tweens.add` avec `yoyo`/`repeat` | ✅ |
+| `add.particles` + `createEmitter` (`Jeu.ts`) | exception à l'apparition d'un joueur | `add.particles(x, y, clé, config)` | ❌ |
+| `setMask` ignoré en WebGL (`Scores.ts`), masqué par `any` | classement défilant non masqué (visuel) | `enableFilters()` + `filters.external.addMask(…)`, `setMask` en Canvas | ❌ |
+| Typage : `input.keyboard` nullable (×4), `make.graphics(scene)` | aucun | `!` justifié, `make.graphics({})` | ✅ |
+
+**Écarts serveur restants** (typage seul) : `gravity` sans `x`, callbacks `overlap` (typés `GameObjectWithBody`), `defaultFillColor` en lecture seule dans les types.
+
+**Phaser Editor :** 5 scènes et 2 composants générés par Phaser Editor 2D v3 (format `.scene` v3). Compatibilité avec Phaser Editor v5 **non testée** (nécessite l'éditeur).
+
+### Découpage révisé de l'étape 4
+
+- **4a — TypeScript 6** sur Phaser 3.55 (`tsconfig` ci-dessus), seul.
+- **4b — Corrections compatibles** client (`getChildren`, `Rectangle.Contains`, `tweens.add`, typage), seules.
+- **4c — Bascule Phaser 4.2.1** client + serveur : particules, masque, `tweens.chain`, `persist: true`, typage serveur.
+- **4d — Recette navigateur multijoueur complète** (`/recette-multijoueur`), dont l'écran de chargement, les particules d'apparition et le défilement des scores.
+
 ## Conséquences
 
 - Node 16 (fin de vie) peut être abandonné dès l'étape 1, indépendamment de Phaser 4.

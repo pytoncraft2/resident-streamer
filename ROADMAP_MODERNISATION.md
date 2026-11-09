@@ -33,11 +33,11 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 ## Phase 2 — Spike technique Phaser 4 (sans refonte)
 
 - [ ] Vérifier la version Phaser 4 stable disponible au moment de la migration (4.2.1 au 08/11/2026) et la documentation officielle. → version vérifiée sur npm (4.2.1, 09/07/2026) ; guide de migration officiel pas encore relu.
-- [ ] Tester **séparément** un client minimal Phaser 4 avec une scène, un sprite, l'input et les collisions utilisées.
+- [ ] Tester **séparément** un client minimal Phaser 4 avec une scène, un sprite, l'input et les collisions utilisées. → client complet compilé en Phaser 4 (spike `spike/phaser4-client`, ADR-001 étape 3) ; rendu et parcours navigateur **à vérifier manuellement**.
 - [x] Tester séparément le serveur `HEADLESS` + `@geckos.io/phaser-on-nodejs` avec Phaser 4, y compris initialisation, timer, Arcade Physics, collisions et destruction de room. → fonctionnel avec pont 1.3.1 + 3 adaptations ; destruction de room toujours en erreur (B1). Voir ADR-001.
 - [x] Si incompatible, comparer : adaptation du pont Node ; simulateur physique serveur indépendant de Phaser ; stratégie temporaire de versions client/serveur distinctes. → comparé dans l'ADR-001 (options A/B/C).
-- [ ] Identifier les `.scene` et le code généré dépendant de l'ancien Phaser Editor ; tester Phaser Editor v5 sur une copie.
-- [ ] Documenter les incompatibilités TypeScript, CJS/ESM, version Node, asset packs et import dynamique des aptitudes.
+- [ ] Identifier les `.scene` et le code généré dépendant de l'ancien Phaser Editor ; tester Phaser Editor v5 sur une copie. → identifiés (5 scènes + 2 composants, Phaser Editor 2D v3) ; v5 non testé.
+- [ ] Documenter les incompatibilités TypeScript, CJS/ESM, version Node, asset packs et import dynamique des aptitudes. → TypeScript 6, Node 24, asset packs (build OK) et import dynamique des aptitudes (tests OK) documentés dans l'ADR-001 ; CJS/ESM non étudié.
 
 **Sortie :** une décision d'architecture écrite, avec preuve de faisabilité, risques, coûts et rollback. **Aucun passage global à Phaser 4 avant cette décision.**
 
