@@ -3,7 +3,8 @@ import TJoueur from "../types/Joueur";
 import fusion from "./_utilitaire/fusion";
 
 export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
-  fakhear.degat = 10
+  // Corps à corps : 2 dégâts, soit 5 coups par boss (intentions §2 ; 10 était une valeur de test).
+  fakhear.degat = 2
 }
 
 export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
