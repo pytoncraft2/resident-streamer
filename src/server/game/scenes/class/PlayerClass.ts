@@ -3,6 +3,8 @@ import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { DefautDirection } from "../Stats/Defaut"
 import { vieApresDommage } from "../../../domain/combat"
+import { terminerPartie } from "../../finDePartie"
+import { scoresServeur } from "../../../stockage/fichierScores"
 
 /**
  * Joueur et interaction
@@ -361,7 +363,8 @@ import { vieApresDommage } from "../../../domain/combat"
        (this.scene as any).players.getChildren().forEach((j: any) => {
          joueur.push(j.sprite);
        });
-       (this.scene as any).room.broadcast("FIN_JEU", {temps: resultat, joueur});
+       // Le serveur enregistre lui-même le score (B3) ; le client ne fait plus qu'afficher.
+       terminerPartie((this.scene as any).room, resultat, joueur, scoresServeur);
      }
 
      (this.body as any).setAllowGravity(false);

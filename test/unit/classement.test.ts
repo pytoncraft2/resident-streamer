@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { ajouterScore, Classement } from "../../src/server/domain/classement";
+import { ajouterScore, Classement, nommerEquipe } from "../../src/server/domain/classement";
 
 describe("domain/classement · ajouterScore", function () {
   const base: Classement = {
@@ -31,5 +31,18 @@ describe("domain/classement · ajouterScore", function () {
   it("place en tête les noms d'équipe numériques", function () {
     const c = ajouterScore(base, "42", ["x"], "00:09:00");
     assert.deepEqual(Object.keys(c), ["42", "EQUIPE A", "EQUIPE B"]);
+  });
+});
+
+describe("domain/classement · nommerEquipe", function () {
+  it("reprend le format historique : EQUIPE <PREMIER PERSONNAGE> <0-99>", function () {
+    assert.equal(nommerEquipe(["huzounet", "fakhear"], 0.42), "EQUIPE HUZOUNET 42");
+  });
+  it("borne le numéro entre 0 et 99", function () {
+    assert.equal(nommerEquipe(["troll"], 0), "EQUIPE TROLL 0");
+    assert.equal(nommerEquipe(["troll"], 0.999), "EQUIPE TROLL 99");
+  });
+  it("reste défini sans joueur", function () {
+    assert.equal(nommerEquipe([], 0.5), "EQUIPE SANS JOUEUR 50");
   });
 });

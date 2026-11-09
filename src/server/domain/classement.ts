@@ -12,6 +12,17 @@ export interface EntreeClassement {
 /** Clé : nom d'équipe. */
 export type Classement = Readonly<Record<string, EntreeClassement>>;
 
+/**
+ * Nom d'équipe affiché au classement : `EQUIPE <PREMIER PERSONNAGE> <0-99>`,
+ * format historiquement généré par le client (Jeu.ts), désormais par le serveur.
+ *
+ * @param tirage nombre dans [0, 1[ (Math.random en production)
+ */
+export function nommerEquipe(personnages: readonly string[], tirage: number): string {
+  const premier = personnages[0]?.toUpperCase() ?? "SANS JOUEUR";
+  return `EQUIPE ${premier} ${Math.floor(tirage * 100)}`;
+}
+
 /** `"00:01:42"` → 142 : clé de tri obtenue en retirant les `:`. */
 const cleDeTri = (score: string): number => parseInt(score.replace(/:/g, ""));
 

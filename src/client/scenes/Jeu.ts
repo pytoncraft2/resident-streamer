@@ -11,7 +11,6 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import * as Colyseus from "colyseus.js"
 import { deepEqual } from "../components/deepEqual"
-import axios from "axios";
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
@@ -701,17 +700,9 @@ export default class Jeu extends Phaser.Scene {
 					});
 				});
 
+				// Le serveur enregistre le score lui-même (anomalie B3) : le client ne fait qu'afficher.
 				room.onMessage("FIN_JEU", (resultat: any) => {
 
-					axios({
-						method: 'post',
-						url: "http://localhost:3000/scores",
-						data: {
-							equipe: `EQUIPE ${resultat.joueur[0].toUpperCase()} ${Math.floor(Math.random() * 100)}`,
-							joueur: resultat.joueur,
-							score: resultat.temps
-						}
-					});
 					this.sound.play('victoire')
 					this.ecran_fin_text_score.setText(`Votre score : ${resultat.temps}`)
 					this.ecran_fin_text_quitter
