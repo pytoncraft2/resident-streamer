@@ -25,7 +25,10 @@ export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   input.z = false
 }
 
-export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any) {
+export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any, input: { e_debut?: boolean }) {
+  // Un appui = un dash (B7) : front montant calculé par le serveur, consommé ici.
+  if (!input.e_debut) return;
+  input.e_debut = false;
   fakhear.play('straightlead')
   fakhear.setVelocityX(0);
 

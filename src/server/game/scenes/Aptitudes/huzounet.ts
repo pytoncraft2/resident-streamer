@@ -64,7 +64,10 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
 
 }
 
-export function kunai__Z(huzounet: TJoueur) {
+export function kunai__Z(huzounet: TJoueur, input: { z_debut?: boolean }) {
+    // Un appui = un kunaï (B7) : front montant calculé par le serveur, consommé ici.
+    if (!input.z_debut) return;
+    input.z_debut = false;
     setAnimation(huzounet, 'huzounet_kunai_attaque');
 
     if (!huzounet.kunai) {

@@ -9,6 +9,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
   proprietaire: string = ''
   sprite: string = 'huzounet'
   vie: number = 10
+  /** État de Z chez le créateur à l'image précédente (détection de l'appui, B7). */
+  zPrecedent: boolean = false
   degat: number = 0.2
 
   ClientID: string
@@ -61,9 +63,13 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
       shuriken__A(this as unknown as TJoueur, { a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin })
 
-      if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.z) {
-        kunai__Z(this as any)
+      // Un appui de Z chez le créateur = un kunaï par clone (B7) : chaque clone détecte son propre
+      // front montant, le front calculé par le serveur étant consommé par le créateur.
+      const zEnfonce = (this.scene as any).room.donnes[this.createur.ClientID].clavier.z === true
+      if (zEnfonce && !this.zPrecedent) {
+        kunai__Z(this as any, { z_debut: true })
       }
+      this.zPrecedent = zEnfonce
 
       if ((this.scene as any).room.donnes[this.createur.ClientID].clavier.right) {
         setAnimation(this, 'walk')

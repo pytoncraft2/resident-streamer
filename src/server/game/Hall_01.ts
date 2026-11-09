@@ -4,6 +4,7 @@ import "@geckos.io/phaser-on-nodejs"
 import { Room, Client, Delayed } from "@colyseus/core"
 import config from "./config"
 import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaserHeadless"
+import { clavierRecu } from "../domain/entrees"
 
 // Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
 installerPolyfillsHeadless()
@@ -105,7 +106,10 @@ export default class GameRooms extends Room {
       })
 
     this.onMessage("inputs", (client, message) => {
-      this.donnes[client.sessionId].clavier = message
+      const joueur = this.donnes[client.sessionId]
+      // Fronts montants calculés par le serveur (B7) à partir du dernier message reçu tel quel.
+      joueur.clavier = clavierRecu(joueur.dernierMessage, message)
+      joueur.dernierMessage = message
     })
 
 
