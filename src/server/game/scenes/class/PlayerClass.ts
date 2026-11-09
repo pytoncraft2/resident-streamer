@@ -5,6 +5,7 @@ import { DefautDirection } from "../Stats/Defaut"
 import { vieApresDommage } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
+import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
 
 /**
  * Joueur et interaction
@@ -340,25 +341,20 @@ import { scoresServeur } from "../../../stockage/fichierScores"
      this.particules = true;
      (this.scene as any).room.boss[`${this.sprite}`].vaincu = true;
 
-     if ((this.scene as any).room.boss["twitchman"].vaincu && (this.scene as any).room.boss["boss_1"].vaincu)
+     const room = (this.scene as any).room;
+
+     // Les 4 boss principaux vaincus (intentions §1), une seule fois par partie : porte du
+     // rez-de-chaussée ouverte (RDC_OK), pièce centrale de l'étage révélée (ETAGE_OK), boss final actif.
+     if (bossPrincipauxVaincus(room.boss) && !room.bossFinalRevele)
      {
-       (this.scene as any).room.broadcast("RDC_OK");
+       room.bossFinalRevele = true;
+       room.broadcast("RDC_OK");
+       room.broadcast("ETAGE_OK");
+       (this.scene as any).enemiesRef[room.boss[BOSS_FINAL].id].setActive(true);
+       (this.scene as any).enemiesRef[room.boss[BOSS_FINAL].id].trones.setActive(true);
      }
 
-     if ((this.scene as any).room.boss["troll"].vaincu && (this.scene as any).room.boss["manette"].vaincu)
-     {
-       (this.scene as any).room.broadcast("ETAGE_OK");
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].setActive(true);
-       (this.scene as any).enemiesRef[(this.scene as any).room.boss["super_boss"].id].trones.setActive(true);
-     }
-
-     if (
-       (this.scene as any).room.boss["troll"].vaincu &&
-       (this.scene as any).room.boss["twitchman"].vaincu &&
-       (this.scene as any).room.boss["manette"].vaincu &&
-       (this.scene as any).room.boss["boss_1"].vaincu &&
-       (this.scene as any).room.boss["super_boss"].vaincu
-     )
+     if (partieGagnee(room.boss))
      {
        const joueur = [];
        const resultat = (this.scene as any).StopCompteur();

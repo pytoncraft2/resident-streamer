@@ -27,6 +27,8 @@ export default class GameRooms extends Room {
     this.autoDispose = true
     this.patchRate = 1
     this.maxClients = 4
+    // Boss final déjà révélé dans cette partie (PlayerClass.animationBossVaincu, une seule fois).
+    this.bossFinalRevele = false
   }
 
   onCreate() {
