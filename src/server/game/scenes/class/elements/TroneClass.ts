@@ -47,7 +47,10 @@ export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
         flipX: this.flipX,
         sprite: this.sprite,
         alpha: this.alpha,
-        _frame: this._frame
+        _frame: this._frame,
+        // Le client ne lit _frame qu'à la création ; `anim` permet de changer l'image ensuite
+        // (siège « tronehaut » → « tronehautv2 » quand le boss final quitte son trône).
+        anim: this._frame
       })
     )
   }

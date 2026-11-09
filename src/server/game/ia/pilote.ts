@@ -28,6 +28,8 @@ export interface OptionsPilote {
   aptitudes?: AptitudesBoss;
   /** Appelé une fois quand le boss est vaincu, avant l'arrêt de l'IA. */
   surVaincu?: () => void;
+  /** Données de perception propres à ce boss (ex. rangées de trône restantes du boss final). */
+  percevoir?: () => Pick<PerceptionBoss, "tronesRestants">;
 }
 
 /**
@@ -110,6 +112,8 @@ function appliquer(
 
 /** Démarre l'IA d'un boss : première décision immédiate, puis selon `periode` et les actions longues. */
 export function demarrerIA(boss: BossPilote, arbre: ArbreBoss, options: OptionsPilote): void {
+  // Mémoire propre à ce boss (recharges) : les arbres sont partagés entre toutes les rooms.
+  const memoire = new Map<string, number>();
   const programmer = (): void => {
     const scene = boss.scene as SceneBoss | undefined;
     if (scene?.time) scene.time.delayedCall(options.periode, tick);
@@ -125,13 +129,16 @@ export function demarrerIA(boss: BossPilote, arbre: ArbreBoss, options: OptionsP
     }
 
     let actionLongue = false;
-    if (boss.body && scene.players.getLength() > 0) {
+    // Un boss inactif (boss final avant sa révélation) ne décide rien.
+    if (boss.body && boss.active && scene.players.getLength() > 0) {
       const plusProche = scene.physics.closest(boss, scene.players.getChildren()) as Phaser.GameObjects.GameObject & Phaser.Types.Math.Vector2Like | null;
       const perception: PerceptionBoss = {
         position: { x: boss.x, y: boss.y },
         cible: plusProche && plusProche.x !== undefined && plusProche.y !== undefined ? { position: { x: plusProche.x, y: plusProche.y } } : undefined,
+        temps: scene.time.now,
+        ...options.percevoir?.(),
       };
-      for (const intention of decider(arbre, perception)) {
+      for (const intention of decider(arbre, perception, memoire)) {
         // Une seule action longue reprogramme la décision suivante.
         const longue = appliquer(boss, scene, plusProche ?? undefined, intention, options, actionLongue ? () => undefined : programmer);
         actionLongue = actionLongue || longue;

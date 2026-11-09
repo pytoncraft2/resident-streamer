@@ -139,6 +139,9 @@ import { revelerBossFinal } from "../../bossFinal"
      this.zoneInteraction.action = (_e: any) => {
        // Entité détruite (joueur parti, boss retiré après une fusion) : sa zone ne doit plus agir.
        if (!this.scene) return
+       // Cible invulnérable (boss final sur son trône) : ignorée, sans consommer le coup,
+       // qui reste disponible pour le trône (Aptitudes/super_boss.ts).
+       if (_e.invulnerable) return
        // Camp de la cible : pas de tir ami, soin réservé aux alliés (intentions §2).
        const scene = this.scene as any
        const campCible: Camp | undefined = scene.players.contains(_e) ? "players" : scene.enemies.contains(_e) ? "enemies" : undefined
@@ -257,6 +260,8 @@ import { revelerBossFinal } from "../../bossFinal"
     * @param puissance degat de l'attaquant
     */
    dommage(puissance: number) {
+     // Invulnérable (boss final tant que son trône tient) : aucun dégât.
+     if ((this as any).invulnerable) return;
      if (this.scene) {
      this.setTint(0xff0000)
        this.scene.time.delayedCall(100, () => {

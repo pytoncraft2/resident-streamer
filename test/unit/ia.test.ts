@@ -1,10 +1,11 @@
 import { strict as assert } from "assert";
-import { action, condition, selecteur, sequence } from "../../src/server/ia/arbre";
+import { action, condition, recharge, selecteur, sequence } from "../../src/server/ia/arbre";
 import { contient, decider, distance, PerceptionBoss } from "../../src/server/ia/boss";
 import { arbreBoss1, PLACE_BOSS_1 } from "../../src/server/ia/bosses/boss_1";
 import { arbreManette, COINS_MANETTE, PLACE_MANETTE } from "../../src/server/ia/bosses/manette";
 import { arbreTroll, PLACE_TROLL } from "../../src/server/ia/bosses/troll";
 import { arbreTwitchman, COINS_TWITCHMAN, PLACE_TWITCHMAN } from "../../src/server/ia/bosses/twitchman";
+import { arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../src/server/ia/bosses/super_boss";
 
 describe("ia/arbre · briques", function () {
   const trace: string[] = [];
@@ -235,5 +236,59 @@ describe("ia/bosses · twitchman (comportement repris de l'ancien __auto)", func
       { type: "rejoindre", position: PLACE_TWITCHMAN, duree: 900, animationAuDepart: "twitchman_vole", attendreLaFin: true },
     ]);
     assert.deepEqual(decider(arbreTwitchman, percevoir({ x: 427, y: SOL }, { x: 5635, y: SOL })), []);
+  });
+});
+
+describe("ia/arbre · recharge", function () {
+  const contexte = (temps: number, memoire: Map<string, number>) => ({ temps, memoire, n: { v: 0 } });
+  const compteur = action<{ temps: number; memoire: Map<string, number>; n: { v: number } }>("compter", (c) => void c.n.v++);
+
+  it("évalue l'enfant, puis le bloque pendant la durée de recharge", function () {
+    const noeud = recharge("r", 1000, compteur);
+    const memoire = new Map<string, number>();
+    const c0 = contexte(0, memoire);
+    assert.equal(noeud.evaluer(c0), "succes");
+    assert.equal(noeud.evaluer(contexte(500, memoire)), "echec");
+    const c2 = contexte(1000, memoire);
+    assert.equal(noeud.evaluer(c2), "succes");
+    assert.equal(c0.n.v + c2.n.v, 2);
+  });
+
+  it("ne mémorise pas un échec de l'enfant", function () {
+    const memoire = new Map<string, number>();
+    const noeud = recharge("r", 1000, condition("non", () => false));
+    assert.equal(noeud.evaluer(contexte(0, memoire)), "echec");
+    assert.equal(memoire.has("r"), false);
+  });
+
+  it("la mémoire est propre à chaque entité", function () {
+    const noeud = recharge("r", 1000, compteur);
+    assert.equal(noeud.evaluer(contexte(0, new Map())), "succes");
+    assert.equal(noeud.evaluer(contexte(10, new Map())), "succes");
+  });
+});
+
+describe("ia/bosses · boss final, phase « Trône »", function () {
+  const SIEGE = { x: 3000, y: -880 };
+  const DANS_LA_PIECE = { x: 2830, y: -250 };
+  const percevoir = (temps: number, tronesRestants: number, cible?: { x: number; y: number }): PerceptionBoss => ({
+    position: SIEGE, temps, tronesRestants, cible: cible ? { position: cible } : undefined,
+  });
+
+  it("lance un PC (Z) vers une cible dans la pièce centrale, au plus une fois par recharge", function () {
+    const memoire = new Map<string, number>();
+    const tir = [{ type: "aptitude", nom: "Z", entree: { z: true } }];
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000, 6, DANS_LA_PIECE), memoire), tir);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + REGLAGES_BOSS_FINAL.rechargePc - 1, 6, DANS_LA_PIECE), memoire), []);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(1000 + REGLAGES_BOSS_FINAL.rechargePc, 6, DANS_LA_PIECE), memoire), tir);
+  });
+
+  it("ne tire pas sur une cible hors de la pièce centrale", function () {
+    assert.deepEqual(decider(arbreBossFinal, percevoir(0, 6, { x: 4500, y: -250 })), []);
+    assert.deepEqual(decider(arbreBossFinal, percevoir(0, 6, { x: 2830, y: 756 })), []);
+  });
+
+  it("ne tire plus une fois le trône détruit (phase « Envol » à venir)", function () {
+    assert.deepEqual(decider(arbreBossFinal, percevoir(0, 0, DANS_LA_PIECE)), []);
   });
 });

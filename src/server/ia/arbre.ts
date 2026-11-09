@@ -10,7 +10,9 @@
  * - `selecteur(...)` : essaie ses enfants dans l'ordre et s'arrête au premier qui réussit ;
  * - `sequence(...)`  : exécute ses enfants dans l'ordre et s'arrête au premier qui échoue ;
  * - `condition(test)`: réussit si le test est vrai ;
- * - `action(faire)`  : fait quelque chose (ajouter une intention) et réussit.
+ * - `action(faire)`  : fait quelque chose (ajouter une intention) et réussit ;
+ * - `recharge(nom, ms, enfant)` : n'évalue son enfant qu'une fois toutes les `ms` millisecondes
+ *   (mémoire et heure fournies par le contexte, propres à chaque boss).
  */
 
 export type Statut = "succes" | "echec";
@@ -45,6 +47,29 @@ export function action<C>(nom: string, faire: (contexte: C) => void): Noeud<C> {
     evaluer: (contexte) => {
       faire(contexte);
       return "succes";
+    },
+  };
+}
+
+/** Contexte requis par `recharge` : l'heure courante et une mémoire propre à l'entité pilotée. */
+export interface ContexteRecharge {
+  readonly temps: number;
+  readonly memoire: Map<string, number>;
+}
+
+/**
+ * Recharge : échoue sans évaluer son enfant si moins de `ms` millisecondes se sont écoulées depuis
+ * le dernier succès de cet enfant ; sinon évalue l'enfant et, s'il réussit, mémorise l'heure.
+ */
+export function recharge<C extends ContexteRecharge>(nom: string, ms: number, enfant: Noeud<C>): Noeud<C> {
+  return {
+    nom,
+    evaluer: (contexte) => {
+      const dernier = contexte.memoire.get(nom);
+      if (dernier !== undefined && contexte.temps - dernier < ms) return "echec";
+      const statut = enfant.evaluer(contexte);
+      if (statut === "succes") contexte.memoire.set(nom, contexte.temps);
+      return statut;
     },
   };
 }

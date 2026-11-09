@@ -36,6 +36,10 @@ export interface PerceptionBoss {
   readonly position: Point;
   /** Joueur le plus proche, s'il y en a un. */
   readonly cible?: { readonly position: Point };
+  /** Heure de la scène, en ms (pour les recharges). */
+  readonly temps?: number;
+  /** Boss final : rangées de trône encore debout. */
+  readonly tronesRestants?: number;
 }
 
 /** Ce que le boss veut faire ; appliqué dans l'ordre par l'exécuteur Phaser. */
@@ -85,13 +89,17 @@ export type Intention =
 export interface ContexteBoss {
   readonly perception: PerceptionBoss;
   readonly intentions: Intention[];
+  /** Heure de la décision (perception.temps, ou 0). */
+  readonly temps: number;
+  /** Mémoire propre au boss entre deux décisions (recharges). */
+  readonly memoire: Map<string, number>;
 }
 
 export type ArbreBoss = Noeud<ContexteBoss>;
 
-/** Évalue l'arbre sur une perception et renvoie les intentions produites. */
-export function decider(arbre: ArbreBoss, perception: PerceptionBoss): Intention[] {
-  const contexte: ContexteBoss = { perception, intentions: [] };
+/** Évalue l'arbre sur une perception et renvoie les intentions produites. `memoire` : propre au boss. */
+export function decider(arbre: ArbreBoss, perception: PerceptionBoss, memoire: Map<string, number> = new Map()): Intention[] {
+  const contexte: ContexteBoss = { perception, intentions: [], temps: perception.temps ?? 0, memoire };
   arbre.evaluer(contexte);
   return contexte.intentions;
 }
