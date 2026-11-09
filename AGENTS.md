@@ -10,7 +10,8 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 ## Carte du dépôt (vérifiée)
 - `src/client/index.ts` : création du jeu Phaser et déclaration des scènes.
 - `src/client/scenes/` : écrans et jeu (`Jeu.ts`, `Level.ts`, `Lobby.ts`, `Preload.ts`, `Scores.ts`) ; plusieurs fichiers `.ts` sont associés à des fichiers `.scene` de Phaser Editor.
-- `src/server/server.ts` : Express, Colyseus, `GET /scores` (lecture seule de `scores.json`).
+- `src/server/server.ts` : Express, Colyseus, `GET /scores` (lecture seule du classement).
+- Classement : **`donnees/scores.json`** (ignoré par git, remplaçable par la variable `SCORES_FICHIER`), créé au premier démarrage depuis `src/server/scores.json`, qui reste le classement initial versionné et n'est jamais modifié (anomalie B4). Avant de déployer sur un serveur existant, copier une fois l'ancien `build/server/scores.json` vers `donnees/scores.json`.
 - `src/server/game/finDePartie.ts`, `src/server/stockage/fichierScores.ts` : fin de partie décidée par le serveur (temps, nom d'équipe) et enregistrement sérialisé du score ; **aucune route n'accepte de score venant du client** (anomalie B3).
 - `src/server/game/Hall_01.ts` : room Colyseus `game_instance`, entrées des joueurs, création des boss et synchronisation.
 - `src/server/game/RoomState.ts` : schémas réseau Colyseus ; contrat critique à préserver.

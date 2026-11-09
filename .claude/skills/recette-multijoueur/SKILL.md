@@ -11,7 +11,7 @@ Cette recette est **manuelle** : Claude prépare l'environnement et la grille, l
 
 ## 1. Préparer
 - Noter la branche, le commit (`git rev-parse --short HEAD`) et `node -v`.
-- Sauvegarder `src/server/scores.json` (copie dans le scratchpad) : une partie terminée l'écrit. Le restaurer en fin de recette si l'utilisateur le souhaite.
+- Sauvegarder `donnees/scores.json` (copie dans le scratchpad) : une partie terminée y ajoute une entrée. Le restaurer en fin de recette si l'utilisateur le souhaite. Pour une recette isolée, lancer le serveur avec `SCORES_FICHIER=<fichier temporaire>`.
 - Lancer dans deux terminaux séparés (l'utilisateur, ou Claude en arrière-plan) :
   - serveur : `npm run serve:server` (port 3000, codé en dur dans `Lobby.ts` et `Jeu.ts`) ;
   - client : `npm run dev` (Vite).

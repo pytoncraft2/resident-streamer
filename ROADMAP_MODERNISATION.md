@@ -26,7 +26,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [ ] Écrire des tests de caractérisation sur les calculs purs : dégâts, cooldowns, scores et chronométrage (après extraction sans modification de comportement). → fait : dégâts, scores, chronométrage (`src/server/domain/`). Cooldowns : il n'en existe pas dans le code ; la cadence réelle des aptitudes observables est caractérisée par `test/integration/aptitudes.test.ts` (anomalies B7, B8).
 - [x] Mettre en place des tests d'intégration pour la création, la jonction et la destruction de rooms Colyseus. → `test/integration/rooms.test.ts`
 - [ ] Valider des scénarios manuels multi-clients : 2, 3 et 4 joueurs ; déconnexion/reconnexion ; quatre personnages ; combats ; boss ; fin de partie.
-- [x] Vérifier que `scores.json` ne sera pas modifié accidentellement par les tests ; isoler le stockage de test. → les tests n'écrivent que `build/server/scores.json` et le restaurent ; en dev, `serve:server` écrit toujours `src/server/scores.json` (B4).
+- [x] Vérifier que `scores.json` ne sera pas modifié accidentellement par les tests ; isoler le stockage de test. → chaque serveur de test a son propre `SCORES_FICHIER` temporaire ; le classement réel vit dans `donnees/scores.json` (B4 corrigé).
 
 **Sortie :** une grille de non-régression et des tests minimum avant les changements de moteur.
 

@@ -14,12 +14,12 @@ Objectif : rapporter des faits vérifiés, pas une impression de réussite. Une 
 | Commande | Vérifie | Effets de bord |
 |---|---|---|
 | `npm run build` | typecheck client (`tsc`, `noEmit`) + bundle Vite + hash des asset packs | écrit `dist/` (ignoré par git) |
-| `npm run build:server` | compilation serveur (`src/server/tsconfig.json`) | écrit `build/server/` et y copie `scores.json` (ignoré par git) |
+| `npm run build:server` | compilation serveur (`src/server/tsconfig.json`) | écrit `build/server/` (ignoré par git) |
 | `npx tsc -p test/tsconfig.json` | typecheck strict des tests | aucun |
 | `npm test` | recompile le serveur puis tests mocha (unitaires + intégration rooms, scores, aptitudes, ~30 s) | démarre/arrête un serveur sur un port libre |
 
 - Il n'existe pas de lint fiable (ESLint 6 sans configuration) : le dire explicitement plutôt que d'improviser une commande.
-- Ne jamais lancer `npm run clean`, ni modifier `src/server/scores.json` pour faire passer une vérification.
+- Ne jamais lancer `npm run clean`, ni modifier `src/server/scores.json` (classement initial) ou `donnees/scores.json` (classement réel) pour faire passer une vérification. Les tests utilisent leur propre fichier temporaire (`SCORES_FICHIER`).
 - Distinguer les erreurs **préexistantes** des erreurs introduites : en cas de doute, comparer avec `git stash` uniquement si l'utilisateur l'accepte.
 
 ## 3. Vérifications manuelles restantes
