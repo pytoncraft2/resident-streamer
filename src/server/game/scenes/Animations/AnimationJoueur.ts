@@ -37,7 +37,8 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
   });
   anim.create({
     key: 'huzounet_kunai_attaque',
-    frames: anim.generateFrameNames('atlas', { prefix: 'attaque_kunai', start: 0, end: 3 }),
+    // L'atlas n'a pas attaque_kunai3 : seules les frames existantes sont listées (anomalie B5).
+    frames: anim.generateFrameNames('atlas', { prefix: 'attaque_kunai', frames: [0, 1, 2] }),
     frameRate: 5,
     repeat: 0
   });
@@ -111,7 +112,8 @@ export function AnimationJoueur(anim: Phaser.Animations.AnimationState){
 
   anim.create({
     key: "straightlead",
-    frames: anim.generateFrameNames('atlas', { prefix: 'straightlead', start: 0, end: 3 }),
+    // L'atlas n'a pas straightlead2 et 3 : seules les frames existantes sont listées (anomalie B5).
+    frames: anim.generateFrameNames('atlas', { prefix: 'straightlead', frames: [0, 1] }),
     frameRate: 15,
     repeat: 0
   })
@@ -195,7 +197,8 @@ anim.create({
 //super_boss
 anim.create({
   key: "super_boss_vole",
-  frames: anim.generateFrameNames('atlas', { prefix: 'bossfly', start: 0, end: 5 }),
+  // L'atlas n'a pas bossfly2 et 3 : seules les frames existantes sont listées (anomalie B5).
+  frames: anim.generateFrameNames('atlas', { prefix: 'bossfly', frames: [0, 1, 4, 5] }),
   frameRate: 18,
   yoyo: true,
   repeat: 2

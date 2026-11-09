@@ -51,7 +51,9 @@ import { scoresServeur } from "../../../stockage/fichierScores"
      sprite: string,
      auto?: boolean
    ) {
-     super(scene, x, y, atlas, sprite)
+     // Pas de frame initiale : le nom du personnage n'est pas une frame de l'atlas, Phaser prenait
+     // déjà la première frame après un avertissement (anomalie B5). L'animation la remplace ensuite.
+     super(scene, x, y, atlas)
 
      this.init(scene, ClientID, sprite, auto)
    }
