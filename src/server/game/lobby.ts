@@ -33,9 +33,9 @@ export default class LobbyRooms extends Room {
 
     this.setState(new LobbyState())
 
-    if (!this.metadata) {
-      this.setMetadata({ nomRoom: options.salon });
-    }
+    // Fusion explicite : depuis Colyseus 0.18, filterBy place déjà `salon` dans les métadonnées
+    // et setMetadata remplace au lieu de fusionner. Level.ts lit metadata.nomRoom.
+    this.setMetadata({ ...this.metadata, nomRoom: options.salon });
 
     this.etatJoueur = {}
     this.listeIndex = {
