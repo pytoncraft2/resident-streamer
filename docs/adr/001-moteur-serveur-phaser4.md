@@ -100,7 +100,7 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 | `tweens.timeline` retiré (`Level.ts`), masqué par `any` | exception sur saisie invalide | `tweens.add` avec `yoyo`/`repeat` | ✅ |
 | `add.particles` + `createEmitter` (`Jeu.ts`) | exception à l'apparition d'un joueur | `add.particles(x, y, clé, config)` | ❌ |
 | `setMask` ignoré en WebGL (`Scores.ts`), masqué par `any` | classement défilant non masqué (visuel) | `enableFilters()` + `filters.external.addMask(…)`, `setMask` en Canvas | ❌ |
-| Typage : `input.keyboard` nullable (×4), `make.graphics(scene)` | aucun | `!` justifié, `make.graphics({})` | ✅ |
+| Typage : `input.keyboard` nullable (×4), `make.graphics(scene)` | aucun | `!` justifié ; `make.graphics({}, true)` — **le `make.graphics({})` du spike est faux** : passer la scène en config ajoutait le graphique à l'affichage (`config.add` = `scene.add`), `{}` ne l'ajoute plus (fond du panneau invisible) | ✅ |
 
 **Écarts serveur restants** (typage seul) : `gravity` sans `x`, callbacks `overlap` (typés `GameObjectWithBody`), `defaultFillColor` en lecture seule dans les types.
 
@@ -109,7 +109,7 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 ### Découpage révisé de l'étape 4
 
 - **4a — TypeScript 6** sur Phaser 3.55 (`tsconfig` ci-dessus), seul. → fait sur `chore/typescript-6` : TS 6.0.3, **typedoc 0.22 → 0.28** (0.22 plante sous TS 6, 0.28 refuse TS 4.7 : changement indissociable), 4 `tsconfig` ajustés (dont `src/client/tsconfig.json`, utilisé par `npm run doc:client`). JavaScript serveur émis équivalent (seul le placement des `exports` et le helper `__importStar` changent ; ordre des exports d'aptitudes identique).
-- **4b — Corrections compatibles** client (`getChildren`, `Rectangle.Contains`, `tweens.add`, typage), seules.
+- **4b — Corrections compatibles** client (`getChildren`, `Rectangle.Contains`, `tweens.add`, typage), seules. → fait sur `refactor/compat-phaser4-client` : `Jeu.ts` (`getChildren`, `Rectangle.Contains`), `Level.ts` (`tweens.add`), `panel.ts` (`make.graphics({}, true)`). Les `!` sur `input.keyboard` sont reportés à 4c (inutiles sous les types de Phaser 3). Vérifié manuellement par l'utilisateur dans le navigateur (2026-11-09) : fonctionne.
 - **4c — Bascule Phaser 4.2.1** client + serveur : particules, masque, `tweens.chain`, `persist: true`, typage serveur.
 - **4d — Recette navigateur multijoueur complète** (`/recette-multijoueur`), dont l'écran de chargement, les particules d'apparition et le défilement des scores.
 

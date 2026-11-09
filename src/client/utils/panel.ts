@@ -3,7 +3,8 @@ export default class Panel {
   private titre: Phaser.GameObjects.Text;
 
   constructor(titre = '', contenu: string[], scene: Phaser.Scene, _callback: CallableFunction) {
-    var graphics = scene.make.graphics(scene);
+    // Passer la scène comme config ajoutait le graphique à l'affichage (config.add = scene.add) : on le demande explicitement.
+    var graphics = scene.make.graphics({}, true);
     // graphics.fillStyle(0x000000);
     graphics.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.6,0.6, 0, 0);
     graphics.setAlpha(0.5)

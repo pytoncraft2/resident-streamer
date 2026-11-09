@@ -213,13 +213,12 @@ export default class Level extends Phaser.Scene {
 		else
 		{
 			//  Flash the prompt
-			this.scene.tweens.timeline({
-				tweens: [{
-					targets: element,
-					x: element.x - 10,
-					ease: 'Power1',
-					duration: 50
-				}],
+			// tweens.timeline a disparu (Phaser ≥ 3.60) : un seul tween avec yoyo/repeat est équivalent.
+			this.scene.tweens.add({
+				targets: element,
+				x: element.x - 10,
+				ease: 'Power1',
+				duration: 50,
 				repeat: 4,
 				yoyo: true
 			});

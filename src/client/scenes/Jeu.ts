@@ -1048,7 +1048,8 @@ export default class Jeu extends Phaser.Scene {
 			}
 		})
 
-		this.players.children.iterate((child) => {
+		// getChildren() existe en Phaser 3 et 4 (children.iterate a disparu avec Phaser ≥ 3.60).
+		this.players.getChildren().forEach((child: Phaser.GameObjects.GameObject) => {
 			if (list.presences[child.data.values.ClientId] === undefined) {
 				const id = child.data.values.ClientId;
 				this.playersRef[child.data.values.ClientId].barre.destroy();
@@ -1059,7 +1060,8 @@ export default class Jeu extends Phaser.Scene {
 	}
 
 	cameraDeplacement(joueur: any, emplacement: any, x: number, y: number, temps: number = 240, animation: string = 'Sine.easeInOut') {
-		if (Phaser.Geom.Rectangle.ContainsPoint(joueur[emplacement], new Phaser.Geom.Point(joueur.x, joueur.y + 100))) {
+		// Rectangle.Contains existe en Phaser 3 et 4 (Geom.Point a disparu avec Phaser 4).
+		if (Phaser.Geom.Rectangle.Contains(joueur[emplacement], joueur.x, joueur.y + 100)) {
 			if ((this as any)[emplacement].alpha) {
 				this.tweens.add({
 					targets: (this as any)[emplacement],
