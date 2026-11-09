@@ -3,6 +3,9 @@
  * boss_1 : le joueur le plus proche dans sa pièce (rez-de-chaussée, 3802 < x < 5627) → il fonce
  * vers lui ; sinon il rejoint sa place (5010, 755). Mesures de référence : boss en place ~4 s
  * après la création de la room ; il rejoint le joueur moins d'une seconde après son entrée.
+ * manette : pièce à l'étage (3802 < x < 5627, y < -249), place (4800, -249) ; joueur à distance
+ * moyenne → se tourne vers lui et lance une manette ; joueur proche → frappe puis s'envole vers
+ * un coin (y ≈ -950) ; joueur sorti → revient à sa place.
  */
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
@@ -17,8 +20,15 @@ interface MapVue<T> {
   get(cle: string): T | undefined;
   values(): IterableIterator<T>;
 }
+interface PresenceVueOrientee extends PresenceVue {
+  readonly flipX?: boolean;
+}
+interface ProjectileVue {
+  readonly sprite?: string;
+}
 interface EtatJeu {
-  readonly presences?: MapVue<PresenceVue>;
+  readonly presences?: MapVue<PresenceVueOrientee>;
+  readonly projectiles?: { keys(): IterableIterator<string>; get(cle: string): ProjectileVue | undefined };
 }
 
 const AU_REPOS = { up: false, right: false, down: false, left: false, space: false, a: false, a_fin: false, z: false, e: false, r: false };
@@ -46,6 +56,58 @@ describe("IA des boss (intégration)", function () {
   after(async function () {
     await room?.leave();
     await serveur?.arreter();
+  });
+
+  describe("manette", function () {
+    const PLACE_MANETTE = { x: 4800, y: -249 };
+    let r: Room<unknown, EtatJeu>;
+    const joueur = (): PresenceVueOrientee | undefined => r.state.presences?.get(r.sessionId);
+    const manette = (): PresenceVueOrientee | undefined => Array.from(r.state.presences?.values() ?? []).find((p) => p.sprite === "manette");
+    const lancees = new Set<string>();
+    let releve: NodeJS.Timeout | undefined;
+    const aSaPlaceManette = (): boolean => {
+      const m = manette();
+      return m?.x !== undefined && m.y !== undefined && Math.abs(m.x - PLACE_MANETTE.x) < 30 && Math.abs(m.y - PLACE_MANETTE.y) < 30;
+    };
+
+    before(async function () {
+      r = await new Client(serveur.wsUrl).joinOrCreate<EtatJeu>("game_instance", { salon: `ia-manette-${Date.now()}`, sprite: "osmosiscoop" });
+      r.onMessage("*", () => undefined);
+      releve = setInterval(() => {
+        const pj = r.state.projectiles;
+        if (pj) for (const id of Array.from(pj.keys())) if (pj.get(id)?.sprite === "manette") lancees.add(id);
+      }, 20);
+    });
+
+    after(async function () {
+      if (releve) clearInterval(releve);
+      await r?.leave();
+    });
+
+    it("se tient à sa place à l'étage tant qu'aucun joueur n'est dans sa pièce", async function () {
+      await attendre(aSaPlaceManette, 8000, "manette à sa place (4800, -249)");
+      assert.equal(lancees.size, 0);
+    });
+
+    it("se tourne vers un joueur à distance moyenne dans sa pièce et lance une manette", async function () {
+      r.send("inputs", { ...AU_REPOS, up: true });
+      await attendre(() => (joueur()?.y ?? 0) < -200, 4000, "joueur monté à l'étage");
+      r.send("inputs", AU_REPOS);
+      await attendre(() => Math.abs((joueur()?.y ?? 0) + 249) < 20, 4000, "joueur posé à l'étage");
+      r.send("inputs", { ...AU_REPOS, right: true });
+      await attendre(() => (joueur()?.x ?? 0) > 3950, 6000, "joueur entré dans la pièce de manette");
+      r.send("inputs", AU_REPOS);
+      await attendre(() => lancees.size >= 1, 4000, "manette lancée");
+      assert.equal(manette()?.flipX, true, "manette doit regarder vers la gauche, où est le joueur");
+    });
+
+    it("s'envole vers un coin quand le joueur est proche, puis revient à sa place quand il redescend", async function () {
+      await attendre(() => (manette()?.y ?? 0) < -600, 10000, "envol de manette (y < -600)");
+      r.send("inputs", { ...AU_REPOS, down: true });
+      await attendre(() => (joueur()?.y ?? -1000) > 300, 4000, "joueur redescendu au rez-de-chaussée");
+      r.send("inputs", AU_REPOS);
+      await attendre(aSaPlaceManette, 8000, "manette revenue à sa place");
+    });
   });
 
   describe("boss_1", function () {
