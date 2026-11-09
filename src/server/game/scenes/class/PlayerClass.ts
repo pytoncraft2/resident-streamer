@@ -2,7 +2,7 @@ import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { DefautDirection } from "../Stats/Defaut"
-import { Camp, peutBlesser, peutSoigner, vieApresDommage } from "../../../domain/combat"
+import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
 import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
@@ -158,7 +158,7 @@ import { BOSS_FINAL, bossPrincipauxVaincus, partieGagnee } from "../../../domain
        }
 
        if (this.soigne && peutSoigner(campVise, campCible)) {
-         _e.vie += 0.01
+         _e.vie = vieApresSoin(_e.vie, 0.01)
        }
      };
      this.scene.physics.add.existing(this.zoneInteraction);

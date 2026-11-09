@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { peutBlesser, peutSoigner, vieApresDommage } from "../../src/server/domain/combat";
+import { peutBlesser, peutSoigner, VIE_MAX, vieApresDommage, vieApresSoin } from "../../src/server/domain/combat";
 
 describe("domain/combat · vieApresDommage", function () {
   it("retire la puissance de la vie", function () {
@@ -38,5 +38,22 @@ describe("domain/combat · peutSoigner (alliés seulement, intentions §2)", fun
   });
   it("une cible hors des deux groupes n'est jamais soignée", function () {
     assert.equal(peutSoigner("enemies", undefined), false);
+  });
+});
+
+describe("domain/combat · vieApresSoin (plafond à 10, intentions §2)", function () {
+  it("ajoute le soin sous le plafond", function () {
+    assert.equal(vieApresSoin(5, 0.01), 5.01);
+  });
+  it("ne dépasse jamais le plafond", function () {
+    assert.equal(vieApresSoin(9.995, 0.01), VIE_MAX);
+    assert.equal(vieApresSoin(VIE_MAX, 0.01), VIE_MAX);
+  });
+  it("ne réduit pas une vie déjà au-dessus du plafond", function () {
+    assert.equal(vieApresSoin(12, 0.01), 12);
+  });
+  it("ignore un soin négatif ou NaN", function () {
+    assert.equal(vieApresSoin(5, -1), 5);
+    assert.equal(vieApresSoin(5, Number.NaN), 5);
   });
 });
