@@ -81,12 +81,24 @@ Vérifications : 3 tests de caractérisation (place, charge qui projette le joue
 
 **Bilan** : les 4 boss principaux sont pilotés par des arbres (environ 330 lignes de `if` imbriqués remplacées par quatre déclarations et un pilote commun) ; plus aucun `reactiveBoucle`.
 
+## Boss final : phase « Trône »
+
+Arbre `src/server/ia/bosses/super_boss.ts` : tant qu'il reste des rangées de trône et qu'une cible est dans la pièce centrale de l'étage → lancer un PC (aptitude Z), au plus toutes les 2 s.
+
+Ajouts :
+- brique **`recharge(nom, ms, enfant)`** ; sa mémoire est **propre à chaque boss** (fournie par le pilote), les arbres étant partagés entre les rooms ;
+- perception : `temps` (heure de la scène) et `tronesRestants` (fourni par l'option `percevoir` du pilote) ;
+- le pilote **ne décide rien pour un boss inactif** (le boss final avant sa révélation) ;
+- côté jeu : `PcClass` (projectile), invulnérabilité (`PlayerClass.dommage` et zone d'attaque, qui ignore une cible invulnérable sans consommer le coup — sinon le boss invisible « mangeait » les coups destinés au trône), éléments du trône ajoutés au groupe `enemies` avec une méthode `dommage` (toutes les attaques des joueurs les touchent ; 400 ms minimum entre deux chutes, car une explosion touche plusieurs fois ; corps aux dimensions des images de l'atlas pour qu'aucun projectile ne passe entre deux rangées), révélation factorisée (`game/bossFinal.ts`, crochet `surRevelation`), raccourci `BOSS_FINAL_DIRECT=1`.
+
+Vérifications : tests unitaires (recharge, arbre) ; tests d'intégration avec le raccourci (trône complet, PC qui blessent, rangées détruites par des kunaïs, destruction en six coups puis boss vulnérable) ; partie normale inchangée.
+
 ## Suite
 
 1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
-4. Boss final conçu avec l'auteur à partir des briques.
+4. Boss final : phase « Trône » faite ; phases « Envol » et « Rage » à suivre.
 
 ## Retour arrière
 

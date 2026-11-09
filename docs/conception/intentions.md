@@ -59,7 +59,11 @@ Le **soin est plafonné à 10** (vie maximale, `vieApresSoin`) ; une vie déjà 
 
 - Les IA sont volontairement **basiques** pour l'instant : chaque boss **se positionne dans sa pièce** ; quand un joueur y entre (à portée), il attaque, vole, ou agit selon ses aptitudes.
 - **Objectif** : remplacer le code « spaghetti » des `__auto` par une structure propre où les actions d'un boss sont **faciles à personnaliser** ; c'est un **arbre de comportement** (*behavior tree*), et non un arbre de compétences (progression d'un personnage). Décision : ADR-003.
-- **Boss final** : rien n'est décidé ; il sera conçu avec ces briques pour être un boss de qualité, facilement personnalisable.
+- **Boss final** (décidé le 2026-11-09) : trois phases, sans adaptation au nombre de joueurs ; réglages dans `src/server/ia/bosses/super_boss.ts` (`REGLAGES_BOSS_FINAL`).
+  1. **Trône** ✅ : assis sur un trône de 6 rangées de PC (siège « tronehaut »), invisible et **invulnérable** ; chaque coup porté au trône (corps à corps, kunaï, boule, bombe : toute attaque qui blesse un ennemi) fait tomber la rangée du bas, au plus une toutes les 400 ms (le trône descend d'un étage) ; il **lance des PC** (projectiles, 1 dégât, un toutes les 2 s) sur les joueurs de la pièce centrale ; trône détruit → siège vide (« tronehautv2 »), boss visible et vulnérable (30 points de vie).
+  2. **Envol** 🚧 : ailes de claviers (`bossfly`), vol, piqués vers le joueur, contre-attaque (`contreattaque`) quand on le frappe.
+  3. **Rage** 🚧 (à mi-vie) : plus rapide, pluie de PC.
+- Raccourci de développement : `BOSS_FINAL_DIRECT=1` active le boss final dès le début de la partie (recette et tests).
 
 | Boss | IA | État |
 |---|---|---|
@@ -67,11 +71,11 @@ Le **soin est plafonné à 10** (vie maximale, `vieApresSoin`) ; une vie déjà 
 | manette | arbre de comportement (`src/server/ia/bosses/manette.ts`) : à l'étage, se tourne vers le joueur, frappe puis s'envole s'il est proche, lance sa manette à distance moyenne, avance s'il est loin ; sinon vole jusqu'à sa place | ✅ ADR-003 |
 | troll | arbre de comportement (`src/server/ia/bosses/troll.ts`) : à l'étage à gauche, se tourne vers le joueur, charge s'il est proche, lance une oie à distance moyenne, une grenouille s'il est loin ; sinon rejoint sa place | ✅ ADR-003 |
 | twitchman | arbre de comportement (`src/server/ia/bosses/twitchman.ts`) : au rez-de-chaussée à gauche, charge un joueur à sa hauteur, frappe puis s'envole s'il est proche, à distance moyenne charge (à gauche) ou s'élève et tire le laser (à droite, **asymétrie voulue**), avance s'il est loin ; sinon vole jusqu'à sa place | ✅ ADR-003 |
-| boss final | inactif tant que les 4 boss ne sont pas vaincus ; aucun comportement | 🚧 à concevoir |
+| boss final | arbre (`src/server/ia/bosses/super_boss.ts`) : phase « Trône » | 🚧 phases « Envol » et « Rage » à faire |
 
 ## Questions ouvertes
 
-- 🚧 **Boss final** : à concevoir avec les briques de l'ADR-003 (le code contient des « trônes » à détruire, `Aptitudes/super_boss.ts`, en partie commentés).
+- 🚧 **Boss final** : phases « Envol » et « Rage » à implémenter (spécification au §3).
 
 ## Glossaire
 
