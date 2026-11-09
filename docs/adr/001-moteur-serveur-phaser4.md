@@ -66,7 +66,7 @@ Branche locale `spike/phaser4-serveur-headless` (worktree séparé), juge : les 
 2. **Corrections compatibles avec les deux versions** sur `main` : `getChildren().forEach` dans `hall.ts` ; ajouter un test du dash répété de fakhear (régression invisible aujourd'hui).
 3. **Spike client Phaser 4 séparé** (TypeScript à mettre à jour, rendu, Phaser Editor) avant toute bascule, puisque client et serveur partagent le paquet.
 4. **Bascule Phaser 4 client + serveur** : `chain` dans `manette.ts`, `persist: true`, typage, puis recette multijoueur complète.
-5. Traiter B1 (destruction des rooms) : contribution ou polyfill local de `cancelAnimationFrame`, à mesurer sur des parties répétées.
+5. Traiter B1 (destruction des rooms) : contribution ou polyfill local de `cancelAnimationFrame`, à mesurer sur des parties répétées. → fait : contournements locaux dans `src/server/game/phaserHeadless.ts` (trois causes : `cancelAnimationFrame` absent, `screen.orientation.removeEventListener` absent, `textures.stamp` jamais créé car `SYSTEM_READY` part avant l'abonnement du TextureManager sous Node). Sans eux, 40/40 jeux détruits restaient en mémoire ; avec, 0. Test `test/integration/destruction-headless.test.ts`, qui échoue aussi si le défaut disparaît en amont (contournements à retirer).
 
 ## Suivi
 

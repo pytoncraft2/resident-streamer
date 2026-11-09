@@ -13,6 +13,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - `src/server/server.ts` : Express, Colyseus, endpoints et lecture/écriture de `scores.json`.
 - `src/server/game/Hall_01.ts` : room Colyseus `game_instance`, entrées des joueurs, création des boss et synchronisation.
 - `src/server/game/RoomState.ts` : schémas réseau Colyseus ; contrat critique à préserver.
+- `src/server/game/phaserHeadless.ts` : contournements indispensables à la destruction des rooms en HEADLESS (anomalie B1) ; à réévaluer à chaque montée de Phaser ou du pont.
 - `src/server/game/config.ts`, `src/server/game/scenes/hall.ts` : **Phaser exécuté côté serveur en mode HEADLESS**, physique Arcade et collisions.
 - `src/server/game/scenes/class/PlayerClass.ts` : logique actuelle mêlant entité, déplacements, attaques, collisions et progression.
 - `src/server/game/scenes/Aptitudes/` : capacités par personnage ; le chargement utilise actuellement des imports dynamiques et une découverte par fichiers.
