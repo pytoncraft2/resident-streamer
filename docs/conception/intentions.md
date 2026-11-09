@@ -53,10 +53,22 @@ fakhear inflige 2 (5 coups par boss) : la valeur 10, qui tuait un boss d'un coup
 
 **Camps** (`domain/combat.ts`, `peutBlesser` / `peutSoigner`) : une attaque au contact ne blesse que le groupe visé par l'attaquant (`cible_courante`) — **pas de tir ami** ; le soin d'osmosiscoop ne s'applique **qu'aux alliés**. Corrigé : avant, les joueurs se blessaient entre eux et le soin soignait aussi les boss. Un boss fusionné vise les boss, comme son joueur.
 
+## 3. Boss et IA
+
+- Les IA sont volontairement **basiques** pour l'instant : chaque boss **se positionne dans sa pièce** ; quand un joueur y entre (à portée), il attaque, vole, ou agit selon ses aptitudes.
+- **Objectif** : remplacer le code « spaghetti » des `__auto` par une structure propre où les actions d'un boss sont **faciles à personnaliser** ; c'est un **arbre de comportement** (*behavior tree*), et non un arbre de compétences (progression d'un personnage). Décision : ADR-003.
+- **Boss final** : rien n'est décidé ; il sera conçu avec ces briques pour être un boss de qualité, facilement personnalisable.
+
+| Boss | IA | État |
+|---|---|---|
+| boss_1 | arbre de comportement (`src/server/ia/bosses/boss_1.ts`) : poursuit le joueur le plus proche dans sa pièce, sinon rejoint sa place | ✅ pilote ADR-003 |
+| manette, troll, twitchman | ancien `__auto` | 🚧 à migrer |
+| boss final | inactif tant que les 4 boss ne sont pas vaincus ; aucun comportement | 🚧 à concevoir |
+
 ## Questions ouvertes
 
 - ❓ **Plafond du soin** : le soin (`+0,01` vie par image) n'a pas de limite au-delà de 10 ; non tranché.
-- 🚧 **Boss final** : comportement prévu (le code contient des « trônes » à détruire, `Aptitudes/super_boss.ts`, en partie commentés).
+- 🚧 **Boss final** : à concevoir avec les briques de l'ADR-003 (le code contient des « trônes » à détruire, `Aptitudes/super_boss.ts`, en partie commentés).
 
 ## Glossaire
 
@@ -66,4 +78,6 @@ fakhear inflige 2 (5 coups par boss) : la valeur 10, qui tuait un boss d'un coup
 | Boss | ennemi principal : `twitchman`, `boss_1`, `troll`, `manette` ; boss final `super_boss` |
 | Objet (boss vaincu) | boss vaincu rétréci, ramassable avec TAB |
 | Fusion | prendre le contrôle d'un boss vaincu (allié) pendant quelques secondes |
+| Arbre de comportement | structure de décision d'une IA : briques sélecteur (essayer dans l'ordre), séquence (tout dans l'ordre), condition, action ; voir ADR-003 |
+| Perception / intention | ce qu'un boss voit à chaque décision / ce qu'il veut faire (appliqué par le pilote Phaser) |
 | RDC / étage | rez-de-chaussée et étage, librement accessibles ; `RDC_OK` ouvre visuellement la porte (escalier), `ETAGE_OK` révèle la pièce centrale du boss final |

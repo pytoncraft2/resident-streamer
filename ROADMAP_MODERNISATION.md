@@ -90,9 +90,9 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 | Arbre de comportement (BT) | Priorités tactiques, séquences, conditions et replis | Peut devenir lourd avec beaucoup de branches |
 | GOAP | Planifier des objectifs à partir d'actions composables, préconditions et effets | Plus coûteux à écrire, expliquer, profiler et déboguer |
 
-- [ ] Sélectionner **un boss pilote**, décrire ses états, perceptions, priorités et comportements attendus.
-- [ ] Définir une interface testable : `WorldSnapshot` → `Decision`/`Intent`, sans dépendance directe à Phaser ou Colyseus.
-- [ ] Implémenter d'abord une FSM ou un BT minimal ; tester priorités, interruptions, cooldowns, perte de cible, mort et réinitialisation.
+- [x] Sélectionner **un boss pilote**, décrire ses états, perceptions, priorités et comportements attendus. → `boss_1` (ADR-003).
+- [x] Définir une interface testable : `WorldSnapshot` → `Decision`/`Intent`, sans dépendance directe à Phaser ou Colyseus. → `PerceptionBoss` → `Intention[]` (`src/server/ia/boss.ts`).
+- [ ] Implémenter d'abord une FSM ou un BT minimal ; tester priorités, interruptions, cooldowns, perte de cible, mort et réinitialisation. → BT minimal (`src/server/ia/arbre.ts`) ; recharges et interruptions à ajouter avec les boss suivants.
 - [ ] Garder l'autorité de la simulation côté serveur : l'IA propose, les règles et la physique appliquent.
 - [ ] Ajouter une trace de décision activable pour le débogage.
 - [ ] Étudier GOAP **uniquement** si un besoin de planification multi-actions émerge (ex. obtenir une ressource, déclencher un mécanisme, modifier la stratégie selon le monde).
@@ -111,7 +111,7 @@ Ne pas inscrire des tokens d'authentification dans les fichiers suivis par Git. 
 
 - **ADR-001 — moteur/physique serveur Phaser 4 :** accepté — conserver `phaser-on-nodejs` (1.3.1) et passer en Phaser 4 par étapes, Node 24 d'abord. Voir `docs/adr/001-moteur-serveur-phaser4.md`.
 - **ADR-002 — séparation des contrats partagés :** à décider pendant la première extraction.
-- **ADR-003 — modèle d'IA du premier boss :** à décider à partir du comportement désiré.
+- **ADR-003 — modèle d'IA du premier boss :** accepté — arbre de comportement maison, pilote `boss_1`. Voir `docs/adr/003-ia-boss-arbre-comportement.md`.
 
 ## Critère de fin de migration
 
