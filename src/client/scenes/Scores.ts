@@ -5,7 +5,6 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import axios from "axios";
 import { URL_HTTP_SERVEUR } from "../utils/serveur"
 /* END-USER-IMPORTS */
 
@@ -95,9 +94,13 @@ export default class Scores extends Phaser.Scene {
 			this.scene.start("Level")
 		})
 			var zone = this.add.zone(152, 133, 1000, 250).setOrigin(0).setInteractive().setDepth(40);
-		axios.get(`${URL_HTTP_SERVEUR}/scores`).then(res => {
+		// fetch natif (axios retiré) : rejeter les réponses HTTP en erreur comme le faisait axios.
+		fetch(`${URL_HTTP_SERVEUR}/scores`).then((reponse) => {
+			if (!reponse.ok) throw new Error(`GET /scores : HTTP ${reponse.status}`);
+			return reponse.json() as Promise<Record<string, unknown>>;
+		}).then((classement) => {
 			var tableau: any = [];
-			Object.entries(res.data).forEach((element: any, _index: number) => {
+			Object.entries(classement).forEach((element: any, _index: number) => {
 				let prefixe = '';
 				if (_index == 0) prefixe = "🥇 -";
 				if (_index === 1) prefixe = "🥈 -";
