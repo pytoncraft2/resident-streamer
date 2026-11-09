@@ -93,12 +93,26 @@ Ajouts :
 
 Vérifications : tests unitaires (recharge, arbre) ; tests d'intégration avec le raccourci (trône complet, PC qui blessent, rangées détruites par des kunaïs, destruction en six coups puis boss vulnérable) ; partie normale inchangée.
 
+## Boss final : phase « Envol »
+
+Trône détruit, le boss apparaît en vol (y = -650, sans gravité) au-dessus de la pièce centrale. Branche « envol » de l'arbre, cible dans la pièce centrale :
+1. **contre-attaquer** : frappé depuis moins de 600 ms → onde (aptitude E, animation `super_boss_contreattaque`, 1 dégât à 300 px), au plus toutes les 2 s ;
+2. **reprendre son souffle** : moins de 2 s (piqué de 500 ms + 1,5 s au sol) depuis le départ du dernier piqué → ne rien faire ; c'est la fenêtre pour le frapper ;
+3. **piquer** : toutes les 4 s, piqué (`rejoindre`, action longue) jusqu'à 150 px devant la cible, du côté d'où il vient, puis impact (aptitude A, 2 dégâts à 200 px) ;
+4. sinon **planer** au-dessus de la cible, à 200 px au moins des murs.
+
+Ajouts : perception `dernierCoup` (heure du dernier coup reçu, mémorisée par le `dommage` du boss) ; la condition « reprendre son souffle » lit l'heure du dernier piqué dans la mémoire de la recharge.
+
+Piège rencontré : les frames du vol et de la contre-attaque sont bien plus larges que le boss (jusqu'à 779 px contre 218, ailes comprises) ; à chaque changement de frame, l'origine se déplace et le corps physique restait décalé d'environ 370 px, si bien qu'aucun coup ne touchait le boss au sol. Le corps (218 × 379) est recentré à chaque frame (événements d'animation).
+
+Vérifications : tests unitaires (piqué, pause au sol, vol borné à la pièce, atterrissage devant la cible, contre-attaque et sa recharge) ; test d'intégration (boss en vol, piqué qui blesse, boss frappé au sol, contre-attaque).
+
 ## Suite
 
 1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
 3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
-4. Boss final : phase « Trône » faite ; phases « Envol » et « Rage » à suivre.
+4. Boss final : phases « Trône » et « Envol » faites ; phase « Rage » à suivre.
 
 ## Retour arrière
 
