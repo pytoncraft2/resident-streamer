@@ -7,10 +7,10 @@ import { demarrerIA } from "../../ia/pilote";
 
 /**
  * Boss final, phase « Trône » (intentions §3) : assis sur un trône de 6 rangées de PC surmonté d'un
- * siège, invisible en tant que sprite (le siège « tronehaut » le montre assis) et invulnérable.
+ * siège, invisible en tant que sprite (le siège « tronehautv2 » le montre assis) et invulnérable.
  * Chaque coup porté au trône (corps à corps, kunaï, boule, bombe… : tout ce qui blesse un ennemi)
  * fait tomber la rangée du bas et descendre le reste d'un étage.
- * Rangées détruites : le siège devient vide (« tronehautv2 »), le boss apparaît, vulnérable, et
+ * Rangées détruites : le siège disparaît, le boss apparaît, vulnérable, et
  * passe en phase « Envol » : il plane, pique sur les joueurs (A) et contre-attaque quand on le frappe (E).
  * À mi-vie, phase « Rage » : même combat, plus rapide, avec une pluie de PC (R).
  */
@@ -35,7 +35,7 @@ export function __StatsSupplementaire(personnage: TJoueur | any, _Aptitudes: any
     creerTrone(personnage, 'tronetest5', -620),
     creerTrone(personnage, 'tronetest6', -750),
   ]
-  personnage.siege = creerTrone(personnage, 'tronehaut', -880)
+  personnage.siege = creerTrone(personnage, SIEGE_OCCUPE, -880)
   personnage.trones.addMultiple([...personnage.rangees, personnage.siege]);
 
   // Le trône encaisse les coups comme un ennemi : chaque élément a une vie et une méthode dommage
@@ -90,15 +90,18 @@ function faireTomberRangee(personnage: any) {
   if (personnage.rangees.length === 0) finDuTrone(personnage)
 }
 
-/** Trône détruit : le boss quitte son siège, apparaît, devient vulnérable et s'envole (phase « Envol »). */
+/** Trône détruit : le siège disparaît ; le boss apparaît, devient vulnérable et s'envole (phase « Envol »). */
 function finDuTrone(personnage: any) {
-  personnage.siege._frame = 'tronehautv2'
-  // Le siège vide reste décoratif : il ne doit plus intercepter les coups destinés au boss.
-  personnage.scene.enemies.remove(personnage.siege)
+  const scene = personnage.scene
+  const siege = personnage.siege
+  // Plus de trône : le siège disparaît en fondu pendant que le boss apparaît (descente arrêtée avant).
+  scene.tweens.killTweensOf([siege, personnage])
+  scene.enemies.remove(siege)
+  scene.suppressionProjectileDelai(siege, siege.id, 0, true)
   personnage.invulnerable = false
   personnage.setAlpha(1)
   // La dernière rangée est sous le sol de l'étage : le boss réapparaît en vol au-dessus du siège.
-  personnage.setPosition(personnage.siege.x, REGLAGES_BOSS_FINAL.yVol)
+  personnage.setPosition(siege.x, REGLAGES_BOSS_FINAL.yVol)
   // Les frames du vol et de la contre-attaque sont bien plus larges que le boss (jusqu'à 779 px, ailes
   // comprises) : sans recentrage, le corps physique reste décalé de plusieurs centaines de px.
   const recentrer = () => personnage.body?.setSize(...TAILLE_CORPS_BOSS, true)
@@ -183,8 +186,14 @@ const TAILLES_TRONE: Record<string, readonly [number, number]> = {
   tronetest4: [832, 157],
   tronetest5: [730, 148],
   tronetest6: [313, 148],
-  tronehaut: [579, 428],
+  tronehautv2: [579, 428],
 }
+
+/**
+ * Image du siège avec le boss assis. Attention : dans l'atlas, « tronehautv2 » est le siège **avec**
+ * le boss et « tronehaut » le siège **vide** (inutilisé : le siège disparaît avec le trône).
+ */
+const SIEGE_OCCUPE = 'tronehautv2'
 
 /** Corps physique du boss hors du trône : la silhouette de la frame « super_boss » (sans les ailes). */
 const TAILLE_CORPS_BOSS = [218, 379] as const

@@ -17,7 +17,7 @@
  *            ├─ recharge (rechargePique) → piquer devant la cible (action longue), impact (aptitude A)
  *            └─ planer au-dessus de la cible (action longue)
  *
- * Pendant la phase « Trône », le boss est assis (frame « tronehaut » du siège), invisible en tant
+ * Pendant la phase « Trône », le boss est assis (frame « tronehautv2 » du siège), invisible en tant
  * que sprite et invulnérable ; chaque coup porté au trône en fait tomber une rangée (Aptitudes/super_boss.ts).
  * Pendant la phase « Envol », il n'est à portée qu'au sol, juste après un piqué.
  */

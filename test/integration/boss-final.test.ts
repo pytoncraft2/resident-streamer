@@ -1,9 +1,9 @@
 /**
  * Boss final. Le raccourci BOSS_FINAL_DIRECT=1 l'active dès le début de la partie (sans lui, il
  * n'apparaît qu'après les 4 boss : voir rooms.test.ts, où il est absent).
- * Phase « Trône » : 6 rangées de PC + siège (« tronehaut », boss assis) ; le boss, invisible et
+ * Phase « Trône » : 6 rangées de PC + siège (« tronehautv2 », boss assis) ; le boss, invisible et
  * invulnérable, lance des PC sur un joueur de la pièce centrale de l'étage ; chaque coup (corps à
- * corps, kunaï, boule, bombe…) fait tomber une rangée ; trône détruit → siège vide (« tronehautv2 »),
+ * corps, kunaï, boule, bombe…) fait tomber une rangée ; trône détruit → le siège disparaît,
  * boss visible et vulnérable.
  * Phase « Envol » : le boss plane, pique sur le joueur (impact qui blesse), reste un moment au sol où
  * il peut être frappé, et contre-attaque quand on le frappe.
@@ -87,7 +87,7 @@ describe("boss final (intégration)", function () {
     it("le trône est complet (6 rangées + siège avec le boss assis) et le boss est invisible", function () {
       const trone = elementsDuTrone(room);
       assert.equal(trone.length, 7);
-      assert.ok(trone.some((t) => t.anim === "tronehaut"), "siège avec le boss assis");
+      assert.ok(trone.some((t) => t.anim === "tronehautv2"), "siège avec le boss assis");
       assert.equal(bossFinal(room)?.alpha, 0);
     });
 
@@ -126,8 +126,8 @@ describe("boss final (intégration)", function () {
           await frapper();
           await pause(600);
         }
-        const trone = elementsDuTrone(room);
-        assert.deepEqual(trone.map((t) => t.anim), ["tronehautv2"], "seul le siège vide reste");
+        // Plus de trône du tout : le siège disparaît avec la dernière rangée (pas de siège vide).
+        await attendre(() => elementsDuTrone(room).length === 0, 2000, "trône entièrement disparu");
         await attendre(() => bossFinal(room)?.alpha === 1 && (bossFinal(room)?.y ?? 0) < -500, 3000, "boss visible, en vol");
 
         // Piqué : le boss descend jusqu'au joueur, dont la vie baisse à l'impact.
