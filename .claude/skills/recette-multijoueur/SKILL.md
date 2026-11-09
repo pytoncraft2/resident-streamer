@@ -13,7 +13,7 @@ Cette recette est **manuelle** : Claude prépare l'environnement et la grille, l
 - Noter la branche, le commit (`git rev-parse --short HEAD`) et `node -v`.
 - Sauvegarder `donnees/scores.json` (copie dans le scratchpad) : une partie terminée y ajoute une entrée. Le restaurer en fin de recette si l'utilisateur le souhaite. Pour une recette isolée, lancer le serveur avec `SCORES_FICHIER=<fichier temporaire>`.
 - Lancer dans deux terminaux séparés (l'utilisateur, ou Claude en arrière-plan) :
-  - serveur : `npm run serve:server` (port 3000, codé en dur dans `Lobby.ts` et `Jeu.ts`) ;
+  - serveur : `npm run serve:server` (port 3000 ; sous Vite, le client vise le même hôte sur ce port, voir `src/client/utils/serveur.ts`) ;
   - client : `npm run dev` (Vite).
 - Ouvrir 2, 3 puis 4 onglets/navigateurs sur l'URL affichée par Vite.
 
