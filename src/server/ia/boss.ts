@@ -55,6 +55,18 @@ export type Intention =
       readonly courbe?: string;
       readonly attendreLaFin?: boolean;
     }
+  /**
+   * Charger horizontalement de `decalageX` px (relatif, mesuré au départ), après `delai` ms, en `duree` ms ;
+   * à l'arrivée : arrêt et `animationALaFin`. Action longue : la décision suivante attend la fin.
+   */
+  | {
+      readonly type: "charger";
+      readonly decalageX: number;
+      readonly duree: number;
+      readonly delai?: number;
+      readonly animationAuDepart?: string;
+      readonly animationALaFin?: string;
+    }
   /** Regarder vers la gauche (`true`) ou la droite. */
   | { readonly type: "orienter"; readonly versLaGauche: boolean }
   /** Fixer la vitesse horizontale. */

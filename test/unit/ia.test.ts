@@ -3,6 +3,7 @@ import { action, condition, selecteur, sequence } from "../../src/server/ia/arbr
 import { contient, decider, distance, PerceptionBoss } from "../../src/server/ia/boss";
 import { arbreBoss1, PLACE_BOSS_1 } from "../../src/server/ia/bosses/boss_1";
 import { arbreManette, COINS_MANETTE, PLACE_MANETTE } from "../../src/server/ia/bosses/manette";
+import { arbreTroll, PLACE_TROLL } from "../../src/server/ia/bosses/troll";
 
 describe("ia/arbre · briques", function () {
   const trace: string[] = [];
@@ -137,5 +138,46 @@ describe("ia/bosses · manette (comportement repris de l'ancien __auto)", functi
 
   it("aucun joueur → aucune intention", function () {
     assert.deepEqual(decider(arbreManette, percevoir({ x: 4000, y: ETAGE })), []);
+  });
+});
+
+describe("ia/bosses · troll (comportement repris de l'ancien __auto)", function () {
+  const ETAGE = -300;
+  const percevoir = (boss: { x: number; y: number }, cible?: { x: number; y: number }): PerceptionBoss => ({
+    position: boss,
+    cible: cible ? { position: cible } : undefined,
+  });
+
+  it("cible proche (< 400) à droite → se tourne et charge de 1300 px vers elle (action longue)", function () {
+    assert.deepEqual(decider(arbreTroll, percevoir({ x: 427, y: ETAGE }, { x: 700, y: ETAGE })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "charger", decalageX: 1300, delai: 500, duree: 700, animationAuDepart: "troll_run", animationALaFin: "troll_idle" },
+    ]);
+  });
+
+  it("cible proche à gauche → charge vers la gauche", function () {
+    const charge = decider(arbreTroll, percevoir({ x: 1500, y: ETAGE }, { x: 1300, y: ETAGE })).find((i) => i.type === "charger");
+    assert.equal(charge && "decalageX" in charge ? charge.decalageX : undefined, -1300);
+  });
+
+  it("cible à distance moyenne (400 à 900) → lance une oie (A)", function () {
+    assert.deepEqual(decider(arbreTroll, percevoir({ x: 427, y: ETAGE }, { x: 1100, y: ETAGE })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "aptitude", nom: "A", entree: { a: true } },
+    ]);
+  });
+
+  it("cible lointaine (> 900) dans la pièce → lance une grenouille (Z)", function () {
+    assert.deepEqual(decider(arbreTroll, percevoir({ x: 427, y: ETAGE }, { x: 1600, y: ETAGE })), [
+      { type: "orienter", versLaGauche: false },
+      { type: "aptitude", nom: "Z", entree: { z: true } },
+    ]);
+  });
+
+  it("cible hors de la pièce (x ≥ 1789 ou rez-de-chaussée) → retour à sa place s'il n'y est pas", function () {
+    const retour = [{ type: "rejoindre", position: PLACE_TROLL, duree: 900, animationAuDepart: "troll_idle", attendreLaFin: true }];
+    assert.deepEqual(decider(arbreTroll, percevoir({ x: 1200, y: ETAGE }, { x: 1881, y: ETAGE })), retour);
+    assert.deepEqual(decider(arbreTroll, percevoir({ x: 1200, y: ETAGE }, { x: 1000, y: 756 })), retour);
+    assert.deepEqual(decider(arbreTroll, percevoir(PLACE_TROLL, { x: 1881, y: ETAGE })), []);
   });
 });

@@ -61,6 +61,23 @@ function appliquer(
       });
       return attendreLaFin === true;
     }
+    case "charger": {
+      const { animationAuDepart, animationALaFin, decalageX } = intention;
+      scene.tweens.add({
+        targets: boss,
+        // Valeur relative résolue au départ du tween, comme l'ancien x: "-=1300".
+        x: `${decalageX < 0 ? "-=" : "+="}${Math.abs(decalageX)}`,
+        duration: intention.duree,
+        delay: intention.delai ?? 0,
+        onStart: animationAuDepart ? () => boss.play(animationAuDepart, true) : undefined,
+        onComplete: () => {
+          boss.setVelocityX(0);
+          if (animationALaFin) boss.play(animationALaFin);
+          quandTermine();
+        },
+      });
+      return true;
+    }
     case "orienter":
       boss.setFlipX(intention.versLaGauche);
       return false;

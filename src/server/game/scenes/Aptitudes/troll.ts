@@ -1,4 +1,6 @@
 import TJoueur from "../types/Joueur";
+import { arbreTroll } from "../../../ia/bosses/troll";
+import { demarrerIA } from "../../ia/pilote";
 import GrenouilleClass from "../class/elements/GrenouilleClass";
 import OieClass from "../class/elements/OieClass";
 
@@ -80,106 +82,9 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
   }
 }
 
+/**
+ * IA de troll : arbre de comportement (src/server/ia/bosses/troll.ts) piloté toutes les 800 ms (ADR-003).
+ */
 export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
-  if (troll.scene)
-  {
-    if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
-    const positionJoueurProche: any = troll.scene.physics.closest(troll, [...(troll.scene as any).players.getChildren()])
-    if (positionJoueurProche)
-    {
-
-      var dist = Phaser.Math.Distance.BetweenPoints(troll, positionJoueurProche);
-
-     if (positionJoueurProche.x < 1789 && positionJoueurProche.y < -249) {
-      if (positionJoueurProche.x < troll.x)
-      {
-        troll.setFlipX(true)
-        if (dist > 400 && dist < 900)
-        {
-          if (troll.body) oie__A(troll, {a: true})
-          reactiveBoucle(troll, aptitudes)
-        } else if (dist > 900)
-        {
-          if (troll.body) grenouille__Z(troll, {z: true})
-
-          reactiveBoucle(troll, aptitudes)
-        }
-        else if (dist < 400)
-        {
-          troll.scene.tweens.add({
-            delay: 500,
-            onStart: () => troll.play("troll_run", true),
-            targets: troll,
-            x: "-=1300",
-            duration: 700,
-            onComplete: () => {
-              troll.body.setVelocityX(0);
-              troll.play("troll_idle")
-              reactiveBoucle(troll, aptitudes)
-            }
-          });
-        }
-      }
-      else if (positionJoueurProche.x > troll.x)
-      {
-        troll.setFlipX(false)
-        if (dist > 400 && dist < 900)
-        {
-          if (troll.body) oie__A(troll, {a: true})
-          reactiveBoucle(troll, aptitudes)
-        }
-        else if (dist > 900)
-        {
-          if (troll.body)
-          {
-            if (troll.body) grenouille__Z(troll, {z: true})
-          }
-          reactiveBoucle(troll, aptitudes)
-        }
-        else if (dist < 400)
-        {
-          // troll.play("troll_punch")
-          troll.scene.tweens.add({
-            delay: 500,
-            onStart: () => troll.play("troll_run", true),
-            targets: troll,
-            x: "+=1300",
-            duration: 700,
-            onComplete: () => {
-              troll.body.setVelocityX(0);
-              troll.play("troll_idle")
-              reactiveBoucle(troll, aptitudes)
-            }
-          });
-        }
-      }
-    } else {
-       if (troll.x != 427) {
-         troll.scene.tweens.add({
-           targets: troll,
-           x: 427,
-           y: -249,
-           onStart: () => troll.play("troll_idle"),
-           onComplete: () => {
-             reactiveBoucle(troll, aptitudes)
-           },
-           duration: 900,
-         });
-
-       } else reactiveBoucle(troll, aptitudes)
-     }
-    }
-  }
-}
-
-function reactiveBoucle(troll: TJoueur, aptitudes: any) {
-  if (troll.scene)
-  {
-
-    if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
-    troll.scene.time.delayedCall(800, () => {
-      if ((troll.scene as any).room.boss[`${troll.sprite}`].vaincu) return;
-      __auto(troll, {}, aptitudes)
-    }, null, this);
-  }
+  demarrerIA(troll as any, arbreTroll, { periode: 800, aptitudes });
 }
