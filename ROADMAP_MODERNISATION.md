@@ -41,7 +41,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [x] Tester séparément le serveur `HEADLESS` + `@geckos.io/phaser-on-nodejs` avec Phaser 4, y compris initialisation, timer, Arcade Physics, collisions et destruction de room. → fonctionnel avec pont 1.3.1 + 3 adaptations ; destruction de room corrigée (B1, `phaserHeadless.ts`). Voir ADR-001.
 - [x] Si incompatible, comparer : adaptation du pont Node ; simulateur physique serveur indépendant de Phaser ; stratégie temporaire de versions client/serveur distinctes. → comparé dans l'ADR-001 (options A/B/C).
 - [x] Identifier les `.scene` et le code généré dépendant de l'ancien Phaser Editor ; tester Phaser Editor v5 sur une copie. → identifiés (5 scènes + 2 composants) ; v5 Core testé sur une copie puis adopté (ADR-005).
-- [ ] Documenter les incompatibilités TypeScript, CJS/ESM, version Node, asset packs et import dynamique des aptitudes. → TypeScript 6, Node 24, asset packs (build OK) et import dynamique des aptitudes (tests OK) documentés dans l'ADR-001 ; CJS/ESM non étudié (aucun blocage rencontré).
+- [x] Documenter les incompatibilités TypeScript, CJS/ESM, version Node, asset packs et import dynamique des aptitudes. → TypeScript 6, Node 24, asset packs documentés dans l'ADR-001 ; import dynamique des aptitudes remplacé par un registre explicite ; CJS/ESM étudié le 10/11/2026 (ADR-004, « Chargement CommonJS / ESM ») : serveur compilé en CommonJS, paquets Colyseus chargés en ESM via la condition `module-sync` (un seul exemplaire), garde `test/unit/modules.test.ts`.
 
 **Sortie :** une décision d'architecture écrite, avec preuve de faisabilité, risques, coûts et rollback. **Aucun passage global à Phaser 4 avant cette décision.** → ADR-001.
 

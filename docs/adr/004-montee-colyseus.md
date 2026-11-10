@@ -65,6 +65,13 @@ Branche locale `spike/colyseus-018` (worktree), à partir de `main` + préalable
 
 **Client et serveur doivent être déployés ensemble** : un client 0.14 ne peut pas parler à un serveur 0.18 (protocole et schémas différents). Le serveur servant lui-même le client, un déploiement unique suffit ; prévoir que des onglets restés ouverts sur l'ancienne version devront être rechargés.
 
+## Chargement CommonJS / ESM (étudié le 2026-11-10)
+
+- Le serveur est compilé en CommonJS (`src/server/tsconfig.json`, `module: commonjs`) et fait `require("@colyseus/core")`. Les paquets Colyseus 0.18 sont publiés aux deux formats, mais leur table `exports` place la condition **`module-sync`** avant `require` : Node 24 la retient aussi pour `require`, si bien que **seule la version ESM** (`build/*.mjs`) est chargée, en un seul exemplaire. Relevé au démarrage du serveur (crochet `module.registerHooks`) : 70 modules `@colyseus/*`, tous en `.mjs` ; aucun double chargement CJS + ESM (qui dédoublerait l'état interne de Colyseus, ex. le matchmaker).
+- Conséquence : Node doit accepter `require()` d'un module ESM (`process.features.require_module`), ce qui est le cas de Node 24 (`.nvmrc`, `engines`). Un Node plus ancien sans cette capacité retomberait sur les versions `.cjs`, sans risque de mélange tant que tous les paquets Colyseus suivent la même table.
+- Phaser est chargé en CommonJS (`dist/phaser.js`), comme l'attend le pont `phaser-on-nodejs`. Le client (Vite) charge tout en ESM. Les tests (ts-node, CommonJS) suivent la même résolution que le serveur.
+- Garde : `test/unit/modules.test.ts` (capacité de Node, résolution ESM des paquets Colyseus, CommonJS pour Phaser).
+
 ## Plan de retour arrière
 
 Revenir au commit précédant la bascule (`git revert`) puis `npm ci` : les préalables compatibles restent valides en 0.14.
