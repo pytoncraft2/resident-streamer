@@ -1,6 +1,6 @@
 # Resident Streamer — feuille de route de modernisation
 
-**État au 10/11/2026 :** phases 0 à 3 et 5 réalisées pour l'essentiel (détails ci-dessous) ; **prochaine étape : phase 4**, en commençant par le registre explicite des aptitudes. Feuille de route rédigée le 08/11/2026 sur `main`.
+**État au 10/11/2026 : modernisation terminée, feuille de route close** (voir « Clôture » ci-dessous). Les points encore décochés sont marqués *optionnel* : à reprendre seulement si un besoin concret apparaît. Feuille de route rédigée le 08/11/2026 sur `main`.
 
 **Stack actuelle :** Node 24, TypeScript 6, Phaser 4.2.1 (client et serveur HEADLESS via `phaser-on-nodejs` 1.3.1), Colyseus 0.18, Vite 8, Express 5, mocha 12, Phaser Editor v5 Core. Anomalies B1 à B8 : toutes traitées (`docs/phase0-diagnostic.md`).
 **Cible souhaitée :** Phaser 4, code maintenable et testable, gameplay serveur fiable, IA d'ennemis structurée.
@@ -20,7 +20,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [x] Capturer les erreurs initiales : installation, client, serveur, navigateur, WebSocket et jeu. → anomalies B1 à B8 (`docs/phase0-diagnostic.md`), toutes traitées.
 - [x] Documenter les flux lobby → partie → élimination des boss → classement ; vérifier ce qui est réellement fonctionnel. → protocole dans `docs/phase0-diagnostic.md`, flux et intentions de jeu dans `docs/conception/intentions.md` ; partie complète (4 boss, boss final, score) vérifiée manuellement le 10/11/2026.
 - [x] Auditer les dépendances et la compatibilité d'une version Node LTS actuelle, sans migration transversale immédiate. → Node 24 adopté via `phaser-on-nodejs` 1.3.1, sans autre montée de version (ADR-001 étape 1).
-- [ ] Cartographier les responsabilités et les couplages dans `Jeu.ts`, `hall.ts`, `PlayerClass.ts`, `Aptitudes/`, `RoomState.ts`. → reporté en phase 4 : à faire zone par zone, au moment de chaque extraction.
+- [ ] *(optionnel)* Cartographier les responsabilités et les couplages dans `Jeu.ts`, `hall.ts`, `PlayerClass.ts`, `Aptitudes/`, `RoomState.ts`. → reporté en phase 4 : à faire zone par zone, au moment de chaque extraction. **Clôture :** faite au fil des extractions de la phase 4 ; pas de cartographie globale prévue.
 
 **Sortie :** une exécution de référence reproductible, une liste de bugs observés, un premier inventaire du protocole réseau. Si le jeu ne démarre plus, documenter précisément l'environnement nécessaire et traiter d'abord ce blocage.
 
@@ -29,7 +29,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [x] Installer un runner de tests adapté à la version de Node retenue ; documenter les nouvelles commandes. → mocha (12 aujourd'hui) + ts-node, `npm test` (157 tests au 10/11/2026)
 - [x] Écrire des tests de caractérisation sur les calculs purs : dégâts, cooldowns, scores et chronométrage (après extraction sans modification de comportement). → dégâts, soin, camps, progression, entrées, scores, chronométrage (`src/server/domain/`, `game/camps.ts`). Cooldowns : il n'en existe pas dans le code ; la cadence réelle des aptitudes est caractérisée par `test/integration/aptitudes.test.ts` (B7, B8).
 - [x] Mettre en place des tests d'intégration pour la création, la jonction et la destruction de rooms Colyseus. → `test/integration/rooms.test.ts`
-- [ ] Valider des scénarios manuels multi-clients : 2, 3 et 4 joueurs ; déconnexion/reconnexion ; quatre personnages ; combats ; boss ; fin de partie. → recettes navigateur ponctuelles à chaque étape et partie complète validée ; automatisé : synchronisation 2 et 3 joueurs, départ puis retour dans le même salon (`test/integration/multijoueur.test.ts`), départ pendant une fusion sondé sans erreur. Grille de recette formelle abandonnée le 10/11/2026 (compétence `/recette-multijoueur` supprimée, jugée peu utile) : vérifications manuelles ciblées dans le navigateur à chaque changement.
+- [x] Valider des scénarios manuels multi-clients : 2, 3 et 4 joueurs ; déconnexion/reconnexion ; quatre personnages ; combats ; boss ; fin de partie. → recettes navigateur ponctuelles à chaque étape et partie complète validée ; automatisé : synchronisation 2 et 3 joueurs, départ puis retour dans le même salon (`test/integration/multijoueur.test.ts`), départ pendant une fusion sondé sans erreur. Grille de recette formelle abandonnée le 10/11/2026 (compétence `/recette-multijoueur` supprimée, jugée peu utile) : vérifications manuelles ciblées dans le navigateur à chaque changement.
 - [x] Vérifier que `scores.json` ne sera pas modifié accidentellement par les tests ; isoler le stockage de test. → chaque serveur de test a son propre `SCORES_FICHIER` temporaire ; le classement réel vit dans `donnees/scores.json` (B4 corrigé).
 
 **Sortie :** une grille de non-régression et des tests minimum avant les changements de moteur.
@@ -51,7 +51,7 @@ Ne pas mettre à jour globalement `phaser` avant d'avoir testé ce chemin serveu
 - [x] Migrer l'interface et le rendu de jeu par petits lots, sans toucher aux règles de gameplay dans les mêmes commits.
 - [x] Stabiliser les assets, événements, transitions, animations, caméras, physique cliente et synchronisation. → frames manquantes (B5), adresse du serveur (B6) ; recette navigateur par l'utilisateur.
 - [x] Mettre à jour le runtime serveur selon la décision de la phase 2, avec tests des rooms, événements, physique et performances. → Phaser 4.2.1 client et serveur (`4b261e2`) ; fuite mémoire par room corrigée (B1, test dédié). Performances non mesurées au-delà des parties longues.
-- [ ] Vérifier les interactions client/serveur sur l'ensemble de la matrice multi-joueurs. → voir phase 1 : matrice formelle abandonnée au profit de tests automatisés et de vérifications ciblées.
+- [x] Vérifier les interactions client/serveur sur l'ensemble de la matrice multi-joueurs. → voir phase 1 : matrice formelle abandonnée au profit de tests automatisés et de vérifications ciblées.
 - [x] Moderniser Node, Vite, TypeScript, Colyseus et l'outillage **par étapes séparées** pour isoler les régressions. → Node 24, TypeScript 6, Phaser 4, Colyseus 0.18 (ADR-004), Vite 8, mocha 12, Express 5, Phaser Editor v5 (ADR-005), chacun dans ses commits.
 
 **Sortie :** jeu fonctionnel sur le stack cible, avec pipeline de vérification et liste de régressions résolues.
@@ -78,17 +78,17 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 **Déjà extrait :** règles pures dans `src/server/domain/` (combat, progression, entrées, classement, temps), IA dans `src/server/ia/`, camps dans `src/server/game/camps.ts`, fin de partie et stockage des scores (`game/finDePartie.ts`, `stockage/`).
 **En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; contrats partagés dans `src/shared/` (ADR-002).
 
-- [ ] Établir une source de vérité unique pour stats, capacités et états des personnages. → stats (`stats` : vie, dégâts, vitesse ; défaut `STATS_PAR_DEFAUT`), capacités et déplacements (`deplacements`, défaut `Stats/Defaut.ts`) dans la définition de chaque personnage ; le registre n'est plus modifié en cours de partie. **États** : fusion caractérisée (`test/integration/fusion.test.ts`, cycle complet) et décision de l'appui sur TAB extraite (`domain/fusion.ts` : `decisionTab`, `PORTEE_FUSION`, `DUREE_FUSION`) ; camp, vol, suivi encore portés par `PlayerClass`.
-- [ ] Introduire des contrats typés de commandes, intentions et événements métier. → messages réseau typés (`src/shared/messages.ts`, ADR-002) ; intentions des boss typées (`ia/boss.ts`). Événements métier internes au serveur : pas encore.
-- [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication. → entrées : fronts montants (`clavierRecu`), touches déclenchées et fronts consommés (`touchesDeclenchees`, `frontsAConsommer`) dans `domain/entrees.ts` ; validations : personnage à la connexion, `etatJoueur` du lobby ; états synchronisés : contrats lus par le client (`src/shared/etats.ts`) et publication centralisée (`game/publication.ts`, seul lieu de création des schémas). Objets synchronisés modifiés en place (seuls les champs changés sont transmis) : 23,3 → 1,2 Kio/s par client, champs ponctuels préservés (`test/integration/etats.test.ts`).
-- [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée. → `PlayerClass` : traitement des touches (`domain/entrees.ts`) et coup au contact (`resoudreContact`, `domain/combat.ts`). Restent : mort/réapparition, défaite d'un boss, publication de la présence ; `hall.ts`.
+- [ ] *(optionnel)* Établir une source de vérité unique pour stats, capacités et états des personnages. → stats (`stats` : vie, dégâts, vitesse ; défaut `STATS_PAR_DEFAUT`), capacités et déplacements (`deplacements`, défaut `Stats/Defaut.ts`) dans la définition de chaque personnage ; le registre n'est plus modifié en cours de partie. **États** : fusion caractérisée (`test/integration/fusion.test.ts`, cycle complet) et décision de l'appui sur TAB extraite (`domain/fusion.ts` : `decisionTab`, `PORTEE_FUSION`, `DUREE_FUSION`) ; camp, vol, suivi encore portés par `PlayerClass`. **Clôture :** restent le vol et le suivi, simples drapeaux posés par les aptitudes ; à reprendre si le gameplay les fait évoluer.
+- [ ] *(optionnel)* Introduire des contrats typés de commandes, intentions et événements métier. → messages réseau typés (`src/shared/messages.ts`, ADR-002) ; intentions des boss typées (`ia/boss.ts`). Événements métier internes au serveur : pas encore. **Clôture :** aucun événement métier interne n'est nécessaire aujourd'hui.
+- [x] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication. → entrées : fronts montants (`clavierRecu`), touches déclenchées et fronts consommés (`touchesDeclenchees`, `frontsAConsommer`) dans `domain/entrees.ts` ; validations : personnage à la connexion, `etatJoueur` du lobby ; états synchronisés : contrats lus par le client (`src/shared/etats.ts`) et publication centralisée (`game/publication.ts`, seul lieu de création des schémas). Objets synchronisés modifiés en place (seuls les champs changés sont transmis) : 23,3 → 1,2 Kio/s par client, champs ponctuels préservés (`test/integration/etats.test.ts`).
+- [ ] *(optionnel)* Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée. → `PlayerClass` : traitement des touches (`domain/entrees.ts`) et coup au contact (`resoudreContact`, `domain/combat.ts`). Restent : mort/réapparition, défaite d'un boss, publication de la présence ; `hall.ts`. **Clôture :** le reste est surtout de la mise en place Phaser (scène, plateformes, groupes), faible gain.
 - [x] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances. → étapes :
   1. ✅ caractérisation du registre (`test/integration/registre-aptitudes.test.ts`) ;
   2. ✅ définition typée par personnage et registre explicite synchrone (`Aptitudes/definition.ts`, `base.ts`) ;
   3. ✅ catalogue des personnages partagé client/serveur (`src/shared/personnages.ts` : lobby, validation à la connexion, registre), ADR-002 ;
   4. ✅ animations et images qui blessent dans la définition de chaque personnage (`animations`, `imageQuiBlesse`), animations communes dans `Animations/communes.ts` ;
   5. ✅ test de cohérence des ressources (`test/integration/ressources.test.ts` : atlas client déclaré, images des animations dans les atlas serveur et client, icône des jouables).
-- [ ] Centraliser la gestion des timers, du cycle de vie des rooms, de la persistance du score et des erreurs réseau.
+- [ ] *(optionnel)* Centraliser la gestion des timers, du cycle de vie des rooms, de la persistance du score et des erreurs réseau. **Clôture :** objectif flou ; destruction des rooms (B1) et enregistrement du score (B3) déjà fiables.
 
 **Sortie :** frontières explicites, dette technique mesurablement réduite, aucun comportement perdu.
 
@@ -108,9 +108,15 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 - [x] Garder l'autorité de la simulation côté serveur : l'IA propose, les règles et la physique appliquent. → l'arbre produit des intentions, le pilote Phaser (`game/ia/pilote.ts`) les applique.
 - [x] Généraliser après validation du pilote. → les 5 boss (boss_1, manette, troll, twitchman, boss final en 3 phases) en arbres de comportement (ADR-003).
 - [x] Ajouter une trace de décision activable pour le débogage. → `IA_TRACE=1` (tous les boss) ou `IA_TRACE=troll,manette` : nœuds évalués et intentions, affichés quand la décision change (`ia/trace.ts`).
-- [ ] Étudier GOAP **uniquement** si un besoin de planification multi-actions émerge (ex. obtenir une ressource, déclencher un mécanisme, modifier la stratégie selon le monde).
+- [ ] *(optionnel)* Étudier GOAP **uniquement** si un besoin de planification multi-actions émerge (ex. obtenir une ressource, déclencher un mécanisme, modifier la stratégie selon le monde). **Clôture :** aucun besoin de planification multi-actions : les arbres de comportement suffisent.
 
 **Sortie :** IA extensible et testée sur un boss ; généralisation seulement après validation. → atteinte ; GOAP non nécessaire à ce jour.
+
+## Clôture (10/11/2026)
+
+Cible atteinte : Phaser 4 sur le client et le serveur HEADLESS, pile à jour (Node 24, TypeScript 6, Colyseus 0.18, Vite 8, Express 5, Phaser Editor v5), anomalies B1 à B8 traitées, autorité serveur (entrées, personnage, scores), contrats partagés client/serveur (`src/shared/`, ADR-002), IA des 5 boss en arbres de comportement testés (ADR-003), registre des personnages typé et vérifié par les tests, trafic réseau divisé par 20. Les vérifications reposent sur `npm test` (272 tests : unitaires, intégration sur serveur réel, cohérence des ressources) et sur des vérifications manuelles ciblées dans le navigateur.
+
+Suite : évolutions du jeu (personnages, boss, équilibrage) sur cette base ; ajouter un personnage jouable suit la procédure d'`AGENTS.md` (catalogue partagé, définition, ressources, contrôlées par TypeScript et les tests).
 
 ## Outils IA et MCP
 

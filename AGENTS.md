@@ -60,7 +60,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 6. Mettre à jour la documentation des décisions d'architecture lorsqu'un choix structurel est acté.
 
 ## Priorités de modernisation
-Consulter `ROADMAP_MODERNISATION.md` avant de traiter une phase entière. Ordre recommandé : **audit et baseline → tests de caractérisation → preuve de compatibilité Phaser 4 côté serveur → migration incrémentale → découplage gameplay/réseau/rendu → IA par comportements testables**.
+La feuille de route `ROADMAP_MODERNISATION.md` est **close** depuis le 10/11/2026 (modernisation terminée ; points restants optionnels) : la consulter pour l'historique et les décisions, pas comme liste de tâches. Ordre recommandé : **audit et baseline → tests de caractérisation → preuve de compatibilité Phaser 4 côté serveur → migration incrémentale → découplage gameplay/réseau/rendu → IA par comportements testables**.
 
 ## Documentation de référence
 - Phaser 3 → 4 : https://github.com/phaserjs/phaser/blob/master/changelog/v4/4.0/MIGRATION-GUIDE.md
