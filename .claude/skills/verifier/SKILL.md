@@ -23,7 +23,7 @@ Objectif : rapporter des faits vérifiés, pas une impression de réussite. Une 
 - Distinguer les erreurs **préexistantes** des erreurs introduites : en cas de doute, comparer avec `git stash` uniquement si l'utilisateur l'accepte.
 
 ## 3. Vérifications manuelles restantes
-Si la modification touche le réseau, les rooms, le gameplay ou les scores, indiquer qu'une recette manuelle est nécessaire (`/recette-multijoueur`) et lister les cas concernés.
+Si la modification touche le réseau, les rooms, le gameplay ou les scores, indiquer qu'une vérification manuelle dans le navigateur est nécessaire (idéalement à plusieurs joueurs) et lister les cas concernés.
 
 ## 4. Résumé de fin de tâche
 - Changements et fichiers principaux.
