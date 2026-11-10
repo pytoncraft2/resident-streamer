@@ -7,6 +7,7 @@ import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaser
 import { clavierRecu } from "../domain/entrees"
 import { BOSS_FINAL, bossFinalDirect } from "../domain/progression"
 import { revelerBossFinal } from "./bossFinal"
+import { APPARITIONS_BOSS } from "../domain/carte"
 import { estPersonnageJouable } from "../../shared/personnages"
 import { ClavierEnvoye, Recu } from "../../shared/messages"
 
@@ -51,36 +52,31 @@ export default class GameRooms extends Room {
       this.boss = {
         'super_boss': {
           temps: 1_000,
-          x: 2830,
-          y: -900,
+          ...APPARITIONS_BOSS.super_boss,
           vaincu: false,
           inaccessible: false
         },
         'twitchman': {
           temps: 1_000,
-          x: 1000,
-          y: -200,
+          ...APPARITIONS_BOSS.twitchman,
           vaincu: false,
           inaccessible: false
         },
         'boss_1': {
           temps: 2_000,
-          x: 4800,
-          y: -200,
+          ...APPARITIONS_BOSS.boss_1,
           vaincu: false,
           inaccessible: false
         },
         'manette': {
           temps: 1_000,
-          x: 4800,
-          y: -900,
+          ...APPARITIONS_BOSS.manette,
           vaincu: false,
           inaccessible: false
         },
         'troll':  {
           temps: 7_000,
-          x: 1000,
-          y: -1000,
+          ...APPARITIONS_BOSS.troll,
           vaincu: false,
           inaccessible: false
         }

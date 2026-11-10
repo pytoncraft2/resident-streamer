@@ -21,6 +21,7 @@
  * que sprite et invulnérable ; chaque coup porté au trône en fait tomber une rangée (Aptitudes/super_boss.ts).
  * Pendant la phase « Envol », il n'est à portée qu'au sol, juste après un piqué.
  */
+import { PIECES } from "../../domain/carte";
 import { action, condition, recharge, selecteur, sequence } from "../arbre";
 import { ArbreBoss, ContexteBoss, contient, Point, Zone } from "../boss";
 
@@ -99,7 +100,7 @@ interface RythmeVol {
 }
 
 /** Pièce centrale de l'étage, entre celle de troll (x < 1789) et celle de manette (x > 3802). */
-export const PIECE_BOSS_FINAL: Zone = { xMin: 1789, xMax: 3802, yMax: -249 };
+export const PIECE_BOSS_FINAL: Zone = PIECES.super_boss;
 
 /** Abscisses des PC d'une pluie autour d'une abscisse, sans sortir de la pièce centrale. */
 export function abscissesPluie(x: number): number[] {

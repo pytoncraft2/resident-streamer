@@ -6,12 +6,13 @@
  *     ├─ séquence « chasser » : [cible dans ma pièce ?] → poursuivre (vitesse 800)
  *     └─ séquence « rentrer » : [une cible existe et je ne suis pas à x = 5010 ?] → rejoindre (5010, 755) en 500 ms
  */
+import { PIECES, PLACES } from "../../domain/carte";
 import { action, condition, selecteur, sequence } from "../arbre";
 import { ArbreBoss, contient, Point, Zone } from "../boss";
 
 /** Pièce de boss_1 au rez-de-chaussée (bornes exclues), reprise de l'ancien code. */
-export const PIECE_BOSS_1: Zone = { xMin: 3802, xMax: 5627, yMin: -249 };
-export const PLACE_BOSS_1: Point = { x: 5010, y: 755 };
+export const PIECE_BOSS_1: Zone = PIECES.boss_1;
+export const PLACE_BOSS_1: Point = PLACES.boss_1;
 
 export const arbreBoss1: ArbreBoss = selecteur(
   "boss_1",

@@ -13,12 +13,13 @@
  * Différences voulues avec l'ancien code : il cessait définitivement de décider quand la distance
  * valait exactement 400 ou 900, quand la cible avait la même abscisse que lui, ou sans aucun joueur.
  */
+import { PIECES, PLACES } from "../../domain/carte";
 import { action, condition, selecteur, sequence } from "../arbre";
 import { ArbreBoss, ContexteBoss, contient, distance, Point, Zone } from "../boss";
 
 /** Pièce de troll à l'étage, à gauche (bornes exclues), reprise de l'ancien code. */
-export const PIECE_TROLL: Zone = { xMax: 1789, yMax: -249 };
-export const PLACE_TROLL: Point = { x: 427, y: -249 };
+export const PIECE_TROLL: Zone = PIECES.troll;
+export const PLACE_TROLL: Point = PLACES.troll;
 export const DISTANCE_CHARGE_TROLL = 1300;
 
 const cibleAGauche = ({ perception }: ContexteBoss): boolean => (perception.cible?.position.x ?? Infinity) < perception.position.x;

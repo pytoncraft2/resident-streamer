@@ -122,7 +122,7 @@ Vérifications : tests unitaires (seuil, pluie et sa recharge, rythme plus rapid
 
 1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.
 2. Briques nouvelles au besoin (recharge, attente…), testées unitairement.
-3. Pièces nommées dans une table commune (aujourd'hui `PIECE_BOSS_1` dans l'arbre de boss_1).
+3. ~~Pièces nommées dans une table commune~~ : `src/server/domain/carte.ts` (murs, plancher de l'étage, 6 pièces dont le hall, places et apparitions des boss, apparitions des joueurs), testée (`test/unit/carte.test.ts`) ; les arbres en reprennent leurs `PIECE_*` et `PLACE_*`.
 4. ~~Boss final~~ : phases « Trône », « Envol » et « Rage » faites.
 
 ## Retour arrière

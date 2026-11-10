@@ -3,6 +3,7 @@ import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { imageQuiBlesse } from "../Aptitudes/definition"
 import { frontsAConsommer, touchesDeclenchees } from "../../../domain/entrees"
+import { REAPPARITION_JOUEUR } from "../../../domain/carte"
 import { ANIMATIONS_COMMUNES } from "../Animations/communes"
 import { Camp, resoudreContact, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
@@ -274,8 +275,8 @@ import { campDe } from "../../camps"
      });
      this.scene.tweens.add({
        targets: this,
-       x: 2830,
-       y: 755,
+       x: REAPPARITION_JOUEUR.x,
+       y: REAPPARITION_JOUEUR.y,
        duration: 500,
        onComplete: function() {
          if (arguments[1][0].scene){

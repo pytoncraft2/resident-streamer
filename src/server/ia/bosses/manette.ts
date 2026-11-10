@@ -13,12 +13,13 @@
  * Différences voulues avec l'ancien code : il cessait définitivement de décider quand la distance
  * valait exactement 400 ou 900, quand la cible avait la même abscisse que lui, ou sans aucun joueur.
  */
+import { PIECES, PLACES } from "../../domain/carte";
 import { action, condition, selecteur, sequence } from "../arbre";
 import { ArbreBoss, ContexteBoss, contient, distance, Point, Zone } from "../boss";
 
 /** Pièce de manette à l'étage (bornes exclues), reprise de l'ancien code. */
-export const PIECE_MANETTE: Zone = { xMin: 3802, xMax: 5627, yMax: -249 };
-export const PLACE_MANETTE: Point = { x: 4800, y: -249 };
+export const PIECE_MANETTE: Zone = PIECES.manette;
+export const PLACE_MANETTE: Point = PLACES.manette;
 /** Coins vers lesquels manette s'envole après avoir frappé, selon le côté de la cible. */
 export const COINS_MANETTE = { gauche: { x: 3970, y: -950 }, droite: { x: 5337, y: -950 } } as const;
 

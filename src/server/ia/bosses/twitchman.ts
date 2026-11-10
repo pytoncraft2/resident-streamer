@@ -15,12 +15,13 @@
  * Différences voulues : l'ancien code cessait définitivement de décider quand la distance valait
  * exactement 400 ou 900, quand la cible avait la même abscisse, ou sans aucun joueur.
  */
+import { PIECES, PLACES } from "../../domain/carte";
 import { action, condition, selecteur, sequence } from "../arbre";
 import { ArbreBoss, ContexteBoss, contient, distance, Point, Zone } from "../boss";
 
 /** Pièce de twitchman au rez-de-chaussée, à gauche (bornes exclues), reprise de l'ancien code. */
-export const PIECE_TWITCHMAN: Zone = { xMax: 1789, yMin: -249 };
-export const PLACE_TWITCHMAN: Point = { x: 427, y: 755 };
+export const PIECE_TWITCHMAN: Zone = PIECES.twitchman;
+export const PLACE_TWITCHMAN: Point = PLACES.twitchman;
 /** Coins vers lesquels twitchman s'envole après avoir frappé, selon le côté de la cible. */
 export const COINS_TWITCHMAN = { gauche: { x: 0, y: 0 }, droite: { x: 1960, y: 0 } } as const;
 

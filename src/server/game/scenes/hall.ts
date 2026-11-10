@@ -1,4 +1,5 @@
 import { canalJeu } from "../../../shared/messages"
+import { APPARITION_JOUEUR } from "../../domain/carte"
 import PlayerClass from "./class/PlayerClass"
 import { formaterDuree } from "../../domain/temps"
 
@@ -238,7 +239,7 @@ export default class Hall extends Phaser.Scene {
    */
   createPlayer(ClientId: any, sprite: string) {
     this.time.delayedCall(1000, () => {
-      const player = this.add.existing(new PlayerClass(this, 2830, 700, "atlas", ClientId, sprite).setData({ ClientId }))
+      const player = this.add.existing(new PlayerClass(this, APPARITION_JOUEUR.x, APPARITION_JOUEUR.y, "atlas", ClientId, sprite).setData({ ClientId }))
       player.cible_courante = "enemies"
       this.players.add(player)
       this.playersRef[ClientId] = player
