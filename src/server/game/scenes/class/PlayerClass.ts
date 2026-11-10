@@ -2,6 +2,7 @@ import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { imageQuiBlesse } from "../Aptitudes/definition"
+import { frontsAConsommer, touchesDeclenchees } from "../../../domain/entrees"
 import { ANIMATIONS_COMMUNES } from "../Animations/communes"
 import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
@@ -142,31 +143,21 @@ import { campDe } from "../../camps"
      super.preUpdate(time, delta);
 
      const input = (this.scene as any).room.donnes[this.ClientID].clavier
-     let { right, left, space, a, z, e, r, up, down, a_fin, left_fin, right_fin, space_fin, z_fin, left_debut, right_debut, tab, tab_fin } = input
      let animationName = this.anims.getFrameName()
 
 
      if (this.canMove) {
        this.zoneInteraction.setPosition(this.x + (this.flipX ? -150 : 150), this.y);
 
-       if (a || a_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].A === "function" && Aptitudes[this.currentTarget.sprite].A(this.currentTarget, input);
-       if (z || z_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].Z === "function" && Aptitudes[this.currentTarget.sprite].Z(this.currentTarget, input);
-       if (e) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].E === "function" && Aptitudes[this.currentTarget.sprite].E(this.currentTarget, input);
-       if (r) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].R === "function" && Aptitudes[this.currentTarget.sprite].R(this.currentTarget, input);
-       if (tab || tab_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].TAB === "function" && Aptitudes[this.currentTarget.sprite].TAB(this.currentTarget, input);
-       if (left || left_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheGauche === "function" && Aptitudes[this.currentTarget.sprite].toucheGauche(this.currentTarget, input)
-       if (right || right_fin) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheDroite === "function" && Aptitudes[this.currentTarget.sprite].toucheDroite(this.currentTarget, input)
-       if (up) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheHaut === "function" && Aptitudes[this.currentTarget.sprite].toucheHaut(this.currentTarget, input)
-       if (down) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheBas === "function" && Aptitudes[this.currentTarget.sprite].toucheBas(this.currentTarget, input)
-       if (space) this.currentTarget.sprite in Aptitudes && typeof Aptitudes[this.currentTarget.sprite].toucheEspace === "function" && Aptitudes[this.currentTarget.sprite].toucheEspace(this.currentTarget, input);
-
-       if (left_fin) input.left_fin = false;
-       if (z_fin) input.z_fin = false;
-       if (right_fin) input.right_fin = false;
-       if (space_fin) input.space_fin = false;
-       if (right_debut) input.right_debut = false
-       if (left_debut) input.left_debut = false;
-       if (tab_fin) input.tab_fin = false;
+       // Touches et fronts lus avant les appels (les aptitudes modifient le clavier, ex. input.a = false).
+       const declenchees = touchesDeclenchees(input)
+       const aConsommer = frontsAConsommer(input)
+       for (const cle of declenchees) {
+         // Relu à chaque touche : la fusion (TAB) change le personnage contrôlé dans la même image.
+         const aptitude = Aptitudes[this.currentTarget.sprite]?.[cle]
+         if (typeof aptitude === "function") aptitude(this.currentTarget, input)
+       }
+       for (const front of aConsommer) input[front] = false
      }
 
      if (this.suivre) {

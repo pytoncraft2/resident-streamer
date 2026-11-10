@@ -33,3 +33,40 @@ export function frontsMontants(precedent: EtatTouches | undefined, actuel: EtatT
 export function clavierRecu(precedent: EtatTouches | undefined, recu: EtatTouches): Record<string, unknown> {
   return { ...recu, ...frontsMontants(precedent, recu) };
 }
+
+/** Clé du registre des aptitudes appelée pour une touche (action ou déplacement). */
+export type CleDeclenchee = "A" | "Z" | "E" | "R" | "TAB" | "toucheGauche" | "toucheDroite" | "toucheHaut" | "toucheBas" | "toucheEspace";
+
+/**
+ * Conditions de déclenchement, dans l'ordre historique de `PlayerClass.preUpdate` : une touche
+ * enfoncée, ou son relâchement (`<touche>_fin`) pour les aptitudes qui agissent au relâchement
+ * (A, Z, TAB) et la marche (arrêt). Valeurs évaluées comme vraies ou fausses, comme avant.
+ */
+const DECLENCHEURS: readonly (readonly [CleDeclenchee, readonly string[]])[] = [
+  ["A", ["a", "a_fin"]],
+  ["Z", ["z", "z_fin"]],
+  ["E", ["e"]],
+  ["R", ["r"]],
+  ["TAB", ["tab", "tab_fin"]],
+  ["toucheGauche", ["left", "left_fin"]],
+  ["toucheDroite", ["right", "right_fin"]],
+  ["toucheHaut", ["up"]],
+  ["toucheBas", ["down"]],
+  ["toucheEspace", ["space"]],
+];
+
+/** Clés du registre à appeler pour ce clavier, dans l'ordre. */
+export function touchesDeclenchees(clavier: EtatTouches): CleDeclenchee[] {
+  return DECLENCHEURS.filter(([, touches]) => touches.some((t) => Boolean(clavier[t]))).map(([cle]) => cle);
+}
+
+/**
+ * Fronts consommés après l'appel des aptitudes : remis à `false` pour ne pas être traités deux fois
+ * (le client ne renvoie un message qu'au changement suivant). Liste historique, à l'identique.
+ */
+const FRONTS_CONSOMMES = ["left_fin", "z_fin", "right_fin", "space_fin", "right_debut", "left_debut", "tab_fin"] as const;
+
+/** Fronts présents dans ce clavier, à remettre à `false` une fois les aptitudes appelées. */
+export function frontsAConsommer(clavier: EtatTouches): string[] {
+  return FRONTS_CONSOMMES.filter((front) => Boolean(clavier[front]));
+}
