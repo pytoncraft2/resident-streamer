@@ -22,11 +22,11 @@ Légende : ✅ conforme au code · ⚠️ écart avec le code · 🚧 inachevé 
 
 | Intention | Code (`PlayerClass.animationBossVaincu`, `Aptitudes/_utilitaire/fusion.ts`) | État |
 |---|---|---|
-| Boss vaincu → objet ramassable (TAB) | rétréci, suit le joueur (`recuperationObjetBoss`) | ✅ |
-| 2e TAB → devenir le boss quelques secondes | contrôle du boss **5 s**, puis le boss disparaît et n'est plus utilisable (`inaccessible`) | ✅ |
+| Boss vaincu → objet ramassable (TAB) | à moins de 270 px (`PORTEE_FUSION`, `domain/fusion.ts`), rétréci, suit le joueur (`recuperationObjetBoss`) | ✅ |
+| 2e TAB → devenir le boss quelques secondes | contrôle du boss **5 s** (`DUREE_FUSION`), puis le boss disparaît et n'est plus utilisable (`inaccessible`) ; cycle caractérisé par `test/integration/fusion.test.ts` | ✅ |
 | Les 4 boss vaincus → porte ouverte, pièce centrale révélée, boss final | `domain/progression.ts` (`bossPrincipauxVaincus`), une seule fois par partie : `RDC_OK` (image `hall` effacée), `ETAGE_OK` (image `hall_1` effacée), boss final activé. **Corrigé** : avant, `RDC_OK` suivait `twitchman` + `boss_1` et `ETAGE_OK` + boss final suivaient `troll` + `manette` | ✅ |
 | Déplacement libre entre pièces et étages | aucune barrière liée à la progression | ✅ |
-| Boss final | créé inactif, présent dans l'état seulement une fois activé (ancienne anomalie B2) ; **ne fait encore rien** | 🚧 |
+| Boss final | créé inactif, présent dans l'état seulement une fois activé (ancienne anomalie B2) ; trois phases (trône, envol, rage), §3 | ✅ |
 | Fin de partie | les 5 boss vaincus → `FIN_JEU`, score enregistré par le serveur (B3) | ✅ |
 | Score | temps du chronomètre serveur | ✅ |
 

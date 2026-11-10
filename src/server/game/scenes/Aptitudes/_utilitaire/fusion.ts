@@ -1,32 +1,39 @@
 import TJoueur from "../../types/Joueur"
 import { Aptitude } from "../definition"
+import { decisionTab, DUREE_FUSION } from "../../../../domain/fusion"
 
 /** Fusion (TAB) avec un boss vaincu proche, commune aux personnages jouables. */
 export const aptitudeFusion: Aptitude<TJoueur> = { nom: "fusion", action: (personnage, entree) => fusion(personnage, entree) }
 
 export default function fusion(personnage: any, input: any) {
-  if (input.tab) {
-    if (personnage.bossControllable.getLength() == 1)
-    {
-      fusionAvecBoss(personnage.bossControllable.getChildren()[0], personnage)
+  const porte = personnage.bossControllable.getLength() == 1 ? personnage.bossControllable.getChildren()[0] : undefined
+  const ennemiProche = porte || !input.tab ? undefined : closest(personnage, 'enemies') as TJoueur
+  const room = (personnage.scene as any).room
+  const decision = decisionTab({
+    appui: Boolean(input.tab),
+    bossPorte: porte ? { inaccessible: Boolean(room.boss[`${porte.sprite}`].inaccessible) } : undefined,
+    ennemiProche: ennemiProche
+      ? { distance: Phaser.Math.Distance.Between(ennemiProche.x, ennemiProche.y, personnage.x, personnage.y), vaincu: Boolean(room.boss[`${ennemiProche.sprite}`]?.vaincu) }
+      : undefined,
+  })
+  switch (decision.type) {
+    case "rien":
+      if (decision.consommer) input.tab = false
+      return
+    case "porter":
+      personnage.son = 'fusion'
+      recuperationObjetBoss(ennemiProche, personnage)
+      personnage.bossControllable.add(ennemiProche)
+      break
+    case "fusionner":
+      fusionAvecBoss(porte, personnage)
       personnage.son = 'fusion2'
-    }
-    else
-    {
-      const ennemieProche = closest(personnage, 'enemies') as TJoueur;
-      if (!ennemieProche) return;
-      if (Phaser.Math.Distance.Between(ennemieProche.x, ennemieProche.y, personnage.x, personnage.y) < 270)
-      {
-        if ((personnage.scene as any).room.boss[`${ennemieProche.sprite}`].vaincu)
-        {
-          personnage.son = 'fusion'
-          recuperationObjetBoss(ennemieProche, personnage)
-          personnage.bossControllable.add(ennemieProche)
-        }
-      }
-    }
-    input.tab = false;
+      break
+    case "refuser":
+      personnage.son = 'fusion2'
+      break
   }
+  input.tab = false;
 }
 
 /**
@@ -69,7 +76,6 @@ function recuperationObjetBoss(ennemie: TJoueur, joueur: TJoueur) {
  * @returns  
  */
 function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
-  if ((joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible) return;
     joueur.scene.time.delayedCall(1, () => {
       joueur.changeInterfaceClient(ennemie.sprite, true);
     }, null, joueur);
@@ -85,7 +91,7 @@ function fusionAvecBoss(ennemie: TJoueur, joueur: TJoueur) {
     joueur.suivre = true;
     joueur.setScale(0.2);
 
-    joueur.scene.time.delayedCall(5000, () => {
+    joueur.scene.time.delayedCall(DUREE_FUSION, () => {
       (joueur.scene as any).room.boss[`${ennemie.sprite}`].inaccessible = true;
       joueur.son = "ejection"
       joueur.suivre = false;
