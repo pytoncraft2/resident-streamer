@@ -113,6 +113,11 @@ Vérifications : tests unitaires (piqué, pause au sol, vol borné à la pièce,
 
 Vérifications : tests unitaires (seuil, pluie et sa recharge, rythme plus rapide, priorité de la contre-attaque, abscisses bornées) ; test d'intégration (boss frappé jusqu'à mi-vie, puis 4 PC à la fois).
 
+## Trace des décisions et cycle de vie
+
+- **Trace** (débogage, désactivée par défaut) : si le contexte porte une `TraceArbre`, chaque brique y ajoute une ligne indentée avec son résultat (✔, ✘, ⏳ en recharge). Le pilote l'active par `IA_TRACE` (`1`, `tous` ou une liste de boss) et l'affiche avec les intentions produites, seulement quand la décision change (`ia/trace.ts`). La trace n'influence pas la décision (testé).
+- **Cycle de vie** testé avec une scène factice (`test/unit/pilote.test.ts`) : décision immédiate puis périodique ; sans joueur, attente sans décision ; boss vaincu : `surVaincu` une seule fois, puis plus rien. Perte de cible : aucun des 5 arbres ne produit d'intention sans joueur.
+
 ## Suite
 
 1. ~~Migrer les boss principaux~~ : `boss_1`, `manette`, `troll` et `twitchman` faits.

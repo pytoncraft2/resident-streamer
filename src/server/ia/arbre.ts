@@ -13,9 +13,46 @@
  * - `action(faire)`  : fait quelque chose (ajouter une intention) et réussit ;
  * - `recharge(nom, ms, enfant)` : n'évalue son enfant qu'une fois toutes les `ms` millisecondes
  *   (mémoire et heure fournies par le contexte, propres à chaque boss).
+ *
+ * Trace (débogage) : si le contexte porte une `trace` (`TraceArbre`), chaque nœud évalué y ajoute
+ * une ligne, indentée selon sa profondeur, avec son résultat : ✔ succès, ✘ échec, ⏳ en recharge.
  */
 
 export type Statut = "succes" | "echec";
+
+/** Trace des nœuds évalués, remplie seulement si le contexte en porte une. */
+export interface TraceArbre {
+  readonly lignes: string[];
+  profondeur: number;
+}
+
+const SYMBOLES: Readonly<Record<Statut, string>> = { succes: "✔", echec: "✘" };
+
+function traceDe(contexte: unknown): TraceArbre | undefined {
+  if (typeof contexte !== "object" || contexte === null || !("trace" in contexte)) return undefined;
+  const trace = contexte.trace;
+  if (typeof trace !== "object" || trace === null || !("lignes" in trace) || !Array.isArray(trace.lignes)) return undefined;
+  if (!("profondeur" in trace) || typeof trace.profondeur !== "number") return undefined;
+  // Forme vérifiée ci-dessus (lignes : tableau, profondeur : nombre).
+  return trace as TraceArbre;
+}
+
+/** Évalue un nœud en le notant dans la trace : ligne réservée avant ses enfants, complétée après. */
+function tracer<C>(contexte: C, nom: string, evaluer: () => Statut | "recharge"): Statut {
+  const trace = traceDe(contexte);
+  if (!trace) {
+    const statut = evaluer();
+    return statut === "recharge" ? "echec" : statut;
+  }
+  const indice = trace.lignes.length;
+  const retrait = "  ".repeat(trace.profondeur);
+  trace.lignes.push("");
+  trace.profondeur++;
+  const statut = evaluer();
+  trace.profondeur--;
+  trace.lignes[indice] = `${retrait}${nom} ${statut === "recharge" ? "⏳" : SYMBOLES[statut]}`;
+  return statut === "recharge" ? "echec" : statut;
+}
 
 export interface Noeud<C> {
   /** Nom affichable, pour le débogage et la lecture d'un arbre. */
@@ -26,28 +63,31 @@ export interface Noeud<C> {
 export function selecteur<C>(nom: string, ...enfants: Noeud<C>[]): Noeud<C> {
   return {
     nom,
-    evaluer: (contexte) => (enfants.some((enfant) => enfant.evaluer(contexte) === "succes") ? "succes" : "echec"),
+    evaluer: (contexte) =>
+      tracer(contexte, nom, () => (enfants.some((enfant) => enfant.evaluer(contexte) === "succes") ? "succes" : "echec")),
   };
 }
 
 export function sequence<C>(nom: string, ...enfants: Noeud<C>[]): Noeud<C> {
   return {
     nom,
-    evaluer: (contexte) => (enfants.every((enfant) => enfant.evaluer(contexte) === "succes") ? "succes" : "echec"),
+    evaluer: (contexte) =>
+      tracer(contexte, nom, () => (enfants.every((enfant) => enfant.evaluer(contexte) === "succes") ? "succes" : "echec")),
   };
 }
 
 export function condition<C>(nom: string, test: (contexte: C) => boolean): Noeud<C> {
-  return { nom, evaluer: (contexte) => (test(contexte) ? "succes" : "echec") };
+  return { nom, evaluer: (contexte) => tracer(contexte, nom, () => (test(contexte) ? "succes" : "echec")) };
 }
 
 export function action<C>(nom: string, faire: (contexte: C) => void): Noeud<C> {
   return {
     nom,
-    evaluer: (contexte) => {
-      faire(contexte);
-      return "succes";
-    },
+    evaluer: (contexte) =>
+      tracer(contexte, nom, () => {
+        faire(contexte);
+        return "succes";
+      }),
   };
 }
 
@@ -64,12 +104,13 @@ export interface ContexteRecharge {
 export function recharge<C extends ContexteRecharge>(nom: string, ms: number, enfant: Noeud<C>): Noeud<C> {
   return {
     nom,
-    evaluer: (contexte) => {
-      const dernier = contexte.memoire.get(nom);
-      if (dernier !== undefined && contexte.temps - dernier < ms) return "echec";
-      const statut = enfant.evaluer(contexte);
-      if (statut === "succes") contexte.memoire.set(nom, contexte.temps);
-      return statut;
-    },
+    evaluer: (contexte) =>
+      tracer(contexte, nom, () => {
+        const dernier = contexte.memoire.get(nom);
+        if (dernier !== undefined && contexte.temps - dernier < ms) return "recharge";
+        const statut = enfant.evaluer(contexte);
+        if (statut === "succes") contexte.memoire.set(nom, contexte.temps);
+        return statut;
+      }),
   };
 }

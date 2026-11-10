@@ -46,6 +46,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - Vérifier/compiler le client : `npm run build`.
 - Documentation existante : `npm run doc`.
 - Recette du boss final : `BOSS_FINAL_DIRECT=1 npm start` l'active dès le début de la partie (raccourci de développement, inactif par défaut).
+- Trace des décisions des boss : `IA_TRACE=1 npm start` (tous) ou `IA_TRACE=troll,manette npm start` ; affichée dans le journal serveur quand la décision change.
 - Éditeur de scènes : `PHASER_EDITOR=/chemin/vers/PhaserEditor npm run editor` (Phaser Editor v5 Core, licence requise ; `editor-remote` ajoute `-public`).
 - Tests : `npm test` (compile le serveur puis lance mocha + ts-node sur `test/**/*.test.ts`, config `.mocharc.cjs`, types stricts `test/tsconfig.json`). Les tests d'intégration démarrent le serveur compilé sur un port libre (suite complète ~30 s). Compléter par des tests de caractérisation avant toute refonte.
 

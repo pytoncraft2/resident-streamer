@@ -2,7 +2,7 @@
  * Vocabulaire commun aux IA de boss (ADR-003) : ce qu'un boss perçoit, et les intentions
  * qu'il peut produire. Aucune dépendance à Phaser.
  */
-import { Noeud } from "./arbre";
+import { Noeud, TraceArbre } from "./arbre";
 
 export interface Point {
   readonly x: number;
@@ -97,13 +97,18 @@ export interface ContexteBoss {
   readonly temps: number;
   /** Mémoire propre au boss entre deux décisions (recharges). */
   readonly memoire: Map<string, number>;
+  /** Trace des nœuds évalués (débogage), si demandée. */
+  readonly trace?: TraceArbre;
 }
 
 export type ArbreBoss = Noeud<ContexteBoss>;
 
-/** Évalue l'arbre sur une perception et renvoie les intentions produites. `memoire` : propre au boss. */
-export function decider(arbre: ArbreBoss, perception: PerceptionBoss, memoire: Map<string, number> = new Map()): Intention[] {
-  const contexte: ContexteBoss = { perception, intentions: [], temps: perception.temps ?? 0, memoire };
+/**
+ * Évalue l'arbre sur une perception et renvoie les intentions produites. `memoire` : propre au boss.
+ * `trace` : si fournie, reçoit une ligne par nœud évalué (débogage, voir `TraceArbre`).
+ */
+export function decider(arbre: ArbreBoss, perception: PerceptionBoss, memoire: Map<string, number> = new Map(), trace?: TraceArbre): Intention[] {
+  const contexte: ContexteBoss = { perception, intentions: [], temps: perception.temps ?? 0, memoire, ...(trace ? { trace } : {}) };
   arbre.evaluer(contexte);
   return contexte.intentions;
 }

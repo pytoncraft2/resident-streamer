@@ -104,10 +104,10 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 
 - [x] Sélectionner **un boss pilote**, décrire ses états, perceptions, priorités et comportements attendus. → `boss_1` (ADR-003).
 - [x] Définir une interface testable : `WorldSnapshot` → `Decision`/`Intent`, sans dépendance directe à Phaser ou Colyseus. → `PerceptionBoss` → `Intention[]` (`src/server/ia/boss.ts`).
-- [ ] Implémenter d'abord une FSM ou un BT minimal ; tester priorités, interruptions, cooldowns, perte de cible, mort et réinitialisation. → BT (`src/server/ia/arbre.ts`) avec recharges (`recharge`) et interruptions (contre-attaque du boss final) testées ; **perte de cible, mort et réinitialisation pas encore testées**.
+- [x] Implémenter d'abord une FSM ou un BT minimal ; tester priorités, interruptions, cooldowns, perte de cible, mort et réinitialisation. → BT (`src/server/ia/arbre.ts`) avec recharges et interruptions (contre-attaque du boss final) testées ; perte de cible (5 arbres, `test/unit/ia-trace.test.ts`) ; mort et attente sans joueur (`test/unit/pilote.test.ts`). Réinitialisation : un boss vaincu ne réapparaît pas (par conception) ; le retour à sa place quand la cible quitte la pièce est testé.
 - [x] Garder l'autorité de la simulation côté serveur : l'IA propose, les règles et la physique appliquent. → l'arbre produit des intentions, le pilote Phaser (`game/ia/pilote.ts`) les applique.
 - [x] Généraliser après validation du pilote. → les 5 boss (boss_1, manette, troll, twitchman, boss final en 3 phases) en arbres de comportement (ADR-003).
-- [ ] Ajouter une trace de décision activable pour le débogage.
+- [x] Ajouter une trace de décision activable pour le débogage. → `IA_TRACE=1` (tous les boss) ou `IA_TRACE=troll,manette` : nœuds évalués et intentions, affichés quand la décision change (`ia/trace.ts`).
 - [ ] Étudier GOAP **uniquement** si un besoin de planification multi-actions émerge (ex. obtenir une ressource, déclencher un mécanisme, modifier la stratégie selon le monde).
 
 **Sortie :** IA extensible et testée sur un boss ; généralisation seulement après validation. → atteinte ; GOAP non nécessaire à ce jour.

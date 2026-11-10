@@ -6,6 +6,8 @@
  */
 import Phaser from "phaser";
 import { ArbreBoss, decider, Intention, PerceptionBoss } from "../../ia/boss";
+import { TraceArbre } from "../../ia/arbre";
+import { formaterDecision, traceIaActive } from "../../ia/trace";
 
 /** Vue minimale de la scène serveur (hall.ts) utilisée par le pilote. */
 interface SceneBoss extends Phaser.Scene {
@@ -114,6 +116,9 @@ function appliquer(
 export function demarrerIA(boss: BossPilote, arbre: ArbreBoss, options: OptionsPilote): void {
   // Mémoire propre à ce boss (recharges) : les arbres sont partagés entre toutes les rooms.
   const memoire = new Map<string, number>();
+  // Trace des décisions (IA_TRACE) : affichée seulement quand la décision change.
+  const tracer = traceIaActive(boss.sprite);
+  let derniereDecision = "";
   const programmer = (): void => {
     const scene = boss.scene as SceneBoss | undefined;
     if (scene?.time) scene.time.delayedCall(options.periode, tick);
@@ -138,7 +143,14 @@ export function demarrerIA(boss: BossPilote, arbre: ArbreBoss, options: OptionsP
         temps: scene.time.now,
         ...options.percevoir?.(),
       };
-      for (const intention of decider(arbre, perception, memoire)) {
+      const trace: TraceArbre | undefined = tracer ? { lignes: [], profondeur: 0 } : undefined;
+      const intentions = decider(arbre, perception, memoire, trace);
+      if (trace) {
+        const decision = formaterDecision(boss.sprite, trace.lignes, intentions);
+        if (decision !== derniereDecision) console.log(decision);
+        derniereDecision = decision;
+      }
+      for (const intention of intentions) {
         // Une seule action longue reprogramme la décision suivante.
         const longue = appliquer(boss, scene, plusProche ?? undefined, intention, options, actionLongue ? () => undefined : programmer);
         actionLongue = actionLongue || longue;
