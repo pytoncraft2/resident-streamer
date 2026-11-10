@@ -1,9 +1,10 @@
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import { arbreTwitchman } from "../../../ia/bosses/twitchman";
 import { demarrerIA } from "../../ia/pilote";
 import LaserClass from "../class/elements/LaserClass";
 
-export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
+export function initialiser(twitchman: TJoueur, Aptitudes: any) {
   Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
     _twitchman.body.setVelocityY(-500)
     _twitchman.play('twitchman_vole', true)
@@ -19,7 +20,7 @@ export function __StatsSupplementaire(twitchman: TJoueur, Aptitudes: any) {
 }
 
 
-export function punch__A(twitchman: TJoueur, input: any) {
+export function punch(twitchman: TJoueur, input: any) {
   if (input.a)
   {
   twitchman.play('twitchman_punch')
@@ -27,7 +28,7 @@ export function punch__A(twitchman: TJoueur, input: any) {
   }
 }
 
-export function charge__Z(twitchman: TJoueur, input: any) {
+export function charge(twitchman: TJoueur, input: any) {
   if (input.z)
   {
     twitchman.play('twitchman_charge')
@@ -42,7 +43,7 @@ export function charge__Z(twitchman: TJoueur, input: any) {
   }
 }
 
-export function laser__E(twitchman: TJoueur, input: any) {
+export function laser(twitchman: TJoueur, input: any) {
   twitchman.son = 'laser'
   twitchman.laser.charge()
   input.e = false
@@ -51,6 +52,16 @@ export function laser__E(twitchman: TJoueur, input: any) {
 /**
  * IA de twitchman : arbre de comportement (src/server/ia/bosses/twitchman.ts) piloté toutes les 500 ms (ADR-003).
  */
-export function __auto(twitchman: TJoueur, _input: any, aptitudes: any) {
+export function auto(twitchman: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(twitchman as any, arbreTwitchman, { periode: 500, aptitudes });
 }
+
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "punch", action: punch },
+    Z: { nom: "charge", action: charge },
+    E: { nom: "laser", action: laser },
+  },
+  auto,
+});

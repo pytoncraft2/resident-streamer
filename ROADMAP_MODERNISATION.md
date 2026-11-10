@@ -76,13 +76,18 @@ src/
 Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces dossiers avant d'avoir un premier cas d'extraction concret.
 
 **Déjà extrait :** règles pures dans `src/server/domain/` (combat, progression, entrées, classement, temps), IA dans `src/server/ia/`, camps dans `src/server/game/camps.ts`, fin de partie et stockage des scores (`game/finDePartie.ts`, `stockage/`).
-**Prochaine étape :** registre explicite typé des aptitudes (dernier point ci-dessous), premier cas d'extraction concret ; l'occasion de trancher l'ADR-002.
+**En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; l'étape 3 tranchera l'ADR-002.
 
 - [ ] Établir une source de vérité unique pour stats, capacités et états des personnages.
 - [ ] Introduire des contrats typés de commandes, intentions et événements métier.
 - [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication.
 - [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée.
-- [ ] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances.
+- [ ] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances. → étapes :
+  1. ✅ caractérisation du registre (`test/integration/registre-aptitudes.test.ts`) ;
+  2. ✅ définition typée par personnage et registre explicite synchrone (`Aptitudes/definition.ts`, `base.ts`) ;
+  3. catalogue des personnages partagé client/serveur (lobby), ADR-002 ;
+  4. animations et frames qui blessent rapatriées dans la définition de chaque personnage ;
+  5. test de cohérence des ressources (atlas, icônes, frames serveur).
 - [ ] Centraliser la gestion des timers, du cycle de vie des rooms, de la persistance du score et des erreurs réseau.
 
 **Sortie :** frontières explicites, dette technique mesurablement réduite, aucun comportement perdu.

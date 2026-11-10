@@ -1,7 +1,8 @@
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import { arbreBoss1 } from "../../../ia/bosses/boss_1";
 import { demarrerIA } from "../../ia/pilote";
-export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
+export function initialiser(boss_1: any, Aptitudes: any) {
   Aptitudes[boss_1.sprite].toucheDroite = function (_boss_1: any) {
     boss_1.setVelocityX(400)
   }
@@ -42,7 +43,7 @@ export function __StatsSupplementaire(boss_1: any, Aptitudes: any) {
 
 }
 
-export function pique__A(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function pique(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a)
   {
     boss_1.son = 'boss_attaque'
@@ -51,7 +52,7 @@ export function pique__A(boss_1: Phaser.Physics.Arcade.Sprite|any, input: any) {
   }
 }
 
-export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
+export function suivre(boss_1: Phaser.Physics.Arcade.Sprite|any) {
   if (boss_1.scene.players.getLength() > 1)
   {
     boss_1.scene.physics.moveToObject(boss_1, boss_1.scene.physics.closest(boss_1, [...(boss_1.scene as any).players.getChildren()]), 600);
@@ -62,9 +63,18 @@ export function suivre__Z(boss_1: Phaser.Physics.Arcade.Sprite|any) {
  * IA de boss_1 : arbre de comportement (src/server/ia/bosses/boss_1.ts) piloté toutes les 500 ms
  * (ADR-003). Une fois vaincu, le boss ne réagit plus au contact des joueurs.
  */
-export function __auto(boss_1: TJoueur | any, _input: any, _aptitudes: any) {
+export function auto(boss_1: TJoueur | any, _input: any, _aptitudes: any) {
   demarrerIA(boss_1, arbreBoss1, {
     periode: 500,
     surVaincu: () => boss_1.scene.physics.world.removeCollider(boss_1.auto_colision),
   });
 }
+
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "pique", action: pique },
+    Z: { nom: "suivre", action: suivre },
+  },
+  auto,
+});

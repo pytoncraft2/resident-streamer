@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import Trone from "../class/elements/TroneClass";
 import PcClass from "../class/elements/PcClass";
 import { abscissesPluie, arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../../ia/bosses/super_boss";
@@ -14,7 +15,7 @@ import { demarrerIA } from "../../ia/pilote";
  * passe en phase « Envol » : il plane, pique sur les joueurs (A) et contre-attaque quand on le frappe (E).
  * À mi-vie, phase « Rage » : même combat, plus rapide, avec une pluie de PC (R).
  */
-export function __StatsSupplementaire(personnage: TJoueur | any, _Aptitudes: any) {
+export function initialiser(personnage: TJoueur | any, _Aptitudes: any) {
   personnage.setActive(false)
   personnage.vie = REGLAGES_BOSS_FINAL.vie
   personnage.invulnerable = true
@@ -124,13 +125,13 @@ function joueursProches(personnage: any, rayon: number): any[] {
 }
 
 /** Phase « Envol » : impact du piqué, qui blesse les joueurs proches. */
-export function impact__A(personnage: TJoueur | any, _input: any) {
+export function impact(personnage: TJoueur | any, _input: any) {
   if (!personnage.scene) return
   for (const joueur of joueursProches(personnage, REGLAGES_BOSS_FINAL.rayonPique)) joueur.dommage(REGLAGES_BOSS_FINAL.degatPique)
 }
 
 /** Phase « Envol » : contre-attaque après un coup reçu, une onde qui blesse les joueurs proches. */
-export function contreattaque__E(personnage: TJoueur | any, _input: any) {
+export function contreattaque(personnage: TJoueur | any, _input: any) {
   const scene = personnage.scene
   if (!scene) return
   personnage.play('super_boss_contreattaque')
@@ -141,7 +142,7 @@ export function contreattaque__E(personnage: TJoueur | any, _input: any) {
 }
 
 /** Phase « Trône » : lance un PC vers le joueur le plus proche, depuis le siège. */
-export function pc__Z(personnage: TJoueur | any, _input: any) {
+export function pc(personnage: TJoueur | any, _input: any) {
   const scene = personnage.scene
   const cible = scene.physics.closest(personnage, scene.players.getChildren())
   if (!cible) return
@@ -150,7 +151,7 @@ export function pc__Z(personnage: TJoueur | any, _input: any) {
 }
 
 /** Phase « Rage » : pluie de PC qui tombent du plafond autour du joueur le plus proche. */
-export function pluie__R(personnage: TJoueur | any, _input: any) {
+export function pluie(personnage: TJoueur | any, _input: any) {
   const scene = personnage.scene
   if (!scene) return
   const cible = scene.physics.closest(personnage, scene.players.getChildren())
@@ -166,7 +167,7 @@ export function pluie__R(personnage: TJoueur | any, _input: any) {
  * IA du boss final : arbre de comportement (src/server/ia/bosses/super_boss.ts, ADR-003).
  * Inactive tant que le boss n'est pas révélé (le pilote ignore les boss inactifs).
  */
-export function __auto(personnage: TJoueur | any, _input: any, aptitudes: any) {
+export function auto(personnage: TJoueur | any, _input: any, aptitudes: any) {
   demarrerIA(personnage, arbreBossFinal, {
     periode: 500,
     aptitudes,
@@ -207,3 +208,14 @@ function creerTrone(personnage: TJoueur, etageTrone: string, positionY: number) 
 
   return personnage.scene.physics.add.existing(trone);
 }
+
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "impact", action: impact },
+    Z: { nom: "pc", action: pc },
+    E: { nom: "contreattaque", action: contreattaque },
+    R: { nom: "pluie", action: pluie },
+  },
+  auto,
+});

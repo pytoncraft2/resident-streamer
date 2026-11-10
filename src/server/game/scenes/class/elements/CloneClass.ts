@@ -1,5 +1,5 @@
 import { Player } from "../../../RoomState"
-import { kunai__Z, __StatsSupplementaire, shuriken__A } from '././../../Aptitudes/huzounet'
+import { kunai, initialiser, shuriken } from '././../../Aptitudes/huzounet'
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 import TJoueur from "../../types/Joueur"
 
@@ -43,7 +43,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     new AnimationJoueur(this.anims)
     //@ts-ignore
-    __StatsSupplementaire(this)
+    initialiser(this)
 
     this.setDrag(1900)
 
@@ -61,13 +61,13 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     if ((this.scene as any).room.donnes[this.createur.ClientID].clavier) {
 
-      shuriken__A(this as unknown as TJoueur, { a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin })
+      shuriken(this as unknown as TJoueur, { a: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a, a_fin: (this.scene as any).room.donnes[this.createur.ClientID].clavier.a_fin })
 
       // Un appui de Z chez le créateur = un kunaï par clone (B7) : chaque clone détecte son propre
       // front montant, le front calculé par le serveur étant consommé par le créateur.
       const zEnfonce = (this.scene as any).room.donnes[this.createur.ClientID].clavier.z === true
       if (zEnfonce && !this.zPrecedent) {
-        kunai__Z(this as any, { z_debut: true })
+        kunai(this as any, { z_debut: true })
       }
       this.zPrecedent = zEnfonce
 

@@ -18,7 +18,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - `src/server/game/phaserHeadless.ts` : contournements indispensables à la destruction des rooms en HEADLESS (anomalie B1) ; à réévaluer à chaque montée de Phaser ou du pont.
 - `src/server/game/config.ts`, `src/server/game/scenes/hall.ts` : **Phaser exécuté côté serveur en mode HEADLESS**, physique Arcade et collisions.
 - `src/server/game/scenes/class/PlayerClass.ts` : logique actuelle mêlant entité, déplacements, attaques, collisions et progression.
-- `src/server/game/scenes/Aptitudes/` : capacités par personnage ; le chargement utilise actuellement des imports dynamiques et une découverte par fichiers.
+- `src/server/game/scenes/Aptitudes/` : capacités par personnage ; chaque fichier exporte une définition typée (`definirPersonnage`, `definition.ts`) listée explicitement dans `base.ts`, qui construit le registre `Aptitudes` (touches, IA des boss, noms des commandes envoyés au client). Ajouter un personnage : son fichier + une ligne dans `PERSONNAGES`.
 - `src/client/utils/serveur.ts` : adresse du serveur pour le client — origine de la page en production, même hôte port 3000 sous Vite, ou `VITE_SERVEUR_URL` ; ne jamais réintroduire d'URL en dur (anomalie B6).
 - `static/assets/` : ressources utilisées par le jeu ; `doc_client/` et `doc_server/` sont des exports de documentation existants.
 

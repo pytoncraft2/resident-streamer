@@ -1,10 +1,11 @@
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import BombeClass from "../class/elements/BombeClass";
-import fusion from "./_utilitaire/fusion";
+import { aptitudeFusion } from "./_utilitaire/fusion";
 
-export function __StatsSupplementaire() {}
+export function initialiser() {}
 
-export function couteau__A(akhizonah: TJoueur, input?: any) {
+export function couteau(akhizonah: TJoueur, input?: any) {
   if (input.a) {
     input.a = false
     akhizonah.son = 'couteau'
@@ -13,7 +14,7 @@ export function couteau__A(akhizonah: TJoueur, input?: any) {
 }
 
 
-export function bombe__Z(akhizonah: TJoueur, input: { z_debut?: boolean }) {
+export function bombe(akhizonah: TJoueur, input: { z_debut?: boolean }) {
   // Un appui = une bombe (B7) : front montant calculé par le serveur, consommé ici.
   if (!input.z_debut) return;
   input.z_debut = false;
@@ -34,6 +35,11 @@ export function bombe__Z(akhizonah: TJoueur, input: { z_debut?: boolean }) {
 
 }
 
-export function fusion__TAB(personnage: TJoueur, input: any) {
-  fusion(personnage, input)
-}
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "couteau", action: couteau },
+    Z: { nom: "bombe", action: bombe },
+    TAB: aptitudeFusion,
+  },
+});

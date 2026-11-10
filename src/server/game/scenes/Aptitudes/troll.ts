@@ -1,10 +1,11 @@
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import { arbreTroll } from "../../../ia/bosses/troll";
 import { demarrerIA } from "../../ia/pilote";
 import GrenouilleClass from "../class/elements/GrenouilleClass";
 import OieClass from "../class/elements/OieClass";
 
-export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
+export function initialiser(personnage: TJoueur, Aptitudes: any) {
   personnage.anims.create({
     key: 'troll_run',
     frames: personnage.anims.generateFrameNames('atlas', { prefix: 'trollrun', start: 0, end: 5 }),
@@ -59,7 +60,7 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   }
 }
 
-export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function oie(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     troll.play("troll_attaque")
@@ -72,7 +73,7 @@ export function oie__A(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   }
 }
 
-export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function grenouille(troll: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.z) {
     input.z = false
     troll.son = 'troll_bouton2'
@@ -85,6 +86,15 @@ export function grenouille__Z(troll: Phaser.Physics.Arcade.Sprite|any, input: an
 /**
  * IA de troll : arbre de comportement (src/server/ia/bosses/troll.ts) piloté toutes les 800 ms (ADR-003).
  */
-export function __auto(troll: TJoueur, _input: any, aptitudes: any) {
+export function auto(troll: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(troll as any, arbreTroll, { periode: 800, aptitudes });
 }
+
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "oie", action: oie },
+    Z: { nom: "grenouille", action: grenouille },
+  },
+  auto,
+});

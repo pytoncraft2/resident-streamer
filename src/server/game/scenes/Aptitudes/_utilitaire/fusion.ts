@@ -1,4 +1,8 @@
 import TJoueur from "../../types/Joueur"
+import { Aptitude } from "../definition"
+
+/** Fusion (TAB) avec un boss vaincu proche, commune aux personnages jouables. */
+export const aptitudeFusion: Aptitude<TJoueur> = { nom: "fusion", action: (personnage, entree) => fusion(personnage, entree) }
 
 export default function fusion(personnage: any, input: any) {
   if (input.tab) {

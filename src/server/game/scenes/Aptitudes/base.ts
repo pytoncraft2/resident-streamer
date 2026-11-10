@@ -1,97 +1,46 @@
-import * as fs from 'fs';
-import path from 'path'
-const nomFichierCourant = path.basename(__filename);
-import TJoueur from "../types/Joueur";
-
-export interface Touches {
-  [personnage:string]:{
-    StatsSupplementaire?: (joueur: TJoueur, Aptitudes: Touches) => void,
-    /** Activation fonction correspondant à la touche **A** */
-    A?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
-    /** Activation fonction correspondant à la touche **Z** */
-    Z?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
-    /** Activation fonction correspondant à la touche **E** */
-    E?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
-    /** Activation fonction correspondant à la touche **R** */
-    R?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
-    /** Activation fonction correspondant à la **TAB** */
-    TAB?: (joueur: Phaser.Physics.Arcade.Sprite, input: any) => void;
-    toucheGauche?: (joueur: TJoueur, input: any) => void;
-    toucheDroite?: (joueur: TJoueur, input: any) => void;
-    toucheHaut?: (joueur: TJoueur, input: any) => void;
-    toucheBas?: (joueur: TJoueur, input: any) => void;
-    toucheEspace?: (joueur: TJoueur, input: any) => void;
-    auto?(joueur: TJoueur, input: any, Aptitudes?: any): void;
-  }
-}
 /**
- * Stockage des touches qui active les aptitudes du personnage
+ * Registre des aptitudes : une entrée par personnage (jouable ou boss), construite à partir de la
+ * définition typée exportée par chaque fichier `Aptitudes/<personnage>.ts` (`definition.ts`).
+ *
+ * Ajouter un personnage : créer son fichier (`export default definirPersonnage({ … })`) et l'ajouter
+ * à `PERSONNAGES` ci-dessous. La clé est son nom (`sprite`), qui sert aussi aux images côté client.
  *
  * @example
- * Activer la fonction correspondant à la touche A du personnage fakhear:
+ * Activer l'aptitude de la touche A de fakhear :
  * ```
- * Aptitudes['fakhear'].A(Sprite, {a: true})
- * //active la fonction correspondant à la touche A des aptitudes de Fakhear
+ * Aptitudes['fakhear'].A(sprite, { a: true })
  * ```
  */
-export const Aptitudes: Touches = {};
-// export const Commandes: any = {};
+import TJoueur from "../types/Joueur";
+import { construireRegistre, DefinitionPersonnage, RegistreAptitudes } from "./definition";
+import akhizonah from "./akhizonah";
+import fakhear from "./fakhear";
+import huzounet from "./huzounet";
+import osmosiscoop from "./osmosiscoop";
+import boss_1 from "./boss_1";
+import manette from "./manette";
+import troll from "./troll";
+import twitchman from "./twitchman";
+import super_boss from "./super_boss";
 
- /**
-  * Import tout les fichier du dossier `./src/server/game/scenes/Aptitudes`, excepté le fichier lui-même
-  *
-  * @remarks
-  * le nom du fichier devient la clé pour l'objet `Aptitudes`<br>
-  * le dossier `_utilitaire` contient les fonctions souvent utilisable pour tout les joueurs<br>
-  * Toute les fonctions comportant deux underscord sont ajouté à l'objet `Aptitudes`
-  * avec pour clé la valeur qu'il y a après l'undescord
-  *
-  * @example
-  * Activer la fonction correspondant à la touche A du personnage fakhear:
-  * ```
-  * //Ici la valeur situé après les 2 undescord est "A"
-  * export function cross__A(sprite, input) {
-  *   if (input.a) setAnimation(fakhear, 'cross')
-  * }
-  * //Ce qui donnes au final un objet Aptidudes comme ci dessous:
-  * Aptitudes['fakhear']['A'] = fn
-  *
-  * //Stoquage des commandes pour l'affichage coté client:
-  * Aptitudes['fakhear']['commandes'] = { A: 'cross', Z: 'kick', E: 'dash', TAB: 'fusion' }
-  * ```
-  */
-export const autoImport = fs.readdirSync(__dirname, { withFileTypes: true })
-.filter(autoImport => autoImport.isFile())
-    .map(file => {
-      import('./' + file.name).then((m) => {
-        if (file.name != nomFichierCourant)
-        {
-          //le nom du fichier devient la clé pour l'objet (Aptitudes)
-          const personnage = file.name.substring(0, file.name.lastIndexOf('.'))
-          const Commandes = {};
+/** Personnages du jeu : les 4 jouables puis les 5 boss. */
+export const PERSONNAGES: Readonly<Record<string, DefinitionPersonnage<TJoueur>>> = {
+  akhizonah,
+  fakhear,
+  huzounet,
+  osmosiscoop,
+  boss_1,
+  manette,
+  troll,
+  twitchman,
+  super_boss,
+};
 
-          Object.values(m).forEach((fn, _i) => {
-            //regarde si la fonction contient un undescore
-            let index = fn.toString().split(' ')[1].indexOf("__")
-            let NOMFONCTION = fn.toString().split(' ')[1].split('__')[0];
+/** Forme historique du registre, lue par `PlayerClass` et les réglages des personnages. */
+export type Touches = RegistreAptitudes<TJoueur>;
 
-            if (NOMFONCTION != '')
-            {
-              let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
-              Commandes[`${CLE}`] = NOMFONCTION
-            }
-
-            if (index != -1)
-            {
-              let CLE = fn.toString().split(' ')[1].substring(index+2).split('(')[0]
-              if (Aptitudes[personnage] === undefined) Aptitudes[personnage] = {}
-              //la CLE correspond au mot après l'underscord (example: Aptitudes['fakhear']['A'])
-              Aptitudes[personnage][CLE] = fn
-              //fn correspond à la fonction qui active l'aptitudes
-            }
-          })
-          //Stoquages des commandes disponibles
-          Aptitudes[personnage]["commandes"] = Commandes
-        }
-      });
-    });
+/**
+ * Stockage des touches qui activent les aptitudes de chaque personnage, et des noms de ces
+ * aptitudes envoyés au client (`commandes`). Construit au chargement, de façon synchrone.
+ */
+export const Aptitudes: Touches = construireRegistre(PERSONNAGES);

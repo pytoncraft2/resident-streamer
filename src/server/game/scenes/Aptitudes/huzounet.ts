@@ -2,11 +2,12 @@ import { setAnimation } from "../Animations/AnimationJoueur"
 import BouleClass from "../class/elements/BouleClass"
 import KunaiClass from "../class/elements/KunaiClass"
 import CloneClass from "../class/elements/CloneClass"
-import fusion from "./_utilitaire/fusion";
+import { aptitudeFusion } from "./_utilitaire/fusion";
 
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 
-export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
+export function initialiser(huzounet: TJoueur, _Aptitudes?: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
     runChildUpdate: true,
     maxSize: 4
@@ -21,7 +22,7 @@ export function __StatsSupplementaire(huzounet: TJoueur, _Aptitudes?: any) {
  * @param  {Object} huzounet: TJoueur Type
  * @param  {Object} input?: any       touche appuié
  */
-export function shuriken__A(huzounet: TJoueur, input?: any) {
+export function shuriken(huzounet: TJoueur, input?: any) {
 
   if (input.a) {
 
@@ -64,7 +65,7 @@ export function shuriken__A(huzounet: TJoueur, input?: any) {
 
 }
 
-export function kunai__Z(huzounet: TJoueur, input: { z_debut?: boolean }) {
+export function kunai(huzounet: TJoueur, input: { z_debut?: boolean }) {
     // Un appui = un kunaï (B7) : front montant calculé par le serveur, consommé ici.
     if (!input.z_debut) return;
     input.z_debut = false;
@@ -90,7 +91,7 @@ export function kunai__Z(huzounet: TJoueur, input: { z_debut?: boolean }) {
     }
 }
 
-export function clonage__E(huzounet: any) {
+export function clonage(huzounet: any) {
   if (!huzounet.clone) {
     huzounet.clone = true
     const clone1 = huzounet.scene.add.existing(new CloneClass(huzounet.scene, huzounet.x + 100, huzounet.y - 5, "atlas",  `${(Math.random() + 1).toString(36).substring(7)}`, huzounet).setData({ ClientId: huzounet.ClientID, degat: huzounet.degat/2})).setFlipX(huzounet.flipX)
@@ -104,6 +105,12 @@ export function clonage__E(huzounet: any) {
   }
 }
 
-export function fusion__TAB(personnage: TJoueur, input: any) {
-  fusion(personnage, input)
-}
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "shuriken", action: shuriken },
+    Z: { nom: "kunai", action: kunai },
+    E: { nom: "clonage", action: clonage },
+    TAB: aptitudeFusion,
+  },
+});

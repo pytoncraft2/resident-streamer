@@ -1,9 +1,10 @@
 import TJoueur from "../types/Joueur";
-import fusion from "./_utilitaire/fusion";
+import { definirPersonnage } from "./definition";
+import { aptitudeFusion } from "./_utilitaire/fusion";
 
-export function __StatsSupplementaire(personnage: TJoueur) {}
+export function initialiser(personnage: TJoueur) {}
 
-export function soin__A(osmo: TJoueur, input: any) {
+export function soin(osmo: TJoueur, input: any) {
   if (input.a)
   {
     osmo.soigne = true;
@@ -18,7 +19,7 @@ export function soin__A(osmo: TJoueur, input: any) {
   }
 }
 
-export function blesse__Z(osmo: TJoueur, input: any) {
+export function blesse(osmo: TJoueur, input: any) {
   if (input.z) {
     osmo.son = 'attaque'
     osmo.play('osmo_attaque', true)
@@ -26,6 +27,11 @@ export function blesse__Z(osmo: TJoueur, input: any) {
   }
 }
 
-export function fusion__TAB(personnage: TJoueur, input: any) {
-  fusion(personnage, input)
-}
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "soin", action: soin },
+    Z: { nom: "blesse", action: blesse },
+    TAB: aptitudeFusion,
+  },
+});

@@ -1,10 +1,11 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
 import TJoueur from "../types/Joueur";
+import { definirPersonnage } from "./definition";
 import { arbreManette } from "../../../ia/bosses/manette";
 import { demarrerIA } from "../../ia/pilote";
 
-export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
+export function initialiser(personnage: TJoueur, Aptitudes: any) {
   Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
       personnage.setVelocityY(-1250);
       personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
@@ -13,14 +14,14 @@ export function __StatsSupplementaire(personnage: TJoueur, Aptitudes: any) {
   personnage.cible_courante = "players"
 }
 
-export function punch__A(manette: TJoueur, input: any) {
+export function punch(manette: TJoueur, input: any) {
   if (input.a) {
     manette.body.setVelocityY(1000)
     manette.play('manette_punch')
   }
 }
 
-export function lancer__Z(manette: TJoueur, _input: any) {
+export function lancer(manette: TJoueur, _input: any) {
 
   if (!manette.obj_manette) {
     manette.son = 'manette'
@@ -74,7 +75,7 @@ export function lancer__Z(manette: TJoueur, _input: any) {
   }
 }
 
-export function __animationLancerManette(manette: TJoueur) {
+export function animationLancerManette(manette: TJoueur) {
   // Phaser ≥ 3.60 : tweens.createTimeline a disparu, tweens.chain enchaîne les tweens.
   manette.scene.tweens.chain({
     tweens: [
@@ -106,6 +107,15 @@ export function __animationLancerManette(manette: TJoueur) {
 /**
  * IA de manette : arbre de comportement (src/server/ia/bosses/manette.ts) piloté toutes les 500 ms (ADR-003).
  */
-export function __auto(manette: TJoueur, _input: any, aptitudes: any) {
+export function auto(manette: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(manette as any, arbreManette, { periode: 500, aptitudes });
 }
+
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "punch", action: punch },
+    Z: { nom: "lancer", action: lancer },
+  },
+  auto,
+});

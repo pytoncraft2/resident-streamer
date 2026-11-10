@@ -1,13 +1,14 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
-import fusion from "./_utilitaire/fusion";
+import { definirPersonnage } from "./definition";
+import { aptitudeFusion } from "./_utilitaire/fusion";
 
-export function __StatsSupplementaire(fakhear: TJoueur, _Aptitudes: any) {
+export function initialiser(fakhear: TJoueur, _Aptitudes: any) {
   // Corps à corps : 2 dégâts, soit 5 coups par boss (intentions §2 ; 10 était une valeur de test).
   fakhear.degat = 2
 }
 
-export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
     fakhear.son = 'quick-punch'
@@ -16,7 +17,7 @@ export function cross__A(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) 
   }
 }
 
-export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
+export function kick(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.z)
   {
   fakhear.son = 'kick'
@@ -26,7 +27,7 @@ export function kick__Z(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   input.z = false
 }
 
-export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any, input: { e_debut?: boolean }) {
+export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any, input: { e_debut?: boolean }) {
   // Un appui = un dash (B7) : front montant calculé par le serveur, consommé ici.
   if (!input.e_debut) return;
   input.e_debut = false;
@@ -50,6 +51,12 @@ export function dash__E(fakhear: Phaser.Physics.Arcade.Sprite|any, input: { e_de
   }
 }
 
-export function fusion__TAB(personnage: TJoueur, input: any) {
-  fusion(personnage, input)
-}
+export default definirPersonnage<TJoueur>({
+  initialiser,
+  touches: {
+    A: { nom: "cross", action: cross },
+    Z: { nom: "kick", action: kick },
+    E: { nom: "dash", action: dash },
+    TAB: aptitudeFusion,
+  },
+});
