@@ -78,7 +78,7 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 **Déjà extrait :** règles pures dans `src/server/domain/` (combat, progression, entrées, classement, temps), IA dans `src/server/ia/`, camps dans `src/server/game/camps.ts`, fin de partie et stockage des scores (`game/finDePartie.ts`, `stockage/`).
 **En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; contrats partagés dans `src/shared/` (ADR-002).
 
-- [ ] Établir une source de vérité unique pour stats, capacités et états des personnages.
+- [ ] Établir une source de vérité unique pour stats, capacités et états des personnages. → stats (`stats` : vie, dégâts, vitesse ; défaut `STATS_PAR_DEFAUT`), capacités et déplacements (`deplacements`, défaut `Stats/Defaut.ts`) dans la définition de chaque personnage ; le registre n'est plus modifié en cours de partie. **États** (camp, fusion, vol…) encore portés par `PlayerClass`.
 - [ ] Introduire des contrats typés de commandes, intentions et événements métier.
 - [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication.
 - [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée.

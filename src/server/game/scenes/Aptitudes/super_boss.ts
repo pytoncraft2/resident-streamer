@@ -17,7 +17,6 @@ import { demarrerIA } from "../../ia/pilote";
  */
 export function initialiser(personnage: TJoueur | any, _Aptitudes: any) {
   personnage.setActive(false)
-  personnage.vie = REGLAGES_BOSS_FINAL.vie
   personnage.invulnerable = true
   personnage.setAlpha(0)
 
@@ -218,6 +217,7 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 
 export default definirPersonnage<TJoueur>({
   initialiser,
+  stats: { vie: REGLAGES_BOSS_FINAL.vie },
   touches: {
     A: { nom: "impact", action: impact },
     Z: { nom: "pc", action: pc },

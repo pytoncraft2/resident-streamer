@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { AnimationPersonnage, construireRegistre, definirPersonnage, Entree, imageQuiBlesse, nomsDesImages, TOUTES_LES_IMAGES } from "../../src/server/game/scenes/Aptitudes/definition";
+import { AnimationPersonnage, construireRegistre, definirPersonnage, Entree, imageQuiBlesse, nomsDesImages, STATS_PAR_DEFAUT, statsDe, TOUTES_LES_IMAGES } from "../../src/server/game/scenes/Aptitudes/definition";
 
 interface Faux {
   journal: string[];
@@ -16,7 +16,10 @@ describe("Aptitudes/definition · construireRegistre", function () {
     touches: { Z: { nom: "lancer", action: note("Z") } },
     auto: (p) => void p.journal.push("auto"),
   });
-  const registre = construireRegistre({ joueur, boss });
+  const DEFAUT = {
+    toucheGauche: note("gauche"), toucheDroite: note("droite"), toucheHaut: note("haut"), toucheBas: note("bas"), toucheEspace: note("espace"),
+  };
+  const registre = construireRegistre({ joueur, boss }, DEFAUT);
 
   it("une entrée par personnage, nommée par sa clé", function () {
     assert.deepEqual(Object.keys(registre).sort(), ["boss", "joueur"]);
@@ -69,11 +72,45 @@ describe("Aptitudes/definition · animations", function () {
   });
 
   it("le registre porte les animations propres de chaque personnage (vide par défaut)", function () {
-    const registre = construireRegistre({
-      avec: definirPersonnage<object>({ touches: {}, animations: [cross] }),
-      sans: definirPersonnage<object>({ touches: {} }),
-    });
+    const rien = (): void => undefined;
+    const registre = construireRegistre(
+      { avec: definirPersonnage<object>({ touches: {}, animations: [cross] }), sans: definirPersonnage<object>({ touches: {} }) },
+      { toucheGauche: rien, toucheDroite: rien, toucheHaut: rien, toucheBas: rien, toucheEspace: rien },
+    );
     assert.deepEqual(registre.avec?.animations, [cross]);
     assert.deepEqual(registre.sans?.animations, []);
+  });
+});
+
+describe("Aptitudes/definition · stats et déplacements", function () {
+  const note = (texte: string) => (p: Faux, _entree: Entree): void => void p.journal.push(texte);
+  const DEFAUT = {
+    toucheGauche: note("gauche"), toucheDroite: note("droite"), toucheHaut: note("haut"), toucheBas: note("bas"), toucheEspace: note("espace"),
+  };
+
+  it("statsDe : valeurs par défaut complétées par la définition", function () {
+    assert.deepEqual(statsDe(definirPersonnage({ touches: {} })), STATS_PAR_DEFAUT);
+    assert.deepEqual(statsDe(definirPersonnage({ touches: {}, stats: { degat: 2 } })), { ...STATS_PAR_DEFAUT, degat: 2 });
+  });
+
+  it("déplacements par défaut pour tous, remplacés seulement là où la définition en fournit", function () {
+    const registre = construireRegistre(
+      {
+        marcheur: definirPersonnage<Faux>({ touches: {} }),
+        coureur: definirPersonnage<Faux>({ touches: {}, deplacements: { toucheDroite: note("course"), toucheEspace: () => undefined } }),
+      },
+      DEFAUT,
+    );
+    const p: Faux = { journal: [] };
+    registre.marcheur?.toucheDroite(p, {});
+    registre.coureur?.toucheDroite(p, {});
+    registre.coureur?.toucheGauche(p, {});
+    registre.coureur?.toucheEspace(p, {});
+    assert.deepEqual(p.journal, ["droite", "course", "gauche"]);
+  });
+
+  it("les stats du registre sont celles de statsDe", function () {
+    const registre = construireRegistre({ boss: definirPersonnage<Faux>({ touches: {}, stats: { vie: 30 } }) }, DEFAUT);
+    assert.deepEqual(registre.boss?.stats, { ...STATS_PAR_DEFAUT, vie: 30 });
   });
 });

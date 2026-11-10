@@ -1,30 +1,29 @@
-export const DefautStats = (personnage?: any) => {
-      personnage.vie = 10;
-      personnage.degat = 1;
-}
+import TJoueur from "../types/Joueur";
+import { Action, ToucheDeplacement } from "../Aptitudes/definition";
 
-export const DefautDirection = (Aptitudes: any, personnage: any) => {
-  Aptitudes[personnage.sprite].toucheDroite = (personnage: any, input: any) => {
+/**
+ * Déplacements par défaut de tous les personnages (marche, saut, changement d'étage), complétés ou
+ * remplacés par ceux de la définition de chaque personnage (`deplacements`). Chaque action agit sur
+ * le personnage reçu en paramètre : le registre qui les contient est partagé par toutes les rooms.
+ */
+export const DEPLACEMENTS_PAR_DEFAUT: Readonly<Record<ToucheDeplacement, Action<TJoueur>>> = {
+  toucheDroite: (personnage: any, input: any) => {
     direction(input.right_debut, input.right_fin, personnage, input, true)
-  }
-  Aptitudes[personnage.sprite].toucheGauche = (personnage: any, input: any) => {
+  },
+  toucheGauche: (personnage: any, input: any) => {
     direction(input.left_debut, input.left_fin, personnage, input, false)
-  }
-    Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, input: any) => {
-      // if (personnage.body.touching.down) {
-        personnage.setVelocityY(-1150);
-        // personnage.play("jump")
-      // }
-      // input.space = false
-    }
-  Aptitudes[personnage.sprite].toucheHaut = (personnage: any, input: any) => {
+  },
+  toucheEspace: (personnage: any, _input: any) => {
+    personnage.setVelocityY(-1150);
+  },
+  toucheHaut: (personnage: any, input: any) => {
     changementEtage(personnage, -2600, 1000)
     input.up = false;
-  }
-  Aptitudes[personnage.sprite].toucheBas = (personnage: any, input: any) => {
+  },
+  toucheBas: (personnage: any, input: any) => {
     changementEtage(personnage, 900, 500)
     input.down = false;
-  }
+  },
 }
 
 function direction(debut: boolean, fin: boolean, personnage: any, _input: any, dir: boolean) {

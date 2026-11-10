@@ -12,7 +12,6 @@ export function initialiser(huzounet: TJoueur, _Aptitudes?: any) {
     runChildUpdate: true,
     maxSize: 4
   })
-  huzounet.degat = 0.7
 }
 
 
@@ -117,6 +116,7 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 
 export default definirPersonnage<TJoueur>({
   initialiser,
+  stats: { degat: 0.7 },
   touches: {
     A: { nom: "shuriken", action: shuriken },
     Z: { nom: "kunai", action: kunai },

@@ -3,11 +3,6 @@ import TJoueur from "../types/Joueur";
 import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { aptitudeFusion } from "./_utilitaire/fusion";
 
-export function initialiser(fakhear: TJoueur, _Aptitudes: any) {
-  // Corps à corps : 2 dégâts, soit 5 coups par boss (intentions §2 ; 10 était une valeur de test).
-  fakhear.degat = 2
-}
-
 export function cross(fakhear: Phaser.Physics.Arcade.Sprite|any, input: any) {
   if (input.a) {
     input.a = false
@@ -61,7 +56,8 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 ];
 
 export default definirPersonnage<TJoueur>({
-  initialiser,
+  // Corps à corps : 2 dégâts, soit 5 coups par boss (intentions §2 ; 10 était une valeur de test).
+  stats: { degat: 2 },
   touches: {
     A: { nom: "cross", action: cross },
     Z: { nom: "kick", action: kick },

@@ -2,14 +2,7 @@ import TJoueur from "../types/Joueur";
 import { AnimationPersonnage, TOUTES_LES_IMAGES, definirPersonnage } from "./definition";
 import { arbreBoss1 } from "../../../ia/bosses/boss_1";
 import { demarrerIA } from "../../ia/pilote";
-export function initialiser(boss_1: any, Aptitudes: any) {
-  Aptitudes[boss_1.sprite].toucheDroite = function (_boss_1: any) {
-    boss_1.setVelocityX(400)
-  }
-  Aptitudes[boss_1.sprite].toucheGauche = function (_boss_1: any) {
-    boss_1.setVelocityX(-400)
-  }
-
+export function initialiser(boss_1: any, _Aptitudes: any) {
   var compteurAttaque: number = 0;
   boss_1.auto_colision = boss_1.scene.physics.add.collider(boss_1.scene.players, boss_1,
     function (_ennemie: any, _joueur: any) {
@@ -78,6 +71,11 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 
 export default definirPersonnage<TJoueur>({
   initialiser,
+  // Agit sur le boss reçu : l'ancien code visait l'instance de la dernière room créée (registre partagé).
+  deplacements: {
+    toucheDroite: (boss_1: any) => boss_1.setVelocityX(400),
+    toucheGauche: (boss_1: any) => boss_1.setVelocityX(-400),
+  },
   touches: {
     A: { nom: "pique", action: pique },
     Z: { nom: "suivre", action: suivre },

@@ -16,6 +16,7 @@ import TJoueur from "../types/Joueur";
 import { PersonnageJouable } from "../../../../shared/personnages";
 import { BOSS_FINAL, BOSS_PRINCIPAUX } from "../../../domain/progression";
 import { construireRegistre, DefinitionPersonnage, RegistreAptitudes } from "./definition";
+import { DEPLACEMENTS_PAR_DEFAUT } from "../Stats/Defaut";
 import akhizonah from "./akhizonah";
 import fakhear from "./fakhear";
 import huzounet from "./huzounet";
@@ -49,6 +50,7 @@ export type Touches = RegistreAptitudes<TJoueur>;
 
 /**
  * Stockage des touches qui activent les aptitudes de chaque personnage, et des noms de ces
- * aptitudes envoyés au client (`commandes`). Construit au chargement, de façon synchrone.
+ * aptitudes envoyés au client (`commandes`), avec les stats et déplacements de chacun. Construit au
+ * chargement, de façon synchrone ; plus rien n'y est écrit ensuite.
  */
-export const Aptitudes: Touches = construireRegistre(PERSONNAGES);
+export const Aptitudes: Touches = construireRegistre(PERSONNAGES, DEPLACEMENTS_PAR_DEFAUT);

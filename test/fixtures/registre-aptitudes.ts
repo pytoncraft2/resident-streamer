@@ -30,6 +30,9 @@ async function main(): Promise<void> {
     taille = Object.keys(Aptitudes).length;
     await pause(100);
   }
+  const { DEPLACEMENTS_PAR_DEFAUT } = require(path.join(RACINE, "build/server/game/scenes/Stats/Defaut.js")) as {
+    DEPLACEMENTS_PAR_DEFAUT?: Record<string, unknown>;
+  };
   const resultat = Object.fromEntries(
     Object.entries(Aptitudes).map(([personnage, aptitudes]) => [
       personnage,
@@ -37,6 +40,11 @@ async function main(): Promise<void> {
         cles: Object.keys(aptitudes).filter((cle) => cle !== "commandes" && typeof aptitudes[cle] === "function").sort(),
         commandes: aptitudes.commandes,
         animations: Array.isArray(aptitudes.animations) ? (aptitudes.animations as AnimationPersonnage[]).map(resumer) : undefined,
+        stats: aptitudes.stats,
+        // Déplacements qui remplacent ceux par défaut (fonction différente de DEPLACEMENTS_PAR_DEFAUT).
+        deplacementsPropres: DEPLACEMENTS_PAR_DEFAUT
+          ? Object.keys(DEPLACEMENTS_PAR_DEFAUT).filter((t) => aptitudes[t] !== DEPLACEMENTS_PAR_DEFAUT[t]).sort()
+          : undefined,
       },
     ]),
   );

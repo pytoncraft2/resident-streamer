@@ -1,5 +1,6 @@
 import { Player } from "../../../RoomState"
 import huzounet, { kunai, initialiser, shuriken } from '././../../Aptitudes/huzounet'
+import { statsDe } from "../../Aptitudes/definition"
 import { ANIMATIONS_COMMUNES } from "../../Animations/communes"
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 import TJoueur from "../../types/Joueur"
@@ -46,6 +47,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     AnimationJoueur(this.anims, [...ANIMATIONS_COMMUNES, ...(huzounet.animations ?? [])])
     //@ts-ignore
     initialiser(this)
+    // Dégâts de huzounet (ses kunaïs les reprennent) : auparavant posés par son initialiser.
+    this.degat = statsDe(huzounet).degat
 
     this.setDrag(1900)
 

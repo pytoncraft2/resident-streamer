@@ -4,16 +4,17 @@ import { arbreTwitchman } from "../../../ia/bosses/twitchman";
 import { demarrerIA } from "../../ia/pilote";
 import LaserClass from "../class/elements/LaserClass";
 
-export function initialiser(twitchman: TJoueur, Aptitudes: any) {
-  Aptitudes[twitchman.sprite].toucheEspace = function (_twitchman: TJoueur) {
-    _twitchman.body.setVelocityY(-500)
-    _twitchman.play('twitchman_vole', true)
-    _twitchman.survole = true
-    _twitchman.scene.time.delayedCall(410, () => {
-      _twitchman.survole = false
-    })
-  }
+/** Saut de twitchman : il s'élève en volant. */
+export function envol(_twitchman: TJoueur) {
+  _twitchman.body.setVelocityY(-500)
+  _twitchman.play('twitchman_vole', true)
+  _twitchman.survole = true
+  _twitchman.scene.time.delayedCall(410, () => {
+    _twitchman.survole = false
+  })
+}
 
+export function initialiser(twitchman: TJoueur, _Aptitudes: any) {
   twitchman.cible_courante = "players"
   twitchman.laser = new LaserClass(twitchman.scene, twitchman.x + 80, twitchman.y - 185, 0, 28, 1902222, 1, `${(Math.random() + 1).toString(36).substring(7)}`, twitchman, twitchman.cible_courante)
 
@@ -65,6 +66,7 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 
 export default definirPersonnage<TJoueur>({
   initialiser,
+  deplacements: { toucheEspace: envol },
   touches: {
     A: { nom: "punch", action: punch },
     Z: { nom: "charge", action: charge },

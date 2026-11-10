@@ -5,13 +5,15 @@ import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { arbreManette } from "../../../ia/bosses/manette";
 import { demarrerIA } from "../../ia/pilote";
 
-export function initialiser(personnage: TJoueur, Aptitudes: any) {
-  Aptitudes[personnage.sprite].toucheEspace = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
-      personnage.setVelocityY(-1250);
-      personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
-      personnage.play("manette_vole")
-  }
+export function initialiser(personnage: TJoueur, _Aptitudes: any) {
   personnage.cible_courante = "players"
+}
+
+/** Saut de manette : bond en avant en volant. */
+export function envol(personnage: TJoueur & Phaser.Physics.Arcade.Sprite, _input: any) {
+  personnage.setVelocityY(-1250);
+  personnage.setVelocityX(personnage.flipX ? (-1400) : (1400));
+  personnage.play("manette_vole")
 }
 
 export function punch(manette: TJoueur, input: any) {
@@ -120,6 +122,7 @@ const ANIMATIONS: readonly AnimationPersonnage[] = [
 
 export default definirPersonnage<TJoueur>({
   initialiser,
+  deplacements: { toucheEspace: envol },
   touches: {
     A: { nom: "punch", action: punch },
     Z: { nom: "lancer", action: lancer },

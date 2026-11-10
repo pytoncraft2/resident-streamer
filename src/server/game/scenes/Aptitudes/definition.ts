@@ -10,6 +10,23 @@
 export const TOUCHES_COMMANDE = ["A", "Z", "E", "R", "TAB"] as const;
 export type ToucheCommande = (typeof TOUCHES_COMMANDE)[number];
 
+/** Touches de déplacement : comportement par défaut (`Stats/Defaut.ts`), remplaçable par personnage. */
+export const TOUCHES_DEPLACEMENT = ["toucheGauche", "toucheDroite", "toucheHaut", "toucheBas", "toucheEspace"] as const;
+export type ToucheDeplacement = (typeof TOUCHES_DEPLACEMENT)[number];
+
+/** Caractéristiques d'un personnage, appliquées à sa création. */
+export interface StatsPersonnage {
+  /** Points de vie de départ. */
+  readonly vie: number;
+  /** Dégâts d'un coup au corps à corps (zone d'attaque) ; repris par certains projectiles. */
+  readonly degat: number;
+  /** Vitesse de marche, en px/s. */
+  readonly vitesse: number;
+}
+
+/** Valeurs historiques de `PlayerClass` (vie 10, dégâts 1, vitesse 600). */
+export const STATS_PAR_DEFAUT: StatsPersonnage = { vie: 10, degat: 1, vitesse: 600 };
+
 /** Clavier du joueur transmis à une action (touches, fronts `*_debut`, relâchements `*_fin`). */
 export type Entree = Record<string, boolean | undefined>;
 
@@ -30,12 +47,14 @@ export type AptitudesPersonnage<P> = {
   E?: Action<P>;
   R?: Action<P>;
   TAB?: Action<P>;
-  /** Déplacements : installés à la création du personnage (`DefautDirection`, réglages des boss). */
-  toucheGauche?: Action<P>;
-  toucheDroite?: Action<P>;
-  toucheHaut?: Action<P>;
-  toucheBas?: Action<P>;
-  toucheEspace?: Action<P>;
+  /** Déplacements : ceux par défaut, remplacés par ceux de la définition du personnage. */
+  toucheGauche: Action<P>;
+  toucheDroite: Action<P>;
+  toucheHaut: Action<P>;
+  toucheBas: Action<P>;
+  toucheEspace: Action<P>;
+  /** Caractéristiques à la création (valeurs par défaut complétées par la définition). */
+  stats: StatsPersonnage;
   /** IA d'un boss, démarrée à sa création. */
   auto?: (personnage: P, entree: Entree, aptitudes: AptitudesPersonnage<P>) => void;
   /** Nom de l'aptitude de chaque touche, envoyé au client pour l'interface. */
@@ -92,6 +111,15 @@ export interface DefinitionPersonnage<P> {
   readonly auto?: (personnage: P, entree: Entree, aptitudes: AptitudesPersonnage<P>) => void;
   /** Animations propres au personnage (en plus des animations communes). */
   readonly animations?: readonly AnimationPersonnage[];
+  /** Caractéristiques qui diffèrent des valeurs par défaut (`STATS_PAR_DEFAUT`). */
+  readonly stats?: Partial<StatsPersonnage>;
+  /** Déplacements qui remplacent ceux par défaut (ex. course du troll, envol de twitchman). */
+  readonly deplacements?: Readonly<Partial<Record<ToucheDeplacement, Action<P>>>>;
+}
+
+/** Caractéristiques d'un personnage : valeurs par défaut complétées par sa définition. */
+export function statsDe<P>(definition: DefinitionPersonnage<P>): StatsPersonnage {
+  return { ...STATS_PAR_DEFAUT, ...definition.stats };
 }
 
 /** Identité typée : TypeScript vérifie la définition (touches connues, aptitudes complètes). */
@@ -101,12 +129,22 @@ export function definirPersonnage<P>(definition: DefinitionPersonnage<P>): Defin
 
 const rienAInitialiser = (): void => undefined;
 
-/** Registre des aptitudes, une entrée par personnage (clé : nom du personnage, `sprite`). */
-export function construireRegistre<P>(definitions: Readonly<Record<string, DefinitionPersonnage<P>>>): RegistreAptitudes<P> {
+/**
+ * Registre des aptitudes, une entrée par personnage (clé : nom du personnage, `sprite`). Complet dès
+ * sa construction : rien n'y est plus écrit à la création d'un personnage (il est partagé par toutes
+ * les rooms).
+ */
+export function construireRegistre<P>(
+  definitions: Readonly<Record<string, DefinitionPersonnage<P>>>,
+  deplacementsParDefaut: Readonly<Record<ToucheDeplacement, Action<P>>>,
+): RegistreAptitudes<P> {
   const registre: RegistreAptitudes<P> = {};
   for (const [personnage, definition] of Object.entries(definitions)) {
     const entree: AptitudesPersonnage<P> = {
       StatsSupplementaire: definition.initialiser ?? rienAInitialiser,
+      ...deplacementsParDefaut,
+      ...definition.deplacements,
+      stats: statsDe(definition),
       commandes: {},
       animations: definition.animations ?? [],
     };

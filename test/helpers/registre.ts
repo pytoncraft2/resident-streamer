@@ -16,6 +16,8 @@ export interface EntreeLue {
   readonly cles: readonly string[];
   readonly commandes: Readonly<Record<string, string>>;
   readonly animations?: readonly AnimationLue[];
+  readonly stats?: { readonly vie: number; readonly degat: number; readonly vitesse: number };
+  readonly deplacementsPropres?: readonly string[];
 }
 
 export interface RegistreLu {

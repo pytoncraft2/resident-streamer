@@ -1,62 +1,41 @@
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { arbreTroll } from "../../../ia/bosses/troll";
 import { demarrerIA } from "../../ia/pilote";
 import GrenouilleClass from "../class/elements/GrenouilleClass";
 import OieClass from "../class/elements/OieClass";
 
-export function initialiser(personnage: TJoueur, Aptitudes: any) {
-  personnage.anims.create({
-    key: 'troll_run',
-    frames: personnage.anims.generateFrameNames('atlas', { prefix: 'trollrun', start: 0, end: 5 }),
-    frameRate: 30,
-    repeat: -1
-  });
-
-  personnage.anims.create({
-    key: 'troll_idle',
-    frames: personnage.anims.generateFrameNames('atlas', { prefix: 'troll', start: 0, end: 0 }),
-    frameRate: 1,
-    repeat: 0
-  });
-
-  personnage.anims.create({
-    key: 'troll_attaque',
-    frames: personnage.anims.generateFrameNames('atlas', { prefix: 'trollattack', start: 0, end: 1 }),
-    frameRate: 6,
-    repeat: 1
-  });
-
+export function initialiser(personnage: TJoueur, _Aptitudes: any) {
   personnage.cible_courante = "players"
+}
 
-
-  Aptitudes[personnage.sprite].toucheEspace = (_personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {}
-  Aptitudes[personnage.sprite].toucheDroite = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
-    if (_input.right_fin)
-    {
-      personnage.play('troll_idle')
-      personnage.setVelocityX(0)
-    }
-    else
-    {
-      personnage.play('troll_run', true)
-      personnage.setVelocityX(1800)
-      if (personnage.flipX) personnage.setFlipX(false)
-    }
+/** Course du troll vers la droite (1800 px/s), arrêt au relâchement. */
+export function courirADroite(personnage: TJoueur & Phaser.Physics.Arcade.Sprite, _input: any) {
+  if (_input.right_fin)
+  {
+    personnage.play('troll_idle')
+    personnage.setVelocityX(0)
   }
+  else
+  {
+    personnage.play('troll_run', true)
+    personnage.setVelocityX(1800)
+    if (personnage.flipX) personnage.setFlipX(false)
+  }
+}
 
-  Aptitudes[personnage.sprite].toucheGauche = (personnage: Phaser.Physics.Arcade.Sprite, _input: any) => {
-    if (_input.left_fin)
-    {
-      personnage.play('troll_idle')
-      personnage.setVelocityX(0)
-    }
-    else
-    {
-      personnage.play('troll_run', true)
-      personnage.setVelocityX(-1800)
-      if (!personnage.flipX) personnage.setFlipX(true)
-    }
+/** Course du troll vers la gauche (1800 px/s), arrêt au relâchement. */
+export function courirAGauche(personnage: TJoueur & Phaser.Physics.Arcade.Sprite, _input: any) {
+  if (_input.left_fin)
+  {
+    personnage.play('troll_idle')
+    personnage.setVelocityX(0)
+  }
+  else
+  {
+    personnage.play('troll_run', true)
+    personnage.setVelocityX(-1800)
+    if (!personnage.flipX) personnage.setFlipX(true)
   }
 }
 
@@ -90,11 +69,25 @@ export function auto(troll: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(troll as any, arbreTroll, { periode: 800, aptitudes });
 }
 
+/** Animations propres à troll (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "troll_run", prefixe: "trollrun", images: { debut: 0, fin: 5 }, frameRate: 30, repeat: -1 },
+  { cle: "troll_idle", prefixe: "troll", images: { debut: 0, fin: 0 }, frameRate: 1, repeat: 0 },
+  { cle: "troll_attaque", prefixe: "trollattack", images: { debut: 0, fin: 1 }, frameRate: 6, repeat: 1 },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
+  // Le troll court au lieu de marcher et ne saute pas.
+  deplacements: {
+    toucheDroite: courirADroite,
+    toucheGauche: courirAGauche,
+    toucheEspace: () => undefined,
+  },
   touches: {
     A: { nom: "oie", action: oie },
     Z: { nom: "grenouille", action: grenouille },
   },
   auto,
+  animations: ANIMATIONS,
 });

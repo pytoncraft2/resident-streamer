@@ -3,7 +3,6 @@ import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { imageQuiBlesse } from "../Aptitudes/definition"
 import { ANIMATIONS_COMMUNES } from "../Animations/communes"
-import { DefautDirection } from "../Stats/Defaut"
 import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
@@ -73,7 +72,11 @@ import { campDe } from "../../camps"
      // Animations communes + propres au personnage (sa définition, Aptitudes/<personnage>.ts).
      AnimationJoueur(this.anims, [...ANIMATIONS_COMMUNES, ...Aptitudes[this.sprite].animations])
      const self = this;
-     DefautDirection(Aptitudes, this)
+     // Caractéristiques de la définition du personnage (valeurs par défaut : vie 10, dégâts 1, vitesse 600).
+     const stats = Aptitudes[this.sprite].stats
+     this.vie = stats.vie
+     this.degat = stats.degat
+     this.vel = stats.vitesse
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
      if (!(this.scene as any).room.boss[`${this.sprite}`]) {
        this.scene.time.delayedCall(100, () => {
