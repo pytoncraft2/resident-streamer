@@ -10,6 +10,7 @@ import Panel from "../utils/panel"
 import Button from "../utils/bouton"
 import Titre from "../utils/titre"
 import { URL_WS_SERVEUR } from "../utils/serveur"
+import { PERSONNAGES_JOUABLES } from "../../shared/personnages"
 /* END-USER-IMPORTS */
 
 export default class Lobby extends Phaser.Scene {
@@ -49,7 +50,7 @@ export default class Lobby extends Phaser.Scene {
 	 init(salon: any) {
     this.salon = salon.salon
     this.personnageChoisie = salon.personnage
-    this.personnages = ['fakhear', 'akhizonah', 'huzounet', 'osmosiscoop'];
+    this.personnages = [...PERSONNAGES_JOUABLES];
   }
 
 

@@ -8,7 +8,9 @@
     "strict": false,
     "types": ["phaser"],
     "allowJs": false,
-    "outDir": "../../build/server",
+    // Racine src/ : src/server → build/server (chemins inchangés), src/shared → build/shared (ADR-002).
+    "rootDir": "..",
+    "outDir": "../../build",
     "inlineSourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true

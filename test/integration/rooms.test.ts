@@ -6,6 +6,7 @@
 import { strict as assert } from "assert";
 import { Client, Room } from "@colyseus/sdk";
 import { attendre, demarrerServeur, getStatut, ServeurDeTest } from "../helpers/serveur";
+import { PERSONNAGES_JOUABLES } from "../../src/shared/personnages";
 
 /** Vue minimale, en lecture seule, des schémas de src/server/game/RoomState.ts. */
 interface PresenceVue {
@@ -28,7 +29,7 @@ interface Clavier {
 }
 const AU_REPOS: Clavier = { up: false, right: false, down: false, left: false, space: false, a: false, a_fin: false, z: false, e: false, r: false };
 
-const PERSONNAGES = ["fakhear", "akhizonah", "huzounet", "osmosiscoop"] as const;
+const PERSONNAGES = PERSONNAGES_JOUABLES;
 // super_boss est absent par conception : créé inactif (Aptitudes/super_boss.ts), il ne publie sa présence
 // qu'une fois activé, quand troll et manette sont vaincus (ETAGE_OK, PlayerClass.ts). Ancienne « anomalie » B2.
 const BOSS_OBSERVES = ["manette", "twitchman", "boss_1", "troll"] as const;
@@ -164,6 +165,27 @@ describe("serveur (intégration)", function () {
       // onDispose lève actuellement une exception (anomalie B1) sans arrêter le processus.
       await new Promise((r) => setTimeout(r, 1000));
       assert.equal(await getStatut(`${serveur.httpUrl}/scores`), 200);
+    });
+  });
+
+  describe("personnage choisi (autorité serveur, catalogue partagé)", function () {
+    for (const sprite of ["inconnu", "super_boss", ""]) {
+      it(`refuse la connexion avec le personnage « ${sprite} », sans erreur serveur`, async function () {
+        await assert.rejects(
+          new Client(serveur.wsUrl).joinOrCreate("game_instance", { salon: nouveauSalon(), sprite }),
+          /personnage inconnu/,
+        );
+        await new Promise((r) => setTimeout(r, 500));
+        assert.doesNotMatch(serveur.journal(), /TypeError|onDispose error/, "erreur dans le journal du serveur");
+      });
+    }
+
+    it("accepte chaque personnage jouable du catalogue", async function () {
+      for (const sprite of PERSONNAGES_JOUABLES) {
+        const room = await rejoindre<EtatJeu>("game_instance", { salon: nouveauSalon(), sprite });
+        await attendre(() => room.state.presences?.get(room.sessionId)?.sprite === sprite, 4000, `présence de ${sprite}`);
+        await quitter(room);
+      }
     });
   });
 });

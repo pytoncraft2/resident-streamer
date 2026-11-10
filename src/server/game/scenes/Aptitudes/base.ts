@@ -2,8 +2,9 @@
  * Registre des aptitudes : une entrée par personnage (jouable ou boss), construite à partir de la
  * définition typée exportée par chaque fichier `Aptitudes/<personnage>.ts` (`definition.ts`).
  *
- * Ajouter un personnage : créer son fichier (`export default definirPersonnage({ … })`) et l'ajouter
- * à `PERSONNAGES` ci-dessous. La clé est son nom (`sprite`), qui sert aussi aux images côté client.
+ * Ajouter un personnage jouable : l'ajouter au catalogue partagé (`src/shared/personnages.ts`),
+ * créer son fichier (`export default definirPersonnage({ … })`) et l'ajouter à `PERSONNAGES`
+ * ci-dessous (TypeScript le réclame). Son nom sert aussi de clé à ses images côté client.
  *
  * @example
  * Activer l'aptitude de la touche A de fakhear :
@@ -12,6 +13,8 @@
  * ```
  */
 import TJoueur from "../types/Joueur";
+import { PersonnageJouable } from "../../../../shared/personnages";
+import { BOSS_FINAL, BOSS_PRINCIPAUX } from "../../../domain/progression";
 import { construireRegistre, DefinitionPersonnage, RegistreAptitudes } from "./definition";
 import akhizonah from "./akhizonah";
 import fakhear from "./fakhear";
@@ -23,8 +26,13 @@ import troll from "./troll";
 import twitchman from "./twitchman";
 import super_boss from "./super_boss";
 
-/** Personnages du jeu : les 4 jouables puis les 5 boss. */
-export const PERSONNAGES: Readonly<Record<string, DefinitionPersonnage<TJoueur>>> = {
+type NomPersonnage = PersonnageJouable | (typeof BOSS_PRINCIPAUX)[number] | typeof BOSS_FINAL;
+
+/**
+ * Personnages du jeu : les 4 jouables (catalogue partagé `src/shared/personnages.ts`) puis les 5 boss
+ * (`domain/progression.ts`). TypeScript exige une définition pour chacun, et rien d'autre.
+ */
+export const PERSONNAGES: Readonly<Record<NomPersonnage, DefinitionPersonnage<TJoueur>>> = {
   akhizonah,
   fakhear,
   huzounet,

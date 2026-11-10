@@ -1,12 +1,13 @@
 //@ts-nocheck
 
 import "@geckos.io/phaser-on-nodejs"
-import { Room, Client, Delayed } from "@colyseus/core"
+import { Room, Client, Delayed, ServerError } from "@colyseus/core"
 import config from "./config"
 import { completerDemarrageHeadless, installerPolyfillsHeadless } from "./phaserHeadless"
 import { clavierRecu } from "../domain/entrees"
 import { BOSS_FINAL, bossFinalDirect } from "../domain/progression"
 import { revelerBossFinal } from "./bossFinal"
+import { estPersonnageJouable } from "../../shared/personnages"
 
 // Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
 installerPolyfillsHeadless()
@@ -122,6 +123,15 @@ export default class GameRooms extends Room {
 
   }
 
+  /**
+   * Autorité serveur : seul un personnage jouable du catalogue partagé est accepté. Avant, un nom
+   * inconnu levait une exception à la création du joueur et un nom de boss était accepté.
+   */
+  onAuth(_client: Client, options: any) {
+    if (!estPersonnageJouable(options?.sprite)) throw new ServerError(400, `personnage inconnu : ${String(options?.sprite)}`)
+    return true
+  }
+
   onJoin(client: Client, options: any) {
     this.donnes[client.sessionId] = {
       clavier: {
@@ -151,8 +161,10 @@ export default class GameRooms extends Room {
   }
 
   onDispose() {
-    this.scene.players.destroy(true)
-    this.scene.enemies.destroy(true)
+    // Room détruite avant le démarrage de sa scène (ex. seul joueur refusé par onAuth) : groupes absents,
+    // mais le jeu Phaser doit quand même être détruit (sinon il reste en mémoire, cf. B1).
+    this.scene?.players?.destroy(true)
+    this.scene?.enemies?.destroy(true)
     this.Game.destroy(true)
   }
 }
