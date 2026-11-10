@@ -55,6 +55,8 @@ Option A, choisie par l'utilisateur le 2026-11-10. Règles :
 
 - **2026-11-10 — états synchronisés** (`src/shared/etats.ts`) : ce que le client lit de `RoomState` (`EtatPresence`, `EtatProjectile`, `EtatLigne`, `EtatRectangle`), et `src/shared/touches.ts` (touches de commande). Côté serveur, `game/publication.ts` est le seul lieu qui crée les objets synchronisés (16 publications recopiées dans 12 classes auparavant) ; côté client, `Jeu.ts` lit l'état typé. Fonctionnement inchangé : chaque publication recrée l'objet (champs ponctuels `son`, `particules`… présents une image). Écarts révélés par le typage : `depth`, `scaleX`, `scaleY` (projectiles) et `scale` (rectangles) lus par le client mais jamais publiés ; `id` passé aux lignes et rectangles mais absent de leurs schémas (retiré) ; vie absente des publications partielles (le client ne calcule plus une barre de vie `NaN` pendant une image).
 
+- **2026-11-10 — publication en place** : `game/publication.ts` modifie un objet synchronisé déjà publié au lieu de le recréer ; Colyseus ne transmet plus que les champs changés. Mesure (un joueur en mouvement, boss actifs) : 23,3 → 1,2 Kio/s par client, même nombre de messages (≈ 60/s). Les champs ponctuels sont effacés à chaque publication qui ne les reprend pas (présents une seule publication, comme avant) ; une publication partielle complète l'objet au lieu de le remplacer. Tests : `test/integration/etats.test.ts` (ponctuels caractérisés sur l'ancienne version, plafond de trafic qui échoue sur l'ancienne).
+
 ## Plan de retour arrière
 
 Revenir au commit précédent : liste en dur dans `Lobby.ts`, `outDir: "../../build/server"` sans `rootDir`, pas d'`onAuth`. Supprimer `build/shared/` (ou `npm run clean`). Aucune donnée ni protocole à migrer.

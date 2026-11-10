@@ -2,9 +2,10 @@
  * États synchronisés de la room de jeu (`RoomState`, schémas Colyseus) tels que le client les lit
  * (ADR-002) : une présence par joueur ou boss, des projectiles, des lignes et des rectangles.
  *
- * Chaque entité republie son état complet à chaque image (l'objet synchronisé est recréé) : les
- * champs ponctuels (`son`, `particules`, `commandes`, `sprite_fusion`) n'existent que dans la
- * publication de l'image où ils sont posés, et le client y réagit quand ils sont présents.
+ * Chaque entité republie son état à chaque image ; le serveur modifie l'objet synchronisé en place
+ * (seuls les champs changés sont transmis). Les champs ponctuels (`son`, `particules`, `commandes`,
+ * `sprite_fusion`) ne sont présents que pendant la publication où ils sont posés, et le client y
+ * réagit quand ils sont présents.
  * Certaines publications sont partielles (présence à la connexion : `x`, `y` ; interface :
  * `commandes`) : d'où des champs de présence tous optionnels.
  */
