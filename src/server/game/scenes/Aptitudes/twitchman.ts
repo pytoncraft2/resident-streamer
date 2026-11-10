@@ -1,5 +1,5 @@
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { arbreTwitchman } from "../../../ia/bosses/twitchman";
 import { demarrerIA } from "../../ia/pilote";
 import LaserClass from "../class/elements/LaserClass";
@@ -56,6 +56,13 @@ export function auto(twitchman: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(twitchman as any, arbreTwitchman, { periode: 500, aptitudes });
 }
 
+/** Animations propres à twitchman (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "twitchman_punch", prefixe: "twitchmanpunch", images: { debut: 0, fin: 1 }, frameRate: 8, repeat: 1, imageQuiBlesse: "twitchmanpunch1" },
+  { cle: "twitchman_vole", prefixe: "twitchmanfly", images: { debut: 0, fin: 4 }, frameRate: 10, repeat: -1 },
+  { cle: "twitchman_charge", prefixe: "twitchmancharge", images: { debut: 0, fin: 0 }, frameRate: 1, repeat: 0 },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -64,4 +71,5 @@ export default definirPersonnage<TJoueur>({
     E: { nom: "laser", action: laser },
   },
   auto,
+  animations: ANIMATIONS,
 });

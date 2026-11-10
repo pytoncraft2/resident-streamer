@@ -1,6 +1,8 @@
 import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
+import { imageQuiBlesse } from "../Aptitudes/definition"
+import { ANIMATIONS_COMMUNES } from "../Animations/communes"
 import { DefautDirection } from "../Stats/Defaut"
 import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
@@ -68,7 +70,8 @@ import { campDe } from "../../camps"
      this.sprite = sprite
 
      //initialisation de l'etat du joueur
-     new AnimationJoueur(this.anims)
+     // Animations communes + propres au personnage (sa définition, Aptitudes/<personnage>.ts).
+     AnimationJoueur(this.anims, [...ANIMATIONS_COMMUNES, ...Aptitudes[this.sprite].animations])
      const self = this;
      DefautDirection(Aptitudes, this)
      Aptitudes[this.sprite].StatsSupplementaire.call(self, self, Aptitudes)
@@ -84,54 +87,9 @@ import { campDe } from "../../camps"
 
      this.bossControllable = this.scene.add.group();
 
+     // Le coup porte à l'image indiquée par l'animation du personnage (`imageQuiBlesse`, ex. cross4).
      this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
-       this.blesse_opposant = false
-       if (anim.key === 'cross') {
-         if (frame.frame.name == 'cross4') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'attack') {
-         if (frame.frame.name == 'positiona4') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'akhizonah_couteau') {
-         if (frame.frame.name == 'knife2') {
-           this.blesse_opposant = true
-         }
-       }
-
-
-       if (anim.key === 'straightlead') {
-         if (frame.frame.name == 'straightlead1') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'osmo_attaque') {
-         if (frame.frame.name == 'osmo_attaque3') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'twitchman_punch') {
-         if (frame.frame.name == 'twitchmanpunch1') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'manette_punch') {
-         if (frame.frame.name == 'manettepunch1') {
-           this.blesse_opposant = true
-         }
-       }
-
-       if (anim.key === 'attaque') {
-         this.blesse_opposant = true
-       }
+       this.blesse_opposant = imageQuiBlesse(Aptitudes[this.sprite].animations, anim.key, frame.frame.name)
      })
 
      this.zoneInteraction = this.scene.add.rectangle(0, 0, 32, 64, 0xffffff, 0) as unknown as Phaser.Types.Physics.Arcade.ImageWithDynamicBody

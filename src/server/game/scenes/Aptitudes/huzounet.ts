@@ -5,7 +5,7 @@ import CloneClass from "../class/elements/CloneClass"
 import { aptitudeFusion } from "./_utilitaire/fusion";
 
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 
 export function initialiser(huzounet: TJoueur, _Aptitudes?: any) {
   huzounet.boulesEnMain = huzounet.scene.physics.add.group({
@@ -105,6 +105,16 @@ export function clonage(huzounet: any) {
   }
 }
 
+/** Animations propres à huzounet (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "huzounet_preparation_attaque", prefixe: "positiona", images: { debut: 0, fin: 1 }, frameRate: 36, repeat: 0 },
+  { cle: "huzounet_envoie_attaque", prefixe: "positiona", images: { debut: 1, fin: 5 }, frameRate: 12, repeat: 0 },
+  // l'atlas n'a pas attaque_kunai3 : images listées (B5)
+  { cle: "huzounet_kunai_attaque", prefixe: "attaque_kunai", images: [0, 1, 2], frameRate: 5, repeat: 0 },
+  // jamais jouée aujourd'hui
+  { cle: "huzounet_shuriken", prefixe: "shuriken", images: { debut: 0, fin: 3 }, frameRate: 23, repeat: -1 },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -113,4 +123,5 @@ export default definirPersonnage<TJoueur>({
     E: { nom: "clonage", action: clonage },
     TAB: aptitudeFusion,
   },
+  animations: ANIMATIONS,
 });

@@ -1,5 +1,6 @@
 import { Player } from "../../../RoomState"
-import { kunai, initialiser, shuriken } from '././../../Aptitudes/huzounet'
+import huzounet, { kunai, initialiser, shuriken } from '././../../Aptitudes/huzounet'
+import { ANIMATIONS_COMMUNES } from "../../Animations/communes"
 import { AnimationJoueur, setAnimation } from "../../Animations/AnimationJoueur"
 import TJoueur from "../../types/Joueur"
 
@@ -41,7 +42,8 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
     //@ts-ignore
     this.scene.physics.add.collider([this.scene.platforme, this.scene.platforme_droite, this.scene.platforme_gauche, this.scene.platforme_haut, this.scene.platforme_haut_gauche, this.scene.platforme_haut_droite], this)
 
-    new AnimationJoueur(this.anims)
+    // Clone de huzounet : animations communes + celles de huzounet.
+    AnimationJoueur(this.anims, [...ANIMATIONS_COMMUNES, ...(huzounet.animations ?? [])])
     //@ts-ignore
     initialiser(this)
 

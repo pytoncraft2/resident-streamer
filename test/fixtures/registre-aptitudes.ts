@@ -1,6 +1,6 @@
 /**
  * Processus séparé : charge le registre des aptitudes du serveur **compilé** (build/server, produit par
- * `npm test`) avec le pont Phaser, puis affiche (ligne « RESULTAT ») en JSON, par personnage, ses clés et ses commandes.
+ * `npm test`) avec le pont Phaser, puis affiche (ligne « RESULTAT ») en JSON, par personnage, ses clés, ses commandes et ses animations.
  * Les fichiers d'aptitudes ne compilent pas avec la config stricte des tests : ils sont lus compilés.
  * Lancement : node -r ts-node/register test/fixtures/registre-aptitudes.ts
  */
@@ -32,6 +32,9 @@ async function main(): Promise<void> {
       {
         cles: Object.keys(aptitudes).filter((cle) => cle !== "commandes" && typeof aptitudes[cle] === "function").sort(),
         commandes: aptitudes.commandes,
+        animations: Array.isArray(aptitudes.animations)
+          ? (aptitudes.animations as { cle: string; imageQuiBlesse?: string }[]).map((a) => ({ cle: a.cle, imageQuiBlesse: a.imageQuiBlesse }))
+          : undefined,
       },
     ]),
   );

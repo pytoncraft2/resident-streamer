@@ -1,5 +1,5 @@
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, TOUTES_LES_IMAGES, definirPersonnage } from "./definition";
 import { arbreBoss1 } from "../../../ia/bosses/boss_1";
 import { demarrerIA } from "../../ia/pilote";
 export function initialiser(boss_1: any, Aptitudes: any) {
@@ -70,6 +70,12 @@ export function auto(boss_1: TJoueur | any, _input: any, _aptitudes: any) {
   });
 }
 
+/** Animations propres à boss_1 (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "deplacement", prefixe: "movechaiseboss", images: { debut: 0, fin: 1 }, frameRate: 11 },
+  { cle: "attaque", prefixe: "attackchaiseboss", images: { debut: 0, fin: 1 }, frameRate: 12, repeat: 0, yoyo: true, imageQuiBlesse: TOUTES_LES_IMAGES },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -77,4 +83,5 @@ export default definirPersonnage<TJoueur>({
     Z: { nom: "suivre", action: suivre },
   },
   auto,
+  animations: ANIMATIONS,
 });

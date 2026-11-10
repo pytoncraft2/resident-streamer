@@ -86,7 +86,7 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
   1. ✅ caractérisation du registre (`test/integration/registre-aptitudes.test.ts`) ;
   2. ✅ définition typée par personnage et registre explicite synchrone (`Aptitudes/definition.ts`, `base.ts`) ;
   3. ✅ catalogue des personnages partagé client/serveur (`src/shared/personnages.ts` : lobby, validation à la connexion, registre), ADR-002 ;
-  4. animations et frames qui blessent rapatriées dans la définition de chaque personnage ;
+  4. ✅ animations et images qui blessent dans la définition de chaque personnage (`animations`, `imageQuiBlesse`), animations communes dans `Animations/communes.ts` ;
   5. test de cohérence des ressources (atlas, icônes, frames serveur).
 - [ ] Centraliser la gestion des timers, du cycle de vie des rooms, de la persistance du score et des erreurs réseau.
 

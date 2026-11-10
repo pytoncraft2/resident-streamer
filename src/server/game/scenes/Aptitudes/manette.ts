@@ -1,7 +1,7 @@
 import ManetteClass from '../class/elements/ManetteClass'
 
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { arbreManette } from "../../../ia/bosses/manette";
 import { demarrerIA } from "../../ia/pilote";
 
@@ -111,6 +111,13 @@ export function auto(manette: TJoueur, _input: any, aptitudes: any) {
   demarrerIA(manette as any, arbreManette, { periode: 500, aptitudes });
 }
 
+/** Animations propres à manette (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "manette_punch", prefixe: "manettepunch", images: { debut: 0, fin: 1 }, frameRate: 10, repeat: 0, imageQuiBlesse: "manettepunch1" },
+  { cle: "manette_vole", prefixe: "manettevole", images: { debut: 0, fin: 0 }, frameRate: 4, repeat: 0 },
+  { cle: "manette_lance", prefixe: "manettelance", images: { debut: 0, fin: 3 }, frameRate: 10, repeat: 0 },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -118,4 +125,5 @@ export default definirPersonnage<TJoueur>({
     Z: { nom: "lancer", action: lancer },
   },
   auto,
+  animations: ANIMATIONS,
 });

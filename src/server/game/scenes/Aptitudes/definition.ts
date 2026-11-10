@@ -40,9 +40,48 @@ export type AptitudesPersonnage<P> = {
   auto?: (personnage: P, entree: Entree, aptitudes: AptitudesPersonnage<P>) => void;
   /** Nom de l'aptitude de chaque touche, envoyé au client pour l'interface. */
   commandes: Partial<Record<ToucheCommande, string>>;
+  /** Animations propres au personnage (sans les animations communes). */
+  animations: readonly AnimationPersonnage[];
 };
 
 export type RegistreAptitudes<P> = Record<string, AptitudesPersonnage<P>>;
+
+/**
+ * Animation d'un personnage : images `<prefixe><n>` de l'atlas serveur, de `debut` à `fin` ou
+ * listées explicitement (quand l'atlas a des trous).
+ */
+export interface AnimationPersonnage {
+  readonly cle: string;
+  readonly prefixe: string;
+  readonly images: { readonly debut: number; readonly fin: number } | readonly number[];
+  readonly frameRate: number;
+  readonly repeat?: number;
+  readonly yoyo?: boolean;
+  /**
+   * Image où le coup porte (la zone d'attaque blesse à cet instant), ou `"toutes"` pour chaque
+   * image de l'animation. Absente : l'animation ne blesse pas.
+   */
+  readonly imageQuiBlesse?: string;
+}
+
+/** Valeur de `imageQuiBlesse` pour une animation qui blesse à chaque image. */
+export const TOUTES_LES_IMAGES = "toutes";
+
+/** Noms des images d'une animation (`<prefixe><n>`), dans l'ordre. */
+export function nomsDesImages(animation: AnimationPersonnage): string[] {
+  const { images, prefixe } = animation;
+  const numeros = "debut" in images
+    ? Array.from({ length: images.fin - images.debut + 1 }, (_, i) => images.debut + i)
+    : [...images];
+  return numeros.map((n) => `${prefixe}${n}`);
+}
+
+/** Vrai si l'image `image` de l'animation `cle` porte un coup, d'après les animations du personnage. */
+export function imageQuiBlesse(animations: readonly AnimationPersonnage[], cle: string, image: string): boolean {
+  const animation = animations.find((a) => a.cle === cle);
+  if (animation?.imageQuiBlesse === undefined) return false;
+  return animation.imageQuiBlesse === TOUTES_LES_IMAGES || animation.imageQuiBlesse === image;
+}
 
 export interface DefinitionPersonnage<P> {
   /** Réglages à la création (vie, dégâts, déplacements propres…) ; reçoit le registre complet. */
@@ -51,6 +90,8 @@ export interface DefinitionPersonnage<P> {
   readonly touches: Readonly<Partial<Record<ToucheCommande, Aptitude<P>>>>;
   /** IA d'un boss. */
   readonly auto?: (personnage: P, entree: Entree, aptitudes: AptitudesPersonnage<P>) => void;
+  /** Animations propres au personnage (en plus des animations communes). */
+  readonly animations?: readonly AnimationPersonnage[];
 }
 
 /** Identité typée : TypeScript vérifie la définition (touches connues, aptitudes complètes). */
@@ -67,6 +108,7 @@ export function construireRegistre<P>(definitions: Readonly<Record<string, Defin
     const entree: AptitudesPersonnage<P> = {
       StatsSupplementaire: definition.initialiser ?? rienAInitialiser,
       commandes: {},
+      animations: definition.animations ?? [],
     };
     for (const touche of TOUCHES_COMMANDE) {
       const aptitude = definition.touches[touche];

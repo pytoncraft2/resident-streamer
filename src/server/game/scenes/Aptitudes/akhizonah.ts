@@ -1,5 +1,5 @@
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import BombeClass from "../class/elements/BombeClass";
 import { aptitudeFusion } from "./_utilitaire/fusion";
 
@@ -35,6 +35,11 @@ export function bombe(akhizonah: TJoueur, input: { z_debut?: boolean }) {
 
 }
 
+/** Animations propres à akhizonah (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "akhizonah_couteau", prefixe: "knife", images: { debut: 0, fin: 3 }, frameRate: 8, repeat: 0, imageQuiBlesse: "knife2" },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -42,4 +47,5 @@ export default definirPersonnage<TJoueur>({
     Z: { nom: "bombe", action: bombe },
     TAB: aptitudeFusion,
   },
+  animations: ANIMATIONS,
 });

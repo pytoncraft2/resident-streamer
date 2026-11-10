@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import Trone from "../class/elements/TroneClass";
 import PcClass from "../class/elements/PcClass";
 import { abscissesPluie, arbreBossFinal, REGLAGES_BOSS_FINAL } from "../../../ia/bosses/super_boss";
@@ -209,6 +209,13 @@ function creerTrone(personnage: TJoueur, etageTrone: string, positionY: number) 
   return personnage.scene.physics.add.existing(trone);
 }
 
+/** Animations propres à super_boss (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  // l'atlas n'a pas bossfly2 et 3 : images listées (B5)
+  { cle: "super_boss_vole", prefixe: "bossfly", images: [0, 1, 4, 5], frameRate: 18, repeat: 2, yoyo: true },
+  { cle: "super_boss_contreattaque", prefixe: "contreattaque", images: { debut: 0, fin: 2 }, frameRate: 7, repeat: 2, yoyo: true },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -218,4 +225,5 @@ export default definirPersonnage<TJoueur>({
     R: { nom: "pluie", action: pluie },
   },
   auto,
+  animations: ANIMATIONS,
 });

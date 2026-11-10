@@ -1,6 +1,6 @@
 import { setAnimation } from "../Animations/AnimationJoueur"
 import TJoueur from "../types/Joueur";
-import { definirPersonnage } from "./definition";
+import { AnimationPersonnage, definirPersonnage } from "./definition";
 import { aptitudeFusion } from "./_utilitaire/fusion";
 
 export function initialiser(fakhear: TJoueur, _Aptitudes: any) {
@@ -51,6 +51,15 @@ export function dash(fakhear: Phaser.Physics.Arcade.Sprite|any, input: { e_debut
   }
 }
 
+/** Animations propres à fakhear (en plus des animations communes, `Animations/communes.ts`). */
+const ANIMATIONS: readonly AnimationPersonnage[] = [
+  { cle: "cross", prefixe: "cross", images: { debut: 0, fin: 5 }, frameRate: 23, repeat: 0, imageQuiBlesse: "cross4" },
+  { cle: "attack", prefixe: "positiona", images: { debut: 0, fin: 5 }, frameRate: 15, repeat: 0, imageQuiBlesse: "positiona4" },
+  // l'atlas n'a pas straightlead2 et 3 : images listées (B5)
+  { cle: "straightlead", prefixe: "straightlead", images: [0, 1], frameRate: 15, repeat: 0, imageQuiBlesse: "straightlead1" },
+  { cle: "idle_attack", prefixe: "positiona", images: { debut: 0, fin: 0 }, frameRate: 1, repeat: 0 },
+];
+
 export default definirPersonnage<TJoueur>({
   initialiser,
   touches: {
@@ -59,4 +68,5 @@ export default definirPersonnage<TJoueur>({
     E: { nom: "dash", action: dash },
     TAB: aptitudeFusion,
   },
+  animations: ANIMATIONS,
 });
