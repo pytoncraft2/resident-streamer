@@ -80,8 +80,8 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 
 - [ ] Établir une source de vérité unique pour stats, capacités et états des personnages. → stats (`stats` : vie, dégâts, vitesse ; défaut `STATS_PAR_DEFAUT`), capacités et déplacements (`deplacements`, défaut `Stats/Defaut.ts`) dans la définition de chaque personnage ; le registre n'est plus modifié en cours de partie. **États** (camp, fusion, vol…) encore portés par `PlayerClass`.
 - [ ] Introduire des contrats typés de commandes, intentions et événements métier. → messages réseau typés (`src/shared/messages.ts`, ADR-002) ; intentions des boss typées (`ia/boss.ts`). Événements métier internes au serveur : pas encore.
-- [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication.
-- [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée.
+- [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication. → entrées : fronts montants (`clavierRecu`), touches déclenchées et fronts consommés (`touchesDeclenchees`, `frontsAConsommer`) dans `domain/entrees.ts` ; validations : personnage à la connexion, `etatJoueur` du lobby. Snapshots (`Player`, `Projectile`) : pas encore.
+- [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée. → `PlayerClass` : traitement des touches (`domain/entrees.ts`) et coup au contact (`resoudreContact`, `domain/combat.ts`). Restent : mort/réapparition, défaite d'un boss, publication de la présence ; `hall.ts`.
 - [x] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances. → étapes :
   1. ✅ caractérisation du registre (`test/integration/registre-aptitudes.test.ts`) ;
   2. ✅ définition typée par personnage et registre explicite synchrone (`Aptitudes/definition.ts`, `base.ts`) ;

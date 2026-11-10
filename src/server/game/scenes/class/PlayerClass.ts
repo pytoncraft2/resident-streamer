@@ -4,7 +4,7 @@ import { Aptitudes } from "../Aptitudes/base"
 import { imageQuiBlesse } from "../Aptitudes/definition"
 import { frontsAConsommer, touchesDeclenchees } from "../../../domain/entrees"
 import { ANIMATIONS_COMMUNES } from "../Animations/communes"
-import { Camp, peutBlesser, peutSoigner, vieApresDommage, vieApresSoin } from "../../../domain/combat"
+import { Camp, resoudreContact, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
 import { scoresServeur } from "../../../stockage/fichierScores"
 import { bossPrincipauxVaincus, partieGagnee } from "../../../domain/progression"
@@ -102,31 +102,26 @@ import { campDe } from "../../camps"
      this.zoneInteraction.action = (_e: any) => {
        // Entité détruite (joueur parti, boss retiré après une fusion) : sa zone ne doit plus agir.
        if (!this.scene) return
-       // Cible invulnérable (boss final sur son trône) : ignorée, sans consommer le coup,
-       // qui reste disponible pour le trône (Aptitudes/super_boss.ts).
-       if (_e.invulnerable) return
-       // Camp de la cible : pas de tir ami, soin réservé aux alliés (intentions §2).
-       const scene = this.scene as any
-       const campCible = campDe(scene, _e)
-       const campVise = this.cible_courante as Camp
-
-       if (this.blesse_opposant) {
-         this.blesse_opposant = false
-         if (typeof _e.dommage === "function" && _e.sprite != this.sprite && peutBlesser(campVise, campCible)) {
-           if (_e.vie <= 0) {
-             _e.vie = 10
-             if (_e.cible_courante == "enemies") _e.son = 'game-over';
-           }
-           else
-           {
-           _e.dommage(this.degat)
-           }
-         }
+       // Règle du contact (domain/combat.ts) : invulnérabilité, coup consommé, camps, cible à 0, soin.
+       const resultat = resoudreContact(
+         { blesse: this.blesse_opposant, soigne: this.soigne, degat: this.degat, campVise: this.cible_courante as Camp, sprite: this.sprite },
+         {
+           invulnerable: Boolean(_e.invulnerable),
+           blessable: typeof _e.dommage === "function",
+           vie: _e.vie,
+           sprite: _e.sprite,
+           camp: campDe(this.scene as any, _e),
+           estJoueur: _e.cible_courante == "enemies",
+         },
+       )
+       if (resultat.ignore) return
+       if (resultat.consommeCoup) this.blesse_opposant = false
+       if (resultat.effet.type === "dommage") _e.dommage(resultat.effet.puissance)
+       else if (resultat.effet.type === "relever") {
+         _e.vie = resultat.effet.vie
+         if (resultat.effet.sonGameOver) _e.son = 'game-over'
        }
-
-       if (this.soigne && peutSoigner(campVise, campCible)) {
-         _e.vie = vieApresSoin(_e.vie, 0.01)
-       }
+       if (resultat.soin) _e.vie = vieApresSoin(_e.vie, 0.01)
      };
      this.scene.physics.add.existing(this.zoneInteraction);
      // La zone d'attaque est un objet séparé : la détruire avec l'entité, sinon elle reste dans le monde physique.
