@@ -1,6 +1,6 @@
 # ADR-002 — Contrats partagés client/serveur : dossier `src/shared/`
 
-- **Statut :** Proposé
+- **Statut :** Accepté (validé le 2026-11-10)
 - **Date :** 2026-11-10
 
 ## Contexte

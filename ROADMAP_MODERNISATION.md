@@ -123,7 +123,7 @@ Ne pas inscrire des tokens d'authentification dans les fichiers suivis par Git. 
 ## Journal de décision
 
 - **ADR-001 — moteur/physique serveur Phaser 4 :** accepté — conserver `phaser-on-nodejs` (1.3.1) et passer en Phaser 4 par étapes, Node 24 d'abord. Voir `docs/adr/001-moteur-serveur-phaser4.md`.
-- **ADR-002 — contrats partagés client/serveur :** proposé — dossier `src/shared/` (modules purs), premier contenu : catalogue des personnages jouables. Voir `docs/adr/002-contrats-partages.md`.
+- **ADR-002 — contrats partagés client/serveur :** accepté (10/11/2026) — dossier `src/shared/` (modules purs), premier contenu : catalogue des personnages jouables. Voir `docs/adr/002-contrats-partages.md`.
 - **ADR-003 — modèle d'IA des boss :** accepté — arbre de comportement maison, pilote `boss_1`, généralisé aux 5 boss. Voir `docs/adr/003-ia-boss-arbre-comportement.md`.
 - **ADR-004 — montée de Colyseus 0.14 → 0.18 :** accepté (09/11/2026). Voir `docs/adr/004-montee-colyseus.md`.
 - **ADR-005 — Phaser Editor v5 Core à la place de Phaser Editor 2D v3 :** accepté (09/11/2026). Voir `docs/adr/005-phaser-editor-v5.md`.
