@@ -22,7 +22,8 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - `src/server/game/scenes/Aptitudes/` : capacités par personnage ; chaque fichier exporte une définition typée (`definirPersonnage`, `definition.ts`) listée explicitement dans `base.ts`, qui construit le registre `Aptitudes` (touches, IA des boss, noms des commandes envoyés au client, stats, déplacements propres, animations et image où le coup porte ; valeurs par défaut : `STATS_PAR_DEFAUT`, `Stats/Defaut.ts`, `Animations/communes.ts`). Le registre est partagé par toutes les rooms : ne jamais y écrire en cours de partie. Ajouter un personnage jouable : le catalogue `src/shared/personnages.ts`, son fichier, une ligne dans `PERSONNAGES`, son atlas `<nom>_atlas` dans l'asset pack, son icône `icon_<nom>` et ses images dans l'atlas serveur ; TypeScript et `test/integration/ressources.test.ts` signalent ce qui manque.
 - `src/shared/` : modules purs partagés par le client et le serveur (ADR-002) ; `personnages.ts` = catalogue des personnages jouables (lobby, validation à la connexion, registre des aptitudes) ; `messages.ts` = contrats des messages réseau, à envoyer et écouter via `canalJeu` / `canalLobby` (tout nouveau message y est déclaré) ; `etats.ts` = états synchronisés lus par le client, publiés côté serveur uniquement via `src/server/game/publication.ts`. Le serveur compile depuis `src/` : `build/server/` et `build/shared/`.
 - `src/client/utils/serveur.ts` : adresse du serveur pour le client — origine de la page en production, même hôte port 3000 sous Vite, ou `VITE_SERVEUR_URL` ; ne jamais réintroduire d'URL en dur (anomalie B6).
-- `static/assets/` : ressources utilisées par le jeu ; `doc_client/` et `doc_server/` sont des exports de documentation existants.
+- `static/assets/` : ressources utilisées par le jeu.
+- `docs/` : décisions d'architecture (`adr/`), intentions de jeu (`conception/intentions.md`), diagnostic de reprise (anomalies B1 à B8) et historique de la modernisation.
 
 ## Contraintes non négociables
 1. **Préserver le jeu existant avant de restructurer.** Établir le comportement de référence : connexion de 2 à 4 joueurs, lobby, mouvements, quatre personnages, aptitudes, boss, dégâts, fin de partie et scores. Distinguer fonctionnalités confirmées, incomplètes et cassées.
@@ -45,7 +46,7 @@ Resident Streamer est un jeu de speedrun coopératif en ligne pour 2 à 4 joueur
 - Serveur en développement : `npm run serve:server` (terminal séparé).
 - Compiler le serveur : `npm run build:server`.
 - Vérifier/compiler le client : `npm run build`.
-- Documentation existante : `npm run doc`.
+- Documentation de l'API (typedoc) : `npm run doc`, générée dans `doc_client/` et `doc_server/` (non versionnés).
 - Recette du boss final : `BOSS_FINAL_DIRECT=1 npm start` l'active dès le début de la partie (raccourci de développement, inactif par défaut).
 - Trace des décisions des boss : `IA_TRACE=1 npm start` (tous) ou `IA_TRACE=troll,manette npm start` ; affichée dans le journal serveur quand la décision change.
 - Éditeur de scènes : `PHASER_EDITOR=/chemin/vers/PhaserEditor npm run editor` (Phaser Editor v5 Core, licence requise ; `editor-remote` ajoute `-public`).

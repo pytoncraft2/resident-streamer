@@ -4,6 +4,8 @@
 - **Commit de référence :** `5f55b7d` (`main`)
 - **Machine :** Linux x64, Node via nvm
 
+Instantané de l'état du projet à la reprise. Les anomalies B1 à B8 (§3), toutes traitées, restent la référence des renvois « anomalie Bn » du code ; la suite de la modernisation est retracée dans `docs/roadmap-modernisation.md`.
+
 ## 1. Environnement de référence
 
 | Étape | Node 16.20.2 / npm 8.19.4 | Node 24.20.0 / npm 11.19.0 |
@@ -36,7 +38,7 @@ Script exécuté hors dépôt (client `colyseus.js` du projet, 4 clients, salon 
 | Départ de tous les clients → `onDispose` | ❌ exception, voir B1 |
 | `src/server/scores.json` | ✅ inchangé |
 
-**Non vérifié (recette manuelle navigateur nécessaire, `/recette-multijoueur`) :** rendu client, lobby graphique, aptitudes, dégâts, mort des boss, fin de partie, enregistrement du score, écran Scores.
+**Non vérifié à ce stade (vérification manuelle dans le navigateur nécessaire) :** rendu client, lobby graphique, aptitudes, dégâts, mort des boss, fin de partie, enregistrement du score, écran Scores.
 
 ## 3. Anomalies constatées
 
@@ -68,22 +70,6 @@ Ne pas lancer `npm audit fix --force` : plusieurs correctifs sont des montées m
 
 `@ts-nocheck` / `@ts-ignore` présents dans 14 fichiers (dont `RoomState.ts`, `LobbyState.ts`, `Lobby.ts` ×12, `Jeu.ts` ×7).
 
-## 5. Inventaire du protocole réseau (premier relevé)
+## 5. Protocole réseau
 
-**Rooms :** `lobby` (filtre `salon`, liste temps réel), `game_instance` (filtre `salon`, max 4 clients, `patchRate` 1 ms), `acceuil`.
-
-| Sens | Message | Room |
-|---|---|---|
-| client → serveur | `etatJoueur`, `demandeCommencerJeu` | lobby |
-| client → serveur | `inputs` (`{up,right,down,left,space,a,a_fin,z,e,r}`) | game_instance |
-| serveur → clients | `commencerJeu` | lobby |
-| serveur → clients | `RDC_OK`, `ETAGE_OK`, `FIN_JEU`, `suppression` (`{<ref>: id}`) | game_instance |
-| serveur → client | `rooms`, `+`, `-` (liste temps réel des salons, `LobbyRoom` Colyseus, écoutée par `Level.ts`) | acceuil |
-
-**État synchronisé :** `RoomState { presences: Map<Player>, projectiles: Map<Projectile>, lignes: Map<Ligne>, rectangles: Map<Rectangle>, compteur }` ; `LobbyState { joueurs: Map<Joueur>, … }`. Les détails des champs sont dans `src/server/game/RoomState.ts` et `LobbyState.ts`.
-
-## 6. Reste à faire pour clore la Phase 0
-
-- [ ] Recette manuelle navigateur 2/3/4 joueurs (`/recette-multijoueur`) pour confirmer le flux lobby → partie → boss → classement.
-- [ ] Expliquer B2 (`super_boss`).
-- [ ] Cartographier les responsabilités et couplages de `Jeu.ts`, `hall.ts`, `PlayerClass.ts`, `Aptitudes/`, `RoomState.ts`.
+Le relevé initial du protocole a été remplacé par les contrats partagés, qui font référence (ADR-002) : `src/shared/messages.ts` (messages par room et par sens, options de connexion) et `src/shared/etats.ts` (états synchronisés lus par le client).

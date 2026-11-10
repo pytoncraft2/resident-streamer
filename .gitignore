@@ -5,3 +5,6 @@ build
 dist
 .claude/settings.local.json
 donnees
+# Documentation de l'API générée par `npm run doc` (typedoc)
+doc_client
+doc_server
