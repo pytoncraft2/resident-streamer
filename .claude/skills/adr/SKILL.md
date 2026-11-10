@@ -7,10 +7,10 @@ argument-hint: "[titre de la décision]"
 # Rédiger un ADR
 
 1. Lister `docs/adr/` (le créer s'il n'existe pas). Numéroter à la suite sur 3 chiffres : `docs/adr/NNN-titre-en-kebab-case.md`.
-   - Les numéros ADR-001 (moteur/physique serveur Phaser 4), ADR-002 (contrats partagés) et ADR-003 (IA du premier boss) sont réservés par `ROADMAP_MODERNISATION.md` : réutiliser ces numéros pour ces sujets.
+   - Les numéros ADR-001 (moteur/physique serveur Phaser 4), ADR-002 (contrats partagés) et ADR-003 (IA du premier boss) sont réservés par `docs/roadmap-modernisation.md` : réutiliser ces numéros pour ces sujets.
 2. Remplir le modèle ci-dessous à partir du code et des essais **réellement effectués**. Ne pas inventer de résultat de spike : un point non vérifié est noté « à vérifier ».
 3. Statut `Proposé` tant que l'utilisateur n'a pas validé ; ne passer à `Accepté` que sur sa demande.
-4. Mettre à jour la ligne correspondante du « Journal de décision » de `ROADMAP_MODERNISATION.md`.
+4. Mettre à jour la ligne correspondante du « Journal de décision » de `docs/roadmap-modernisation.md`.
 
 ## Modèle
 

@@ -11,7 +11,7 @@ Le client (Vite, `tsconfig.json` à la racine, `include: src/client`) et le serv
 - le serveur ne vérifiait pas le personnage reçu à la connexion (`Hall_01.onJoin`, `options.sprite`). Sondé le 2026-11-10 : un nom inconnu levait `TypeError: Cannot set properties of undefined (setting 'toucheDroite')` à la création du joueur, qui restait sans présence ; un nom de boss (`super_boss`) était accepté. Contraire à l'autorité serveur (AGENTS.md, contrainte 3) ;
 - le registre des aptitudes (`Aptitudes/base.ts`) ne pouvait pas vérifier qu'il couvre chaque personnage jouable.
 
-Premier cas concret d'extraction de la phase 4 (registre des aptitudes, étape 3 de `ROADMAP_MODERNISATION.md`).
+Premier cas concret d'extraction de la phase 4 (registre des aptitudes, étape 3 de `docs/roadmap-modernisation.md`).
 
 ## Options étudiées
 
