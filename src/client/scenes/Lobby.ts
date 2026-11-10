@@ -10,7 +10,7 @@ import Panel from "../utils/panel"
 import Button from "../utils/bouton"
 import Titre from "../utils/titre"
 import { URL_WS_SERVEUR } from "../utils/serveur"
-import { PERSONNAGES_JOUABLES } from "../../shared/personnages"
+import { estPersonnageJouable, PERSONNAGES_JOUABLES, PersonnageJouable } from "../../shared/personnages"
 /* END-USER-IMPORTS */
 
 export default class Lobby extends Phaser.Scene {
@@ -36,20 +36,21 @@ export default class Lobby extends Phaser.Scene {
 	session!: string
 	room!: Colyseus.Room<unknown>
 	salon!: string
-	personnages!: string[]
+	personnages!: PersonnageJouable[]
 	player: any
 	joueursPresents!: string
 	container!: Phaser.GameObjects.Container
 	panelGauche: any
 	listeJoueur!: Object
-	personnageChoisie: string = "huzounet"
+	/** Personnage choisi (TAB ou clic), ou aucun tant que le joueur n'a pas choisi. */
+	personnageChoisie: PersonnageJouable | undefined
 	boutonActivable: boolean = false
 	bouton: any
 	pret: boolean = false
 
 	 init(salon: any) {
     this.salon = salon.salon
-    this.personnageChoisie = salon.personnage
+    this.personnageChoisie = estPersonnageJouable(salon.personnage) ? salon.personnage : undefined
     this.personnages = [...PERSONNAGES_JOUABLES];
   }
 
@@ -78,6 +79,11 @@ export default class Lobby extends Phaser.Scene {
 			const texteTab = this.add.text(window.innerWidth / 2, window.innerHeight - 160, ['Selectionner votre personnage ! (TAB)'], { fontFamily: 'CustomFontNormal' }).setFontSize(25).setAlpha(0.5).setOrigin(0.5).setDepth(3)
 
 			confirme.on('down', function() {
+				// Entrée sans personnage choisi : rappeler la consigne au lieu de lancer une partie impossible.
+				if (!self.personnageChoisie) {
+					texteTab.text = 'Choisissez d\'abord un personnage (TAB ou clic) !'
+					return
+				}
 				self.commencerJeu()
 			})
 
@@ -91,7 +97,7 @@ export default class Lobby extends Phaser.Scene {
 					else iterateJoueur = 0
 				}
 				texteTab.text = self.personnages[iterateJoueur]
-				self.personnageChoisie = `${self.personnages[iterateJoueur]}_atlas`
+				self.personnageChoisie = self.personnages[iterateJoueur]
 
 				self.tweens.add({
 					targets: self.container.getByName(`${self.personnages[iterateJoueur]}`),
@@ -132,8 +138,7 @@ export default class Lobby extends Phaser.Scene {
 	      .setInteractive(({ useHandCursor: true }))
 	      .on('pointerdown', function() {
 	        listeIndex.push(idx)
-					//@ts-ignore
-	        self.personnageChoisie = `${this.frame.texture.key}`
+	        self.personnageChoisie = element
 	        self.container.iterate(function(el: any) {
 	              el.setAlpha(0.3)
 	              el.setData('actif', false)
@@ -251,7 +256,8 @@ export default class Lobby extends Phaser.Scene {
 	    this.room.leave()
 	    this.scene.start('Jeu', {
 	      salon: this.salon,
-	      personnage: this.personnageChoisie.substring(0, this.personnageChoisie.indexOf('_'))
+	      // Lancée par l'hôte sans choix de ce joueur : premier personnage du catalogue.
+	      personnage: this.personnageChoisie ?? PERSONNAGES_JOUABLES[0]
 	    });
 	  }
 

@@ -8,6 +8,7 @@ import Phaser from "phaser";
 import * as Colyseus from "@colyseus/sdk"
 import { RoomAvailable } from "@colyseus/sdk";
 import { URL_WS_SERVEUR } from "../utils/serveur"
+import { destinationDepuisUrl } from "../utils/routage"
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -136,9 +137,9 @@ export default class Level extends Phaser.Scene {
 		let salonURL = window.location.pathname.slice(1)
 		const params = new URLSearchParams(window.location.search)
 
-		if (salonURL != '')
-			if (params.get('p')) this.scene.start('Jeu', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
-			else this.scene.start('Lobby', {salon: `${salonURL}`, personnage: `${params.get('p')}`})
+		const destination = destinationDepuisUrl(salonURL, params.get('p'))
+		if (destination.ecran === 'Jeu') this.scene.start('Jeu', { salon: destination.salon, personnage: destination.personnage })
+		else if (destination.ecran === 'Lobby') this.scene.start('Lobby', { salon: destination.salon })
 		else this.afficheAcceuil()
 	}
 
