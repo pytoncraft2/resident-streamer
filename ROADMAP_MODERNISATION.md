@@ -76,7 +76,7 @@ src/
 Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces dossiers avant d'avoir un premier cas d'extraction concret.
 
 **Déjà extrait :** règles pures dans `src/server/domain/` (combat, progression, entrées, classement, temps), IA dans `src/server/ia/`, camps dans `src/server/game/camps.ts`, fin de partie et stockage des scores (`game/finDePartie.ts`, `stockage/`).
-**En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; l'étape 3 tranchera l'ADR-002.
+**En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; contrats partagés dans `src/shared/` (ADR-002).
 
 - [ ] Établir une source de vérité unique pour stats, capacités et états des personnages.
 - [ ] Introduire des contrats typés de commandes, intentions et événements métier.
@@ -85,7 +85,7 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 - [ ] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances. → étapes :
   1. ✅ caractérisation du registre (`test/integration/registre-aptitudes.test.ts`) ;
   2. ✅ définition typée par personnage et registre explicite synchrone (`Aptitudes/definition.ts`, `base.ts`) ;
-  3. catalogue des personnages partagé client/serveur (lobby), ADR-002 ;
+  3. ✅ catalogue des personnages partagé client/serveur (`src/shared/personnages.ts` : lobby, validation à la connexion, registre), ADR-002 ;
   4. animations et frames qui blessent rapatriées dans la définition de chaque personnage ;
   5. test de cohérence des ressources (atlas, icônes, frames serveur).
 - [ ] Centraliser la gestion des timers, du cycle de vie des rooms, de la persistance du score et des erreurs réseau.
@@ -123,7 +123,7 @@ Ne pas inscrire des tokens d'authentification dans les fichiers suivis par Git. 
 ## Journal de décision
 
 - **ADR-001 — moteur/physique serveur Phaser 4 :** accepté — conserver `phaser-on-nodejs` (1.3.1) et passer en Phaser 4 par étapes, Node 24 d'abord. Voir `docs/adr/001-moteur-serveur-phaser4.md`.
-- **ADR-002 — séparation des contrats partagés :** à décider pendant la première extraction.
+- **ADR-002 — contrats partagés client/serveur :** proposé — dossier `src/shared/` (modules purs), premier contenu : catalogue des personnages jouables. Voir `docs/adr/002-contrats-partages.md`.
 - **ADR-003 — modèle d'IA des boss :** accepté — arbre de comportement maison, pilote `boss_1`, généralisé aux 5 boss. Voir `docs/adr/003-ia-boss-arbre-comportement.md`.
 - **ADR-004 — montée de Colyseus 0.14 → 0.18 :** accepté (09/11/2026). Voir `docs/adr/004-montee-colyseus.md`.
 - **ADR-005 — Phaser Editor v5 Core à la place de Phaser Editor 2D v3 :** accepté (09/11/2026). Voir `docs/adr/005-phaser-editor-v5.md`.
