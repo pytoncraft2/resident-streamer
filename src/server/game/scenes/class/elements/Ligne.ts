@@ -1,4 +1,4 @@
-import { Ligne } from "../../../RoomState"
+import { publierLigne } from "../../../publication";
 
 export default class LigneClass extends Phaser.GameObjects.Graphics {
   closest: any
@@ -76,10 +76,7 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
 
   preUpdate(time, delta) {
 
-    (this.scene as any).room.state.lignes.set(
-      this.id,
-      new Ligne({
-        id: this.id,
+    publierLigne(this.scene, this.id, {
         x: 600,
         y: 200,
         x1: this.closest.x,
@@ -89,6 +86,5 @@ export default class LigneClass extends Phaser.GameObjects.Graphics {
         couleur: this.defaultFillColor,
         lineHeight: this.lineHeight.getValue(),
       })
-    )
   }
 }

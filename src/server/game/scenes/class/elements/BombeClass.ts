@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 import { AnimationBombe } from "../../Animations/AnimationJoueur"
 
 export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
@@ -56,9 +56,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
 
     //@ts-ignore
     this.fin = false;
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -66,7 +64,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
 
     this.scene.physics.add.overlap(this.zoneInteraction, (this.scene as any).enemies, function (_zone_bombe: any, _ennemie: any) {
       const d = Phaser.Math.Distance.BetweenPoints({ x: _ennemie.x, y: _ennemie.y }, { x: _zone_bombe.x, y: _zone_bombe.y }); // a, b: {x, y}
@@ -88,9 +85,7 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
       this.fin = true
     }
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         alpha: this.alpha,
@@ -99,7 +94,6 @@ export default class BombeClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
 
   }
 }

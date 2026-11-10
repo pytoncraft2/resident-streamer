@@ -5,6 +5,18 @@ export interface Initialisation {
 	personnage: PersonnageJouable;
 };
 
+/** États synchronisés reçus à chaque mise à jour (contrats partagés, src/shared/etats.ts). */
+export interface EtatsRecus {
+	presences: Record<string, EtatPresence>;
+	presenceList: string[];
+	projectiles: Record<string, EtatProjectile>;
+	projectilesListe: string[];
+	lignes: Record<string, EtatLigne>;
+	lignesListe: string[];
+	rectangles: Record<string, EtatRectangle>;
+	rectanglesListe: string[];
+}
+
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
@@ -14,6 +26,7 @@ import { deepEqual } from "../components/deepEqual"
 import { URL_WS_SERVEUR } from "../utils/serveur"
 import { canalJeu, OptionsJeu } from "../../shared/messages"
 import type { PersonnageJouable } from "../../shared/personnages"
+import type { EtatLigne, EtatPresence, EtatProjectile, EtatRectangle } from "../../shared/etats"
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
@@ -768,10 +781,10 @@ export default class Jeu extends Phaser.Scene {
 				});
 
 				room.onStateChange((changes: any) => {
-					let presences: any = {}
-					let projectiles: any = {}
-					let lignes: any = {}
-					let rectangles: any = {}
+					let presences: Record<string, EtatPresence> = {}
+					let projectiles: Record<string, EtatProjectile> = {}
+					let lignes: Record<string, EtatLigne> = {}
+					let rectangles: Record<string, EtatRectangle> = {}
 
 					changes.projectiles.forEach((value: any, key: any) => {
 						projectiles[key] = value
@@ -831,7 +844,7 @@ export default class Jeu extends Phaser.Scene {
 	}
 
 
-	async patchPlayer(list: any) {
+	async patchPlayer(list: EtatsRecus) {
 
 		list.projectilesListe.map((item: string) => {
 			if (this.projectilesRef[list.projectiles[item].id] === undefined)
@@ -907,7 +920,7 @@ export default class Jeu extends Phaser.Scene {
 				if (list.presences[item].sprite) {
 
 					const player = this.add
-						.sprite(x, y, `${sprite}_atlas`)
+						.sprite(x ?? 0, y ?? 0, `${sprite}_atlas`)
 						.setData({ ClientId: list.presenceList[idx] })
 						.setDepth(1);
 
@@ -1007,12 +1020,14 @@ export default class Jeu extends Phaser.Scene {
 
 			} else {
 				if (list.presences[item].x) this.playersRef[item].setPosition(list.presences[item].x, list.presences[item].y)
-				if (list.presences[item].sprite == 'boss_1') this.vie_boss_1.setScale(Phaser.Math.Clamp(list.presences[item].vie, 0, 10.36), 0.1777486358833607)
+				// Publication partielle (sans vie) : barre inchangée.
+				const vie = list.presences[item].vie
+				if (list.presences[item].sprite == 'boss_1' && vie !== undefined) this.vie_boss_1.setScale(Phaser.Math.Clamp(vie, 0, 10.36), 0.1777486358833607)
 				this.playersRef[item].setFrame(list.presences[item].anim)
 				this.playersRef[item].flipX = list.presences[item].flipX
 				this.playersRef[item].setTint(list.presences[item].tint)
 				if (this.playersRef[item].barre.last) {
-					this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(list.presences[item].vie / (this.playersRef[item].barre.first.scaleX * 10), 0, 1), 0.0881985701178345)
+					if (vie !== undefined) this.playersRef[item].barre.last.setScale(Phaser.Math.Clamp(vie / (this.playersRef[item].barre.first.scaleX * 10), 0, 1), 0.0881985701178345)
 					this.playersRef[item].barre.setPosition(this.playersRef[item].getTopCenter().x - 45, this.playersRef[item].getTopCenter().y - 25)
 					if (list.presences[item].alpha) {
 						this.playersRef[item].barre.setAlpha(list.presences[item].alpha)

@@ -6,9 +6,11 @@
  * `base.ts` les liste explicitement et en construit le registre `Aptitudes` utilisé par `PlayerClass`.
  */
 
-/** Touches d'action, affichées au joueur avec le nom de leur aptitude (`Commandes` de RoomState). */
-export const TOUCHES_COMMANDE = ["A", "Z", "E", "R", "TAB"] as const;
-export type ToucheCommande = (typeof TOUCHES_COMMANDE)[number];
+import { TOUCHES_COMMANDE, ToucheCommande } from "../../../../shared/touches";
+
+/** Touches d'action (`src/shared/touches.ts`), affichées au joueur avec le nom de leur aptitude. */
+export { TOUCHES_COMMANDE };
+export type { ToucheCommande };
 
 /** Touches de déplacement : comportement par défaut (`Stats/Defaut.ts`), remplaçable par personnage. */
 export const TOUCHES_DEPLACEMENT = ["toucheGauche", "toucheDroite", "toucheHaut", "toucheBas", "toucheEspace"] as const;

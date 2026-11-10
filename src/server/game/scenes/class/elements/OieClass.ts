@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 import { AnimationOie } from "../../Animations/AnimationJoueur"
 import { Balle } from "./Balle"
 
@@ -43,9 +43,7 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     this.play('oie_tire');
     this.setSize(this.width - 20, 100);
     // scene.suppressionProjectileDelai(this, id, 1400, true)
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -54,8 +52,7 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
         flipX: this.flipX,
         scale: this.scale,
         _frame: this._frame
-      })
-    );
+      });
     (this.scene as any).suppressionProjectileDelai(this, id, 1300, true);
 
     this.on(Phaser.Animations.Events.ANIMATION_UPDATE, function (_anim: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) {
@@ -89,9 +86,7 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
     // if (this.frame.name === "attack4") {
 
     // }
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         alpha: this.alpha,
@@ -100,6 +95,5 @@ export default class OieClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
   }
 }

@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 import { AnimationGrenouille } from "../../Animations/AnimationJoueur"
 import { Balle } from "./Balle"
 
@@ -64,9 +64,7 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
     (this.scene as any).suppressionProjectileDelai(this, id, 1400, true);
     this.setSize(300, 300);
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -75,15 +73,12 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
         flipX: this.flipX,
         _frame: this._frame,
         scale: 2
-      })
-    );
+      });
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         alpha: this.alpha,
@@ -92,6 +87,5 @@ export default class GrenouilleClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
   }
 }

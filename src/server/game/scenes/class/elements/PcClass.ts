@@ -4,10 +4,9 @@
  * `state.projectiles` (sprite « super_boss », frame « pc ») comme les autres projectiles.
  */
 import Phaser from "phaser";
-import { Projectile } from "../../../RoomState";
+import { publierProjectile } from "../../../publication";
 
 interface ScenePc extends Phaser.Scene {
-  room: { state: { projectiles: { set(id: string, projectile: Projectile): unknown } } };
   players: Phaser.Physics.Arcade.Group;
   suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: string, delai?: number, smooth?: boolean): Phaser.Time.TimerEvent;
 }
@@ -49,9 +48,6 @@ export default class PcClass extends Phaser.Physics.Arcade.Sprite {
   }
 
   private publier(): void {
-    (this.scene as ScenePc | undefined)?.room.state.projectiles.set(
-      this.id,
-      new Projectile({ x: this.x, y: this.y, id: this.id, sprite: this.sprite, _frame: this._frame }),
-    );
+    publierProjectile(this.scene, { x: this.x, y: this.y, id: this.id, sprite: this.sprite, _frame: this._frame });
   }
 }

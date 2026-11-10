@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 
 export class Balle extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -35,31 +35,25 @@ export class Balle extends Phaser.Physics.Arcade.Sprite {
       //@ts-ignore
     }, undefined, this);
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
         sprite: this.sprite,
         _frame: this._frame
-      })
-    );
+      });
     this.setVelocityX(flipX ? -1900 : 1900);
 
   }
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
   }
 }

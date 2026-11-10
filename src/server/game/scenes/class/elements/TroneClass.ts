@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 
 export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -38,9 +38,7 @@ export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time: number, delta: number) {
     super.preUpdate(time, delta);
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -52,7 +50,6 @@ export default class TroneClass extends Phaser.Physics.Arcade.Sprite {
         // (aujourd'hui inutilisé par le boss final, dont le siège disparaît avec le trône).
         anim: this._frame
       })
-    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

@@ -1,4 +1,4 @@
-import { Rectangle } from "../../../RoomState"
+import { publierRectangle } from "../../../publication";
 import TJoueur from "../../types/Joueur";
 import { Camp, peutBlesser } from "../../../../domain/combat";
 import { campDe, SceneCamps } from "../../../camps";
@@ -66,19 +66,15 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
       }
     }, this);
 
-    (this.scene as any).room.state.rectangles.set(
-      this.id,
-      new Rectangle({
+    publierRectangle(this.scene, this.id, {
         x: this.x,
         y: this.y,
-        id: this.id,
         width: -this.width,
         height: this.height,
         fillColor: this.fillColor,
         fillAlpha: this.fillColor,
         angle: this.angle
       })
-    )
 
   }
 

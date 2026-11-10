@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 
 
 export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
@@ -45,9 +45,7 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
       this.y = this.traqueJoueur.y
     }
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -56,7 +54,6 @@ export default class KunaiClass extends Phaser.Physics.Arcade.Sprite {
         alpha: this.alpha,
         _frame: this._frame
       })
-    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

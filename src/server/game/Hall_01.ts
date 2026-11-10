@@ -8,13 +8,14 @@ import { clavierRecu } from "../domain/entrees"
 import { BOSS_FINAL, bossFinalDirect } from "../domain/progression"
 import { revelerBossFinal } from "./bossFinal"
 import { APPARITIONS_BOSS } from "../domain/carte"
+import { publierPresence } from "./publication"
 import { estPersonnageJouable } from "../../shared/personnages"
 import { ClavierEnvoye, Recu } from "../../shared/messages"
 
 // Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
 installerPolyfillsHeadless()
 
-import { RoomState, Player } from "./RoomState"
+import { RoomState } from "./RoomState"
 
 
 /**
@@ -101,7 +102,7 @@ export default class GameRooms extends Room {
             }
             const presences = this.scene.createEnnemy(randomNombre, item[0], true, item[1].x, item[1].y);
             for (const [key, value] of Object.entries(presences.presences)) {
-              this.state.presences.set(key, new Player(value))
+              publierPresence(this.scene, key, value)
             }
             // Raccourci de développement : boss final actif dès sa création (BOSS_FINAL_DIRECT=1).
             // createEnnemy le crée après 1000 ms sur l'horloge Phaser : révéler juste après, sur la même horloge.
@@ -148,7 +149,7 @@ export default class GameRooms extends Room {
     }
     const presences = this.scene.createPlayer(client.sessionId, options.sprite)
     for (const [key, value] of Object.entries(presences.presences)) {
-      this.state.presences.set(key, new Player(value))
+      publierPresence(this.scene, key, value)
     }
   }
 

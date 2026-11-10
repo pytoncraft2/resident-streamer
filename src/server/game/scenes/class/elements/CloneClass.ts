@@ -1,4 +1,4 @@
-import { Player } from "../../../RoomState"
+import { publierPresence } from "../../../publication";
 import huzounet, { kunai, initialiser, shuriken } from '././../../Aptitudes/huzounet'
 import { statsDe } from "../../Aptitudes/definition"
 import { ANIMATIONS_COMMUNES } from "../../Animations/communes"
@@ -90,9 +90,7 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    (this.scene as any).room.state.presences.set(
-      this.ClientID,
-      new Player({
+    publierPresence(this.scene, this.ClientID, {
         x: this.x,
         y: this.y,
         sprite: this.sprite,
@@ -102,7 +100,6 @@ export default class CloneClass extends Phaser.Physics.Arcade.Sprite {
         tint: this.tintBottomLeft,
         vie: this.vie
       })
-    )
   }
 
   auto() {

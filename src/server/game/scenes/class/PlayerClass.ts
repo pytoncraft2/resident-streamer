@@ -1,9 +1,9 @@
-import { Player, Commandes } from "../../RoomState"
 import { AnimationJoueur } from "../Animations/AnimationJoueur"
 import { Aptitudes } from "../Aptitudes/base"
 import { imageQuiBlesse } from "../Aptitudes/definition"
 import { frontsAConsommer, touchesDeclenchees } from "../../../domain/entrees"
 import { REAPPARITION_JOUEUR } from "../../../domain/carte"
+import { publierPresence } from "../../publication"
 import { ANIMATIONS_COMMUNES } from "../Animations/communes"
 import { Camp, resoudreContact, vieApresDommage, vieApresSoin } from "../../../domain/combat"
 import { terminerPartie } from "../../finDePartie"
@@ -166,9 +166,7 @@ import { campDe } from "../../camps"
        else this.respawn()
      }
 
-     (this.scene as any).room.state.presences.set(
-       this.ClientID,
-       new Player({
+     publierPresence(this.scene, this.ClientID, {
          id: this.ClientID,
          x: this.x,
          y: this.y,
@@ -184,7 +182,6 @@ import { campDe } from "../../camps"
          son: this.son,
          particules: this.particules
        })
-     )
 
      if (this.particules) this.particules = false;
      if (this.son) this.son = undefined;
@@ -243,15 +240,9 @@ import { campDe } from "../../camps"
     * @param [icon] 
     */
    changeInterfaceClient(sprite: string, icon: boolean = false) {
-       (this.scene as any).room.state.presences.set(
-         this.ClientID,
-         new Player( icon ? {
-           sprite_fusion: sprite,
-           commandes: new Commandes(Aptitudes[sprite]["commandes"])
-         } : {
-           commandes: new Commandes(Aptitudes[sprite]["commandes"])
-         })
-       );
+       // Publication ponctuelle : commandes (et icône de fusion) lues par l'interface du client.
+       const commandes = Aptitudes[sprite].commandes
+       publierPresence(this.scene, this.ClientID, icon ? { sprite_fusion: sprite, commandes } : { commandes })
    }
 
 

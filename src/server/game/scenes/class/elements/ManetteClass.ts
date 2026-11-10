@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 
 export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
   id: any
@@ -48,9 +48,7 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
       this.x = this.traqueJoueur.x
       this.y = this.traqueJoueur.y
     }
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         id: this.id,
@@ -60,7 +58,6 @@ export default class ManetteClass extends Phaser.Physics.Arcade.Sprite {
         angle: this.angle,
         _frame: this._frame
       })
-    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {

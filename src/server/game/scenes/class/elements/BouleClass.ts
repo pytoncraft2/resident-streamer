@@ -1,4 +1,4 @@
-import { Projectile } from "../../../RoomState"
+import { publierProjectile } from "../../../publication";
 
 
 export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
@@ -47,9 +47,7 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-    (this.scene as any).room.state.projectiles.set(
-      this.id,
-      new Projectile({
+    publierProjectile(this.scene, {
         x: this.x,
         y: this.y,
         scale: this.scale,
@@ -58,7 +56,6 @@ export default class BouleClass extends Phaser.Physics.Arcade.Sprite {
         sprite: this.sprite,
         _frame: this._frame
       })
-    )
   }
 
   traquer(joueur: Phaser.Physics.Arcade.Sprite, desactivation: boolean = false) {
