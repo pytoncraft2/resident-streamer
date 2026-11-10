@@ -8,6 +8,7 @@ import { clavierRecu } from "../domain/entrees"
 import { BOSS_FINAL, bossFinalDirect } from "../domain/progression"
 import { revelerBossFinal } from "./bossFinal"
 import { estPersonnageJouable } from "../../shared/personnages"
+import { ClavierEnvoye, Recu } from "../../shared/messages"
 
 // Contournements de l'anomalie B1 (destruction des rooms), voir phaserHeadless.ts.
 installerPolyfillsHeadless()
@@ -113,7 +114,8 @@ export default class GameRooms extends Room {
 
       })
 
-    this.onMessage("inputs", (client, message) => {
+    // Message `inputs` (contrat partagé MessagesVersJeu) : reçu comme non fiable, vérifié par clavierRecu.
+    this.onMessage("inputs", (client, message: Recu<ClavierEnvoye>) => {
       const joueur = this.donnes[client.sessionId]
       // Fronts montants calculés par le serveur (B7) à partir du dernier message reçu tel quel.
       joueur.clavier = clavierRecu(joueur.dernierMessage, message)

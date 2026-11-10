@@ -2,7 +2,7 @@
 // You can write more code here
 export interface Initialisation {
 	salon: string;
-	personnage: string;
+	personnage: PersonnageJouable;
 };
 
 /* START OF COMPILED CODE */
@@ -12,6 +12,8 @@ import Phaser from "phaser";
 import * as Colyseus from "@colyseus/sdk"
 import { deepEqual } from "../components/deepEqual"
 import { URL_WS_SERVEUR } from "../utils/serveur"
+import { canalJeu, OptionsJeu } from "../../shared/messages"
+import type { PersonnageJouable } from "../../shared/personnages"
 /* END-USER-IMPORTS */
 
 export default class Jeu extends Phaser.Scene {
@@ -606,10 +608,10 @@ export default class Jeu extends Phaser.Scene {
 	ennemyRef: any
 	boulesRef: any
 	kunaisRef: any
-	salon?: string
+	salon!: string
 	keyboard!: any
 	room?: Colyseus.Room<unknown>
-	personnage?: string
+	personnage!: PersonnageJouable
 	compte: number = 0
 	prevInputs?: { a: boolean, z: boolean, e: boolean, r: boolean, space: boolean, right: boolean, left: boolean, tab: boolean }
 	attaqueDirecte: boolean = false
@@ -673,22 +675,21 @@ export default class Jeu extends Phaser.Scene {
 		const sprite = this.personnage;
 
 		await client
-			.joinOrCreate("game_instance", { salon: salon, sprite: sprite })
+			.joinOrCreate("game_instance", { salon: salon, sprite: sprite } satisfies OptionsJeu)
 			.then((room) => {
 				self.room = room
 				self.session = room.sessionId
 
 
-				room.onMessage("suppression", (objet: number) => {
-					const cle = Object.entries(objet)[0][0];
-					const id = Object.entries(objet)[0][1];
+				canalJeu.ecouter(room, "suppression", (objet) => {
+					const [cle, id] = Object.entries(objet)[0];
 					if (cle === "playersRef") (this as any)[cle][id].barre.destroy();
 					(this as any)[cle][id].destroy(true);
 
 					delete (this as any)[cle][id];
 				});
 
-				room.onMessage("RDC_OK", () => {
+				canalJeu.ecouter(room, "RDC_OK", () => {
 					this.tweens.add({
 						targets: this.hall,
 						alpha: 0,
@@ -698,7 +699,7 @@ export default class Jeu extends Phaser.Scene {
 				});
 
 
-				room.onMessage("ETAGE_OK", () => {
+				canalJeu.ecouter(room, "ETAGE_OK", () => {
 					this.tweens.add({
 						targets: this.hall_1,
 						alpha: 0,
@@ -708,7 +709,7 @@ export default class Jeu extends Phaser.Scene {
 				});
 
 				// Le serveur enregistre le score lui-même (anomalie B3) : le client ne fait qu'afficher.
-				room.onMessage("FIN_JEU", (resultat: any) => {
+				canalJeu.ecouter(room, "FIN_JEU", (resultat) => {
 
 					this.sound.play('victoire')
 					this.ecran_fin_text_score.setText(`Votre score : ${resultat.temps}`)
@@ -1179,7 +1180,7 @@ export default class Jeu extends Phaser.Scene {
 
 			if (!deepEqual(inputs, this.prevInputs)) {
 				this.prevInputs = inputs
-				this.room.send("inputs", {
+				canalJeu.envoyer(this.room, "inputs", {
 					...inputs,
 					a_fin: A.isUp ? true : false,
 					z_fin: Phaser.Input.Keyboard.JustUp(Z),

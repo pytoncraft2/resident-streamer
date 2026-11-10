@@ -1,3 +1,4 @@
+import { canalJeu } from "../../../shared/messages"
 import PlayerClass from "./class/PlayerClass"
 import { formaterDuree } from "../../domain/temps"
 
@@ -336,7 +337,7 @@ export default class Hall extends Phaser.Scene {
    * @param [smooth] effet progessif opacité
    * @returns  
    */
-  suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
+  suppressionProjectileDelai(cible: Phaser.Physics.Arcade.Sprite, id: string, delai: number = 1000, smooth: boolean = false) {
     return this.time.delayedCall(delai, () => {
       if (smooth)
       {
@@ -346,7 +347,7 @@ export default class Hall extends Phaser.Scene {
           duration: 400,
           onCompleteParams: [this],
           onComplete: function(_tw, _target, scene) {
-            scene.room.broadcast("suppression", {projectilesRef: id});
+            canalJeu.diffuser(scene.room, "suppression", { projectilesRef: id });
             scene.room.state.projectiles.delete(id);
             arguments[1][0].destroy(true);
           }
@@ -354,7 +355,7 @@ export default class Hall extends Phaser.Scene {
       }
       else
       {
-        this.room.broadcast("suppression", {projectilesRef: id});
+        canalJeu.diffuser(this.room, "suppression", { projectilesRef: id });
         this.room.state.projectiles.delete(id);
         cible.destroy(true);
       }
@@ -378,7 +379,7 @@ export default class Hall extends Phaser.Scene {
    * @param id 
    * @param [delai] 
    */
-  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: number, delai: number = 1000) {
+  suppressionJoueur(cible: Phaser.Physics.Arcade.Sprite, smooth: boolean, id: string, delai: number = 1000) {
     if (smooth)
     {
       this.tweens.add({
@@ -387,7 +388,7 @@ export default class Hall extends Phaser.Scene {
         duration: delai,
         onCompleteParams: [this],
         onComplete: function(_tw, _target, scene) {
-          scene.room.broadcast("suppression", {playersRef: id});
+          canalJeu.diffuser(scene.room, "suppression", { playersRef: id });
           scene.room.state.presences.delete(id);
           arguments[1][0].destroy(true);
         }
@@ -395,7 +396,7 @@ export default class Hall extends Phaser.Scene {
     }
     else
     {
-      this.room.broadcast("suppression", {playersRef: id});
+      canalJeu.diffuser(this.room, "suppression", { playersRef: id });
       this.room.state.presences.delete(id);
       cible.destroy(true);
     }
@@ -415,8 +416,8 @@ export default class Hall extends Phaser.Scene {
    * @param [delai] 
    * @param [smooth] 
    */
-  suppressionLigne(cible: Phaser.Physics.Arcade.Sprite, id: number, delai: number = 1000, smooth: boolean = false) {
-        this.room.broadcast("suppression", {lignesRef: id});
+  suppressionLigne(cible: Phaser.Physics.Arcade.Sprite, id: string, delai: number = 1000, smooth: boolean = false) {
+        canalJeu.diffuser(this.room, "suppression", { lignesRef: id });
         this.room.state.lignes.delete(id);
         cible.destroy();
   }

@@ -49,6 +49,10 @@ Option A, choisie par l'utilisateur le 2026-11-10. Règles :
 - **Tests :** `test/unit/personnages.test.ts` ; `test/integration/rooms.test.ts` (refus de « inconnu », « super_boss », « », sans erreur serveur ; acceptation des 4 jouables).
 - Protocole réseau inchangé (mêmes options de connexion, mêmes schémas).
 
+## Suivi
+
+- **2026-11-10 — contrats des messages réseau** (`src/shared/messages.ts`) : nom et contenu de chaque message par room et par sens (`MessagesVersJeu`, `MessagesDuJeu`, `MessagesVersLobby`, `MessagesDuLobby`), options de connexion (`OptionsJeu`, `OptionsLobby`) et canaux typés `canalJeu` / `canalLobby` (`envoyer`, `ecouter`, `diffuser`), qui lient le nom d'un message à son contenu sans dépendre de Colyseus. Le serveur reçoit les messages du client comme non fiables (`Recu<T>`). Protocole inchangé (mêmes noms, mêmes contenus). Au passage, le lobby ignore un `etatJoueur` dont l'index est hors catalogue (`domain/lobby.ts`) au lieu de lever une exception. Tests : `test/unit/messages.test.ts` (dont erreurs de compilation attendues), `test/unit/lobby.test.ts`, `test/integration/messages.test.ts`.
+
 ## Plan de retour arrière
 
 Revenir au commit précédent : liste en dur dans `Lobby.ts`, `outDir: "../../build/server"` sans `rootDir`, pas d'`onAuth`. Supprimer `build/shared/` (ou `npm run clean`). Aucune donnée ni protocole à migrer.

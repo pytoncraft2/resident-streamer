@@ -4,18 +4,13 @@
  */
 import { nommerEquipe } from "../domain/classement";
 import { DepotScores } from "../stockage/fichierScores";
+import { canalJeu, MessageFinJeu, RoomDiffusante } from "../../shared/messages";
 
-/** Message `FIN_JEU` diffusé aux clients de la room. */
-export interface MessageFinJeu {
-  temps: string;
-  joueur: string[];
-  equipe: string;
-}
+/** Message `FIN_JEU` diffusé aux clients de la room (contrat partagé, `src/shared/messages.ts`). */
+export type { MessageFinJeu };
 
 /** Vue minimale d'une room Colyseus. */
-export interface RoomDiffusion {
-  broadcast(type: string, message: MessageFinJeu): void;
-}
+export type RoomDiffusion = RoomDiffusante;
 
 const terminees = new WeakSet<RoomDiffusion>();
 
@@ -34,7 +29,7 @@ export function terminerPartie(
   terminees.add(room);
 
   const message: MessageFinJeu = { temps, joueur: [...personnages], equipe: nommerEquipe(personnages, tirage) };
-  room.broadcast("FIN_JEU", message);
+  canalJeu.diffuser(room, "FIN_JEU", message);
   depot.ajouter(message.equipe, message.joueur, temps).catch((erreur: unknown) => {
     console.error("Enregistrement du score impossible :", erreur);
   });

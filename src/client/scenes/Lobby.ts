@@ -11,6 +11,7 @@ import Button from "../utils/bouton"
 import Titre from "../utils/titre"
 import { URL_WS_SERVEUR } from "../utils/serveur"
 import { estPersonnageJouable, PERSONNAGES_JOUABLES, PersonnageJouable } from "../../shared/personnages"
+import { canalLobby, OptionsLobby } from "../../shared/messages"
 /* END-USER-IMPORTS */
 
 export default class Lobby extends Phaser.Scene {
@@ -144,7 +145,7 @@ export default class Lobby extends Phaser.Scene {
 	              el.setData('actif', false)
 	        });
 
-	        self.room.send('etatJoueur', {
+	        canalLobby.envoyer(self.room, 'etatJoueur', {
 	          pret: true,
 	          indexConfirmation: idx,
 	          ancienIndexConfirmation: listeIndex[listeIndex.length - 2]
@@ -190,12 +191,12 @@ export default class Lobby extends Phaser.Scene {
 
 
 	    await client
-	    .joinOrCreate("lobby", { salon })
+	    .joinOrCreate("lobby", { salon } satisfies OptionsLobby)
 			.then((room) => {
 				self.room = room
 				self.session = room.sessionId
 
-				room.onMessage("commencerJeu", _message => {
+				canalLobby.ecouter(room, "commencerJeu", () => {
 					self.commencerJeu()
 				});
 
@@ -262,7 +263,7 @@ export default class Lobby extends Phaser.Scene {
 	  }
 
 	  demandeCommencerJeu() {
-	    this.room.send('demandeCommencerJeu')
+	    canalLobby.envoyer(this.room, 'demandeCommencerJeu')
 	  }
 
 }

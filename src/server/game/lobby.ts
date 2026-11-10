@@ -3,6 +3,8 @@ import "@geckos.io/phaser-on-nodejs"
 import { Room, Client } from "@colyseus/core"
 
 import { LobbyState, Joueur } from "./LobbyState"
+import { etatJoueurValide } from "../domain/lobby"
+import { canalLobby } from "../../shared/messages"
 
 
 /**
@@ -45,7 +47,10 @@ export default class LobbyRooms extends Room {
       3: []
     }
 
-    this.onMessage("etatJoueur", (client, message) => {
+    this.onMessage("etatJoueur", (client, recu) => {
+      // Message non fiable : un index hors du catalogue des personnages est ignoré.
+      const message = etatJoueurValide(recu)
+      if (!message) return
       this.etatJoueur[client.sessionId] = message
       if (!this.listeIndex[message.indexConfirmation].includes(client.sessionId)) {
         this.listeIndex[message.indexConfirmation].push(client.sessionId)
@@ -72,7 +77,7 @@ export default class LobbyRooms extends Room {
 
     this.onMessage("demandeCommencerJeu", (_client, _message) => {
       // broadcast a message to all clients
-      this.broadcast("commencerJeu", "an action has been taken!");
+      canalLobby.diffuser(this, "commencerJeu", "an action has been taken!");
     });
   }
 

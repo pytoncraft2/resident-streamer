@@ -4,6 +4,7 @@
  * Appelée quand les 4 boss sont vaincus (PlayerClass) ou dès sa création avec BOSS_FINAL_DIRECT=1 (Hall_01).
  */
 import { BOSS_FINAL } from "../domain/progression";
+import { canalJeu, RoomDiffusante } from "../../shared/messages";
 
 interface EntiteActivable {
   setActive(actif: boolean): unknown;
@@ -17,10 +18,9 @@ interface BossFinal extends EntiteActivable {
 }
 
 /** Vue minimale de la room Colyseus `game_instance` (Hall_01). */
-export interface RoomBossFinal {
+export interface RoomBossFinal extends RoomDiffusante {
   bossFinalRevele?: boolean;
   boss: Record<string, { id?: string } | undefined>;
-  broadcast(type: string): void;
   scene: { enemiesRef: Record<string, BossFinal | undefined> };
 }
 
@@ -30,8 +30,8 @@ export function revelerBossFinal(room: RoomBossFinal): boolean {
   const bossFinal = id !== undefined ? room.scene.enemiesRef[id] : undefined;
   if (room.bossFinalRevele || !bossFinal) return false;
   room.bossFinalRevele = true;
-  room.broadcast("RDC_OK");
-  room.broadcast("ETAGE_OK");
+  canalJeu.diffuser(room, "RDC_OK");
+  canalJeu.diffuser(room, "ETAGE_OK");
   bossFinal.setActive(true);
   bossFinal.trones.setActive(true);
   bossFinal.surRevelation?.();

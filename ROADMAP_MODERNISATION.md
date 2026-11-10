@@ -79,7 +79,7 @@ Cette arborescence est **proposée**, pas existante. Ne pas créer tous ces doss
 **En cours :** registre explicite typé des aptitudes (étapes ci-dessous) ; contrats partagés dans `src/shared/` (ADR-002).
 
 - [ ] Établir une source de vérité unique pour stats, capacités et états des personnages. → stats (`stats` : vie, dégâts, vitesse ; défaut `STATS_PAR_DEFAUT`), capacités et déplacements (`deplacements`, défaut `Stats/Defaut.ts`) dans la définition de chaque personnage ; le registre n'est plus modifié en cours de partie. **États** (camp, fusion, vol…) encore portés par `PlayerClass`.
-- [ ] Introduire des contrats typés de commandes, intentions et événements métier.
+- [ ] Introduire des contrats typés de commandes, intentions et événements métier. → messages réseau typés (`src/shared/messages.ts`, ADR-002) ; intentions des boss typées (`ia/boss.ts`). Événements métier internes au serveur : pas encore.
 - [ ] Isoler les contrôles d'inputs client, les validations serveur et les snapshots de réplication.
 - [ ] Extraire progressivement les règles de `PlayerClass.ts` et `hall.ts` par fonctionnalité testée.
 - [x] Remplacer le chargement fragile des aptitudes (découverte de fichiers / introspection de noms de fonctions) par un registre explicite typé si cela simplifie les dépendances. → étapes :
