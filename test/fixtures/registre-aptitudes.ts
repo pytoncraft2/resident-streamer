@@ -1,12 +1,15 @@
 /**
  * Processus séparé : charge le registre des aptitudes du serveur **compilé** (build/server, produit par
- * `npm test`) avec le pont Phaser, puis affiche (ligne « RESULTAT ») en JSON, par personnage, ses clés, ses commandes et ses animations.
+ * `npm test`) avec le pont Phaser, puis affiche (ligne « RESULTAT ») en JSON : par personnage, ses clés, ses
+ * commandes et ses animations (avec les noms de leurs images), ainsi que les animations communes.
+ * Lu par `test/helpers/registre.ts`.
  * Les fichiers d'aptitudes ne compilent pas avec la config stricte des tests : ils sont lus compilés.
  * Lancement : node -r ts-node/register test/fixtures/registre-aptitudes.ts
  */
 import "@geckos.io/phaser-on-nodejs";
 import Phaser from "phaser";
 import path from "path";
+import { AnimationPersonnage, nomsDesImages } from "../../src/server/game/scenes/Aptitudes/definition";
 
 interface Registre {
   readonly [personnage: string]: { readonly [cle: string]: unknown };
@@ -14,6 +17,7 @@ interface Registre {
 
 const RACINE = path.resolve(__dirname, "../..");
 const pause = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
+const resumer = (a: AnimationPersonnage) => ({ cle: a.cle, imageQuiBlesse: a.imageQuiBlesse, images: nomsDesImages(a) });
 
 async function main(): Promise<void> {
   // Les classes d'éléments (BombeClass…) héritent du `Phaser` global, comme dans le serveur.
@@ -32,13 +36,12 @@ async function main(): Promise<void> {
       {
         cles: Object.keys(aptitudes).filter((cle) => cle !== "commandes" && typeof aptitudes[cle] === "function").sort(),
         commandes: aptitudes.commandes,
-        animations: Array.isArray(aptitudes.animations)
-          ? (aptitudes.animations as { cle: string; imageQuiBlesse?: string }[]).map((a) => ({ cle: a.cle, imageQuiBlesse: a.imageQuiBlesse }))
-          : undefined,
+        animations: Array.isArray(aptitudes.animations) ? (aptitudes.animations as AnimationPersonnage[]).map(resumer) : undefined,
       },
     ]),
   );
-  process.stdout.write(`\nRESULTAT ${JSON.stringify(resultat)}\n`);
+  const { ANIMATIONS_COMMUNES } = require(path.join(RACINE, "build/server/game/scenes/Animations/communes.js")) as { ANIMATIONS_COMMUNES: AnimationPersonnage[] };
+  process.stdout.write(`\nRESULTAT ${JSON.stringify({ registre: resultat, communes: ANIMATIONS_COMMUNES.map(resumer) })}\n`);
 }
 
 main().catch((erreur: unknown) => {

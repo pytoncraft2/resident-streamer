@@ -7,37 +7,11 @@
  * `animationLancerManette` (code mort, jamais appelé) en est exclu.
  */
 import { strict as assert } from "assert";
-import { execFile } from "child_process";
-import path from "path";
+import { EntreeLue, lireRegistre } from "../helpers/registre";
 
 interface EntreeRegistre {
   cles: string[];
   commandes: Record<string, string>;
-}
-interface AnimationLue {
-  cle: string;
-  imageQuiBlesse?: string;
-}
-interface EntreeLue extends EntreeRegistre {
-  animations?: AnimationLue[];
-}
-
-const RACINE = path.resolve(__dirname, "../..");
-const SCRIPT = path.join(RACINE, "test/fixtures/registre-aptitudes.ts");
-
-function lireRegistre(): Promise<Record<string, EntreeLue>> {
-  return new Promise((resolve, reject) => {
-    execFile(
-      process.execPath,
-      ["-r", "ts-node/register", SCRIPT],
-      { cwd: RACINE, env: { ...process.env, TS_NODE_PROJECT: "test/tsconfig.json" }, timeout: 60000, maxBuffer: 16 * 1024 * 1024 },
-      (erreur, sortie, sortieErreur) => {
-        const ligne = sortie.split("\n").find((l) => l.startsWith("RESULTAT "));
-        if (!ligne) return reject(erreur ?? new Error(`pas de résultat :\n${sortieErreur.slice(-2000)}`));
-        resolve(JSON.parse(ligne.slice("RESULTAT ".length)) as Record<string, EntreeLue>);
-      },
-    );
-  });
 }
 
 const ATTENDU: Record<string, EntreeRegistre> = {
@@ -54,10 +28,10 @@ const ATTENDU: Record<string, EntreeRegistre> = {
 
 describe("registre des aptitudes (caractérisation)", function () {
   this.timeout(90000);
-  let registre: Record<string, EntreeLue>;
+  let registre: Readonly<Record<string, EntreeLue>>;
 
   before(async function () {
-    registre = await lireRegistre();
+    registre = (await lireRegistre()).registre;
   });
 
   it("contient exactement les 9 personnages (4 jouables, 5 boss)", function () {
