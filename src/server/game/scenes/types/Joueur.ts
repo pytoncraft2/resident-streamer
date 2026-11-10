@@ -1,5 +1,6 @@
 import LaserClass from "../class/elements/LaserClass";
 import Hall from "../hall";
+import { Camp } from "../../../domain/combat";
 
 export interface Scene extends Phaser.Scene {
   room: any
@@ -13,7 +14,8 @@ interface TJoueur extends Phaser.GameObjects.Sprite
   vie: number,
   displayWidth: number,
   displayHeight: number,
-  cible_courante: string,
+  /** Camp visé par ses attaques : "enemies" pour un joueur (ou un boss qu'il pilote), "players" pour un boss. */
+  cible_courante: Camp,
 
 
   kunai?: Phaser.Physics.Arcade.Sprite|undefined

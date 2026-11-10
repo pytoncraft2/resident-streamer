@@ -28,7 +28,8 @@ import { campDe } from "../../camps"
    pieceCourante: string = 'hall'
    fusionner: boolean
    suivre: boolean
-   cible_courante: string = "enemies"
+   /** Camp visé par ses attaques : "enemies" pour un joueur (ou un boss qu'il pilote), "players" pour un boss. */
+   cible_courante: Camp = "enemies"
    compteurSaut: number = 0
    iconSuitJoueur: boolean = false
    tweenIcon: Phaser.Tweens.Tween
@@ -105,7 +106,7 @@ import { campDe } from "../../camps"
        if (!this.scene) return
        // Règle du contact (domain/combat.ts) : invulnérabilité, coup consommé, camps, cible à 0, soin.
        const resultat = resoudreContact(
-         { blesse: this.blesse_opposant, soigne: this.soigne, degat: this.degat, campVise: this.cible_courante as Camp, sprite: this.sprite },
+         { blesse: this.blesse_opposant, soigne: this.soigne, degat: this.degat, campVise: this.cible_courante, sprite: this.sprite },
          {
            invulnerable: Boolean(_e.invulnerable),
            blessable: typeof _e.dommage === "function",

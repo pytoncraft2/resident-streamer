@@ -57,7 +57,7 @@ export default class LaserClass extends Phaser.GameObjects.Rectangle {
     // Camp visé lu à chaque tir : il change quand un joueur fusionne avec twitchman (« enemies »).
     // Sans ce filtre, le laser blessait tout corps physique : les autres boss, le trône du boss final,
     // ou les joueurs quand un joueur le contrôle (intentions §2 : pas de tir ami).
-    const campVise = this.proprietaire.cible_courante as Camp
+    const campVise: Camp = this.proprietaire.cible_courante
     within.forEach(function (body: any) {
       if (body.gameObject.type == "Sprite") {
         if (body.gameObject.ClientID != this.proprietaireID && peutBlesser(campVise, campDe(this.scene as unknown as SceneCamps, body.gameObject))) {
