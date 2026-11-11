@@ -72,9 +72,9 @@ describe("routes HTTP (intégration)", function () {
 
   it("sert les fichiers statiques de dist/", async function () {
     avecClient.call(this);
-    const r = await obtenir(`${serveur.httpUrl}/site.webmanifest`);
+    const r = await obtenir(`${serveur.httpUrl}/assets/icons_atlas.json`);
     assert.equal(r.statut, 200);
-    assert.equal(r.corps, await fs.readFile(path.join(DIST, "site.webmanifest"), "utf8"));
+    assert.equal(r.corps, await fs.readFile(path.join(DIST, "assets", "icons_atlas.json"), "utf8"));
   });
 
   it("répond 404 à un chemin inconnu à plusieurs segments", async function () {
